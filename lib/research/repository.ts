@@ -1,6 +1,6 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { and, desc, eq } from "drizzle-orm";
-import { drizzle } from "drizzle-orm/d1";
+import { drizzle, type DrizzleD1Database } from "drizzle-orm/d1";
 import * as schema from "@/db/research-schema";
 import { vpecSeed } from "./seed";
 import { latestActual } from "./calculations";
@@ -24,7 +24,7 @@ function createSeedRepository(): ResearchRepository {
   };
 }
 
-function createD1Repository(db: any): ResearchRepository {
+function createD1Repository(db: DrizzleD1Database<typeof schema>): ResearchRepository {
   return {
     async listPublishedCompanies() {
       const companies = await db.select().from(schema.researchCompanies).where(eq(schema.researchCompanies.status, "active"));
@@ -51,7 +51,7 @@ function createD1Repository(db: any): ResearchRepository {
           report: reports[0],
           latestActual: actuals[0],
           consensus2027: forecasts[0],
-          signals: signals.map((s: any) => ({ ...s, status: s.status as SignalStatus })),
+          signals: signals.map((signal) => ({ ...signal, status: signal.status as SignalStatus })),
         });
       }
       return results;
@@ -82,7 +82,7 @@ function createD1Repository(db: any): ResearchRepository {
         monthlyRevenue,
         segments,
         forecasts,
-        signals: signalRows.map((s: any) => ({ ...s, status: s.status as SignalStatus })),
+        signals: signalRows.map((signal) => ({ ...signal, status: signal.status as SignalStatus })),
         capacity,
         catalysts,
         risks,
@@ -96,8 +96,7 @@ function createD1Repository(db: any): ResearchRepository {
 export async function getResearchRepository(): Promise<ResearchRepository> {
   try {
     const { env } = await getCloudflareContext({ async: true });
-    const d1 = (env as Record<string, unknown>).RESEARCH_DB;
-    if (d1) return createD1Repository(drizzle(d1 as any, { schema }));
+    if (env.RESEARCH_DB) return createD1Repository(drizzle(env.RESEARCH_DB, { schema }));
   } catch {
     // Standard `next dev` has no Worker bindings. Seed data keeps P0 usable.
   }

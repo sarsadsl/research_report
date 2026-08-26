@@ -31,6 +31,9 @@ jobs:
       - name: Generate Wrangler config
         run: node scripts/write-wrangler.mjs
 
+      - name: Generate Cloudflare binding types
+        run: npm run cf-typegen
+
       - name: Apply D1 migrations
         run: npx wrangler d1 migrations apply research-report-db --remote
 

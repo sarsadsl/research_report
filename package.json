@@ -3,20 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
-    "db:local:migrate": "wrangler d1 migrations apply research-report-db --local",
-    "db:remote:migrate": "wrangler d1 migrations apply research-report-db --remote",
-    "db:local:seed": "wrangler d1 execute research-report-db --local --file=db/seed/2455.sql",
-    "db:remote:seed": "wrangler d1 execute research-report-db --remote --file=db/seed/2455.sql"
+    "dev": "node ./node_modules/next/dist/bin/next dev",
+    "build": "node ./node_modules/next/dist/bin/next build",
+    "start": "node ./node_modules/next/dist/bin/next start",
+    "preview": "node ./node_modules/@opennextjs/cloudflare/dist/cli/index.js build && node ./node_modules/@opennextjs/cloudflare/dist/cli/index.js preview",
+    "deploy": "node ./node_modules/@opennextjs/cloudflare/dist/cli/index.js build && node ./node_modules/@opennextjs/cloudflare/dist/cli/index.js deploy",
+    "cf-typegen": "node ./node_modules/wrangler/bin/wrangler.js types --env-interface CloudflareEnv cloudflare-env.d.ts",
+    "db:local:migrate": "node ./node_modules/wrangler/bin/wrangler.js d1 migrations apply research-report-db --local",
+    "db:remote:migrate": "node ./node_modules/wrangler/bin/wrangler.js d1 migrations apply research-report-db --remote",
+    "db:local:seed": "node ./node_modules/wrangler/bin/wrangler.js d1 execute research-report-db --local --file=db/seed/2455.sql",
+    "db:remote:seed": "node ./node_modules/wrangler/bin/wrangler.js d1 execute research-report-db --remote --file=db/seed/2455.sql"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.3.0",
-    "drizzle-orm": "^0.44.0",
+    "drizzle-orm": "^0.45.2",
     "next": "^16.0.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
