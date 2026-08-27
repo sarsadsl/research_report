@@ -1,5 +1,5 @@
 INSERT OR REPLACE INTO research_monthly_revenue
-(id, company_id, year, month, revenue, mom, yoy, updated_at)
+(id, company_id, year, month, revenue, mom, yoy, created_at)
 VALUES
 ('vpec-2601','vpec-2455',2026,1,340.323,6.60,30.26,'2026-08-27'),
 ('vpec-2602','vpec-2455',2026,2,307.741,-9.57,15.89,'2026-08-27'),
