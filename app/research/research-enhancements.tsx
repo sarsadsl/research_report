@@ -11,8 +11,8 @@ export default function ResearchEnhancements() {
   useEffect(() => {
     if (!pathname.startsWith("/research/") || pathname.includes("/reports/")) return;
 
-    // The detail page already has a prominent full-report link. Remove the duplicated iframe block.
-    document.querySelector('iframe[src*="/research/reports/"]')?.closest("section")?.remove();
+    const embedded = document.querySelector('iframe[src*="/research/reports/"]')?.closest("section");
+    if (embedded?.parentNode) embedded.parentNode.removeChild(embedded);
 
     const title = Array.from(document.querySelectorAll<HTMLHeadingElement>("h2.sectionTitle"))
       .find((node) => node.textContent?.trim() === "月營收");
@@ -60,7 +60,9 @@ export default function ResearchEnhancements() {
         <div class="revenueChart" role="img" aria-label="2026 年月營收柱狀圖"></div>
       </div>`;
 
-    const chart = panel.querySelector<HTMLDivElement>(".revenueChart")!;
+    const chart = panel.querySelector<HTMLDivElement>(".revenueChart");
+    if (!chart) return;
+
     points.forEach((point, index) => {
       const column = document.createElement("div");
       column.className = "revenueBarColumn";
@@ -77,12 +79,16 @@ export default function ResearchEnhancements() {
       month.className = "revenueBarMonth";
       month.textContent = `${point.month}月`;
       track.appendChild(bar);
-      column.append(value, track, month);
+      column.appendChild(value);
+      column.appendChild(track);
+      column.appendChild(month);
       chart.appendChild(column);
     });
 
-    table.before(panel);
-    return () => panel.remove();
+    scope.insertBefore(panel, table);
+    return () => {
+      if (panel.parentNode) panel.parentNode.removeChild(panel);
+    };
   }, [pathname]);
 
   return null;
