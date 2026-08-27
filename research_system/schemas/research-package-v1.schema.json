@@ -1,0 +1,1096 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://research-report.local/schemas/research-package-v1.schema.json",
+  "title": "Research Package v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "packageVersion",
+    "asOfDate",
+    "company",
+    "report",
+    "thesis",
+    "actuals",
+    "monthlyRevenue",
+    "segments",
+    "forecasts",
+    "capacity",
+    "catalysts",
+    "risks",
+    "signalRules",
+    "signalSnapshots",
+    "sections",
+    "sources",
+    "claims"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "packageVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "asOfDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "company": {
+      "$ref": "#/$defs/company"
+    },
+    "report": {
+      "$ref": "#/$defs/report"
+    },
+    "thesis": {
+      "$ref": "#/$defs/thesis"
+    },
+    "actuals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/actual"
+      }
+    },
+    "monthlyRevenue": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/monthlyRevenue"
+      }
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/segment"
+      }
+    },
+    "forecasts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/forecast"
+      }
+    },
+    "capacity": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/capacity"
+      }
+    },
+    "catalysts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/catalyst"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/risk"
+      }
+    },
+    "signalRules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/signalRule"
+      }
+    },
+    "signalSnapshots": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/signalSnapshot"
+      }
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/section"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    }
+  },
+  "$defs": {
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "evidenceClass": {
+          "enum": [
+            "official",
+            "third_party_fact",
+            "market_consensus",
+            "research_inference"
+          ]
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "company": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "ticker",
+        "market",
+        "name",
+        "slug",
+        "currency"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "ticker": {
+          "type": "string"
+        },
+        "market": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "sector": {
+          "type": "string"
+        },
+        "industry": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 3
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "report": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "slug",
+        "status",
+        "version"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "thesis": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "review",
+            "published",
+            "archived"
+          ]
+        },
+        "version": {
+          "type": "string"
+        },
+        "publishedAt": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "thesis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "coreChain",
+        "claimIds"
+      ],
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "coreChain": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      }
+    },
+    "actual": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "period",
+        "fiscalYear",
+        "currency",
+        "scale",
+        "evidenceClass",
+        "sourceIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "period": {
+          "type": "string"
+        },
+        "fiscalYear": {
+          "type": "integer"
+        },
+        "quarter": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 4
+        },
+        "revenue": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "grossProfit": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "grossMargin": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "operatingIncome": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "operatingMargin": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "netIncome": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "netMargin": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "eps": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "currency": {
+          "type": "string"
+        },
+        "scale": {
+          "enum": [
+            "unit",
+            "thousand",
+            "million",
+            "billion"
+          ]
+        },
+        "evidenceClass": {
+          "enum": [
+            "official",
+            "third_party_fact",
+            "market_consensus",
+            "research_inference"
+          ]
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "monthlyRevenue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "year",
+        "month",
+        "revenue",
+        "currency",
+        "scale",
+        "evidenceClass",
+        "sourceIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "year": {
+          "type": "integer"
+        },
+        "month": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "revenue": {
+          "type": "number"
+        },
+        "mom": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "yoy": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "currency": {
+          "type": "string"
+        },
+        "scale": {
+          "enum": [
+            "unit",
+            "thousand",
+            "million",
+            "billion"
+          ]
+        },
+        "evidenceClass": {
+          "enum": [
+            "official",
+            "third_party_fact",
+            "market_consensus",
+            "research_inference"
+          ]
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "segment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "period",
+        "segment",
+        "isEstimate",
+        "currency",
+        "scale",
+        "evidenceClass",
+        "sourceIds",
+        "claimIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "period": {
+          "type": "string"
+        },
+        "segment": {
+          "type": "string"
+        },
+        "revenue": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "share": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "isEstimate": {
+          "type": "boolean"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "scale": {
+          "enum": [
+            "unit",
+            "thousand",
+            "million",
+            "billion"
+          ]
+        },
+        "evidenceClass": {
+          "enum": [
+            "official",
+            "third_party_fact",
+            "market_consensus",
+            "research_inference"
+          ]
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "forecast": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "fiscalYear",
+        "scenario",
+        "currency",
+        "scale",
+        "evidenceClass",
+        "sourceIds",
+        "notes"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "fiscalYear": {
+          "type": "integer"
+        },
+        "scenario": {
+          "type": "string"
+        },
+        "revenue": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "grossMargin": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "netIncome": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "eps": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "optoShare": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "currency": {
+          "type": "string"
+        },
+        "scale": {
+          "enum": [
+            "unit",
+            "thousand",
+            "million",
+            "billion"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        },
+        "evidenceClass": {
+          "enum": [
+            "official",
+            "third_party_fact",
+            "market_consensus",
+            "research_inference"
+          ]
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "capacity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "equipment",
+        "status",
+        "evidenceClass",
+        "sourceIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "eventDate": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "equipment": {
+          "type": "string"
+        },
+        "technology": {
+          "type": "string"
+        },
+        "deltaUnits": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "baseUnits": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "expectedOnlineDate": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "evidenceClass": {
+          "enum": [
+            "official",
+            "third_party_fact",
+            "market_consensus",
+            "research_inference"
+          ]
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "catalyst": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "impact",
+        "status",
+        "evidenceClass",
+        "sourceIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "impact": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "evidenceClass": {
+          "enum": [
+            "official",
+            "third_party_fact",
+            "market_consensus",
+            "research_inference"
+          ]
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "risk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "impact",
+        "probability",
+        "status",
+        "evidenceClass",
+        "sourceIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "impact": {
+          "type": "string"
+        },
+        "probability": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "evidenceClass": {
+          "enum": [
+            "official",
+            "third_party_fact",
+            "market_consensus",
+            "research_inference"
+          ]
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "signalRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "metric",
+        "greenCondition",
+        "yellowCondition",
+        "redCondition",
+        "weight",
+        "evidenceClass",
+        "sourceIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "metric": {
+          "type": "string"
+        },
+        "greenCondition": {
+          "type": "string"
+        },
+        "yellowCondition": {
+          "type": "string"
+        },
+        "redCondition": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "number"
+        },
+        "evidenceClass": {
+          "enum": [
+            "official",
+            "third_party_fact",
+            "market_consensus",
+            "research_inference"
+          ]
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "signalSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "asOfDate",
+        "metric",
+        "status",
+        "valueText",
+        "evidenceClass",
+        "sourceIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "asOfDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "metric": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "green",
+            "yellow",
+            "red"
+          ]
+        },
+        "valueText": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "evidenceClass": {
+          "enum": [
+            "official",
+            "third_party_fact",
+            "market_consensus",
+            "research_inference"
+          ]
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "section": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "title",
+        "sortOrder",
+        "payloadRefs",
+        "showSources"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "summary",
+            "kpi-grid",
+            "financial-table",
+            "bar-chart",
+            "line-chart",
+            "bridge",
+            "scenario-table",
+            "capacity",
+            "signals",
+            "catalysts-risks",
+            "sources",
+            "conclusion"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "sortOrder": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "payloadRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "showSources": {
+          "type": "boolean"
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "evidenceClass",
+        "provider",
+        "title",
+        "accessedDate",
+        "coveredPeriods",
+        "confidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "evidenceClass": {
+          "enum": [
+            "official",
+            "third_party_fact",
+            "market_consensus",
+            "research_inference"
+          ]
+        },
+        "provider": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "attachment": {
+          "type": "string"
+        },
+        "publishedDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "accessedDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "coveredPeriods": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "confidence": {
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "text",
+        "evidenceClass",
+        "sourceIds",
+        "inputClaimIds",
+        "method",
+        "confidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "evidenceClass": {
+          "enum": [
+            "official",
+            "third_party_fact",
+            "market_consensus",
+            "research_inference"
+          ]
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "inputClaimIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "method": {
+          "type": "string"
+        },
+        "confidence": {
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

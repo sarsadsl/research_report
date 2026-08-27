@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://research-report.local/schemas/research-manifest-v1.schema.json",
+  "title": "Research Manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "ticker",
+    "market",
+    "slug",
+    "reportVersion",
+    "output",
+    "quality"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "ticker": {
+      "type": "string"
+    },
+    "market": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "reportVersion": {
+      "type": "string"
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dashboard",
+        "fullReport",
+        "standalone"
+      ],
+      "properties": {
+        "dashboard": {
+          "type": "boolean"
+        },
+        "fullReport": {
+          "type": "boolean"
+        },
+        "standalone": {
+          "type": "boolean"
+        }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "checkOverflow",
+        "checkOverlap",
+        "checkSources",
+        "desktopTest",
+        "mobileTest",
+        "offlineStandaloneTest"
+      ],
+      "properties": {
+        "checkOverflow": {
+          "type": "boolean"
+        },
+        "checkOverlap": {
+          "type": "boolean"
+        },
+        "checkSources": {
+          "type": "boolean"
+        },
+        "desktopTest": {
+          "type": "boolean"
+        },
+        "mobileTest": {
+          "type": "boolean"
+        },
+        "offlineStandaloneTest": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}
