@@ -59,6 +59,6 @@ export const vpecSeed: ResearchDetail = {
     { title: "新機與新產品 ramp 延遲", impact: "medium", probability: "medium", status: "watch", notes: "折舊可能先於營收。" },
   ],
   reports: [
-    { id: "vpec-report-v1", title: "全新光電 2455｜2025Q4-2027F 深度研究", slug: "vpec-2455", summary: "已實現財報、光電子 mix、2026F/2027F、產能與紅綠燈。", thesis: "InP 供應 → utilization → 光電子營收 → mix → GM → OP margin → EPS。", status: "published", version: "1.0", htmlPath: "/research/reports/vpec-2455.html", pdfPath: null, publishedAt: "2026-08-26" },
+    { id: "vpec-report-v1", title: "全新光電 2455｜2025Q4-2027F 深度研究", slug: "vpec-2455", summary: "完整版：已實現財報與利潤 Bridge、光電子營收占比、2026F H2 反推、2027F CAGR / 分部拆解、MOCVD 產能量化與紅綠燈結論。", thesis: "InP 供應 → utilization → 光電子營收 → mix → GM → OP margin → EPS。", status: "published", version: "1.1", htmlPath: "/research/reports/vpec-2455.html", pdfPath: null, publishedAt: "2026-08-27" },
   ],
 };
