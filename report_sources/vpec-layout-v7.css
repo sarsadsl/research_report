@@ -1,0 +1,15 @@
+/* v7 safe pagination + performance only after layout is finalized */
+.continuation-topline{margin-bottom:7px!important;padding-bottom:5px!important;border-bottom:1px dashed #cbd5e1!important}.continuation-topline .name{font-size:10px!important}
+.slide.layout-fallback .page{height:auto!important;min-height:297mm!important;overflow:visible!important;padding-bottom:8mm!important}.slide.layout-fallback .page-inner{height:auto!important;min-height:272mm!important;overflow:visible!important}.slide.layout-fallback .footer{position:static!important;margin-top:7mm!important}
+.reader-dots{overflow-x:auto;scrollbar-width:none;max-width:min(70vw,560px);overscroll-behavior-x:contain}.reader-dots::-webkit-scrollbar{display:none}@media(max-width:620px){.reader-dots{max-width:calc(100vw - 150px)}}
+.reader-topbar,.reader-controls{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.page-stage{transition:none!important}.page-stage>.page{transition:none!important;backface-visibility:hidden;-webkit-font-smoothing:antialiased}
+.reader-layout-ready .slide{contain:layout paint style;content-visibility:auto;isolation:isolate}
+.reader-layout-ready .page-stage{contain:layout paint}
+.reader-layout-ready .slide:not(.is-near) .page-stage>.page{box-shadow:none!important}
+.reader-layout-ready .slide.is-near .page-stage>.page{box-shadow:0 12px 34px rgba(0,0,0,.28)!important}
+.reader-layout-ready .slide.is-active .page-stage>.page{box-shadow:0 16px 40px rgba(0,0,0,.32)!important}
+.reader-viewport{scroll-behavior:auto!important}
+.slide.page-enter .page-stage{opacity:.78;transform:translate3d(8px,0,0)}
+.reader-layout-ready .slide .page-stage{opacity:1;transform:translate3d(0,0,0);transition:opacity .09s ease-out,transform .09s ease-out!important}
+@media(prefers-reduced-motion:reduce){.page-stage,.page-stage>.page{transition:none!important}.slide.page-enter .page-stage{opacity:1;transform:none}}

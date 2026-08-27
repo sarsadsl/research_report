@@ -23,8 +23,8 @@ const reports = [
   },
 ];
 
-const layoutCss = await readFile("report_sources/vpec-layout-v6.css", "utf8");
-const layoutJs = await readFile("report_sources/vpec-layout-v6.js", "utf8");
+const layoutCss = await readFile("report_sources/vpec-layout-v7.css", "utf8");
+const layoutJs = await readFile("report_sources/vpec-layout-v7.js", "utf8");
 const readerMarker = "\n<script>\n(() => {";
 
 for (const report of reports) {
@@ -39,12 +39,12 @@ for (const report of reports) {
   const html = canonical.toString("utf8");
   const markerAt = html.lastIndexOf(readerMarker);
   if (markerAt < 0) throw new Error(`Reader bootstrap marker not found in ${report.target}`);
-  const patch = `\n<style id="v6-auto-pagination-performance-style">\n${layoutCss}\n</style>\n<script id="v6-auto-pagination-performance-script">\n${layoutJs}\n</script>`;
+  const patch = `\n<style id="v7-safe-pagination-style">\n${layoutCss}\n</style>\n<script id="v7-safe-pagination-script">\n${layoutJs}\n</script>`;
   const deployed = html.slice(0, markerAt) + patch + html.slice(markerAt);
   const deployedBytes = Buffer.from(deployed, "utf8");
   const deployedDigest = createHash("sha256").update(deployedBytes).digest("hex");
 
   await mkdir(dirname(report.target), { recursive: true });
   await writeFile(report.target, deployedBytes);
-  console.log(`Materialized ${report.target} (canonical ${canonical.length} bytes/${canonicalDigest}; deployed ${deployedBytes.length} bytes/${deployedDigest}; reader=v6-performance)`);
+  console.log(`Materialized ${report.target} (canonical ${canonical.length} bytes/${canonicalDigest}; deployed ${deployedBytes.length} bytes/${deployedDigest}; reader=v7-safe-pagination)`);
 }
