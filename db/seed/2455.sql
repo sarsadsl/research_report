@@ -70,7 +70,7 @@ INSERT OR REPLACE INTO research_sources VALUES
 ('vpec-src-prop','vpec-2455','proprietary_research','投顧自研樂觀情境','投顧自研樂觀模型','2026-08-18',NULL,'全新.pdf','只作樂觀情境比較，不覆蓋官方已公布實績。','medium');
 
 INSERT OR REPLACE INTO research_reports VALUES
-('vpec-report-v1','vpec-2455','全新光電 2455｜2025Q4-2027F 深度研究','vpec-2455','聚焦已實現財報改善、光電子營收占比、2026F/2027F 情境、MOCVD 產能與紅綠燈結論。','核心論述是 InP 供應 → utilization → 光電子營收 → mix → GM → OP margin → EPS 的連續轉化。','published','1.0','/research/reports/vpec-2455.html',NULL,'2026-08-26','2026-08-26','2026-08-26');
+('vpec-report-v1','vpec-2455','全新光電 2455｜2025Q4-2027F 深度研究','vpec-2455','完整版：已實現財報與利潤 Bridge、光電子營收占比、2026F H2 反推、2027F CAGR / 分部拆解、MOCVD 產能量化與紅綠燈結論。','核心論述是 InP 供應 → utilization → 光電子營收 → mix → GM → OP margin → EPS 的連續轉化。','published','1.1','/research/reports/vpec-2455.html',NULL,'2026-08-26','2026-08-27','2026-08-27');
 
 INSERT OR REPLACE INTO research_report_sections VALUES
 ('vpec-sec-01','vpec-report-v1','actuals','已實現財報變化',1,NULL),
