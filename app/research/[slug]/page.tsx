@@ -20,6 +20,10 @@ export default async function ResearchDetailPage({ params }: { params: Promise<{
   const overall = overallSignal(data.signals);
   const revenueCagr = c27?.revenue ? cagr(3380, c27.revenue, 2) : null;
   const epsCagr = c27?.eps ? cagr(2.96, c27.eps, 2) : null;
+  const monthlyRevenue = [...data.monthlyRevenue].sort((a,b) => a.year - b.year || a.month - b.month);
+  const maxMonthlyRevenue = Math.max(1, ...monthlyRevenue.map((m) => m.revenue));
+  const h1Revenue = monthlyRevenue.filter((m) => m.year === 2026 && m.month <= 6).reduce((sum, m) => sum + m.revenue, 0);
+  const latestMonthlyRevenue = monthlyRevenue[monthlyRevenue.length - 1];
 
   return <main>
     <section className="shell detailHero">
@@ -71,8 +75,31 @@ export default async function ResearchDetailPage({ params }: { params: Promise<{
       <div className="grid twoCol">
         <div>
           <h2 className="sectionTitle">月營收</h2>
+          {monthlyRevenue.length > 0 && <div className="revenueChartPanel">
+            <div className="revenueChartHeader">
+              <div>
+                <div className="revenueChartEyebrow">2026 MONTHLY REVENUE</div>
+                <div className="revenueChartTitle">月營收趨勢</div>
+              </div>
+              <div className="revenueChartStats">
+                <span><b>{(h1Revenue / 100).toFixed(2)} 億</b><small>2026/01–06 累計</small></span>
+                {latestMonthlyRevenue && <span><b>{(latestMonthlyRevenue.revenue / 100).toFixed(2)} 億</b><small>{latestMonthlyRevenue.year}/{String(latestMonthlyRevenue.month).padStart(2,"0")} · YoY {latestMonthlyRevenue.yoy == null ? "—" : `${fmt(latestMonthlyRevenue.yoy,2)}%`}</small></span>}
+              </div>
+            </div>
+            <div className="revenueChartScroll">
+              <div className="revenueChart" style={{gridTemplateColumns:`repeat(${monthlyRevenue.length},minmax(54px,1fr))`}} role="img" aria-label="2026 年月營收柱狀圖">
+                {monthlyRevenue.map((m, index) => <div className="revenueBarColumn" key={`bar-${m.year}-${m.month}`}>
+                  <div className="revenueBarValue">{(m.revenue / 100).toFixed(2)}億</div>
+                  <div className="revenueBarTrack">
+                    <div className={`revenueBar${index === monthlyRevenue.length - 1 ? " latest" : ""}`} style={{height:`${Math.max(8,(m.revenue / maxMonthlyRevenue) * 100)}%`}} title={`${m.year}/${String(m.month).padStart(2,"0")}：${m.revenue.toFixed(1)} 百萬；MoM ${m.mom == null ? "—" : `${fmt(m.mom,2)}%`}；YoY ${m.yoy == null ? "—" : `${fmt(m.yoy,2)}%`}`} />
+                  </div>
+                  <div className="revenueBarMonth">{m.month}月</div>
+                </div>)}
+              </div>
+            </div>
+          </div>}
           <table><thead><tr><th>月份</th><th>Revenue (百萬)</th><th>MoM</th><th>YoY</th></tr></thead><tbody>
-            {data.monthlyRevenue.map((m) => <tr key={`${m.year}-${m.month}`}><td>{m.year}/{String(m.month).padStart(2,"0")}</td><td>{fmt(m.revenue,1)}</td><td>{m.mom == null ? "—" : `${fmt(m.mom,2)}%`}</td><td>{m.yoy == null ? "—" : `${fmt(m.yoy,2)}%`}</td></tr>)}
+            {monthlyRevenue.map((m) => <tr key={`${m.year}-${m.month}`}><td>{m.year}/{String(m.month).padStart(2,"0")}</td><td>{fmt(m.revenue,1)}</td><td>{m.mom == null ? "—" : `${fmt(m.mom,2)}%`}</td><td>{m.yoy == null ? "—" : `${fmt(m.yoy,2)}%`}</td></tr>)}
           </tbody></table>
         </div>
         <div>
@@ -114,19 +141,6 @@ export default async function ResearchDetailPage({ params }: { params: Promise<{
         <div><h2 className="sectionTitle">Risks</h2><div className="card"><ul className="list">{data.risks.map((x)=><li key={x.title}><b>{x.title}</b> — {x.notes}</li>)}</ul></div></div>
       </div>
     </section>
-
-    {report?.htmlPath && <section className="shell section">
-      <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:12,flexWrap:"wrap"}}>
-        <div>
-          <h2 className="sectionTitle" style={{marginBottom:4}}>完整 8 頁互動研究報告</h2>
-          <div className="small muted">包含財務 Bridge、GM 敏感度、光電子 mix、2026F H2 反推、2027F 分部拆解、MOCVD 量化與最終紅綠燈。</div>
-        </div>
-        <Link className="button secondary" href={report.htmlPath} target="_blank">另開完整報告</Link>
-      </div>
-      <div className="card" style={{marginTop:14,padding:0,overflow:"hidden"}}>
-        <iframe title={report.title} src={report.htmlPath} style={{width:"100%",height:"900px",border:0,display:"block"}} loading="lazy" />
-      </div>
-    </section>}
 
     <div className="footerSpace" />
   </main>;
