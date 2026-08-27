@@ -17,7 +17,15 @@ export const vpecSeed: ResearchDetail = {
     { id: "26q1", companyId: "vpec-2455", period: "2026Q1", fiscalYear: 2026, quarter: 1, revenue: 959.3, grossProfit: 365.4, grossMargin: 38.09, operatingIncome: 226.7, operatingMargin: 23.63, netIncome: 195.1, netMargin: 20.34, eps: 1.06 },
     { id: "26q2", companyId: "vpec-2455", period: "2026Q2", fiscalYear: 2026, quarter: 2, revenue: 965.4, grossProfit: 372.7, grossMargin: 38.61, operatingIncome: 223.8, operatingMargin: 23.18, netIncome: 213.6, netMargin: 22.13, eps: 1.15 },
   ],
-  monthlyRevenue: [{ year: 2026, month: 7, revenue: 422.1, mom: 29.48, yoy: 45.12 }],
+  monthlyRevenue: [
+    { year: 2026, month: 1, revenue: 340.3, mom: 6.6, yoy: 30.2 },
+    { year: 2026, month: 2, revenue: 307.7, mom: -9.57, yoy: 15.9 },
+    { year: 2026, month: 3, revenue: 311.2, mom: 1.13, yoy: 16.6 },
+    { year: 2026, month: 4, revenue: 318.6, mom: 2.36, yoy: 37.7 },
+    { year: 2026, month: 5, revenue: 320.8, mom: 0.68, yoy: 46.5 },
+    { year: 2026, month: 6, revenue: 326.0, mom: 1.62, yoy: 23.6 },
+    { year: 2026, month: 7, revenue: 422.1, mom: 29.5, yoy: 45.1 },
+  ],
   segments: [
     { period: "2025Q4", segment: "微電子", revenue: 678.4, share: 70.7, isEstimate: false },
     { period: "2025Q4", segment: "光電子", revenue: 281.2, share: 29.3, isEstimate: false },
