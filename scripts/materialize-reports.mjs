@@ -5,10 +5,18 @@ import { dirname } from "node:path";
 
 const reports = [
   {
-    sources: Array.from(
-      { length: 6 },
-      (_, i) => `report_sources/vpec-2455.v4.part${String(i + 1).padStart(2, "0")}`,
-    ),
+    sources: [
+      "report_sources/vpec-2455.v4.part01a",
+      "report_sources/vpec-2455.v4.part01b",
+      "report_sources/vpec-2455.v4.part01c",
+      "report_sources/vpec-2455.v4.part01d",
+      "report_sources/vpec-2455.v4.part01e",
+      "report_sources/vpec-2455.v4.part02",
+      "report_sources/vpec-2455.v4.part03",
+      "report_sources/vpec-2455.v4.part04",
+      "report_sources/vpec-2455.v4.part05",
+      "report_sources/vpec-2455.v4.part06",
+    ],
     target: "public/research/reports/vpec-2455.html",
     byteLength: 98309,
     sha256: "b7092685eab8bfb3479723b29771c746d1cb94e70edef41afa373493745c4ea8",
@@ -18,9 +26,6 @@ const reports = [
 for (const report of reports) {
   const parts = await Promise.all(report.sources.map((path) => readFile(path, "utf8")));
   const encoded = parts.join("").replace(/\s+/g, "");
-
-  // Base64 representation may legitimately differ in wrapping/padding. The decoded
-  // report bytes are the canonical truth, so verify those cryptographically instead.
   const html = gunzipSync(Buffer.from(encoded, "base64"));
   const digest = createHash("sha256").update(html).digest("hex");
   if (html.length !== report.byteLength || digest !== report.sha256) {
