@@ -10,8 +10,17 @@ INSERT OR REPLACE INTO research_financial_actuals VALUES
 ('vpec-26q1','vpec-2455','2026Q1',2026,1,959.3,365.4,38.09,226.7,23.63,195.1,20.34,1.06,'官方財務報告','2026-08-26'),
 ('vpec-26q2','vpec-2455','2026Q2',2026,2,965.4,372.7,38.61,223.8,23.18,213.6,22.13,1.15,'官方財務報告','2026-08-26');
 
-INSERT OR REPLACE INTO research_monthly_revenue VALUES
-('vpec-2607','vpec-2455',2026,7,422.1,29.48,45.12,'2026-08-26');
+-- Goodinfo 2455 每月營收；revenue 單位為百萬元。
+INSERT OR REPLACE INTO research_monthly_revenue
+(id,company_id,year,month,revenue,mom,yoy,created_at)
+VALUES
+('vpec-2601','vpec-2455',2026,1,340.3,6.60,30.2,'2026-08-27'),
+('vpec-2602','vpec-2455',2026,2,307.7,-9.57,15.9,'2026-08-27'),
+('vpec-2603','vpec-2455',2026,3,311.2,1.13,16.6,'2026-08-27'),
+('vpec-2604','vpec-2455',2026,4,318.6,2.36,37.7,'2026-08-27'),
+('vpec-2605','vpec-2455',2026,5,320.8,0.68,46.5,'2026-08-27'),
+('vpec-2606','vpec-2455',2026,6,326.0,1.62,23.6,'2026-08-27'),
+('vpec-2607','vpec-2455',2026,7,422.1,29.5,45.1,'2026-08-27');
 
 INSERT OR REPLACE INTO research_segments VALUES
 ('vpec-25q4-micro','vpec-2455','2025Q4','微電子',678.4,70.7,0,'2026-08-26'),
@@ -66,6 +75,7 @@ INSERT OR REPLACE INTO research_signal_snapshots VALUES
 
 INSERT OR REPLACE INTO research_sources VALUES
 ('vpec-src-official','vpec-2455','official','公司公開資訊','2026Q1/Q2 財報與公司公開資訊','2026-08-26',NULL,NULL,'已公布實績與設備資訊優先使用官方資料。','high'),
+('vpec-src-goodinfo','vpec-2455','market_data','Goodinfo','2455 全新－每月營收','2026-08-27','https://goodinfo.tw/tw/ShowSaleMonChart.asp?STOCK_ID=2455',NULL,'2026/01–07 月營收、MoM 與 YoY；網站顯示值作為月營收頁面資料來源。','high'),
 ('vpec-src-consensus','vpec-2455','market_research','市場共識','去識別化市場研究模型集合','2026-08-26',NULL,NULL,'五份最新國內機構 / 外資研究模型中位數與區間。','medium'),
 ('vpec-src-prop','vpec-2455','proprietary_research','投顧自研樂觀情境','投顧自研樂觀模型','2026-08-18',NULL,'全新.pdf','只作樂觀情境比較，不覆蓋官方已公布實績。','medium');
 
