@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ResearchEnhancements from "./research/research-enhancements";
 import "./globals.css";
+import "./research/research-enhancements.css";
 
 export const metadata: Metadata = {
   title: "個股研究資料庫",
@@ -18,6 +20,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </div>
         </header>
         {children}
+        <ResearchEnhancements />
       </body>
     </html>
   );
