@@ -5,7 +5,7 @@ import { assertQcResult, chromeCandidates, parseQcResult } from "./report-qc.mjs
 const passing={version:"p1.6-layout-qc",pages:14,dots:14,profile:"full-research",fallbacks:0,overflows:[],overlaps:[],clippings:[],horizontalOverflow:0,viewport:{width:1440,height:1000}};
 
 test("QC result parser reads the runtime payload",()=>{
-  const html=`<html><body><script id="research-qc-result" type="application/json">${JSON.stringify(passing)}</script></body></html>`;
+  const html=`<html><body><pre hidden id="research-qc-result">${JSON.stringify(passing)}</pre></body></html>`;
   assert.deepEqual(parseQcResult(html),passing);
 });
 

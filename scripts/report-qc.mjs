@@ -31,9 +31,9 @@ export function findChrome(options = {}) {
 }
 
 export function parseQcResult(html) {
-  const match = html.match(/<script\b[^>]*\bid=["']research-qc-result["'][^>]*>([\s\S]*?)<\/script>/i);
+  const match = html.match(/<([a-z0-9]+)\b[^>]*\bid=["']research-qc-result["'][^>]*>([\s\S]*?)<\/\1>/i);
   if (!match) throw new Error("research-qc-result was not produced");
-  try { return JSON.parse(match[1]); } catch { throw new Error("research-qc-result is invalid JSON"); }
+  try { return JSON.parse(match[2]); } catch { throw new Error("research-qc-result is invalid JSON"); }
 }
 
 export function assertQcResult(result, { expectedPages, profile }) {
