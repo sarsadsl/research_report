@@ -75,6 +75,15 @@ Remote 模式必須明確指定 `--remote`；未指定時 importer 預設只操�
 
 `/research` 只顯示至少存在一份 `published` report 的公司。
 
+## Report profiles（P1.4）
+
+`research/<slug>/report-profiles.json` 控制同一份 Research Package 的 rendered outputs：
+
+- `full-research`：保留 2455 現有 14 頁完整報告作為 regression baseline。
+- `experiment-summary`：由通用 Report View Model 產生 ranking + panel summary 精簡報告。
+
+兩份輸出都由 `npm run report:materialize` 建立，並內嵌 Research Package payload；不使用 runtime `fetch`，因此可直接以 `file://` 開啟。
+
 ## 下一階段 P1
 
 - `/research/admin` 私有編輯器

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "profiles": {
+    "full-research": {
+      "kind": "baseline",
+      "output": "public/research/reports/vpec-2455.html",
+      "sourcePages": 8,
+      "expectedPages": 14,
+      "sections": [
+        "summary", "actuals", "mix", "profitability", "forecast-2026",
+        "forecast-2027", "scenario", "capacity", "signals", "catalysts-risks",
+        "sources", "conclusion"
+      ]
+    },
+    "experiment-summary": {
+      "kind": "generated",
+      "output": "public/research/reports/vpec-2455-experiment.html",
+      "expectedPages": 2,
+      "sections": ["ranking", "panel-summary"]
+    }
+  }
+}
