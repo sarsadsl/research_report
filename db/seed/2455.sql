@@ -125,7 +125,8 @@ VALUES
 ('vpec-sec-signals','vpec-report-v1','vpec-sec-signals','紅綠燈結論',7,'{"type":"signals","payloadRefs":["signalRules","signalSnapshots"],"showSources":true}'),
 ('vpec-sec-risks','vpec-report-v1','vpec-sec-risks','催化劑與風險',8,'{"type":"catalysts-risks","payloadRefs":["catalysts","risks"],"showSources":true}'),
 ('vpec-sec-sources','vpec-report-v1','vpec-sec-sources','資料來源',9,'{"type":"sources","payloadRefs":["sources"],"showSources":true}'),
-('vpec-sec-conclusion','vpec-report-v1','vpec-sec-conclusion','研究結論',10,'{"type":"conclusion","payloadRefs":["thesis"],"showSources":true}')
+('vpec-sec-conclusion','vpec-report-v1','vpec-sec-conclusion','研究結論',10,'{"type":"conclusion","payloadRefs":["thesis"],"showSources":true}'),
+('vpec-report-v1-dashboard','vpec-report-v1','dashboard-config','Dashboard Config',0,'{"currentView":"目前判讀：黃綠燈之間、偏綠。完整報告內保留 2026F H2 反推、2027F CAGR / 分部拆解、MOCVD 產能量化與升降級規則。","verificationChain":["InP 供應","新機 utilization","光電子營收","光電子占比","毛利率","營益率","EPS"],"conclusion":"現階段方向偏正向，但毛利率、原料供應與新機利用率仍需要連續數季驗證。","forecastScenario":"consensus","headlineForecastYears":[2026,2027],"focusMetric":{"field":"optoShare","label":"光電子占比"},"monthlyRevenue":{"focusYear":2026,"cumulativeThroughMonth":6,"unitDivisor":100,"unitLabel":"億"},"cagrCards":[{"field":"revenue","label":"2025A → 2027F Revenue CAGR","baseYear":2025,"targetYear":2027,"baseValue":3380,"years":2},{"field":"eps","label":"2025A → 2027F EPS CAGR","baseYear":2025,"targetYear":2027,"baseValue":2.96,"years":2}],"estimateNote":"* 研究估計值，非公司正式 segment disclosure。"}')
 ON CONFLICT(id) DO UPDATE SET report_id=excluded.report_id,section_key=excluded.section_key,title=excluded.title,sort_order=excluded.sort_order,content_json=excluded.content_json;
 
 
@@ -153,4 +154,4 @@ DELETE FROM research_sources WHERE company_id='vpec-2455' AND id NOT IN ('vpec-s
 
 DELETE FROM research_reports WHERE company_id='vpec-2455' AND id NOT IN ('vpec-report-v1');
 
-DELETE FROM research_report_sections WHERE report_id='vpec-report-v1' AND id NOT IN ('vpec-sec-summary','vpec-sec-actuals','vpec-sec-revenue','vpec-sec-mix','vpec-sec-scenario','vpec-sec-capacity','vpec-sec-signals','vpec-sec-risks','vpec-sec-sources','vpec-sec-conclusion');
+DELETE FROM research_report_sections WHERE report_id='vpec-report-v1' AND id NOT IN ('vpec-sec-summary','vpec-sec-actuals','vpec-sec-revenue','vpec-sec-mix','vpec-sec-scenario','vpec-sec-capacity','vpec-sec-signals','vpec-sec-risks','vpec-sec-sources','vpec-sec-conclusion','vpec-report-v1-dashboard');

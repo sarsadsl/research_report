@@ -67,3 +67,11 @@ test("manifest and package report versions must match", async () => {
   assert.equal(result.ok, false);
   assert.ok(result.errors.some((error) => error.includes("reportVersion")));
 });
+
+test("dashboard forecast references must resolve", async () => {
+  const input = await load();
+  input.researchPackage.dashboard.headlineForecastYears.push(2030);
+  const result = validateResearch(input);
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((error) => error.includes("missing 2030 consensus forecast")));
+});

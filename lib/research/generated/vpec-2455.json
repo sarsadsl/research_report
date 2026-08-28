@@ -10,6 +10,53 @@
     "currency": "TWD",
     "description": "聚焦 III-V 化合物半導體磊晶，研究主軸為 AI 光通訊帶動光電子占比提升。"
   },
+  "dashboard": {
+    "currentView": "目前判讀：黃綠燈之間、偏綠。完整報告內保留 2026F H2 反推、2027F CAGR / 分部拆解、MOCVD 產能量化與升降級規則。",
+    "verificationChain": [
+      "InP 供應",
+      "新機 utilization",
+      "光電子營收",
+      "光電子占比",
+      "毛利率",
+      "營益率",
+      "EPS"
+    ],
+    "conclusion": "現階段方向偏正向，但毛利率、原料供應與新機利用率仍需要連續數季驗證。",
+    "forecastScenario": "consensus",
+    "headlineForecastYears": [
+      2026,
+      2027
+    ],
+    "focusMetric": {
+      "field": "optoShare",
+      "label": "光電子占比"
+    },
+    "monthlyRevenue": {
+      "focusYear": 2026,
+      "cumulativeThroughMonth": 6,
+      "unitDivisor": 100,
+      "unitLabel": "億"
+    },
+    "cagrCards": [
+      {
+        "field": "revenue",
+        "label": "2025A → 2027F Revenue CAGR",
+        "baseYear": 2025,
+        "targetYear": 2027,
+        "baseValue": 3380,
+        "years": 2
+      },
+      {
+        "field": "eps",
+        "label": "2025A → 2027F EPS CAGR",
+        "baseYear": 2025,
+        "targetYear": 2027,
+        "baseValue": 2.96,
+        "years": 2
+      }
+    ],
+    "estimateNote": "* 研究估計值，非公司正式 segment disclosure。"
+  },
   "actuals": [
     {
       "id": "vpec-25q4",

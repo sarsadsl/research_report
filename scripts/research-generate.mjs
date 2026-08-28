@@ -15,6 +15,7 @@ function fallbackDetail(pkg) {
   const strip = (row) => Object.fromEntries(Object.entries(row).filter(([key]) => !provenanceKeys.has(key)));
   return {
     company: pkg.company,
+    dashboard: pkg.dashboard,
     actuals: pkg.actuals.map((row) => ({ ...strip(row), companyId: pkg.company.id })),
     monthlyRevenue: pkg.monthlyRevenue.map((row) => {
       const { year, month, revenue, mom = null, yoy = null } = row;
@@ -126,6 +127,10 @@ function d1Seed(pkg) {
     id: row.id, report_id: pkg.report.id, section_key: row.id, title: row.title,
     sort_order: row.sortOrder, content_json: JSON.stringify({ type: row.type, payloadRefs: row.payloadRefs, showSources: row.showSources }),
   }));
+  sections.push({
+    id: `${pkg.report.id}-dashboard`, report_id: pkg.report.id, section_key: "dashboard-config",
+    title: "Dashboard Config", sort_order: 0, content_json: JSON.stringify(pkg.dashboard),
+  });
 
   const blocks = [
     "PRAGMA foreign_keys = ON;\n",

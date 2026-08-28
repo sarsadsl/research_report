@@ -176,6 +176,20 @@ function validateDomain(manifest, pkg, errors) {
   if (manifest.output.fullReport && pkg.sections.length === 0) errors.push("manifest: fullReport requires sections");
   if (manifest.output.standalone && !manifest.output.fullReport) errors.push("manifest: standalone requires fullReport");
 
+  const dashboard = pkg.dashboard;
+  for (const year of dashboard.headlineForecastYears) {
+    if (!pkg.forecasts.some((row) => row.fiscalYear === year && row.scenario === dashboard.forecastScenario)) {
+      errors.push(`dashboard: missing ${year} ${dashboard.forecastScenario} forecast`);
+    }
+  }
+  if (!pkg.monthlyRevenue.some((row) => row.year === dashboard.monthlyRevenue.focusYear)) {
+    errors.push(`dashboard: missing monthly revenue for ${dashboard.monthlyRevenue.focusYear}`);
+  }
+  for (const card of dashboard.cagrCards) {
+    const target = pkg.forecasts.find((row) => row.fiscalYear === card.targetYear && row.scenario === dashboard.forecastScenario);
+    if (typeof target?.[card.field] !== "number") errors.push(`dashboard: missing ${card.targetYear} ${dashboard.forecastScenario} ${card.field} for CAGR`);
+  }
+
   duplicateKeys(pkg.actuals, (row) => row.period, "actuals", errors);
   duplicateKeys(pkg.monthlyRevenue, (row) => `${row.year}-${row.month}`, "monthlyRevenue", errors);
   duplicateKeys(pkg.segments, (row) => `${row.period}|${row.segment}`, "segments", errors);

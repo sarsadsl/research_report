@@ -11,6 +11,7 @@
     "company",
     "report",
     "thesis",
+    "dashboard",
     "actuals",
     "monthlyRevenue",
     "segments",
@@ -44,6 +45,9 @@
     },
     "thesis": {
       "$ref": "#/$defs/thesis"
+    },
+    "dashboard": {
+      "$ref": "#/$defs/dashboard"
     },
     "actuals": {
       "type": "array",
@@ -119,6 +123,56 @@
     }
   },
   "$defs": {
+    "dashboard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["currentView", "verificationChain", "conclusion", "forecastScenario", "headlineForecastYears", "focusMetric", "monthlyRevenue", "cagrCards", "estimateNote"],
+      "properties": {
+        "currentView": { "type": "string" },
+        "verificationChain": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "conclusion": { "type": "string" },
+        "forecastScenario": { "type": "string" },
+        "headlineForecastYears": { "type": "array", "items": { "type": "integer" }, "minItems": 1, "uniqueItems": true },
+        "focusMetric": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["field", "label"],
+          "properties": {
+            "field": { "enum": ["optoShare"] },
+            "label": { "type": "string" }
+          }
+        },
+        "monthlyRevenue": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["focusYear", "cumulativeThroughMonth", "unitDivisor", "unitLabel"],
+          "properties": {
+            "focusYear": { "type": "integer" },
+            "cumulativeThroughMonth": { "type": "integer", "minimum": 1, "maximum": 12 },
+            "unitDivisor": { "type": "number", "minimum": 0.000001 },
+            "unitLabel": { "type": "string" }
+          }
+        },
+        "cagrCards": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["field", "label", "baseYear", "targetYear", "baseValue", "years"],
+            "properties": {
+              "field": { "enum": ["revenue", "eps"] },
+              "label": { "type": "string" },
+              "baseYear": { "type": "integer" },
+              "targetYear": { "type": "integer" },
+              "baseValue": { "type": "number", "minimum": 0.000001 },
+              "years": { "type": "number", "minimum": 0.000001 }
+            }
+          }
+        },
+        "estimateNote": { "type": "string" }
+      }
+    },
     "provenance": {
       "type": "object",
       "properties": {
