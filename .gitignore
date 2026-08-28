@@ -8,4 +8,5 @@ node_modules
 wrangler.jsonc
 cloudflare-env.d.ts
 *.log
+exports/
 .DS_Store

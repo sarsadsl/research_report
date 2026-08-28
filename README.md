@@ -45,6 +45,30 @@ npm run deploy
 
 程式會嘗試取得 `RESEARCH_DB` D1 binding；若不存在則自動 fallback 到 seed data。
 
+## Research Package（P1）
+
+`research/<slug>/research-package.json` 是研究資料的唯一人工維護來源。修改 package 後先執行：
+
+```bash
+npm run research:validate -- vpec-2455
+npm run research:generate -- vpec-2455
+npm run research:check
+```
+
+`research:generate` 會產生：
+
+- `lib/research/generated/vpec-2455.json`：本機 fallback 資料
+- `db/seed/2455.sql`：D1 idempotent seed
+
+請勿直接編輯這兩個 generated files。匯入 D1：
+
+```bash
+npm run research:import -- vpec-2455 --local
+npm run research:import -- vpec-2455 --remote
+```
+
+Remote 模式必須明確指定 `--remote`；未指定時 importer 預設只操作 local D1。
+
 ## 發布模型
 
 `research_reports.status` 支援：`draft` → `review` → `published` → `archived`。

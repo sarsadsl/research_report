@@ -25,3 +25,18 @@ This directory is the P1 reference package. It does not drive production routes 
 - segment-share tolerance.
 - manifest/package identity and output obligation checks.
 - generated fallback TypeScript and D1 seed equivalence.
+
+
+## P1.2 generation contract
+
+The package now generates both runtime fallback data and D1 seed SQL.
+
+```bash
+npm run research:validate -- vpec-2455
+npm run research:generate -- vpec-2455
+npm run research:check
+npm run research:import -- vpec-2455 --local
+```
+
+Generated outputs must be committed and must pass `research:generate --check` in CI. Remote import requires an explicit `--remote` flag.
+
