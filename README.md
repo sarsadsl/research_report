@@ -100,6 +100,22 @@ exports/VPEC_2455_2026-08-27_full_report.html
 
 輸出前會檢查頁數、Research Package payload、profile、runtime fetch 與外部 script / stylesheet / media 依賴。`exports/` 已加入 `.gitignore`，交付檔不會上傳 GitHub。
 
+## Rendered layout QC（P1.6）
+
+使用本機 Chrome 或 Edge 對 standalone HTML 執行 desktop 與 mobile 真實排版檢查：
+
+```bash
+npm run report:qc -- vpec-2455
+```
+
+PowerShell 若停用 `npm.ps1`，請使用：
+
+```powershell
+npm.cmd run report:qc -- vpec-2455
+```
+
+QC 會阻止以下報告進入發布流程：頁數或導航點不一致、layout fallback、overflow、top-level overlap、clipping、整頁橫向溢出，以及 standalone 與網站輸出不一致。若 Chrome／Edge 安裝在非標準位置，可設定 `RESEARCH_CHROME_PATH`。
+
 ## 下一階段 P1
 
 - `/research/admin` 私有編輯器
