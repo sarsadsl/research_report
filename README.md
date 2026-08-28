@@ -84,6 +84,22 @@ Remote 模式必須明確指定 `--remote`；未指定時 importer 預設只操�
 
 兩份輸出都由 `npm run report:materialize` 建立，並內嵌 Research Package payload；不使用 runtime `fetch`，因此可直接以 `file://` 開啟。
 
+## Standalone HTML exporter（P1.5）
+
+正式交付完整報告時執行：
+
+```bash
+npm run report:export -- vpec-2455
+```
+
+exporter 會先以同一份 Research Package 重新 materialize 網站報告，再將完整報告逐 byte 複製到：
+
+```text
+exports/VPEC_2455_2026-08-27_full_report.html
+```
+
+輸出前會檢查頁數、Research Package payload、profile、runtime fetch 與外部 script / stylesheet / media 依賴。`exports/` 已加入 `.gitignore`，交付檔不會上傳 GitHub。
+
 ## 下一階段 P1
 
 - `/research/admin` 私有編輯器
