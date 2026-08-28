@@ -7,6 +7,21 @@ const escapeHtml = (value = "") => String(value)
 const fmt = (value, digits = 2) => value == null ? "—" : Number(value).toFixed(digits);
 const safeJson = (value) => JSON.stringify(value).replaceAll("<", "\\u003c");
 
+export function validateReportProfiles(document) {
+  const errors=[];
+  if(document?.schemaVersion!=="1.0.0")errors.push("profile schemaVersion must be 1.0.0");
+  if(!document?.profiles||typeof document.profiles!=="object")errors.push("profiles object is required");
+  for(const [name,profile] of Object.entries(document?.profiles??{})){
+    if(!["baseline","generated"].includes(profile.kind))errors.push(`${name}: invalid kind`);
+    if(!/^public\/research\/reports\/[a-z0-9-]+\.html$/.test(profile.output??""))errors.push(`${name}: invalid output path`);
+    if(!Number.isInteger(profile.expectedPages)||profile.expectedPages<1)errors.push(`${name}: expectedPages must be a positive integer`);
+    if(!Array.isArray(profile.sections)||profile.sections.length===0)errors.push(`${name}: sections are required`);
+    if(profile.kind==="baseline"&&(!Number.isInteger(profile.sourcePages)||profile.sourcePages<1))errors.push(`${name}: baseline sourcePages must be a positive integer`);
+  }
+  if(errors.length)throw new Error(["Report profile validation failed:",...errors.map(error=>`- ${error}`)].join("\n"));
+  return true;
+}
+
 export function buildReportViewModel(pkg, profileName, profile) {
   const latestActual = [...pkg.actuals].sort((a,b) => b.period.localeCompare(a.period))[0];
   const scenario = pkg.dashboard.forecastScenario;

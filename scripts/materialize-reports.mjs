@@ -2,7 +2,7 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { gunzipSync } from "node:zlib";
 import { createHash } from "node:crypto";
 import { dirname } from "node:path";
-import { buildReportViewModel, injectFullReportMetadata, renderGeneratedReport } from "./report-renderer.mjs";
+import { buildReportViewModel, injectFullReportMetadata, renderGeneratedReport, validateReportProfiles } from "./report-renderer.mjs";
 
 const report = {
   sources: [
@@ -22,7 +22,7 @@ const [pkg, profileDocument, layoutCss, layoutJs] = await Promise.all([
   readFile("report_sources/vpec-layout-v7.css", "utf8"),
   readFile("report_sources/vpec-layout-v7.js", "utf8"),
 ]);
-if (profileDocument.schemaVersion !== "1.0.0") throw new Error("Unsupported report profile schema");
+validateReportProfiles(profileDocument);
 
 const parts = await Promise.all(report.sources.map((file) => readFile(file, "utf8")));
 const canonical = gunzipSync(Buffer.from(parts.join("").replace(/\s+/g, ""), "base64"));

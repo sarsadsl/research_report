@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
-import { buildReportViewModel, injectFullReportMetadata, renderGeneratedReport } from "./report-renderer.mjs";
+import { buildReportViewModel, injectFullReportMetadata, renderGeneratedReport, validateReportProfiles } from "./report-renderer.mjs";
 
 const load = async () => {
   const [pkg, profiles] = await Promise.all([
@@ -21,6 +21,13 @@ test("experiment profile builds ranking and two standalone pages", async () => {
   assert.match(html,/id="research-report-payload"/);
   assert.match(html,/window\.__researchLayout/);
   assert.doesNotMatch(html,/\bfetch\s*\(/);
+});
+
+test("report profiles reject unsafe output paths", async()=>{
+  const {profiles}=await load();
+  const invalid=structuredClone(profiles);
+  invalid.profiles["experiment-summary"].output="../outside.html";
+  assert.throws(()=>validateReportProfiles(invalid),/invalid output path/);
 });
 
 test("full report metadata injection preserves baseline pages", async () => {
