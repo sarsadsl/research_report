@@ -69,6 +69,30 @@ npm run research:import -- vpec-2455 --remote
 
 Remote 模式必須明確指定 `--remote`；未指定時 importer 預設只操作 local D1。
 
+### D1 importer 與 Research Run（P1.7）
+
+Importer 會先驗證 Research Package 與 generated SQL、套用尚未執行的 migration，再以 idempotent SQL 匯入 D1。完成後會逐表核對筆數，並在 `research_runs` 保存：研究版本、package/source/seed/report SHA-256、匯入時間與各資料表筆數。
+
+先只檢查、不寫入資料庫：
+
+```bash
+npm run research:import -- vpec-2455 --dry-run
+```
+
+本機完整匯入與驗證：
+
+```bash
+npm run research:import -- vpec-2455 --local
+```
+
+正式 D1 必須明確使用 `--remote`：
+
+```bash
+npm run research:import -- vpec-2455 --remote
+```
+
+只有在 migration 已由外部流程套用時才使用 `--skip-migrations`。D1 的 SQL 檔執行採 auto-commit；若中途失敗，不會建立成功的 `research_runs` 紀錄，重新執行同一個 idempotent importer 即可修復並完成驗證。
+
 ## 發布模型
 
 `research_reports.status` 支援：`draft` → `review` → `published` → `archived`。

@@ -167,3 +167,20 @@ export const researchReportSections = sqliteTable("research_report_sections", {
   sortOrder: integer("sort_order").notNull(),
   contentJson: text("content_json"),
 }, (t) => [uniqueIndex("research_report_sections_report_key_uq").on(t.reportId, t.sectionKey)]);
+
+export const researchRuns = sqliteTable("research_runs", {
+  id: text("id").primaryKey(),
+  companyId: text("company_id").notNull().references(() => researchCompanies.id, { onDelete: "cascade" }),
+  asOfDate: text("as_of_date").notNull(),
+  researchVersion: text("research_version").notNull(),
+  status: text("status").notNull(),
+  packageHash: text("package_hash").notNull(),
+  sourceHash: text("source_hash").notNull(),
+  seedHash: text("seed_hash").notNull(),
+  reportHash: text("report_hash"),
+  rowCountsJson: text("row_counts_json").notNull(),
+  importedAt: text("imported_at").notNull(),
+}, (t) => [
+  uniqueIndex("research_runs_company_package_uq").on(t.companyId, t.packageHash),
+  index("research_runs_company_version_idx").on(t.companyId, t.researchVersion, t.importedAt),
+]);
