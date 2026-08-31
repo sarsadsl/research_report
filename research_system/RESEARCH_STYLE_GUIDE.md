@@ -1,78 +1,67 @@
 # Research Style Guide
 
-## Visual direction
+P1.8 編輯與視覺驗收規範，用於 Dashboard、Full Report 與 standalone；本階段不改 UI。自動／人工檢查界線見 [QC Specification](RESEARCH_QC.md)。
 
-Use a professional institutional/sell-side research style:
-- clear information hierarchy;
-- restrained palette;
-- high-density tables only where comparison requires them;
-- KPI cards, charts, bridges, scenario tables, and traffic-light signals where they improve comprehension;
-- generous page safety margins.
+## 優先順序
 
-## Content priority
+資料正確 → 無重疊、溢出、裁切 → 可讀 → 視覺品質 → 較少頁數。不得以縮字、隱藏來源或刪除必要內容滿足頁數。
 
-1. data correctness;
-2. no overlap, overflow, or clipping;
-3. readability;
-4. visual quality;
-5. fewer pages.
+採專業研究報告的清楚層級、節制色彩與穩定對齊。比較數值時使用表格、圖表與情境比較，不為填版面增加卡片。相同 metric 在所有輸出須同值、同期間、同證據分類；顯示精度可不同，不得導致相反結論。
 
-Page count is content-driven and is never a fixed target.
+## 編輯與數值標示
 
-## Required chart/table metadata
+- 明列公司、ticker、market、資料截止日、report 版本；結論包含成立條件、主要假設、反證與風險，不將不確定性寫成保證。
+- 章節依 profile／package 排序，先結論再數據、方法及來源；不另建獨立正文數值來源。
+- 用文字分別標示官方揭露、第三方事實、市場共識、研究推估，不只用顏色。即使輸入皆為官方資料，衍生推論仍不是官方揭露。
+- 缺值以 `—` 或「未提供」呈現，不填 0；區別未披露、未發生與不適用。
+- 財年、季度、月份、actual／forecast、scenario 明確；比率差用百分點（pp），成長率用 %，比較期間一致。
+- 依 package 幣別與 scale 轉換，表頭標明如「營收，TWD 百萬元」。百分比不可誤乘 100；四捨五入只用於顯示，推導使用原值。
+- 同欄同精度、數字右對齊；四捨五入造成合計差異時註記，不更改 canonical 值湊合計。
 
-Every chart and table must provide:
-- title;
-- unit and currency/scale where relevant;
-- covered period;
-- source or source group;
-- estimate label when applicable.
+### 每個圖表／表格的必備資訊
 
-Official, third-party factual, market consensus, and research inference content must be visually distinguishable without relying only on color.
+| 欄位 | 驗收要求 |
+| --- | --- |
+| 標題 | 指明指標與對象，不只寫「趨勢」 |
+| 期間 | 明列年度／季度／月份，分開實績與預估 |
+| 單位 | 幣別、scale、% 或 pp；雙軸分別標示 |
+| 證據分類 | 預估有文字標籤，scenario 有定義 |
+| 來源 | 具名來源／source group，可由 claim 追溯，不只放一般首頁連結 |
+| 方法 | 計算、假設、缺值、非標準口徑有註記 |
+
+來源與結論要跟對應圖表同頁或緊接處；圖例、線型、標籤不只靠顏色辨識。拆表重複表頭與必要單位，避免標題與內容分頁。
 
 ## Dashboard
 
-The Dashboard is a 30-second view and should normally contain:
-- company/ticker/as-of date;
-- thesis summary;
-- overall signal;
-- manifest-selected KPIs;
-- recent operating trend;
-- key scenarios;
-- catalysts and risks;
-- clear link to the Full Report.
+提供約 30 秒摘要：公司與日期、thesis、signal、package 選定 KPI、近期營運、情境、catalysts／risks 及 Full Report 入口。不嵌入整份報告。
 
-It does not embed the Full Report.
+- KPI 年分、情境及基準來自 package，不在畫面另寫假設。
+- 紅／黃／綠有文字或符號，規則與追蹤日期可查；研究信號不等於投資評等。
+- 能從摘要找到支撐結論的數據、來源與完整版。
+- Mobile 卡片／一般內容可重排，必要寬表可局部橫捲，整頁不應橫向溢出。
 
-## Full Report
+## Full Report 與回歸基準
 
-The Full Report:
-- uses ordered, manifest-driven sections;
-- supports previous/next navigation and page navigation;
-- supports Fit, 50%, 75%, 100%, and 125% zoom;
-- may add pages rather than compress unreadable content;
-- keeps conclusions and source labels with the material they qualify.
+正式閱讀器要求上／下一頁、頁碼導覽、Fit、50%、75%、100%、125% 縮放及可見鍵盤焦點。正文、來源、頁尾不得互遮。
 
-## Responsive behavior
+目前 `full-research` 為 2455 legacy baseline：8 個 source pages 經 v7 runtime pagination 形成 14 頁；`experiment-summary` 為 2 頁通用輸出。頁數是目前 profile 回歸條件，不是所有公司的固定目標。完整正文仍需人工對照 package；新 payload 不代表舊文字已更新。
 
-- Desktop preserves the intended research-page composition.
-- Mobile prioritizes readable reflow and touch targets over imitation of desktop paper dimensions.
-- Horizontal scrolling is allowed only for tables/charts that cannot be meaningfully reflowed.
-- No essential information may depend on hover.
+增頁須一起審查 profile、pagination 與回歸證據，不能只改 expectedPages 讓 QC 通過。拆分不得依公司名／固定章節名稱擴充硬編碼；通用 renderer 改造見 roadmap。
 
-## Accessibility
+## 跨裝置與無障礙
 
-- Text and status indicators meet usable contrast.
-- Red/yellow/green states also include text labels or symbols.
-- Navigation is keyboard operable.
-- Charts include an accessible label and a tabular or textual equivalent for material data.
-- Focus states remain visible.
+- Desktop 保留層級與安全邊界，Laptop 工具列不遮正文，Mobile 以可讀文字與可操作導覽驗收。
+- 固定紙張縮放是目前 legacy 行為；mobile 幾何 QC 通過不代表文字可讀。逐頁查看，過小就不通過可讀性驗收。
+- 切頁、縮放、resize 後不出現裁切；重要資訊不得只靠 hover。
+- 文字與背景清楚對比，狀態不僅靠顏色，重要圖表資料有文字或表格等價內容。
+- Tab 可達控制項、焦點可見、鍵盤可切頁、觸控按鈕不重疊；降低動態效果設定不得讓內容消失。
 
-## Standalone output
+新設計優先可重排內容。保留 legacy 外觀不免除閱讀驗收；對比、可讀性與鍵盤操作目前仍須人工檢查。
 
-Standalone HTML must:
-- retain the same content and design tokens as the website Full Report;
-- contain or inline every required local asset;
-- make no required network request;
-- open from a local file;
-- exclude development/debug controls and obsolete pagination scripts.
+## Standalone
+
+- 與同次 materialize 的網站 Full Report 同內容及樣式，必要 assets 內嵌，正文、圖表與控制項不依賴網路。
+- 可保留選擇性的來源外連，但斷網仍可完整閱讀。
+- 目前 export 是網站 HTML 逐 byte 複製，仍執行 v7 pagination，不是凍結的 DOM。保留必要 runtime 與隱藏 diagnostics，不能當作 obsolete 任意刪除。
+- 不露出 debug 控制、敏感資料或測試註記；更動腳本後重新 export、核對 hash 及跑 QC。
+- 正常流程改來源再生成；手改交付 HTML 必須重驗與更新 hash，不能把 export 當另一份原稿。

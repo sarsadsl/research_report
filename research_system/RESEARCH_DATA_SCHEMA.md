@@ -1,5 +1,7 @@
 # Research Data Contract
 
+P1.8 clarification: this file defines the data contract and target architecture. The current full-report legacy boundary, hash conventions, and operational limitations are documented in [Workflow](RESEARCH_WORKFLOW.md) and [QC](RESEARCH_QC.md). Embedding a package view model in legacy HTML does not synchronize all report prose with the package.
+
 ## Canonical package
 
 The canonical authored record is:
@@ -7,6 +9,7 @@ The canonical authored record is:
 ```text
 research/<slug>/manifest.json
 research/<slug>/research-package.json
+research/<slug>/report-profiles.json
 research/<slug>/notes.md
 ```
 
@@ -20,7 +23,9 @@ A package must contain:
 - `packageVersion`
 - `asOfDate`
 - `company`
+- `report`
 - `thesis`
+- `dashboard`
 - `actuals`
 - `monthlyRevenue`
 - `segments`
@@ -44,6 +49,7 @@ Minimum fields:
 
 ```json
 {
+  "schemaVersion": "1.0.0",
   "ticker": "2455",
   "market": "TW",
   "slug": "vpec-2455",
@@ -129,6 +135,6 @@ Unknown section types fail validation until supported explicitly.
 
 - IDs are stable across non-semantic formatting changes.
 - Package hashes use canonical JSON serialization.
-- Derived artifacts record the package hash used to create them.
+- Target: derived artifacts record the canonical package hash used to create them. Currently the importer stores a canonical package hash, while the exporter prints a hash of raw package file text; these are not interchangeable (see Workflow).
 - Duplicate company/period/metric/scenario keys fail validation.
 - A package cannot publish with dangling source, claim, or section references.
