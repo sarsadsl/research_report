@@ -18,7 +18,8 @@ test("QC result assertion rejects layout failures",()=>{
 });
 
 test("Windows browser discovery includes Chrome and Edge",()=>{
-  const candidates=chromeCandidates({PROGRAMFILES:"C:\\Program Files",LOCALAPPDATA:"C:\\Users\\tester\\AppData\\Local"},"win32");
+  const candidates=chromeCandidates({PROGRAMFILES:"C:\\Program Files",LOCALAPPDATA:"C:\\Users\\tester\\AppData\\Local"},"win32")
+    .map(candidate=>candidate.replaceAll("\\","/"));
   assert.ok(candidates.some(path=>path.endsWith("Google/Chrome/Application/chrome.exe")));
   assert.ok(candidates.some(path=>path.endsWith("Microsoft/Edge/Application/msedge.exe")));
 });
