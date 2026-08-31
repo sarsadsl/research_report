@@ -36,6 +36,8 @@ npm.cmd run research:publish -- vpec-2455 --remote
 
 QC 必須同時包含 desktop、mobile、正確 report hash、website parity、頁數、導覽點及完整幾何結果；缺少陣列或 horizontalOverflow 不再視為通過。Failed QC 的已取得 diagnostics 也會保存。
 
+P1.9 使用 puppeteer-core 控制已安裝的 Chrome／Edge，明確設定並回讀 CSS viewport 1440×1000、390×844，避免舊 window-size 參數受瀏覽器最小視窗限制。載入期間的 pageerror 也會阻擋。CI 安裝 Noto CJK 字體，避免缺少中文 fallback 字體使排版結果失真；不放寬既定 14 頁與幾何門檻。
+
 ## 版本與紀錄
 
 每次執行建立獨立 `.research-publish/<timestamp-uuid>/`，不覆寫另一輪的證據，且整個目錄被 Git 忽略：

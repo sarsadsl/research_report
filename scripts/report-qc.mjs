@@ -1,6 +1,6 @@
 import { existsSync } from "node:fs";
 import { mkdtemp, readFile, rm } from "node:fs/promises";
-import { spawnSync } from "node:child_process";
+import { launch } from "puppeteer-core";
 import { tmpdir } from "node:os";
 import { basename, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
@@ -57,21 +57,32 @@ export function assertQcResult(result, { expectedPages, profile }) {
   return true;
 }
 
-async function runHeadlessQc({ chromePath, htmlPath, viewport, expectedPages, profile }) {
+export async function runHeadlessQc({ chromePath, htmlPath, viewport, expectedPages, profile }) {
   const userDataDir=await mkdtemp(join(tmpdir(),"research-qc-"));
+  let browser;
   try{
-    const result=spawnSync(chromePath,[
-      "--headless=new","--disable-gpu","--disable-extensions","--no-first-run","--no-default-browser-check",
-      `--user-data-dir=${userDataDir}`,`--window-size=${viewport.width},${viewport.height}`,"--virtual-time-budget=3000",
-      "--dump-dom",pathToFileURL(htmlPath).href,
-    ],{encoding:"utf8",timeout:30000,maxBuffer:10*1024*1024,windowsHide:true});
-    if(result.error)throw result.error;
-    if(result.status!==0)throw new Error(`Headless browser exited ${result.status}: ${(result.stderr||"").trim()}`);
-    const qc=parseQcResult(result.stdout);
-    try { assertQcResult(qc,{expectedPages,profile}); }
+    browser=await launch({executablePath:chromePath,headless:true,userDataDir,timeout:30000,
+      defaultViewport:{width:viewport.width,height:viewport.height,deviceScaleFactor:1},
+      args:["--disable-gpu","--disable-extensions","--no-first-run","--no-default-browser-check"]});
+    const page=await browser.newPage();
+    const runtimeErrors=[];
+    page.on("pageerror",error=>runtimeErrors.push(String(error)));
+    await page.goto(pathToFileURL(htmlPath).href,{waitUntil:"load",timeout:30000});
+    await page.waitForFunction(()=>Boolean(window.__researchLayout?.collectQc),{timeout:10000});
+    await page.evaluate(async()=>{await document.fonts.ready;await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));});
+    const qc=await page.evaluate(()=>window.__researchLayout.collectQc());
+    qc.runtimeErrors=runtimeErrors;
+    try {
+      assertQcResult(qc,{expectedPages,profile});
+      if(qc.viewport?.width!==viewport.width||qc.viewport?.height!==viewport.height)throw new Error("QC viewport does not match requested device metrics");
+      if(runtimeErrors.length)throw new Error(`Report runtime errors: ${runtimeErrors.length}`);
+    }
     catch (error) { error.qc = {name:viewport.name,...qc}; throw error; }
     return{name:viewport.name,...qc};
-  }finally{await rm(userDataDir,{recursive:true,force:true});}
+  }finally{
+    if(browser)await browser.close();
+    await rm(userDataDir,{recursive:true,force:true});
+  }
 }
 
 export async function runReportQc({ slug, rootDir=process.cwd(), chromePath, materialize=true }={}) {
@@ -93,7 +104,7 @@ export async function runReportQc({ slug, rootDir=process.cwd(), chromePath, mat
 
 async function main(){
   const result=await runReportQc({slug:process.argv[2]});
-  for(const item of result.results)console.log(`${item.name}: pages=${item.pages}, overflow=${item.overflows.length}, overlap=${item.overlaps.length}, clipping=${item.clippings.length}, fallback=${item.fallbacks}, horizontal=${item.horizontalOverflow}px — PASS`);
+  for(const item of result.results)console.log(`${item.name}: viewport=${item.viewport.width}x${item.viewport.height}, pages=${item.pages}, overflow=${item.overflows.length}, overlap=${item.overlaps.length}, clipping=${item.clippings.length}, fallback=${item.fallbacks}, horizontal=${item.horizontalOverflow}px — PASS`);
   console.log(`Standalone: ${result.file} — PASS\nWebsite parity: ${result.websiteParity?"PASS":"FAIL"}\nRESULT: READY TO PUBLISH`);
 }
 

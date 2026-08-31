@@ -17,6 +17,9 @@ export function assertReleaseQc(qc, candidate) {
     const matches = qc.results.filter(result => result.name === name);
     if (matches.length !== 1) throw new Error(`Missing or duplicate ${name} QC`);
     assertQcResult(matches[0], { expectedPages: candidate.expectedPages, profile: "full-research" });
+    const expected = name === "desktop" ? {width:1440,height:1000} : {width:390,height:844};
+    if (matches[0].viewport?.width !== expected.width || matches[0].viewport?.height !== expected.height) throw new Error(`Wrong ${name} viewport`);
+    if (!Array.isArray(matches[0].runtimeErrors) || matches[0].runtimeErrors.length) throw new Error(`Missing or failed ${name} runtime diagnostics`);
   }
 }
 

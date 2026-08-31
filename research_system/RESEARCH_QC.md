@@ -54,6 +54,8 @@ Manifest quality booleans 是需求宣告；目前 CLI viewport／profile 固定
 
 自動 blocking 條件：diagnostics 缺失或 JSON 無法解析、browser timeout／非零退出、QC version 不是 `p1.6-layout-qc`、profile 不符、頁數／導覽點不等於 full-research expectedPages（目前 14）、任何 layout fallback、超過 1 CSS px 的 overflow／clipping、兩方向皆超過 1 px 的 top-level overlap，或 document 水平溢出超過 1 px。
 
+P1.9 另要求回讀的 CSS viewport 與上述尺寸完全一致，並檢查載入期間的 pageerror。透過 puppeteer-core 設定 viewport，不再依賴可能被瀏覽器限制的 window-size。CI 安裝 Noto CJK 作中文字體 fallback。
+
 Overlap／clipping 只量測 `.page-inner` 的可見直接子元素，排除 absolute／fixed 元素，不涵蓋所有巢狀元素或遮擋。自動通過後仍須人工確認正文、表格、圖表、來源、頁尾，不能因幾何陣列為空就認定可讀。
 
 人工 blocking 檢查：

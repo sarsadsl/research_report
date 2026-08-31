@@ -15,6 +15,7 @@ const qcResult = () => ({
   results: ["desktop", "mobile"].map(name => ({
     name, version: "p1.6-layout-qc", pages: 14, dots: 14, profile: "full-research",
     fallbacks: 0, overflows: [], overlaps: [], clippings: [], horizontalOverflow: 0,
+    viewport: name === "desktop" ? {width:1440,height:1000} : {width:390,height:844}, runtimeErrors: [],
   })),
 });
 
@@ -87,6 +88,8 @@ test("missing/failed/mismatched QC never becomes a passing release", async t => 
     duplicateViewport: qc => qc.results[1].name = "desktop",
     staleReport: qc => qc.reportHash = "old-report",
     parityFailure: qc => qc.websiteParity = false,
+    wrongViewport: qc => qc.results[1].viewport.width = 500,
+    runtimeError: qc => qc.results[1].runtimeErrors.push("uncaught error"),
   };
   for (const [name, corrupt] of Object.entries(corruptions)) {
     await t.test(name, async () => {
