@@ -50,7 +50,7 @@ if (options.dryRun) {
 }
 
 function runWrangler(args, spawnOptions = {}) {
-  const execution = spawnSync(process.execPath, [wrangler, ...args], { encoding: "utf8", ...spawnOptions });
+  const execution = spawnSync(process.execPath, [wrangler, ...args, "--config", "wrangler.jsonc"], { encoding: "utf8", ...spawnOptions });
   if (execution.status !== 0) {
     if (execution.stdout) process.stdout.write(execution.stdout);
     if (execution.stderr) process.stderr.write(execution.stderr);

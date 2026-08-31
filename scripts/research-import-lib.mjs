@@ -75,6 +75,10 @@ export function verificationSql(run) {
   const reportId = `(SELECT id FROM research_reports WHERE company_id=${company} AND version=${sqlValue(run.researchVersion)} LIMIT 1)`;
   const columns = [
     `(SELECT COUNT(*) FROM research_runs WHERE id=${sqlValue(run.id)} AND package_hash=${sqlValue(run.packageHash)} AND status='imported') AS run_count`,
+    ...["sourceHash", "seedHash", "reportHash"].map((key) => {
+      const column = key.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
+      return `(SELECT ${column} FROM research_runs WHERE id=${sqlValue(run.id)}) AS ${column}`;
+    }),
     ...Object.keys(run.rowCounts).map((table) => {
       const where = table === "research_report_sections" ? `report_id=${reportId}` : `company_id=${company}`;
       return `(SELECT COUNT(*) FROM ${table} WHERE ${where}) AS ${table}`;
@@ -96,6 +100,9 @@ export function extractWranglerRows(jsonText) {
 export function verifyImportRow(row, run) {
   const errors = [];
   if (Number(row?.run_count) !== 1) errors.push(`research_runs: expected 1, got ${row?.run_count ?? "missing"}`);
+  for (const [key, column] of [["sourceHash", "source_hash"], ["seedHash", "seed_hash"], ["reportHash", "report_hash"]]) {
+    if (row?.[column] !== run[key]) errors.push(`research_runs.${column}: hash mismatch`);
+  }
   for (const [table, expected] of Object.entries(run.rowCounts)) {
     if (Number(row?.[table]) !== expected) errors.push(`${table}: expected ${expected}, got ${row?.[table] ?? "missing"}`);
   }

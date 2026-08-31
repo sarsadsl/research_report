@@ -9,4 +9,5 @@ wrangler.jsonc
 cloudflare-env.d.ts
 *.log
 exports/
+.research-publish/
 .DS_Store

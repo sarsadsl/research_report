@@ -21,6 +21,7 @@ P1.8 依實際提交與 CLI 校正本表。舊 roadmap 將 P1.6 命名為 one-co
 | P1.6 | Rendered layout QC（b05c8a1、54930be） | Desktop／mobile 瀏覽器檢查，未接入 deploy CI |
 | P1.7 | Verified D1 importer（35f57a5） | Dry-run、migrations、hash／run metadata、12 表筆數、idempotent 重跑，非發布 gate |
 | P1.8 | 操作規範及驗收文件整理 | 按下列 DoD 驗收，不改 runtime、CI 或正式資料 |
+| P1.9 | 自動發布 gate、hash 一致性與 release artifacts | 先建置／QC 再遠端匯入／部署；純文件分流；人工 gate 與 lifecycle 仍待實作 |
 
 ## P1.8 — Workflow、Style Guide、QC specification
 
@@ -41,11 +42,19 @@ Definition of Done：
 - Remote import、deploy、push main 的外部副作用明確標示，文件修改不自行發布。
 - 文件連結／命令、diff 及現有 regression tests 檢查通過，沒有不相關修改。
 
+## P1.9 — 自動發布 gate 與稽核串接
+
+交付 [Publishing 操作規範](RESEARCH_PUBLISHING.md)、research:publish 命令、共用 CI／deploy gate、docs-only 檢查、每輪獨立 release 證據、D1 source／seed／report hash 回讀與故意失敗測試。
+
+Definition of Done：前置資料／build／QC／hash 失敗不執行遠端 D1 或 deploy；通過後使用同份已建置報告；來源／build／artifact 漂移有檢查；匯入失敗阻擋部署；保存 commit、QC、hash、run ID、部署結果；docs-only 不觸發 remote；測試與完整 dry-run 通過。
+
+此階段不實作人工內容 gate、lifecycle 轉移或永久歷史儲存。CI artifact 保留 30 天，D1／Worker 並非跨服務交易。
+
 ## 後續工作（未完成）
 
 ### 發布 gate 與稽核串接
 
-優先接上生成 → export／QC → D1 → deploy，改善 CI 在報告生成前匯入、未執行 layout QC 的缺口。提出單一 publish 命令、失敗恢復、artifact／QC 紀錄及 docs-only push 政策。
+P1.9 已接上自動 build／QC → D1 → deploy 及 artifact 紀錄。接著補人工內容 gate、部署後完整驗收與長期稽核保存。
 
 完成條件：FAIL／NOT_RUN 能阻擋發布，匯入／部署對應同份驗收內容，回報版本、hash、QC、run ID、URL 與部署結果，失敗案例測試證明 gate 有效。
 
@@ -63,7 +72,7 @@ Definition of Done：
 
 ## 交付與 legacy 邊界
 
-- 在 main 使用小型可恢復 commit，保留無關使用者變更；push 會觸發部署，須依發布範圍處理。
+- 在 main 使用小型可恢復 commit，保留無關使用者變更；非 docs-only push 會觸發發布 gate，須依發布範圍處理。
 - 阻擋檢查未過不得宣告該階段完成；資料正確優先於閱讀性、視覺及少頁數。
 - 不提交 exports 或新生成 HTML；既有 `public/research/reports/vpec-2455.html` 仍是 tracked legacy，後續另訂移除計畫。
 - `report_sources/vpec-2455.v4.*`、`report_sources/vpec-layout-v*.css/js`、`scripts/materialize-reports.mjs` 仍參與正式報告生成，替代 pipeline 通過前不移除，不沿此路徑新增公司。

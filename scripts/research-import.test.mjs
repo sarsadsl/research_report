@@ -46,10 +46,13 @@ test("run SQL escapes values and verification checks every imported collection",
   });
   assert.match(runRecordSql(run), /company''oops/);
   assert.match(verificationSql(run), /research_financial_actuals/);
-  const row = { run_count: 1, ...run.rowCounts };
+  const row = { run_count: 1, source_hash: run.sourceHash, seed_hash: run.seedHash, report_hash: run.reportHash, ...run.rowCounts };
   assert.deepEqual(verifyImportRow(row, run), { ok: true, errors: [] });
   row.research_forecasts = 99;
   assert.equal(verifyImportRow(row, run).ok, false);
+  row.research_forecasts = run.rowCounts.research_forecasts;
+  row.report_hash = "wrong-artifact";
+  assert.match(verifyImportRow(row, run).errors.join("\n"), /report_hash: hash mismatch/);
 });
 
 test("Wrangler JSON extraction supports direct execute output", () => {

@@ -9,6 +9,13 @@ if (mode !== "preview" && mode !== "deploy") {
 }
 
 const projectRoot = fileURLToPath(new URL("..", import.meta.url));
+if (mode === "deploy") {
+  // Preserve the old entrypoint, but do not allow it to bypass release QC.
+  const { parsePublishArgs } = await import("./research-publish-lib.mjs");
+  const { publishResearch } = await import("./research-publish.mjs");
+  await publishResearch(parsePublishArgs(["vpec-2455", "--remote", ...process.argv.slice(3)]), projectRoot);
+  process.exit(0);
+}
 const openNextCli = path.join(
   projectRoot,
   "node_modules",

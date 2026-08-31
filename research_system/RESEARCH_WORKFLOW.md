@@ -1,6 +1,6 @@
 # Research Workflow
 
-P1.8 操作規範。適用於研究建立、更新、驗收與交付；目前可完整操作的參考個股為 `vpec-2455`。欄位見 [Data Contract](RESEARCH_DATA_SCHEMA.md)，呈現見 [Style Guide](RESEARCH_STYLE_GUIDE.md)，驗收見 [QC Specification](RESEARCH_QC.md)。
+P1.8 操作規範，於 P1.9 更新發布入口。適用於研究建立、更新、驗收與交付；目前可完整操作的參考個股為 `vpec-2455`。欄位見 [Data Contract](RESEARCH_DATA_SCHEMA.md)，呈現見 [Style Guide](RESEARCH_STYLE_GUIDE.md)，驗收見 [QC Specification](RESEARCH_QC.md)，自動發布細節見 [Publishing](RESEARCH_PUBLISHING.md)。
 
 ## 維護來源與產物
 
@@ -69,15 +69,16 @@ Dry-run 不連接或修改 D1，也不驗證 Cloudflare 登入／權限。Local 
 
 ### 4. 正式匯入與部署（會修改外部狀態）
 
-內容、排版、本機匯入驗收完成，並確認發布範圍及目標帳號／database ID 後，才能執行：
+內容、排版、本機匯入驗收完成，確認發布範圍及帳號／database ID，並提交來源變更後，使用 P1.9 gate：
 
 ```powershell
-npm.cmd run research:import -- vpec-2455 --remote
+npm.cmd run research:publish -- vpec-2455 --dry-run
+npm.cmd run research:publish -- vpec-2455 --remote
 ```
 
-確認 remote 匯入與逐表驗證成功後，採一種既定部署方式：GitHub Actions 或手動 `npm.cmd run deploy`。**Push 到 main 會啟動現有 CI，執行 remote migrations、remote import 及網站部署**，並非僅備份文件。
+正式命令或其別名 `npm.cmd run deploy` 會先完成建置、QC、artifact 核對，再匯入與部署，不需先另跑 remote migrations／import。低階 importer 保留作維護，不是完整發布 gate。
 
-目前 CI 與手動 deploy 尚未自動執行 `report:qc`，也沒有 `research:publish`。發布者須保存前述 QC 與人工驗收證據。驗收後輸入或 HTML 有變動就重跑受影響的檢查；部署會重建報告，須核對部署版本與交付 artifact。
+Push main 的 CI 對程式、研究資料或混合變更執行同一 gate；純 README、research_system 直屬 Markdown、docs Markdown 僅做文件檢查。手動 workflow_dispatch 仍跑完整發布。QC 後不重建報告，來源／build／report hash 漂移會阻擋；各階段證據保存於 .research-publish 及 CI artifact。人工內容、來源與離線驗收尚未自動強制，發布者仍須保存。
 
 部署後檢查實際站點的 `/research`、`/research/vpec-2455`、`/research/reports/vpec-2455.html`、`/api/research/vpec-2455`。交付填實際 origin，不猜測網址。Remote import 成功不代表網站部署完成。
 

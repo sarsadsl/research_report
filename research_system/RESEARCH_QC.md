@@ -1,6 +1,6 @@
 # Research Quality Control
 
-P1.8 QC specification。定義發布要求及工具目前涵蓋範圍；操作與交付範本見 [Workflow](RESEARCH_WORKFLOW.md)，人工視覺驗收見 [Style Guide](RESEARCH_STYLE_GUIDE.md)。
+P1.8 QC specification，於 P1.9 更新自動發布 gate。操作與交付範本見 [Workflow](RESEARCH_WORKFLOW.md)，人工視覺驗收見 [Style Guide](RESEARCH_STYLE_GUIDE.md)，發布紀錄見 [Publishing](RESEARCH_PUBLISHING.md)。
 
 ## 結果與阻擋規則
 
@@ -18,10 +18,11 @@ P1.8 QC specification。定義發布要求及工具目前涵蓋範圍；操作�
 | Package | `npm.cmd run research:validate -- vpec-2455` | Schema、身分與版本、ID／引用、日期／欄位限制、部分 domain rules；JSON result PASS、canonical hashes | 來源真實性、外連可用性、全部公式重算及經濟語意 |
 | Generated + regression | `npm.cmd run research:check` | Validator + generator --check + 現有 Node tests，exit 0 | 瀏覽器排版、D1、正文審閱；slug 固定 2455 |
 | Import plan | `npm.cmd run research:import -- vpec-2455 --dry-run` | 本機 package／generated 檢查、hash 與預期筆數；DRY RUN | 不連 D1，不能證明權限、migration 或實際資料 |
-| D1 | `npm.cmd run research:import -- vpec-2455 --local`（正式環境明確改 --remote） | Migrations、匯入、run ID + package hash + imported status、12 個 collection 表筆數；D1 import verified + RESULT: IMPORTED | 非逐欄比較、不回讀全部 hash、不驗證 artifact QC 或發布狀態 |
+| D1 | `npm.cmd run research:import -- vpec-2455 --local`（正式發布使用 publish gate） | Migrations、匯入、run ID + package hash + imported status、source／seed／report hash 回讀、12 表筆數 | 非逐欄比較；低階 importer 不代表完整發布 |
 | Standalone | `npm.cmd run report:export -- vpec-2455` | Metadata、source pages、payload profile／slug、部分外部依賴模式、本機網站 HTML 逐 byte 相等；READY TO DELIVER | 無瀏覽器排版、未偵測所有網路 API／資源類型、不代表線上網站相同 |
 | Rendered layout | `npm.cmd run report:qc -- vpec-2455` | Export 後以 Chrome／Edge 開 local HTML，驗證兩個 viewport runtime diagnostics；READY TO PUBLISH | Dashboard、Laptop、其他 profile、可讀性、互動點擊、全部 runtime errors、斷網封鎖 |
-| Release review | 人工填 handoff | 內容、來源、單位、假設、操作、離線及實際站點驗收 | 尚無統一 CLI 或發布狀態 gate |
+| Automated release | `npm.cmd run research:publish -- vpec-2455 --dry-run`（正式改 --remote） | 資料／測試、build、QC、hash seal；正式才匯入／部署並保存結果 | 不強制人工 handoff，不做 lifecycle transition |
+| Release review | 人工填 handoff | 內容、來源、單位、假設、操作、離線及實際站點驗收 | 人工部分尚未自動記錄／強制 |
 
 實作位於 `scripts/research-lib.mjs`、`research-generate.mjs`、`research-import.mjs`、`research-import-lib.mjs`、`report-exporter.mjs`、`report-qc.mjs` 與 `report_sources/vpec-layout-v7.js`。命令以 exit code 判定成功，不可只看到前段 metadata 的 imported status 就宣告完成。
 
@@ -74,7 +75,7 @@ Overlap／clipping 只量測 `.page-inner` 的可見直接子元素，排除 abs
 
 Local／remote 結果分開記錄。research_runs 不儲存 QC；run 寫入在後驗證之前，後驗證失敗時可能已存在 imported 紀錄。來源附件 hash、不可變 artifact history、完整逐欄核對尚未實作。Hash 定義與重跑行為見 Workflow。
 
-Importer 不先 materialize，也不以 reportHash null 阻擋匯入。Remote import 前應已有本次 QC 通過的 HTML。CI 目前在 deploy 的 materialization 前匯入，有記錄舊 report hash 的風險，後續發布流程應調整順序並驗證 artifact。
+低階 importer 不先 materialize，也不以 reportHash null 阻擋匯入。P1.9 publish 及 CI 已改為先 build／QC、核對 public／standalone／built assets hashes，再匯入；部署前不重建報告。手動繞過發布入口直接操作 importer／Wrangler 仍不具有相同保護。
 
 以下為人工填寫的摘要，未整合到 CLI；不得把範例當實測結果：
 
@@ -97,16 +98,14 @@ Result: READY_TO_PUBLISH|BLOCKED
 Deployment: <not deployed or actual result and URL>
 ```
 
-## CI gate：現況與後續要求
+## CI gate：P1.9 現況與後續要求
 
-`.github/workflows/deploy-cloudflare.yml` 在 push main／手動觸發時執行：安裝 → research:check → Wrangler 設定／types → remote migrations → remote importer → deploy。它**尚未執行 report:qc 或人工內容 gate**。手動 deploy 也沒有這些保護；目前發布者須依操作規範先完成驗收，不能宣稱系統已自動攔下所有品質失敗。
+`.github/workflows/deploy-cloudflare.yml` 先判斷變更範圍並檢查文件。非 docs-only 變更及手動 dispatch 執行 P1.9 publish：validate → build → candidate → QC → seal → import → deploy。自動 QC FAIL／缺漏、artifact 漂移會阻擋遠端操作；失敗與成功都嘗試上傳證據 30 天。`npm run deploy` 走同一入口。人工內容 gate 尚未實作，仍須發布者完成。
 
-後續自動發布工程的 Definition of Done：
+已實作：發布前自動資料／排版 gate、hash 一致性核對、故意失敗測試、docs-only 分流及 release artifact。後續工作：
 
-1. Remote mutation 前先完成 package、生成、export／layout QC，保存 commit、profile、環境及 artifact hash；同份候選內容再匯入／部署。
-2. 必要自動檢查 FAIL／NOT_RUN 以非零狀態阻擋；人工驗收有明確紀錄及發布前 gate。
-3. QC／匯入失敗不能標記 published；部署失敗有可查狀態與恢復程序，不宣稱跨服務原子交易。
-4. 發布紀錄關聯 artifact、hash、QC、run、實際 URL，保留不可變歷史證據。
-5. 用故意失敗案例驗證 gate；先明定 docs-only push 的部署政策。
+1. 將人工驗收紀錄接入發布前 gate，擴充 Laptop／其他 profile 的自動覆蓋。
+2. 實作 lifecycle 轉移及未公開內容存取限制；目前 publisher 僅接受既有 published package。
+3. 長期不可變歷史存放與跨服務恢復程序；CI artifact 有保留期限，D1 與 Worker 不是單一交易。
 
-以上為待實作要求，P1.8 不修改 CI、資料庫或網站程式。
+P1.9 的 DEPLOYED 只表示自動發布流程成功，不等於所有人工品質項目已 PASS。

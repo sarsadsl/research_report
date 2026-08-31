@@ -38,6 +38,12 @@ export function parseQcResult(html) {
 
 export function assertQcResult(result, { expectedPages, profile }) {
   const errors=[];
+  if (!result || typeof result !== "object") throw new Error("Rendered report QC result is missing");
+  if (!Number.isInteger(expectedPages) || expectedPages < 1) errors.push("invalid expected page count");
+  for (const key of ["overflows", "overlaps", "clippings"]) {
+    if (!Array.isArray(result[key])) errors.push(`missing or invalid ${key}`);
+  }
+  if (!Number.isFinite(result.horizontalOverflow) || result.horizontalOverflow < 0) errors.push("invalid horizontal overflow");
   if(result.version!=="p1.6-layout-qc")errors.push(`unexpected QC version ${result.version}`);
   if(result.pages!==expectedPages)errors.push(`pages ${result.pages}/${expectedPages}`);
   if(result.dots!==expectedPages)errors.push(`navigation dots ${result.dots}/${expectedPages}`);
@@ -62,20 +68,27 @@ async function runHeadlessQc({ chromePath, htmlPath, viewport, expectedPages, pr
     if(result.error)throw result.error;
     if(result.status!==0)throw new Error(`Headless browser exited ${result.status}: ${(result.stderr||"").trim()}`);
     const qc=parseQcResult(result.stdout);
-    assertQcResult(qc,{expectedPages,profile});
+    try { assertQcResult(qc,{expectedPages,profile}); }
+    catch (error) { error.qc = {name:viewport.name,...qc}; throw error; }
     return{name:viewport.name,...qc};
   }finally{await rm(userDataDir,{recursive:true,force:true});}
 }
 
-export async function runReportQc({ slug, rootDir=process.cwd(), chromePath }={}) {
+export async function runReportQc({ slug, rootDir=process.cwd(), chromePath, materialize=true }={}) {
   if(!slug)throw new Error("Usage: npm run report:qc -- <slug>");
-  const exported=await exportStandaloneReport({rootDir,slug});
+  const exported=await exportStandaloneReport({rootDir,slug,materialize});
   const profileDocument=JSON.parse(await readFile(resolve(rootDir,"research",slug,"report-profiles.json"),"utf8"));
   const expectedPages=Number(profileDocument.profiles["full-research"].expectedPages);
   const browser=chromePath??findChrome();
   const results=[];
-  for(const viewport of profiles)results.push(await runHeadlessQc({chromePath:browser,htmlPath:exported.outputPath,viewport,expectedPages,profile:"full-research"}));
-  return{slug,file:basename(exported.outputPath),browser,expectedPages,websiteParity:exported.identicalToWebsite,results};
+  for(const viewport of profiles) {
+    try { results.push(await runHeadlessQc({chromePath:browser,htmlPath:exported.outputPath,viewport,expectedPages,profile:"full-research"})); }
+    catch (error) {
+      error.qc = {slug,reportHash:exported.reportHash,websiteParity:exported.identicalToWebsite,results:[...results,...(error.qc?[error.qc]:[])]};
+      throw error;
+    }
+  }
+  return{slug,file:basename(exported.outputPath),browser,expectedPages,reportHash:exported.reportHash,websiteParity:exported.identicalToWebsite,results};
 }
 
 async function main(){
