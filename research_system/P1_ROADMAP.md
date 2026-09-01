@@ -4,7 +4,7 @@
 
 建立可重複執行的研究發布流程：Sources → Research Package → Validate／Generate → Report／QC → D1 import → Deploy／Standalone handoff。
 
-Research Package 是研究資料唯一人工維護來源。D1、fallback 為衍生資料；完整報告仍有 legacy 正文，必須人工核對，不宣稱所有輸出已通用化。
+Research Package 是研究資料唯一人工維護來源。D1、fallback 與 Full Report 都是衍生資料；P1.10 起正式報告直接由 package sections 產生。
 
 P1.8 依實際提交與 CLI 校正本表。舊 roadmap 將 P1.6 命名為 one-command publishing、P1.7 命名為 second-company proof；兩者仍是後續工作，**不能因編號沿用而視為完成**。
 
@@ -22,6 +22,7 @@ P1.8 依實際提交與 CLI 校正本表。舊 roadmap 將 P1.6 命名為 one-co
 | P1.7 | Verified D1 importer（35f57a5） | Dry-run、migrations、hash／run metadata、12 表筆數、idempotent 重跑，非發布 gate |
 | P1.8 | 操作規範及驗收文件整理 | 按下列 DoD 驗收，不改 runtime、CI 或正式資料 |
 | P1.9 | 自動發布 gate、hash 一致性與 release artifacts | 先建置／QC 再遠端匯入／部署；純文件分流；人工 gate 與 lifecycle 仍待實作 |
+| P1.10 | 新報告 intake、通用 Full Report、第二家公司回歸 fixture | 頁數內容驅動；移除 2455 legacy renderer 與固定 2027F 清單；合成 fixture 不發布 |
 
 ## P1.8 — Workflow、Style Guide、QC specification
 
@@ -64,16 +65,16 @@ P1.9 已接上自動 build／QC → D1 → deploy 及 artifact 紀錄。接著�
 
 完成條件：讀取限制及狀態轉移有測試，更新不覆寫發布歷史，重跑匯入不偽造發布結果。
 
-### 通用 Full Report 與第二家公司
+### 通用 Full Report 與第二家公司（P1.10 已完成）
 
 把 legacy 正文移到 package／通用 section renderer，頁數內容驅動，移除公司／固定年份耦合；加入不同 KPI／章節的第二家公司。
 
-完成條件：不複製公司專用實作可新增公司；2455 與第二家公司通過同套資料、Dashboard、Full Report、export、desktop／laptop／mobile、offline 驗收。
+完成結果：`research:intake` 建立 source-first 工作區；`package.sections` 決定 Full Report 章節與頁數；focus KPI 與 headline year 已資料化；2455 通過 export、desktop／laptop／mobile、offline gate，合成第二家公司 fixture 以不同 KPI、年份及六章配置通過 renderer 測試。內容與來源審閱仍是人工驗收。
 
 ## 交付與 legacy 邊界
 
 - 在 main 使用小型可恢復 commit，保留無關使用者變更；非 docs-only push 會觸發發布 gate，須依發布範圍處理。
 - 阻擋檢查未過不得宣告該階段完成；資料正確優先於閱讀性、視覺及少頁數。
-- 不提交 exports 或新生成 HTML；既有 `public/research/reports/vpec-2455.html` 仍是 tracked legacy，後續另訂移除計畫。
-- `report_sources/vpec-2455.v4.*`、`report_sources/vpec-layout-v*.css/js`、`scripts/materialize-reports.mjs` 仍參與正式報告生成，替代 pipeline 通過前不移除，不沿此路徑新增公司。
+- 不提交 exports 或新生成 experiment HTML；既有 tracked `public/research/reports/vpec-2455.html` 由通用 renderer 重建，作為網站發布 artifact。
+- `report_sources/vpec-2455.v4.*` 與 v7 layout 僅保留歷史參考，不再參與 materialize、export 或 publish。
 - 區分官方事實、第三方資料、市場共識、研究推論。P1.8 文件驗收不等於新研究內容通過發布驗收。

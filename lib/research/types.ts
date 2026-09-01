@@ -16,9 +16,9 @@ export type DashboardConfig = {
   conclusion:string;
   forecastScenario:string;
   headlineForecastYears:number[];
-  focusMetric:{ field:"optoShare"; label:string };
+  focusMetric:{ field:"revenue"|"grossMargin"|"netIncome"|"eps"|"optoShare"; label:string };
   monthlyRevenue:{ focusYear:number; cumulativeThroughMonth:number; unitDivisor:number; unitLabel:string };
-  cagrCards:Array<{ field:"revenue"|"eps"; label:string; baseYear:number; targetYear:number; baseValue:number; years:number }>;
+  cagrCards:Array<{ field:"revenue"|"grossMargin"|"netIncome"|"eps"|"optoShare"; label:string; baseYear:number; targetYear:number; baseValue:number; years:number }>;
   estimateNote:string;
 };
 
@@ -28,5 +28,5 @@ export type ResearchDetail = {
   catalysts:{title:string;impact:string;status:string;notes?:string|null}[];
   risks:{title:string;impact:string;probability:string;status:string;notes?:string|null}[]; reports:Report[];
 };
-export type ResearchListItem = { company:Company; report:Report; latestActual?:FinancialActual; consensus2027?:Forecast; signals:SignalSnapshot[] };
+export type ResearchListItem = { company:Company; report:Report; latestActual?:FinancialActual; headlineForecast?:Forecast; signals:SignalSnapshot[] };
 export interface ResearchRepository { listPublishedCompanies():Promise<ResearchListItem[]>; getBySlug(slug:string):Promise<ResearchDetail|null> }

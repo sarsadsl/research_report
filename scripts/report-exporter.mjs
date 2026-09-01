@@ -28,25 +28,28 @@ function extractPayload(html) {
   }
 }
 
-export function validateStandaloneHtml(html, { expectedPages, sourcePages = expectedPages, profileName, slug }) {
+export function validateStandaloneHtml(html, { expectedPages, sourcePages, profileName, slug }) {
   const errors = [];
   const pageCount = Math.max(
     (html.match(/<section\b[^>]*class=["'][^"']*\bpage\b/gi) || []).length,
     (html.match(/<section\b[^>]*class=["'][^"']*\bslide\b/gi) || []).length,
   );
   const payload = extractPayload(html);
+  const renderedPages = expectedPages ?? payload?.profile?.renderedPages ?? payload?.profile?.expectedPages;
+  const originalPages = sourcePages ?? renderedPages;
 
   if (!/^\s*<!doctype html>/i.test(html)) errors.push("doctype is missing");
   if (!/<meta\b[^>]*charset=/i.test(html)) errors.push("charset metadata is missing");
   if (!/<meta\b[^>]*name=["']viewport["']/i.test(html)) errors.push("viewport metadata is missing");
-  if (pageCount !== sourcePages) errors.push(`expected ${sourcePages} source pages, found ${pageCount}`);
+  if (!Number.isInteger(renderedPages) || renderedPages < 1) errors.push("rendered page count is missing");
+  if (pageCount !== originalPages) errors.push(`expected ${originalPages} source pages, found ${pageCount}`);
   if (payload === null) errors.push("research-report-payload is missing");
   if (payload === undefined) errors.push("research-report-payload is invalid JSON");
   if (payload && payload.profileName !== profileName) errors.push(`expected profile ${profileName}, found ${payload.profileName}`);
   if (payload && payload.company?.slug !== slug) errors.push(`expected slug ${slug}, found ${payload.company?.slug}`);
-  if (payload && payload.profile?.expectedPages !== expectedPages) errors.push(`expected rendered page target ${expectedPages}, found ${payload.profile?.expectedPages}`);
+  if (payload && (payload.profile?.renderedPages ?? payload.profile?.expectedPages) !== renderedPages) errors.push(`expected rendered page target ${renderedPages}, found ${payload.profile?.renderedPages ?? payload.profile?.expectedPages}`);
   if (!/window\.__researchLayout/.test(html)) errors.push("research layout diagnostics are missing");
-  if (sourcePages !== expectedPages && !/id=["']v7-safe-pagination-script["']/.test(html)) errors.push("safe pagination runtime is missing");
+  if (originalPages !== renderedPages && !/id=["']v7-safe-pagination-script["']/.test(html)) errors.push("safe pagination runtime is missing");
   if (/\bfetch\s*\(/.test(html)) errors.push("runtime fetch is not allowed");
   if (/<script\b[^>]*\bsrc\s*=/i.test(html)) errors.push("external script source is not allowed");
   if (/<link\b[^>]*\brel=["']stylesheet["'][^>]*\bhref\s*=/i.test(html)) errors.push("external stylesheet is not allowed");
@@ -57,7 +60,7 @@ export function validateStandaloneHtml(html, { expectedPages, sourcePages = expe
   if (errors.length) {
     throw new Error(["Standalone report validation failed:", ...errors.map((error) => `- ${error}`)].join("\n"));
   }
-  return { pageCount: expectedPages, sourcePages: pageCount, payloadProfile: payload.profileName };
+  return { pageCount: renderedPages, sourcePages: pageCount, payloadProfile: payload.profileName };
 }
 
 export async function exportStandaloneReport({ rootDir = process.cwd(), slug, materialize = true } = {}) {
@@ -80,7 +83,7 @@ export async function exportStandaloneReport({ rootDir = process.cwd(), slug, ma
   if (!fullProfile) throw new Error(`${slug}: full-research profile is required`);
 
   if (materialize) {
-    const result = spawnSync(process.execPath, ["scripts/materialize-reports.mjs"], {
+    const result = spawnSync(process.execPath, ["scripts/materialize-reports.mjs", slug], {
       cwd: rootDir,
       encoding: "utf8",
       stdio: "inherit",
@@ -93,7 +96,7 @@ export async function exportStandaloneReport({ rootDir = process.cwd(), slug, ma
   const html = await readFile(sourcePath, "utf8");
   const qc = validateStandaloneHtml(html, {
     expectedPages: fullProfile.expectedPages,
-    sourcePages: fullProfile.sourcePages ?? fullProfile.expectedPages,
+    sourcePages: fullProfile.sourcePages,
     profileName: "full-research",
     slug,
   });

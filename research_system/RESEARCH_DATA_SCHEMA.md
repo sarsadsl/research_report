@@ -1,6 +1,6 @@
 # Research Data Contract
 
-P1.8 clarification: this file defines the data contract and target architecture. The current full-report legacy boundary, hash conventions, and operational limitations are documented in [Workflow](RESEARCH_WORKFLOW.md) and [QC](RESEARCH_QC.md). Embedding a package view model in legacy HTML does not synchronize all report prose with the package.
+P1.10 clarification: this file defines the data contract. Full Report now renders directly from package sections; hash conventions and operational limitations are documented in [Workflow](RESEARCH_WORKFLOW.md) and [QC](RESEARCH_QC.md).
 
 ## Canonical package
 

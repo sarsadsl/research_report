@@ -1,6 +1,6 @@
 # Research Report
 
-個股研究資料庫 + 研究報告發布系統。P1.9 已將自動資料／排版 QC 接入發布入口，並保存 release 證據。
+個股研究資料庫 + 研究報告發布系統。P1.10 已加入 source-first intake、通用 Full Report 與第二家公司回歸驗證。
 
 目前第一檔 seed：**全新光電 (2455 TT)**。
 
@@ -112,14 +112,23 @@ npm run research:import -- vpec-2455 --remote
 
 D1 repository 以 `published` report 篩選列表與詳細資料。這不等於完整 lifecycle enforcement：目前沒有狀態轉移控制器，fallback 與公開 static HTML 也不提供等同的私密性。未公開研究不可只靠 draft／review 標籤保護，不要放進 public、fallback 或公開 repo。
 
-## Report profiles（P1.4）
+## 新報告 intake（P1.10）
+
+```powershell
+npm.cmd run research:intake -- sample-9001 --company "公司名稱" --ticker 9001 --market TW --as-of 2026-09-01
+npm.cmd run research:intake -- sample-9001 --check
+```
+
+第一個命令只建立 `intake.json`、`notes.md` 與 `sources/`，不會建立 public HTML、fallback 或 D1 seed。加入來源與研究問題並通過 `--check` 後，才整理為正式 Research Package。詳見 Workflow。
+
+## Report profiles（P1.10）
 
 `research/<slug>/report-profiles.json` 控制同一份 Research Package 的 rendered outputs：
 
-- `full-research`：保留 2455 現有 14 頁完整報告作為 regression baseline。
+- `full-research`：直接依 `research-package.json` 的 sections 生成；章節與頁數內容驅動。
 - `experiment-summary`：由通用 Report View Model 產生 ranking + panel summary 精簡報告。
 
-兩份輸出都由 `npm run report:materialize` 建立，並內嵌由 Research Package 建立的 view-model payload；不使用 runtime `fetch`，可直接以 `file://` 開啟。完整報告仍保留 legacy 正文，嵌入 payload 不會自動替換所有正文數字，須人工核對。8 個 source pages 目前經 v7 runtime pagination 形成 14 頁；這是回歸基準，不是未來所有公司的固定頁數。
+兩份輸出都由 `npm run report:materialize -- <slug>` 建立，並內嵌由 Research Package 建立的 view-model payload；不使用 runtime `fetch`，可直接以 `file://` 開啟。正式 renderer 不含公司或固定年份分支，Dashboard 清單的 headline year 也由 package 設定。
 
 ## Standalone HTML exporter（P1.5）
 
@@ -151,7 +160,7 @@ PowerShell 若停用 `npm.ps1`，請使用：
 npm.cmd run report:qc -- vpec-2455
 ```
 
-此命令遇到頁數／導航點不一致、layout fallback、overflow、top-level overlap、clipping、整頁橫向溢出或 standalone 與本機網站輸出不一致時會非零退出。它目前只檢查 full-research，viewport 為 Desktop 1440×1000、Mobile 390×844；Laptop、Dashboard、experiment-summary、可讀性、互動與真正斷網測試仍需人工驗收。P1.9 已將這些自動 QC 接入 CI 與 deploy 入口；缺漏 diagnostics 也會失敗。若 Chrome／Edge 安裝在非標準位置，可設定 `RESEARCH_CHROME_PATH`。
+此命令遇到頁數／導航點不一致、layout fallback、overflow、top-level overlap、clipping、整頁橫向溢出或 standalone 與本機網站輸出不一致時會非零退出。它檢查 full-research 的 Desktop 1440×1000、Laptop 1024×768、Mobile 390×844；Dashboard、experiment-summary、可讀性、互動與真正斷網測試仍需人工驗收。P1.9 已將這些自動 QC 接入 CI 與 deploy 入口；缺漏 diagnostics 也會失敗。若 Chrome／Edge 安裝在非標準位置，可設定 `RESEARCH_CHROME_PATH`。
 
 ## 自動發布（P1.9）
 
@@ -167,7 +176,7 @@ npm.cmd run research:publish -- vpec-2455 --dry-run
 
 PowerShell 可一律使用 `npm.cmd`。遇到 `Generated file is stale`，重新執行 `research:generate` 再跑 `research:check`；Git 換行轉換也可能造成此錯誤。如果重生後沒有實質 Git diff，就不需要 commit。生成的 JSON／SQL 有實質差異時才與 package 一起提交。
 
-不要提交本機生成的 report HTML；`exports/` 已忽略，既有 `public/research/reports/vpec-2455.html` 仍是 tracked legacy。需要保留並整理本機兩份 HTML 時，使用 Workflow 內限定檔案且包含未追蹤檔的 stash 指令。
+不要手改本機生成的 report HTML；`exports/` 已忽略，tracked 的 `public/research/reports/vpec-2455.html` 由通用 materializer 重建。需要保留並整理本機兩份 HTML 時，使用 Workflow 內限定檔案且包含未追蹤檔的 stash 指令。
 
 ## 下一階段 P1
 

@@ -138,7 +138,7 @@
           "additionalProperties": false,
           "required": ["field", "label"],
           "properties": {
-            "field": { "enum": ["optoShare"] },
+            "field": { "enum": ["revenue", "grossMargin", "netIncome", "eps", "optoShare"] },
             "label": { "type": "string" }
           }
         },
@@ -161,7 +161,7 @@
             "additionalProperties": false,
             "required": ["field", "label", "baseYear", "targetYear", "baseValue", "years"],
             "properties": {
-              "field": { "enum": ["revenue", "eps"] },
+              "field": { "enum": ["revenue", "grossMargin", "netIncome", "eps", "optoShare"] },
               "label": { "type": "string" },
               "baseYear": { "type": "integer" },
               "targetYear": { "type": "integer" },

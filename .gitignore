@@ -10,4 +10,5 @@ cloudflare-env.d.ts
 *.log
 exports/
 .research-publish/
+public/research/reports/*-experiment.html
 .DS_Store

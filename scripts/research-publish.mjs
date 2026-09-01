@@ -115,12 +115,14 @@ export async function publishResearch(options, rootDir = process.cwd()) {
         const assetHash = hashBytes(await readFile(join(rootDir, ".open-next/assets", output.replace(/^public\//, ""))));
         assertUnchanged(publicHash, assetHash);
       }
-      const reportHash = hashBytes(await readFile(join(rootDir, `public/research/reports/${slug}.html`)));
+      const reportBytes = await readFile(join(rootDir, `public/research/reports/${slug}.html`));
+      const reportText = reportBytes.toString("utf8");
+      const reportHash = hashBytes(reportBytes);
       return {
         packageHash: validation.packageHash, manifestHash: validation.manifestHash,
         rawPackageHash: hashBytes(await readFile(join(rootDir, "research", slug, "research-package.json"))),
         sourceHash: sha256(pkg.sources), seedHash: hashBytes(await readFile(join(rootDir, "db/seed", `${pkg.company.ticker}.sql`))),
-        reportHash, buildHash: await builtHash(), expectedPages: profileDocument.profiles["full-research"].expectedPages,
+        reportHash, buildHash: await builtHash(), expectedPages: (reportText.match(/<section\b[^>]*class=["'][^"']*\b(?:page|slide)\b/gi) ?? []).length,
         reportVersion: pkg.report.version, packageVersion: pkg.packageVersion, asOfDate: pkg.asOfDate,
       };
     },

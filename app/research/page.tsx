@@ -15,7 +15,7 @@ export default async function ResearchPage() {
       <p>把財報實績、月營收、產品組合、財測情境、產能、催化劑、風險與紅綠燈訊號集中成可持續更新的研究系統。</p>
     </section>
     <section className="shell grid companyGrid">
-      {items.map(({ company, report, latestActual, consensus2027, signals }) => {
+      {items.map(({ company, report, latestActual, headlineForecast, signals }) => {
         const overall = overallSignal(signals);
         return <Link href={`/research/${company.slug}`} className="card companyCard" key={company.id}>
           <div className="ticker">{company.market} · {company.ticker}</div>
@@ -23,7 +23,7 @@ export default async function ResearchPage() {
           <div className="small muted" style={{ marginTop: 6 }}>{company.industry}</div>
           <div className="grid metricGrid">
             <div className="metric"><div className="label">最新 EPS</div><div className="value">{latestActual?.eps?.toFixed(2) ?? "—"}</div></div>
-            <div className="metric"><div className="label">2027F EPS</div><div className="value">{consensus2027?.eps?.toFixed(2) ?? "—"}</div></div>
+            <div className="metric"><div className="label">{headlineForecast?.fiscalYear ?? "—"}F EPS</div><div className="value">{headlineForecast?.eps?.toFixed(2) ?? "—"}</div></div>
             <div className="metric"><div className="label">研究燈號</div><div className="value" style={{fontSize:15}}>{formatSignalLabel(overall)}</div></div>
           </div>
           <div className="signalRow">{signals.map((s) => <span key={s.metric} className={`signalPill ${s.status}`}>{s.metric}</span>)}</div>

@@ -4,7 +4,6 @@ import { assertSafeSlug } from "./research-lib.mjs";
 export function parsePublishArgs(args) {
   const [slug, ...flags] = args;
   assertSafeSlug(slug ?? "");
-  if (slug !== "vpec-2455") throw new Error("Publishing currently supports only vpec-2455");
   if (flags.some(flag => !["--dry-run", "--remote"].includes(flag))) throw new Error("Unknown publish option");
   if (flags.includes("--dry-run") && flags.includes("--remote")) throw new Error("Choose --dry-run or --remote");
   return { slug, remote: flags.includes("--remote") };
@@ -12,12 +11,12 @@ export function parsePublishArgs(args) {
 
 export function assertReleaseQc(qc, candidate) {
   if (!qc || qc.websiteParity !== true || qc.reportHash !== candidate.reportHash) throw new Error("QC artifact does not match release candidate");
-  if (!Array.isArray(qc.results) || qc.results.length !== 2) throw new Error("Both QC viewports are required");
-  for (const name of ["desktop", "mobile"]) {
+  if (!Array.isArray(qc.results) || qc.results.length !== 3) throw new Error("Desktop, laptop and mobile QC viewports are required");
+  for (const name of ["desktop", "laptop", "mobile"]) {
     const matches = qc.results.filter(result => result.name === name);
     if (matches.length !== 1) throw new Error(`Missing or duplicate ${name} QC`);
     assertQcResult(matches[0], { expectedPages: candidate.expectedPages, profile: "full-research" });
-    const expected = name === "desktop" ? {width:1440,height:1000} : {width:390,height:844};
+    const expected = name === "desktop" ? {width:1440,height:1000} : name === "laptop" ? {width:1024,height:768} : {width:390,height:844};
     if (matches[0].viewport?.width !== expected.width || matches[0].viewport?.height !== expected.height) throw new Error(`Wrong ${name} viewport`);
     if (!Array.isArray(matches[0].runtimeErrors) || matches[0].runtimeErrors.length) throw new Error(`Missing or failed ${name} runtime diagnostics`);
   }

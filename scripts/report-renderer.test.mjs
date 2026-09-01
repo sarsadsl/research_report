@@ -30,18 +30,31 @@ test("report profiles reject unsafe output paths", async()=>{
   assert.throws(()=>validateReportProfiles(invalid),/invalid output path/);
 });
 
-test("full report metadata injection preserves baseline pages", async () => {
+test("full report is generated from package sections with content-driven pages", async () => {
   const {pkg,profiles}=await load();
   const vm=buildReportViewModel(pkg,"full-research",profiles.profiles["full-research"]);
-  const pages=Array.from({length:8},(_,i)=>`<section class="page">${i+1}</section>`).join("");
-  const baseline=`<!doctype html><html><body>${pages}</body></html>`;
-  const rendered=injectFullReportMetadata(baseline,vm);
-  assert.equal((rendered.match(/<section class="page/g)||[]).length,8);
+  const rendered=renderGeneratedReport(vm);
+  assert.equal((rendered.match(/<section class="page/g)||[]).length,pkg.sections.length);
   assert.match(rendered,/"profileName":"full-research"/);
+  assert.match(rendered,/EVIDENCE RAIL/);
 });
 
-test("full report regression rejects unexpected page count", async () => {
-  const {pkg,profiles}=await load();
-  const vm=buildReportViewModel(pkg,"full-research",profiles.profiles["full-research"]);
-  assert.throws(()=>injectFullReportMetadata("<html><body><section class=\"page\"></section></body></html>",vm),/expected 8 pages/);
+test("a synthetic second company supports different KPI, years and sections",async()=>{
+  const {pkg}=await load();
+  const second=structuredClone(pkg);
+  second.company={...second.company,id:"fixture-9001",ticker:"9001",market:"TEST",name:"合成製造測試公司",slug:"fixture-9001"};
+  second.report={...second.report,id:"fixture-report",slug:"fixture-9001",title:"合成製造測試報告",status:"draft",version:"fixture-1",publishedAt:undefined};
+  second.dashboard={...second.dashboard,forecastScenario:"consensus",headlineForecastYears:[2027],focusMetric:{field:"grossMargin",label:"毛利率"}};
+  second.sections=[
+    {...second.sections[0],id:"fixture-summary",sortOrder:1},
+    {id:"fixture-kpi",type:"kpi-grid",title:"製造 KPI",sortOrder:2,payloadRefs:["actuals","forecasts"],showSources:true},
+    {...second.sections[4],id:"fixture-scenarios",sortOrder:3},
+    {...second.sections[6],id:"fixture-signals",sortOrder:4},
+    {...second.sections[8],id:"fixture-sources",sortOrder:5},
+    {...second.sections[9],id:"fixture-conclusion",sortOrder:6},
+  ];
+  const profile={kind:"generated",output:"public/research/reports/fixture-9001.html",sections:["package-sections"]};
+  const html=renderGeneratedReport(buildReportViewModel(second,"full-research",profile));
+  assert.equal((html.match(/<section class="page/g)||[]).length,6);
+  assert.match(html,/合成製造測試公司/);assert.match(html,/毛利率/);
 });

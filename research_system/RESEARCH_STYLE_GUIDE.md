@@ -44,19 +44,19 @@ P1.8 編輯與視覺驗收規範，用於 Dashboard、Full Report 與 standalone
 
 正式閱讀器要求上／下一頁、頁碼導覽、Fit、50%、75%、100%、125% 縮放及可見鍵盤焦點。正文、來源、頁尾不得互遮。
 
-目前 `full-research` 為 2455 legacy baseline：8 個 source pages 經 v7 runtime pagination 形成 14 頁；`experiment-summary` 為 2 頁通用輸出。頁數是目前 profile 回歸條件，不是所有公司的固定目標。完整正文仍需人工對照 package；新 payload 不代表舊文字已更新。
+`full-research` 依 package sections 逐章產頁；`experiment-summary` 為 2 頁通用輸出。頁數由內容決定，不是所有公司的固定目標。每頁主內容旁保留 evidence rail，完整正文仍需人工對照 package 與來源。
 
-增頁須一起審查 profile、pagination 與回歸證據，不能只改 expectedPages 讓 QC 通過。拆分不得依公司名／固定章節名稱擴充硬編碼；通用 renderer 改造見 roadmap。
+增頁須一起審查 package sections、renderer 與回歸證據，不能以固定頁數掩蓋內容缺漏。拆分不得依公司名／固定年份擴充硬編碼。
 
 ## 跨裝置與無障礙
 
 - Desktop 保留層級與安全邊界，Laptop 工具列不遮正文，Mobile 以可讀文字與可操作導覽驗收。
-- 固定紙張縮放是目前 legacy 行為；mobile 幾何 QC 通過不代表文字可讀。逐頁查看，過小就不通過可讀性驗收。
+- 固定紙張縮放是 standalone reader 行為；mobile 幾何 QC 通過不代表文字可讀。逐頁查看，過小就不通過可讀性驗收。
 - 切頁、縮放、resize 後不出現裁切；重要資訊不得只靠 hover。
 - 文字與背景清楚對比，狀態不僅靠顏色，重要圖表資料有文字或表格等價內容。
 - Tab 可達控制項、焦點可見、鍵盤可切頁、觸控按鈕不重疊；降低動態效果設定不得讓內容消失。
 
-新設計優先可重排內容。保留 legacy 外觀不免除閱讀驗收；對比、可讀性與鍵盤操作目前仍須人工檢查。
+新設計優先可重排內容。通用外觀不免除閱讀驗收；對比、可讀性與鍵盤操作目前仍須人工檢查。
 
 ## Standalone
 

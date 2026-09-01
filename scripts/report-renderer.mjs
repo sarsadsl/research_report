@@ -1,104 +1,82 @@
-const score = { green: 2, yellow: 1, red: 0 };
-const signalLabel = { green: "綠燈", yellow: "黃燈", red: "紅燈" };
+const score={green:2,yellow:1,red:0};
+const labels={green:"綠燈",yellow:"黃燈",red:"紅燈"};
+const evidence={official:"官方",third_party_fact:"第三方",market_consensus:"市場共識",research_inference:"研究推論"};
+const esc=(v="")=>String(v).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#39;");
+const json=v=>JSON.stringify(v).replaceAll("<","\\u003c");
+const num=(v,d=2)=>v==null?"—":Number(v).toLocaleString("zh-TW",{minimumFractionDigits:d,maximumFractionDigits:d});
+const pct=v=>v==null?"—":`${num(v,1)}%`;
+const metricValue=(field,value)=>["grossMargin","optoShare"].includes(field)?pct(value):num(value,field==="eps"?2:1);
 
-const escapeHtml = (value = "") => String(value)
-  .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
-  .replaceAll('"', "&quot;").replaceAll("'", "&#39;");
-const fmt = (value, digits = 2) => value == null ? "—" : Number(value).toFixed(digits);
-const safeJson = (value) => JSON.stringify(value).replaceAll("<", "\\u003c");
-
-export function validateReportProfiles(document) {
+export function validateReportProfiles(doc){
   const errors=[];
-  if(document?.schemaVersion!=="1.0.0")errors.push("profile schemaVersion must be 1.0.0");
-  if(!document?.profiles||typeof document.profiles!=="object")errors.push("profiles object is required");
-  for(const [name,profile] of Object.entries(document?.profiles??{})){
-    if(!["baseline","generated"].includes(profile.kind))errors.push(`${name}: invalid kind`);
-    if(!/^public\/research\/reports\/[a-z0-9-]+\.html$/.test(profile.output??""))errors.push(`${name}: invalid output path`);
-    if(!Number.isInteger(profile.expectedPages)||profile.expectedPages<1)errors.push(`${name}: expectedPages must be a positive integer`);
-    if(!Array.isArray(profile.sections)||profile.sections.length===0)errors.push(`${name}: sections are required`);
-    if(profile.kind==="baseline"&&(!Number.isInteger(profile.sourcePages)||profile.sourcePages<1))errors.push(`${name}: baseline sourcePages must be a positive integer`);
+  if(doc?.schemaVersion!=="1.0.0")errors.push("profile schemaVersion must be 1.0.0");
+  if(!doc?.profiles||typeof doc.profiles!=="object")errors.push("profiles object is required");
+  for(const [name,p] of Object.entries(doc?.profiles??{})){
+    if(!["baseline","generated"].includes(p.kind))errors.push(`${name}: invalid kind`);
+    if(!/^public\/research\/reports\/[a-z0-9-]+\.html$/.test(p.output??""))errors.push(`${name}: invalid output path`);
+    if(p.expectedPages!==undefined&&(!Number.isInteger(p.expectedPages)||p.expectedPages<1))errors.push(`${name}: invalid expectedPages`);
+    if(!Array.isArray(p.sections)||!p.sections.length)errors.push(`${name}: sections are required`);
+    if(p.kind==="baseline"&&(!Number.isInteger(p.sourcePages)||p.sourcePages<1))errors.push(`${name}: baseline sourcePages are required`);
   }
-  if(errors.length)throw new Error(["Report profile validation failed:",...errors.map(error=>`- ${error}`)].join("\n"));
+  if(errors.length)throw new Error(["Report profile validation failed:",...errors.map(e=>`- ${e}`)].join("\n"));
   return true;
 }
 
-export function buildReportViewModel(pkg, profileName, profile) {
-  const latestActual = [...pkg.actuals].sort((a,b) => b.period.localeCompare(a.period))[0];
-  const scenario = pkg.dashboard.forecastScenario;
-  const headlineForecasts = pkg.dashboard.headlineForecastYears.map((year) =>
-    pkg.forecasts.find((row) => row.fiscalYear === year && row.scenario === scenario));
-  const ranking = [...pkg.signalSnapshots].sort((a,b) =>
-    score[b.status] - score[a.status] || a.metric.localeCompare(b.metric, "zh-TW"))
-    .map((row,index) => ({ ...row, rank:index+1, score:score[row.status], label:signalLabel[row.status] }));
-  const sourceMap = Object.fromEntries(pkg.sources.map((source) => [source.id, source]));
-  return {
-    schemaVersion: "1.0.0",
-    profileName,
-    profile,
-    company: pkg.company,
-    report: pkg.report,
-    asOfDate: pkg.asOfDate,
-    thesis: pkg.thesis,
-    dashboard: pkg.dashboard,
-    latestActual,
-    headlineForecasts,
-    ranking,
-    sources: pkg.sources,
-    sourceMap,
-  };
+export function buildReportViewModel(pkg,profileName,profile){
+  const latestActual=[...pkg.actuals].sort((a,b)=>b.period.localeCompare(a.period))[0];
+  const headlineForecasts=pkg.dashboard.headlineForecastYears.map(year=>pkg.forecasts.find(r=>r.fiscalYear===year&&r.scenario===pkg.dashboard.forecastScenario)).filter(Boolean);
+  const ranking=[...pkg.signalSnapshots].sort((a,b)=>score[b.status]-score[a.status]||a.metric.localeCompare(b.metric,"zh-TW")).map((r,i)=>({...r,rank:i+1,score:score[r.status],label:labels[r.status]}));
+  return {schemaVersion:"1.0.0",profileName,profile,company:pkg.company,report:pkg.report,asOfDate:pkg.asOfDate,thesis:pkg.thesis,dashboard:pkg.dashboard,latestActual,headlineForecasts,ranking,sections:pkg.sections,sources:pkg.sources,sourceMap:Object.fromEntries(pkg.sources.map(s=>[s.id,s])),claims:pkg.claims,actuals:pkg.actuals,monthlyRevenue:pkg.monthlyRevenue,segments:pkg.segments,forecasts:pkg.forecasts,capacity:pkg.capacity,catalysts:pkg.catalysts,risks:pkg.risks,signalRules:pkg.signalRules,signalSnapshots:pkg.signalSnapshots};
 }
 
-export function injectFullReportMetadata(html, vm) {
-  const pageCount = Math.max(
-    (html.match(/<section\b[^>]*class=["'][^"']*\bpage\b/gi) || []).length,
-    (html.match(/<section\b[^>]*class=["'][^"']*\bslide\b/gi) || []).length,
-  );
-  const expectedSourcePages = vm.profile.sourcePages ?? vm.profile.expectedPages;
-  if (pageCount !== expectedSourcePages) {
-    throw new Error(`Full report source regression failed: expected ${expectedSourcePages} pages, found ${pageCount}`);
-  }
-  const payload = `<script id="research-report-payload" type="application/json">${safeJson(vm)}</script>`;
-  const marker = "</body>";
-  if (!html.includes(marker)) throw new Error("Full report has no </body> marker");
-  return html.replace(marker, `${payload}\n${marker}`);
+export function injectFullReportMetadata(html,vm){
+  const count=Math.max((html.match(/<section\b[^>]*class=["'][^"']*\bpage\b/gi)||[]).length,(html.match(/<section\b[^>]*class=["'][^"']*\bslide\b/gi)||[]).length);
+  const expected=vm.profile.sourcePages??vm.profile.expectedPages;
+  if(expected&&count!==expected)throw new Error(`Full report source regression failed: expected ${expected} pages, found ${count}`);
+  if(!html.includes("</body>"))throw new Error("Full report has no </body> marker");
+  return html.replace("</body>",`<script id="research-report-payload" type="application/json">${json({...vm,profile:{...vm.profile,expectedPages:count,renderedPages:count}})}</script>\n</body>`);
 }
 
-function reportShell(vm, pages) {
-  const title = `${vm.company.name} ${vm.company.ticker}｜Research Experiment`;
-  const dots = pages.map((_,i) => `<button class="dot${i===0?" active":""}" data-page="${i}" aria-label="前往第 ${i+1} 頁">${i+1}</button>`).join("");
-  const payload = safeJson(vm);
-  return `<!doctype html>
-<html lang="zh-TW"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes"><title>${escapeHtml(title)}</title>
-<style>
-*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:"Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;background:#eaf0f6;color:#172033}body{overflow:hidden}.reader{height:100%;display:grid;grid-template-rows:52px 1fr 62px}.top{background:#152236;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 18px;gap:10px}.top b{font-size:14px}.zoom,.nav,.dots{display:flex;gap:6px;align-items:center}.top button,.nav button,.dot{border:1px solid #d5dee9;background:#fff;color:#33445a;border-radius:8px;height:34px;min-width:38px;padding:0 9px;font-weight:800;cursor:pointer}.top button.active,.dot.active{background:#1f659e;color:#fff;border-color:#1f659e}.stage{overflow:auto;display:flex;justify-content:center;align-items:flex-start;padding:14px}.wrap{width:794px;height:1123px;position:relative;flex:none}.page{width:794px;height:1123px;background:#fff;position:absolute;inset:0;padding:38px 46px 34px;overflow:hidden;transform-origin:top left;display:none;box-shadow:0 10px 28px rgba(20,35,55,.14)}.page.active{display:block}.head{border-bottom:2px solid #182333;padding-bottom:9px;margin-bottom:18px;display:flex;justify-content:space-between;gap:20px}.head h1{margin:0;font-size:22px}.meta{font-size:10px;color:#718096;text-align:right;line-height:1.45}.title{font-size:15px;font-weight:900;margin:18px 0 9px}.call{border-left:4px solid #2d72aa;background:#f5f9fd;padding:12px 14px;border-radius:0 10px 10px 0;font-size:12px;line-height:1.7}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.card{border:1px solid #dce5ef;border-radius:12px;padding:12px;background:#fff}.card.green{background:#effbf5}.card.yellow{background:#fff8eb}.card.red{background:#fff2f4}.k{font-size:10px;color:#6d7b8e}.v{font-size:22px;font-weight:900;margin-top:3px}.small{font-size:10.5px;line-height:1.55;color:#5f6f82}table{width:100%;border-collapse:collapse;font-size:10px}th,td{padding:8px;border-bottom:1px solid #e3e9f0;text-align:left}th{background:#eef3f8}.nav{background:#f8fafc;border-top:1px solid #d9e2ed;justify-content:center;padding:8px}.count{font-size:11px;font-weight:900;color:#516176}.foot{position:absolute;left:46px;right:46px;bottom:15px;border-top:1px solid #dce4ed;padding-top:5px;display:flex;justify-content:space-between;font-size:8.5px;color:#7a8797}@media(max-width:700px){.top{padding:0 8px}.top b{font-size:11px}.stage{padding:8px}.zoom button{min-width:31px;padding:0 6px;font-size:10px}}@media print{body{overflow:visible;background:#fff}.reader{display:block}.top,.nav{display:none}.stage{display:block;padding:0;overflow:visible}.wrap{width:auto;height:auto}.page{display:block!important;position:relative;box-shadow:none;page-break-after:always;width:210mm;height:297mm}}
-</style></head><body data-research-profile="${escapeHtml(vm.profileName)}"><div class="reader"><div class="top"><b>${escapeHtml(title)}</b><div class="zoom"><button data-z="fit" class="active">適合</button><button data-z="0.5">50%</button><button data-z="0.75">75%</button><button data-z="1">100%</button><button data-z="1.25">125%</button></div></div><main class="stage" id="stage"><div class="wrap" id="wrap">${pages.join("\n")}</div></main><nav class="nav"><button id="prev">←</button><div class="dots">${dots}</div><span class="count" id="count">1 / ${pages.length}</span><button id="next">→</button></nav></div>
-<script id="research-report-payload" type="application/json">${payload}</script>
-<script>(()=>{const pages=[...document.querySelectorAll('.page')],stage=document.getElementById('stage'),wrap=document.getElementById('wrap'),count=document.getElementById('count'),dots=[...document.querySelectorAll('.dot')];let active=0,zoom='fit';const scale=()=>{const n=zoom==='fit'?Math.min((stage.clientWidth-28)/794,(stage.clientHeight-28)/1123):Number(zoom);wrap.style.width=794*n+'px';wrap.style.height=1123*n+'px';pages.forEach(p=>p.style.transform='scale('+n+')')};const show=i=>{active=Math.max(0,Math.min(pages.length-1,i));pages.forEach((p,n)=>p.classList.toggle('active',n===active));dots.forEach((d,n)=>d.classList.toggle('active',n===active));count.textContent=(active+1)+' / '+pages.length;history.replaceState(null,'','#page-'+(active+1))};document.addEventListener('click',e=>{const z=e.target.closest('[data-z]');if(z){zoom=z.dataset.z;document.querySelectorAll('[data-z]').forEach(b=>b.classList.toggle('active',b===z));scale()}const d=e.target.closest('[data-page]');if(d)show(Number(d.dataset.page))});document.getElementById('prev').onclick=()=>show(active-1);document.getElementById('next').onclick=()=>show(active+1);addEventListener('resize',scale);addEventListener('keydown',e=>{if(['ArrowRight','PageDown'].includes(e.key))show(active+1);if(['ArrowLeft','PageUp'].includes(e.key))show(active-1)});const m=location.hash.match(/page-(\d+)/);show(m?Number(m[1])-1:0);scale();window.__researchLayout={version:'p1.4-profile-renderer',totalPages:pages.length,activePage:()=>active+1,overflows:()=>pages.map((p,i)=>({page:i+1,overflow:p.scrollHeight-p.clientHeight}))};})();</script></body></html>`;
-}
+const makeRows=(items,cells)=>items.map(item=>`<tr>${cells.map(cell=>`<td>${cell(item)}</td>`).join("")}</tr>`).join("");
+const table=(heads,body)=>`<table><thead><tr>${heads.map(h=>`<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${body}</tbody></table>`;
+const metric=(label,value,note="",tone="")=>`<article class="metric ${tone}"><small>${esc(label)}</small><strong>${esc(value)}</strong><span>${esc(note)}</span></article>`;
+const metrics=items=>`<div class="metrics">${items.join("")}</div>`;
 
-function page(vm, number, title, content) {
-  return `<section class="page${number===1?" active":""}" data-page="${number}"><div class="head"><h1>${escapeHtml(title)}</h1><div class="meta">${escapeHtml(vm.company.market)} · ${escapeHtml(vm.company.ticker)}<br>${escapeHtml(vm.asOfDate)} · ${escapeHtml(vm.report.version)}</div></div>${content}<div class="foot"><span>${escapeHtml(vm.report.title)}</span><span>Page ${number} / ${vm.profile.expectedPages}</span></div></section>`;
-}
-
-const sectionRenderers = {
-  ranking(vm) {
-    const cards = vm.ranking.slice(0,3).map(row => `<div class="card ${row.status}"><div class="k">#${row.rank} ${escapeHtml(row.metric)}</div><div class="v">${escapeHtml(row.label)}</div><div class="small">${escapeHtml(row.valueText)}<br>${escapeHtml(row.notes)}</div></div>`).join("");
-    const rows = vm.ranking.map(row => `<tr><td>${row.rank}</td><td>${escapeHtml(row.metric)}</td><td>${escapeHtml(row.label)}</td><td>${escapeHtml(row.valueText)}</td><td>${escapeHtml(row.notes)}</td></tr>`).join("");
-    return page(vm,1,"Research Signal Ranking",`<div class="call"><b>排序方法：</b>依最新 signal snapshot 的狀態排序（綠燈 2、黃燈 1、紅燈 0）；同分保持指標名稱排序。這是研究追蹤優先序，不是投資評等。</div><div class="title">Top Signals</div><div class="grid">${cards}</div><div class="title">完整排名</div><table><thead><tr><th>#</th><th>Metric</th><th>Status</th><th>Value</th><th>Notes</th></tr></thead><tbody>${rows}</tbody></table>`);
-  },
-  "panel-summary"(vm) {
-    const forecastCards = vm.headlineForecasts.map(row => `<div class="card"><div class="k">${row?.fiscalYear ?? "—"}F EPS · ${escapeHtml(row?.scenario)}</div><div class="v">${fmt(row?.eps)}</div><div class="small">Revenue ${fmt(row?.revenue,0)} 百萬<br>GM ${fmt(row?.grossMargin)}%</div></div>`).join("");
-    const sources = vm.sources.map(source => `<li><b>${escapeHtml(source.provider)}</b> — ${escapeHtml(source.title)}（${escapeHtml(source.evidenceClass)}）</li>`).join("");
-    return page(vm,2,"Panel Summary",`<div class="call"><b>研究結論：</b>${escapeHtml(vm.thesis.summary)}</div><div class="title">核心 KPI</div><div class="grid"><div class="card"><div class="k">${escapeHtml(vm.latestActual?.period)} EPS</div><div class="v">${fmt(vm.latestActual?.eps)}</div><div class="small">最新實績</div></div>${forecastCards}</div><div class="title">核心驗證鏈</div><div class="call">${vm.dashboard.verificationChain.map(escapeHtml).join(" → ")}。${escapeHtml(vm.dashboard.conclusion)}</div><div class="title">Sources</div><ul class="small">${sources}</ul>`);
-  },
+const renderers={
+  summary(vm){return `<div class="thesis"><em>DECISION FRAME</em><h2>${esc(vm.thesis.summary)}</h2><p>${esc(vm.dashboard.currentView)}</p></div><div class="chain">${vm.thesis.coreChain.map((x,i)=>`<div><b>${String(i+1).padStart(2,"0")}</b><span>${esc(x)}</span></div>`).join("")}</div><h3>核心訊號</h3>${metrics(vm.ranking.slice(0,3).map(x=>metric(x.metric,x.label,x.valueText,x.status)))}`},
+  "kpi-grid"(vm){const focus=vm.headlineForecasts.at(-1),field=vm.dashboard.focusMetric.field;return metrics([metric(`${vm.latestActual?.period??"最新"} EPS`,num(vm.latestActual?.eps),"已實現"),...vm.headlineForecasts.map(x=>metric(`${x.fiscalYear}F EPS`,num(x.eps),x.scenario)),metric(vm.dashboard.focusMetric.label,metricValue(field,focus?.[field]),"焦點 KPI")])},
+  "financial-table"(vm,s){return s.payloadRefs.includes("segments")?table(["期間","分部","營收","占比","屬性"],makeRows(vm.segments,[r=>esc(r.period),r=>esc(r.segment),r=>num(r.revenue,1),r=>pct(r.share),r=>r.isEstimate?"估計":"實績"])):table(["期間","營收","毛利率","營業利益","淨利","EPS"],makeRows(vm.actuals,[r=>esc(r.period),r=>num(r.revenue,1),r=>pct(r.grossMargin),r=>num(r.operatingIncome,1),r=>num(r.netIncome,1),r=>num(r.eps)]))},
+  "bar-chart"(vm){const max=Math.max(...vm.monthlyRevenue.map(r=>r.revenue),1),cfg=vm.dashboard.monthlyRevenue;return `<div class="bars">${vm.monthlyRevenue.map(r=>`<div><span>${r.year}/${String(r.month).padStart(2,"0")}</span><i><b style="width:${Math.max(2,r.revenue/max*100)}%"></b></i><strong>${num(r.revenue/cfg.unitDivisor,1)} ${esc(cfg.unitLabel)}</strong></div>`).join("")}</div>`},
+  "line-chart"(vm){return renderers["bar-chart"](vm)},
+  bridge(vm){return `<div class="thesis"><h2>${esc(vm.dashboard.verificationChain.join(" → "))}</h2><p>${esc(vm.dashboard.estimateNote)}</p></div>`},
+  "scenario-table"(vm){const field=vm.dashboard.focusMetric.field;return table(["年度","情境","營收","毛利率","淨利","EPS",vm.dashboard.focusMetric.label],makeRows(vm.forecasts,[r=>String(r.fiscalYear),r=>esc(r.scenario),r=>num(r.revenue,1),r=>pct(r.grossMargin),r=>num(r.netIncome,1),r=>num(r.eps),r=>metricValue(field,r[field])]))},
+  capacity(vm){return table(["項目","設備／技術","增量","預計上線","狀態"],makeRows(vm.capacity,[r=>esc(r.label),r=>esc([r.equipment,r.technology].filter(Boolean).join(" · ")),r=>r.deltaUnits==null?"—":String(r.deltaUnits),r=>esc(r.expectedOnlineDate??"—"),r=>esc(r.status)]))},
+  signals(vm){return `<div class="signals">${vm.ranking.map(r=>`<article class="${r.status}"><b>${esc(r.metric)}</b><strong>${esc(r.label)}</strong><span>${esc(r.valueText)}</span><small>${esc(r.notes)}</small></article>`).join("")}</div>`},
+  "catalysts-risks"(vm){const col=(title,items,tone)=>`<div class="split ${tone}"><h3>${title}</h3>${items.map(r=>`<article><b>${esc(r.title)}</b><p>${esc(r.impact)}</p><small>${esc(r.status)}${r.probability?` · ${esc(r.probability)}`:""}</small></article>`).join("")}</div>`;return `<div class="twocol">${col("催化劑",vm.catalysts,"good")}${col("風險",vm.risks,"bad")}</div>`},
+  sources(vm){return `<div class="sources">${vm.sources.map((s,i)=>`<article><b>${String(i+1).padStart(2,"0")}</b><div><strong>${esc(s.provider)}｜${esc(s.title)}</strong><p>${esc(evidence[s.evidenceClass]??s.evidenceClass)} · ${esc(s.publishedDate??"日期未標示")} · 信心 ${esc(s.confidence)}</p></div></article>`).join("")}</div>`},
+  conclusion(vm){return `<div class="verdict"><em>RESEARCH VERDICT</em><h2>${esc(vm.dashboard.conclusion)}</h2><p>${esc(vm.thesis.summary)}</p><div class="chain">${vm.dashboard.verificationChain.map((x,i)=>`<div><b>${i+1}</b><span>${esc(x)}</span></div>`).join("")}</div><small>${esc(vm.dashboard.estimateNote)}</small></div>`}
 };
 
-export function renderGeneratedReport(vm) {
-  const pages = vm.profile.sections.map((type) => {
-    const renderer = sectionRenderers[type];
-    if (!renderer) throw new Error(`Unknown report section renderer: ${type}`);
-    return renderer(vm);
-  });
-  if (pages.length !== vm.profile.expectedPages) throw new Error(`Expected ${vm.profile.expectedPages} generated pages, got ${pages.length}`);
-  return reportShell(vm,pages);
+function sourceIds(vm,s){return [...new Set(s.payloadRefs.flatMap(ref=>Array.isArray(vm[ref])?vm[ref].flatMap(r=>r.sourceIds??[]):[]))]}
+function rail(vm,s){if(!s.showSources)return"";const list=sourceIds(vm,s).slice(0,5).map(id=>vm.sourceMap[id]).filter(Boolean);return `<aside><em>EVIDENCE RAIL</em>${list.length?`<ol>${list.map(x=>`<li><b>${esc(evidence[x.evidenceClass]??x.evidenceClass)}</b>${esc(x.provider)}<small>${esc(x.title)}</small></li>`).join("")}</ol>`:"<p>本頁為結構化研究摘要；來源詳見資料來源頁。</p>"}</aside>`}
+function page(vm,s,n,total,content){return `<section class="page slide${n===1?" active":""}" data-page="${n}"><div class="page-inner"><header><div><span>${String(n).padStart(2,"0")}</span><h1>${esc(s.title)}</h1></div><p>${esc(vm.company.market)} · ${esc(vm.company.ticker)}<br>${esc(vm.asOfDate)} · ${esc(vm.report.version)}</p></header><div class="layout"><main>${content}</main>${rail(vm,s)}</div><footer>${esc(vm.report.title)}<span>${n} / ${total}</span></footer></div></section>`}
+
+const css=`*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:"Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;background:#e9eef4;color:#12243a}body{overflow:hidden}.reader{height:100%;display:grid;grid-template-rows:54px 1fr 58px}.top{background:#12243a;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 18px}.brand{font-size:13px}.brand:before{content:"";display:inline-block;width:28px;height:3px;background:#35d0ba;margin:0 12px 3px 0}.zoom,.nav,.dots{display:flex;gap:6px;align-items:center}.top button,.nav button,.dot{border:1px solid #cdd7e3;background:#fff;color:#31455d;border-radius:4px;height:34px;min-width:38px;padding:0 9px;font-weight:800}.top button.active,.dot.active{background:#276ef1;color:#fff;border-color:#276ef1}.stage{overflow:auto;display:flex;justify-content:center;padding:14px}.wrap{width:794px;height:1123px;position:relative;flex:none}.page{width:794px;height:1123px;background:#f9fbfd;position:absolute;inset:0;overflow:hidden;transform-origin:top left;display:none;box-shadow:0 12px 34px #12243a29}.page.active{display:block}.page-inner{width:100%;height:100%;padding:34px 38px 28px;position:relative;overflow:hidden;background:linear-gradient(90deg,#f9fbfd 0 75%,#f1f5f9 75%)}header{height:76px;border-top:5px solid #12243a;border-bottom:1px solid #cad5e1;display:flex;justify-content:space-between;align-items:center}header>div{display:flex;align-items:center;gap:13px}header span{font:800 22px Arial;color:#276ef1}h1{margin:0;font-size:22px}header p{font-size:10px;color:#66788a;text-align:right;line-height:1.5}.layout{display:grid;grid-template-columns:minmax(0,3fr) minmax(145px,1fr);gap:22px;height:930px;padding-top:22px}.layout main{min-width:0;overflow:hidden}h2{font-size:23px;line-height:1.5;margin:5px 0 12px}h3{font-size:13px;letter-spacing:.08em;margin:20px 0 10px}em{font:800 9px Arial;letter-spacing:.16em;color:#276ef1;font-style:normal}.thesis{border-left:5px solid #00a6a6;padding:14px 18px;background:#eef9f8}.thesis p,.verdict p{font-size:11px;line-height:1.75;color:#50657a}.chain{display:flex;gap:8px;margin:18px 0}.chain>div{flex:1;border-top:2px solid #276ef1;padding-top:8px}.chain b{display:block;color:#276ef1;font:800 10px Arial}.chain span{font-size:10px;line-height:1.45}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.metric{border:1px solid #d6e0ea;background:#fff;padding:12px;min-height:92px}.metric.green{border-top:4px solid #16856b}.metric.yellow{border-top:4px solid #e4a11b}.metric.red{border-top:4px solid #cb4555}.metric small,.metric span{display:block;font-size:9px;color:#66788a}.metric strong{display:block;font:800 19px/1.5 Arial}table{width:100%;border-collapse:collapse;font-size:9px;background:#fff}th,td{padding:8px 6px;border-bottom:1px solid #dfe6ee;text-align:right;vertical-align:top}th{background:#12243a;color:#fff}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}.bars{display:grid;gap:7px}.bars>div{display:grid;grid-template-columns:55px 1fr 90px;gap:8px;align-items:center;font-size:9px}.bars i{height:14px;background:#e2e9f0}.bars i b{display:block;height:100%;background:linear-gradient(90deg,#276ef1,#00a6a6)}.bars strong{text-align:right}.layout aside{border-left:1px solid #c9d4df;padding-left:15px;overflow:hidden}.layout aside ol{list-style:none;padding:0;margin:12px 0}.layout aside li{font-size:9px;line-height:1.4;margin-bottom:15px}.layout aside li>b{display:table;background:#dfe8f2;padding:2px 4px;margin-bottom:4px}.layout aside small{display:block;color:#66788a}.layout aside p{font-size:9px;line-height:1.6;color:#66788a}.signals{display:grid;gap:8px}.signals article{display:grid;grid-template-columns:1.1fr 55px 1.4fr;gap:8px;padding:11px;border-left:4px solid #66788a;background:#fff;font-size:10px}.signals article.green{border-color:#16856b}.signals article.yellow{border-color:#e4a11b}.signals article.red{border-color:#cb4555}.signals article strong{color:#276ef1}.signals article small{grid-column:1/-1;color:#66788a}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:12px}.split{padding:12px;background:#fff;border-top:4px solid #16856b}.split.bad{border-color:#cb4555}.split h3{margin-top:0}.split article{border-top:1px solid #dfe6ee;padding:10px 0}.split p{font-size:10px;line-height:1.5;margin:4px 0}.split small{font-size:9px;color:#66788a}.sources{display:grid;gap:8px}.sources article{display:grid;grid-template-columns:30px 1fr;gap:8px;border-bottom:1px solid #dbe4ed;padding:9px 0}.sources article>b{font:800 13px Arial;color:#276ef1}.sources strong{font-size:10px}.sources p{font-size:9px;color:#66788a;margin:4px 0}.verdict{padding:24px;border-top:6px solid #276ef1;background:#fff}.verdict h2{font-size:26px}footer{position:absolute;left:38px;right:38px;bottom:16px;border-top:1px solid #cad5e1;padding-top:6px;display:flex;justify-content:space-between;font-size:8px;color:#66788a}.nav{background:#f8fafc;border-top:1px solid #d9e2ed;justify-content:center;padding:8px}.count{font-size:11px;font-weight:900;color:#516176}@media(max-width:700px){.top{padding:0 8px}.brand{font-size:10px}.stage{padding:8px}.zoom button{min-width:31px;padding:0 6px;font-size:10px}}@media print{body{overflow:visible;background:#fff}.reader{display:block}.top,.nav{display:none}.stage{display:block;padding:0;overflow:visible}.wrap{width:auto;height:auto}.page{display:block!important;position:relative;box-shadow:none;width:210mm;height:297mm;page-break-after:always;transform:none!important}}`;
+
+const responsiveCss=`@media(max-width:700px){.brand{max-width:220px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.zoom button:not(.active){display:none}.nav{gap:3px}.nav>button{min-width:30px;padding:0 5px}.dots{max-width:205px;overflow:auto}.dot{min-width:25px;padding:0 4px}.count{display:none}}`;
+function shell(vm,items){const total=items.length,final={...vm,profile:{...vm.profile,expectedPages:total,renderedPages:total}},pages=items.map((x,i)=>page(final,x.section,i+1,total,x.content)),dots=pages.map((_,i)=>`<button class="dot${i?"":" active"}" data-page="${i}">${i+1}</button>`).join(""),title=`${vm.company.name} ${vm.company.ticker}｜Full Research`;return `<!doctype html><html lang="zh-TW"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes"><title>${esc(title)}</title><style>${css}${responsiveCss}</style></head><body data-research-profile="${esc(vm.profileName)}"><div class="reader"><div class="top"><div class="brand">${esc(title)}</div><div class="zoom"><button data-z="fit" class="active">適合</button><button data-z=".75">75%</button><button data-z="1">100%</button><button data-z="1.25">125%</button></div></div><main class="stage" id="stage"><div class="wrap" id="wrap">${pages.join("\n")}</div></main><nav class="nav"><button id="prev">←</button><div class="dots">${dots}</div><span class="count" id="count">1 / ${total}</span><button id="next">→</button></nav></div><pre hidden id="research-qc-result"></pre><script id="research-report-payload" type="application/json">${json(final)}</script><script>${runtime}</script></body></html>`}
+
+const runtime=`(()=>{const pages=[...document.querySelectorAll('.page')],stage=document.getElementById('stage'),wrap=document.getElementById('wrap'),count=document.getElementById('count'),dots=[...document.querySelectorAll('.dot')];let active=0,zoom='fit';
+const scale=()=>{const n=zoom==='fit'?Math.min((stage.clientWidth-28)/794,(stage.clientHeight-28)/1123):Number(zoom);wrap.style.width=794*n+'px';wrap.style.height=1123*n+'px';pages.forEach(p=>p.style.transform='scale('+n+')')};
+const show=i=>{active=Math.max(0,Math.min(pages.length-1,i));pages.forEach((p,n)=>p.classList.toggle('active',n===active));dots.forEach((d,n)=>d.classList.toggle('active',n===active));count.textContent=(active+1)+' / '+pages.length};
+const collectQc=()=>{const overflows=[],overlaps=[],clippings=[],before=active;pages.forEach((p,i)=>{show(i);const inner=p.querySelector('.page-inner'),box=inner.getBoundingClientRect(),blocks=[...inner.children].filter(x=>!['SCRIPT','STYLE'].includes(x.tagName));if(inner.scrollHeight>inner.clientHeight+1)overflows.push({page:i+1,pixels:inner.scrollHeight-inner.clientHeight});const rects=blocks.map(x=>({name:x.tagName,rect:x.getBoundingClientRect()}));for(const item of rects)if(item.rect.left<box.left-1||item.rect.right>box.right+1||item.rect.top<box.top-1||item.rect.bottom>box.bottom+1)clippings.push({page:i+1,element:item.name});for(let a=0;a<rects.length;a++)for(let b=a+1;b<rects.length;b++){const x=Math.min(rects[a].rect.right,rects[b].rect.right)-Math.max(rects[a].rect.left,rects[b].rect.left),y=Math.min(rects[a].rect.bottom,rects[b].rect.bottom)-Math.max(rects[a].rect.top,rects[b].rect.top);if(x>1&&y>1)overlaps.push({page:i+1,a:rects[a].name,b:rects[b].name})}});show(before);const result={version:'p1.6-layout-qc',pages:pages.length,dots:dots.length,profile:document.body.dataset.researchProfile,fallbacks:document.querySelectorAll('.layout-fallback').length,overflows,overlaps,clippings,horizontalOverflow:Math.max(0,document.documentElement.scrollWidth-innerWidth),viewport:{width:innerWidth,height:innerHeight}};document.getElementById('research-qc-result').textContent=JSON.stringify(result);return result};
+document.addEventListener('click',e=>{const z=e.target.closest('[data-z]');if(z){zoom=z.dataset.z;document.querySelectorAll('[data-z]').forEach(b=>b.classList.toggle('active',b===z));scale()}const d=e.target.closest('[data-page]');if(d)show(Number(d.dataset.page))});document.getElementById('prev').onclick=()=>show(active-1);document.getElementById('next').onclick=()=>show(active+1);addEventListener('resize',scale);addEventListener('keydown',e=>{if(['ArrowRight','PageDown'].includes(e.key))show(active+1);if(['ArrowLeft','PageUp'].includes(e.key))show(active-1)});show(0);scale();window.__researchLayout={version:'p1.10-generic-renderer',totalPages:pages.length,activePage:()=>active+1,collectQc}})();`;
+
+const special={ranking:{id:"generated-ranking",type:"signals",title:"Research Signal Ranking",sortOrder:1,payloadRefs:["signalSnapshots"],showSources:true},"panel-summary":{id:"generated-summary",type:"summary",title:"Panel Summary",sortOrder:2,payloadRefs:["thesis","forecasts"],showSources:true}};
+export function renderGeneratedReport(vm){
+  const selected=vm.profile.sections.includes("package-sections")?[...vm.sections].sort((a,b)=>a.sortOrder-b.sortOrder):vm.profile.sections.map(key=>special[key]??vm.sections.find(s=>s.id===key||s.type===key)).filter(Boolean);
+  if(!vm.profile.sections.includes("package-sections")&&selected.length!==vm.profile.sections.length)throw new Error("One or more report sections could not be resolved");
+  const rendered=selected.map(section=>{const render=renderers[section.type];if(!render)throw new Error(`Unknown report section renderer: ${section.type}`);return{section,content:render(vm,section)}});
+  if(vm.profile.expectedPages!==undefined&&rendered.length!==vm.profile.expectedPages)throw new Error(`Expected ${vm.profile.expectedPages} generated pages, got ${rendered.length}`);
+  return shell(vm,rendered);
 }

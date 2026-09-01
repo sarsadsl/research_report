@@ -12,10 +12,10 @@ import { isDocumentationOnly } from "./ci-scope.mjs";
 const candidate = { reportHash: "report-sha", expectedPages: 14, buildHash: "build-sha" };
 const qcResult = () => ({
   websiteParity: true, reportHash: "report-sha",
-  results: ["desktop", "mobile"].map(name => ({
+  results: ["desktop", "laptop", "mobile"].map(name => ({
     name, version: "p1.6-layout-qc", pages: 14, dots: 14, profile: "full-research",
     fallbacks: 0, overflows: [], overlaps: [], clippings: [], horizontalOverflow: 0,
-    viewport: name === "desktop" ? {width:1440,height:1000} : {width:390,height:844}, runtimeErrors: [],
+    viewport: name === "desktop" ? {width:1440,height:1000} : name === "laptop" ? {width:1024,height:768} : {width:390,height:844}, runtimeErrors: [],
   })),
 });
 
@@ -38,11 +38,12 @@ function harness(overrides = {}) {
   return { record, effects, snapshots, actions };
 }
 
-test("publish defaults to validation only and rejects ambiguous/unsupported targets", () => {
+test("publish defaults to validation only and accepts any safe research slug", () => {
   assert.equal(parsePublishArgs(["vpec-2455"]).remote, false);
   assert.equal(parsePublishArgs(["vpec-2455", "--dry-run"]).remote, false);
   assert.equal(parsePublishArgs(["vpec-2455", "--remote"]).remote, true);
-  for (const args of [[], ["../x"], ["other-company"], ["vpec-2455", "--remote", "--dry-run"], ["vpec-2455", "--skip-qc"]]) {
+  assert.equal(parsePublishArgs(["other-company"]).slug,"other-company");
+  for (const args of [[], ["../x"], ["vpec-2455", "--remote", "--dry-run"], ["vpec-2455", "--skip-qc"]]) {
     assert.throws(() => parsePublishArgs(args));
   }
 });

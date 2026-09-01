@@ -18,8 +18,9 @@ function createSeedRepository(): ResearchRepository {
   return {
     async listPublishedCompanies() {
       const report = vpecSeed.reports.find((item) => item.status === "published")!;
+      const year=Math.max(...vpecSeed.dashboard.headlineForecastYears);
       return [{ company:vpecSeed.company, report, latestActual:latestActual(vpecSeed.actuals),
-        consensus2027:vpecSeed.forecasts.find((item)=>item.fiscalYear===2027&&item.scenario==="consensus"), signals:vpecSeed.signals }];
+        headlineForecast:vpecSeed.forecasts.find((item)=>item.fiscalYear===year&&item.scenario===vpecSeed.dashboard.forecastScenario), signals:vpecSeed.signals }];
     },
     async getBySlug(slug) { return slug === vpecSeed.company.slug ? vpecSeed : null; },
   };
@@ -34,10 +35,14 @@ function createD1Repository(db: DrizzleD1Database<typeof schema>): ResearchRepos
         const reports=await db.select().from(schema.researchReports).where(and(eq(schema.researchReports.companyId,company.id),eq(schema.researchReports.status,"published"))).orderBy(desc(schema.researchReports.publishedAt));
         if(!reports[0]) continue;
         const actuals=await db.select().from(schema.researchFinancialActuals).where(eq(schema.researchFinancialActuals.companyId,company.id)).orderBy(desc(schema.researchFinancialActuals.period));
-        const forecasts=await db.select().from(schema.researchForecasts).where(and(eq(schema.researchForecasts.companyId,company.id),eq(schema.researchForecasts.fiscalYear,2027),eq(schema.researchForecasts.scenario,"consensus")));
+        const dashboardRows=await db.select().from(schema.researchReportSections).where(and(eq(schema.researchReportSections.reportId,reports[0].id),eq(schema.researchReportSections.sectionKey,"dashboard-config"))).limit(1);
+        const dashboard=parseDashboardConfig(dashboardRows[0]?.contentJson);
+        if(!dashboard)throw new Error(`Missing dashboard-config for published report ${reports[0].id}`);
+        const headlineYear=Math.max(...dashboard.headlineForecastYears);
+        const forecasts=await db.select().from(schema.researchForecasts).where(and(eq(schema.researchForecasts.companyId,company.id),eq(schema.researchForecasts.fiscalYear,headlineYear),eq(schema.researchForecasts.scenario,dashboard.forecastScenario)));
         const dates=await db.select({asOfDate:schema.researchSignalSnapshots.asOfDate}).from(schema.researchSignalSnapshots).where(eq(schema.researchSignalSnapshots.companyId,company.id)).orderBy(desc(schema.researchSignalSnapshots.asOfDate)).limit(1);
         const signals=dates[0]?await db.select().from(schema.researchSignalSnapshots).where(and(eq(schema.researchSignalSnapshots.companyId,company.id),eq(schema.researchSignalSnapshots.asOfDate,dates[0].asOfDate))):[];
-        results.push({company,report:reports[0],latestActual:actuals[0],consensus2027:forecasts[0],signals:signals.map(s=>({...s,status:s.status as SignalStatus}))});
+        results.push({company,report:reports[0],latestActual:actuals[0],headlineForecast:forecasts[0],signals:signals.map(s=>({...s,status:s.status as SignalStatus}))});
       }
       return results;
     },

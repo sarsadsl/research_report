@@ -52,7 +52,7 @@ P1.8 QC specification，於 P1.9 更新自動發布 gate。操作與交付範本
 
 Manifest quality booleans 是需求宣告；目前 CLI viewport／profile 固定，未從 manifest 生成任意測試矩陣。其他必要裝置／profile 須另外驗收。
 
-自動 blocking 條件：diagnostics 缺失或 JSON 無法解析、browser timeout／非零退出、QC version 不是 `p1.6-layout-qc`、profile 不符、頁數／導覽點不等於 full-research expectedPages（目前 14）、任何 layout fallback、超過 1 CSS px 的 overflow／clipping、兩方向皆超過 1 px 的 top-level overlap，或 document 水平溢出超過 1 px。
+自動 blocking 條件：diagnostics 缺失或 JSON 無法解析、browser timeout／非零退出、QC version 不是 `p1.6-layout-qc`、profile 不符、頁數／導覽點不等於 full-research payload 的實際 renderedPages、任何 layout fallback、超過 1 CSS px 的 overflow／clipping、兩方向皆超過 1 px 的 top-level overlap，或 document 水平溢出超過 1 px。
 
 P1.9 另要求回讀的 CSS viewport 與上述尺寸完全一致，並檢查載入期間的 pageerror。透過 puppeteer-core 設定 viewport，不再依賴可能被瀏覽器限制的 window-size。CI 安裝 Noto CJK 作中文字體 fallback。
 

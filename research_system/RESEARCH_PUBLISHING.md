@@ -34,9 +34,9 @@ npm.cmd run research:publish -- vpec-2455 --remote
 
 乾跑在 seal 後停止，結果為 `VALIDATED_NOT_DEPLOYED`；正式成功為 `DEPLOYED`；失敗為 `FAILED` 且 CLI 非零退出。尚未執行階段為 NOT_RUN。進程被強制終止時紀錄可能停在 RUNNING，須視為結果未知，先確認外部狀態再重跑。
 
-QC 必須同時包含 desktop、mobile、正確 report hash、website parity、頁數、導覽點及完整幾何結果；缺少陣列或 horizontalOverflow 不再視為通過。Failed QC 的已取得 diagnostics 也會保存。
+QC 必須同時包含 desktop、laptop、mobile、正確 report hash、website parity、頁數、導覽點及完整幾何結果；缺少陣列或 horizontalOverflow 不再視為通過。Failed QC 的已取得 diagnostics 也會保存。
 
-P1.9 使用 puppeteer-core 控制已安裝的 Chrome／Edge，明確設定並回讀 CSS viewport 1440×1000、390×844，避免舊 window-size 參數受瀏覽器最小視窗限制。載入期間的 pageerror 也會阻擋。CI 安裝 Noto CJK 字體，避免缺少中文 fallback 字體使排版結果失真；不放寬既定 14 頁與幾何門檻。
+P1.9 使用 puppeteer-core 控制已安裝的 Chrome／Edge，明確設定並回讀 CSS viewport 1440×1000、390×844，避免舊 window-size 參數受瀏覽器最小視窗限制。載入期間的 pageerror 也會阻擋。CI 安裝 Noto CJK 字體，避免缺少中文 fallback 字體使排版結果失真；P1.10 起頁數由 Full Report payload 的實際 section 數決定，幾何門檻不變。
 
 ## 版本與紀錄
 

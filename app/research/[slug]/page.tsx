@@ -15,8 +15,7 @@ export default async function ResearchDetailPage({params}:{params:Promise<{slug:
   const report=data.reports[0];
   const focus=vm.config.monthlyRevenue;
   const forecastYears=vm.config.headlineForecastYears;
-  const firstForecast=vm.forecasts[forecastYears[0]];
-  const secondForecast=vm.forecasts[forecastYears[1]];
+  const focusIsPercent=["grossMargin","optoShare"].includes(vm.config.focusMetric.field);
 
   return <main>
     <section className="shell detailHero">
@@ -32,8 +31,7 @@ export default async function ResearchDetailPage({params}:{params:Promise<{slug:
 
     <section className="shell section"><div className="grid kpis">
       <div className="kpi"><div className="label">{vm.latestActual?.period} EPS</div><div className="value">{fmt(vm.latestActual?.eps,2)}</div><div className="small muted">最新實績</div></div>
-      <div className="kpi"><div className="label">{forecastYears[0]}F EPS</div><div className="value">{fmt(firstForecast?.eps,2)}</div><div className="small muted">市場中位</div></div>
-      <div className="kpi"><div className="label">{forecastYears[1]}F EPS</div><div className="value">{fmt(secondForecast?.eps,2)}</div><div className="small muted">市場中位</div></div>
+      {forecastYears.map(year=><div className="kpi" key={year}><div className="label">{year}F EPS</div><div className="value">{fmt(vm.forecasts[year]?.eps,2)}</div><div className="small muted">{vm.config.forecastScenario}</div></div>)}
       <div className="kpi"><div className="label">整體燈號</div><div className="value" style={{fontSize:20}}>{formatSignalLabel(vm.overallSignal)}</div><div className="small muted">截至 {data.signals[0]?.asOfDate??"—"}</div></div>
     </div></section>
 
@@ -53,7 +51,7 @@ export default async function ResearchDetailPage({params}:{params:Promise<{slug:
 
     <section className="shell section"><h2 className="sectionTitle">已實現財報</h2><table><thead><tr><th>Period</th><th>Revenue (百萬)</th><th>GP (百萬)</th><th>GM</th><th>OP Margin</th><th>Net Income</th><th>EPS</th></tr></thead><tbody>{data.actuals.map(a=><tr key={a.id}><td>{a.period}</td><td>{fmt(a.revenue)}</td><td>{fmt(a.grossProfit)}</td><td>{fmt(a.grossMargin,2)}%</td><td>{fmt(a.operatingMargin,2)}%</td><td>{fmt(a.netIncome)}</td><td>{fmt(a.eps,2)}</td></tr>)}</tbody></table></section>
 
-    <section className="shell section"><h2 className="sectionTitle">{vm.forecastRangeLabel}</h2><table><thead><tr><th>年度 / 情境</th><th>Revenue (百萬)</th><th>GM</th><th>Net Income</th><th>EPS</th><th>{vm.config.focusMetric.label}</th></tr></thead><tbody>{data.forecasts.map(f=><tr key={`${f.fiscalYear}-${f.scenario}`}><td>{f.fiscalYear} · {f.scenario}</td><td>{fmt(f.revenue,0)}</td><td>{fmt(f.grossMargin,2)}%</td><td>{fmt(f.netIncome,0)}</td><td>{fmt(f.eps,2)}</td><td>{f[vm.config.focusMetric.field]==null?"—":`${fmt(f[vm.config.focusMetric.field],1)}%`}</td></tr>)}</tbody></table>
+    <section className="shell section"><h2 className="sectionTitle">{vm.forecastRangeLabel}</h2><table><thead><tr><th>年度 / 情境</th><th>Revenue (百萬)</th><th>GM</th><th>Net Income</th><th>EPS</th><th>{vm.config.focusMetric.label}</th></tr></thead><tbody>{data.forecasts.map(f=><tr key={`${f.fiscalYear}-${f.scenario}`}><td>{f.fiscalYear} · {f.scenario}</td><td>{fmt(f.revenue,0)}</td><td>{fmt(f.grossMargin,2)}%</td><td>{fmt(f.netIncome,0)}</td><td>{fmt(f.eps,2)}</td><td>{f[vm.config.focusMetric.field]==null?"—":`${fmt(f[vm.config.focusMetric.field],1)}${focusIsPercent?"%":""}`}</td></tr>)}</tbody></table>
       <div className="grid twoCol" style={{marginTop:14}}>{vm.cagrCards.map(card=><div className="card" key={`${card.field}-${card.targetYear}`}><div className="small muted">{card.label}</div><div className="companyName">{card.value==null?"—":`${card.value.toFixed(1)}%`}</div></div>)}</div>
     </section>
 

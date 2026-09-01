@@ -1,6 +1,6 @@
 # Research Workflow
 
-P1.8 操作規範，於 P1.9 更新發布入口。適用於研究建立、更新、驗收與交付；目前可完整操作的參考個股為 `vpec-2455`。欄位見 [Data Contract](RESEARCH_DATA_SCHEMA.md)，呈現見 [Style Guide](RESEARCH_STYLE_GUIDE.md)，驗收見 [QC Specification](RESEARCH_QC.md)，自動發布細節見 [Publishing](RESEARCH_PUBLISHING.md)。
+P1.8 操作規範，於 P1.9 更新發布入口、P1.10 加入新報告 intake 與通用 Full Report。適用於研究建立、更新、驗收與交付；正式參考個股為 `vpec-2455`，另有不發布的合成第二家公司測試。欄位見 [Data Contract](RESEARCH_DATA_SCHEMA.md)，呈現見 [Style Guide](RESEARCH_STYLE_GUIDE.md)，驗收見 [QC Specification](RESEARCH_QC.md)，自動發布細節見 [Publishing](RESEARCH_PUBLISHING.md)。
 
 ## 維護來源與產物
 
@@ -8,14 +8,31 @@ P1.8 操作規範，於 P1.9 更新發布入口。適用於研究建立、更新
 | --- | --- |
 | `research/<slug>/research-package.json` | 研究資料唯一人工維護來源，包括數值、來源、claims、假設、Dashboard 設定與 report 版本 |
 | `research/<slug>/manifest.json` | 身分、reportVersion、所需輸出與品質要求；版本須與 package 一致 |
-| `research/<slug>/report-profiles.json` | Profile、章節順序、輸出位置及回歸頁數 |
+| `research/<slug>/intake.json`、`sources/` | 新研究的問題與來源清單；package 完成前不會進入 build／publish |
+| `research/<slug>/report-profiles.json` | Profile、輸出位置及 section 選擇；正式 Full Report 用 `package-sections`，頁數由 package 內容決定 |
 | `research/<slug>/notes.md` | 決策與待查問題，不作為另一份數值來源 |
 | `lib/research/generated/<slug>.json`、`db/seed/<ticker>.sql` | Generator 產生，禁止手改；有實質差異時與 package 一起提交 |
 | D1 | Package 衍生資料，由 importer 更新 |
-| `public/research/reports/*.html` | Materializer 產物；既有 2455 HTML 仍被 Git 追蹤，屬 legacy 例外，不提交生成差異或新增產物 |
+| `public/research/reports/*.html` | Materializer 產物；正式 full report 可被網站發布，experiment 與本機生成差異不另行手改 |
 | `exports/*.html` | Standalone 交付檔，Git 已忽略，不提交 GitHub |
 
-目前 Full Report 仍由 `report_sources/vpec-2455.v4.*` 與 v7 layout 產生，僅注入 package view model，**不會把所有舊正文自動更新成 package 數值**。更新研究後必須核對完整正文；不一致就停止交付。通用 `experiment-summary` 已使用 package，不代表完整報告已通用化。不得複製 legacy 路徑新增公司。
+Full Report 由 `research-package.json` 的 `sections` 與通用 renderer 產生，不再讀取 2455 legacy HTML。每個 section 的 `payloadRefs` 決定資料與 evidence rail；頁數是排序後的 section 數，不設公司專屬固定頁數。
+
+## 新報告 intake
+
+先建立不會被網站建置或發布的來源工作區：
+
+```powershell
+npm.cmd run research:intake -- <slug> --company "公司名稱" --ticker <代號> --market <市場> --as-of YYYY-MM-DD
+```
+
+將檔案放在 `research/<slug>/sources/`，或在 `intake.json` 記錄 URL；每筆來源填 `id`、`title`、`provider`、`evidenceClass` 及 `file`／`url`。檢查相對路徑、必填欄位與附件 SHA-256：
+
+```powershell
+npm.cmd run research:intake -- <slug> --check
+```
+
+Intake PASS 只表示來源清單可讀。接著才依 schema 建立 `manifest.json`、`research-package.json`、`report-profiles.json`，完成 claims、估計分類及內容審閱，再依本文件後續流程驗證。機密或未授權附件不可提交公開 repo。
 
 ## 研究準備與證據
 
@@ -125,7 +142,7 @@ git status --short
 git stash list
 ```
 
-恢復前用 `git stash show --stat --include-untracked 'stash@{n}'` 確認項目，再用 `git stash apply 'stash@{n}'`，n 換成確認後編號。不要盲目 pop 最新一筆。Stash 會改變工作區 HTML，之後匯入／交付前須重新 materialize／QC，避免記錄還原 legacy 檔的 hash。
+恢復前用 `git stash show --stat --include-untracked 'stash@{n}'` 確認項目，再用 `git stash apply 'stash@{n}'`，n 換成確認後編號。不要盲目 pop 最新一筆。Stash 會改變工作區 HTML，之後匯入／交付前須重新 materialize／QC，避免記錄舊 artifact 的 hash。
 
 ## Handoff 範本
 

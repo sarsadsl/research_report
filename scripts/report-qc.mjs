@@ -8,6 +8,7 @@ import { exportStandaloneReport } from "./report-exporter.mjs";
 
 const profiles = [
   { name: "desktop", width: 1440, height: 1000 },
+  { name: "laptop", width: 1024, height: 768 },
   { name: "mobile", width: 390, height: 844 },
 ];
 
@@ -88,8 +89,7 @@ export async function runHeadlessQc({ chromePath, htmlPath, viewport, expectedPa
 export async function runReportQc({ slug, rootDir=process.cwd(), chromePath, materialize=true }={}) {
   if(!slug)throw new Error("Usage: npm run report:qc -- <slug>");
   const exported=await exportStandaloneReport({rootDir,slug,materialize});
-  const profileDocument=JSON.parse(await readFile(resolve(rootDir,"research",slug,"report-profiles.json"),"utf8"));
-  const expectedPages=Number(profileDocument.profiles["full-research"].expectedPages);
+  const expectedPages=exported.pages;
   const browser=chromePath??findChrome();
   const results=[];
   for(const viewport of profiles) {

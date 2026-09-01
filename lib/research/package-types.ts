@@ -68,6 +68,7 @@ export interface ResearchPackage {
   company: Record<string, unknown> & { id: string; ticker: string; market: string; name: string; slug: string; currency: string };
   report: Record<string, unknown> & { id: string; title: string; slug: string; status: ReportStatus; version: string };
   thesis: { summary: string; coreChain: string[]; claimIds: string[] };
+  dashboard: Record<string, unknown>;
   actuals: Array<Record<string, unknown> & Provenance>;
   monthlyRevenue: Array<Record<string, unknown> & Provenance>;
   segments: Array<Record<string, unknown> & Provenance>;
