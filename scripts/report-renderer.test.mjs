@@ -30,13 +30,31 @@ test("report profiles reject unsafe output paths", async()=>{
   assert.throws(()=>validateReportProfiles(invalid),/invalid output path/);
 });
 
-test("full report is generated from package sections with content-driven pages", async () => {
-  const {pkg,profiles}=await load();
-  const vm=buildReportViewModel(pkg,"full-research",profiles.profiles["full-research"]);
-  const rendered=renderGeneratedReport(vm);
-  assert.equal((rendered.match(/<section class="page/g)||[]).length,pkg.sections.length);
-  assert.match(rendered,/"profileName":"full-research"/);
-  assert.match(rendered,/EVIDENCE RAIL/);
+test("VPEC full report remains a verified canonical baseline", async () => {
+  const {profiles}=await load();
+  const profile=profiles.profiles["full-research"];
+  assert.equal(profile.kind,"baseline");
+  assert.equal(profile.sourcePages,8);
+  assert.equal(profile.expectedPages,14);
+  assert.equal(profile.canonical.sha256,"b7092685eab8bfb3479723b29771c746d1cb94e70edef41afa373493745c4ea8");
+  assert.equal(validateReportProfiles(profiles),true);
+});
+
+test("materialized VPEC artifact preserves the original reader and page design", async () => {
+  const html=await readFile("public/research/reports/vpec-2455.html","utf8");
+  assert.equal((html.match(/<div class="slide" data-page=/g)||[]).length,8);
+  assert.match(html,/<title>全新光電 2455 TT｜互動式分頁研究報告<\/title>/);
+  assert.match(html,/id="v7-safe-pagination-style"/);
+  assert.match(html,/id="v7-safe-pagination-script"/);
+  assert.match(html,/"expectedPages":14/);
+  assert.doesNotMatch(html,/EVIDENCE RAIL/);
+});
+
+test("baseline profiles fail closed without canonical source metadata", async()=>{
+  const {profiles}=await load();
+  const invalid=structuredClone(profiles);
+  delete invalid.profiles["full-research"].canonical;
+  assert.throws(()=>validateReportProfiles(invalid),/baseline canonical sources are required/);
 });
 
 test("report profiles allow ignored local draft outputs", async()=>{

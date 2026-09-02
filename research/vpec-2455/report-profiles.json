@@ -2,9 +2,34 @@
   "schemaVersion": "1.0.0",
   "profiles": {
     "full-research": {
-      "kind": "generated",
+      "kind": "baseline",
       "output": "public/research/reports/vpec-2455.html",
-      "sections": ["package-sections"]
+      "sourcePages": 8,
+      "expectedPages": 14,
+      "sections": [
+        "summary", "actuals", "mix", "profitability", "forecast-2026",
+        "forecast-2027", "scenario", "capacity", "signals", "catalysts-risks",
+        "sources", "conclusion"
+      ],
+      "canonical": {
+        "sources": [
+          "report_sources/vpec-2455.v4.part01a",
+          "report_sources/vpec-2455.v4.part01b",
+          "report_sources/vpec-2455.v4.part01c",
+          "report_sources/vpec-2455.v4.part01d",
+          "report_sources/vpec-2455.v4.part01e",
+          "report_sources/vpec-2455.v4.part02",
+          "report_sources/vpec-2455.v4.part03",
+          "report_sources/vpec-2455.v4.part04",
+          "report_sources/vpec-2455.v4.part05",
+          "report_sources/vpec-2455.v4.part06"
+        ],
+        "byteLength": 98309,
+        "sha256": "b7092685eab8bfb3479723b29771c746d1cb94e70edef41afa373493745c4ea8",
+        "layoutCss": "report_sources/vpec-layout-v7.css",
+        "layoutJs": "report_sources/vpec-layout-v7.js",
+        "readerMarker": "\n<script>\n(() => {"
+      }
     },
     "experiment-summary": {
       "kind": "generated",

@@ -16,7 +16,13 @@ export function validateReportProfiles(doc){
     if(!/^(?:public\/research\/reports|\.research-drafts\/reports)\/[a-z0-9-]+\.html$/.test(p.output??""))errors.push(`${name}: invalid output path`);
     if(p.expectedPages!==undefined&&(!Number.isInteger(p.expectedPages)||p.expectedPages<1))errors.push(`${name}: invalid expectedPages`);
     if(!Array.isArray(p.sections)||!p.sections.length)errors.push(`${name}: sections are required`);
-    if(p.kind==="baseline"&&(!Number.isInteger(p.sourcePages)||p.sourcePages<1))errors.push(`${name}: baseline sourcePages are required`);
+    if(p.kind==="baseline"){
+      if(!Number.isInteger(p.sourcePages)||p.sourcePages<1)errors.push(`${name}: baseline sourcePages are required`);
+      if(!Array.isArray(p.canonical?.sources)||!p.canonical.sources.length)errors.push(`${name}: baseline canonical sources are required`);
+      if(!Number.isInteger(p.canonical?.byteLength)||p.canonical.byteLength<1)errors.push(`${name}: baseline canonical byteLength is required`);
+      if(!/^[a-f0-9]{64}$/.test(p.canonical?.sha256??""))errors.push(`${name}: baseline canonical sha256 is required`);
+      if(!p.canonical?.layoutCss||!p.canonical?.layoutJs||!p.canonical?.readerMarker)errors.push(`${name}: baseline layout patch is required`);
+    }
   }
   if(errors.length)throw new Error(["Report profile validation failed:",...errors.map(e=>`- ${e}`)].join("\n"));
   return true;
@@ -34,7 +40,7 @@ export function injectFullReportMetadata(html,vm){
   const expected=vm.profile.sourcePages??vm.profile.expectedPages;
   if(expected&&count!==expected)throw new Error(`Full report source regression failed: expected ${expected} pages, found ${count}`);
   if(!html.includes("</body>"))throw new Error("Full report has no </body> marker");
-  return html.replace("</body>",`<script id="research-report-payload" type="application/json">${json({...vm,profile:{...vm.profile,expectedPages:count,renderedPages:count}})}</script>\n</body>`);
+  return html.replace("</body>",`<script id="research-report-payload" type="application/json">${json(vm)}</script>\n</body>`);
 }
 
 const makeRows=(items,cells)=>items.map(item=>`<tr>${cells.map(cell=>`<td>${cell(item)}</td>`).join("")}</tr>`).join("");
