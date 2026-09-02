@@ -92,11 +92,15 @@ function ruleCards(vm){
   return `<div class="rule-grid">${vm.signalRules.map(rule=>`<article><div><b>${esc(rule.metric)}</b><small>權重 ${num(rule.weight,1)}</small></div><p class="green"><span>升級</span>${esc(rule.greenCondition)}</p><p class="yellow"><span>觀察</span>${esc(rule.yellowCondition)}</p><p class="red"><span>降級</span>${esc(rule.redCondition)}</p></article>`).join("")}</div>`;
 }
 
+const closingRefinementCss=`.conclusion-page{grid-template-rows:auto auto minmax(0,1fr) auto;gap:12px}.next-stage{padding:16px 18px;background:var(--ink);color:#fff}.next-stage-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:13px}.next-stage-head h3{margin:0;font-size:15px;letter-spacing:0}.next-stage-head p{max-width:290px;margin:0;font-size:8px;line-height:1.5;color:#bfd0df;text-align:right}.priority-track{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));position:relative}.priority-track:before{content:"";position:absolute;left:8%;right:8%;top:14px;height:1px;background:#557087}.priority-track article{position:relative;padding:0 18px 0 0}.priority-track article:before{content:"";display:block;width:10px;height:10px;margin:9px 0 12px;border:4px solid var(--ink);outline:2px solid #35d0ba;background:#35d0ba;position:relative;z-index:1}.priority-track b{display:block;font-size:8px;color:#35d0ba}.priority-track strong{display:block;margin-top:5px;font-size:10px;line-height:1.45;color:#fff}.closing-grid.focused{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr)}.closing-grid.focused .claim-list,.closing-grid.focused .update-list{height:auto}.closing-grid.focused .claim-list li,.closing-grid.focused .update-list li{padding:8px 0}.source-page{grid-template-rows:auto auto minmax(0,1fr) auto;gap:12px}.source-page .source-layout{align-self:start}.source-page .source-records{grid-auto-rows:auto;flex:0 0 auto}.source-page .source-record{padding:8px 0}.evidence-next{min-height:0;padding:15px 17px;background:#eef5fb;border-top:4px solid var(--teal);display:grid;grid-template-rows:auto minmax(0,1fr)}.evidence-next .next-stage-head{margin-bottom:10px}.evidence-next .next-stage-head h3{color:var(--ink);font-size:13px}.evidence-next .next-stage-head p{color:var(--muted)}.evidence-queue{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.evidence-queue article{padding:12px;background:#fff;border-top:2px solid var(--blue)}.evidence-queue b{display:block;font:800 10px Arial;color:var(--blue)}.evidence-queue strong{display:block;margin:7px 0 5px;font-size:9.5px;line-height:1.45}.evidence-queue span{display:block;font-size:7.5px;line-height:1.45;color:var(--muted)}`;
+
 function conclusionPage(vm){
   const statusCounts={green:0,yellow:0,red:0};
   vm.ranking.forEach(row=>{if(statusCounts[row.status]!==undefined)statusCounts[row.status]+=1});
   const claims=vm.claims.slice(0,4);
-  return `<div class="conclusion-page">
+  const priorities=vm.dashboard.verificationChain.slice(0,3);
+  const followups=vm.dashboard.verificationChain.slice(3);
+  return `<style>${closingRefinementCss}</style><div class="conclusion-page">
     <section class="decision-summary">
       <div><h2>${esc(vm.dashboard.conclusion)}</h2><p>${esc(vm.thesis.summary)}</p></div>
       <div class="status-strip">
@@ -105,14 +109,18 @@ function conclusionPage(vm){
         <article class="red"><strong>${statusCounts.red}</strong><span>風險訊號</span></article>
       </div>
     </section>
-    <div class="closing-grid">
+    <section class="next-stage">
+      <div class="next-stage-head"><h3>下階段先看這三件事</h3><p>依研究驗證順序排列；先確認領先訊號，再判斷原始投資論點是否需要調整。</p></div>
+      <div class="priority-track">${priorities.map((item,index)=>`<article><b>優先 ${index+1}</b><strong>${esc(item)}</strong></article>`).join("")}</div>
+    </section>
+    <div class="closing-grid focused">
       <section class="closing-panel">
         <div class="closing-head"><h3>支持目前判斷的證據</h3><span>${claims.length} 項研究主張</span></div>
-        <ol class="claim-list" style="grid-template-rows:repeat(${Math.max(claims.length,1)},minmax(0,1fr))">${claims.map((claim,index)=>`<li><b>${String(index+1).padStart(2,"0")}</b><div><strong>${esc(evidence[claim.evidenceClass]??claim.evidenceClass)}</strong><p>${esc(claim.text)}</p><small>信心 ${esc(claim.confidence)}</small></div></li>`).join("")}</ol>
+        <ol class="claim-list" style="height:100%;grid-template-rows:repeat(${Math.max(claims.length,1)},minmax(0,1fr))">${claims.map((claim,index)=>`<li><b>${String(index+1).padStart(2,"0")}</b><div><strong>${esc(evidence[claim.evidenceClass]??claim.evidenceClass)}</strong><p>${esc(claim.text)}</p><small>信心 ${esc(claim.confidence)}</small></div></li>`).join("")}</ol>
       </section>
       <section class="closing-panel">
-        <div class="closing-head"><h3>下一輪更新優先順序</h3><span>${vm.dashboard.verificationChain.length} 個驗證節點</span></div>
-        <ol class="update-list" style="grid-template-rows:repeat(${Math.max(vm.dashboard.verificationChain.length,1)},minmax(0,1fr))">${vm.dashboard.verificationChain.map((item,index)=>`<li><b>${String(index+1).padStart(2,"0")}</b><span>${esc(item)}</span></li>`).join("")}</ol>
+        <div class="closing-head"><h3>後續追蹤項目</h3><span>${followups.length} 個驗證節點</span></div>
+        <ol class="update-list" style="height:100%;grid-template-rows:repeat(${Math.max(followups.length,1)},minmax(0,1fr))">${followups.map((item,index)=>`<li><b>${String(index+4).padStart(2,"0")}</b><span>${esc(item)}</span></li>`).join("")}</ol>
       </section>
     </div>
     <div class="decision-boundary"><b>目前判讀邊界</b><p>${esc(vm.dashboard.currentView)}</p><small>${esc(vm.dashboard.estimateNote)}</small></div>
@@ -123,6 +131,7 @@ function sourcePage(vm){
   const counts=Object.fromEntries(Object.keys(evidence).map(key=>[key,vm.sources.filter(source=>source.evidenceClass===key).length]));
   const sourceCards=vm.sources.map((source,index)=>`<article class="source-record"><b>${String(index+1).padStart(2,"0")}</b><div><strong>${esc(source.provider)}｜${esc(source.title)}</strong><p>${esc(source.notes??"用於本報告的研究佐證。")}</p><small>${esc(evidence[source.evidenceClass]??source.evidenceClass)} · ${esc(source.publishedDate??source.accessedDate??"日期未標示")} · 信心 ${esc(source.confidence)}</small></div></article>`).join("");
   const legend=Object.entries(evidence).map(([key,label])=>`<article class="method-row ${key}"><div><b>${esc(label)}</b><span>${counts[key]??0} 筆來源</span></div><p>${key==="official"?"公司或主管機關直接揭露":key==="third_party_fact"?"可由公開資料交叉核對":key==="market_consensus"?"市場模型或共識，非公司承諾":"依公開資料推導並明確標示"}</p></article>`).join("");
+  const evidencePriorities=vm.dashboard.verificationChain.slice(0,3);
   return `<div class="source-page">
     <div class="research-meta">
       <article><span>研究版本</span><strong>${esc(vm.report.version)}</strong></article>
@@ -134,6 +143,10 @@ function sourcePage(vm){
       <section class="source-directory"><div class="closing-head"><h3>公開資料來源目錄</h3><span>可追溯至原始出處</span></div><div class="source-records">${sourceCards}</div></section>
       <section class="evidence-method"><div class="closing-head"><h3>證據分級方法</h3><span>事實與推論分開</span></div>${legend}</section>
     </div>
+    <section class="evidence-next">
+      <div class="next-stage-head"><h3>下一輪需要補強的公開證據</h3><p>追蹤項目必須由公司公告、主管機關資料或可交叉核對的公開事實支持。</p></div>
+      <div class="evidence-queue">${evidencePriorities.map((item,index)=>`<article><b>Evidence ${String(index+1).padStart(2,"0")}</b><strong>${esc(item)}</strong><span>取得新公開資料後，重新核對目前結論與訊號狀態。</span></article>`).join("")}</div>
+    </section>
     <div class="source-boundary"><b>公開與排除原則</b><p>${esc(vm.dashboard.estimateNote)}</p><small>公開事實可揭露；研究情境必須標示；未公開的券商、法人或客戶資訊不納入公開報告。</small></div>
   </div>`;
 }

@@ -63,7 +63,11 @@ test("VPEC template comparison uses the same generated public format as STL", as
   assert.match(html,/EVIDENCE RAIL/);
   assert.match(html,/class="conclusion-page"/);
   assert.match(html,/支持目前判斷的證據/);
+  assert.match(html,/下階段先看這三件事/);
+  assert.equal((html.match(/優先 [123]/g)||[]).length,3);
   assert.match(html,/class="source-page"/);
+  assert.match(html,/下一輪需要補強的公開證據/);
+  assert.equal((html.match(/Evidence 0[123]/g)||[]).length,3);
   assert.match(html,/公開與排除原則/);
   assert.match(html,/class="page-inner no-rail-page"/);
   assert.match(html,/"profileName":"template-comparison"/);
