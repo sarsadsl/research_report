@@ -61,6 +61,11 @@ test("VPEC template comparison uses the same generated public format as STL", as
   assert.doesNotMatch(html,/>月營收趨勢<\/h1>/);
   assert.match(html,/class="nav-progress"/);
   assert.match(html,/EVIDENCE RAIL/);
+  assert.match(html,/class="conclusion-page"/);
+  assert.match(html,/支持目前判斷的證據/);
+  assert.match(html,/class="source-page"/);
+  assert.match(html,/公開與排除原則/);
+  assert.match(html,/class="page-inner no-rail-page"/);
   assert.match(html,/"profileName":"template-comparison"/);
 });
 
@@ -75,6 +80,8 @@ test("STL full report shares the dense v2 research layout", async () => {
   assert.equal((html.match(/<section class="page slide/g)||[]).length,9);
   assert.match(html,/BBU/);
   assert.match(html,/應收與存貨快速增加/);
+  assert.match(html,/7 筆來源/);
+  assert.match(html,/未公開的券商、法人或客戶資訊不納入公開報告/);
 });
 
 test("baseline profiles fail closed without canonical source metadata", async()=>{
