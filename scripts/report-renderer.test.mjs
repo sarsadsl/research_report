@@ -39,6 +39,13 @@ test("full report is generated from package sections with content-driven pages",
   assert.match(rendered,/EVIDENCE RAIL/);
 });
 
+test("report profiles allow ignored local draft outputs", async()=>{
+  const {profiles}=await load();
+  const draft=structuredClone(profiles);
+  draft.profiles["full-research"].output=".research-drafts/reports/fixture-9001.html";
+  assert.equal(validateReportProfiles(draft),true);
+});
+
 test("a synthetic second company supports different KPI, years and sections",async()=>{
   const {pkg}=await load();
   const second=structuredClone(pkg);
@@ -57,4 +64,5 @@ test("a synthetic second company supports different KPI, years and sections",asy
   const html=renderGeneratedReport(buildReportViewModel(second,"full-research",profile));
   assert.equal((html.match(/<section class="page/g)||[]).length,6);
   assert.match(html,/合成製造測試公司/);assert.match(html,/毛利率/);
+  assert.doesNotMatch(html,/<th>毛利率<\/th>[\s\S]*<th>毛利率<\/th>/);
 });

@@ -85,7 +85,7 @@ function cleanup(table, companyId, ids, companyColumn = "company_id") {
 function d1Seed(pkg) {
   const c = pkg.company;
   const asOf = pkg.asOfDate;
-  const company = [{ ...c, status: "active", created_at: asOf, updated_at: asOf }];
+  const company = [{ ...c, status: pkg.report.visibility === "unlisted" ? "unlisted" : "active", created_at: asOf, updated_at: asOf }];
   const actuals = pkg.actuals.map((row) => ({
     ...row, company_id: c.id, fiscal_year: row.fiscalYear, gross_profit: row.grossProfit,
     gross_margin: row.grossMargin, operating_income: row.operatingIncome, operating_margin: row.operatingMargin,

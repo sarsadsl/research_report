@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "stl-4931",
+  "companyName": "新盛力科技股份有限公司",
+  "ticker": "4931",
+  "market": "TPEX",
+  "asOfDate": "2026-08-31",
+  "requestedOutputs": [
+    "dashboard",
+    "full-report",
+    "standalone"
+  ],
+  "researchQuestions": [
+    "新盛力在 BBU 供應鏈中的公開可驗證定位為何？",
+    "2026 年營收與獲利加速是否已由財報和月營收支持？",
+    "產品能力、UL 1973 CTDP 與特定 CSP 客戶認證之間應如何區分？",
+    "客戶集中、營運資金與擴產執行有哪些風險？",
+    "只使用公開資料時，2026F 與 2027F 的合理情境範圍為何？"
+  ],
+  "sources": [
+    {
+      "id": "stl-src-investor",
+      "title": "投資人專區與每月營收",
+      "provider": "新盛力科技",
+      "evidenceClass": "official",
+      "url": "https://www.stl-tech.com/investor.asp"
+    },
+    {
+      "id": "stl-src-product",
+      "title": "儲能／電池備援系統產品規格",
+      "provider": "新盛力科技",
+      "evidenceClass": "official",
+      "url": "https://www.stl-tech.com/product_info.asp?id=89"
+    },
+    {
+      "id": "stl-src-q1",
+      "title": "2026Q1 合併財務報告",
+      "provider": "新盛力科技",
+      "evidenceClass": "official",
+      "file": "sources/FinancialStatements-2026Q1.pdf"
+    },
+    {
+      "id": "stl-src-q2",
+      "title": "2026Q2 合併財務報告",
+      "provider": "新盛力科技",
+      "evidenceClass": "official",
+      "file": "sources/FinancialStatements-2026Q2.pdf"
+    },
+    {
+      "id": "stl-src-annual",
+      "title": "2025 年報",
+      "provider": "新盛力科技",
+      "evidenceClass": "official",
+      "file": "sources/2025-AnnualReport-zh.pdf"
+    },
+    {
+      "id": "stl-src-agm",
+      "title": "2026 股東常會議事手冊",
+      "provider": "新盛力科技",
+      "evidenceClass": "official",
+      "file": "sources/2026-AGM-Handbook-zh.pdf"
+    },
+    {
+      "id": "stl-src-ir",
+      "title": "2025 法人說明會公開簡報",
+      "provider": "新盛力科技",
+      "evidenceClass": "official",
+      "file": "sources/2025-EarningsCallMaterial.pdf"
+    }
+  ],
+  "notes": "公開版只使用公司、MOPS 與可公開查證資料；券商／法人研究僅供內部提出假說，不得進入 package、D1 或公開 HTML。"
+}

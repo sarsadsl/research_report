@@ -1,0 +1,398 @@
+{
+  "company": {
+    "id": "stl-4931",
+    "ticker": "4931",
+    "market": "TPEX",
+    "name": "新盛力科技",
+    "slug": "stl-4931",
+    "sector": "電腦及週邊設備",
+    "industry": "鋰電池模組／電池備援系統",
+    "currency": "TWD",
+    "description": "鋰離子電池模組設計與製造商，應用涵蓋資料中心與伺服器 BBU、電動工具及輕型電動交通工具。"
+  },
+  "dashboard": {
+    "currentView": "2026H1 營收年增 70%、毛利率 22.8%、EPS 3.69 元，7 月營收續創本研究期高點；但前兩大客戶在 2025 年合計占 69.61%，且應收帳款、存貨、廠房設備與應付帳款同步擴大。",
+    "verificationChain": [
+      "月營收是否維持 4 億元以上",
+      "毛利率是否維持 22% 以上",
+      "應收與存貨週轉是否穩定",
+      "營業現金流是否跟上獲利",
+      "是否有公開可核對的新客戶資格",
+      "EPS 是否持續轉化"
+    ],
+    "conclusion": "新盛力已出現明確 BBU 放量與獲利改善，但現階段最重要的不是推測客戶名稱，而是驗證營收、毛利率、週轉與公開資格是否連續兌現。",
+    "forecastScenario": "base",
+    "headlineForecastYears": [
+      2026,
+      2027
+    ],
+    "focusMetric": {
+      "field": "grossMargin",
+      "label": "毛利率"
+    },
+    "monthlyRevenue": {
+      "focusYear": 2026,
+      "cumulativeThroughMonth": 7,
+      "unitDivisor": 100,
+      "unitLabel": "億"
+    },
+    "cagrCards": [
+      {
+        "field": "revenue",
+        "label": "2025A → 2027F Revenue CAGR",
+        "baseYear": 2025,
+        "targetYear": 2027,
+        "baseValue": 2451.377,
+        "years": 2
+      },
+      {
+        "field": "eps",
+        "label": "2025A → 2027F EPS CAGR",
+        "baseYear": 2025,
+        "targetYear": 2027,
+        "baseValue": 3.13,
+        "years": 2
+      }
+    ],
+    "estimateNote": "* 2026F／2027F 為僅依公開實績建立的研究情境，不含任何券商或法人預測；產品規格與 UL CTDP 不代表特定 CSP 量產資格。"
+  },
+  "actuals": [
+    {
+      "id": "stl-2025fy",
+      "period": "2025FY",
+      "fiscalYear": 2025,
+      "quarter": null,
+      "revenue": 2451.377,
+      "grossProfit": 534.624,
+      "grossMargin": 21.81,
+      "operatingIncome": 248.684,
+      "operatingMargin": 10.14,
+      "netIncome": 203.562,
+      "netMargin": 8.3,
+      "eps": 3.13,
+      "companyId": "stl-4931"
+    },
+    {
+      "id": "stl-2026q1",
+      "period": "2026Q1",
+      "fiscalYear": 2026,
+      "quarter": 1,
+      "revenue": 791.378,
+      "grossProfit": 174.763,
+      "grossMargin": 22.08,
+      "operatingIncome": 98.188,
+      "operatingMargin": 12.41,
+      "netIncome": 97.094,
+      "netMargin": 12.27,
+      "eps": 1.48,
+      "companyId": "stl-4931"
+    },
+    {
+      "id": "stl-2026q2",
+      "period": "2026Q2",
+      "fiscalYear": 2026,
+      "quarter": 2,
+      "revenue": 1113.26,
+      "grossProfit": 259.71,
+      "grossMargin": 23.33,
+      "operatingIncome": 167.774,
+      "operatingMargin": 15.07,
+      "netIncome": 144.542,
+      "netMargin": 12.98,
+      "eps": 2.2,
+      "companyId": "stl-4931"
+    }
+  ],
+  "monthlyRevenue": [
+    {
+      "year": 2026,
+      "month": 1,
+      "revenue": 289.976,
+      "mom": 18.66,
+      "yoy": 42.29
+    },
+    {
+      "year": 2026,
+      "month": 2,
+      "revenue": 218.293,
+      "mom": -24.72,
+      "yoy": -10.8
+    },
+    {
+      "year": 2026,
+      "month": 3,
+      "revenue": 283.109,
+      "mom": 29.69,
+      "yoy": 36.12
+    },
+    {
+      "year": 2026,
+      "month": 4,
+      "revenue": 302.908,
+      "mom": 6.99,
+      "yoy": 97.38
+    },
+    {
+      "year": 2026,
+      "month": 5,
+      "revenue": 415.943,
+      "mom": 37.32,
+      "yoy": 178.64
+    },
+    {
+      "year": 2026,
+      "month": 6,
+      "revenue": 394.409,
+      "mom": -5.18,
+      "yoy": 145.09
+    },
+    {
+      "year": 2026,
+      "month": 7,
+      "revenue": 449.435,
+      "mom": 13.95,
+      "yoy": 159.52
+    }
+  ],
+  "segments": [
+    {
+      "period": "2025FY",
+      "segment": "電源備援系統／BBU",
+      "revenue": null,
+      "share": null,
+      "isEstimate": false
+    },
+    {
+      "period": "2025FY",
+      "segment": "電動手工具",
+      "revenue": null,
+      "share": null,
+      "isEstimate": false
+    },
+    {
+      "period": "2025FY",
+      "segment": "輕型電動交通工具",
+      "revenue": null,
+      "share": null,
+      "isEstimate": false
+    }
+  ],
+  "forecasts": [
+    {
+      "fiscalYear": 2026,
+      "scenario": "bear",
+      "revenue": 4004.1,
+      "grossMargin": 19,
+      "netIncome": 300.3,
+      "eps": 4.58,
+      "optoShare": null,
+      "notes": "1-7M 實績加上 8-12 月平均月營收 3.3 億元；淨利率 7.5%。"
+    },
+    {
+      "fiscalYear": 2026,
+      "scenario": "base",
+      "revenue": 4354.1,
+      "grossMargin": 22,
+      "netIncome": 457.2,
+      "eps": 6.97,
+      "optoShare": null,
+      "notes": "1-7M 實績加上 8-12 月平均月營收 4.0 億元；淨利率 10.5%。"
+    },
+    {
+      "fiscalYear": 2026,
+      "scenario": "bull",
+      "revenue": 4704.1,
+      "grossMargin": 24,
+      "netIncome": 588,
+      "eps": 8.97,
+      "optoShare": null,
+      "notes": "1-7M 實績加上 8-12 月平均月營收 4.7 億元；淨利率 12.5%。"
+    },
+    {
+      "fiscalYear": 2027,
+      "scenario": "bear",
+      "revenue": 4404.5,
+      "grossMargin": 18,
+      "netIncome": 308.3,
+      "eps": 4.7,
+      "optoShare": null,
+      "notes": "2026 bear 營收再增 10%，淨利率 7%；反映價格與週轉壓力。"
+    },
+    {
+      "fiscalYear": 2027,
+      "scenario": "base",
+      "revenue": 5442.6,
+      "grossMargin": 22.5,
+      "netIncome": 571.5,
+      "eps": 8.72,
+      "optoShare": null,
+      "notes": "2026 base 營收再增 25%，淨利率維持 10.5%；不假設未公開新客戶。"
+    },
+    {
+      "fiscalYear": 2027,
+      "scenario": "bull",
+      "revenue": 6585.7,
+      "grossMargin": 25,
+      "netIncome": 856.1,
+      "eps": 13.06,
+      "optoShare": null,
+      "notes": "2026 bull 營收再增 40%，淨利率 13%；需高功率 BBU 放量與良率／週轉同步改善。"
+    }
+  ],
+  "signals": [
+    {
+      "asOfDate": "2026-08-31",
+      "metric": "月營收",
+      "status": "green",
+      "valueText": "2026/07 4.494 億元",
+      "notes": "1-7M 累計 23.54 億元、年增 82.01%。"
+    },
+    {
+      "asOfDate": "2026-08-31",
+      "metric": "毛利率",
+      "status": "green",
+      "valueText": "2026Q2 23.33%",
+      "notes": "高於 2025FY 21.81%，仍需檢查產品組合持續性。"
+    },
+    {
+      "asOfDate": "2026-08-31",
+      "metric": "現金轉換",
+      "status": "yellow",
+      "valueText": "H1 OCF 0.47 億元",
+      "notes": "正值但明顯低於 H1 淨利 2.42 億元。"
+    },
+    {
+      "asOfDate": "2026-08-31",
+      "metric": "營運資金",
+      "status": "yellow",
+      "valueText": "AR 9.10 億／存貨 8.59 億",
+      "notes": "兩者均較 2025 年底顯著增加。"
+    },
+    {
+      "asOfDate": "2026-08-31",
+      "metric": "客戶資格",
+      "status": "yellow",
+      "valueText": "25kW／300V 能力；CTDP 已取得",
+      "notes": "能力可驗證，但特定 CSP／HVDC 量產資格未公開確認。"
+    },
+    {
+      "asOfDate": "2026-08-31",
+      "metric": "客戶集中",
+      "status": "red",
+      "valueText": "2025 最大客戶 55.12%",
+      "notes": "前兩大匿名客戶合計 69.61%。"
+    }
+  ],
+  "capacity": [
+    {
+      "label": "公開 BBU 產品電氣範圍",
+      "equipment": "BESS／UPS／BBU",
+      "technology": "6V-300V、12W-25kW",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "expectedOnlineDate": null,
+      "status": "published capability",
+      "notes": "是產品能力範圍，不是特定客戶量產資格。"
+    },
+    {
+      "label": "取得 UL 1973 CTDP",
+      "equipment": "內部實驗室",
+      "technology": "UL 1973 測試資料計畫",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "expectedOnlineDate": null,
+      "status": "qualified laboratory",
+      "notes": "證明測試能力、品質系統與資料可靠性；不等同 CSP 認證。"
+    },
+    {
+      "label": "不動產、廠房及設備增加",
+      "equipment": "生產與測試資產",
+      "technology": "帳面金額 2.209 億元",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "expectedOnlineDate": null,
+      "status": "ramping evidence",
+      "notes": "較 2025 年底增加 70.6%，支持擴張跡象，但未揭露對應產線數。"
+    },
+    {
+      "label": "研發投入與 BBU 開發",
+      "equipment": "研發資源",
+      "technology": "研發費用 0.935 億元／營收 3.81%",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "expectedOnlineDate": null,
+      "status": "actual",
+      "notes": "年報列示 AI 算力中心、伺服器機架與主板電源備援模組。"
+    }
+  ],
+  "catalysts": [
+    {
+      "title": "月營收站穩 4 億元以上",
+      "impact": "high",
+      "status": "active",
+      "notes": "5 月與 7 月已超過 4 億元，需觀察後續連續性。"
+    },
+    {
+      "title": "BBU 組合帶動毛利率改善",
+      "impact": "high",
+      "status": "active",
+      "notes": "公司年報將 2025 毛利增加歸因於 AI 算力中心備援系統等高毛利產品銷量增加。"
+    },
+    {
+      "title": "12W-25kW 公開產品能力轉為出貨",
+      "impact": "high",
+      "status": "watch",
+      "notes": "需要營收、毛利或公司公開量產資訊交叉確認。"
+    },
+    {
+      "title": "獲利成長轉為營業現金流",
+      "impact": "medium",
+      "status": "watch",
+      "notes": "H1 營業現金流為 0.47 億元，低於稅後淨利 2.42 億元。"
+    }
+  ],
+  "risks": [
+    {
+      "title": "客戶集中度高",
+      "impact": "high",
+      "probability": "high",
+      "status": "active",
+      "notes": "2025 年最大匿名客戶占 55.12%，前兩大合計占 69.61%。"
+    },
+    {
+      "title": "應收與存貨快速增加",
+      "impact": "high",
+      "probability": "medium",
+      "status": "active",
+      "notes": "2026H1 應收帳款與存貨較 2025 年底分別增加 62.7% 與 52.4%。"
+    },
+    {
+      "title": "把產品規格誤當客戶資格",
+      "impact": "high",
+      "probability": "medium",
+      "status": "watch",
+      "notes": "公開資料未確認特定 CSP、20/25kW 或 400/800V HVDC 客戶量產資格。"
+    },
+    {
+      "title": "擴張伴隨融資與負債增加",
+      "impact": "medium",
+      "probability": "medium",
+      "status": "active",
+      "notes": "2026H1 發行公司債 6.54 億元，負債比由 2025 年底 41% 升至 57%。"
+    }
+  ],
+  "reports": [
+    {
+      "id": "stl-report-v1",
+      "title": "新盛力 4931｜BBU 供應鏈公開資料深度研究",
+      "slug": "stl-4931",
+      "summary": "以官方財報、年報、月營收、產品規格與公開認證為基礎，區分已實現成長、產品能力與尚未公開確認的客戶資格。",
+      "thesis": "AI 資料中心 BBU 需求 → 出貨與月營收 → 毛利率 → 營運資金 → 現金轉換 → EPS；產品規格與 UL 實驗室資格不等於特定 CSP 量產認證。",
+      "status": "published",
+      "version": "1.0",
+      "htmlPath": "/research/reports/stl-4931.html",
+      "pdfPath": null,
+      "publishedAt": "2026-09-02"
+    }
+  ]
+}

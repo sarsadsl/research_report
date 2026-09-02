@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "ticker": "4931",
+  "market": "TPEX",
+  "slug": "stl-4931",
+  "reportVersion": "1.0",
+  "output": {
+    "dashboard": true,
+    "fullReport": true,
+    "standalone": true
+  },
+  "quality": {
+    "checkOverflow": true,
+    "checkOverlap": true,
+    "checkSources": true,
+    "desktopTest": true,
+    "mobileTest": true,
+    "offlineStandaloneTest": true
+  }
+}

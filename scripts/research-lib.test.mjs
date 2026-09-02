@@ -75,3 +75,13 @@ test("dashboard forecast references must resolve", async () => {
   assert.equal(result.ok, false);
   assert.ok(result.errors.some((error) => error.includes("missing 2030 consensus forecast")));
 });
+
+test("report visibility supports unlisted publication and rejects unknown values", async () => {
+  const input = await load();
+  input.researchPackage.report.visibility = "unlisted";
+  assert.equal(validateResearch(input).ok, true);
+  input.researchPackage.report.visibility = "private-ish";
+  const result = validateResearch(input);
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((error) => error.includes("visibility")));
+});

@@ -13,7 +13,7 @@ export function validateReportProfiles(doc){
   if(!doc?.profiles||typeof doc.profiles!=="object")errors.push("profiles object is required");
   for(const [name,p] of Object.entries(doc?.profiles??{})){
     if(!["baseline","generated"].includes(p.kind))errors.push(`${name}: invalid kind`);
-    if(!/^public\/research\/reports\/[a-z0-9-]+\.html$/.test(p.output??""))errors.push(`${name}: invalid output path`);
+    if(!/^(?:public\/research\/reports|\.research-drafts\/reports)\/[a-z0-9-]+\.html$/.test(p.output??""))errors.push(`${name}: invalid output path`);
     if(p.expectedPages!==undefined&&(!Number.isInteger(p.expectedPages)||p.expectedPages<1))errors.push(`${name}: invalid expectedPages`);
     if(!Array.isArray(p.sections)||!p.sections.length)errors.push(`${name}: sections are required`);
     if(p.kind==="baseline"&&(!Number.isInteger(p.sourcePages)||p.sourcePages<1))errors.push(`${name}: baseline sourcePages are required`);
@@ -49,7 +49,7 @@ const renderers={
   "bar-chart"(vm){const max=Math.max(...vm.monthlyRevenue.map(r=>r.revenue),1),cfg=vm.dashboard.monthlyRevenue;return `<div class="bars">${vm.monthlyRevenue.map(r=>`<div><span>${r.year}/${String(r.month).padStart(2,"0")}</span><i><b style="width:${Math.max(2,r.revenue/max*100)}%"></b></i><strong>${num(r.revenue/cfg.unitDivisor,1)} ${esc(cfg.unitLabel)}</strong></div>`).join("")}</div>`},
   "line-chart"(vm){return renderers["bar-chart"](vm)},
   bridge(vm){return `<div class="thesis"><h2>${esc(vm.dashboard.verificationChain.join(" → "))}</h2><p>${esc(vm.dashboard.estimateNote)}</p></div>`},
-  "scenario-table"(vm){const field=vm.dashboard.focusMetric.field;return table(["年度","情境","營收","毛利率","淨利","EPS",vm.dashboard.focusMetric.label],makeRows(vm.forecasts,[r=>String(r.fiscalYear),r=>esc(r.scenario),r=>num(r.revenue,1),r=>pct(r.grossMargin),r=>num(r.netIncome,1),r=>num(r.eps),r=>metricValue(field,r[field])]))},
+  "scenario-table"(vm){const field=vm.dashboard.focusMetric.field,baseFields=new Set(["revenue","grossMargin","netIncome","eps"]),includeFocus=!baseFields.has(field);const heads=["年度","情境","營收","毛利率","淨利","EPS",...(includeFocus?[vm.dashboard.focusMetric.label]:[])],cells=[r=>String(r.fiscalYear),r=>esc(r.scenario),r=>num(r.revenue,1),r=>pct(r.grossMargin),r=>num(r.netIncome,1),r=>num(r.eps),...(includeFocus?[r=>metricValue(field,r[field])]:[])];return table(heads,makeRows(vm.forecasts,cells))},
   capacity(vm){return table(["項目","設備／技術","增量","預計上線","狀態"],makeRows(vm.capacity,[r=>esc(r.label),r=>esc([r.equipment,r.technology].filter(Boolean).join(" · ")),r=>r.deltaUnits==null?"—":String(r.deltaUnits),r=>esc(r.expectedOnlineDate??"—"),r=>esc(r.status)]))},
   signals(vm){return `<div class="signals">${vm.ranking.map(r=>`<article class="${r.status}"><b>${esc(r.metric)}</b><strong>${esc(r.label)}</strong><span>${esc(r.valueText)}</span><small>${esc(r.notes)}</small></article>`).join("")}</div>`},
   "catalysts-risks"(vm){const col=(title,items,tone)=>`<div class="split ${tone}"><h3>${title}</h3>${items.map(r=>`<article><b>${esc(r.title)}</b><p>${esc(r.impact)}</p><small>${esc(r.status)}${r.probability?` · ${esc(r.probability)}`:""}</small></article>`).join("")}</div>`;return `<div class="twocol">${col("催化劑",vm.catalysts,"good")}${col("風險",vm.risks,"bad")}</div>`},
