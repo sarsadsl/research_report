@@ -50,6 +50,16 @@ test("materialized VPEC artifact preserves the original reader and page design",
   assert.doesNotMatch(html,/EVIDENCE RAIL/);
 });
 
+test("VPEC template comparison uses the same generated public format as STL", async () => {
+  const {pkg,profiles}=await load();
+  const profile=profiles.profiles["template-comparison"];
+  const html=renderGeneratedReport(buildReportViewModel(pkg,"template-comparison",profile));
+  assert.equal(profile.output,"public/research/reports/vpec-2455-template.html");
+  assert.equal((html.match(/<section class="page slide/g)||[]).length,10);
+  assert.match(html,/EVIDENCE RAIL/);
+  assert.match(html,/"profileName":"template-comparison"/);
+});
+
 test("baseline profiles fail closed without canonical source metadata", async()=>{
   const {profiles}=await load();
   const invalid=structuredClone(profiles);

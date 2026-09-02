@@ -36,6 +36,12 @@
       "output": "public/research/reports/vpec-2455-experiment.html",
       "expectedPages": 2,
       "sections": ["ranking", "panel-summary"]
+    },
+    "template-comparison": {
+      "kind": "generated",
+      "output": "public/research/reports/vpec-2455-template.html",
+      "expectedPages": 10,
+      "sections": ["package-sections"]
     }
   }
 }
