@@ -55,9 +55,26 @@ test("VPEC template comparison uses the same generated public format as STL", as
   const profile=profiles.profiles["template-comparison"];
   const html=renderGeneratedReport(buildReportViewModel(pkg,"template-comparison",profile));
   assert.equal(profile.output,"public/research/reports/vpec-2455-template.html");
-  assert.equal((html.match(/<section class="page slide/g)||[]).length,10);
+  assert.equal((html.match(/<section class="page slide/g)||[]).length,9);
+  assert.match(html,/財務與營收動能/);
+  assert.match(html,/產品組合與獲利結構/);
+  assert.doesNotMatch(html,/>月營收趨勢<\/h1>/);
+  assert.match(html,/class="nav-progress"/);
   assert.match(html,/EVIDENCE RAIL/);
   assert.match(html,/"profileName":"template-comparison"/);
+});
+
+test("STL full report shares the dense v2 research layout", async () => {
+  const [pkg,profiles]=await Promise.all([
+    readFile("research/stl-4931/research-package.json","utf8").then(JSON.parse),
+    readFile("research/stl-4931/report-profiles.json","utf8").then(JSON.parse),
+  ]);
+  const profile=profiles.profiles["full-research"];
+  const html=renderGeneratedReport(buildReportViewModel(pkg,"full-research",profile));
+  assert.equal(profile.layout,"research-standard-v2");
+  assert.equal((html.match(/<section class="page slide/g)||[]).length,9);
+  assert.match(html,/BBU/);
+  assert.match(html,/應收與存貨快速增加/);
 });
 
 test("baseline profiles fail closed without canonical source metadata", async()=>{

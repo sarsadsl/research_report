@@ -4,6 +4,8 @@
     "full-research": {
       "kind": "generated",
       "output": "public/research/reports/stl-4931.html",
+      "layout": "research-standard-v2",
+      "expectedPages": 9,
       "sections": ["package-sections"]
     }
   }

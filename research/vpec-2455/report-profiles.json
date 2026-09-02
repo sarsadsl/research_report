@@ -40,7 +40,8 @@
     "template-comparison": {
       "kind": "generated",
       "output": "public/research/reports/vpec-2455-template.html",
-      "expectedPages": 10,
+      "layout": "research-standard-v2",
+      "expectedPages": 9,
       "sections": ["package-sections"]
     }
   }
