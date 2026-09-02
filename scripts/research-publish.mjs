@@ -48,6 +48,13 @@ export function parseDeployment(output) {
   return { status: "SUCCESS", versionId: versionId ?? null, urls };
 }
 
+export function expectedReportPages(reportText, profile = {}) {
+  const sourcePages = (reportText.match(/<section\b[^>]*class=["'][^"']*\b(?:page|slide)\b/gi) ?? []).length;
+  const expectedPages = profile.expectedPages ?? sourcePages;
+  if (!Number.isInteger(expectedPages) || expectedPages < 1) throw new Error("Published report has no valid page target");
+  return expectedPages;
+}
+
 export async function publishResearch(options, rootDir = process.cwd()) {
   const { slug, remote } = options;
   const releaseId = `${new Date().toISOString().replaceAll(/[:.]/g, "-")}-${randomUUID()}`;
@@ -118,11 +125,12 @@ export async function publishResearch(options, rootDir = process.cwd()) {
       const reportBytes = await readFile(join(rootDir, `public/research/reports/${slug}.html`));
       const reportText = reportBytes.toString("utf8");
       const reportHash = hashBytes(reportBytes);
+      const fullProfile = profileDocument.profiles["full-research"];
       return {
         packageHash: validation.packageHash, manifestHash: validation.manifestHash,
         rawPackageHash: hashBytes(await readFile(join(rootDir, "research", slug, "research-package.json"))),
         sourceHash: sha256(pkg.sources), seedHash: hashBytes(await readFile(join(rootDir, "db/seed", `${pkg.company.ticker}.sql`))),
-        reportHash, buildHash: await builtHash(), expectedPages: (reportText.match(/<section\b[^>]*class=["'][^"']*\b(?:page|slide)\b/gi) ?? []).length,
+        reportHash, buildHash: await builtHash(), expectedPages: expectedReportPages(reportText, fullProfile),
         reportVersion: pkg.report.version, packageVersion: pkg.packageVersion, asOfDate: pkg.asOfDate,
       };
     },

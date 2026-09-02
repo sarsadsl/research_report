@@ -6,7 +6,7 @@ import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { assertUnchanged, executeRelease, parsePublishArgs } from "./research-publish-lib.mjs";
-import { hashFiles, parseDeployment, treeFiles } from "./research-publish.mjs";
+import { expectedReportPages, hashFiles, parseDeployment, treeFiles } from "./research-publish.mjs";
 import { isDocumentationOnly } from "./ci-scope.mjs";
 
 const candidate = { reportHash: "report-sha", expectedPages: 14, buildHash: "build-sha" };
@@ -17,6 +17,12 @@ const qcResult = () => ({
     fallbacks: 0, overflows: [], overlaps: [], clippings: [], horizontalOverflow: 0,
     viewport: name === "desktop" ? {width:1440,height:1000} : name === "laptop" ? {width:1024,height:768} : {width:390,height:844}, runtimeErrors: [],
   })),
+});
+
+test("publisher distinguishes canonical source pages from rendered page target", () => {
+  const baseline = '<section class="page"></section>'.repeat(8);
+  assert.equal(expectedReportPages(baseline,{sourcePages:8,expectedPages:14}),14);
+  assert.equal(expectedReportPages(baseline,{}),8);
 });
 
 function harness(overrides = {}) {
