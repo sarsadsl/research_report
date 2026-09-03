@@ -6,6 +6,9 @@ const json=v=>JSON.stringify(v).replaceAll("<","\\u003c");
 const num=(v,d=2)=>v==null?"—":Number(v).toLocaleString("zh-TW",{minimumFractionDigits:d,maximumFractionDigits:d});
 const pct=v=>v==null?"—":`${num(v,1)}%`;
 const metricValue=(field,value)=>["grossMargin","optoShare"].includes(field)?pct(value):num(value,field==="eps"?2:1);
+const scenarioMeta={bull:{label:"樂觀",order:0},consensus:{label:"保守",order:1},base:{label:"保守",order:1},bear:{label:"悲觀",order:2}};
+const scenarioLabel=scenario=>scenarioMeta[scenario]?.label??scenario;
+const sortScenarios=rows=>[...rows].sort((a,b)=>(scenarioMeta[a.scenario]?.order??99)-(scenarioMeta[b.scenario]?.order??99));
 
 export function validateReportProfiles(doc){
   const errors=[];
@@ -51,12 +54,12 @@ const metrics=items=>`<div class="metrics">${items.join("")}</div>`;
 
 const renderers={
   summary(vm){return `<div class="thesis"><em>DECISION FRAME</em><h2>${esc(vm.thesis.summary)}</h2><p>${esc(vm.dashboard.currentView)}</p></div><div class="chain">${vm.thesis.coreChain.map((x,i)=>`<div><b>${String(i+1).padStart(2,"0")}</b><span>${esc(x)}</span></div>`).join("")}</div><h3>核心訊號</h3>${metrics(vm.ranking.slice(0,3).map(x=>metric(x.metric,x.label,x.valueText,x.status)))}`},
-  "kpi-grid"(vm){const focus=vm.headlineForecasts.at(-1),field=vm.dashboard.focusMetric.field;return metrics([metric(`${vm.latestActual?.period??"最新"} EPS`,num(vm.latestActual?.eps),"已實現"),...vm.headlineForecasts.map(x=>metric(`${x.fiscalYear}F EPS`,num(x.eps),x.scenario)),metric(vm.dashboard.focusMetric.label,metricValue(field,focus?.[field]),"焦點 KPI")])},
+  "kpi-grid"(vm){const focus=vm.headlineForecasts.at(-1),field=vm.dashboard.focusMetric.field;return metrics([metric(`${vm.latestActual?.period??"最新"} EPS`,num(vm.latestActual?.eps),"已實現"),...vm.headlineForecasts.map(x=>metric(`${x.fiscalYear}F EPS`,num(x.eps),`${scenarioLabel(x.scenario)}情境`)),metric(vm.dashboard.focusMetric.label,metricValue(field,focus?.[field]),"焦點 KPI")])},
   "financial-table"(vm,s){return s.payloadRefs.includes("segments")?table(["期間","分部","營收","占比","屬性"],makeRows(vm.segments,[r=>esc(r.period),r=>esc(r.segment),r=>num(r.revenue,1),r=>pct(r.share),r=>r.isEstimate?"估計":"實績"])):table(["期間","營收","毛利率","營業利益","淨利","EPS"],makeRows(vm.actuals,[r=>esc(r.period),r=>num(r.revenue,1),r=>pct(r.grossMargin),r=>num(r.operatingIncome,1),r=>num(r.netIncome,1),r=>num(r.eps)]))},
   "bar-chart"(vm){const max=Math.max(...vm.monthlyRevenue.map(r=>r.revenue),1),cfg=vm.dashboard.monthlyRevenue;return `<div class="bars">${vm.monthlyRevenue.map(r=>`<div><span>${r.year}/${String(r.month).padStart(2,"0")}</span><i><b style="width:${Math.max(2,r.revenue/max*100)}%"></b></i><strong>${num(r.revenue/cfg.unitDivisor,1)} ${esc(cfg.unitLabel)}</strong></div>`).join("")}</div>`},
   "line-chart"(vm){return renderers["bar-chart"](vm)},
   bridge(vm){return `<div class="thesis"><h2>${esc(vm.dashboard.verificationChain.join(" → "))}</h2><p>${esc(vm.dashboard.estimateNote)}</p></div>`},
-  "scenario-table"(vm){const field=vm.dashboard.focusMetric.field,baseFields=new Set(["revenue","grossMargin","netIncome","eps"]),includeFocus=!baseFields.has(field);const heads=["年度","情境","營收","毛利率","淨利","EPS",...(includeFocus?[vm.dashboard.focusMetric.label]:[])],cells=[r=>String(r.fiscalYear),r=>esc(r.scenario),r=>num(r.revenue,1),r=>pct(r.grossMargin),r=>num(r.netIncome,1),r=>num(r.eps),...(includeFocus?[r=>metricValue(field,r[field])]:[])];return table(heads,makeRows(vm.forecasts,cells))},
+  "scenario-table"(vm){const field=vm.dashboard.focusMetric.field,baseFields=new Set(["revenue","grossMargin","netIncome","eps"]),includeFocus=!baseFields.has(field);const heads=["年度","情境","營收","毛利率","淨利","EPS",...(includeFocus?[vm.dashboard.focusMetric.label]:[])],cells=[r=>String(r.fiscalYear),r=>esc(scenarioLabel(r.scenario)),r=>num(r.revenue,1),r=>pct(r.grossMargin),r=>num(r.netIncome,1),r=>num(r.eps),...(includeFocus?[r=>metricValue(field,r[field])]:[])];return table(heads,makeRows(sortScenarios(vm.forecasts),cells))},
   capacity(vm){return table(["項目","設備／技術","增量","預計上線","狀態"],makeRows(vm.capacity,[r=>esc(r.label),r=>esc([r.equipment,r.technology].filter(Boolean).join(" · ")),r=>r.deltaUnits==null?"—":String(r.deltaUnits),r=>esc(r.expectedOnlineDate??"—"),r=>esc(r.status)]))},
   signals(vm){return `<div class="signals">${vm.ranking.map(r=>`<article class="${r.status}"><b>${esc(r.metric)}</b><strong>${esc(r.label)}</strong><span>${esc(r.valueText)}</span><small>${esc(r.notes)}</small></article>`).join("")}</div>`},
   "catalysts-risks"(vm){const col=(title,items,tone)=>`<div class="split ${tone}"><h3>${title}</h3>${items.map(r=>`<article><b>${esc(r.title)}</b><p>${esc(r.notes??r.impact)}</p><small>影響 ${esc(r.impact)} · ${esc(r.status)}${r.probability?` · 機率 ${esc(r.probability)}`:""}</small></article>`).join("")}</div>`;return `<div class="twocol">${col("催化劑",vm.catalysts,"good")}${col("風險",vm.risks,"bad")}</div>`},
@@ -123,21 +126,21 @@ function profitabilityRead(vm){
 }
 
 function forecastTableForYear(vm,year){
-  const rows=vm.forecasts.filter(row=>row.fiscalYear===year);
+  const rows=sortScenarios(vm.forecasts.filter(row=>row.fiscalYear===year));
   const field=vm.dashboard.focusMetric.field;
   const baseFields=new Set(["revenue","grossMargin","netIncome","eps"]);
   const includeFocus=!baseFields.has(field);
   const heads=["情境","營收","毛利率","淨利","EPS",...(includeFocus?[vm.dashboard.focusMetric.label]:[])];
-  const cells=[r=>esc(r.scenario),r=>num(r.revenue,1),r=>pct(r.grossMargin),r=>num(r.netIncome,1),r=>num(r.eps),...(includeFocus?[r=>metricValue(field,r[field])]:[])];
+  const cells=[r=>esc(scenarioLabel(r.scenario)),r=>num(r.revenue,1),r=>pct(r.grossMargin),r=>num(r.netIncome,1),r=>num(r.eps),...(includeFocus?[r=>metricValue(field,r[field])]:[])];
   return table(heads,makeRows(rows,cells));
 }
 
 function forecastMetricsForYear(vm,year){
-  const rows=vm.forecasts.filter(row=>row.fiscalYear===year);
+  const rows=sortScenarios(vm.forecasts.filter(row=>row.fiscalYear===year));
   const headline=rows.find(row=>row.scenario===vm.dashboard.forecastScenario)??rows[0];
   return metrics([
-    ...rows.map(row=>metric(`${year}F ${row.scenario} EPS`,num(row.eps),`營收 ${num(row.revenue,1)} 百萬`)),
-    headline?metric(`${year}F ${vm.dashboard.focusMetric.label}`,metricValue(vm.dashboard.focusMetric.field,headline[vm.dashboard.focusMetric.field]),`${headline.scenario}主情境`):null,
+    ...rows.map(row=>metric(`${year}F ${scenarioLabel(row.scenario)} EPS`,num(row.eps),`營收 ${num(row.revenue,1)} 百萬`)),
+    headline?metric(`${year}F ${vm.dashboard.focusMetric.label}`,metricValue(vm.dashboard.focusMetric.field,headline[vm.dashboard.focusMetric.field]),`${scenarioLabel(headline.scenario)}情境`):null,
   ].filter(Boolean));
 }
 
@@ -146,9 +149,9 @@ function forecastRead(vm,year){
   const focus=vm.dashboard.focusMetric;
   const headline=rows.find(row=>row.scenario===vm.dashboard.forecastScenario)??rows[0];
   return bullets([
-    headline?`基準／主情境 ${year}F 營收 ${num(headline.revenue,1)} 百萬、EPS ${num(headline.eps)} 元。`:null,
-    `熊到牛的 ${year}F EPS 區間為 ${range(rows.map(row=>row.eps),value=>num(value))} 元，代表結果對需求與產品組合有明顯敏感度。`,
-    headline&&Number.isFinite(headline[focus.field])?`${focus.label} 主情境為 ${metricValue(focus.field,headline[focus.field])}，需和實績揭露一起追蹤。`:null,
+    headline?`${scenarioLabel(headline.scenario)}情境 ${year}F 營收 ${num(headline.revenue,1)} 百萬、EPS ${num(headline.eps)} 元。`:null,
+    `悲觀到樂觀的 ${year}F EPS 區間為 ${range(rows.map(row=>row.eps),value=>num(value))} 元，代表結果對需求與產品組合有明顯敏感度。`,
+    headline&&Number.isFinite(headline[focus.field])?`${focus.label} ${scenarioLabel(headline.scenario)}情境為 ${metricValue(focus.field,headline[focus.field])}，需和實績揭露一起追蹤。`:null,
   ]);
 }
 
@@ -168,7 +171,7 @@ function scenarioRead(vm){
   const years=[...new Set(vm.forecasts.map(row=>row.fiscalYear))].sort((a,b)=>a-b);
   const focus=vm.dashboard.focusMetric;
   return bullets([
-    `模型涵蓋 ${years.map(year=>`${year}F`).join("、")}，以熊／主情境／牛情境表達可觀察的結果範圍。`,
+    `模型涵蓋 ${years.map(year=>`${year}F`).join("、")}，以樂觀／保守／悲觀情境表達可觀察的結果範圍。`,
     `${focus.label}是判讀獲利兌現的焦點；若占比／組合未達假設，EPS 與毛利率可能同步下修。`,
     "情境是研究估計，不是公司承諾；新實績公布後應逐季回填並重算區間。",
   ]);
@@ -232,19 +235,21 @@ function monthlyMetrics(vm){
 function marginVisual(vm){
   const rows=[...vm.actuals].sort((a,b)=>a.period.localeCompare(b.period));
   const max=Math.max(...rows.flatMap(row=>[row.grossMargin,row.operatingMargin,row.netMargin].filter(Number.isFinite)),50);
+  const gradients={gross:"linear-gradient(90deg,#276ef1,#00a6a6)",operating:"linear-gradient(90deg,#5b4bc4,#9c89ef)",net:"linear-gradient(90deg,#d89316,#f2b84b)"};
   const series=[
-    ["毛利率",row=>row.grossMargin],
-    ["營益率",row=>row.operatingMargin],
-    ["淨利率",row=>row.netMargin],
+    ["gross","毛利率",row=>row.grossMargin],
+    ["operating","營益率",row=>row.operatingMargin],
+    ["net","淨利率",row=>row.netMargin],
   ];
-  return `<div class="bars">${series.flatMap(([label,get])=>rows.map(row=>`<div><span>${esc(label)} ${esc(row.period)}</span><i><b style="width:${Math.max(2,(get(row)||0)/max*100)}%"></b></i><strong>${pct(get(row))}</strong></div>`)).join("")}</div>`;
+  const legend=`<div class="chart-legend" aria-label="利潤率圖例" style="display:flex;gap:14px;flex-wrap:wrap;margin:2px 0 8px;font-size:8px;color:var(--muted)">${series.map(([key,label])=>`<span class="${key}" style="display:inline-flex;align-items:center;gap:5px"><i style="display:inline-block;width:18px;height:6px;border-radius:999px;background:${gradients[key]}"></i>${esc(label)}</span>`).join("")}</div>`;
+  return `${legend}<div class="bars">${series.flatMap(([key,label,get])=>rows.map(row=>`<div class="margin-bar ${key}"><span>${esc(label)} ${esc(row.period)}</span><i><b style="width:${Math.max(2,(get(row)||0)/max*100)}%;background:${gradients[key]}"></b></i><strong>${pct(get(row))}</strong></div>`)).join("")}</div>`;
 }
 
 function forecastBridge(vm,year){
   const rows=vm.forecasts.filter(row=>row.fiscalYear===year);
   const headline=rows.find(row=>row.scenario===vm.dashboard.forecastScenario)??rows[0];
   const low=rows.find(row=>row.scenario==="bear")??rows[0],high=rows.find(row=>row.scenario==="bull")??rows.at(-1);
-  return `<div class="twocol"><div class="split good"><h3>營收條件</h3><p>${headline?`${year}F 主情境 ${num(headline.revenue,1)} 百萬；熊／牛區間 ${num(low?.revenue,1)}–${num(high?.revenue,1)} 百萬。`:"缺少可用預估。"}</p><small>先觀察需求、出貨與產品組合是否支持區間上緣。</small></div><div class="split"><h3>獲利條件</h3><p>${headline?`主情境 EPS ${num(headline.eps)} 元、毛利率 ${pct(headline.grossMargin)}。`:"缺少可用預估。"}</p><small>${esc(vm.dashboard.focusMetric.label)}是獲利兌現的重要觀察軸。</small></div></div>`;
+  return `<div class="twocol"><div class="split good"><h3>營收條件</h3><p>${headline?`${year}F ${scenarioLabel(headline.scenario)}情境 ${num(headline.revenue,1)} 百萬；悲觀／樂觀區間 ${num(low?.revenue,1)}–${num(high?.revenue,1)} 百萬。`:"缺少可用預估。"}</p><small>先觀察需求、出貨與產品組合是否支持區間上緣。</small></div><div class="split"><h3>獲利條件</h3><p>${headline?`${scenarioLabel(headline.scenario)}情境 EPS ${num(headline.eps)} 元、毛利率 ${pct(headline.grossMargin)}。`:"缺少可用預估。"}</p><small>${esc(vm.dashboard.focusMetric.label)}是獲利兌現的重要觀察軸。</small></div></div>`;
 }
 
 function mixVisual(vm){
@@ -342,7 +347,7 @@ function standardPages(vm){
   ]);
   const mixClaims=vm.claims.slice(0,3).map(claim=>claim.text);
   const capacityNotes=vm.capacity.map(row=>`${row.label}：${row.notes??row.status}`);
-  const forecastNotes=selectedForecasts.map(row=>`${row.fiscalYear}F ${row.scenario}：${row.notes??"依研究情境推估"}`);
+  const forecastNotes=selectedForecasts.map(row=>`${row.fiscalYear}F ${scenarioLabel(row.scenario)}：${row.notes??"依研究情境推估"}`);
   const latestSignalNotes=vm.ranking.filter(row=>row.status!=="green").slice(0,4).map(row=>`${row.metric}：${row.notes}`);
   const pages=[
     {
@@ -367,11 +372,11 @@ content:`${module("PROFITABILITY","毛利、營益與淨利率對照",profitabil
     },
     {
       section:standardSection("standard-forecast-a",`${forecastYearA}F 獲利與情境區間`,["forecasts"]),
-      content:`${forecastMetricsForYear(vm,forecastYearA)}${module("FORECAST",`${forecastYearA}F 熊／主情境／牛情境`,forecastTableForYear(vm,forecastYearA),"wide")}${module("BRIDGE",`${forecastYearA}F 營收與獲利條件`,forecastBridge(vm,forecastYearA),"wide")}${module("ASSUMPTIONS",`${forecastYearA}F 主情境需要成立的條件`,forecastRead(vm,forecastYearA),"note")}`,
+      content:`${forecastMetricsForYear(vm,forecastYearA)}${module("FORECAST",`${forecastYearA}F 樂觀／保守／悲觀`,forecastTableForYear(vm,forecastYearA),"wide")}${module("BRIDGE",`${forecastYearA}F 營收與獲利條件`,forecastBridge(vm,forecastYearA),"wide")}${module("ASSUMPTIONS",`${forecastYearA}F 保守情境需要成立的條件`,forecastRead(vm,forecastYearA),"note")}`,
     },
     {
       section:standardSection("standard-forecast-b",`${forecastYearB}F 成長與獲利兌現`,["forecasts"]),
-      content:`${forecastMetricsForYear(vm,forecastYearB)}${metrics(cagrMetrics(vm))}${module("FORECAST",`${forecastYearB}F 熊／主情境／牛情境`,forecastTableForYear(vm,forecastYearB),"wide")}${module("BRIDGE",`${forecastYearB}F 營收與獲利條件`,forecastBridge(vm,forecastYearB),"wide")}${module("READ-THROUGH",`${forecastYearA}F → ${forecastYearB}F 的關鍵假設`,forecastRead(vm,forecastYearB),"note")}`,
+      content:`${forecastMetricsForYear(vm,forecastYearB)}${metrics(cagrMetrics(vm))}${module("FORECAST",`${forecastYearB}F 樂觀／保守／悲觀`,forecastTableForYear(vm,forecastYearB),"wide")}${module("BRIDGE",`${forecastYearB}F 營收與獲利條件`,forecastBridge(vm,forecastYearB),"wide")}${module("READ-THROUGH",`${forecastYearA}F → ${forecastYearB}F 的關鍵假設`,forecastRead(vm,forecastYearB),"note")}`,
     },
     {
       section:standardSection("standard-sensitivity","情境、敏感度與判讀邏輯",["forecasts"]),

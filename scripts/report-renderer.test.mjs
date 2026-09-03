@@ -61,7 +61,17 @@ test("VPEC template comparison uses the same generated public format as STL", as
   assert.match(html,/月營收動能/);
   assert.match(html,/產品組合與分部結構/);
   assert.match(html,/獲利結構與營運槓桿/);
+  assert.match(html,/class="margin-bar gross/);
+  assert.match(html,/class="margin-bar operating/);
+  assert.match(html,/class="margin-bar net/);
+  assert.match(html,/class="chart-legend"/);
+  assert.match(html,/background:linear-gradient\(90deg,#5b4bc4,#9c89ef\)/);
   assert.match(html,/情境、敏感度與判讀邏輯/);
+  assert.match(html,/樂觀／保守／悲觀/);
+  assert.match(html,/悲觀到樂觀/);
+  assert.match(html,/<td>樂觀<\/td>/);
+  assert.match(html,/<td>保守<\/td>/);
+  assert.match(html,/<td>悲觀<\/td>/);
   assert.match(html,/class="nav-progress"/);
   assert.match(html,/EVIDENCE RAIL/);
   assert.match(html,/id="zoom-range"/);
