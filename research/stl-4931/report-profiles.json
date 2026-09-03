@@ -5,7 +5,7 @@
       "kind": "generated",
       "output": "public/research/reports/stl-4931.html",
       "layout": "research-standard-v2",
-      "expectedPages": 9,
+      "expectedPages": 14,
       "sections": ["package-sections"]
     }
   }

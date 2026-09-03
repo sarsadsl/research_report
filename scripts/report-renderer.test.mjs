@@ -55,10 +55,13 @@ test("VPEC template comparison uses the same generated public format as STL", as
   const profile=profiles.profiles["template-comparison"];
   const html=renderGeneratedReport(buildReportViewModel(pkg,"template-comparison",profile));
   assert.equal(profile.output,"public/research/reports/vpec-2455-template.html");
-  assert.equal((html.match(/<section class="page slide/g)||[]).length,9);
-  assert.match(html,/財務與營收動能/);
-  assert.match(html,/產品組合與獲利結構/);
-  assert.doesNotMatch(html,/>月營收趨勢<\/h1>/);
+  assert.equal(profile.expectedPages,14);
+  assert.equal((html.match(/<section class="page slide/g)||[]).length,14);
+  assert.match(html,/已實現財務表現/);
+  assert.match(html,/月營收動能/);
+  assert.match(html,/產品組合與分部結構/);
+  assert.match(html,/獲利結構與營運槓桿/);
+  assert.match(html,/情境、敏感度與判讀邏輯/);
   assert.match(html,/class="nav-progress"/);
   assert.match(html,/EVIDENCE RAIL/);
   assert.match(html,/id="zoom-range"/);
@@ -87,7 +90,8 @@ test("STL full report shares the dense v2 research layout", async () => {
   const profile=profiles.profiles["full-research"];
   const html=renderGeneratedReport(buildReportViewModel(pkg,"full-research",profile));
   assert.equal(profile.layout,"research-standard-v2");
-  assert.equal((html.match(/<section class="page slide/g)||[]).length,9);
+  assert.equal(profile.expectedPages,14);
+  assert.equal((html.match(/<section class="page slide/g)||[]).length,14);
   assert.match(html,/BBU/);
   assert.match(html,/應收與存貨快速增加/);
   assert.match(html,/7 筆來源/);

@@ -41,7 +41,7 @@
       "kind": "generated",
       "output": "public/research/reports/vpec-2455-template.html",
       "layout": "research-standard-v2",
-      "expectedPages": 9,
+      "expectedPages": 14,
       "sections": ["package-sections"]
     }
   }
