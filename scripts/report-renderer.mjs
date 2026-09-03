@@ -232,11 +232,16 @@ export function renderGeneratedReport(vm){
   if(vm.profile.layout==="research-standard-v2"){
     const rendered=standardPages(vm);
     if(vm.profile.expectedPages!==undefined&&rendered.length!==vm.profile.expectedPages)throw new Error(`Expected ${vm.profile.expectedPages} generated pages, got ${rendered.length}`);
-    return shell(vm,rendered);
+    return enhanceZoomControls(shell(vm,rendered));
   }
   const selected=vm.profile.sections.includes("package-sections")?[...vm.sections].sort((a,b)=>a.sortOrder-b.sortOrder):vm.profile.sections.map(key=>special[key]??vm.sections.find(s=>s.id===key||s.type===key)).filter(Boolean);
   if(!vm.profile.sections.includes("package-sections")&&selected.length!==vm.profile.sections.length)throw new Error("One or more report sections could not be resolved");
   const rendered=selected.map(section=>{const render=renderers[section.type];if(!render)throw new Error(`Unknown report section renderer: ${section.type}`);return{section,content:render(vm,section)}});
   if(vm.profile.expectedPages!==undefined&&rendered.length!==vm.profile.expectedPages)throw new Error(`Expected ${vm.profile.expectedPages} generated pages, got ${rendered.length}`);
-  return shell(vm,rendered);
+  return enhanceZoomControls(shell(vm,rendered));
 }
+
+const zoomControlsMarkup='<div class="zoom"><button type="button" data-z="fit" class="active fit-button" aria-label="縮放至適合大小">適合</button><label class="zoom-label" for="zoom-range">縮放</label><input id="zoom-range" class="zoom-range" type="range" min="50" max="150" step="1" value="100" aria-label="報告縮放比例" aria-valuetext="適合"><output id="zoom-value" class="zoom-value" for="zoom-range" aria-live="polite">適合</output></div>';
+const zoomCss='.zoom{gap:10px}.top .fit-button{min-width:50px;min-height:44px;height:44px}.zoom-label{font-size:10px;font-weight:800;color:#d7e5f2;letter-spacing:.04em}.zoom-range{width:152px;height:44px;margin:0;accent-color:var(--teal);cursor:ew-resize;touch-action:pan-y}.zoom-range:focus-visible{outline:3px solid #35d0ba;outline-offset:2px}.zoom-value{min-width:42px;color:#fff;font:800 10px Arial;text-align:right}@media(max-width:700px){.zoom{gap:0}.zoom-label,.zoom-range,.zoom-value{display:none}.top .fit-button{min-width:48px}}';
+const zoomRuntime='(()=>{const range=document.getElementById("zoom-range"),value=document.getElementById("zoom-value"),fit=document.querySelector("[data-z=fit]"),stage=document.getElementById("stage"),wrap=document.getElementById("wrap"),pages=[...document.querySelectorAll(".page")];if(!range||!value||!fit||!stage||!wrap)return;const fitScale=()=>Math.min((stage.clientWidth-28)/794,(stage.clientHeight-28)/1123);const apply=n=>{wrap.style.width=794*n+"px";wrap.style.height=1123*n+"px";pages.forEach(p=>p.style.transform="scale("+n+")")};const showFit=()=>{const n=fitScale();apply(n);const percent=Math.max(50,Math.min(150,Math.round(n*100)));range.value=String(percent);range.setAttribute("aria-valuenow",String(percent));range.setAttribute("aria-valuetext","適合");value.textContent="適合"};range.addEventListener("input",()=>{const n=Number(range.value)/100;apply(n);fit.classList.remove("active");range.setAttribute("aria-valuenow",range.value);range.setAttribute("aria-valuetext",range.value+"%");value.textContent=range.value+"%"});fit.addEventListener("click",showFit);addEventListener("resize",()=>{if(fit.classList.contains("active"))showFit()});showFit()})();';
+function enhanceZoomControls(html){return html.replace(/<div class="zoom">[\s\S]*?<\/div>/,zoomControlsMarkup).replace('</style></head>',`<style>${zoomCss}</style></head>`).replace(/<\/script><\/body><\/html>$/ ,`</script><script>${zoomRuntime}</script></body></html>`)}

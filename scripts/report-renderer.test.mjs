@@ -61,6 +61,12 @@ test("VPEC template comparison uses the same generated public format as STL", as
   assert.doesNotMatch(html,/>月營收趨勢<\/h1>/);
   assert.match(html,/class="nav-progress"/);
   assert.match(html,/EVIDENCE RAIL/);
+  assert.match(html,/id="zoom-range"/);
+  assert.match(html,/type="range" min="50" max="150" step="1"/);
+  assert.match(html,/aria-label="報告縮放比例"/);
+  assert.doesNotMatch(html,/data-z="\.75"|data-z="1\.25"/);
+  assert.match(html,/addEventListener\("input"/);
+  assert.match(html,/\.zoom-label,\.zoom-range,\.zoom-value\{display:none\}/);
   assert.match(html,/class="conclusion-page"/);
   assert.match(html,/支持目前判斷的證據/);
   assert.match(html,/下階段先看這三件事/);
