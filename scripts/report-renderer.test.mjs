@@ -79,6 +79,7 @@ test("VPEC template comparison uses the same generated public format as STL", as
   assert.match(html,/aria-label="報告縮放比例"/);
   assert.doesNotMatch(html,/data-z="\.75"|data-z="1\.25"/);
   assert.match(html,/addEventListener\("input"/);
+  assert.match(html,/stage\.scrollTop=0;stage\.scrollLeft=0/);
   assert.match(html,/\.zoom-label,\.zoom-range,\.zoom-value\{display:none\}/);
   assert.match(html,/class="conclusion-page"/);
   assert.match(html,/支持目前判斷的證據/);
