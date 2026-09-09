@@ -11,7 +11,7 @@
     "description": "聚焦 III-V 化合物半導體磊晶，研究主軸為 AI 光通訊帶動光電子占比提升。"
   },
   "dashboard": {
-    "currentView": "目前判讀：黃綠燈之間、偏綠。完整報告內保留 2026F H2 反推、2027F CAGR / 分部拆解、MOCVD 產能量化與升降級規則。",
+    "currentView": "目前判讀：偏綠。7–8 月營收連續創高、光電子占比研究估計升至約 46%；完整報告保留 2026F H2 反推、2027F CAGR / 分部拆解、MOCVD 產能量化與升降級規則。",
     "verificationChain": [
       "InP 供應",
       "新機 utilization",
@@ -21,7 +21,7 @@
       "營益率",
       "EPS"
     ],
-    "conclusion": "現階段方向偏正向，但毛利率、原料供應與新機利用率仍需要連續數季驗證。",
+    "conclusion": "現階段方向偏正向，7–8 月營收與光電子 mix 提供上修訊號；但毛利率能否站穩 40%、InP 供應連續性與新機利用率仍需要連續數季驗證。",
     "forecastScenario": "consensus",
     "headlineForecastYears": [
       2026,
@@ -33,7 +33,7 @@
     },
     "monthlyRevenue": {
       "focusYear": 2026,
-      "cumulativeThroughMonth": 6,
+      "cumulativeThroughMonth": 8,
       "unitDivisor": 100,
       "unitLabel": "億"
     },
@@ -153,6 +153,13 @@
       "revenue": 422.1,
       "mom": 29.5,
       "yoy": 45.1
+    },
+    {
+      "year": 2026,
+      "month": 8,
+      "revenue": 470.904,
+      "mom": 11.56,
+      "yoy": 71.16
     }
   ],
   "segments": [
@@ -201,8 +208,15 @@
     {
       "period": "2026/07",
       "segment": "光電子",
-      "revenue": 168.8,
-      "share": 40,
+      "revenue": 169.3,
+      "share": 40.1,
+      "isEstimate": true
+    },
+    {
+      "period": "2026/08",
+      "segment": "光電子",
+      "revenue": 217.1,
+      "share": 46.1,
       "isEstimate": true
     }
   ],
@@ -270,18 +284,18 @@
   ],
   "signals": [
     {
-      "asOfDate": "2026-08-26",
+      "asOfDate": "2026-09-04",
       "metric": "月營收",
       "status": "green",
-      "valueText": "2026/07 4.22 億",
-      "notes": "單月創高，仍需 8-12 月延續"
+      "valueText": "2026/08 4.71 億；前8月 28.18 億",
+      "notes": "7–8 月連續創高；前8月 YoY +35.87%，仍需 9-12 月延續"
     },
     {
-      "asOfDate": "2026-08-26",
+      "asOfDate": "2026-09-04",
       "metric": "光電子占比",
       "status": "green",
-      "valueText": "2026/07 研究估計 >40%",
-      "notes": "非官方 segment disclosure"
+      "valueText": "2026/08 研究估計 46.1%",
+      "notes": "公開資料整理，非官方 segment disclosure；需觀察 9-12 月持續性"
     },
     {
       "asOfDate": "2026-08-26",
@@ -415,13 +429,13 @@
       "id": "vpec-report-v1",
       "title": "全新光電 2455｜2025Q4-2027F 深度研究",
       "slug": "vpec-2455",
-      "summary": "完整版：已實現財報與利潤 Bridge、光電子營收占比、2026F H2 反推、2027F CAGR / 分部拆解、MOCVD 產能量化與紅綠燈結論。",
+      "summary": "完整版：已實現財報與利潤 Bridge、7–8 月營收與光電子營收占比、2026F H2 反推、2027F CAGR / 分部拆解、MOCVD 產能量化與紅綠燈結論。",
       "thesis": "InP 供應 → utilization → 光電子營收 → mix → GM → OP margin → EPS。",
       "status": "published",
-      "version": "1.1",
+      "version": "1.2",
       "htmlPath": "/research/reports/vpec-2455.html",
       "pdfPath": null,
-      "publishedAt": "2026-08-27"
+      "publishedAt": "2026-09-09"
     }
   ]
 }

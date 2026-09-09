@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover" name="viewport"/><title>全新光電 2455 TT｜互動式分頁研究報告</title><style>
+*{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",Arial,sans-serif;background:#e9eef5;color:#172033;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.toolbar{width:210mm;margin:14px auto 8px;background:#142033;color:white;padding:10px 14px;border-radius:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 8px 24px rgba(10,25,50,.16)}.toolbar .t1{font-weight:800;font-size:14px}.toolbar .t2{font-size:10px;color:#aab7cc;margin-top:2px}.toolbar button{border:0;border-radius:9px;padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer}.download{background:#e11d48;color:#fff}.print{background:#334155;color:#fff;margin-left:6px}
+.report{width:210mm;margin:auto}.page{width:210mm;height:297mm;background:white;margin:12px auto;box-shadow:0 10px 28px rgba(15,23,42,.12);padding:10mm 12mm 8mm;position:relative;overflow:hidden;page-break-after:always;break-after:page}.page:last-child{page-break-after:auto}.page-inner{height:272mm;overflow:hidden}.footer{position:absolute;left:12mm;right:12mm;bottom:5mm;border-top:1px solid #dce3ec;padding-top:3px;display:flex;justify-content:space-between;font-size:8px;color:#7b8799}.eyebrow{display:inline-block;padding:3px 8px;border:1px solid #bcd0e8;background:#edf6ff;border-radius:999px;color:#285b8f;font-size:9px;font-weight:800}.h1{font-size:25px;line-height:1.25;margin:8px 0 5px;font-weight:900;letter-spacing:-.5px}.subtitle{font-size:11px;color:#617086;line-height:1.65}.topline{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:2px solid #172033;padding-bottom:8px;margin-bottom:9px}.topline .name{font-weight:900;font-size:14px}.topline .meta{font-size:8.5px;color:#748196;text-align:right;line-height:1.6}.section-title{font-size:14px;font-weight:900;margin:0 0 7px;display:flex;align-items:center;gap:7px}.section-title:before{content:"";width:7px;height:7px;border-radius:50%;background:#2e6fab;flex:none}.subhead{font-size:11.5px;font-weight:900;margin:8px 0 5px}.small{font-size:9.35px;color:#66758b;line-height:1.55}.tiny{font-size:8.05px;color:#78869a;line-height:1.45}.note{font-size:8.35px;color:#6d7b8e;line-height:1.5}.lead{font-size:10.2px;line-height:1.65;color:#354258}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.card{border:1px solid #dbe4ef;border-radius:10px;padding:8px;background:#fff}.soft{background:#f7f9fc}.blue{background:#eef6ff;border-color:#bdd7f2}.green{background:#effbf5;border-color:#bde9d1}.amber{background:#fff8eb;border-color:#f1d9a8}.rose{background:#fff2f4;border-color:#f0c3cb}.dark{background:#182333;color:white;border-color:#182333}.kpi .label{font-size:8.5px;color:#718096;font-weight:700}.kpi .value{font-size:18px;font-weight:900;margin:2px 0}.kpi .delta{font-size:8px;font-weight:800;color:#16825d}.dark .label,.dark .delta{color:#b9c6d8}.dark .value{color:#fff}.em{color:#1167a8}.pos{color:#13795b}.warn{color:#ae6711}.neg{color:#b4233a}.muted{color:#6c7a90}.bigcall{padding:10px 12px;border-left:4px solid #2e6fab;background:#f5f9fd;border-radius:0 10px 10px 0;font-size:10px;line-height:1.65}.pill{display:inline-block;padding:2px 6px;border-radius:999px;background:#eef2f7;color:#4c5a6f;font-size:7.5px;font-weight:800}.pill.greenp{background:#e7f7ef;color:#147254}.pill.amberp{background:#fff2d8;color:#9b5e08}.pill.rosep{background:#ffe7eb;color:#a12e42}
+table{width:100%;border-collapse:collapse;font-size:8.75px}th{background:#eef2f7;color:#344257;font-weight:900;border-top:1px solid #cad4e1;border-bottom:1px solid #cad4e1;padding:5px 5px;text-align:right}th:first-child,td:first-child{text-align:left}td{padding:5px;border-bottom:1px solid #e6ebf2;text-align:right;vertical-align:middle}tr:nth-child(even) td{background:#fafbfd}.highlight td{background:#f2f8ff!important}.rowlabel{font-weight:800;color:#253247}.table-note{font-size:7.7px;color:#78869a;margin-top:4px;line-height:1.45}
+.metricline{display:flex;align-items:center;gap:6px;margin:5px 0}.metricline .lbl{width:90px;font-size:8px;font-weight:800}.track{height:8px;background:#e9eef4;border-radius:99px;flex:1;overflow:hidden}.fill{height:100%;border-radius:99px;background:#2f77b6}.fill.g{background:#27a277}.fill.a{background:#d59732}.fill.r{background:#c75569}.metricline .v{width:45px;text-align:right;font-size:8px;font-weight:900}.bar-chart{display:flex;align-items:flex-end;gap:12px;height:115px;padding:8px 7px 20px;border-left:1px solid #dfe6ef;border-bottom:1px solid #dfe6ef}.bar-group{flex:1;height:100%;display:flex;align-items:flex-end;justify-content:center;gap:4px;position:relative}.bar{width:25px;border-radius:4px 4px 0 0;background:#337dbb;position:relative}.bar.g{background:#2aa277}.bar.a{background:#d89a36}.bar span{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:7.5px;font-weight:900;white-space:nowrap}.bar-group .x{position:absolute;bottom:-16px;font-size:7.5px;font-weight:800;white-space:nowrap}.stack-wrap{display:grid;grid-template-columns:76px 1fr 45px;align-items:center;gap:6px;margin:8px 0}.stack-label{font-size:8.4px;font-weight:900}.stack{display:flex;height:22px;border-radius:5px;overflow:hidden;border:1px solid #d7e0eb}.micro{background:#3278b6;color:white;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:900}.opto{background:#26a278;color:white;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:900}.stack-note{font-size:7px;color:#6b788c}.legend{display:flex;gap:14px;font-size:7.8px;font-weight:800;align-items:center;margin:4px 0}.sw{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:4px;vertical-align:-1px}.sw.m{background:#3278b6}.sw.o{background:#26a278}.sw.a{background:#d69b3e}
+.callout-num{font-size:21px;font-weight:950;line-height:1}.callout-label{font-size:8px;color:#6c7a90;margin-top:3px}.arrow{font-weight:900;color:#7b8799}.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.step{border-top:3px solid #cbd8e7;padding-top:6px}.step.active{border-color:#2c78b7}.step .y{font-size:8px;color:#6b7a90;font-weight:800}.step .t{font-size:9px;font-weight:900;margin:2px 0}.step .d{font-size:7.5px;color:#66758b;line-height:1.4}.toc{display:grid;grid-template-columns:1fr 1fr;gap:5px 18px;margin-top:8px}.toc-item{display:flex;align-items:flex-start;gap:7px;padding:6px 0;border-bottom:1px solid #e7ecf2}.toc-num{width:22px;height:22px;border-radius:7px;background:#1f659e;color:white;font-size:9px;font-weight:900;display:flex;align-items:center;justify-content:center;flex:none}.toc-title{font-size:9px;font-weight:900}.toc-desc{font-size:7.5px;color:#748197;line-height:1.4;margin-top:1px}.divider{height:1px;background:#e1e7ef;margin:7px 0}.quote{font-size:13px;font-weight:900;line-height:1.45;color:#213047}.compare3{display:grid;grid-template-columns:1.15fr repeat(3,1fr);border:1px solid #d9e2ed;border-radius:10px;overflow:hidden;font-size:8px}.compare3>div{padding:6px;border-right:1px solid #e1e7ef;border-bottom:1px solid #e1e7ef}.compare3>div:nth-child(4n){border-right:0}.compare3 .head{background:#eef3f8;font-weight:900}.compare3 .base{background:#eef7ff}.compare3 .up{background:#fff7e8}.compare3 .down{background:#fff3f5}.checklist{margin:0;padding:0;list-style:none}.checklist li{font-size:8.2px;line-height:1.45;margin:4px 0;padding-left:15px;position:relative}.checklist li:before{content:"✓";position:absolute;left:0;color:#17805c;font-weight:900}.risk li:before{content:"!";color:#a85f0a;border:1px solid #d4a55e;border-radius:50%;width:10px;height:10px;line-height:9px;text-align:center;font-size:7px;top:1px}.sourcebox{border-top:1px solid #dfe5ed;padding-top:6px;margin-top:7px;font-size:7.45px;color:#7a8798;line-height:1.45}.tag{font-size:7px;padding:2px 5px;border-radius:4px;background:#edf2f7;color:#526174;font-weight:800}.formula{font-family:Consolas,monospace;background:#f2f5f9;padding:4px 6px;border-radius:5px;font-size:7.5px;color:#526174}.no-break{break-inside:avoid}
+@media print{body{background:white}.toolbar{display:none!important}.report{margin:0}.page{margin:0;box-shadow:none;page-break-after:always;break-after:page}.page:last-child{page-break-after:auto}@page{size:A4 portrait;margin:0}}
+
+.deepbox{border:1px solid #dce5ef;border-radius:10px;padding:9px 10px;background:#fbfcfe;margin-top:8px}.deepbox .title{font-size:10px;font-weight:900;color:#26354a;margin-bottom:5px}.deepbox p{margin:0 0 5px;font-size:9px;line-height:1.58;color:#506076}.deepbox p:last-child{margin-bottom:0}.dense-list{margin:0;padding-left:16px}.dense-list li{font-size:8.9px;line-height:1.52;color:#526176;margin:3px 0}.mini-table{font-size:8.25px}.mini-table th,.mini-table td{padding:4.5px}.formula-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:7px}.formula-card{border:1px solid #dde6f0;border-radius:9px;padding:7px;background:#fff}.formula-card .f-title{font-size:8.3px;font-weight:900;color:#33445c}.formula-card .f-value{font-size:15px;font-weight:950;margin:3px 0}.formula-card .f-desc{font-size:7.6px;line-height:1.42;color:#748197}.matrix{display:grid;grid-template-columns:1.15fr 1fr 1fr 1fr;border:1px solid #d9e2ed;border-radius:9px;overflow:hidden;font-size:8px;margin-top:6px}.matrix>div{padding:5px 6px;border-right:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;line-height:1.45}.matrix>div:nth-child(4n){border-right:0}.matrix .mh{background:#eef3f8;font-weight:900}.matrix .good{background:#effbf5}.matrix .mid{background:#eef7ff}.matrix .bad{background:#fff3f5}.two-col-text{columns:2;column-gap:18px;font-size:8.8px;line-height:1.58;color:#506076}.two-col-text p{margin:0 0 6px;break-inside:avoid}.calc{font-family:Consolas,monospace;font-size:8px;background:#f3f6fa;border-radius:6px;padding:5px 7px;color:#47566b}.spacer4{height:4px}
+.abs-fill{position:absolute;left:12mm;right:12mm;bottom:16mm;border:1px solid #d9e2ed;border-radius:10px;background:#fbfcfe;padding:7px 9px}.abs-fill .af-title{font-size:9px;font-weight:900;color:#26354a;margin-bottom:5px}.abs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.abs-item{border-right:1px solid #e1e7ef;padding-right:6px}.abs-item:last-child{border-right:0}.abs-item b{display:block;font-size:7.8px;color:#24344a;margin-bottom:2px}.abs-item span{display:block;font-size:7.1px;line-height:1.35;color:#6a788d}
+.bottom-strip{position:absolute;left:12mm;right:12mm;bottom:16mm;border:1px solid #d9e2ed;border-radius:9px;background:#fbfcfe;padding:5px 8px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.bottom-strip .bs{padding-right:6px;border-right:1px solid #e2e8f0}.bottom-strip .bs:last-child{border-right:0}.bottom-strip b{display:block;font-size:7.5px;color:#26354a;margin-bottom:1px}.bottom-strip span{display:block;font-size:6.7px;line-height:1.28;color:#6d7b8e}
+.capacity-note{font-size:8px;line-height:1.5;color:#607086}
+
+.signal-hero{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+.signal-card{border:1px solid #dbe4ef;border-radius:14px;padding:10px 10px 8px;background:#fff;min-height:200px}
+.signal-card.greenbox{background:#eefbf4;border-color:#bfe8d0}
+.signal-card.amberbox{background:#fff7e8;border-color:#f0d7a2}
+.signal-card.redbox{background:#fff1f3;border-color:#efc2ca}
+.signal-light{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900;color:#fff;margin:0 auto 6px;box-shadow:inset 0 -3px 0 rgba(0,0,0,.08)}
+.signal-light.green{background:#16a34a}.signal-light.amber{background:#d69b2d}.signal-light.red{background:#d83a55}
+.signal-title{text-align:center;font-size:15px;font-weight:950;margin-bottom:4px}.signal-sub{text-align:center;font-size:8.4px;color:#6e7c90;line-height:1.45;margin-bottom:7px}
+.signal-list{margin:0;padding-left:15px}.signal-list li{font-size:8.55px;line-height:1.48;color:#4f5f75;margin:4px 0}
+.signal-bottom{display:grid;grid-template-columns:1.2fr .8fr;gap:8px;margin-top:8px}
+.signal-band{border:1px solid #d9e2ed;border-radius:10px;padding:8px 10px;background:#fbfcfe}
+.signal-band .sb-title{font-size:10px;font-weight:900;color:#26354a;margin-bottom:5px}
+.signal-band p{margin:0;font-size:8.8px;line-height:1.55;color:#526176}
+.signal-now{display:grid;grid-template-columns:78px 1fr;gap:8px;align-items:center;border:1px solid #dbe4ef;border-radius:12px;padding:8px 10px;background:#fff}
+.signal-now .badge{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#fde68a,#86efac);border:3px solid #fff;box-shadow:0 0 0 1px #d9e2ed inset;font-size:11px;font-weight:950;color:#274154;text-align:center;line-height:1.15}
+.signal-now .txt b{display:block;font-size:10px;color:#223248;margin-bottom:4px}.signal-now .txt span{display:block;font-size:8.5px;line-height:1.5;color:#5b6a7f}
+
+
+/* ===== Interactive horizontal paged reader ===== */
+html,body{width:100%;height:100%;overflow:hidden}
+body{background:#111827}
+.reader-shell{height:100dvh;min-height:520px;display:grid;grid-template-rows:58px minmax(0,1fr) 60px;background:radial-gradient(circle at 50% 10%,#26364b 0,#162130 38%,#0f1724 100%);overflow:hidden}
+.reader-topbar{z-index:20;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:8px 20px;background:rgba(12,21,34,.93);border-bottom:1px solid rgba(255,255,255,.09);color:#fff;backdrop-filter:blur(14px)}
+.reader-brand{min-width:0}.reader-brand-title{font-size:13px;font-weight:900;letter-spacing:.1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.reader-brand-sub{margin-top:2px;font-size:9.5px;color:#aebed2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.reader-top-actions{display:flex;align-items:center;gap:12px;flex:none}.reader-hint{font-size:9px;color:#899bb1}.reader-page-count{font-size:11px;font-weight:900;color:#e9f2ff;background:#26384e;border:1px solid #3a4f69;border-radius:999px;padding:4px 9px;min-width:48px;text-align:center}
+.reader-viewport{position:relative;min-width:0;min-height:0;overflow:hidden;touch-action:pan-y}
+.report{width:100%;height:100%;margin:0;display:flex;align-items:stretch;transform:translate3d(0,0,0);transition:transform .42s cubic-bezier(.22,.8,.24,1);will-change:transform}
+.slide{position:relative;flex:0 0 100%;width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:10px 14px}
+.page{flex:none;margin:0!important;box-shadow:0 20px 55px rgba(0,0,0,.32)!important;transform:scale(var(--page-scale,.72));transform-origin:center center;transition:transform .18s ease,box-shadow .18s ease;page-break-after:auto;break-after:auto}
+.slide.is-active .page{box-shadow:0 24px 64px rgba(0,0,0,.42)!important}
+.reader-controls{z-index:20;display:grid;grid-template-columns:124px minmax(0,1fr) 124px;align-items:center;gap:12px;padding:8px 18px;background:rgba(12,21,34,.95);border-top:1px solid rgba(255,255,255,.09);backdrop-filter:blur(14px)}
+.reader-nav-btn{height:38px;border:1px solid #40536b;border-radius:10px;background:#1c2a3b;color:#d9e5f4;font-size:10px;font-weight:900;cursor:pointer;transition:.18s ease}.reader-nav-btn:hover:not(:disabled){background:#26384e;border-color:#6382a7;transform:translateY(-1px)}.reader-nav-btn.primary{background:#23699f;border-color:#3d82b7;color:white}.reader-nav-btn.primary:hover:not(:disabled){background:#2d78b1}.reader-nav-btn:disabled{opacity:.28;cursor:default;transform:none}
+.reader-center-nav{display:flex;flex-direction:column;gap:6px;min-width:0}.reader-dots{display:flex;align-items:center;justify-content:center;gap:5px}.reader-dot{width:27px;height:24px;border:1px solid #384b61;border-radius:7px;background:#1a2736;color:#91a4bb;font-size:8px;font-weight:900;cursor:pointer;transition:.18s ease}.reader-dot:hover{border-color:#6f8eaf;color:#fff}.reader-dot.active{background:#edf6ff;color:#1f5f91;border-color:#d7eaff;transform:translateY(-1px)}
+.reader-progress{height:2px;width:min(390px,90%);margin:auto;background:#2a3a4d;border-radius:99px;overflow:hidden}.reader-progress-fill{height:100%;width:12.5%;background:#72b5e6;border-radius:99px;transition:width .42s cubic-bezier(.22,.8,.24,1)}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+@media(max-width:720px){.reader-shell{grid-template-rows:51px minmax(0,1fr) 58px}.reader-topbar{padding:7px 11px}.reader-brand-title{font-size:11px}.reader-brand-sub{font-size:8px}.reader-hint{display:none}.reader-controls{grid-template-columns:84px minmax(0,1fr) 84px;padding:7px 8px;gap:7px}.reader-nav-btn{height:36px;font-size:9px}.reader-dot{width:22px;height:22px;padding:0;font-size:7px}.reader-dots{gap:3px}.slide{padding:5px}.page{border-radius:2px!important}}
+@media(max-height:680px){.reader-shell{grid-template-rows:48px minmax(0,1fr) 52px}.reader-controls{padding-top:5px;padding-bottom:5px}.reader-nav-btn{height:34px}.slide{padding:5px}}
+@media print{html,body{height:auto!important;overflow:visible!important;background:#fff!important}.reader-shell{display:block!important;height:auto!important;min-height:0!important;background:#fff!important;overflow:visible!important}.reader-topbar,.reader-controls,.sr-only{display:none!important}.reader-viewport{overflow:visible!important}.report{display:block!important;width:210mm!important;height:auto!important;transform:none!important}.slide{display:block!important;width:210mm!important;height:297mm!important;padding:0!important;overflow:hidden!important}.page{transform:none!important;margin:0!important;box-shadow:none!important;page-break-after:always!important;break-after:page!important}.slide:last-child .page{page-break-after:auto!important;break-after:auto!important}}
+
+/* ===== Robust horizontal reader v2: CSS navigation + CSS zoom ===== */
+html,body{width:100%;height:100%;overflow:hidden;background:#0f1724}
+.zoom-radio{position:fixed;opacity:0;pointer-events:none;width:1px;height:1px}
+.reader-shell{height:100dvh;min-height:500px;display:grid;grid-template-rows:62px minmax(0,1fr) 58px;background:radial-gradient(circle at 50% 8%,#293b53 0,#162130 40%,#0f1724 100%);overflow:hidden}
+.reader-topbar{z-index:30;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 16px;background:#0c1522;border-bottom:1px solid rgba(255,255,255,.10);color:#fff}
+.reader-brand{min-width:0}.reader-brand-title{font-size:13px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.reader-brand-sub{margin-top:2px;font-size:9px;color:#aebed2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.reader-top-actions{display:flex;align-items:center;gap:8px;flex:none}.reader-page-count{font-size:10px;font-weight:900;color:#e9f2ff;background:#26384e;border:1px solid #3a4f69;border-radius:999px;padding:5px 9px;min-width:48px;text-align:center}
+.zoom-controls{display:flex;align-items:center;gap:3px;padding:3px;background:#172536;border:1px solid #33485f;border-radius:9px}.zoom-controls .zlabel{min-width:34px;height:27px;padding:0 7px;display:flex;align-items:center;justify-content:center;border-radius:6px;color:#9eb0c5;font-size:8px;font-weight:900;cursor:pointer;user-select:none;-webkit-user-select:none}.zoom-controls .zlabel:hover{background:#263a50;color:#fff}
+#zoomFit:checked ~ .reader-shell label[for=zoomFit],#zoom50:checked ~ .reader-shell label[for=zoom50],#zoom75:checked ~ .reader-shell label[for=zoom75],#zoom100:checked ~ .reader-shell label[for=zoom100],#zoom125:checked ~ .reader-shell label[for=zoom125]{background:#edf6ff;color:#1f5f91}
+.reader-viewport{position:relative;min-width:0;min-height:0;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;touch-action:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.reader-viewport::-webkit-scrollbar{display:none}
+.report{width:100%;height:100%;margin:0;display:flex;align-items:stretch;transform:none!important;transition:none!important;will-change:auto}
+.slide{position:relative;flex:0 0 100%;width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:auto;padding:8px 54px;scroll-snap-align:start;scroll-snap-stop:always;scrollbar-width:thin}
+.slide>.page{flex:none;margin:auto!important;box-shadow:0 20px 55px rgba(0,0,0,.34)!important;transform:none!important;transform-origin:center center;page-break-after:auto;break-after:auto;zoom:var(--fit-zoom,.68)}
+#zoom50:checked ~ .reader-shell .slide>.page{zoom:.50}
+#zoom75:checked ~ .reader-shell .slide>.page{zoom:.75}
+#zoom100:checked ~ .reader-shell .slide>.page{zoom:1}
+#zoom125:checked ~ .reader-shell .slide>.page{zoom:1.25}
+#zoomFit:checked ~ .reader-shell .slide>.page{zoom:var(--fit-zoom,.68)}
+.slide-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:20;width:38px;height:58px;border-radius:12px;display:flex;align-items:center;justify-content:center;text-decoration:none;background:rgba(15,30,46,.84);border:1px solid #49627d;color:#fff;font-size:28px;font-weight:700;line-height:1;box-shadow:0 8px 22px rgba(0,0,0,.22);user-select:none;-webkit-user-select:none}.slide-arrow:hover{background:#23699f}.slide-arrow.prev{left:9px}.slide-arrow.next{right:9px}.slide-arrow.disabled{opacity:.15;pointer-events:none}
+.reader-controls{z-index:30;display:flex;align-items:center;justify-content:center;padding:7px 12px;background:#0c1522;border-top:1px solid rgba(255,255,255,.10)}
+.reader-center-nav{display:flex;align-items:center;gap:10px;min-width:0}.reader-dots{display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:nowrap}.reader-dot{width:30px;height:28px;border:1px solid #384b61;border-radius:7px;background:#1a2736;color:#a9b9cb;font-size:9px;font-weight:900;cursor:pointer;text-decoration:none;display:flex;align-items:center;justify-content:center}.reader-dot:hover,.reader-dot:focus{border-color:#77a3cc;color:#fff;outline:none}.reader-dot.active{background:#edf6ff;color:#1f5f91;border-color:#d7eaff}
+.reader-progress{height:3px;width:min(360px,38vw);background:#2a3a4d;border-radius:99px;overflow:hidden}.reader-progress-fill{height:100%;width:12.5%;background:#72b5e6;border-radius:99px;transition:width .2s ease}
+.reader-nav-btn{display:none!important}.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+@media(max-width:820px){.reader-shell{grid-template-rows:57px minmax(0,1fr) 54px}.reader-topbar{padding:6px 8px;gap:8px}.reader-brand-title{font-size:10.5px}.reader-brand-sub{font-size:7.5px}.reader-page-count{display:none}.zoom-controls .zlabel{min-width:29px;height:25px;padding:0 5px;font-size:7px}.slide{padding:5px 34px}.slide-arrow{width:28px;height:48px;border-radius:9px;font-size:22px}.slide-arrow.prev{left:3px}.slide-arrow.next{right:3px}.reader-dot{width:25px;height:25px;font-size:8px}.reader-dots{gap:3px}.reader-progress{display:none}#zoomFit:checked ~ .reader-shell .slide>.page{zoom:var(--fit-zoom,.42)}}
+@media(max-width:420px){.reader-brand-sub{display:none}.zoom-controls label[for=zoom75],.zoom-controls label[for=zoom125]{display:none}.reader-dot{width:23px;height:24px}.reader-dots{gap:2px}}
+@media(max-height:700px) and (min-width:821px){#zoomFit:checked ~ .reader-shell .slide>.page{zoom:var(--fit-zoom,.52)}}
+@media print{html,body{height:auto!important;overflow:visible!important;background:#fff!important}.zoom-radio,.reader-topbar,.reader-controls,.slide-arrow,.sr-only{display:none!important}.reader-shell{display:block!important;height:auto!important;min-height:0!important;background:#fff!important;overflow:visible!important}.reader-viewport{overflow:visible!important}.report{display:block!important;width:210mm!important;height:auto!important}.slide{display:block!important;width:210mm!important;height:297mm!important;padding:0!important;overflow:hidden!important}.slide>.page{zoom:1!important;transform:none!important;margin:0!important;box-shadow:none!important;page-break-after:always!important;break-after:page!important}.slide:last-child>.page{page-break-after:auto!important;break-after:auto!important}}
+
+/* ===== v3 true proportional page scaling ===== */
+.reader-viewport{overflow-x:auto!important;overflow-y:hidden!important}
+.slide{overflow:auto!important;align-items:center!important;justify-content:center!important}
+.page-stage{position:relative;flex:none;margin:auto;overflow:visible;transition:width .18s ease,height .18s ease}
+.page-stage>.page{position:absolute!important;left:0;top:0;margin:0!important;zoom:1!important;transform-origin:top left!important;transition:transform .18s ease!important;box-shadow:0 20px 55px rgba(0,0,0,.34)!important}
+/* Fixed ratios: stage dimensions match the transformed page, so no clipping. */
+#zoom50:checked ~ .reader-shell .page-stage{width:105mm;height:148.5mm}
+#zoom50:checked ~ .reader-shell .page-stage>.page{transform:scale(.5)!important}
+#zoom75:checked ~ .reader-shell .page-stage{width:157.5mm;height:222.75mm}
+#zoom75:checked ~ .reader-shell .page-stage>.page{transform:scale(.75)!important}
+#zoom100:checked ~ .reader-shell .page-stage{width:210mm;height:297mm}
+#zoom100:checked ~ .reader-shell .page-stage>.page{transform:scale(1)!important}
+#zoom125:checked ~ .reader-shell .page-stage{width:262.5mm;height:371.25mm}
+#zoom125:checked ~ .reader-shell .page-stage>.page{transform:scale(1.25)!important}
+/* Fit mode uses measured pixel dimensions set by JS; fallback remains readable. */
+#zoomFit:checked ~ .reader-shell .page-stage{width:var(--fit-w,540px);height:var(--fit-h,764px)}
+#zoomFit:checked ~ .reader-shell .page-stage>.page{transform:scale(var(--fit-scale,.68))!important}
+/* Neutralize all legacy zoom declarations. */
+#zoomFit:checked ~ .reader-shell .slide>.page,
+#zoom50:checked ~ .reader-shell .slide>.page,
+#zoom75:checked ~ .reader-shell .slide>.page,
+#zoom100:checked ~ .reader-shell .slide>.page,
+#zoom125:checked ~ .reader-shell .slide>.page{zoom:1!important}
+@media(max-width:820px){
+  .slide{padding:6px 34px!important}
+  #zoomFit:checked ~ .reader-shell .page-stage{width:var(--fit-w,320px);height:var(--fit-h,452px)}
+  #zoomFit:checked ~ .reader-shell .page-stage>.page{transform:scale(var(--fit-scale,.40))!important}
+}
+@media print{
+  .page-stage{width:210mm!important;height:297mm!important;overflow:visible!important}
+  .page-stage>.page{position:relative!important;transform:none!important;zoom:1!important;box-shadow:none!important}
+}
+
+/* ===== v4 bottom-only page navigation ===== */
+.reader-page-count{display:none!important}
+.slide-arrow{display:none!important}
+.reader-controls{z-index:40!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:7px 12px!important;background:#0c1522!important;border-top:1px solid rgba(255,255,255,.10)!important}
+.bottom-pager{display:flex;align-items:center;justify-content:center;gap:8px;max-width:100%;min-width:0}
+.bottom-arrow{width:38px;height:34px;flex:none;display:flex;align-items:center;justify-content:center;border:1px solid #40536b;border-radius:9px;background:#1c2a3b;color:#eef6ff;text-decoration:none;font-size:18px;font-weight:900;line-height:1;transition:.15s ease}
+.bottom-arrow:hover,.bottom-arrow:focus{background:#23699f;border-color:#5e93bd;outline:none}
+.bottom-arrow.disabled{opacity:.25;pointer-events:none}
+.bottom-page-count{height:30px;min-width:52px;padding:0 9px;display:flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid #3a4f69;background:#26384e;color:#e9f2ff;font-size:9px;font-weight:900;white-space:nowrap}
+.reader-center-nav{display:flex!important;align-items:center!important;gap:7px!important;min-width:0!important}
+.reader-dots{display:flex!important;align-items:center!important;justify-content:center!important;gap:4px!important;flex-wrap:nowrap!important}
+.reader-progress{display:none!important}
+@media(max-width:620px){
+  .reader-shell{grid-template-rows:57px minmax(0,1fr) 56px!important}
+  .reader-controls{padding:7px 5px!important}
+  .bottom-pager{gap:4px!important;width:100%}
+  .bottom-arrow{width:34px;height:34px;font-size:17px}
+  .reader-dot{width:24px!important;height:27px!important;font-size:8px!important}
+  .reader-dots{gap:2px!important;flex:1;min-width:0}
+  .bottom-page-count{min-width:44px;padding:0 5px;font-size:8px}
+}
+@media(max-width:390px){
+  .bottom-pager{gap:3px!important}
+  .bottom-arrow{width:31px;height:32px}
+  .reader-dot{width:22px!important;height:25px!important}
+  .bottom-page-count{min-width:40px;font-size:7.5px}
+}
+
+</style></head><body>
+<input checked="checked" class="zoom-radio" id="zoomFit" name="readerZoom" type="radio" value="fit"/><input class="zoom-radio" id="zoom50" name="readerZoom" type="radio" value="50"/><input class="zoom-radio" id="zoom75" name="readerZoom" type="radio" value="75"/><input class="zoom-radio" id="zoom100" name="readerZoom" type="radio" value="100"/><input class="zoom-radio" id="zoom125" name="readerZoom" type="radio" value="125"/><div class="reader-shell"><header class="reader-topbar"><div class="reader-brand"><div class="reader-brand-title">全新光電 (2455 TT)｜2025Q4–2027F 深度研究</div><div class="reader-brand-sub" id="chapterTitle">摘要與研究大綱</div></div><div class="reader-top-actions"><div aria-label="縮放比例" class="zoom-controls"><label class="zlabel" for="zoomFit" title="縮放至適合">適合</label><label class="zlabel" for="zoom50" title="縮放至50%">50%</label><label class="zlabel" for="zoom75" title="縮放至75%">75%</label><label class="zlabel" for="zoom100" title="縮放至100%">100%</label><label class="zlabel" for="zoom125" title="縮放至125%">125%</label></div><span class="reader-page-count" id="topPageCount">1 / 8</span></div></header><main aria-label="研究報告分頁閱讀區" class="reader-viewport" id="readerViewport"><div class="report">
+<!-- PAGE 1 -->
+<div class="slide" data-page="1" id="page-1"><div class="page-stage"><section class="page"><div class="page-inner">
+<div class="eyebrow">AI 光通訊 / 化合物半導體 / 財務拐點研究</div>
+<div style="display:flex;justify-content:space-between;gap:22px;align-items:flex-start;margin-top:5px">
+<div style="flex:1"><div class="h1">全新光電 (2455 TT)<br/>2025Q4 - 2027F 營運與財務展望</div><div class="subtitle">聚焦已實現的財務改善、光電子營收占比黃金交叉，以及 2026F / 2027F 市場共識與樂觀模型差異</div></div>
+<div style="width:115px;text-align:right;padding-top:12px"><div class="small">研究資料庫整併版</div><div style="font-size:16px;font-weight:900;margin-top:2px">2026.08</div><div class="tiny">官方財報 + 公司公開資訊 + 去識別化市場研究 + 投顧自研模型</div></div>
+</div>
+<div class="grid4" style="margin-top:12px">
+<div class="card kpi"><div class="label">26Q2 營收</div><div class="value em">9.65 億</div><div class="delta">QoQ +0.6% / YoY +35.2%</div></div>
+<div class="card kpi"><div class="label">26Q2 毛利率</div><div class="value pos">38.61%</div><div class="delta">較 25Q4 +1.34 ppts</div></div>
+<div class="card kpi"><div class="label">26H1 EPS</div><div class="value warn">2.20 元</div><div class="delta">YoY 約 +110%</div></div>
+<div class="card kpi dark"><div class="label">2026/07 營收</div><div class="value">4.22 億</div><div class="delta">單月歷史新高</div></div>
+</div>
+<div class="section-title" style="margin-top:12px">執行摘要</div>
+<div class="bigcall"><b>核心判斷：</b>2025Q4 -&gt; 2026Q2 的真正變化，不是營收總量大增，而是<b>毛利率與每股獲利在營收近乎持平下持續改善</b>。同期 InP 基板供應限制使光電子占比先降後升；7 月營收刷新紀錄且研究估計光電子占比已超過 40%，代表先前受限的需求開始釋放。若這種產品組合改善能延續，2027 年光電子占比超越微電子將成為獲利彈性的核心來源。</div>
+<div class="grid3" style="margin-top:8px">
+<div class="card blue"><div class="callout-num em">+0.6%</div><div class="callout-label">25Q4 -&gt; 26Q2 營收變化</div><div class="small" style="margin-top:5px">營收約 9.6 億維持高檔，尚未呈現爆發式季增。</div></div>
+<div class="card green"><div class="callout-num pos">+4.2%</div><div class="callout-label">同期毛利額成長</div><div class="small" style="margin-top:5px">毛利率 37.27% -&gt; 38.61%，組合/售價改善先反映。</div></div>
+<div class="card amber"><div class="callout-num warn">+9.5%</div><div class="callout-label">同期 EPS 成長</div><div class="small" style="margin-top:5px">EPS 1.05 -&gt; 1.15，獲利改善快於營收。</div></div>
+</div>
+<div class="section-title" style="margin-top:12px">章節目錄與研究大綱</div>
+<div class="toc">
+<div class="toc-item"><div class="toc-num">01</div><div><div class="toc-title">已實現財報變化</div><div class="toc-desc">2025Q4、2026Q1、Q2 的營收、毛利率、營益率、EPS。</div></div></div>
+<div class="toc-item"><div class="toc-num">02</div><div><div class="toc-title">營收結構與光電子占比</div><div class="toc-desc">InP 限制下的占比變化，以及 7 月供應改善後的訊號。</div></div></div>
+<div class="toc-item"><div class="toc-num">03</div><div><div class="toc-title">獲利品質與毛利率驅動</div><div class="toc-desc">為何高毛利光電子對 GP、OP、EPS 具有放大效果。</div></div></div>
+<div class="toc-item"><div class="toc-num">04</div><div><div class="toc-title">2026F 驗證</div><div class="toc-desc">市場共識 vs 投顧自研樂觀情境；H2 需要達成什麼。</div></div></div>
+<div class="toc-item"><div class="toc-num">05</div><div><div class="toc-title">2027F 與 CAGR</div><div class="toc-desc">營收、EPS、光電子收入 CAGR，及占比黃金交叉。</div></div></div>
+<div class="toc-item"><div class="toc-num">06</div><div><div class="toc-title">情境、風險、追蹤與產能量化</div><div class="toc-desc">三情境、升降級指標與新增 MOCVD 對有效產能的量化。</div></div></div>
+<div class="toc-item"><div class="toc-num">07</div><div><div class="toc-title">產能擴充量化</div><div class="toc-desc">新增 MOCVD 對有效產能、utilization 與模型驗證的含義。</div></div></div><div class="toc-item"><div class="toc-num">08</div><div><div class="toc-title">結論｜紅綠燈警示</div><div class="toc-desc">以大尺寸綠 / 黃 / 紅燈收斂整份研究結論與後續追蹤門檻。</div></div></div>
+</div>
+<div class="section-title" style="margin-top:12px">研究結論速覽：先把「已實現」與「待驗證」分開</div>
+<div class="grid2">
+<div class="card blue"><div class="subhead" style="margin-top:0">已實現：獲利品質先於營收改善</div><div class="small">25Q4 至 26Q2 單季營收約維持 9.6 億，但毛利額增加 4.2%、毛利率提高 1.34 個百分點、EPS 增加 9.5%。這代表第一階段拐點不是「量」先爆發，而是售價、產品組合與成本結構先改善。</div></div>
+<div class="card green"><div class="subhead" style="margin-top:0">待驗證：H2 是否把受限需求轉成營收</div><div class="small">上半年光電子占比僅約 26%，仍受到 InP 基板供應限制；7 月總營收升至 4.22 億，成為供應改善後的第一個高頻驗證點。後續要看 4.2-4.4 億月營收能否延續，而非只看單月創高。</div></div>
+</div>
+<div class="grid2" style="margin-top:7px">
+<div class="card amber"><div class="subhead" style="margin-top:0">2026F：不是只要做到 45 億營收</div><div class="small">市場中位數要求全年營收約 44.7 億、EPS 5.55。由於 H1 毛利率約 38.35%，要達成全年 40.6% 毛利率，H2 實際隱含毛利率必須升到約 42% 左右；因此 mix 與 ASP 的重要性高於單純出貨量。</div></div>
+<div class="card"><div class="subhead" style="margin-top:0">2027F：估值重心轉向光電子占比</div><div class="small">市場模型對 2027 營收與 EPS 的分歧很大，但方向高度一致：光電子占比接近或超過 50%。若黃金交叉成立，公司收入結構將由手機/RF 為主轉為 AI 光通訊與高速傳輸為主要增量來源。</div></div>
+</div>
+<div class="deepbox"><div class="title">資料庫使用原則與本報告口徑</div>
+<div class="two-col-text"><p><b>實績層：</b>營收、毛利額、毛利率、營業利益、淨利與 EPS 以官方財務報告及公開營收為優先，不用研究機構預估覆蓋已公布數字。</p><p><b>營運層：</b>產品、InP 供應、MOCVD、新產品量產與應用方向採公司法說/公開資訊與多份研究資料交叉整理；未正式揭露的 7 月光電子占比明確標示為研究估計。</p><p><b>預估層：</b>國內機構與外資報告全部去識別化後，以最新模型中位數作「市場共識」，最低至最高值作區間；使用者指定投顧自研資料只作樂觀對照。</p><p><b>推導層：</b>CAGR、H2 所需 run-rate、分部營收與毛利率敏感度由本報告依公開數字計算，屬分析模型，不等同公司指引。</p></div></div>
+<div class="sourcebox"><b>去識別化原則：</b>市場共識以 5 份最新國內機構/外資研究模型中位數表示；投顧自研資料僅作為樂觀情境比較。所有機構名稱、研究員名稱與目標價來源均不揭露。</div>
+</div><div class="abs-fill"><div class="af-title">閱讀導航：四個核心問題與驗證方式</div><div class="abs-grid">
+<div class="abs-item"><b>營收是否加速？</b><span>季度尚未；7 月開始。追蹤 8-12 月是否維持 4.2 億以上。</span></div>
+<div class="abs-item"><b>獲利品質是否改善？</b><span>已驗證。GM +1.34 ppts、EPS +9.5%；下一步看營益率。</span></div>
+<div class="abs-item"><b>光電子是否成主引擎？</b><span>H1 約 26%，7 月研究估計 &gt;40%；驗證 2026F 全年約 36%。</span></div>
+<div class="abs-item"><b>2027 高成長是否合理？</b><span>方向合理、幅度待驗證；關鍵是光電子 &gt;50% 與 MOCVD 利用率。</span></div>
+</div></div><div class="footer"><span>全新光電 2455 TT | 2025Q4-2027F 深度研究</span><span>Page 1 / 8</span></div></section></div></div>
+<!-- PAGE 2 -->
+<div class="slide" data-page="2" id="page-2"><div class="page-stage"><section class="page"><div class="page-inner">
+<div class="topline"><div class="name">01｜2025Q4 -&gt; 2026Q2：已實現財報變化</div><div class="meta">先看實績，再談預估<br/>單位：新台幣百萬元，EPS 除外</div></div>
+<div class="section-title">三個季度的財務對照</div>
+<table><thead><tr><th>指標</th><th>2025Q4</th><th>2026Q1</th><th>2026Q2</th><th>25Q4 -&gt; 26Q2</th></tr></thead><tbody>
+<tr><td class="rowlabel">營業收入</td><td>959.6</td><td>959.3</td><td><b>965.4</b></td><td class="pos"><b>+0.6%</b></td></tr>
+<tr><td class="rowlabel">毛利額</td><td>357.6</td><td>365.4</td><td><b>372.7</b></td><td class="pos"><b>+4.2%</b></td></tr>
+<tr><td class="rowlabel">毛利率</td><td>37.27%</td><td>38.09%</td><td><b>38.61%</b></td><td class="pos"><b>+1.34 ppts</b></td></tr>
+<tr><td class="rowlabel">營業利益</td><td>209.0</td><td><b>226.7</b></td><td>223.8</td><td class="pos">+7.1%</td></tr>
+<tr><td class="rowlabel">營益率</td><td>21.78%</td><td><b>23.63%</b></td><td>23.18%</td><td class="pos">+1.40 ppts</td></tr>
+<tr><td class="rowlabel">稅後淨利</td><td>194.0</td><td>195.1</td><td><b>213.6</b></td><td class="pos">+10.1%</td></tr>
+<tr><td class="rowlabel">淨利率</td><td>20.22%</td><td>20.34%</td><td><b>22.13%</b></td><td class="pos">+1.91 ppts</td></tr>
+<tr class="highlight"><td class="rowlabel">EPS (元)</td><td>1.05</td><td>1.06</td><td><b>1.15</b></td><td class="pos"><b>+9.5%</b></td></tr>
+</tbody></table>
+<div class="table-note">2026Q1/Q2 數字以官方財務報告為主；2025Q4 採年度財報拆分與多份研究資料交叉核對。四捨五入可能造成小幅差異。</div>
+<div class="grid2" style="margin-top:10px">
+<div class="card"><div class="subhead" style="margin-top:0">營收沒有爆發，但已站穩高檔</div><div class="bar-chart"><div class="bar-group"><div class="bar" style="height:81.9px"><span>960</span></div><div class="x">2025Q4</div></div><div class="bar-group"><div class="bar" style="height:81.9px"><span>959</span></div><div class="x">2026Q1</div></div><div class="bar-group"><div class="bar" style="height:82.0px"><span>965</span></div><div class="x">2026Q2</div></div></div><div class="tiny" style="text-align:center;margin-top:4px">單季營收約 9.6 億，25Q4 -&gt; 26Q2 僅 +0.6%</div></div>
+<div class="card"><div class="subhead" style="margin-top:0">毛利率與 EPS 同步上移</div>
+<div class="metricline"><div class="lbl">25Q4 毛利率</div><div class="track"><div class="fill" style="width:81.0%"></div></div><div class="v">37.27%</div></div>
+<div class="metricline"><div class="lbl">26Q1 毛利率</div><div class="track"><div class="fill g" style="width:82.8%"></div></div><div class="v">38.09%</div></div>
+<div class="metricline"><div class="lbl">26Q2 毛利率</div><div class="track"><div class="fill g" style="width:83.9%"></div></div><div class="v">38.61%</div></div>
+<div class="divider"></div>
+<div class="metricline"><div class="lbl">25Q4 EPS</div><div class="track"><div class="fill a" style="width:70%"></div></div><div class="v">1.05</div></div>
+<div class="metricline"><div class="lbl">26Q1 EPS</div><div class="track"><div class="fill a" style="width:70.7%"></div></div><div class="v">1.06</div></div>
+<div class="metricline"><div class="lbl">26Q2 EPS</div><div class="track"><div class="fill a" style="width:76.7%"></div></div><div class="v">1.15</div></div>
+<div class="tiny" style="margin-top:6px">營收幾乎橫向，但獲利率往上，這是「營運品質改善」而非單純營收成長。</div></div>
+</div>
+<div class="section-title" style="margin-top:11px">如何解讀這個拐點？</div>
+<div class="grid3">
+<div class="card blue"><div class="subhead" style="margin-top:0">Q4：產品組合先改善</div><div class="small">光電子占比升至 29.3% 的高點，毛利率由 25Q3 的低檔明顯回升至 37.27%。</div></div>
+<div class="card"><div class="subhead" style="margin-top:0">Q1：InP 缺料壓住占比</div><div class="small">光電子占比回落至 25.1%，但毛利率仍提升至 38.09%，顯示售價、成本轉嫁與其他組合改善提供支撐。</div></div>
+<div class="card green"><div class="subhead" style="margin-top:0">Q2：獲利率續升</div><div class="small">光電子占比回升至 27.1%，毛利率升至 38.61%；EPS 1.15 創近幾季高點。</div></div>
+</div>
+<div class="card amber" style="margin-top:8px"><b style="font-size:9px">需要保留的細節：</b><span class="small"> 26Q2 營業利益 QoQ 小幅下降，營益率由 23.63% 降至 23.18%，代表毛利率改善尚未完全轉化為營業槓桿；Q2 淨利/EPS 的增幅也包含營業外與稅務因素。因而判斷結構性拐點時，應同時追蹤「毛利率 + 營益率」，而非只看 EPS。</span></div>
+<div class="section-title" style="margin-top:10px">從損益表看「同樣營收、更多獲利」的來源</div>
+<div class="formula-row">
+<div class="formula-card"><div class="f-title">25Q4 -&gt; 26Q2 毛利額</div><div class="f-value pos">+15.1 百萬</div><div class="f-desc">357.6 -&gt; 372.7。營收只增加約 5.8 百萬，毛利額的增幅明顯更大。</div></div>
+<div class="formula-card"><div class="f-title">同期營業利益</div><div class="f-value em">+14.8 百萬</div><div class="f-desc">209.0 -&gt; 223.8。大部分毛利改善有留在營業利益，但 Q2 QoQ 尚未進一步放大。</div></div>
+<div class="formula-card"><div class="f-title">同期稅後淨利</div><div class="f-value warn">+19.6 百萬</div><div class="f-desc">194.0 -&gt; 213.6。淨利增幅高於營業利益，需同時留意業外與稅率影響。</div></div>
+</div>
+<div class="grid2" style="margin-top:8px">
+<div class="deepbox" style="margin-top:0"><div class="title">毛利率的財務敏感度</div><p>以 26Q2 單季營收約 9.65 億為基準，毛利率每提高 <b>1 個百分點</b>，理論上可增加約 <b>965 萬元毛利額</b>。若其他費用與稅率不變，這就是產品組合改善轉化為 EPS 的第一層槓桿。</p><div class="calc">9.654 億 x 1% = 約 965 萬元增量毛利</div><p style="margin-top:5px">因此從 37.27% 升至 38.61%的 1.34 ppts，單看比率變化，已能解釋相當部分毛利額提升。</p></div>
+<div class="deepbox" style="margin-top:0"><div class="title">為什麼 Q2 毛利率升、營益率卻小幅回落？</div><p>26Q1 營益率 23.63%，26Q2 為 23.18%，QoQ 約 -0.45 ppts。這表示費用端或營運節奏吸收了部分新增毛利，因此不能直接把毛利率上升等比例外推到 EPS。</p><p><b>驗證方式：</b>若 H2 光電子放量後毛利率站上 40%，同時營益率也重新上行，才代表 fixed-cost absorption 真正開始發揮。</p></div>
+</div>
+<div class="deepbox"><div class="title">三季財務訊號的順序</div><p><b>25Q4：</b>光電子占比回到 29.3%，毛利率顯著修復，證明 mix 對獲利有效；但 12 月 InP 再度緊張，使量的恢復不完整。</p><p><b>26Q1：</b>光電子比重因缺料降至 25.1%，但毛利率仍升到 38.09%，顯示調價、成本轉嫁與微電子組合提供緩衝。</p><p><b>26Q2：</b>光電子營收 QoQ 回升，毛利率進一步升至 38.61%，淨利與 EPS 同步改善；這使 H2 的問題從「能不能賺更多」轉成「供應恢復後能不能把量也拉起來」。</p></div>
+<div class="sourcebox">資料層級：官方財務報告為最高優先；產品組合拆分採公司公開資訊與多份研究資料交叉驗證。本頁只呈現已公布實績。</div>
+</div><div class="footer"><span>01 已實現財報變化</span><span>Page 2 / 8</span></div></section></div></div>
+<!-- PAGE 3 -->
+<div class="slide" data-page="3" id="page-3"><div class="page-stage"><section class="page"><div class="page-inner">
+<div class="topline"><div class="name">02-03｜營收結構、光電子占比與毛利率驅動</div><div class="meta">核心問題：營收「變多」之外，是否也「變好」？</div></div>
+<div class="section-title">產品組合：InP 缺料使占比先退後進</div>
+<div class="card">
+<div class="legend"><span><i class="sw m"></i>微電子 (RF/PA 等)</span><span><i class="sw o"></i>光電子 (PD/LD/CW Laser/VCSEL 等)</span></div>
+<div class="stack-wrap"><div class="stack-label">2025Q4</div><div class="stack"><div class="micro" style="width:70.7%">70.7%</div><div class="opto" style="width:29.3%">29.3%</div></div><div class="stack-note">高點</div></div>
+<div class="stack-wrap"><div class="stack-label">2026Q1</div><div class="stack"><div class="micro" style="width:74.9%">74.9%</div><div class="opto" style="width:25.1%">25.1%</div></div><div class="stack-note">InP 受限</div></div>
+<div class="stack-wrap"><div class="stack-label">2026Q2</div><div class="stack"><div class="micro" style="width:72.9%">72.9%</div><div class="opto" style="width:27.1%">27.1%</div></div><div class="stack-note">開始修復</div></div>
+<div class="stack-wrap"><div class="stack-label">2026/07</div><div class="stack"><div class="micro" style="width:59%">&lt;60%</div><div class="opto" style="width:41%">&gt;40%</div></div><div class="stack-note">研究估計</div></div>
+<div class="tiny">注意：7 月光電子占比 &gt;40% 為研究端依出貨/產品資訊推估，非公司正式分部公告；但 7 月總營收 4.22 億為已公告實績。</div>
+</div>
+<div class="grid2" style="margin-top:8px">
+<div class="card blue"><div class="subhead" style="margin-top:0">光電子單季營收的「被壓抑需求」</div>
+<div class="metricline"><div class="lbl">2025Q4</div><div class="track"><div class="fill g" style="width:93.7%"></div></div><div class="v">2.81 億</div></div>
+<div class="metricline"><div class="lbl">2026Q1</div><div class="track"><div class="fill g" style="width:80.3%"></div></div><div class="v">2.41 億</div></div>
+<div class="metricline"><div class="lbl">2026Q2</div><div class="track"><div class="fill g" style="width:87.2%"></div></div><div class="v">2.62 億</div></div>
+<div class="small" style="margin-top:6px">Q1 因 InP 基板供應受限，光電子營收較 Q4 回落；Q2 已回升。若 7 月占比確實超過 40%，單月光電子營收至少約 1.69 億，明顯高於上半年月均。</div></div>
+<div class="card green"><div class="subhead" style="margin-top:0">為何占比比總營收更重要？</div><div class="small">市場模型顯示，成熟微電子產品毛利率約落在低 30% 區間，而高速光通訊相關子產品的毛利率可落在 50% 以上。這使得<b>同樣 1 元營收，光電子對毛利額與 EPS 的貢獻更高</b>。</div><div class="divider"></div><div class="quote">產品組合從 25% -&gt; 35-40% -&gt; 50%+，才是 2026-2027 EPS 增速可能遠高於營收增速的主因。</div></div>
+</div>
+<div class="section-title" style="margin-top:10px">供應解除 + 新產品 + 擴產，形成三段式驅動</div>
+<div class="timeline">
+<div class="step active"><div class="y">供應面</div><div class="t">InP 基板恢復</div><div class="d">出口許可分批放行、德日替代來源、客戶供料，緩解 1H26 瓶頸。</div></div>
+<div class="step active"><div class="y">接收端</div><div class="t">100G / 200G PD</div><div class="d">800G / 1.6T 高速傳輸升級，200G PD 已進入出貨階段。</div></div>
+<div class="step"><div class="y">發射端</div><div class="t">CW Laser / VCSEL</div><div class="d">CW Laser 新客戶逐步放量，VCSEL 已進入量產，產品線更完整。</div></div>
+<div class="step"><div class="y">更長期</div><div class="t">EML + CPO</div><div class="d">EML 認證/量產時間較晚，但若進入 CPO 生態系，ASP 與毛利率彈性更高。</div></div>
+</div>
+<div class="section-title" style="margin-top:10px">產能訊號：MOCVD 規劃由 3 台一路上修至 5 台，再到最新 7 台</div>
+<div class="grid3">
+<div class="card"><div class="subhead" style="margin-top:0">InP</div><div class="small">最新擴產規劃中 InP MOCVD 數量持續增加，對應 PD / LD / CW Laser 等需求。</div></div>
+<div class="card"><div class="subhead" style="margin-top:0">GaN / 新應用</div><div class="small">額外設備對應 RF、電力/新興應用，降低公司只依賴單一產品線的風險。</div></div>
+<div class="card"><div class="subhead" style="margin-top:0">E-Beam</div><div class="small">配合 CW Laser 二次磊晶/製程需求，顯示公司由接收端延伸至發射端。</div></div>
+</div>
+<div class="section-title" style="margin-top:10px">為何光電子具有更高的結構性價值？</div>
+<div class="grid3">
+<div class="card"><span class="pill greenp">製程時間</span><div class="subhead">磊晶時間更長</div><div class="small">公司公開說明中，微電子磊晶累積時間約 2-4 小時，光電子約 6-9 小時，反映製程複雜度、結構層數與設備時間占用更高。</div></div>
+<div class="card blue"><span class="pill">基板尺寸</span><div class="subhead">InP 以 2-4 吋為主</div><div class="small">微電子主流為 6 吋，光電子 Data Center 產品主要使用 2-4 吋 InP。基板供應的區域與產能限制因此直接影響光電子出貨節奏。</div></div>
+<div class="card amber"><span class="pill amberp">產品世代</span><div class="subhead">接收端到發射端</div><div class="small">產品由 PD 接收端延伸至 CW Laser、VCSEL 等發射端/光源應用，且速率世代往 800G、1.6T 提升，增加單位內容價值與認證黏著度。</div></div>
+</div>
+<div class="section-title" style="margin-top:10px">供應恢復後，財報應該出現的三個連鎖反應</div>
+<div class="matrix">
+<div class="mh">觀察層級</div><div class="mh">先行訊號</div><div class="mh">財務反映</div><div class="mh">失敗訊號</div>
+<div><b>1. 供應</b></div><div class="good">InP 到貨與替代來源增加</div><div>光電子月營收脫離 H1 約 0.86-0.88 億常態區</div><div class="bad">出貨仍卡在原料或認證</div>
+<div><b>2. 組合</b></div><div class="good">光電子占比 35-40%+</div><div>毛利率由高 30% 往 40%+ 移動</div><div class="bad">營收增但占比不升</div>
+<div><b>3. 槓桿</b></div><div class="good">MOCVD 利用率提高</div><div>營益率與 EPS 增速高於營收</div><div class="bad">折舊先上、利用率落後</div>
+</div>
+<div class="grid2" style="margin-top:8px">
+<div class="deepbox" style="margin-top:0"><div class="title">產能不是「5 台」這個數字本身，而是利用率</div><p>公司公開資訊顯示，新購 5 台 MOCVD 預計使總機台數由 62 台增至 67 台，其中研究資料顯示新增設備以 InP 為主。設備到位只代表供給能力上限增加；真正的 EPS 槓桿要等客戶認證、原料、訂單與 utilization 同步。</p></div>
+<div class="deepbox" style="margin-top:0"><div class="title">7 月為何是關鍵但仍不足以定論？</div><p>7 月總營收 4.22 億創高，若光電子占比研究估計 &gt;40% 成立，單月光電子至少約 1.69 億，已明顯跳脫 H1 月均。接下來需要 8-12 月連續性，才能確認是遞延訂單一次性回補，還是新的 run-rate。</p></div>
+</div>
+<div class="sourcebox">本頁產品占比與產業路線來自公司公開資訊、法說紀錄與去識別化研究資料；7 月占比、個別產品毛利率為研究估計，不等同公司財報分部揭露。</div>
+</div><div class="footer"><span>02-03 營收結構與毛利率驅動</span><span>Page 3 / 8</span></div><div class="bottom-strip"><div class="bs"><b>7月訊號</b><span>光電子占比研究估計 &gt;40%，但仍需 8-12 月延續。</span></div><div class="bs"><b>毛利率門檻</b><span>若 H2 能站穩 40%+，代表高毛利組合真正放大。</span></div><div class="bs"><b>產能觀察</b><span>MOCVD 新機只是供給能力，utilization 才決定 EPS。</span></div><div class="bs"><b>判讀重點</b><span>先看光電子月營收，再看 GM，最後確認 EPS 槓桿。</span></div></div></section></div></div>
+<!-- PAGE 4 -->
+<div class="slide" data-page="4" id="page-4"><div class="page-stage"><section class="page"><div class="page-inner">
+<div class="topline"><div class="name">04｜2026F：市場共識正在要求 H2 出現第二段加速</div><div class="meta">市場共識 = 5 份最新去識別化機構/外資模型中位數</div></div>
+<div class="section-title">2026F：實績、共識與投顧自研樂觀情境</div>
+<table><thead><tr><th>指標</th><th>2025A</th><th>2026F 市場共識</th><th>市場區間</th><th>投顧自研樂觀</th></tr></thead><tbody>
+<tr><td class="rowlabel">營收 (百萬元)</td><td>3,380</td><td class="em"><b>4470</b></td><td>4197 - 4702</td><td class="warn"><b>4581</b></td></tr>
+<tr><td class="rowlabel">營收 YoY</td><td>+4.3%</td><td class="em"><b>+32.2%</b></td><td>+24.2% - +39.1%</td><td class="warn"><b>+35.5%</b></td></tr>
+<tr><td class="rowlabel">毛利率</td><td>36.09%</td><td class="em"><b>40.6%</b></td><td>39.0% - 42.1%</td><td class="warn"><b>40.30%</b></td></tr>
+<tr><td class="rowlabel">稅後淨利 (百萬元)</td><td>548</td><td class="em"><b>1026</b></td><td>889 - 1149</td><td>~1,071</td></tr>
+<tr class="highlight"><td class="rowlabel">EPS (元)</td><td>2.96</td><td class="em"><b>5.55</b></td><td>4.76 - 6.12</td><td class="warn"><b>5.73</b></td></tr>
+<tr><td class="rowlabel">光電子占比</td><td>約 24.7%</td><td class="em"><b>約 35.8%</b></td><td>35.0% - 38.1%*</td><td>未揭露精確值；預期高成長</td></tr>
+</tbody></table>
+<div class="table-note">* 只有具有可比「全年光電子占比」拆分的研究樣本納入中位數，因此占比樣本數少於 EPS/營收。市場共識為本報告統計值，不是公司指引。</div>
+<div class="section-title" style="margin-top:11px">達成 2026F，需要 H2 做到什麼？</div>
+<div class="grid2">
+<div class="card blue"><div class="subhead" style="margin-top:0">市場共識：全年 44.7 億 / EPS 5.55</div>
+<div class="grid3"><div><div class="callout-num em">25.45</div><div class="callout-label">H2 需營收 (億)</div></div><div><div class="callout-num em">4.24</div><div class="callout-label">H2 月均營收 (億)</div></div><div><div class="callout-num em">3.35</div><div class="callout-label">H2 需 EPS</div></div></div>
+<div class="small" style="margin-top:8px">H2 平均單季營收需約 12.73 億、平均單季 EPS 1.68。7 月已做到 4.22 億，營收門檻看起來不遠；但 EPS 必須明顯高於 H1 單季 1.06/1.15。</div></div>
+<div class="card amber"><div class="subhead" style="margin-top:0">投顧自研樂觀：全年 45.81 億 / EPS 5.73</div>
+<div class="grid3"><div><div class="callout-num warn">26.56</div><div class="callout-label">H2 需營收 (億)</div></div><div><div class="callout-num warn">4.43</div><div class="callout-label">H2 月均營收 (億)</div></div><div><div class="callout-num warn">3.53</div><div class="callout-label">H2 需 EPS</div></div></div>
+<div class="small" style="margin-top:8px">H2 平均單季約 13.28 億、EPS 1.77。營收只比 7 月年化節奏高約 5%，真正挑戰仍在毛利率能否站上 40% 並轉成營業利益。</div></div>
+</div>
+<div class="section-title" style="margin-top:10px">2026F 的三個驗證條件</div>
+<div class="grid3">
+<div class="card"><span class="pill greenp">條件 1</span><div class="subhead">月營收 4.2-4.4 億成常態</div><div class="small">若 8-12 月維持 7 月附近水準，全年營收共識具有相當可達性。</div></div>
+<div class="card"><span class="pill amberp">條件 2</span><div class="subhead">H2 毛利率 &gt;40%</div><div class="small">2026 共識 GM 約 40.6%，意味著 H2 必須顯著高於 H1 約 38.35%。</div></div>
+<div class="card"><span class="pill greenp">條件 3</span><div class="subhead">光電子占比進入 35-40%+</div><div class="small">全年共識約 36%；由於 H1 僅約 26%，H2 需要明顯拉高，7 月 &gt;40% 是重要起點。</div></div>
+</div>
+<div class="card rose" style="margin-top:8px"><b style="font-size:9px">最容易誤判的地方：</b><span class="small"> 如果只用 7 月營收年化，會忽略 Q3/Q4 EPS 預估中的毛利率跳升假設。2026F 的關鍵不是「營收有沒有 45 億」，而是「光電子占比與 ASP 能不能讓毛利率跨過 40%」。</span></div>
+<div class="section-title" style="margin-top:10px">把全年共識反推成 H2 毛利率：難度比營收更高</div>
+<div class="grid2">
+<div class="card blue"><div class="subhead" style="margin-top:0">市場中位數隱含 H2</div><table class="mini-table"><tbody>
+<tr><td class="rowlabel">H2 營收需求</td><td><b>25.45 億</b></td></tr>
+<tr><td class="rowlabel">H2 平均單季營收</td><td><b>12.73 億</b></td></tr>
+<tr><td class="rowlabel">相對 26Q2</td><td class="pos"><b>約 +31.9%</b></td></tr>
+<tr><td class="rowlabel">隱含 H2 毛利率</td><td class="warn"><b>約 42.3%</b></td></tr>
+<tr><td class="rowlabel">H2 EPS 需求</td><td><b>約 3.35</b></td></tr>
+</tbody></table><div class="tiny">H2 GM 以全年 44.7 億、40.6% GM，扣除 H1 已實現營收與毛利額反推。</div></div>
+<div class="card amber"><div class="subhead" style="margin-top:0">投顧自研樂觀隱含 H2</div><table class="mini-table"><tbody>
+<tr><td class="rowlabel">H2 營收需求</td><td><b>26.56 億</b></td></tr>
+<tr><td class="rowlabel">H2 平均單季營收</td><td><b>13.28 億</b></td></tr>
+<tr><td class="rowlabel">相對 26Q2</td><td class="pos"><b>約 +37.6%</b></td></tr>
+<tr><td class="rowlabel">隱含 H2 毛利率</td><td class="warn"><b>約 41.7%</b></td></tr>
+<tr><td class="rowlabel">H2 EPS 需求</td><td><b>約 3.53</b></td></tr>
+</tbody></table><div class="tiny">樂觀模型全年 GM 40.3% 反而略低於市場中位；其 EPS 上緣更仰賴營收規模與費用槓桿。</div></div>
+</div>
+<div class="deepbox"><div class="title">2026F 的真正驗證順序：Revenue -&gt; Mix -&gt; GM -&gt; OP -&gt; EPS</div><p><b>第一關是營收：</b>7 月 4.22 億已接近市場中位所需 H2 月均 4.24 億，但單月不代表半年。</p><p><b>第二關是 mix：</b>H1 光電子占比約 26%，全年共識約 36%，因此 H2 占比必須顯著高於 36%；這就是 7 月 &gt;40% 估計值值得追蹤的原因。</p><p><b>第三關是 GM：</b>全年 40.6% 並不是 H2 只要 40.6%，而是因 H1 僅約 38.35%，H2 需要約 42% 才能把全年拉上去。</p><p><b>第四、五關是 OP/EPS：</b>即使毛利率達標，若新機折舊、研發或營業費用同步增加，EPS 仍可能低於共識；因此 H2 營益率至少不能像 Q2 一樣相對 Q1 下滑。</p></div>
+<div class="grid3" style="margin-top:8px">
+<div class="card"><div class="subhead" style="margin-top:0">偏低於共識</div><div class="small">月營收回到 &lt;4.0 億、光電子占比未穩定升高，則全年營收可能落向區間下緣 42 億附近。</div></div>
+<div class="card blue"><div class="subhead" style="margin-top:0">符合共識</div><div class="small">月營收約 4.2-4.4 億，且 H2 GM 進入 42% 左右，才足以支持全年 EPS 約 5.5。</div></div>
+<div class="card green"><div class="subhead" style="margin-top:0">超越共識</div><div class="small">月營收穩定 &gt;4.4 億、光電子占比進一步上升且營益率同步擴張，才有機會往樂觀模型靠攏。</div></div>
+</div>
+<div class="sourcebox">市場共識取 5 份不同研究模型最新版本的中位數與全距；樂觀情境取使用者指定的投顧自研資料。所有來源已去識別化。</div>
+</div><div class="footer"><span>04 2026F 驗證</span><span>Page 4 / 8</span></div><div class="bottom-strip"><div class="bs"><b>H2 月營收</b><span>市場中位情境約需 4.24 億；樂觀情境約 4.43 億。</span></div><div class="bs"><b>H2 毛利率</b><span>達成年共識需下半年大致維持 41% 附近。</span></div><div class="bs"><b>H2 EPS</b><span>重點不是營收單獨創高，而是 EPS 同步上修。</span></div><div class="bs"><b>2026F 結論</b><span>7月只是起點；Q3/Q4 需連續證明價量與組合改善。</span></div></div></section></div></div>
+<!-- PAGE 5 -->
+<div class="slide" data-page="5" id="page-5"><div class="page-stage"><section class="page"><div class="page-inner">
+<div class="topline"><div class="name">05｜2027F：光電子占比黃金交叉與 CAGR</div><div class="meta">核心：收入結構轉換，使 EPS 成長顯著快於營收</div></div>
+<div class="section-title">2025A -&gt; 2027F：市場共識的結構性成長</div>
+<div class="grid4">
+<div class="card kpi"><div class="label">營收 CAGR</div><div class="value em">31.8%</div><div class="delta">33.8 -&gt; 58.7 億</div></div>
+<div class="card kpi"><div class="label">EPS CAGR</div><div class="value warn">70.0%</div><div class="delta">2.96 -&gt; 8.55</div></div>
+<div class="card kpi green"><div class="label">光電子營收 CAGR</div><div class="value pos">89.4%</div><div class="delta">約 8.35 -&gt; 29.94 億</div></div>
+<div class="card kpi"><div class="label">微電子營收 CAGR</div><div class="value muted">6.3%</div><div class="delta">約 25.45 -&gt; 28.76 億</div></div>
+</div>
+<div class="grid2" style="margin-top:8px">
+<div class="card"><div class="subhead" style="margin-top:0">全年營收結構：真正的黃金交叉</div>
+<div class="legend"><span><i class="sw m"></i>微電子</span><span><i class="sw o"></i>光電子</span></div>
+<div class="stack-wrap"><div class="stack-label">2025A</div><div class="stack"><div class="micro" style="width:75.3%">75.3%</div><div class="opto" style="width:24.7%">24.7%</div></div><div class="stack-note">實績</div></div>
+<div class="stack-wrap"><div class="stack-label">2026F</div><div class="stack"><div class="micro" style="width:64.2%">64.2%</div><div class="opto" style="width:35.8%">35.8%</div></div><div class="stack-note">市場中位</div></div>
+<div class="stack-wrap"><div class="stack-label">2027F</div><div class="stack"><div class="micro" style="width:49.0%">49.0%</div><div class="opto" style="width:51.0%">51.0%</div></div><div class="stack-note">市場中位</div></div>
+<div class="small" style="margin-top:7px">市場中位模型顯示，光電子占比約 24.7% -&gt; 35.8% -&gt; 51.0%，2027 年正式超越微電子。</div></div>
+<div class="card blue"><div class="subhead" style="margin-top:0">增量營收幾乎都來自光電子</div>
+<div class="grid2"><div><div class="callout-num pos">8.35</div><div class="callout-label">2025 光電子 (億)</div></div><div><div class="callout-num pos">29.94</div><div class="callout-label">2027F 光電子 (億)</div></div></div>
+<div class="divider"></div>
+<div class="quote">2025 -&gt; 2027F 總營收增加約 24.9 億，其中約 87% 的增量可由光電子解釋。</div>
+<div class="small" style="margin-top:6px">這也代表：如果光電子放量不如預期，總營收與 EPS 模型會同時下修；反之，超預期的占比提升會帶來雙重槓桿。</div></div>
+</div>
+<div class="section-title" style="margin-top:10px">2027F：市場共識 vs 投顧自研樂觀情境</div>
+<table><thead><tr><th>指標</th><th>市場共識中位</th><th>市場區間</th><th>投顧自研樂觀</th><th>差異解讀</th></tr></thead><tbody>
+<tr><td class="rowlabel">營收 (百萬元)</td><td class="em"><b>5870</b></td><td>4946 - 6473</td><td class="warn"><b>6943</b></td><td>樂觀高出中位約 18.3%</td></tr>
+<tr><td class="rowlabel">毛利率</td><td class="em"><b>44.8%</b></td><td>40.6% - 45.6%</td><td class="warn"><b>45.62%</b></td><td>差距不大，皆押注組合升級</td></tr>
+<tr><td class="rowlabel">EPS (元)</td><td class="em"><b>8.55</b></td><td>6.19 - 9.49</td><td class="warn"><b>11.02</b></td><td>樂觀高出中位約 28.9%</td></tr>
+<tr class="highlight"><td class="rowlabel">光電子占比</td><td class="em"><b>約 51%</b></td><td>43.3% - 51.9%*</td><td class="warn"><b>&gt;50%</b></td><td>方向高度一致：2027 黃金交叉</td></tr>
+</tbody></table>
+<div class="table-note">* 僅統計具可比的全年占比模型。市場區間很寬，顯示 2027 的核心不確定性仍是光電子 ramp speed。</div>
+<div class="section-title" style="margin-top:10px">為何 EPS CAGR 可達約 70%，高於營收 CAGR 約 32%？</div>
+<div class="grid3">
+<div class="card green"><b class="small">1. Mix</b><div class="small">光電子收入 CAGR 約 89%，高毛利產品占比提升，推動 GM 36.1% -&gt; 40.6% -&gt; 44.8%。</div></div>
+<div class="card blue"><b class="small">2. Fixed-cost absorption</b><div class="small">營收增加時，研發/管理費用不必等比例成長，營益率可比毛利率上升更快。</div></div>
+<div class="card amber"><b class="small">3. ASP / generation</b><div class="small">800G -&gt; 1.6T、100G -&gt; 200G PD 與發射端產品升級，支撐 ASP 與附加價值。</div></div>
+</div>
+<div class="section-title" style="margin-top:10px">把 CAGR 拆成「分部收入」後，成長來源更加集中</div>
+<table class="mini-table"><thead><tr><th>推導項目</th><th>2025A</th><th>2026F 市場中位</th><th>2027F 市場中位</th><th>結構解讀</th></tr></thead><tbody>
+<tr><td class="rowlabel">總營收 (億)</td><td>33.80</td><td>44.70</td><td>58.70</td><td>兩年 CAGR 31.8%</td></tr>
+<tr><td class="rowlabel">光電子占比</td><td>24.7%</td><td>35.8%</td><td>51.0%</td><td>兩年 +26.3 ppts</td></tr>
+<tr class="highlight"><td class="rowlabel">光電子營收 (億)</td><td>8.35</td><td><b>16.00</b></td><td><b>29.94</b></td><td>26F 約 +91.6%；27F 約 +87.1%</td></tr>
+<tr><td class="rowlabel">微電子營收 (億)</td><td>25.45</td><td>28.70</td><td>28.76</td><td>26F 約 +12.8%；27F 近持平</td></tr>
+</tbody></table>
+<div class="grid2" style="margin-top:8px">
+<div class="deepbox" style="margin-top:0"><div class="title">為何 2027 是「占比」而非單純「總量」故事？</div><p>市場中位數下，2026F 光電子營收約 16 億，2027F 直接接近 30 億；同期間微電子從約 28.7 億幾乎維持不變。也就是 2027 的大部分增量並非成熟手機/RF 復甦，而是 Data Center 光通訊與新產品放量。</p><p>這種結構使估值對光電子 ramp speed 特別敏感：同一個總營收數字，若來自高毛利光電子的比例不同，EPS 可能有顯著差距。</p></div>
+<div class="deepbox" style="margin-top:0"><div class="title">2027 光電子占比區間的營收差異</div><p>以市場中位 2027F 總營收 58.7 億固定計算，若光電子占比只達市場區間低端 43.3%，光電子營收約 <b>25.4 億</b>；若達高端 51.9%，約 <b>30.5 億</b>，差距超過 <b>5 億</b>。</p><p>因此占比每少幾個百分點，不只降低光電子收入，也可能同時拉低毛利率與 EPS，形成雙重敏感度。</p></div>
+</div>
+<div class="section-title" style="margin-top:10px">市場共識與樂觀模型的分歧其實在「營運槓桿」</div>
+<div class="matrix">
+<div class="mh">比較項目</div><div class="mh">市場中位</div><div class="mh">樂觀模型</div><div class="mh">本報告解讀</div>
+<div><b>2027 營收</b></div><div class="mid">58.7 億</div><div class="good">69.43 億</div><div>量的假設差約 18%</div>
+<div><b>2027 GM</b></div><div class="mid">44.8%</div><div class="good">45.62%</div><div>毛利率只差約 0.8 ppt</div>
+<div><b>2027 EPS</b></div><div class="mid">8.55</div><div class="good">11.02</div><div>EPS 差約 29%，大於營收差</div>
+<div><b>核心變數</b></div><div>光電子 50% 左右 + 正常費用槓桿</div><div>更快的放量 + 更強 fixed-cost absorption</div><div>分歧不只在需求，也在費用率與利用率</div>
+</div>
+</div><div class="footer"><span>05 2027F 與 CAGR</span><span>Page 5 / 8</span></div><div class="bottom-strip"><div class="bs"><b>CAGR 公式</b><span>(2027F / 2025A)^(1/2) - 1；總營收 CAGR 31.8%。</span></div><div class="bs"><b>成長來源</b><span>2025-27 增量營收約 87% 由光電子解釋。</span></div><div class="bs"><b>黃金交叉</b><span>市場中位模型 2027F 光電子占比約 51%。</span></div><div class="bs"><b>估值關鍵</b><span>EPS 差異主要來自 mix、毛利率與固定成本吸收。</span></div></div></section></div></div>
+<!-- PAGE 6 -->
+<div class="slide" data-page="6" id="page-6"><div class="page-stage"><section class="page"><div class="page-inner">
+<div class="topline"><div class="name">06｜情境分析、風險與後續追蹤儀表板</div><div class="meta">把預估轉成可驗證的條件，而不是單一目標值</div></div>
+<div class="section-title">三情境財務框架</div>
+<div class="compare3">
+<div class="head">指標</div><div class="head down">保守情境</div><div class="head base">市場共識</div><div class="head up">投顧自研樂觀</div>
+<div><b>2026F 營收</b></div><div class="down">41.97 億</div><div class="base"><b>44.70 億</b></div><div class="up">45.81 億</div>
+<div><b>2026F GM</b></div><div class="down">39.03%</div><div class="base"><b>40.6%</b></div><div class="up">40.30%</div>
+<div><b>2026F EPS</b></div><div class="down">4.76</div><div class="base"><b>5.55</b></div><div class="up">5.73</div>
+<div><b>2027F 營收</b></div><div class="down">49.46 億</div><div class="base"><b>58.70 億</b></div><div class="up">69.43 億</div>
+<div><b>2027F GM</b></div><div class="down">40.59%</div><div class="base"><b>44.8%</b></div><div class="up">45.62%</div>
+<div><b>2027F EPS</b></div><div class="down">6.19</div><div class="base"><b>8.55</b></div><div class="up">11.02</div>
+<div><b>2027 光電子占比</b></div><div class="down">未明示 / 低於基準</div><div class="base"><b>約 51%</b></div><div class="up">&gt;50%</div>
+</div>
+<div class="section-title" style="margin-top:11px">後續每月/每季應追蹤的 6 個數字</div>
+<div class="grid2">
+<div class="card blue"><ul class="checklist">
+<li><b>月營收：</b>基準情境 H2 月均約 4.24 億；樂觀情境約 4.43 億。</li>
+<li><b>光電子占比：</b>若 H2 能穩在 40% 以上，全年約 36% 的共識路徑較合理。</li>
+<li><b>毛利率：</b>H2 是否站穩 40% 以上，是 2026 EPS 5.5-5.7 的必要條件。</li>
+</ul></div>
+<div class="card green"><ul class="checklist">
+<li><b>營益率：</b>要確認毛利改善有轉化為營業利益，而不只停留在 GP。</li>
+<li><b>200G PD / CW Laser：</b>新產品出貨是否由「小量」轉成可見的營收占比。</li>
+<li><b>MOCVD 利用率：</b>設備擴充後能否快速拉升 utilization，避免折舊反向壓迫毛利率。</li>
+</ul></div>
+</div>
+<div class="section-title" style="margin-top:10px">主要風險</div>
+<div class="grid2">
+<div class="card rose"><ul class="checklist risk">
+<li><b>InP 供應/出口許可：</b>若審批再次不規則或替代來源量不足，光電子出貨可能再被壓抑。</li>
+<li><b>光電子占比未如期提升：</b>2027 模型對 mix 的敏感度極高，這是最大單一風險。</li>
+<li><b>ASP 漲價無法覆蓋原料：</b>研究資料中的雙位數調價需要在實際 GM 中持續驗證。</li>
+</ul></div>
+<div class="card"><ul class="checklist risk">
+<li><b>客戶認證/產品 ramp 延遲：</b>200G PD、CW Laser、VCSEL、EML 各自時程不同。</li>
+<li><b>擴產早於需求：</b>新機折舊先進損益，若 utilization 未跟上，短期可能壓 GM。</li>
+<li><b>微電子需求偏弱：</b>手機/RF 若下行，光電子必須更快成長才能抵消成熟業務壓力。</li>
+</ul></div>
+</div>
+<div class="section-title" style="margin-top:10px">結論：2026 已看到「品質改善」，2027 要驗證「結構翻轉」</div>
+<div class="bigcall"><b>目前已被財報驗證：</b>營收維持約 9.6 億的季度水準時，毛利率由 37.27% 升至 38.61%，EPS 由 1.05 升至 1.15；7 月營收 4.22 億則提供 H2 加速的第一個實績訊號。<br/><b>尚待驗證：</b>全年光電子占比能否從 H1 約 26% 拉到 2026F 約 36%，並在 2027F 達到約 50% 以上；這一條件將決定 GM 能否進入 mid-40% 區間，以及 EPS 是否靠近市場中位 8.55 或樂觀 11.02。</div>
+<div class="grid3" style="margin-top:8px">
+<div class="card"><span class="tag">已實現</span><div class="small" style="margin-top:4px">25Q4-26Q2 毛利率 +1.34 ppts；EPS +9.5%。</div></div>
+<div class="card blue"><span class="tag">2026 驗證</span><div class="small" style="margin-top:4px">H2 月均 4.24-4.43 億 + GM &gt;40%。</div></div>
+<div class="card green"><span class="tag">2027 核心</span><div class="small" style="margin-top:4px">光電子占比 &gt;50%，形成營收與毛利率雙重槓桿。</div></div>
+</div>
+<div class="section-title" style="margin-top:10px">從「數字」轉成投資論述升降級規則</div>
+<div class="matrix">
+<div class="mh">指標</div><div class="mh bad">下修訊號</div><div class="mh mid">維持基準</div><div class="mh good">上修信號</div>
+<div><b>月營收</b></div><div class="bad">連續回落 &lt;4.0 億</div><div class="mid">約 4.2-4.4 億</div><div class="good">穩定 &gt;4.4 億</div>
+<div><b>光電子占比</b></div><div class="bad">回到低 30% 或更低</div><div class="mid">H2 穩定 40% 左右</div><div class="good">向 45-50% 推進</div>
+<div><b>毛利率</b></div><div class="bad">仍在 38-39%</div><div class="mid">H2 約 41-42%</div><div class="good">42%+ 且連續改善</div>
+<div><b>營益率</b></div><div class="bad">折舊/費用吃掉 GP</div><div class="mid">與 GM 同方向改善</div><div class="good">OP margin 明顯擴張</div>
+<div><b>新產品</b></div><div class="bad">認證或量產延後</div><div class="mid">200G PD/CW Laser 按計畫放量</div><div class="good">發射端與新客戶貢獻加速</div>
+</div>
+<div class="grid2" style="margin-top:8px">
+<div class="deepbox" style="margin-top:0"><div class="title">最重要的領先指標：光電子月營收</div><p>總營收會混合微電子旺淡季，因此若只看公司總營收，容易把手機/RF 波動誤認為 AI 光通訊趨勢。更有效的做法是持續估算或等待公司揭露光電子營收，再把占比與毛利率交叉比對。</p><p>若總營收創高但光電子占比沒有提高，對 2027 高毛利率模型的支持度其實有限。</p></div>
+<div class="deepbox" style="margin-top:0"><div class="title">最重要的落後確認：營益率</div><p>毛利率可受 ASP、匯率、原料與 mix 改善，但最終能否形成 EPS 必須通過營益率確認。新增 5 台 MOCVD 後，折舊與固定成本先行；只有利用率上升速度快於費用增加，營運槓桿才會成為 2027 EPS 加速器。</p></div>
+</div>
+<div class="deepbox" style="margin-top:8px">
+<div class="title">本頁判讀摘要：先看三個條件是否同向</div>
+<div class="grid3">
+<div><div class="tiny"><b>需求</b></div><div class="small">月營收與 200G PD / CW Laser 是否持續放量。</div></div>
+<div><div class="tiny"><b>結構</b></div><div class="small">光電子占比與毛利率是否同步上行。</div></div>
+<div><div class="tiny"><b>效率</b></div><div class="small">營益率是否跟上 GM，確認新機折舊被利用率吸收。</div></div>
+</div>
+</div>
+</div><div class="footer"><span>06 情境、風險與追蹤框架</span><span>Page 6 / 8</span></div></section></div></div>
+<div class="slide" data-page="7" id="page-7"><div class="page-stage"><section class="page"><div class="page-inner">
+<div class="topline"><div class="name">07｜產能擴充量化：新買機台到底能帶來多少產能？</div><div class="meta">資料庫設備資訊 + 可量化推導<br/>重點：工具數 ≠ 最終出貨量</div></div>
+<div class="grid4">
+<div class="card kpi"><div class="label">公司揭露基準</div><div class="value em">62 台</div><div class="delta">現有 MOCVD</div></div>
+<div class="card kpi blue"><div class="label">第一階段 +5 台</div><div class="value em">67 台</div><div class="delta">工具數約 +8.1%</div></div>
+<div class="card kpi green"><div class="label">最新採購規劃 +7 台</div><div class="value pos">69 台*</div><div class="delta">相對 62 台約 +11.3%</div></div>
+<div class="card kpi dark"><div class="label">光電子成長時間</div><div class="value">6-9h</div><div class="delta">單次磊晶 cycle</div></div>
+</div>
+<div class="table-note">* 69 台為以「現有 62 台」作基準、將最新累計新增 7 台全部到位後的算術推導；後加購 2 台研究資料預估於 2028 年建置完成，不代表 2026/27 即有完整產能。</div>
+<div class="section-title" style="margin-top:10px">資料庫直接支持的設備路徑：3 台 -&gt; 5 台 -&gt; 7 台</div>
+<table class="mini-table"><thead><tr><th>階段</th><th>新增 MOCVD</th><th>其中 InP</th><th>GaN</th><th>到位/用途</th></tr></thead><tbody>
+<tr><td class="rowlabel">早期規劃</td><td>3 台</td><td>2 台</td><td>1 台</td><td>光通訊 + AI 眼鏡</td></tr>
+<tr class="highlight"><td class="rowlabel">2Q26 上修</td><td><b>5 台</b></td><td><b>4 台</b></td><td>1 台</td><td>前五台於 2026-27 陸續到位</td></tr>
+<tr><td class="rowlabel">3Q26 最新規劃</td><td><b>7 台</b></td><td><b>6 台</b></td><td>1 台</td><td>追加 2 台主要因應美系光通訊新需求，估 2028 完成</td></tr>
+<tr><td class="rowlabel">E-Beam</td><td colspan="3">另增 1 台（非 MOCVD）</td><td>CW Laser 二次磊晶，研究資料稱為第 3 台 E-Beam</td></tr>
+</tbody></table>
+<div class="bigcall" style="margin-top:8px"><b>最重要的限制：</b>資料庫沒有揭露「每台 MOCVD 每批可放幾片 2/3/4 吋 InP wafer」、實際稼動天數、良率與 recipe changeover，因此<b>不能嚴謹換算成每月多幾萬片晶圓</b>。可以可靠量化的是「設備台數、製程時間與相對工具產能」，而不是最終 wafer/month。</div>
+<div class="section-title" style="margin-top:10px">能量化到什麼程度？相對工具產能與 cycle capacity</div>
+<div class="grid2">
+<div class="card blue">
+<div class="subhead" style="margin-top:0">A. 全公司 MOCVD 工具數</div>
+<div class="metricline"><div class="lbl">62 -&gt; 67 台</div><div class="track"><div class="fill" style="width:72%"></div></div><div class="v">+8.1%</div></div>
+<div class="metricline"><div class="lbl">62 -&gt; 69 台*</div><div class="track"><div class="fill g" style="width:86%"></div></div><div class="v">+11.3%</div></div>
+<div class="small" style="margin-top:6px">這是最保守、最可直接驗證的「gross tool-count capacity」。但新增設備高度偏向 InP，因此光電子專用產能的增幅可能遠高於全公司工具數增幅。</div>
+</div>
+<div class="card green">
+<div class="subhead" style="margin-top:0">B. InP 新增設備</div>
+<div class="grid2" style="gap:5px">
+<div class="soft card" style="padding:6px"><div class="tiny">第一階段</div><div class="callout-num pos">+4 台</div><div class="callout-label">InP MOCVD</div></div>
+<div class="soft card" style="padding:6px"><div class="tiny">最新累計</div><div class="callout-num pos">+6 台</div><div class="callout-label">InP MOCVD</div></div>
+</div>
+<div class="small" style="margin-top:6px">資料庫未一致揭露「現有 InP 專用機台基數」，所以無法用 +4/+6 台直接計算 InP 產能百分比；這是目前資料缺口。</div>
+</div>
+</div>
+<div class="formula-row">
+<div class="formula-card"><div class="f-title">單台光電子 MOCVD</div><div class="f-value em">2.7-4.0</div><div class="f-desc">理論 cycle/日 = 24 小時 / 9-6 小時。尚未扣除保養、換線、校機與 downtime。</div></div>
+<div class="formula-card"><div class="f-title">+4 台 InP</div><div class="f-value pos">10.7-16</div><div class="f-desc">理論新增 cycle/日；30 日約 320-480 reactor-runs。</div></div>
+<div class="formula-card"><div class="f-title">+6 台 InP</div><div class="f-value warn">16-24</div><div class="f-desc">理論新增 cycle/日；30 日約 480-720 reactor-runs。</div></div>
+</div>
+<div class="table-note">上述只把公司揭露的光電子磊晶時間 6-9 小時作純時間換算；沒有 wafer loading 數與良率，因此不可視為實際月產量或營收指引。</div>
+<div class="section-title" style="margin-top:10px">為什麼「光電子營收增幅」可能遠大於工具數 +8%~11%？</div>
+<div class="grid2">
+<div class="deepbox" style="margin-top:0"><div class="title">新增機台不是唯一成長來源</div><p><b>1. 原料解除瓶頸：</b>2025-26 上半年 InP 基板短缺使既有設備未必能滿載；供應恢復本身就能提升既有機台 utilization。</p><p><b>2. 產品組合 / ASP：</b>200G PD、CW Laser 與更高速規格的單位價值高於成熟 RF 產品，因此「營收產能」不等於 wafer 數。</p><p><b>3. 既有設備可彈性換盤：</b>公司法說指出可依 2-6 吋需求更換轉盤，理論上有利於在產品間重新配置部分 reactor capacity。</p></div>
+<div class="deepbox" style="margin-top:0"><div class="title">也不能把 +7 台直接乘到營收</div><p><b>1. 光電子 cycle 較長：</b>6-9 小時 vs 微電子 2-4 小時，同一台機器的 throughput 受 recipe 影響很大。</p><p><b>2. 認證與 ramp：</b>新機到位後仍要校機、客戶認證與良率爬坡，折舊可能先於營收。</p><p><b>3. E-Beam 是另一瓶頸：</b>CW Laser 的二次磊晶還依賴 E-Beam，MOCVD 擴完不代表整條製程同步放大。</p></div>
+</div>
+<div class="section-title" style="margin-top:9px">把設備擴產放回 2027F 模型：真正應追蹤的是 utilization</div>
+<div class="grid3">
+<div class="card"><span class="tag">設備到位</span><div class="small" style="margin-top:4px">先確認 5 台於 2026-27 陸續上線，追加 2 台則偏 2028。</div></div>
+<div class="card blue"><span class="tag">原料 / 認證</span><div class="small" style="margin-top:4px">InP 基板、客戶 qualification 與良率決定新機能不能有效開工。</div></div>
+<div class="card green"><span class="tag">財務轉化</span><div class="small" style="margin-top:4px">新機 utilization 上升後，光電子占比、GM、OP margin 應該依序改善。</div></div>
+</div>
+<div class="deepbox"><div class="title">模型含義：設備只增加約一成，但市場模型要求光電子營收數年內成長數倍</div><p>本報告市場中位模型估算 2025A 光電子營收約 8.35 億，至 2027F 約 29.94 億，約為 3.6 倍；相較之下，以 62 台為基準、7 台新增全到位後，總 MOCVD 工具數只增加約 11.3%。因此 2027F 的高成長模型<b>必然同時假設</b>：既有機台稼動率改善、InP 原料瓶頸解除、產品 ASP/mix 上升，以及新設備聚焦高價值光電子，而不是單純靠「多買幾台機器」。</p></div>
+<div class="bigcall" style="margin-top:8px"><b>產能結論：</b>資料庫能可靠證明的是「MOCVD 規劃持續上修、且增量集中 InP」；若以 62 台為基準，前 5 台到位使 gross tool count 約 +8.1%，最新累計 7 台全部到位則約 +11.3%。但精確 wafer/month 仍缺每批 loading、良率與 uptime，因此後續最該追蹤的是 <b>到機 -&gt; InP 原料 -&gt; utilization -&gt; 光電子營收 -&gt; GM/OP margin</b> 的連續轉化。</div></div><div class="footer"><span>07 產能擴充量化與最終驗證</span><span>Page 7 / 8</span></div></section></div></div>
+<div class="slide" data-page="8" id="page-8"><div class="page-stage"><section class="page"><div class="page-inner">
+<div class="topline"><div class="name">08｜結論｜觀察指標紅綠燈警示</div><div class="meta">用紅綠燈收斂整份研究結論，一眼判讀光電子 thesis 是否持續成立<br/>綠燈＝光電子主軸順利展開；黃燈＝數字仍未完全跟上；紅燈＝投資論述需要下修</div></div>
+<div class="section-title">最終結論：大尺寸紅綠燈儀表板</div>
+<div class="signal-hero">
+<div class="signal-card greenbox">
+<div class="signal-light green">綠</div>
+<div class="signal-title" style="color:#116c48">綠燈｜發展順利</div>
+<div class="signal-sub">代表光電子主軸開始順利轉化成營收、毛利率與 EPS</div>
+<ul class="signal-list">
+<li><b>月營收：</b>穩定落在 <b>4.2-4.4 億以上</b>，且 8-12 月可延續，不只是單月創高。</li>
+<li><b>光電子占比：</b>H2 可穩定 <b>&gt;40%</b>，並逐步往 <b>45-50%</b> 推進。</li>
+<li><b>毛利率：</b>站穩 <b>41-42% 以上</b>，代表 ASP / mix 改善開始放大。</li>
+<li><b>原料供應：</b>InP 基板與出口許可維持順暢，供應節奏不再成為主要瓶頸。</li>
+<li><b>新機利用率：</b>新增 MOCVD 到位後，utilization 同步拉升，而不是只有折舊增加。</li>
+<li><b>新產品：</b>200G PD / CW Laser / 發射端產品由小量出貨進入可見營收貢獻。</li>
+<li><b>財務結果：</b>營益率與 EPS 同步改善，證明毛利率提升有真正轉成獲利。</li>
+</ul>
+</div>
+<div class="signal-card amberbox">
+<div class="signal-light amber">黃</div>
+<div class="signal-title" style="color:#9a6209">黃燈｜待觀察</div>
+<div class="signal-sub">代表方向沒有壞掉，但營收 / 毛利 / 原料供應尚未完全支撐高成長模型</div>
+<ul class="signal-list">
+<li><b>月營收：</b>大多在 <b>4.0-4.2 億</b> 附近擺盪，尚未明顯優於基準門檻。</li>
+<li><b>光電子占比：</b>停留在 <b>35-40%</b> 區間，沒有明顯往全年共識路徑靠近。</li>
+<li><b>毛利率：</b>仍在 <b>38-40%</b> 區間徘徊，顯示光電子放量還沒完全反映。</li>
+<li><b>原料供應：</b>InP 到料偶有不順，或出口許可與替代來源節奏不穩定。</li>
+<li><b>新機效益：</b>設備已到位，但 utilization / 客戶認證 / 良率爬坡不如預期。</li>
+<li><b>獲利落差：</b>營收看似成長，但營益率與 EPS 沒有同步跟上。</li>
+<li><b>投資含義：</b>維持正向觀察，但 2027 高成長與高估值需要保留折價。</li>
+</ul>
+</div>
+<div class="signal-card redbox">
+<div class="signal-light red">紅</div>
+<div class="signal-title" style="color:#b4233a">紅燈｜論述轉弱</div>
+<div class="signal-sub">代表光電子成長主軸未順利落地，需下修 2026F / 2027F 預估</div>
+<ul class="signal-list">
+<li><b>月營收：</b>連續回落至 <b>&lt;4.0 億</b>，H2 run-rate 明顯低於市場共識。</li>
+<li><b>光電子占比：</b>回落到 <b>低 30%</b> 甚至更低，表示結構翻轉停滯。</li>
+<li><b>毛利率：</b>跌回 <b>38% 以下</b>，代表漲價、mix 或原料條件未能持續。</li>
+<li><b>原料風險：</b>InP 基板再度卡關，出口審批或替代來源出現新變數。</li>
+<li><b>新產品延遲：</b>200G PD / CW Laser / VCSEL 等量產或客戶認證明顯遞延。</li>
+<li><b>折舊壓力：</b>新機折舊先進來，但營益率不升反降，意味 utilization 不足。</li>
+<li><b>投資含義：</b>需轉向保守情境，重新檢討 2027 EPS 是否只能靠近低端區間。</li>
+</ul>
+</div>
+</div>
+<div class="signal-bottom">
+<div class="signal-band"><div class="sb-title">警示系統的實際使用方式</div><p>最簡單的判讀順序是：<b>先看月營收</b> 是否維持 4.2 億以上，再看 <b>光電子占比</b> 是否持續往 40% 以上推進，最後確認 <b>毛利率 / 營益率 / EPS</b> 是否同步改善。若只有營收上升，但毛利率與營益率沒有改善，多半仍偏黃燈；若連原料供應與產品認證也同步受阻，則應視為紅燈。</p></div>
+<div class="signal-now"><div class="badge">目前<br/>黃綠燈</div><div class="txt"><b>截至 26Q2 + 2026/07 的目前判讀</b><span>公司目前較接近 <b>黃綠燈之間、偏綠</b>：7 月營收創高且研究估計光電子占比已超過 40%，方向明顯轉正；但 H2 仍需用連續數月營收、毛利率是否站穩 40% 以上，以及 InP 供應是否穩定來確認，尚不能直接視為全面綠燈。</span></div></div>
+</div>
+<div class="bigcall" style="margin-top:8px"><b>一句話總結：</b>綠燈代表「<b>光電子營收占比上升 + 毛利率/營益率同步改善 + InP 原料供應順暢</b>」三者同時成立；黃燈代表方向對、但營收或毛利率尚未完全出來，或原物料供應仍有雜訊；紅燈則代表光電子 thesis 沒有順利轉化成財務結果，需要明顯下修模型。</div>
+<div class="section-title" style="margin-top:10px">結論落地：目前訊號如何影響 2026F / 2027F 模型</div>
+<div class="matrix">
+<div class="mh">觀察項目</div><div class="mh bad">紅燈含義</div><div class="mh mid">黃燈含義</div><div class="mh good">綠燈含義</div>
+<div><b>2026F 營收</b></div><div class="bad">偏向保守情境約 42 億</div><div class="mid">約 43-45 億間震盪</div><div class="good">接近/高於共識 44.7 億</div>
+<div><b>2026F EPS</b></div><div class="bad">偏 4.7-5.0 元</div><div class="mid">約 5.0-5.5 元</div><div class="good">5.5-5.7 元有望達標</div>
+<div><b>2027F 光電子</b></div><div class="bad">占比難達 50%</div><div class="mid">約 40-50%，仍需驗證</div><div class="good">50%+ 黃金交叉可成立</div>
+<div><b>2027F EPS</b></div><div class="bad">往低端 6 元附近靠攏</div><div class="mid">介於保守與共識</div><div class="good">共識 8.55 元以上較可行</div>
+</div>
+<div class="grid2" style="margin-top:8px">
+<div class="deepbox" style="margin-top:0"><div class="title">下一個財報季最重要的四個驗證</div><p><b>1. 月營收：</b>4.2 億以上能否成為新常態，而非單月補單。</p><p><b>2. 光電子占比：</b>是否維持 40% 以上並繼續上升。</p><p><b>3. 毛利率 / 營益率：</b>GM 若站上 40-42%，OP margin 也要同步改善，才能證明新機折舊被 utilization 吸收。</p><p><b>4. InP 供應：</b>基板、出口許可與替代來源是否持續穩定，避免再次壓抑出貨。</p></div>
+<div class="deepbox" style="margin-top:0"><div class="title">最終投資論述：不是只看 AI 題材，而是看財務轉化</div><p>真正值得上修的情境，不是「公司有買機台」或「AI 光通訊需求很強」，而是這些條件實際轉化為<b>光電子占比提升、毛利率擴張、營益率改善與 EPS 加速</b>。</p><p>因此本報告最後把判斷收斂成一條鏈：<b>InP 供應 -&gt; 新機 utilization -&gt; 光電子營收 -&gt; mix -&gt; GM -&gt; OP margin -&gt; EPS</b>。其中任一環節長期卡住，燈號都不應直接給綠燈。</p></div>
+</div>
+<div class="bigcall" style="margin-top:8px;border-left-color:#16a34a;background:#f1fbf5"><b>截至目前的結論：</b>全新已從「光電子成長故事」進入「財務數字開始驗證」階段。25Q4-26Q2 的毛利率與 EPS 已改善，7 月營收又提供量的正向訊號，因此目前判定為<b>黃綠燈、偏綠</b>；若接下來連續數月營收維持高檔、光電子占比穩在 40% 以上、GM 升至 41-42% 且 InP 供應順暢，就可正式升為綠燈並提高 2027 共識模型可信度。</div>
+</div><div class="footer"><span>08 結論｜紅綠燈觀察警示</span><span>Page 8 / 8</span></div></section></div></div></div></main><nav aria-label="頁面導覽" class="reader-controls"><div class="bottom-pager"><a aria-label="上一頁" class="bottom-arrow disabled" href="#page-1" id="bottomPrev">←</a><div class="reader-center-nav"><div class="reader-dots" id="pageDots"><a aria-label="前往第 1 頁" class="reader-dot active" data-goto="0" href="#page-1">1</a><a aria-label="前往第 2 頁" class="reader-dot" data-goto="1" href="#page-2">2</a><a aria-label="前往第 3 頁" class="reader-dot" data-goto="2" href="#page-3">3</a><a aria-label="前往第 4 頁" class="reader-dot" data-goto="3" href="#page-4">4</a><a aria-label="前往第 5 頁" class="reader-dot" data-goto="4" href="#page-5">5</a><a aria-label="前往第 6 頁" class="reader-dot" data-goto="5" href="#page-6">6</a><a aria-label="前往第 7 頁" class="reader-dot" data-goto="6" href="#page-7">7</a><a aria-label="前往第 8 頁" class="reader-dot" data-goto="7" href="#page-8">8</a></div></div><div aria-label="目前頁數" class="bottom-page-count" id="bottomPageCount">1 / 8</div><a aria-label="下一頁" class="bottom-arrow" href="#page-2" id="bottomNext">→</a></div></nav><div aria-live="polite" class="sr-only" id="readerLive"></div></div>
+<script id="research-report-payload" type="application/json">{"schemaVersion":"1.0.0","profileName":"full-research-original","profile":{"kind":"baseline","output":"public/research/reports/vpec-2455-original.html","sourcePages":8,"expectedPages":14,"sections":["summary","actuals","mix","profitability","forecast-2026","forecast-2027","scenario","capacity","signals","catalysts-risks","sources","conclusion"],"canonical":{"sources":["report_sources/vpec-2455.v4.part01a","report_sources/vpec-2455.v4.part01b","report_sources/vpec-2455.v4.part01c","report_sources/vpec-2455.v4.part01d","report_sources/vpec-2455.v4.part01e","report_sources/vpec-2455.v4.part02","report_sources/vpec-2455.v4.part03","report_sources/vpec-2455.v4.part04","report_sources/vpec-2455.v4.part05","report_sources/vpec-2455.v4.part06"],"byteLength":98309,"sha256":"b7092685eab8bfb3479723b29771c746d1cb94e70edef41afa373493745c4ea8","layoutCss":"report_sources/vpec-layout-v7.css","layoutJs":"report_sources/vpec-layout-v7.js","readerMarker":"\n\u003cscript>\n(() => {"}},"company":{"id":"vpec-2455","ticker":"2455","market":"TW","name":"全新光電","slug":"vpec-2455","sector":"半導體","industry":"化合物半導體 / 光通訊","currency":"TWD","description":"聚焦 III-V 化合物半導體磊晶，研究主軸為 AI 光通訊帶動光電子占比提升。"},"report":{"id":"vpec-report-v1","title":"全新光電 2455｜2025Q4-2027F 深度研究","slug":"vpec-2455","summary":"完整版：已實現財報與利潤 Bridge、7–8 月營收與光電子營收占比、2026F H2 反推、2027F CAGR / 分部拆解、MOCVD 產能量化與紅綠燈結論。","thesis":"InP 供應 → utilization → 光電子營收 → mix → GM → OP margin → EPS。","status":"published","version":"1.2","publishedAt":"2026-09-09"},"asOfDate":"2026-09-04","thesis":{"summary":"偏綠；7–8 月營收連續創高、光電子占比研究估計升至約 46%，但毛利率、InP 供應與新機利用率仍需連續驗證。","coreChain":["InP 供應","utilization","光電子營收","mix","GM","OP margin","EPS"],"claimIds":["claim-core-chain","claim-current-signal"]},"dashboard":{"currentView":"目前判讀：偏綠。7–8 月營收連續創高、光電子占比研究估計升至約 46%；完整報告保留 2026F H2 反推、2027F CAGR / 分部拆解、MOCVD 產能量化與升降級規則。","verificationChain":["InP 供應","新機 utilization","光電子營收","光電子占比","毛利率","營益率","EPS"],"conclusion":"現階段方向偏正向，7–8 月營收與光電子 mix 提供上修訊號；但毛利率能否站穩 40%、InP 供應連續性與新機利用率仍需要連續數季驗證。","forecastScenario":"consensus","headlineForecastYears":[2026,2027],"focusMetric":{"field":"optoShare","label":"光電子占比"},"monthlyRevenue":{"focusYear":2026,"cumulativeThroughMonth":8,"unitDivisor":100,"unitLabel":"億"},"cagrCards":[{"field":"revenue","label":"2025A → 2027F Revenue CAGR","baseYear":2025,"targetYear":2027,"baseValue":3380,"years":2},{"field":"eps","label":"2025A → 2027F EPS CAGR","baseYear":2025,"targetYear":2027,"baseValue":2.96,"years":2}],"estimateNote":"* 研究估計值，非公司正式 segment disclosure。"},"latestActual":{"id":"vpec-26q2","period":"2026Q2","fiscalYear":2026,"quarter":2,"revenue":965.4,"grossProfit":372.7,"grossMargin":38.61,"operatingIncome":223.8,"operatingMargin":23.18,"netIncome":213.6,"netMargin":22.13,"eps":1.15,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["vpec-src-official"]},"headlineForecasts":[{"id":"vpec-26-consensus","fiscalYear":2026,"scenario":"consensus","revenue":4470,"grossMargin":40.6,"netIncome":1026,"eps":5.55,"optoShare":35.8,"currency":"TWD","scale":"million","evidenceClass":"market_consensus","sourceIds":["vpec-src-consensus"],"notes":"五份最新去識別化研究模型中位數"},{"id":"vpec-27-consensus","fiscalYear":2027,"scenario":"consensus","revenue":5870,"grossMargin":44.8,"netIncome":null,"eps":8.55,"optoShare":51,"currency":"TWD","scale":"million","evidenceClass":"market_consensus","sourceIds":["vpec-src-consensus"],"notes":"五份最新去識別化研究模型中位數"}],"ranking":[{"id":"vpec-sig-revenue","asOfDate":"2026-09-04","metric":"月營收","status":"green","valueText":"2026/08 4.71 億；前8月 28.18 億","notes":"7–8 月連續創高；前8月 YoY +35.87%，仍需 9-12 月延續","evidenceClass":"third_party_fact","sourceIds":["vpec-src-revenue-2608"],"rank":1,"score":2,"label":"綠燈"},{"id":"vpec-sig-opto","asOfDate":"2026-09-04","metric":"光電子占比","status":"green","valueText":"2026/08 研究估計 46.1%","notes":"公開資料整理，非官方 segment disclosure；需觀察 9-12 月持續性","evidenceClass":"research_inference","sourceIds":["vpec-src-mix-2608"],"rank":2,"score":2,"label":"綠燈"},{"id":"vpec-sig-product","asOfDate":"2026-08-26","metric":"新產品","status":"green","valueText":"200G PD / CW Laser 放量訊號","notes":"需確認營收貢獻持續擴大","evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"],"rank":3,"score":2,"label":"綠燈"},{"id":"vpec-sig-gm","asOfDate":"2026-08-26","metric":"毛利率","status":"yellow","valueText":"26Q2 38.61%","notes":"仍需 H2 站穩 40% 以上","evidenceClass":"official","sourceIds":["vpec-src-official"],"rank":4,"score":1,"label":"黃燈"},{"id":"vpec-sig-inp","asOfDate":"2026-08-26","metric":"InP 供應","status":"yellow","valueText":"供應改善中","notes":"仍需觀察供應連續性","evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"],"rank":5,"score":1,"label":"黃燈"},{"id":"vpec-sig-util","asOfDate":"2026-08-26","metric":"MOCVD utilization","status":"yellow","valueText":"新機 ramp 待驗證","notes":"設備到位不等於有效產能","evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"],"rank":6,"score":1,"label":"黃燈"}],"sections":[{"id":"vpec-sec-summary","type":"summary","title":"投資摘要","sortOrder":1,"payloadRefs":["thesis","signalSnapshots"],"showSources":true},{"id":"vpec-sec-actuals","type":"financial-table","title":"已實現財報變化","sortOrder":2,"payloadRefs":["actuals"],"showSources":true},{"id":"vpec-sec-revenue","type":"bar-chart","title":"月營收趨勢","sortOrder":3,"payloadRefs":["monthlyRevenue"],"showSources":true},{"id":"vpec-sec-mix","type":"financial-table","title":"營收結構與光電子占比","sortOrder":4,"payloadRefs":["segments"],"showSources":true},{"id":"vpec-sec-scenario","type":"scenario-table","title":"2026F / 2027F 情境","sortOrder":5,"payloadRefs":["forecasts"],"showSources":true},{"id":"vpec-sec-capacity","type":"capacity","title":"產能擴充量化","sortOrder":6,"payloadRefs":["capacity"],"showSources":true},{"id":"vpec-sec-signals","type":"signals","title":"紅綠燈結論","sortOrder":7,"payloadRefs":["signalRules","signalSnapshots"],"showSources":true},{"id":"vpec-sec-risks","type":"catalysts-risks","title":"催化劑與風險","sortOrder":8,"payloadRefs":["catalysts","risks"],"showSources":true},{"id":"vpec-sec-sources","type":"sources","title":"資料來源","sortOrder":9,"payloadRefs":["sources"],"showSources":true},{"id":"vpec-sec-conclusion","type":"conclusion","title":"研究結論","sortOrder":10,"payloadRefs":["thesis"],"showSources":true}],"sources":[{"id":"vpec-src-official","evidenceClass":"official","provider":"公司公開資訊","title":"2026Q1/Q2 財報與公司公開資訊","publishedDate":"2026-08-26","accessedDate":"2026-08-26","coveredPeriods":["2025Q4","2026Q1","2026Q2","2026-Q3"],"confidence":"high","notes":"已公布實績與設備資訊優先使用官方資料。"},{"id":"vpec-src-goodinfo","evidenceClass":"third_party_fact","provider":"Goodinfo","title":"2455 全新－每月營收","url":"https://goodinfo.tw/tw/ShowSaleMonChart.asp?STOCK_ID=2455","publishedDate":"2026-08-27","accessedDate":"2026-08-27","coveredPeriods":["2026/01-2026/07"],"confidence":"high","notes":"月營收、MoM 與 YoY。"},{"id":"vpec-src-revenue-2608","evidenceClass":"third_party_fact","provider":"MoneyDJ（公開資訊整理）","title":"全新 2026/08 月營收公告","url":"https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=311ce118-77fa-4d4d-956c-19c9df502c62","publishedDate":"2026-09-03","accessedDate":"2026-09-09","coveredPeriods":["2026/08","2026/01-2026/08"],"confidence":"high","notes":"公開月營收公告整理；470.904 百萬元、MoM +11.56%、YoY +71.16%，前八月累計 2,817.693 百萬元、YoY +35.87%。"},{"id":"vpec-src-mix-2608","evidenceClass":"third_party_fact","provider":"MoneyDJ","title":"全新 8 月營收創高與產品 mix 公開資訊","url":"https://www.moneydj.com/KMDJ/news/newsviewer.aspx?a=b1b50928-0759-49ed-9b33-ea7e857bb534","publishedDate":"2026-09-04","accessedDate":"2026-09-09","coveredPeriods":["2026/07","2026/08"],"confidence":"medium","notes":"公開媒體整理之光電子占比約 46.1%；非公司正式 segment disclosure。"},{"id":"vpec-src-consensus","evidenceClass":"market_consensus","provider":"市場共識","title":"去識別化市場研究模型集合","publishedDate":"2026-08-26","accessedDate":"2026-08-26","coveredPeriods":["2026F","2027F"],"confidence":"medium","notes":"五份最新國內機構 / 外資研究模型中位數與區間。"},{"id":"vpec-src-prop","evidenceClass":"research_inference","provider":"投顧自研樂觀情境","title":"投顧自研樂觀模型","attachment":"全新.pdf","publishedDate":"2026-08-18","accessedDate":"2026-08-26","coveredPeriods":["2026F","2027F"],"confidence":"medium","notes":"只作樂觀情境比較，不覆蓋官方已公布實績。"}],"sourceMap":{"vpec-src-official":{"id":"vpec-src-official","evidenceClass":"official","provider":"公司公開資訊","title":"2026Q1/Q2 財報與公司公開資訊","publishedDate":"2026-08-26","accessedDate":"2026-08-26","coveredPeriods":["2025Q4","2026Q1","2026Q2","2026-Q3"],"confidence":"high","notes":"已公布實績與設備資訊優先使用官方資料。"},"vpec-src-goodinfo":{"id":"vpec-src-goodinfo","evidenceClass":"third_party_fact","provider":"Goodinfo","title":"2455 全新－每月營收","url":"https://goodinfo.tw/tw/ShowSaleMonChart.asp?STOCK_ID=2455","publishedDate":"2026-08-27","accessedDate":"2026-08-27","coveredPeriods":["2026/01-2026/07"],"confidence":"high","notes":"月營收、MoM 與 YoY。"},"vpec-src-revenue-2608":{"id":"vpec-src-revenue-2608","evidenceClass":"third_party_fact","provider":"MoneyDJ（公開資訊整理）","title":"全新 2026/08 月營收公告","url":"https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=311ce118-77fa-4d4d-956c-19c9df502c62","publishedDate":"2026-09-03","accessedDate":"2026-09-09","coveredPeriods":["2026/08","2026/01-2026/08"],"confidence":"high","notes":"公開月營收公告整理；470.904 百萬元、MoM +11.56%、YoY +71.16%，前八月累計 2,817.693 百萬元、YoY +35.87%。"},"vpec-src-mix-2608":{"id":"vpec-src-mix-2608","evidenceClass":"third_party_fact","provider":"MoneyDJ","title":"全新 8 月營收創高與產品 mix 公開資訊","url":"https://www.moneydj.com/KMDJ/news/newsviewer.aspx?a=b1b50928-0759-49ed-9b33-ea7e857bb534","publishedDate":"2026-09-04","accessedDate":"2026-09-09","coveredPeriods":["2026/07","2026/08"],"confidence":"medium","notes":"公開媒體整理之光電子占比約 46.1%；非公司正式 segment disclosure。"},"vpec-src-consensus":{"id":"vpec-src-consensus","evidenceClass":"market_consensus","provider":"市場共識","title":"去識別化市場研究模型集合","publishedDate":"2026-08-26","accessedDate":"2026-08-26","coveredPeriods":["2026F","2027F"],"confidence":"medium","notes":"五份最新國內機構 / 外資研究模型中位數與區間。"},"vpec-src-prop":{"id":"vpec-src-prop","evidenceClass":"research_inference","provider":"投顧自研樂觀情境","title":"投顧自研樂觀模型","attachment":"全新.pdf","publishedDate":"2026-08-18","accessedDate":"2026-08-26","coveredPeriods":["2026F","2027F"],"confidence":"medium","notes":"只作樂觀情境比較，不覆蓋官方已公布實績。"}},"claims":[{"id":"claim-core-chain","text":"核心驗證鏈為 InP 供應 → utilization → 光電子營收 → mix → GM → OP margin → EPS。","evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"],"inputClaimIds":[],"method":"將供應、產能利用率、產品組合與財務指標依領先至落後順序串接。","confidence":"medium"},{"id":"claim-july-opto","text":"2026/07 光電子占比公開資料整理約 40.1%，光電子營收研究估計約 1.693 億元。","evidenceClass":"research_inference","sourceIds":["vpec-src-goodinfo","vpec-src-mix-2608"],"inputClaimIds":[],"method":"以 2026/07 月營收 4.221 億元乘以公開資料整理的 40.1% mix 比例；不視為公司正式分部揭露。","confidence":"medium"},{"id":"claim-august-revenue","text":"2026/08 合併營收 4.709 億元，MoM +11.56%、YoY +71.16%；前八月累計 28.177 億元，YoY +35.87%。","evidenceClass":"third_party_fact","sourceIds":["vpec-src-revenue-2608"],"inputClaimIds":[],"method":"將公開公告的千元數換算為百萬元與億元，MoM 與 YoY 沿用公告數值。","confidence":"high"},{"id":"claim-august-opto","text":"2026/08 光電子占比公開資料整理約 46.1%，高於 2026/07 約 40.1%；非公司正式 segment disclosure。","evidenceClass":"research_inference","sourceIds":["vpec-src-mix-2608"],"inputClaimIds":["claim-august-revenue"],"method":"採公開資料整理的產品 mix 比例乘以 2026/08 月營收；不視為公司正式分部揭露。","confidence":"medium"},{"id":"claim-current-signal","text":"目前判讀為偏綠：7–8 月營收連續創高、光電子占比研究估計升至約 46%，但毛利率、InP 供應連續性與新機 utilization 仍需驗證。","evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-goodinfo","vpec-src-consensus","vpec-src-revenue-2608","vpec-src-mix-2608"],"inputClaimIds":["claim-core-chain","claim-july-opto","claim-august-revenue","claim-august-opto"],"method":"綜合月營收、光電子占比、毛利率、InP 供應、新機 utilization 與新產品訊號。","confidence":"medium"}],"actuals":[{"id":"vpec-25q4","period":"2025Q4","fiscalYear":2025,"quarter":4,"revenue":959.6,"grossProfit":357.6,"grossMargin":37.27,"operatingIncome":209,"operatingMargin":21.78,"netIncome":194,"netMargin":20.22,"eps":1.05,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["vpec-src-official"]},{"id":"vpec-26q1","period":"2026Q1","fiscalYear":2026,"quarter":1,"revenue":959.3,"grossProfit":365.4,"grossMargin":38.09,"operatingIncome":226.7,"operatingMargin":23.63,"netIncome":195.1,"netMargin":20.34,"eps":1.06,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["vpec-src-official"]},{"id":"vpec-26q2","period":"2026Q2","fiscalYear":2026,"quarter":2,"revenue":965.4,"grossProfit":372.7,"grossMargin":38.61,"operatingIncome":223.8,"operatingMargin":23.18,"netIncome":213.6,"netMargin":22.13,"eps":1.15,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["vpec-src-official"]}],"monthlyRevenue":[{"id":"vpec-2601","year":2026,"month":1,"revenue":340.3,"mom":6.6,"yoy":30.2,"currency":"TWD","scale":"million","evidenceClass":"third_party_fact","sourceIds":["vpec-src-goodinfo"]},{"id":"vpec-2602","year":2026,"month":2,"revenue":307.7,"mom":-9.57,"yoy":15.9,"currency":"TWD","scale":"million","evidenceClass":"third_party_fact","sourceIds":["vpec-src-goodinfo"]},{"id":"vpec-2603","year":2026,"month":3,"revenue":311.2,"mom":1.13,"yoy":16.6,"currency":"TWD","scale":"million","evidenceClass":"third_party_fact","sourceIds":["vpec-src-goodinfo"]},{"id":"vpec-2604","year":2026,"month":4,"revenue":318.6,"mom":2.36,"yoy":37.7,"currency":"TWD","scale":"million","evidenceClass":"third_party_fact","sourceIds":["vpec-src-goodinfo"]},{"id":"vpec-2605","year":2026,"month":5,"revenue":320.8,"mom":0.68,"yoy":46.5,"currency":"TWD","scale":"million","evidenceClass":"third_party_fact","sourceIds":["vpec-src-goodinfo"]},{"id":"vpec-2606","year":2026,"month":6,"revenue":326,"mom":1.62,"yoy":23.6,"currency":"TWD","scale":"million","evidenceClass":"third_party_fact","sourceIds":["vpec-src-goodinfo"]},{"id":"vpec-2607","year":2026,"month":7,"revenue":422.1,"mom":29.5,"yoy":45.1,"currency":"TWD","scale":"million","evidenceClass":"third_party_fact","sourceIds":["vpec-src-goodinfo"]},{"id":"vpec-2608","year":2026,"month":8,"revenue":470.904,"mom":11.56,"yoy":71.16,"currency":"TWD","scale":"million","evidenceClass":"third_party_fact","sourceIds":["vpec-src-revenue-2608"]}],"segments":[{"id":"vpec-25q4-micro","period":"2025Q4","segment":"微電子","revenue":678.4,"share":70.7,"isEstimate":false,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["vpec-src-official"],"claimIds":[]},{"id":"vpec-25q4-opto","period":"2025Q4","segment":"光電子","revenue":281.2,"share":29.3,"isEstimate":false,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["vpec-src-official"],"claimIds":[]},{"id":"vpec-26q1-micro","period":"2026Q1","segment":"微電子","revenue":718,"share":74.9,"isEstimate":false,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["vpec-src-official"],"claimIds":[]},{"id":"vpec-26q1-opto","period":"2026Q1","segment":"光電子","revenue":241.3,"share":25.1,"isEstimate":false,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["vpec-src-official"],"claimIds":[]},{"id":"vpec-26q2-micro","period":"2026Q2","segment":"微電子","revenue":703.7,"share":72.9,"isEstimate":false,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["vpec-src-official"],"claimIds":[]},{"id":"vpec-26q2-opto","period":"2026Q2","segment":"光電子","revenue":261.7,"share":27.1,"isEstimate":false,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["vpec-src-official"],"claimIds":[]},{"id":"vpec-2607-opto","period":"2026/07","segment":"光電子","revenue":169.3,"share":40.1,"isEstimate":true,"currency":"TWD","scale":"million","evidenceClass":"research_inference","sourceIds":["vpec-src-goodinfo","vpec-src-mix-2608"],"claimIds":["claim-july-opto"]},{"id":"vpec-2608-opto","period":"2026/08","segment":"光電子","revenue":217.1,"share":46.1,"isEstimate":true,"currency":"TWD","scale":"million","evidenceClass":"research_inference","sourceIds":["vpec-src-mix-2608"],"claimIds":["claim-august-opto"]}],"forecasts":[{"id":"vpec-26-bear","fiscalYear":2026,"scenario":"bear","revenue":4197,"grossMargin":39.03,"netIncome":889,"eps":4.76,"optoShare":35,"currency":"TWD","scale":"million","evidenceClass":"market_consensus","sourceIds":["vpec-src-consensus"],"notes":"市場區間低端 / 保守情境"},{"id":"vpec-26-consensus","fiscalYear":2026,"scenario":"consensus","revenue":4470,"grossMargin":40.6,"netIncome":1026,"eps":5.55,"optoShare":35.8,"currency":"TWD","scale":"million","evidenceClass":"market_consensus","sourceIds":["vpec-src-consensus"],"notes":"五份最新去識別化研究模型中位數"},{"id":"vpec-26-bull","fiscalYear":2026,"scenario":"bull","revenue":4581,"grossMargin":40.3,"netIncome":1071,"eps":5.73,"optoShare":null,"currency":"TWD","scale":"million","evidenceClass":"research_inference","sourceIds":["vpec-src-prop"],"notes":"投顧自研樂觀情境"},{"id":"vpec-27-bear","fiscalYear":2027,"scenario":"bear","revenue":4946,"grossMargin":40.59,"netIncome":null,"eps":6.19,"optoShare":43.3,"currency":"TWD","scale":"million","evidenceClass":"market_consensus","sourceIds":["vpec-src-consensus"],"notes":"市場區間低端 / 保守情境"},{"id":"vpec-27-consensus","fiscalYear":2027,"scenario":"consensus","revenue":5870,"grossMargin":44.8,"netIncome":null,"eps":8.55,"optoShare":51,"currency":"TWD","scale":"million","evidenceClass":"market_consensus","sourceIds":["vpec-src-consensus"],"notes":"五份最新去識別化研究模型中位數"},{"id":"vpec-27-bull","fiscalYear":2027,"scenario":"bull","revenue":6943,"grossMargin":45.62,"netIncome":null,"eps":11.02,"optoShare":50.1,"currency":"TWD","scale":"million","evidenceClass":"research_inference","sourceIds":["vpec-src-prop"],"notes":"光電子占比為 >50% 的展示值"}],"capacity":[{"id":"vpec-mocvd-base","eventDate":"2026-03","label":"公司揭露現有 MOCVD 基準","equipment":"MOCVD","technology":"mixed","deltaUnits":0,"baseUnits":62,"status":"actual","notes":"公司公開資訊：現有約 62 台。","evidenceClass":"official","sourceIds":["vpec-src-official"]},{"id":"vpec-mocvd-5","eventDate":"2026-Q2","label":"第一階段擴產 +5 台","equipment":"MOCVD","technology":"4 InP + 1 GaN","deltaUnits":5,"baseUnits":62,"expectedOnlineDate":"2026-2027","status":"ramping","notes":"工具數由 62 推導至 67，gross tool count 約 +8.1%。","evidenceClass":"research_inference","sourceIds":["vpec-src-official"]},{"id":"vpec-mocvd-7","eventDate":"2026-Q3","label":"最新累計規劃 +7 台","equipment":"MOCVD","technology":"6 InP + 1 GaN","deltaUnits":7,"baseUnits":62,"expectedOnlineDate":"2028","status":"planned","notes":"相對 62 台工具數約 +11.3%；後追加 2 台偏 2028 完成。","evidenceClass":"research_inference","sourceIds":["vpec-src-official"]},{"id":"vpec-ebeam","eventDate":"2026-Q2","label":"CW Laser 二次磊晶設備","equipment":"E-Beam","technology":"CW Laser","deltaUnits":1,"status":"planned","notes":"研究資料稱為第 3 台 E-Beam。","evidenceClass":"market_consensus","sourceIds":["vpec-src-consensus"]}],"catalysts":[{"id":"vpec-cat-inp","title":"InP 基板供應改善","impact":"high","status":"watch","notes":"供應改善可同時釋放既有設備與新機 utilization。","evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"]},{"id":"vpec-cat-200g","title":"200G PD 放量","impact":"high","status":"active","notes":"Data Center receive-side 新一代產品放量。","evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"]},{"id":"vpec-cat-cw","title":"CW Laser / 發射端產品","impact":"high","status":"watch","notes":"若由小量轉為可見營收，可進一步提高 ASP 與 mix。","evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"]},{"id":"vpec-cat-mocvd","title":"新增 InP MOCVD 到位","impact":"medium","status":"watch","notes":"重點不是到機本身，而是 qualification 與 utilization。","evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"]}],"risks":[{"id":"vpec-risk-inp","title":"InP 原料 / 出口許可再度受阻","impact":"high","probability":"medium","status":"watch","notes":"若供應再度不規則，光電子出貨可能再次受壓。","evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"]},{"id":"vpec-risk-mix","title":"光電子占比未如期提升","impact":"high","probability":"medium","status":"watch","notes":"2027 模型對 mix 高度敏感。","evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"]},{"id":"vpec-risk-ramp","title":"新機與新產品 ramp 延遲","impact":"medium","probability":"medium","status":"watch","notes":"折舊可能先於營收，壓抑短期 GM / OP margin。","evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"]},{"id":"vpec-risk-micro","title":"微電子需求偏弱","impact":"medium","probability":"medium","status":"watch","notes":"若手機/RF 轉弱，光電子需更快成長才能抵消。","evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"]}],"signalRules":[{"id":"vpec-rule-revenue","metric":"月營收","greenCondition":">= 4.2 億且可延續","yellowCondition":"4.0-4.2 億附近","redCondition":"\u003c 4.0 億且連續回落","weight":1.2,"evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"]},{"id":"vpec-rule-opto","metric":"光電子占比","greenCondition":">= 40% 並往 45-50%","yellowCondition":"35-40%","redCondition":"低 30% 或更低","weight":1.5,"evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"]},{"id":"vpec-rule-gm","metric":"毛利率","greenCondition":">= 41-42%","yellowCondition":"38-41%","redCondition":"\u003c 38%","weight":1.4,"evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"]},{"id":"vpec-rule-inp","metric":"InP 供應","greenCondition":"供應順暢","yellowCondition":"偶有遞延 / 許可不穩","redCondition":"明顯卡關","weight":1.2,"evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"]},{"id":"vpec-rule-util","metric":"MOCVD utilization","greenCondition":"新機到位且 utilization 上升","yellowCondition":"ramp / 認證中","redCondition":"低利用率且折舊先行","weight":1,"evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"]},{"id":"vpec-rule-product","metric":"新產品","greenCondition":"200G PD / CW Laser 明顯放量","yellowCondition":"小量出貨","redCondition":"認證或量產延後","weight":1,"evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"]}],"signalSnapshots":[{"id":"vpec-sig-revenue","asOfDate":"2026-09-04","metric":"月營收","status":"green","valueText":"2026/08 4.71 億；前8月 28.18 億","notes":"7–8 月連續創高；前8月 YoY +35.87%，仍需 9-12 月延續","evidenceClass":"third_party_fact","sourceIds":["vpec-src-revenue-2608"]},{"id":"vpec-sig-opto","asOfDate":"2026-09-04","metric":"光電子占比","status":"green","valueText":"2026/08 研究估計 46.1%","notes":"公開資料整理，非官方 segment disclosure；需觀察 9-12 月持續性","evidenceClass":"research_inference","sourceIds":["vpec-src-mix-2608"]},{"id":"vpec-sig-gm","asOfDate":"2026-08-26","metric":"毛利率","status":"yellow","valueText":"26Q2 38.61%","notes":"仍需 H2 站穩 40% 以上","evidenceClass":"official","sourceIds":["vpec-src-official"]},{"id":"vpec-sig-inp","asOfDate":"2026-08-26","metric":"InP 供應","status":"yellow","valueText":"供應改善中","notes":"仍需觀察供應連續性","evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"]},{"id":"vpec-sig-util","asOfDate":"2026-08-26","metric":"MOCVD utilization","status":"yellow","valueText":"新機 ramp 待驗證","notes":"設備到位不等於有效產能","evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"]},{"id":"vpec-sig-product","asOfDate":"2026-08-26","metric":"新產品","status":"green","valueText":"200G PD / CW Laser 放量訊號","notes":"需確認營收貢獻持續擴大","evidenceClass":"research_inference","sourceIds":["vpec-src-official","vpec-src-consensus"]}]}</script>
+<style id="v7-safe-pagination-style">
+/* v7 safe pagination + performance only after layout is finalized */
+.continuation-topline{margin-bottom:7px!important;padding-bottom:5px!important;border-bottom:1px dashed #cbd5e1!important}.continuation-topline .name{font-size:10px!important}
+.slide.layout-fallback .page{height:auto!important;min-height:297mm!important;overflow:visible!important;padding-bottom:8mm!important}.slide.layout-fallback .page-inner{height:auto!important;min-height:272mm!important;overflow:visible!important}.slide.layout-fallback .footer{position:static!important;margin-top:7mm!important}
+.reader-dots{overflow-x:auto;scrollbar-width:none;max-width:min(70vw,560px);overscroll-behavior-x:contain}.reader-dots::-webkit-scrollbar{display:none}@media(max-width:620px){.reader-dots{max-width:calc(100vw - 150px)}}
+.reader-topbar,.reader-controls{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.page-stage{transition:none!important}.page-stage>.page{transition:none!important;backface-visibility:hidden;-webkit-font-smoothing:antialiased}
+.reader-layout-ready .slide{contain:layout paint style;content-visibility:auto;isolation:isolate}
+.reader-layout-ready .page-stage{contain:layout paint}
+.reader-layout-ready .slide:not(.is-near) .page-stage>.page{box-shadow:none!important}
+.reader-layout-ready .slide.is-near .page-stage>.page{box-shadow:0 12px 34px rgba(0,0,0,.28)!important}
+.reader-layout-ready .slide.is-active .page-stage>.page{box-shadow:0 16px 40px rgba(0,0,0,.32)!important}
+.reader-viewport{scroll-behavior:auto!important}
+.slide.page-enter .page-stage{opacity:.78;transform:translate3d(8px,0,0)}
+.reader-layout-ready .slide .page-stage{opacity:1;transform:translate3d(0,0,0);transition:opacity .09s ease-out,transform .09s ease-out!important}
+@media(prefers-reduced-motion:reduce){.page-stage,.page-stage>.page{transition:none!important}.slide.page-enter .page-stage{opacity:1;transform:none}}
+
+</style>
+<script id="v7-safe-pagination-script">
+(() => {
+  const report=document.querySelector('.report');
+  const viewport=document.getElementById('readerViewport');
+  const dotBox=document.getElementById('pageDots');
+  if(!report||!viewport)return;
+  const payloadNode=document.getElementById('research-report-payload');
+  let payload=null;
+  try{payload=payloadNode?JSON.parse(payloadNode.textContent||''):null;}catch{}
+  const hydrateVpecBaseline=()=>{
+    if(payload?.profileName!=='full-research'||payload?.company?.slug!=='vpec-2455')return;
+    const page=number=>report.querySelector(`.slide[data-page="${number}"]`);
+    const safe=value=>String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
+    const fmt=(value,digits=1)=>Number(value).toLocaleString('zh-TW',{minimumFractionDigits:digits,maximumFractionDigits:digits});
+    const monthly=[...(payload.monthlyRevenue||[])].sort((a,b)=>a.year-b.year||a.month-b.month);
+    const latest=monthly.at(-1),july=monthly.find(row=>row.year===2026&&row.month===7);
+    const latestOpto=(payload.segments||[]).find(row=>row.period===`${latest?.year}/${String(latest?.month||'').padStart(2,'0')}`&&row.segment==='光電子');
+    if(!latest||!latestOpto)return;
+    const monthLabel=`${latest.year}/${String(latest.month).padStart(2,'0')}`;
+    const revenueYi=fmt(latest.revenue/(payload.dashboard?.monthlyRevenue?.unitDivisor||100),2);
+    const optoShare=fmt(latestOpto.share,1);
+    const julyShare=july?fmt((payload.segments||[]).find(row=>row.period==='2026/07'&&row.segment==='光電子')?.share||40.1,1):'40.1';
+    const p1=page(1);
+    if(p1){
+      const darkCard=p1.querySelector('.card.kpi.dark');
+      if(darkCard){
+        const label=darkCard.querySelector('.label'),value=darkCard.querySelector('.value'),delta=darkCard.querySelector('.delta');
+        if(label)label.textContent=`${monthLabel} 營收`;
+        if(value)value.textContent=`${revenueYi} 億`;
+        if(delta)delta.textContent='7–8 月連續創高';
+      }
+      const date=p1.querySelector('div[style*="font-size:16px"]');
+      if(date)date.textContent=String(payload.asOfDate||'').slice(0,7).replace('-','.');
+      const core=[...p1.querySelectorAll('.bigcall')].find(node=>(node.textContent||'').includes('核心判斷：'));
+      if(core)core.innerHTML=`<b>核心判斷：</b>2025Q4 → 2026Q2 的真正變化，不只是營收總量，而是<b>毛利率與每股獲利持續改善</b>。7–8 月營收連續創高，${monthLabel} 營收達 ${safe(revenueYi)} 億元；公開資料整理的光電子占比約 ${safe(optoShare)}%（非公司正式分部揭露），代表先前受限的需求開始釋放。若產品組合改善能延續，2027 年光電子占比超越微電子仍是獲利彈性的核心來源。`;
+      const toc=[...p1.querySelectorAll('.toc-item')];
+      const mixDesc=toc[1]?.querySelector('.toc-desc');
+      if(mixDesc)mixDesc.textContent='InP 限制下的占比變化，以及 7–8 月供應改善後的訊號。';
+      const abs=[...p1.querySelectorAll('.abs-item')];
+      const revenueAbs=abs.find(node=>(node.textContent||'').includes('營收是否加速？'));
+      if(revenueAbs){const span=revenueAbs.querySelector('span');if(span)span.textContent=`季度尚未；7–8 月連續創高。追蹤 9–12 月是否維持 4.2 億以上。`;}
+      const optoAbs=abs.find(node=>(node.textContent||'').includes('光電子是否成主引擎？'));
+      if(optoAbs){const span=optoAbs.querySelector('span');if(span)span.textContent=`H1 約 26%，7 月約 ${julyShare}% → ${monthLabel} 約 ${optoShare}%；驗證 2026F 全年約 36%。`;}
+      const pending=[...p1.querySelectorAll('.card')].find(node=>(node.textContent||'').includes('上半年光電子占比僅約 26%'));
+      if(pending){const text=pending.querySelector('.small');if(text)text.textContent=`上半年光電子占比約 26%；7–8 月營收連續創高，${monthLabel} 光電子占比公開資料整理約 ${optoShare}%。後續要看 9–12 月能否延續，而非只看單月高點。`;}
+      const source=[...p1.querySelectorAll('.sourcebox')].find(node=>(node.textContent||'').includes('未正式揭露的 7 月光電子占比'));
+      if(source)source.textContent='營運層：產品、InP 供應、MOCVD、新產品量產與應用方向採公司公開資訊與公開資料整理；未正式揭露的 7–8 月光電子占比明確標示為研究估計。';
+      const policy=[...p1.querySelectorAll('.two-col-text p')].find(node=>(node.textContent||'').includes('未正式揭露的 7 月光電子占比'));
+      if(policy)policy.innerHTML='<b>營運層：</b>產品、InP 供應、MOCVD、新產品量產與應用方向採公司公開資訊與公開資料整理；未正式揭露的 7–8 月光電子占比明確標示為研究估計。';
+    }
+    const p3=page(3);
+    if(p3){
+      const stacks=[...p3.querySelectorAll('.stack-wrap')],latestStack=stacks.at(-1);
+      if(latestStack){
+        const label=latestStack.querySelector('.stack-label'),micro=latestStack.querySelector('.micro'),opto=latestStack.querySelector('.opto'),note=latestStack.querySelector('.stack-note');
+        if(label)label.textContent=monthLabel;
+        if(micro){micro.style.width=`${Math.max(0,100-latestOpto.share)}%`;micro.textContent=`${fmt(100-latestOpto.share,1)}%`;}
+        if(opto){opto.style.width=`${latestOpto.share}%`;opto.textContent=`${optoShare}%`;}
+        if(note)note.textContent='公開資料整理';
+      }
+      const read=[...p3.querySelectorAll('p')].find(node=>(node.textContent||'').includes('7 月總營收'));
+      if(read)read.innerHTML=`7–8 月營收連續創高；${monthLabel} 營收 ${safe(revenueYi)} 億元，若光電子占比公開資料整理約 ${safe(optoShare)}% 成立，單月光電子約 ${safe(fmt(latestOpto.revenue/100,2))} 億元。接下來需要 9–12 月連續性，才能確認是遞延訂單回補，還是新的 run-rate。`;
+      const tiny=[...p3.querySelectorAll('.tiny')].find(node=>(node.textContent||'').includes('7 月光電子占比'));
+      if(tiny)tiny.textContent=`注意：7–8 月光電子占比約 ${julyShare}% → ${optoShare}% 為公開資料整理與研究推估，非公司正式分部公告；但 ${monthLabel} 總營收 ${safe(revenueYi)} 億為已公告實績。`;
+      const title=[...p3.querySelectorAll('.title')].find(node=>(node.textContent||'').includes('7 月為何'));
+      if(title)title.textContent='7–8 月為何是關鍵但仍不足以定論？';
+      const source=p3.querySelector('.sourcebox');
+      if(source)source.textContent='本頁產品占比與產業路線來自公司公開資訊與公開資料整理；7–8 月占比、個別產品毛利率為研究估計，不等同公司財報分部揭露。';
+      const strips=[...p3.querySelectorAll('.bs')];
+      if(strips[0]){const b=strips[0].querySelector('b'),span=strips[0].querySelector('span');if(b)b.textContent='8月訊號';if(span)span.textContent=`營收 ${safe(revenueYi)} 億、光電子占比公開資料整理約 ${safe(optoShare)}%。`}
+      const small=[...p3.querySelectorAll('.small')].find(node=>(node.textContent||'').includes('接下來需要 8-12'));
+      if(small)small.textContent='接下來需要 9-12 月連續性，才能確認是遞延訂單回補，還是新的 run-rate。';
+    }
+    const p4=page(4),forecastNote=p4?.querySelector('.table-note');
+    if(forecastNote&&!forecastNote.dataset.publicUpdate){
+      forecastNote.textContent=`${forecastNote.textContent} 8 月公開實績已納入月營收頁；年度情境仍維持既有市場共識，待正式財報與後續月營收再重估。`;
+      forecastNote.dataset.publicUpdate='1';
+    }
+    if(p4){
+      const continuation=[...p4.querySelectorAll('.small')].find(node=>(node.textContent||'').includes('若 8-12 月維持 7 月附近水準'));
+      if(continuation)continuation.textContent='若 9–12 月維持 7–8 月附近水準，全年營收共識具有相當可達性。';
+      const mixCondition=[...p4.querySelectorAll('.small')].find(node=>(node.textContent||'').includes('7 月 >40% 是重要起點'));
+      if(mixCondition)mixCondition.textContent='全年共識約 36%；由於 H1 僅約 26%，H2 需要明顯拉高，7–8 月 >40% 是重要起點。';
+      const roseCondition=[...p4.querySelectorAll('.small')].find(node=>(node.textContent||'').includes('如果只用 7 月營收年化'));
+      if(roseCondition)roseCondition.textContent='如果只用 7–8 月營收年化，會忽略 Q3/Q4 EPS 預估中的毛利率跳升假設。2026F 的關鍵不是「營收有沒有 45 億」，而是「光電子占比與 ASP 能不能讓毛利率跨過 40%」。';
+    }
+    const p8=page(8),signal=p8?.querySelector('.signal-now');
+    if(signal){
+      const badge=signal.querySelector('.badge'),heading=signal.querySelector('.txt b'),body=signal.querySelector('.txt span');
+      if(badge)badge.innerHTML='目前<br/>偏綠';
+      if(heading)heading.textContent=`截至 26Q2 + ${monthLabel} 的目前判讀`;
+      if(body)body.innerHTML=`公司目前判讀偏綠：7–8 月營收連續創高，${monthLabel} 光電子占比公開資料整理約 <b>${safe(optoShare)}%</b>，方向進一步轉正；但仍需用 9–12 月營收、毛利率是否站穩 40% 以上，以及 InP 供應是否穩定來確認，尚不能直接視為全面綠燈。`;
+    }
+    if(p8){
+      const greenRule=[...p8.querySelectorAll('li')].find(node=>(node.textContent||'').includes('8-12 月可延續'));
+      if(greenRule)greenRule.innerHTML=greenRule.innerHTML.replace('8-12 月可延續','9–12 月可延續');
+    }
+    const conclusion=[...(p8?.querySelectorAll('.bigcall')||[])].find(node=>(node.textContent||'').includes('截至目前的結論'));
+    if(conclusion)conclusion.innerHTML=`<b>截至目前的結論：</b>全新已從「光電子成長故事」進入「財務數字開始驗證」階段。25Q4–26Q2 的毛利率與 EPS 已改善，7–8 月營收連續創高、${monthLabel} 光電子占比公開資料整理約 ${safe(optoShare)}%，因此目前判定為<b>偏綠</b>；若接下來營收維持高檔、光電子占比穩在 45% 左右、GM 升至 41–42% 且 InP 供應順暢，才可提高 2027 共識模型可信度。`;
+  };
+  hydrateVpecBaseline();
+  document.documentElement.classList.remove('reader-layout-ready');
+  const originals=[...report.querySelectorAll(':scope > .slide')];
+  const overflowPx=1;
+  const titleFor=(slide,idx)=>{if(idx===0)return '摘要、目錄與研究大綱';const n=slide.querySelector('.topline .name');return n?n.textContent.trim():`第 ${idx+1} 頁`;};
+  const forcedFor=(title,idx)=>{
+    if(idx===0)return ['研究結論速覽'];
+    if(title.includes('04｜2026F'))return ['把全年共識反推成 H2 毛利率'];
+    if(title.includes('05｜2027F'))return ['把 CAGR 拆成'];
+    if(title.includes('06｜情境分析'))return ['從「數字」轉成投資論述升降級規則'];
+    if(title.includes('07｜產能擴充量化'))return ['把設備擴產放回 2027F 模型'];
+    return [];
+  };
+  const beginsWithAny=(node,phrases)=>{const t=(node.innerText||'').trim();return phrases.some(p=>t.startsWith(p));};
+
+  originals.forEach((original,originalIndex)=>{
+    const originalInner=original.querySelector('.page-inner'); if(!originalInner)return;
+    const baseTitle=titleFor(original,originalIndex), forced=forcedFor(baseTitle,originalIndex);
+    const needsFlow=forced.length>0 || originalInner.scrollHeight>originalInner.clientHeight+overflowPx;
+    if(!needsFlow)return;
+    const template=original.cloneNode(true), nodes=[...originalInner.children].map(n=>n.cloneNode(true));
+    let part=0;
+    const makeSlide=()=>{const slide=template.cloneNode(true);slide.removeAttribute('id');slide.removeAttribute('data-page');const inner=slide.querySelector('.page-inner');inner.replaceChildren();if(part>0){const top=document.createElement('div');top.className='topline continuation-topline';top.innerHTML=`<div class="name">${baseTitle}（續 ${part+1}）</div><div class="meta">內容分頁以保留安全留白，避免重疊或裁切</div>`;inner.appendChild(top);}slide.dataset.chapterTitle=part===0?baseTitle:`${baseTitle}（續 ${part+1}）`;return slide;};
+    let current=makeSlide(); original.replaceWith(current); let inner=current.querySelector('.page-inner');
+    const startNew=()=>{part+=1;const next=makeSlide();current.after(next);current=next;inner=current.querySelector('.page-inner');return inner;};
+    for(const node of nodes){
+      const prefix=part>0?1:0;
+      if(beginsWithAny(node,forced) && inner.children.length>prefix){startNew();}
+      inner.appendChild(node);
+      if(inner.scrollHeight<=inner.clientHeight+overflowPx)continue;
+      inner.removeChild(node);
+      let carry=null;
+      const last=inner.lastElementChild;
+      if(last && last.classList.contains('section-title')){carry=last;carry.remove();}
+      startNew();
+      if(carry)inner.appendChild(carry);
+      inner.appendChild(node);
+      if(inner.scrollHeight>inner.clientHeight+overflowPx){current.classList.add('layout-fallback');}
+    }
+  });
+
+  const slides=[...report.querySelectorAll(':scope > .slide')], total=slides.length;
+  slides.forEach((slide,i)=>{slide.id=`page-${i+1}`;slide.dataset.page=String(i+1);if(!slide.dataset.chapterTitle)slide.dataset.chapterTitle=titleFor(slide,i);const spans=slide.querySelectorAll('.footer span');if(spans.length)spans[spans.length-1].textContent=`Page ${i+1} / ${total}`;});
+  if(dotBox){dotBox.replaceChildren(...slides.map((slide,i)=>{const a=document.createElement('a');a.className=`reader-dot${i===0?' active':''}`;a.href=`#page-${i+1}`;a.dataset.goto=String(i);a.setAttribute('aria-label',`前往第 ${i+1} 頁`);a.textContent=String(i+1);return a;}));}
+  for(const id of ['bottomPageCount','topPageCount']){const el=document.getElementById(id);if(el)el.textContent=`1 / ${total}`;}
+  let activeIndex=0;
+  const setActive=(index)=>{index=Math.max(0,Math.min(total-1,index));activeIndex=index;slides.forEach((slide,i)=>{slide.classList.toggle('is-active',i===index);slide.classList.toggle('is-near',Math.abs(i-index)<=1);});};
+  const collectQc=()=>{
+    const tolerance=1,overflows=[],overlaps=[],clippings=[];
+    for(const [index,slide] of slides.entries()){
+      const inner=slide.querySelector('.page-inner');if(!inner)continue;
+      const overflow=Math.max(0,inner.scrollHeight-inner.clientHeight);
+      if(overflow>tolerance)overflows.push({page:index+1,pixels:overflow});
+      const innerRect=inner.getBoundingClientRect();
+      const children=[...inner.children].filter((element)=>{const style=getComputedStyle(element),rect=element.getBoundingClientRect();return style.display!=='none'&&style.visibility!=='hidden'&&style.position!=='absolute'&&style.position!=='fixed'&&rect.width>0&&rect.height>0;});
+      for(const [childIndex,element] of children.entries()){
+        const rect=element.getBoundingClientRect();
+        if(rect.left<innerRect.left-tolerance||rect.right>innerRect.right+tolerance||rect.top<innerRect.top-tolerance||rect.bottom>innerRect.bottom+tolerance){clippings.push({page:index+1,element:element.className||element.tagName});}
+        for(const other of children.slice(childIndex+1)){
+          const otherRect=other.getBoundingClientRect(),width=Math.min(rect.right,otherRect.right)-Math.max(rect.left,otherRect.left),height=Math.min(rect.bottom,otherRect.bottom)-Math.max(rect.top,otherRect.top);
+          if(width>tolerance&&height>tolerance)overlaps.push({page:index+1,first:element.className||element.tagName,second:other.className||other.tagName,width:Math.round(width),height:Math.round(height)});
+        }
+      }
+    }
+    return{version:'p1.6-layout-qc',pages:total,dots:dotBox?.children.length??0,fallbacks:slides.filter(slide=>slide.classList.contains('layout-fallback')).length,overflows,overlaps,clippings,horizontalOverflow:Math.max(0,document.documentElement.scrollWidth-document.documentElement.clientWidth),viewport:{width:innerWidth,height:innerHeight},profile:document.body.dataset.researchProfile||'full-research'};
+  };
+  const indexFromScroll=()=>Math.max(0,Math.min(total-1,Math.round(viewport.scrollLeft/Math.max(1,viewport.clientWidth))));
+  const hashMatch=location.hash.match(/(?:page-)?(\d+)$/);setActive(hashMatch?Number(hashMatch[1])-1:0);
+  let scrollRaf=0;viewport.addEventListener('scroll',()=>{if(scrollRaf)return;scrollRaf=requestAnimationFrame(()=>{scrollRaf=0;setActive(indexFromScroll());});},{passive:true});
+  const goTo=(index)=>{index=Math.max(0,Math.min(total-1,index));const target=slides[index];setActive(index);target.classList.add('page-enter');viewport.scrollTo({left:index*viewport.clientWidth,top:0,behavior:'auto'});history.replaceState(null,'',`#page-${index+1}`);requestAnimationFrame(()=>requestAnimationFrame(()=>target.classList.remove('page-enter')));};
+  document.addEventListener('click',(event)=>{const a=event.target.closest?.('.reader-dot,.bottom-arrow');if(!a)return;let index=a.dataset.goto!==undefined?Number(a.dataset.goto):NaN;if(!Number.isFinite(index)){const m=(a.getAttribute('href')||'').match(/page-(\d+)/);if(m)index=Number(m[1])-1;}if(!Number.isFinite(index))return;event.preventDefault();goTo(index);},true);
+  const publishQc=()=>{let output=document.getElementById('research-qc-result');if(!output){output=document.createElement('pre');output.id='research-qc-result';output.hidden=true;document.body.appendChild(output);}output.textContent=JSON.stringify(collectQc());};
+  publishQc();
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{document.documentElement.classList.add('reader-layout-ready');publishQc();}));
+  window.__researchLayout={version:'v7-safe-pagination',totalPages:total,activePage:()=>activeIndex+1,overflows:()=>slides.map((slide,i)=>{const inner=slide.querySelector('.page-inner');return{page:i+1,fallback:slide.classList.contains('layout-fallback'),overflow:inner?inner.scrollHeight-inner.clientHeight:0};}),collectQc};
+})();
+
+</script>
+<script>
+(() => {
+  const viewport=document.getElementById('readerViewport');
+  const slides=[...document.querySelectorAll('.slide')];
+  const dots=[...document.querySelectorAll('.reader-dot')];
+  const count=document.getElementById('topPageCount');
+  const progress=document.getElementById('readerProgress');
+  const bottomCount=document.getElementById('bottomPageCount');
+  const bottomPrev=document.getElementById('bottomPrev');
+  const bottomNext=document.getElementById('bottomNext');
+  const chapter=document.getElementById('chapterTitle');
+  const titles=slides.map((s,i)=>{if(i===0)return '摘要、目錄與研究大綱';const n=s.querySelector('.topline .name');return n?n.textContent.trim().replace(/^\d+｜/,''):`第 ${i+1} 頁`;});
+  function calcFit(){
+    const page=slides[0]?.querySelector('.page'); if(!page)return;
+    // offsetWidth/offsetHeight are the unscaled A4 dimensions, so the scale affects text and every child equally.
+    const baseW=page.offsetWidth||794, baseH=page.offsetHeight||1123;
+    const sidePad=innerWidth<821?76:124;
+    const availW=Math.max(240,viewport.clientWidth-sidePad);
+    const availH=Math.max(280,viewport.clientHeight-18);
+    const s=Math.max(.25,Math.min(availW/baseW,availH/baseH,1));
+    document.documentElement.style.setProperty('--fit-scale',s.toFixed(4));
+    document.documentElement.style.setProperty('--fit-w',(baseW*s).toFixed(1)+'px');
+    document.documentElement.style.setProperty('--fit-h',(baseH*s).toFixed(1)+'px');
+  }
+  function sync(i){
+    i=Math.max(0,Math.min(slides.length-1,i));
+    dots.forEach((d,j)=>d.classList.toggle('active',j===i));
+    if(count)count.textContent=`${i+1} / ${slides.length}`;
+    if(bottomCount)bottomCount.textContent=`${i+1} / ${slides.length}`;
+    if(bottomPrev){bottomPrev.href=`#page-${Math.max(1,i)}`;bottomPrev.classList.toggle('disabled',i===0);bottomPrev.setAttribute('aria-disabled',i===0?'true':'false');}
+    if(bottomNext){bottomNext.href=`#page-${Math.min(slides.length,i+2)}`;bottomNext.classList.toggle('disabled',i===slides.length-1);bottomNext.setAttribute('aria-disabled',i===slides.length-1?'true':'false');}
+    if(progress)progress.style.width=`${(i+1)/slides.length*100}%`;
+    if(chapter)chapter.textContent=titles[i];
+  }
+  function currentIndex(){return Math.max(0,Math.min(slides.length-1,Math.round(viewport.scrollLeft/Math.max(1,viewport.clientWidth))));}
+  let raf=0; viewport.addEventListener('scroll',()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>sync(currentIndex()));},{passive:true});
+  document.addEventListener('keydown',e=>{const i=currentIndex();if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();location.hash=`page-${Math.min(slides.length,i+2)}`;}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();location.hash=`page-${Math.max(1,i)}`;}});
+  window.addEventListener('resize',calcFit,{passive:true});
+  calcFit();
+  const m=location.hash.match(/page-(\d+)/); if(m)sync(Number(m[1])-1); else sync(0);
+})();
+</script></body></html>

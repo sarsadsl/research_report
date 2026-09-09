@@ -125,10 +125,12 @@ npm.cmd run research:intake -- sample-9001 --check
 
 `research/<slug>/report-profiles.json` 控制同一份 Research Package 的 rendered outputs：
 
-- `full-research`：直接依 `research-package.json` 的 sections 生成；章節與頁數內容驅動。
+- `full-research`：正式公開主報告，直接依 `research-package.json` 的 sections 以研究公版生成；章節與頁數內容驅動。
+- `full-research-original`：可選的原始完整格式 baseline，只保留供版面與內容對照，不作正式公開入口。
 - `experiment-summary`：由通用 Report View Model 產生 ranking + panel summary 精簡報告。
+- `template-comparison`：公版比較別名；正式上架內容與 `full-research` 同步。
 
-兩份輸出都由 `npm run report:materialize -- <slug>` 建立，並內嵌由 Research Package 建立的 view-model payload；不使用 runtime `fetch`，可直接以 `file://` 開啟。正式 renderer 不含公司或固定年份分支，Dashboard 清單的 headline year 也由 package 設定。
+所有輸出都由 `npm run report:materialize -- <slug>` 建立，並內嵌由 Research Package 建立的 view-model payload；不使用 runtime `fetch`，可直接以 `file://` 開啟。正式 renderer 不含公司或固定年份分支，Dashboard 清單的 headline year 也由 package 設定。
 
 ## Standalone HTML exporter（P1.5）
 
@@ -176,7 +178,7 @@ npm.cmd run research:publish -- vpec-2455 --dry-run
 
 PowerShell 可一律使用 `npm.cmd`。遇到 `Generated file is stale`，重新執行 `research:generate` 再跑 `research:check`；Git 換行轉換也可能造成此錯誤。如果重生後沒有實質 Git diff，就不需要 commit。生成的 JSON／SQL 有實質差異時才與 package 一起提交。
 
-不要手改本機生成的 report HTML；`exports/` 已忽略，tracked 的 `public/research/reports/vpec-2455.html` 由通用 materializer 重建。需要保留並整理本機兩份 HTML 時，使用 Workflow 內限定檔案且包含未追蹤檔的 stash 指令。
+不要手改本機生成的 report HTML；`exports/` 已忽略，tracked 的 `public/research/reports/vpec-2455.html` 是正式公版主報告，由通用 materializer 重建；`public/research/reports/vpec-2455-original.html` 保留原始完整格式供比較。需要保留並整理本機生成 HTML 時，使用 Workflow 內限定檔案且包含未追蹤檔的 stash 指令。
 
 ## 下一階段 P1
 

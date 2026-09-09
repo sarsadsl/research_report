@@ -9,14 +9,14 @@ P1.8 操作規範，於 P1.9 更新發布入口、P1.10 加入新報告 intake �
 | `research/<slug>/research-package.json` | 研究資料唯一人工維護來源，包括數值、來源、claims、假設、Dashboard 設定與 report 版本 |
 | `research/<slug>/manifest.json` | 身分、reportVersion、所需輸出與品質要求；版本須與 package 一致 |
 | `research/<slug>/intake.json`、`sources/` | 新研究的問題與來源清單；package 完成前不會進入 build／publish |
-| `research/<slug>/report-profiles.json` | Profile、輸出位置及 section 選擇；正式 Full Report 用 `package-sections`，頁數由 package 內容決定 |
+| `research/<slug>/report-profiles.json` | Profile、輸出位置及 section 選擇；`full-research` 是正式公版主報告，原始完整格式可另設 baseline，頁數由 package 內容決定 |
 | `research/<slug>/notes.md` | 決策與待查問題，不作為另一份數值來源 |
 | `lib/research/generated/<slug>.json`、`db/seed/<ticker>.sql` | Generator 產生，禁止手改；有實質差異時與 package 一起提交 |
 | D1 | Package 衍生資料，由 importer 更新 |
-| `public/research/reports/*.html` | Materializer 產物；正式 full report 可被網站發布，experiment 與本機生成差異不另行手改 |
+| `public/research/reports/*.html` | Materializer 產物；正式公開使用 `full-research` 公版，原始完整格式僅供對照，experiment 與本機生成差異不另行手改 |
 | `exports/*.html` | Standalone 交付檔，Git 已忽略，不提交 GitHub |
 
-Full Report 由 `research-package.json` 的 `sections` 與通用 renderer 產生，不再讀取 2455 legacy HTML。每個 section 的 `payloadRefs` 決定資料與 evidence rail；頁數是排序後的 section 數，不設公司專屬固定頁數。
+正式 Full Report 由 `research-package.json` 的 `sections` 與通用 renderer 產生，不再讀取 2455 legacy HTML；原始完整格式若保留，則以獨立 baseline profile 輸出供比較，不作網站主入口。每個 section 的 `payloadRefs` 決定資料與 evidence rail；頁數是排序後的 section 數，不設公司專屬固定頁數。
 
 ## 新報告 intake
 
@@ -97,7 +97,7 @@ npm.cmd run research:publish -- vpec-2455 --remote
 
 Push main 的 CI 對程式、研究資料或混合變更執行同一 gate；純 README、research_system 直屬 Markdown、docs Markdown 僅做文件檢查。手動 workflow_dispatch 仍跑完整發布。QC 後不重建報告，來源／build／report hash 漂移會阻擋；各階段證據保存於 .research-publish 及 CI artifact。人工內容、來源與離線驗收尚未自動強制，發布者仍須保存。
 
-部署後檢查實際站點的 `/research`、`/research/vpec-2455`、`/research/reports/vpec-2455.html`、`/api/research/vpec-2455`。交付填實際 origin，不猜測網址。Remote import 成功不代表網站部署完成。
+部署後檢查實際站點的 `/research`、`/research/vpec-2455`、`/research/reports/vpec-2455.html`（公版主報告）、`/api/research/vpec-2455`；如需比較，再檢查 profile 指定的原始 baseline URL。交付填實際 origin，不猜測網址。Remote import 成功不代表網站部署完成。
 
 ## 版本、hash 與匯入稽核
 

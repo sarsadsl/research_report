@@ -44,7 +44,12 @@ export function injectFullReportMetadata(html,vm){
   const expected=vm.profile.sourcePages??vm.profile.expectedPages;
   if(expected&&count!==expected)throw new Error(`Full report source regression failed: expected ${expected} pages, found ${count}`);
   if(!html.includes("</body>"))throw new Error("Full report has no </body> marker");
-  return html.replace("</body>",`<script id="research-report-payload" type="application/json">${json(vm)}</script>\n</body>`);
+  const payload=`<script id="research-report-payload" type="application/json">${json(vm)}</script>`;
+  const readerMarker="\n<script>\n(() => {";
+  const markerAt=html.lastIndexOf(readerMarker);
+  return markerAt>=0
+    ?html.slice(0,markerAt)+`\n${payload}`+html.slice(markerAt)
+    :html.replace("</body>",`${payload}\n</body>`);
 }
 
 const makeRows=(items,cells)=>items.map(item=>`<tr>${cells.map(cell=>`<td>${cell(item)}</td>`).join("")}</tr>`).join("");

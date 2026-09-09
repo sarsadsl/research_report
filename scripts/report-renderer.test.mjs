@@ -30,23 +30,34 @@ test("report profiles reject unsafe output paths", async()=>{
   assert.throws(()=>validateReportProfiles(invalid),/invalid output path/);
 });
 
-test("VPEC full report remains a verified canonical baseline", async () => {
+test("VPEC full report publishes the research standard layout", async () => {
   const {profiles}=await load();
   const profile=profiles.profiles["full-research"];
-  assert.equal(profile.kind,"baseline");
-  assert.equal(profile.sourcePages,8);
+  assert.equal(profile.kind,"generated");
+  assert.equal(profile.layout,"research-standard-v2");
+  assert.equal(profile.output,"public/research/reports/vpec-2455.html");
   assert.equal(profile.expectedPages,14);
-  assert.equal(profile.canonical.sha256,"b7092685eab8bfb3479723b29771c746d1cb94e70edef41afa373493745c4ea8");
+  assert.deepEqual(profile.sections,["package-sections"]);
   assert.equal(validateReportProfiles(profiles),true);
 });
 
-test("materialized VPEC artifact preserves the original reader and page design", async () => {
+test("materialized VPEC full report uses the public template", async () => {
   const html=await readFile("public/research/reports/vpec-2455.html","utf8");
+  assert.equal((html.match(/<section class="page slide/g)||[]).length,14);
+  assert.match(html,/已實現財務表現/);
+  assert.match(html,/EVIDENCE RAIL/);
+  assert.match(html,/id="zoom-range"/);
+  assert.match(html,/"profileName":"full-research"/);
+});
+
+test("materialized VPEC original report preserves the baseline reader and page design", async () => {
+  const html=await readFile("public/research/reports/vpec-2455-original.html","utf8");
   assert.equal((html.match(/<div class="slide" data-page=/g)||[]).length,8);
   assert.match(html,/<title>全新光電 2455 TT｜互動式分頁研究報告<\/title>/);
   assert.match(html,/id="v7-safe-pagination-style"/);
   assert.match(html,/id="v7-safe-pagination-script"/);
   assert.match(html,/"expectedPages":14/);
+  assert.match(html,/"profileName":"full-research-original"/);
   assert.doesNotMatch(html,/EVIDENCE RAIL/);
 });
 
@@ -112,7 +123,7 @@ test("STL full report shares the dense v2 research layout", async () => {
 test("baseline profiles fail closed without canonical source metadata", async()=>{
   const {profiles}=await load();
   const invalid=structuredClone(profiles);
-  delete invalid.profiles["full-research"].canonical;
+  delete invalid.profiles["full-research-original"].canonical;
   assert.throws(()=>validateReportProfiles(invalid),/baseline canonical sources are required/);
 });
 

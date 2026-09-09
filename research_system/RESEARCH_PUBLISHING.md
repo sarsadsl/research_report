@@ -16,6 +16,8 @@ npm.cmd run research:publish -- vpec-2455 --remote
 
 未指定旗標時也是 dry-run。Remote 要求研究內容已人工審閱、package report status 是 published，且來源工作區已提交；生成的 report HTML 可有差異，不需提交。這只是沿用現有 published package 的發布，不會自動把 draft 改為 published。
 
+發布入口固定使用 `full-research` profile 的輸出；若 package 同時保留原始完整格式 baseline，它只作為可直接比對的附加 artifact，不會取代公版主報告。
+
 `npm.cmd run deploy` 及舊 `node scripts/run-cloudflare.mjs deploy` 都導向這個 gate。沒有 skip-QC／skip-build 選項。預覽命令不寫入遠端，維持原行為。
 
 低階 `research:import --remote`、Wrangler 及 Cloudflare dashboard 仍能直接維護遠端資源；P1.9 是專案發布入口的保護，不是 Cloudflare 帳號的權限邊界。維護命令不可當成已通過發布流程的替代證據。

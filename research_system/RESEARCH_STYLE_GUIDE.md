@@ -44,7 +44,7 @@ P1.8 編輯與視覺驗收規範，用於 Dashboard、Full Report 與 standalone
 
 正式閱讀器要求上／下一頁、頁碼導覽、Fit、50%、75%、100%、125% 縮放及可見鍵盤焦點。正文、來源、頁尾不得互遮。
 
-`full-research` 依 package sections 逐章產頁；`experiment-summary` 為 2 頁通用輸出。頁數由內容決定，不是所有公司的固定目標。每頁主內容旁保留 evidence rail，完整正文仍需人工對照 package 與來源。
+`full-research` 是正式公開的研究公版，依 package sections 逐章產頁；若另保留原始完整格式，必須以獨立 baseline profile 輸出供對照，不覆蓋正式主報告。`experiment-summary` 為 2 頁通用輸出。頁數由內容決定，不是所有公司的固定目標。每頁主內容旁保留 evidence rail，完整正文仍需人工對照 package 與來源。
 
 增頁須一起審查 package sections、renderer 與回歸證據，不能以固定頁數掩蓋內容缺漏。拆分不得依公司名／固定年份擴充硬編碼。
 

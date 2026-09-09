@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "packageVersion": "1.0.0",
-  "asOfDate": "2026-08-27",
+  "packageVersion": "1.1.0",
+  "asOfDate": "2026-09-04",
   "company": {
     "id": "vpec-2455",
     "ticker": "2455",
@@ -17,14 +17,14 @@
     "id": "vpec-report-v1",
     "title": "全新光電 2455｜2025Q4-2027F 深度研究",
     "slug": "vpec-2455",
-    "summary": "完整版：已實現財報與利潤 Bridge、光電子營收占比、2026F H2 反推、2027F CAGR / 分部拆解、MOCVD 產能量化與紅綠燈結論。",
+    "summary": "完整版：已實現財報與利潤 Bridge、7–8 月營收與光電子營收占比、2026F H2 反推、2027F CAGR / 分部拆解、MOCVD 產能量化與紅綠燈結論。",
     "thesis": "InP 供應 → utilization → 光電子營收 → mix → GM → OP margin → EPS。",
     "status": "published",
-    "version": "1.1",
-    "publishedAt": "2026-08-27"
+    "version": "1.2",
+    "publishedAt": "2026-09-09"
   },
   "thesis": {
-    "summary": "黃綠燈之間、偏綠；方向已轉正，但毛利率、InP 供應與新機利用率仍需連續驗證。",
+    "summary": "偏綠；7–8 月營收連續創高、光電子占比研究估計升至約 46%，但毛利率、InP 供應與新機利用率仍需連續驗證。",
     "coreChain": [
       "InP 供應",
       "utilization",
@@ -40,7 +40,7 @@
     ]
   },
   "dashboard": {
-    "currentView": "目前判讀：黃綠燈之間、偏綠。完整報告內保留 2026F H2 反推、2027F CAGR / 分部拆解、MOCVD 產能量化與升降級規則。",
+    "currentView": "目前判讀：偏綠。7–8 月營收連續創高、光電子占比研究估計升至約 46%；完整報告保留 2026F H2 反推、2027F CAGR / 分部拆解、MOCVD 產能量化與升降級規則。",
     "verificationChain": [
       "InP 供應",
       "新機 utilization",
@@ -50,7 +50,7 @@
       "營益率",
       "EPS"
     ],
-    "conclusion": "現階段方向偏正向，但毛利率、原料供應與新機利用率仍需要連續數季驗證。",
+    "conclusion": "現階段方向偏正向，7–8 月營收與光電子 mix 提供上修訊號；但毛利率能否站穩 40%、InP 供應連續性與新機利用率仍需要連續數季驗證。",
     "forecastScenario": "consensus",
     "headlineForecastYears": [2026, 2027],
     "focusMetric": {
@@ -59,7 +59,7 @@
     },
     "monthlyRevenue": {
       "focusYear": 2026,
-      "cumulativeThroughMonth": 6,
+      "cumulativeThroughMonth": 8,
       "unitDivisor": 100,
       "unitLabel": "億"
     },
@@ -243,6 +243,20 @@
       "sourceIds": [
         "vpec-src-goodinfo"
       ]
+    },
+    {
+      "id": "vpec-2608",
+      "year": 2026,
+      "month": 8,
+      "revenue": 470.904,
+      "mom": 11.56,
+      "yoy": 71.16,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "vpec-src-revenue-2608"
+      ]
     }
   ],
   "segments": [
@@ -340,17 +354,35 @@
       "id": "vpec-2607-opto",
       "period": "2026/07",
       "segment": "光電子",
-      "revenue": 168.8,
-      "share": 40,
+      "revenue": 169.3,
+      "share": 40.1,
       "isEstimate": true,
       "currency": "TWD",
       "scale": "million",
       "evidenceClass": "research_inference",
       "sourceIds": [
-        "vpec-src-goodinfo"
+        "vpec-src-goodinfo",
+        "vpec-src-mix-2608"
       ],
       "claimIds": [
         "claim-july-opto"
+      ]
+    },
+    {
+      "id": "vpec-2608-opto",
+      "period": "2026/08",
+      "segment": "光電子",
+      "revenue": 217.1,
+      "share": 46.1,
+      "isEstimate": true,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "vpec-src-mix-2608"
+      ],
+      "claimIds": [
+        "claim-august-opto"
       ]
     }
   ],
@@ -708,26 +740,26 @@
   "signalSnapshots": [
     {
       "id": "vpec-sig-revenue",
-      "asOfDate": "2026-08-26",
+      "asOfDate": "2026-09-04",
       "metric": "月營收",
       "status": "green",
-      "valueText": "2026/07 4.22 億",
-      "notes": "單月創高，仍需 8-12 月延續",
+      "valueText": "2026/08 4.71 億；前8月 28.18 億",
+      "notes": "7–8 月連續創高；前8月 YoY +35.87%，仍需 9-12 月延續",
       "evidenceClass": "third_party_fact",
       "sourceIds": [
-        "vpec-src-goodinfo"
+        "vpec-src-revenue-2608"
       ]
     },
     {
       "id": "vpec-sig-opto",
-      "asOfDate": "2026-08-26",
+      "asOfDate": "2026-09-04",
       "metric": "光電子占比",
       "status": "green",
-      "valueText": "2026/07 研究估計 >40%",
-      "notes": "非官方 segment disclosure",
+      "valueText": "2026/08 研究估計 46.1%",
+      "notes": "公開資料整理，非官方 segment disclosure；需觀察 9-12 月持續性",
       "evidenceClass": "research_inference",
       "sourceIds": [
-        "vpec-src-goodinfo"
+        "vpec-src-mix-2608"
       ]
     },
     {
@@ -919,6 +951,36 @@
       "notes": "月營收、MoM 與 YoY。"
     },
     {
+      "id": "vpec-src-revenue-2608",
+      "evidenceClass": "third_party_fact",
+      "provider": "MoneyDJ（公開資訊整理）",
+      "title": "全新 2026/08 月營收公告",
+      "url": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=311ce118-77fa-4d4d-956c-19c9df502c62",
+      "publishedDate": "2026-09-03",
+      "accessedDate": "2026-09-09",
+      "coveredPeriods": [
+        "2026/08",
+        "2026/01-2026/08"
+      ],
+      "confidence": "high",
+      "notes": "公開月營收公告整理；470.904 百萬元、MoM +11.56%、YoY +71.16%，前八月累計 2,817.693 百萬元、YoY +35.87%。"
+    },
+    {
+      "id": "vpec-src-mix-2608",
+      "evidenceClass": "third_party_fact",
+      "provider": "MoneyDJ",
+      "title": "全新 8 月營收創高與產品 mix 公開資訊",
+      "url": "https://www.moneydj.com/KMDJ/news/newsviewer.aspx?a=b1b50928-0759-49ed-9b33-ea7e857bb534",
+      "publishedDate": "2026-09-04",
+      "accessedDate": "2026-09-09",
+      "coveredPeriods": [
+        "2026/07",
+        "2026/08"
+      ],
+      "confidence": "medium",
+      "notes": "公開媒體整理之光電子占比約 46.1%；非公司正式 segment disclosure。"
+    },
+    {
       "id": "vpec-src-consensus",
       "evidenceClass": "market_consensus",
       "provider": "市場共識",
@@ -963,27 +1025,56 @@
     },
     {
       "id": "claim-july-opto",
-      "text": "2026/07 光電子占比研究估計約 40%，光電子營收約 1.688 億元。",
+      "text": "2026/07 光電子占比公開資料整理約 40.1%，光電子營收研究估計約 1.693 億元。",
       "evidenceClass": "research_inference",
       "sourceIds": [
-        "vpec-src-goodinfo"
+        "vpec-src-goodinfo",
+        "vpec-src-mix-2608"
       ],
       "inputClaimIds": [],
-      "method": "以 2026/07 月營收 4.221 億元乘以 40% 研究假設。",
+      "method": "以 2026/07 月營收 4.221 億元乘以公開資料整理的 40.1% mix 比例；不視為公司正式分部揭露。",
+      "confidence": "medium"
+    },
+    {
+      "id": "claim-august-revenue",
+      "text": "2026/08 合併營收 4.709 億元，MoM +11.56%、YoY +71.16%；前八月累計 28.177 億元，YoY +35.87%。",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "vpec-src-revenue-2608"
+      ],
+      "inputClaimIds": [],
+      "method": "將公開公告的千元數換算為百萬元與億元，MoM 與 YoY 沿用公告數值。",
+      "confidence": "high"
+    },
+    {
+      "id": "claim-august-opto",
+      "text": "2026/08 光電子占比公開資料整理約 46.1%，高於 2026/07 約 40.1%；非公司正式 segment disclosure。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "vpec-src-mix-2608"
+      ],
+      "inputClaimIds": [
+        "claim-august-revenue"
+      ],
+      "method": "採公開資料整理的產品 mix 比例乘以 2026/08 月營收；不視為公司正式分部揭露。",
       "confidence": "medium"
     },
     {
       "id": "claim-current-signal",
-      "text": "目前判讀為黃綠燈之間、偏綠。",
+      "text": "目前判讀為偏綠：7–8 月營收連續創高、光電子占比研究估計升至約 46%，但毛利率、InP 供應連續性與新機 utilization 仍需驗證。",
       "evidenceClass": "research_inference",
       "sourceIds": [
         "vpec-src-official",
         "vpec-src-goodinfo",
-        "vpec-src-consensus"
+        "vpec-src-consensus",
+        "vpec-src-revenue-2608",
+        "vpec-src-mix-2608"
       ],
       "inputClaimIds": [
         "claim-core-chain",
-        "claim-july-opto"
+        "claim-july-opto",
+        "claim-august-revenue",
+        "claim-august-opto"
       ],
       "method": "綜合月營收、光電子占比、毛利率、InP 供應、新機 utilization 與新產品訊號。",
       "confidence": "medium"
