@@ -3,7 +3,7 @@ PRAGMA foreign_keys = ON;
 INSERT INTO research_companies
 (id,ticker,market,name,slug,sector,industry,currency,description,status,created_at,updated_at)
 VALUES
-('stl-4931','4931','TPEX','新盛力科技','stl-4931','電腦及週邊設備','鋰電池模組／電池備援系統','TWD','鋰離子電池模組設計與製造商，應用涵蓋資料中心與伺服器 BBU、電動工具及輕型電動交通工具。','unlisted','2026-08-31','2026-08-31')
+('stl-4931','4931','TPEX','新盛力科技','stl-4931','電腦及週邊設備','鋰電池模組／電池備援系統','TWD','鋰離子電池模組設計與製造商，應用涵蓋資料中心與伺服器 BBU、電動工具及輕型電動交通工具。','active','2026-08-31','2026-08-31')
 ON CONFLICT(id) DO UPDATE SET ticker=excluded.ticker,market=excluded.market,name=excluded.name,slug=excluded.slug,sector=excluded.sector,industry=excluded.industry,currency=excluded.currency,description=excluded.description,status=excluded.status,created_at=excluded.created_at,updated_at=excluded.updated_at;
 
 INSERT INTO research_financial_actuals

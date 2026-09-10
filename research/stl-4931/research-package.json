@@ -20,7 +20,7 @@
     "summary": "以官方財報、年報、月營收、產品規格與公開認證為基礎，區分已實現成長、產品能力與尚未公開確認的客戶資格。",
     "thesis": "AI 資料中心 BBU 需求 → 出貨與月營收 → 毛利率 → 營運資金 → 現金轉換 → EPS；產品規格與 UL 實驗室資格不等於特定 CSP 量產認證。",
     "status": "published",
-    "visibility": "unlisted",
+    "visibility": "listed",
     "version": "1.0",
     "publishedAt": "2026-09-02"
   },
