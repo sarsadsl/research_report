@@ -8,6 +8,7 @@ node_modules
 wrangler.jsonc
 cloudflare-env.d.ts
 *.log
+*.tsbuildinfo
 exports/
 .research-publish/
 .research-drafts/

@@ -14,6 +14,7 @@
     "report:materialize": "node ./scripts/materialize-reports.mjs",
     "report:export": "node ./scripts/report-exporter.mjs",
     "report:qc": "node ./scripts/report-qc.mjs",
+    "report:screenshots": "node ./scripts/report-screenshots.mjs",
     "dev": "npm run research:generate -- vpec-2455 --check && npm run report:materialize && node ./node_modules/next/dist/bin/next dev",
     "build": "npm run research:check && npm run report:materialize && node ./node_modules/next/dist/bin/next build",
     "start": "node ./node_modules/next/dist/bin/next start",
