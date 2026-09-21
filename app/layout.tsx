@@ -1,26 +1,22 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import ResearchEnhancements from "./research/research-enhancements";
+import { ResearchMasthead } from "./research/components/research-notebook";
+import { ResearchRouteEffects } from "./research/research-client";
 import "./globals.css";
-import "./research/research-enhancements.css";
+import "./research/research-notebook.css";
 
 export const metadata: Metadata = {
-  title: "個股研究資料庫",
-  description: "個股研究、財務實績、預估情境、催化劑、風險與紅綠燈追蹤。",
+  title: "Research Desk｜個股研究資料庫",
+  description: "以研究檔案、驗證鏈與財務訊號持續整理個股研究。",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="zh-TW">
       <body>
-        <header className="siteHeader">
-          <div className="shell navInner">
-            <Link href="/research" className="brand">Research DB</Link>
-            <nav><Link href="/research">個股研究</Link></nav>
-          </div>
-        </header>
+        <a className="skipLink" href="#main-content">跳至主要內容</a>
+        <ResearchMasthead />
         {children}
-        <ResearchEnhancements />
+        <ResearchRouteEffects />
       </body>
     </html>
   );

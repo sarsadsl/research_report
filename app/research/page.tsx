@@ -1,35 +1,52 @@
-import Link from "next/link";
-import { formatSignalLabel, overallSignal } from "@/lib/research/calculations";
+import type { ReactNode } from "react";
 import { getResearchRepository } from "@/lib/research/repository";
+import { MarkerHighlight, ResearchNote, ResearchSketch, SketchDivider } from "./components/research-notebook";
+import { ResearchIndex } from "./research-client";
 
-export const dynamic = "force-dynamic";
+function latestUpdated(items: Array<{ report: { publishedAt?: string | null } }>) {
+  return items.map((item) => item.report.publishedAt ?? "").sort().at(-1)?.replaceAll("-", ".") ?? "—";
+}
 
 export default async function ResearchPage() {
-  const repo = await getResearchRepository();
-  const items = await repo.listPublishedCompanies();
+  const items = await (await getResearchRepository()).listPublishedCompanies();
+  const updated = latestUpdated(items);
 
-  return <main>
-    <section className="shell hero">
-      <div className="eyebrow">Equity Research Database</div>
-      <h1>個股研究資料庫</h1>
-      <p>把財報實績、月營收、產品組合、財測情境、產能、催化劑、風險與紅綠燈訊號集中成可持續更新的研究系統。</p>
-    </section>
-    <section className="shell grid companyGrid">
-      {items.map(({ company, report, latestActual, headlineForecast, signals }) => {
-        const overall = overallSignal(signals);
-        return <Link href={`/research/${company.slug}`} className="card companyCard" key={company.id}>
-          <div className="ticker">{company.market} · {company.ticker}</div>
-          <div className="companyName">{company.name}</div>
-          <div className="small muted" style={{ marginTop: 6 }}>{company.industry}</div>
-          <div className="grid metricGrid">
-            <div className="metric"><div className="label">最新 EPS</div><div className="value">{latestActual?.eps?.toFixed(2) ?? "—"}</div></div>
-            <div className="metric"><div className="label">{headlineForecast?.fiscalYear ?? "—"}F EPS</div><div className="value">{headlineForecast?.eps?.toFixed(2) ?? "—"}</div></div>
-            <div className="metric"><div className="label">研究燈號</div><div className="value" style={{fontSize:15}}>{formatSignalLabel(overall)}</div></div>
+  return (
+    <main id="main-content" className="notebookPage archivePage">
+      <section className="notebookShell archiveHero">
+        <div className="heroCopy">
+          <div className="heroKicker">Equity Research Archive</div>
+          <h1 className="heroTitle">個股研究<br /><MarkerHighlight>資料庫</MarkerHighlight></h1>
+          <p className="heroLead">把財報實績、月營收、產品組合、財測情境、產能、催化劑、風險與研究訊號，整理成可持續更新的研究系統。</p>
+          <p className="heroAnnotation">Research Notes<br />資料不是答案，<br /><HandwrittenPhrase>驗證鏈才是研究。</HandwrittenPhrase></p>
+        </div>
+        <ResearchSketch variant="archive" label="research archive" />
+      </section>
+
+      <div className="notebookShell"><SketchDivider label="open the files →" /></div>
+
+      <section className="notebookShell archiveSection" aria-labelledby="archive-heading">
+        <div className="archiveHeader">
+          <div>
+            <div className="heroKicker">Research Archive</div>
+            <h2 id="archive-heading">研究檔案索引</h2>
           </div>
-          <div className="signalRow">{signals.map((s) => <span key={s.metric} className={`signalPill ${s.status}`}>{s.metric}</span>)}</div>
-          <div className="small muted" style={{ marginTop: 14 }}>最新報告：{report.version} · {report.publishedAt}</div>
-        </Link>;
-      })}
-    </section>
-  </main>;
+          <div className="archiveMeta">
+            <div><span>Reports</span><strong>{String(items.length).padStart(2, "0")}</strong></div>
+            <div><span>Last updated</span><strong>{updated.slice(0, 7)}</strong></div>
+          </div>
+        </div>
+        <ResearchIndex items={items} />
+      </section>
+
+      <section className="notebookShell archiveFootnote" aria-label="研究系統說明">
+        <h3>長期研究，不是一次性快照。</h3>
+        <ResearchNote label="DESK NOTE" tone="blue">每一份 dossier 都保留研究摘要、驗證訊號與下一輪需要追蹤的證據。先讀結論，再回到資料。</ResearchNote>
+      </section>
+    </main>
+  );
+}
+
+function HandwrittenPhrase({ children }: { children: ReactNode }) {
+  return <span className="handUnderline">{children}</span>;
 }

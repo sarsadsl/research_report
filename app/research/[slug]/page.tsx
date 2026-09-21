@@ -3,60 +3,168 @@ import { notFound } from "next/navigation";
 import { formatSignalLabel } from "@/lib/research/calculations";
 import { buildResearchDashboard } from "@/lib/research/dashboard";
 import { getResearchRepository } from "@/lib/research/repository";
+import {
+  getIndustryLabel,
+  getSketchVariant,
+  HandDrawnUnderline,
+  IndustryTag,
+  MarkerHighlight,
+  PaperSection,
+  ResearchChart,
+  ResearchChecklist,
+  ResearchMetric,
+  ResearchNote,
+  ResearchSketch,
+  ResearchStatus,
+  ResearchTable,
+  RiskNote,
+  StickyNote,
+  ThesisChain,
+} from "../components/research-notebook";
+import { ResearchNavigation } from "../research-client";
 
 export const dynamic = "force-dynamic";
-const fmt=(value?:number|null,digits=1)=>value==null?"—":value.toFixed(digits);
 
-export default async function ResearchDetailPage({params}:{params:Promise<{slug:string}>}){
-  const {slug}=await params;
-  const data=await (await getResearchRepository()).getBySlug(slug);
-  if(!data) notFound();
-  const vm=buildResearchDashboard(data);
-  const report=data.reports[0];
-  const focus=vm.config.monthlyRevenue;
-  const forecastYears=vm.config.headlineForecastYears;
-  const focusIsPercent=["grossMargin","optoShare"].includes(vm.config.focusMetric.field);
+const fmt = (value?: number | null, digits = 1) => value == null ? "—" : value.toFixed(digits);
+const scenarioLabel: Record<string, string> = { bear: "保守", base: "基準", bull: "樂觀", consensus: "市場共識" };
 
-  return <main>
-    <section className="shell detailHero">
-      <div className="eyebrow">{data.company.market} · {data.company.ticker}</div><h1>{data.company.name}</h1>
-      <div className="muted">{data.company.description}</div>
-      <div className="topActions">{report?.htmlPath&&<Link className="button" href={report.htmlPath} target="_blank">開啟完整互動報告</Link>}<Link className="button secondary" href="/research">返回研究列表</Link></div>
-    </section>
+const navigation = [
+  { id: "summary", label: "研究摘要" },
+  { id: "financials", label: "財務分析" },
+  { id: "revenue", label: "月營收" },
+  { id: "business", label: "業務與能力" },
+  { id: "scenarios", label: "情境模型" },
+  { id: "signals", label: "驗證訊號" },
+  { id: "catalysts", label: "催化劑" },
+  { id: "risks", label: "風險觀察" },
+  { id: "conclusion", label: "研究結論" },
+];
 
-    {report&&<section className="shell section"><h2 className="sectionTitle">研究摘要</h2><div className="grid twoCol">
-      <div className="card"><div className="small muted">Report v{report.version}</div><h3 style={{margin:"6px 0 8px"}}>{report.title}</h3><p style={{margin:0,lineHeight:1.7}}>{report.summary}</p></div>
-      <div className="card"><div className="small muted">核心 Thesis</div><p style={{margin:"8px 0 0",lineHeight:1.7,fontWeight:800}}>{report.thesis}</p><p className="small muted" style={{marginBottom:0}}>{vm.config.currentView}</p></div>
-    </div></section>}
+export default async function ResearchDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const data = await (await getResearchRepository()).getBySlug(slug);
+  if (!data) notFound();
 
-    <section className="shell section"><div className="grid kpis">
-      <div className="kpi"><div className="label">{vm.latestActual?.period} EPS</div><div className="value">{fmt(vm.latestActual?.eps,2)}</div><div className="small muted">最新實績</div></div>
-      {forecastYears.map(year=><div className="kpi" key={year}><div className="label">{year}F EPS</div><div className="value">{fmt(vm.forecasts[year]?.eps,2)}</div><div className="small muted">{vm.config.forecastScenario}</div></div>)}
-      <div className="kpi"><div className="label">整體燈號</div><div className="value" style={{fontSize:20}}>{formatSignalLabel(vm.overallSignal)}</div><div className="small muted">截至 {data.signals[0]?.asOfDate??"—"}</div></div>
-    </div></section>
+  const vm = buildResearchDashboard(data);
+  const report = data.reports[0];
+  const focus = vm.config.monthlyRevenue;
+  const latest = vm.latestActual;
+  const [thesisCore, ...thesisFootnotes] = report?.thesis?.split("；") ?? [];
+  const thesisSteps = thesisCore?.split("→").map((item) => item.trim().replace(/[。.]+$/, "")).filter(Boolean) ?? vm.config.verificationChain;
+  const thesisCaveat = thesisFootnotes.join("；").trim();
+  const industryLabel = getIndustryLabel(data.company.industry);
+  const sketch = getSketchVariant(data.company.industry);
+  const signals = data.signals.map((signal) => ({ label: signal.metric, status: signal.status, value: signal.valueText, note: signal.notes }));
 
-    <section className="shell section"><h2 className="sectionTitle">紅綠燈結論</h2><div className="grid threeCol">{data.signals.map(s=><div className="card signalCard" key={s.metric}><div className={`statusLight ${s.status}`}/><h3>{s.metric} · {formatSignalLabel(s.status)}</h3><p><b>{s.valueText}</b><br/>{s.notes}</p></div>)}</div>
-      <div className="bigConclusion" style={{marginTop:14}}><b>研究驗證鏈：</b> {vm.config.verificationChain.join(" → ")}。{vm.config.conclusion}</div>
-    </section>
+  return (
+    <main id="main-content" className="notebookPage dossierPage">
+      <div className="notebookShell dossierLayout">
+        <ResearchNavigation items={navigation} />
 
-    <section className="shell section"><div className="grid twoCol"><div><h2 className="sectionTitle">月營收</h2>
-      {vm.monthlyRevenue.length>0&&<div className="revenueChartPanel"><div className="revenueChartHeader"><div><div className="revenueChartEyebrow">{focus.focusYear} MONTHLY REVENUE</div><div className="revenueChartTitle">月營收趨勢</div></div><div className="revenueChartStats">
-        <span><b>{(vm.cumulativeRevenue/focus.unitDivisor).toFixed(2)} {focus.unitLabel}</b><small>{vm.cumulativeLabel}</small></span>
-        {vm.latestMonthlyRevenue&&<span><b>{(vm.latestMonthlyRevenue.revenue/focus.unitDivisor).toFixed(2)} {focus.unitLabel}</b><small>{vm.latestMonthlyRevenue.year}/{String(vm.latestMonthlyRevenue.month).padStart(2,"0")} · YoY {vm.latestMonthlyRevenue.yoy==null?"—":`${fmt(vm.latestMonthlyRevenue.yoy,2)}%`}</small></span>}
-      </div></div><div className="revenueChartScroll"><div className="revenueChart" style={{gridTemplateColumns:`repeat(${vm.monthlyRevenue.length},minmax(54px,1fr))`}} role="img" aria-label={`${focus.focusYear} 年月營收柱狀圖`}>
-        {vm.monthlyRevenue.map((m,index)=><div className="revenueBarColumn" key={`bar-${m.year}-${m.month}`}><div className="revenueBarValue">{(m.revenue/focus.unitDivisor).toFixed(2)}{focus.unitLabel}</div><div className="revenueBarTrack"><div className={`revenueBar${index===vm.monthlyRevenue.length-1?" latest":""}`} style={{height:`${Math.max(8,(m.revenue/vm.maxMonthlyRevenue)*100)}%`}} title={`${m.year}/${String(m.month).padStart(2,"0")}：${m.revenue.toFixed(1)} 百萬；MoM ${m.mom==null?"—":`${fmt(m.mom,2)}%`}；YoY ${m.yoy==null?"—":`${fmt(m.yoy,2)}%`}`}/></div><div className="revenueBarMonth">{m.month}月</div></div>)}
-      </div></div></div>}
-      <table><thead><tr><th>月份</th><th>Revenue (百萬)</th><th>MoM</th><th>YoY</th></tr></thead><tbody>{vm.monthlyRevenue.map(m=><tr key={`${m.year}-${m.month}`}><td>{m.year}/{String(m.month).padStart(2,"0")}</td><td>{fmt(m.revenue,1)}</td><td>{m.mom==null?"—":`${fmt(m.mom,2)}%`}</td><td>{m.yoy==null?"—":`${fmt(m.yoy,2)}%`}</td></tr>)}</tbody></table>
-    </div><div><h2 className="sectionTitle">營收結構 / Segment Mix</h2><table><thead><tr><th>Period</th><th>Segment</th><th>Revenue</th><th>Share</th></tr></thead><tbody>{data.segments.map((s,i)=><tr key={`${s.period}-${s.segment}-${i}`}><td>{s.period}{s.isEstimate?"*":""}</td><td>{s.segment}</td><td>{fmt(s.revenue,1)}</td><td>{s.share==null?"—":`${fmt(s.share,1)}%`}</td></tr>)}</tbody></table><div className="small muted" style={{marginTop:8}}>{vm.config.estimateNote}</div></div></div></section>
+        <div className="dossierContent">
+          <section id="summary" className="dossierHero">
+            <div className="dossierHeroGrid">
+              <div>
+                <div className="dossierKicker">Company Research Dossier · {data.company.market}</div>
+                <h1 className="dossierTitle">{data.company.name} <span>{data.company.ticker}</span></h1>
+                <p className="dossierSubtitle">{report?.title ?? "個股研究檔案"}</p>
+                <div className="dossierMeta">
+                  <span><strong>{industryLabel}</strong></span>
+                  <span>as of <strong>{data.dashboard.monthlyRevenue.focusYear}.{String(data.dashboard.monthlyRevenue.cumulativeThroughMonth).padStart(2, "0")}</strong></span>
+                  <span>report <strong>v{report?.version ?? "—"}</strong></span>
+                </div>
+                <ResearchNote label="WORKING THESIS" tone="yellow" className="heroThesisNote">{data.dashboard.currentView}</ResearchNote>
+                <div className="dossierActions">
+                  {report?.htmlPath ? <a className="linkButton linkButton--primary" href={report.htmlPath} target="_blank" rel="noreferrer">Open full research ↗</a> : null}
+                  <Link className="linkButton" href="/research">Back to archive</Link>
+                </div>
+              </div>
+              <ResearchSketch variant={sketch} label={data.company.ticker} />
+            </div>
+            <ThesisChain steps={thesisSteps} />
+            {thesisCaveat ? <p className="thesisCaveat">＊ {thesisCaveat}</p> : null}
+          </section>
 
-    <section className="shell section"><h2 className="sectionTitle">已實現財報</h2><table><thead><tr><th>Period</th><th>Revenue (百萬)</th><th>GP (百萬)</th><th>GM</th><th>OP Margin</th><th>Net Income</th><th>EPS</th></tr></thead><tbody>{data.actuals.map(a=><tr key={a.id}><td>{a.period}</td><td>{fmt(a.revenue)}</td><td>{fmt(a.grossProfit)}</td><td>{fmt(a.grossMargin,2)}%</td><td>{fmt(a.operatingMargin,2)}%</td><td>{fmt(a.netIncome)}</td><td>{fmt(a.eps,2)}</td></tr>)}</tbody></table></section>
+          <PaperSection id="financials" index="01" eyebrow="VERIFIED FINANCIALS" title="先看已實現的數字" note="reported / not forecast">
+            <p className="sectionLead">{data.dashboard.currentView}</p>
+            <div className="researchMetrics">
+              <ResearchMetric label={`${latest?.period ?? "Latest"} EPS`} value={fmt(latest?.eps, 2)} note="latest actual" highlight />
+              {data.dashboard.headlineForecastYears.map((year) => <ResearchMetric key={year} label={`${year}F EPS`} value={fmt(vm.forecasts[year]?.eps, 2)} note={scenarioLabel[vm.config.forecastScenario] ?? vm.config.forecastScenario} />)}
+              <ResearchMetric label="Overall signal" value={formatSignalLabel(vm.overallSignal)} note={`as of ${data.signals[0]?.asOfDate ?? "—"}`} />
+            </div>
+            <ResearchTable caption="Financial statements · TWD million unless noted">
+              <thead><tr><th>Period</th><th>Revenue</th><th>Gross profit</th><th>GM</th><th>OP margin</th><th>Net income</th><th>EPS</th></tr></thead>
+              <tbody>{data.actuals.map((actual) => <tr key={actual.id}><td>{actual.period}</td><td>{fmt(actual.revenue)}</td><td>{fmt(actual.grossProfit)}</td><td className={actual.id === latest?.id ? "tableHighlight" : ""}>{fmt(actual.grossMargin, 2)}%</td><td>{fmt(actual.operatingMargin, 2)}%</td><td>{fmt(actual.netIncome)}</td><td className={actual.id === latest?.id ? "tableHighlight" : ""}>{fmt(actual.eps, 2)}</td></tr>)}</tbody>
+            </ResearchTable>
+          </PaperSection>
 
-    <section className="shell section"><h2 className="sectionTitle">{vm.forecastRangeLabel}</h2><table><thead><tr><th>年度 / 情境</th><th>Revenue (百萬)</th><th>GM</th><th>Net Income</th><th>EPS</th><th>{vm.config.focusMetric.label}</th></tr></thead><tbody>{data.forecasts.map(f=><tr key={`${f.fiscalYear}-${f.scenario}`}><td>{f.fiscalYear} · {f.scenario}</td><td>{fmt(f.revenue,0)}</td><td>{fmt(f.grossMargin,2)}%</td><td>{fmt(f.netIncome,0)}</td><td>{fmt(f.eps,2)}</td><td>{f[vm.config.focusMetric.field]==null?"—":`${fmt(f[vm.config.focusMetric.field],1)}${focusIsPercent?"%":""}`}</td></tr>)}</tbody></table>
-      <div className="grid twoCol" style={{marginTop:14}}>{vm.cagrCards.map(card=><div className="card" key={`${card.field}-${card.targetYear}`}><div className="small muted">{card.label}</div><div className="companyName">{card.value==null?"—":`${card.value.toFixed(1)}%`}</div></div>)}</div>
-    </section>
+          <PaperSection id="revenue" index="02" eyebrow="MONTHLY EVIDENCE" title="月營收：放量要看連續性" note="monthly revenue as proxy">
+            <ResearchChart points={vm.monthlyRevenue} unitDivisor={focus.unitDivisor} unitLabel={focus.unitLabel} focusYear={focus.focusYear} />
+            <ResearchTable caption="Official monthly revenue series">
+              <thead><tr><th>Month</th><th>Revenue (million)</th><th>MoM</th><th>YoY</th></tr></thead>
+              <tbody>{vm.monthlyRevenue.map((point, index) => <tr key={`${point.year}-${point.month}`}><td>{point.year}/{String(point.month).padStart(2, "0")}</td><td className={index === vm.monthlyRevenue.length - 1 ? "tableHighlight" : ""}>{fmt(point.revenue)}</td><td>{point.mom == null ? "—" : `${fmt(point.mom, 2)}%`}</td><td>{point.yoy == null ? "—" : `${fmt(point.yoy, 2)}%`}</td></tr>)}</tbody>
+            </ResearchTable>
+          </PaperSection>
 
-    <section className="shell section"><h2 className="sectionTitle">產能與設備</h2><div className="grid threeCol">{data.capacity.map(c=><div className="card" key={c.label}><div className="ticker">{c.equipment} · {c.status}</div><div style={{fontWeight:900,fontSize:17,margin:"5px 0"}}>{c.label}</div><div className="small muted">{c.technology}<br/>{c.notes}</div></div>)}</div></section>
-    <section className="shell section"><div className="grid twoCol"><div><h2 className="sectionTitle">Catalysts</h2><div className="card"><ul className="list">{data.catalysts.map(x=><li key={x.title}><b>{x.title}</b> — {x.notes}</li>)}</ul></div></div><div><h2 className="sectionTitle">Risks</h2><div className="card"><ul className="list">{data.risks.map(x=><li key={x.title}><b>{x.title}</b> — {x.notes}</li>)}</ul></div></div></div></section>
-    <div className="footerSpace"/>
-  </main>;
+          <PaperSection id="business" index="03" eyebrow="COMPANY / CAPABILITY" title="業務與能力：把規格和資格分開" note="evidence boundary">
+            <div className="sectionColumns">
+              <div>
+                <ResearchTable caption="Official application categories">
+                  <thead><tr><th>Period</th><th>Application / segment</th><th>Revenue</th><th>Share</th></tr></thead>
+                  <tbody>{data.segments.map((segment, index) => <tr key={`${segment.period}-${segment.segment}-${index}`}><td>{segment.period}{segment.isEstimate ? "*" : ""}</td><td>{segment.segment}</td><td>{fmt(segment.revenue)}</td><td>{segment.share == null ? "—" : `${fmt(segment.share)}%`}</td></tr>)}</tbody>
+                </ResearchTable>
+                <p className="tableSubtle">{vm.config.estimateNote}</p>
+              </div>
+              <div className="capacityList">
+                {data.capacity.map((item, index) => <div className="capacityRow" key={item.label}><span>{String(index + 1).padStart(2, "0")}</span><strong>{item.label}</strong><p><b>{item.equipment}</b><br />{item.technology}<br />{item.notes}</p></div>)}
+              </div>
+            </div>
+          </PaperSection>
+
+          <PaperSection id="scenarios" index="04" eyebrow="SCENARIO NOTEBOOK" title="情境模型：不是目標價，是驗證區間" note="research inference">
+            <div className="scenarioNotebook">
+              {["bear", "base", "bull"].map((scenario) => {
+                const scenarioKeys = scenario === "base" ? ["base", "consensus"] : [scenario];
+                const forecast2026 = data.forecasts.find((item) => item.fiscalYear === 2026 && scenarioKeys.includes(item.scenario));
+                const forecast2027 = data.forecasts.find((item) => item.fiscalYear === 2027 && scenarioKeys.includes(item.scenario));
+                return <article className={`scenarioBlock scenarioBlock--${scenario}`} key={scenario}><h3>{scenarioLabel[scenario]}</h3><div className="scenarioValues"><div><span>2026F EPS</span><strong>{fmt(forecast2026?.eps, 2)}</strong></div><div><span>2027F EPS</span><strong>{fmt(forecast2027?.eps, 2)}</strong></div></div><p>{forecast2026?.notes ?? forecast2027?.notes ?? "研究情境尚無備註。"}</p></article>;
+              })}
+            </div>
+            <ResearchNote label="ESTIMATE BOUNDARY" tone="blue" className="sectionNoteBlock">{vm.config.estimateNote}</ResearchNote>
+          </PaperSection>
+
+          <PaperSection id="signals" index="05" eyebrow="ANALYST VERIFICATION CHECKLIST" title="研究訊號：下一輪要核對什麼" note={`as of ${data.signals[0]?.asOfDate ?? "—"}`}>
+            <ResearchChecklist items={signals} />
+            <ResearchNote label="CURRENT READ" tone="green" className="sectionNoteBlock">{vm.config.conclusion}</ResearchNote>
+          </PaperSection>
+
+          <PaperSection id="catalysts" index="06" eyebrow="WHAT CAN PROVE THE THESIS?" title="催化劑：能把敘事變成證據的事件" note="watch for confirmation">
+            <div className="researchList">
+              {data.catalysts.map((item, index) => <div className="researchListItem" key={item.title}><span>{String(index + 1).padStart(2, "0")}</span><strong>{item.title}</strong><p>{item.notes}</p></div>)}
+            </div>
+          </PaperSection>
+
+          <PaperSection id="risks" index="07" eyebrow="RISK RESEARCH NOTES" title="風險觀察：目前不能跳過的反證" note="stay skeptical">
+            <div className="riskGrid">{data.risks.map((risk) => <RiskNote key={risk.title} title={risk.title} notes={risk.notes} status={risk.status} impact={risk.impact} />)}</div>
+          </PaperSection>
+
+          <PaperSection id="conclusion" index="08" eyebrow="INVESTMENT THESIS" title="研究結論與下階段驗證" note="keep the chain intact">
+            <div className="investmentThesis">
+              <div className="sectionEyebrow">CENTRAL INVESTMENT THESIS</div>
+              <h3>{report?.summary ?? "研究摘要尚未建立。"}</h3>
+              <p>目前最值得追蹤的，不是猜測未公開的客戶名稱，而是確認 <HandDrawnUnderline>Revenue → Margin → Working Capital → Cash Flow → EPS</HandDrawnUnderline> 是否持續兌現。</p>
+              <div className="thesisFormula">{thesisSteps.map((step) => <span key={step}>{step}</span>)}</div>
+              <div className="verificationList">{vm.config.verificationChain.map((item, index) => <div className="verificationItem" key={item}><span>{String(index + 1).padStart(2, "0")} / NEXT CHECK</span><strong>{item}</strong></div>)}</div>
+            </div>
+            <div className="sectionColumns sectionColumns--equal" style={{ marginTop: 22 }}>
+              <StickyNote tone="yellow">{data.dashboard.estimateNote}</StickyNote>
+              <ResearchNote label="ARCHIVE NOTE" tone="red">公開事實、研究推論與尚未確認的資格邊界，必須在下一次資料更新時重新核對。</ResearchNote>
+            </div>
+          </PaperSection>
+
+          <div className="dossierFooter">{data.company.name} {data.company.ticker} · Research Desk · {report?.publishedAt ?? "—"} · public evidence only</div>
+        </div>
+      </div>
+    </main>
+  );
 }
