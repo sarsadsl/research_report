@@ -91,6 +91,10 @@ test("VPEC template comparison uses the same generated public format as STL", as
   assert.match(html,/>INFERENCE<\/span>/);
   assert.match(html,/class="investment-signal signal-green"/);
   assert.match(html,/class="thesis-chain"/);
+  assert.match(html,/class="thesis-chain-track"/);
+  assert.doesNotMatch(html,/<i aria-hidden="true">→<\/i>/);
+  assert.match(html,/class="back-to-library" href="\/research"/);
+  assert.match(html,/aria-label="回到研究報告列表"/);
   assert.match(html,/class="chapter-rail"/);
   assert.match(html,/class="nav-progress"/);
   assert.match(html,/EVIDENCE RAIL/);
