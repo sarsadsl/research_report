@@ -78,6 +78,9 @@ test("VPEC template comparison uses the same generated public format as STL", as
   assert.match(html,/class="chart-legend"/);
   assert.match(html,/--paper:#F4F0E7/);
   assert.match(html,/--navy:#244D70/);
+  assert.match(html,/--type-body:10\.5px/);
+  assert.match(html,/--type-mobile-body:15px/);
+  assert.match(html,/--type-mobile-table:13px/);
   assert.doesNotMatch(html,/#5b4bc4|#9c89ef/);
   assert.match(html,/情境、敏感度與判讀邏輯/);
   assert.match(html,/悲觀／基準／樂觀/);
