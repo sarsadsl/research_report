@@ -125,6 +125,12 @@ test("VPEC template comparison uses the same generated public format as STL", as
   assert.match(html,/let active=0,zoom='1\.5'/);
   assert.match(html,/type="range" min="50" max="150" step="1" value="150"/);
   assert.match(html,/>150%<\/output>/);
+  assert.match(html,/const fitScale=\(\)=>Math\.min\(/);
+  assert.match(html,/Math\.max\(50,Math\.min\(150,n\*100\)\)/);
+  assert.match(html,/range\.value=String\(percent\)/);
+  assert.match(html,/range\.setAttribute\('value',String\(percent\)\)/);
+  assert.match(html,/range\.setAttribute\('aria-valuenow',String\(percent\)\)/);
+  assert.match(html,/range\.setAttribute\('aria-valuetext',label\)/);
   assert.match(html,/"profileName":"template-comparison"/);
 });
 
