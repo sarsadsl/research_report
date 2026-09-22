@@ -420,7 +420,7 @@ content:`${module("PROFITABILITY","毛利、營益與淨利率對照",profitabil
     },
     {
       section:standardSection("standard-capacity","產能、能力與成長兌現",["capacity"]),
-      content:`${capacityMetrics(vm)}${TechnicalSketch(vm.company.industry)}${module("CAPACITY MAP","公開能力與擴張節點",capacityTable(vm),"wide")}${ResearchAnnotation("Capability ≠ qualification；設備到位也不等於營收已實現。")}${module("EVIDENCE","從投入到營收的判讀",bullets(capacityNotes),"note")}<div class="verification-chain">${vm.dashboard.verificationChain.map((item,index)=>`<div><b>${index+1}</b><span>${esc(item)}</span></div>`).join("")}</div>`,
+      content:`${capacityMetrics(vm)}${TechnicalSketch(vm.company.industry,"capacity")}${module("CAPACITY MAP","公開能力與擴張節點",capacityTable(vm),"wide")}${ResearchAnnotation("Capability ≠ qualification；設備到位也不等於營收已實現。")}${module("EVIDENCE","從投入到營收的判讀",bullets(capacityNotes),"note")}<div class="verification-chain">${vm.dashboard.verificationChain.map((item,index)=>`<div><b>${index+1}</b><span>${esc(item)}</span></div>`).join("")}</div>`,
     },
     {
       section:standardSection("standard-signals","驗證訊號與目前狀態",["signalSnapshots"]),

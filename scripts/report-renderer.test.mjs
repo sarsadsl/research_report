@@ -93,6 +93,11 @@ test("VPEC template comparison uses the same generated public format as STL", as
   assert.match(html,/class="thesis-chain"/);
   assert.match(html,/class="thesis-chain-track"/);
   assert.doesNotMatch(html,/<i aria-hidden="true">→<\/i>/);
+  assert.match(html,/class="technical-sketch-track"/);
+  assert.match(html,/CAPACITY REALIZATION PATH/);
+  assert.doesNotMatch(html,/<svg viewBox="0 0 420 92"/);
+  assert.match(html,/grid-template-columns:minmax\(44px,78px\) minmax\(0,1fr\)/);
+  assert.match(html,/box-shadow:inset 0 0 0 1px/);
   assert.match(html,/class="back-to-library" href="\/research"/);
   assert.match(html,/aria-label="回到研究報告列表"/);
   assert.match(html,/class="chapter-rail"/);
