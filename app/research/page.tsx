@@ -3,6 +3,8 @@ import { getResearchRepository } from "@/lib/research/repository";
 import { MarkerHighlight, ResearchNote, ResearchSketch, SketchDivider } from "./components/research-notebook";
 import { ResearchIndex } from "./research-client";
 
+export const dynamic = "force-dynamic";
+
 function latestUpdated(items: Array<{ report: { publishedAt?: string | null } }>) {
   return items.map((item) => item.report.publishedAt ?? "").sort().at(-1)?.replaceAll("-", ".") ?? "—";
 }
