@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "jingu-8358",
+  "companyName": "金居開發",
+  "ticker": "8358",
+  "market": "TPEX",
+  "asOfDate": "2026-09-24",
+  "requestedOutputs": ["dashboard", "full-report", "standalone"],
+  "researchQuestions": [
+    "HVLP4 與 RG 產品升級是否能轉化為可出售產能與毛利率擴張？",
+    "2027 年斗六三廠與 2028 年東南亞 RG 產能的時點、規模與驗證條件為何？",
+    "AI 伺服器銅箔供需缺口、加工費與競爭者擴產對金居的上行／下行風險為何？"
+  ],
+  "sources": [
+    {
+      "id": "jingu-intake-official",
+      "title": "金居官方營運資訊",
+      "provider": "金居開發",
+      "evidenceClass": "official",
+      "url": "https://www.co-tech.com/tw/ir/operation"
+    },
+    {
+      "id": "jingu-intake-financials",
+      "title": "8358 金居財務與月營收公開資料",
+      "provider": "Goodinfo",
+      "evidenceClass": "third_party_fact",
+      "url": "https://goodinfo.tw/tw/StockDetail.asp?STOCK_ID=8358"
+    },
+    {
+      "id": "jingu-intake-chatgpt",
+      "title": "金居展望與財測分析",
+      "provider": "使用者提供 ChatGPT 分享頁",
+      "evidenceClass": "research_inference",
+      "url": "https://chatgpt.com/share/6ab3e863-1d70-83ee-ad56-b1543d0b7f90"
+    },
+    {
+      "id": "jingu-intake-gemini",
+      "title": "使用者提供 Gemini 分享報告",
+      "provider": "使用者提供 Gemini 分享頁",
+      "evidenceClass": "research_inference",
+      "url": "https://share.gemini.google/2VmyLp4lXAcA"
+    }
+  ],
+  "notes": "原始券商 PDF 保留於使用者本機 D:\\report\\pcb，僅將其摘要與來源中繼資料納入公開研究包；未將可能受版權限制的原檔提交至公開 repo。"
+}

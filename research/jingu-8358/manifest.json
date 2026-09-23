@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "ticker": "8358",
+  "market": "TPEX",
+  "slug": "jingu-8358",
+  "reportVersion": "1.0",
+  "output": {
+    "dashboard": true,
+    "fullReport": true,
+    "standalone": true
+  },
+  "quality": {
+    "checkOverflow": true,
+    "checkOverlap": true,
+    "checkSources": true,
+    "desktopTest": true,
+    "mobileTest": true,
+    "offlineStandaloneTest": true
+  }
+}

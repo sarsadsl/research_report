@@ -7,7 +7,7 @@ import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { assertUnchanged, executeRelease, parsePublishArgs } from "./research-publish-lib.mjs";
 import { expectedReportPages, hashFiles, parseDeployment, treeFiles } from "./research-publish.mjs";
-import { isDocumentationOnly } from "./ci-scope.mjs";
+import { isDocumentationOnly, researchSlugs } from "./ci-scope.mjs";
 
 const candidate = { reportHash: "report-sha", expectedPages: 14, buildHash: "build-sha" };
 const qcResult = () => ({
@@ -178,6 +178,11 @@ test("only an explicit documentation allowlist skips publishing", () => {
   }
 });
 
+test("CI scope resolves a single research slug from changed package paths", () => {
+  assert.deepEqual(researchSlugs(["research/jingu-8358/research-package.json", "research/jingu-8358/manifest.json"]), ["jingu-8358"]);
+  assert.deepEqual(researchSlugs(["app/page.tsx", "public/research/reports/jingu-8358.html"]), []);
+});
+
 test("CI scope uses the whole push range and catches renames out of runtime paths", async t => {
   const root = await mkdtemp(join(tmpdir(), "research-scope-test-"));
   t.after(() => rm(root, { recursive: true, force: true }));
@@ -200,5 +205,5 @@ test("CI scope uses the whole push range and catches renames out of runtime path
   const script = fileURLToPath(new URL("./ci-scope.mjs", import.meta.url));
   const result = spawnSync(process.execPath, [script], { cwd: root, encoding: "utf8", env: { ...process.env, GITHUB_EVENT_NAME: "push", GITHUB_EVENT_PATH: event, GITHUB_OUTPUT: output } });
   assert.equal(result.status, 0, result.stderr);
-  assert.equal(await readFile(output, "utf8"), "publish=true\n");
+  assert.equal(await readFile(output, "utf8"), "publish=true\nslug=vpec-2455\n");
 });

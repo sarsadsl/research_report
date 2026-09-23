@@ -59,7 +59,7 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: npm run research:publish -- vpec-2455 --remote
+        run: npm run research:publish -- ${{ steps.scope.outputs.slug }} --remote
 
       - name: Preserve release evidence (including failures)
         if: always() && steps.scope.outputs.publish == 'true'

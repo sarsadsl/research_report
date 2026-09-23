@@ -2,7 +2,7 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { and, desc, eq } from "drizzle-orm";
 import { drizzle, type DrizzleD1Database } from "drizzle-orm/d1";
 import * as schema from "@/db/research-schema";
-import { vpecSeed } from "./seed";
+import { jinguSeed, vpecSeed } from "./seed";
 import { latestActual } from "./calculations";
 import type { DashboardConfig, ResearchDetail, ResearchListItem, ResearchRepository, SignalStatus } from "./types";
 
@@ -15,14 +15,18 @@ function parseDashboardConfig(value: string | null | undefined): DashboardConfig
 }
 
 function createSeedRepository(): ResearchRepository {
+  const seeds = [vpecSeed, jinguSeed];
   return {
     async listPublishedCompanies() {
-      const report = vpecSeed.reports.find((item) => item.status === "published")!;
-      const year=Math.max(...vpecSeed.dashboard.headlineForecastYears);
-      return [{ company:vpecSeed.company, report, latestActual:latestActual(vpecSeed.actuals),
-        headlineForecast:vpecSeed.forecasts.find((item)=>item.fiscalYear===year&&item.scenario===vpecSeed.dashboard.forecastScenario), signals:vpecSeed.signals }];
+      return seeds.flatMap((seed) => {
+        const report = seed.reports.find((item) => item.status === "published");
+        if (!report) return [];
+        const year=Math.max(...seed.dashboard.headlineForecastYears);
+        return [{ company:seed.company, report, latestActual:latestActual(seed.actuals),
+          headlineForecast:seed.forecasts.find((item)=>item.fiscalYear===year&&item.scenario===seed.dashboard.forecastScenario), signals:seed.signals }];
+      });
     },
-    async getBySlug(slug) { return slug === vpecSeed.company.slug ? vpecSeed : null; },
+    async getBySlug(slug) { return seeds.find((seed) => seed.company.slug === slug) ?? null; },
   };
 }
 

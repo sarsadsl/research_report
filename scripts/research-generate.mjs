@@ -174,7 +174,9 @@ const targets = [
 for (const target of targets) {
   if (checkOnly) {
     const current = await readFile(target.file, "utf8").catch(() => null);
-    if (current !== target.content) throw new Error(`Generated file is stale: ${path.relative(root, target.file)}. Run npm run research:generate -- ${slug}`);
+    if (current === null || current.replaceAll("\r\n", "\n") !== target.content) {
+      throw new Error(`Generated file is stale: ${path.relative(root, target.file)}. Run npm run research:generate -- ${slug}`);
+    }
   } else {
     await mkdir(path.dirname(target.file), { recursive: true });
     await writeFile(target.file, target.content);
