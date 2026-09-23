@@ -282,6 +282,7 @@
 .sectionLead { max-width: 780px; margin: 0 0 25px; color: var(--ink-soft); font-family: var(--serif); font-size: 18px; line-height: 1.75; }
 .sectionColumns { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(230px, 0.82fr); gap: 26px; align-items: start; }
 .sectionColumns--equal { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.sectionColumns > *, .capacityList, .researchList { min-width: 0; }
 .paperNote { padding: 17px 19px; border-left: 3px solid var(--muted-blue); background: rgba(94, 132, 166, 0.09); }
 .paperNote p { margin: 0; color: var(--ink-soft); font-size: 14px; line-height: 1.75; }
 .paperNote strong { display: block; margin-bottom: 6px; color: var(--muted-blue-ink); font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
@@ -360,7 +361,8 @@
 .scenarioValues span { display: block; color: var(--secondary-gray); font-family: var(--mono); font-size: 8px; text-transform: uppercase; }.scenarioValues strong { display: block; margin-top: 4px; font-family: var(--serif); font-size: 22px; font-weight: 600; }
 
 .capacityList, .researchList { display: grid; gap: 0; border-top: 1px solid var(--ink); }
-.capacityRow, .researchListItem { display: grid; grid-template-columns: 30px minmax(0, 0.55fr) minmax(0, 1fr); gap: 15px; align-items: start; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.capacityRow, .researchListItem { display: grid; grid-template-columns: 30px minmax(0, 0.55fr) minmax(0, 1fr); gap: 15px; align-items: start; min-width: 0; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.capacityRow > *, .researchListItem > * { min-width: 0; overflow-wrap: anywhere; }
 .capacityRow > span:first-child, .researchListItem > span:first-child { color: var(--muted-blue-ink); font-family: var(--mono); font-size: 10px; }
 .capacityRow strong, .researchListItem strong { font-family: var(--serif); font-size: 17px; font-weight: 600; line-height: 1.45; }
 .capacityRow p, .researchListItem p { margin: 0; color: var(--secondary-gray); font-size: 14px; line-height: 1.7; }
@@ -410,7 +412,7 @@
   .chartHeader { grid-template-columns: 1fr; gap: 12px; }.chartHeader .researchNote { max-width: 330px; justify-self: end; }
   .scenarioNotebook, .riskGrid { grid-template-columns: 1fr; }
   .scenarioBlock p { min-height: 0; }
-  .capacityRow, .researchListItem { grid-template-columns: 27px 1fr; }.capacityRow p, .researchListItem p { grid-column: 2; }
+  .capacityRow, .researchListItem { grid-template-columns: 27px minmax(0, 1fr); }.capacityRow p, .researchListItem p { grid-column: 2; }
   .verificationList { grid-template-columns: 1fr; }
 }
 
