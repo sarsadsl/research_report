@@ -147,7 +147,7 @@ test("STL full report shares the dense v2 research layout", async () => {
   assert.match(html,/BBU/);
   assert.match(html,/應收與存貨快速增加/);
   assert.match(html,/7 筆來源/);
-  assert.match(html,/未公開的券商、法人或客戶資訊不納入公開報告/);
+  assert.match(html,/未公開的本土／外資研究機構、法人或客戶資訊不納入公開報告/);
 });
 
 test("baseline profiles fail closed without canonical source metadata", async()=>{

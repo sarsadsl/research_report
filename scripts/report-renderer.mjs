@@ -361,7 +361,7 @@ function sourcePage(vm){
       <div class="next-stage-head"><h3>下一輪需要補強的公開證據</h3><p>追蹤項目必須由公司公告、主管機關資料或可交叉核對的公開事實支持。</p></div>
       <div class="evidence-queue">${evidencePriorities.map((item,index)=>`<article><b>Evidence ${String(index+1).padStart(2,"0")}</b><strong>${esc(item)}</strong><span>取得新公開資料後，重新核對目前結論與訊號狀態。</span></article>`).join("")}</div>
     </section>
-    <div class="source-boundary"><b>公開與排除原則</b><p>${esc(vm.dashboard.estimateNote)}</p><small>公開事實可揭露；研究情境必須標示；未公開的券商、法人或客戶資訊不納入公開報告。</small></div>
+    <div class="source-boundary"><b>公開與排除原則</b><p>${esc(vm.dashboard.estimateNote)}</p><small>公開事實可揭露；研究情境必須標示；未公開的本土／外資研究機構、法人或客戶資訊不納入公開報告。</small></div>
   </div>`;
 }
 

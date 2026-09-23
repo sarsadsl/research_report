@@ -20,7 +20,7 @@
       "斗六三廠 2027Q1 量產與 2027 年底 800 噸／月規劃是否兌現",
       "競爭者擴產是否使 2027 年 HVLP4 等效供需由短缺轉為接近平衡"
     ],
-    "conclusion": "基本面已進入高成長段，但估值同時提前反映 2027-2028 的高階銅箔放量。可追蹤的結論是偏多而非無條件看多：月營收與毛利率是第一層驗證，HVLP4 良率／客戶資格與三廠量產是第二層驗證。外部券商 PT 參考為 Morgan Stanley NT$730、統一投顧 NT$645，兩者不代表本頁的個人化投資建議。",
+    "conclusion": "基本面已進入高成長段，但估值同時提前反映 2027-2028 的高階銅箔放量。可追蹤的結論是偏多而非無條件看多：月營收與毛利率是第一層驗證，HVLP4 良率／客戶資格與三廠量產是第二層驗證。外部研究機構 PT 參考區間為 NT$645–730，僅作外部估值參考，不代表本頁的個人化投資建議。",
     "forecastScenario": "consensus",
     "headlineForecastYears": [
       2026,
@@ -55,7 +55,7 @@
         "years": 3
       }
     ],
-    "estimateNote": "2026F-2028F 為本研究整合使用者提供報告與券商模型的情境值，不是公司財測；Morgan Stanley、統一投顧與產業報告的假設不同，應以後續實績更新。"
+    "estimateNote": "2026F-2028F 為本研究整合使用者提供報告與本土／外資研究模型的情境值，不是公司財測；外資研究機構、本土研究機構與產業報告的假設不同，應以後續實績更新。"
   },
   "actuals": [
     {
@@ -194,7 +194,7 @@
       "netIncome": 2366,
       "eps": 9.34,
       "optoShare": null,
-      "notes": "Morgan Stanley 模型：HVLP4 產能與價格上行按較保守節奏，為外部機構低端參考。"
+      "notes": "外資研究機構 模型：HVLP4 產能與價格上行按較保守節奏，為外部機構低端參考。"
     },
     {
       "fiscalYear": 2026,
@@ -204,7 +204,7 @@
       "netIncome": 3029,
       "eps": 11.99,
       "optoShare": null,
-      "notes": "統一投顧 2026F 情境；非公司指引。"
+      "notes": "本土研究機構 2026F 情境；非公司指引。"
     },
     {
       "fiscalYear": 2026,
@@ -224,7 +224,7 @@
       "netIncome": 4650,
       "eps": 18.4,
       "optoShare": null,
-      "notes": "以 Morgan Stanley 2027F 營收／獲利作保守外部參考，反映三廠與 mix 仍在爬坡。"
+      "notes": "以 外資研究機構 2027F 營收／獲利作保守外部參考，反映三廠與 mix 仍在爬坡。"
     },
     {
       "fiscalYear": 2027,
@@ -234,7 +234,7 @@
       "netIncome": 5431,
       "eps": 21.5,
       "optoShare": null,
-      "notes": "統一投顧 2027F 情境；假設斗六三廠量產與 AI／PCIe5 雙引擎。"
+      "notes": "本土研究機構 2027F 情境；假設斗六三廠量產與 AI／PCIe5 雙引擎。"
     },
     {
       "fiscalYear": 2027,
@@ -264,7 +264,7 @@
       "netIncome": 8009,
       "eps": 31.63,
       "optoShare": null,
-      "notes": "Morgan Stanley 2028F 情境；供作高階產品 mix 與毛利率外部基準。"
+      "notes": "外資研究機構 2028F 情境；供作高階產品 mix 與毛利率外部基準。"
     },
     {
       "fiscalYear": 2028,
@@ -297,14 +297,14 @@
       "metric": "HVLP4 認證與良率",
       "status": "yellow",
       "valueText": "研究資料指向 2Q26 開始進入 GPU 新平台供應鏈",
-      "notes": "券商資料支持產品升級主軸，但公司正式客戶／量產揭露與連續良率仍待追蹤。"
+      "notes": "本土／外資研究資料支持產品升級主軸，但公司正式客戶／量產揭露與連續良率仍待追蹤。"
     },
     {
       "asOfDate": "2026-09-24",
       "metric": "高階產能",
       "status": "yellow",
       "valueText": "2026 年底 HVLP3+/HVLP4 約 400-450 噸／月；三廠目標 2027Q1 量產",
-      "notes": "產能規劃尚未完全轉成有效出貨；Morgan Stanley 與統一投顧的口徑分別為 HVLP4 單項與 HVLP3+／HVLP4 合計。"
+      "notes": "產能規劃尚未完全轉成有效出貨；外資研究機構 與本土研究機構的口徑分別為 HVLP4 單項與 HVLP3+／HVLP4 合計。"
     },
     {
       "asOfDate": "2026-09-24",
@@ -330,7 +330,7 @@
       "baseUnits": null,
       "expectedOnlineDate": "2026-Q4",
       "status": "ramping",
-      "notes": "統一投顧估計 2026 年底高階產能約 400-450 噸／月；此為 HVLP3+／HVLP4 合計，不等同可立即出售的 HVLP4 產能。"
+      "notes": "本土研究機構估計 2026 年底高階產能約 400-450 噸／月；此為 HVLP3+／HVLP4 合計，不等同可立即出售的 HVLP4 產能。"
     },
     {
       "label": "斗六三廠目標啟動量產",
@@ -350,7 +350,7 @@
       "baseUnits": 200,
       "expectedOnlineDate": "2027-Q4",
       "status": "modeled",
-      "notes": "Morgan Stanley 模型：2026 年底約 200 噸／月、2027 年底約 700 噸／月；不同於統一投顧的 HVLP3+／HVLP4 合計口徑。"
+      "notes": "外資研究機構 模型：2026 年底約 200 噸／月、2027 年底約 700 噸／月；不同於本土研究機構的 HVLP3+／HVLP4 合計口徑。"
     },
     {
       "label": "東南亞 RG 系列新廠量產選項",
@@ -360,7 +360,7 @@
       "baseUnits": null,
       "expectedOnlineDate": "2028-H2",
       "status": "planned",
-      "notes": "Morgan Stanley：月產能可能超過 500 噸；若 RG 轉至海外，台灣產能可釋放給更高階 HVLP4+。"
+      "notes": "外資研究機構：月產能可能超過 500 噸；若 RG 轉至海外，台灣產能可釋放給更高階 HVLP4+。"
     }
   ],
   "catalysts": [
@@ -368,7 +368,7 @@
       "title": "HVLP4 進入 AI 新平台供應鏈",
       "impact": "high",
       "status": "active",
-      "notes": "統一投顧與使用者提供研究資料均將 2Q26 視為 HVLP4 開始出貨／放量的時間點；需以後續營收、毛利率與客戶公告驗證。"
+      "notes": "本土研究機構與使用者提供研究資料均將 2Q26 視為 HVLP4 開始出貨／放量的時間點；需以後續營收、毛利率與客戶公告驗證。"
     },
     {
       "title": "斗六三廠 2027 年量產",
@@ -402,7 +402,7 @@
       "impact": "high",
       "probability": "medium",
       "status": "watch",
-      "notes": "Jefferies 將中國供應商新增產能納入後，2027 年 HVLP4 等效供需可能接近平衡；價格與毛利率上行的持續性因此有分歧。"
+      "notes": "外資研究機構 將中國供應商新增產能納入後，2027 年 HVLP4 等效供需可能接近平衡；價格與毛利率上行的持續性因此有分歧。"
     },
     {
       "title": "關鍵設備、玻纖布與銅箔成本波動",
