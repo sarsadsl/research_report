@@ -148,10 +148,11 @@ export default async function ResearchDetailPage({ params }: { params: Promise<{
             <div className="riskGrid">{data.risks.map((risk) => <RiskNote key={risk.title} title={risk.title} notes={risk.notes} status={risk.status} impact={risk.impact} />)}</div>
           </PaperSection>
 
-          <PaperSection id="conclusion" index="08" eyebrow="INVESTMENT THESIS" title="研究結論與下階段驗證" note="keep the chain intact">
+          <PaperSection id="conclusion" index="08" eyebrow="INVESTMENT THESIS" title="研究結論" note="keep the chain intact">
             <div className="investmentThesis">
               <div className="sectionEyebrow">CENTRAL INVESTMENT THESIS</div>
-              <h3>{report?.summary ?? "研究摘要尚未建立。"}</h3>
+              <h3>核心投資主軸</h3>
+              <p className="thesisSummary">{report?.summary ?? "研究摘要尚未建立。"}</p>
               <p>目前最值得追蹤的，不是猜測未公開的客戶名稱，而是確認 <HandDrawnUnderline>Revenue → Margin → Working Capital → Cash Flow → EPS</HandDrawnUnderline> 是否持續兌現。</p>
               <div className="thesisFormula">{thesisSteps.map((step) => <span key={step}>{step}</span>)}</div>
               <div className="verificationList">{vm.config.verificationChain.map((item, index) => <div className="verificationItem" key={item}><span>{String(index + 1).padStart(2, "0")} / NEXT CHECK</span><strong>{item}</strong></div>)}</div>

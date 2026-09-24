@@ -262,7 +262,7 @@ function outlineGrid(yearA,yearB){
     "投資摘要與研究框架","已實現財務表現","月營收動能","產品組合與分部結構",
     "獲利結構與營運槓桿",`${yearA}F 獲利與情境區間`,`${yearB}F 成長與獲利兌現`,
     "情境、敏感度與判讀邏輯","產能、能力與成長兌現","驗證訊號與目前狀態",
-    "升降級規則與觸發條件","催化劑與風險矩陣","研究結論與下階段驗證","資料來源與研究界線",
+    "升降級規則與觸發條件","催化劑與風險矩陣","研究結論","資料來源與研究界線",
   ];
   return `<div class="outline-grid">${titles.map((title,index)=>`<div class="outline-item"><b>${String(index+1).padStart(2,"0")}</b><span>${esc(title)}</span></div>`).join("")}</div>`;
 }
@@ -338,7 +338,7 @@ function conclusionPage(vm){
   const followups=vm.dashboard.verificationChain.slice(3);
   return `<div class="conclusion-page">
     <section class="decision-summary">
-      <div><h2>${esc(vm.dashboard.conclusion)}</h2><p>${esc(vm.thesis.summary)}</p></div>
+      <div class="decision-summary-copy"><h2>核心結論</h2><p class="decision-conclusion">${esc(vm.dashboard.conclusion)}</p><p class="decision-context">${esc(vm.thesis.summary)}</p></div>
       <div class="status-strip">
         <article class="green"><strong>${statusCounts.green}</strong><span>支持訊號</span></article>
         <article class="yellow"><strong>${statusCounts.yellow}</strong><span>待確認</span></article>
@@ -457,7 +457,7 @@ content:`${module("PROFITABILITY","毛利、營益與淨利率對照",profitabil
       content:`${renderers["catalysts-risks"](vm)}${module("BOUNDARY","判讀邊界",`<p class="narrative">${esc(vm.dashboard.currentView)}</p><p class="fineprint">${esc(vm.dashboard.estimateNote)}</p>`,"note")}`,
     },
     {
-      section:standardSection("standard-conclusion","研究結論與下階段驗證",["signalSnapshots","forecasts"],false),
+      section:standardSection("standard-conclusion","研究結論",["signalSnapshots","forecasts"],false),
       content:conclusionPage(vm),
     },
     {

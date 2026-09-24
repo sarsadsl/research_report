@@ -114,6 +114,11 @@ test("VPEC template comparison uses the same generated public format as STL", as
   assert.match(html,/stage\.scrollTop=0;stage\.scrollLeft=0;scrollTo/);
   assert.match(html,/\.zoom-label,\.zoom-range,\.zoom-value\{display:none\}/);
   assert.match(html,/class="conclusion-page"/);
+  assert.match(html,/data-title="研究結論"/);
+  assert.match(html,/<h2>核心結論<\/h2>/);
+  assert.match(html,/class="decision-conclusion"/);
+  assert.match(html,/class="decision-context"/);
+  assert.doesNotMatch(html,/研究結論與下階段驗證/);
   assert.match(html,/支持目前判斷的證據/);
   assert.match(html,/下階段先看這三件事/);
   assert.equal((html.match(/優先 [123]/g)||[]).length,3);
