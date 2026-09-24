@@ -39,7 +39,28 @@
       "provider": "使用者提供 Gemini 分享頁",
       "evidenceClass": "research_inference",
       "url": "https://share.gemini.google/2VmyLp4lXAcA"
+    },
+    {
+      "id": "jingu-intake-public-demand",
+      "title": "2026-2028 高階 HVLP4 需求、缺口與競爭者估計",
+      "provider": "公開市場資料",
+      "evidenceClass": "market_consensus",
+      "url": "https://www.top1markets.com/tw/news/co-tech-development-8358-hvlp4-nvidia-supply-chain-730-target-2026-fm26"
+    },
+    {
+      "id": "jingu-intake-public-gap",
+      "title": "HVLP4 供需缺口與有效產能限制",
+      "provider": "公開產業資料",
+      "evidenceClass": "market_consensus",
+      "url": "https://anuenews.cnyes.com/news/id/6613057"
+    },
+    {
+      "id": "jingu-intake-public-highgrade",
+      "title": "高階 HVLP 銅箔長期需求與產品定位",
+      "provider": "產業公開資料",
+      "evidenceClass": "third_party_fact",
+      "url": "https://www.mitsui-kinzoku.com/LinkClick.aspx?fileticket=FBZhYz20XWE%3D&mid=1027&tabid=249"
     }
   ],
-  "notes": "原始研究機構 PDF 保留於使用者本機 D:\\report\\pcb，僅將其摘要與來源中繼資料納入公開研究包；未將可能受版權限制的原檔提交至公開 repo。"
+  "notes": "原始研究機構 PDF 保留於使用者本機 D:\\report\\pcb，僅將其摘要與來源中繼資料納入公開研究包；未將可能受版權限制的原檔提交至公開 repo。新增的需求／缺口／市占數據均標記為公開市場估計，並與公司公告及產業公開資料分開。"
 }

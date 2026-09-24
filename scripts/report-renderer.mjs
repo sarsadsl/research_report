@@ -55,7 +55,8 @@ export function buildReportViewModel(pkg,profileName,profile){
   const latestActual=[...pkg.actuals].sort((a,b)=>b.period.localeCompare(a.period))[0];
   const headlineForecasts=pkg.dashboard.headlineForecastYears.map(year=>pkg.forecasts.find(r=>r.fiscalYear===year&&r.scenario===pkg.dashboard.forecastScenario)).filter(Boolean);
   const ranking=[...pkg.signalSnapshots].sort((a,b)=>score[b.status]-score[a.status]||a.metric.localeCompare(b.metric,"zh-TW")).map((r,i)=>({...r,rank:i+1,score:score[r.status],label:labels[r.status]}));
-  return {schemaVersion:"1.0.0",profileName,profile,company:pkg.company,report:pkg.report,asOfDate:pkg.asOfDate,thesis:pkg.thesis,dashboard:pkg.dashboard,latestActual,headlineForecasts,ranking,sections:pkg.sections,sources:pkg.sources,sourceMap:Object.fromEntries(pkg.sources.map(s=>[s.id,s])),claims:pkg.claims,actuals:pkg.actuals,monthlyRevenue:pkg.monthlyRevenue,segments:pkg.segments,forecasts:pkg.forecasts,capacity:pkg.capacity,catalysts:pkg.catalysts,risks:pkg.risks,signalRules:pkg.signalRules,signalSnapshots:pkg.signalSnapshots};
+  const marketData=pkg.dashboard.demandOutlook?.length||pkg.dashboard.competitorComparison?.length?{demandOutlook:pkg.dashboard.demandOutlook??[],competitorComparison:pkg.dashboard.competitorComparison??[]}:{};
+  return {schemaVersion:"1.0.0",profileName,profile,company:pkg.company,report:pkg.report,asOfDate:pkg.asOfDate,thesis:pkg.thesis,dashboard:pkg.dashboard,...marketData,latestActual,headlineForecasts,ranking,sections:pkg.sections,sources:pkg.sources,sourceMap:Object.fromEntries(pkg.sources.map(s=>[s.id,s])),claims:pkg.claims,actuals:pkg.actuals,monthlyRevenue:pkg.monthlyRevenue,segments:pkg.segments,forecasts:pkg.forecasts,capacity:pkg.capacity,catalysts:pkg.catalysts,risks:pkg.risks,signalRules:pkg.signalRules,signalSnapshots:pkg.signalSnapshots};
 }
 
 export function injectFullReportMetadata(html,vm){
@@ -100,6 +101,27 @@ const actualTable=vm=>renderers["financial-table"](vm,{payloadRefs:["actuals"]})
 const segmentTable=vm=>renderers["financial-table"](vm,{payloadRefs:["segments"]});
 const scenarioTable=vm=>renderers["scenario-table"](vm);
 const capacityTable=vm=>renderers.capacity(vm);
+function demandGapTable(vm){
+  return table(["年度","需求","年增","缺口判讀"],makeRows(vm.demandOutlook??[],[
+    row=>`${esc(row.fiscalYear)}F`,
+    row=>`${num(row.demandTonsPerYear/1000,2)} kt／年<br><small>${num(row.demandTonsPerMonth,0)} 噸／月</small>`,
+    row=>row.growthPct==null?"—":pct(row.growthPct),
+    row=>esc(row.gapText),
+  ]),"demand-gap-table");
+}
+function competitorShareTable(vm){
+  const rows=[...(vm.competitorComparison??[])].sort((a,b)=>a.fiscalYear-b.fiscalYear||b.marketSharePct-a.marketSharePct);
+  return table(["年度","廠商","市占","名目產能／備註"],makeRows(rows,[
+    row=>`${esc(row.fiscalYear)}F`,
+    row=>esc(row.company),
+    row=>pct(row.marketSharePct),
+    row=>row.capacityTonsPerMonth==null?"—":`${num(row.capacityTonsPerMonth,0)} 噸／月`,
+  ]),"competitor-share-table");
+}
+function marketStructure(vm){
+  return `<div class="module-grid"><div>${demandGapTable(vm)}</div><div>${competitorShareTable(vm)}</div></div><p class="fineprint">${esc(vm.dashboard.marketShareNote??"")}</p>`;
+}
+const marketStructureModule=vm=>(vm.demandOutlook?.length&&vm.competitorComparison?.length)?module("MARKET STRUCTURE","2026-2028 需求缺口與競爭者市占",marketStructure(vm),"wide"):"";
 const cagr=(base,target,years)=>base>0&&target!=null&&years>0?(Math.pow(target/base,1/years)-1)*100:null;
 
 const signedNum=(value,d=1)=>value==null||!Number.isFinite(value)?"—":`${value>=0?"+":""}${num(value,d)}`;
@@ -343,7 +365,7 @@ function conclusionPage(vm){
 
 function sourcePage(vm){
   const counts=Object.fromEntries(Object.keys(evidence).map(key=>[key,vm.sources.filter(source=>source.evidenceClass===key).length]));
-  const sourceCards=vm.sources.map((source,index)=>`<article class="source-record"><b>${String(index+1).padStart(2,"0")}</b><div>${SourceLabel(source.evidenceClass)}<strong>${esc(source.provider)}｜${esc(source.title)}</strong><p>${esc(source.notes??"用於本報告的研究佐證。")}</p><small>${esc(source.publishedDate??source.accessedDate??"日期未標示")} · 信心 ${esc(source.confidence)}</small></div></article>`).join("");
+  const sourceCards=vm.sources.map((source,index)=>`<article class="source-record"><b>${String(index+1).padStart(2,"0")}</b><div>${SourceLabel(source.evidenceClass)}<strong>${esc(source.provider)}｜${esc(source.title)}</strong>${vm.sources.length>12?"":`<p>${esc(source.notes??"用於本報告的研究佐證。")}</p>`}<small>${esc(source.publishedDate??source.accessedDate??"日期未標示")} · 信心 ${esc(source.confidence)}</small></div></article>`).join("");
   const legend=Object.entries(evidence).map(([key,label])=>`<article class="method-row ${key}"><div><b>${SourceLabel(key)} ${esc(label)}</b><span>${counts[key]??0} 筆來源</span></div><p>${key==="official"?"公司或主管機關直接揭露":key==="third_party_fact"?"可由公開資料交叉核對":key==="market_consensus"?"市場模型或共識，非公司承諾":"依公開資料推導並明確標示"}</p></article>`).join("");
   const evidencePriorities=vm.dashboard.verificationChain.slice(0,3);
   return `<div class="source-page">
@@ -399,8 +421,8 @@ function standardPages(vm){
 content:`${monthlyMetrics(vm)}${module("MOMENTUM",`${latestMonthLabel} 月營收與近期趨勢`,`<div class="module-grid"><div>${compactBars(vm)}${ResearchAnnotation(monthlyAnnotation(vm))}</div><div>${monthlyTable(vm)}</div></div>`,"wide")}${module("READ-THROUGH","近期動能判讀",bullets([latestMonth.revenue!=null?`最新月營收 ${num(latestMonth.revenue/(vm.dashboard.monthlyRevenue.unitDivisor||1),1)} ${vm.dashboard.monthlyRevenue.unitLabel}。`:null,Number.isFinite(latestMonth.mom)?`月增率 ${pct(latestMonth.mom)}；單月跳升仍需觀察後續是否延續。`:null,Number.isFinite(latestMonth.yoy)?`年增率 ${pct(latestMonth.yoy)}，可作為需求方向的公開事實訊號。`:null,vm.dashboard.currentView]),"note")}`,
     },
     {
-      section:standardSection("standard-mix","產品組合與分部結構",["segments","actuals"]),
-      content:`${module("MIX SHIFT","營收結構變化",mixVisual(vm))}${vm.segments.some(row=>row.isEstimate)?ResearchAnnotation("研究估計與公司實績分列；mix 上升仍需驗證能否穿透至毛利率。"):""}${module("DISCLOSURE","分部／應用資料",segmentTable(vm),"wide")}${module("READ-THROUGH","組合如何影響結論",bullets(mixClaims),"note")}`,
+      section:standardSection("standard-mix","產品組合與分部結構",["segments","actuals","demandOutlook","competitorComparison"]),
+      content:`${module("MIX SHIFT","營收結構變化",mixVisual(vm))}${vm.segments.some(row=>row.isEstimate)?ResearchAnnotation("研究估計與公司實績分列；mix 上升仍需驗證能否穿透至毛利率。"):""}${module("DISCLOSURE","分部／應用資料",segmentTable(vm),"wide")}${marketStructureModule(vm)}${module("READ-THROUGH","組合如何影響結論",bullets(mixClaims),"note")}`,
     },
     {
       section:standardSection("standard-profitability","獲利結構與營運槓桿",["actuals"]),

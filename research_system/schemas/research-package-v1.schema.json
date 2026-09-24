@@ -170,7 +170,81 @@
             }
           }
         },
-        "estimateNote": { "type": "string" }
+        "estimateNote": { "type": "string" },
+        "demandOutlook": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/demandOutlook" }
+        },
+        "competitorComparison": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/competitorComparison" }
+        },
+        "marketShareNote": { "type": "string" }
+      }
+    },
+    "demandOutlook": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "fiscalYear",
+        "scope",
+        "demandTonsPerYear",
+        "demandTonsPerMonth",
+        "growthPct",
+        "gapPct",
+        "gapText",
+        "notes",
+        "evidenceClass",
+        "sourceIds",
+        "claimIds"
+      ],
+      "properties": {
+        "id": { "type": "string" },
+        "fiscalYear": { "type": "integer" },
+        "scope": { "type": "string" },
+        "demandTonsPerYear": { "type": "number", "minimum": 0 },
+        "demandTonsPerMonth": { "type": "number", "minimum": 0 },
+        "growthPct": { "type": ["number", "null"], "minimum": 0 },
+        "gapPct": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "gapText": { "type": "string" },
+        "notes": { "type": "string" },
+        "evidenceClass": {
+          "enum": ["official", "third_party_fact", "market_consensus", "research_inference"]
+        },
+        "sourceIds": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true },
+        "claimIds": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true }
+      }
+    },
+    "competitorComparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "fiscalYear",
+        "company",
+        "scope",
+        "marketSharePct",
+        "capacityTonsPerMonth",
+        "notes",
+        "evidenceClass",
+        "sourceIds",
+        "claimIds"
+      ],
+      "properties": {
+        "id": { "type": "string" },
+        "fiscalYear": { "type": "integer" },
+        "company": { "type": "string" },
+        "role": { "type": "string" },
+        "scope": { "type": "string" },
+        "marketSharePct": { "type": "number", "minimum": 0, "maximum": 100 },
+        "capacityTonsPerMonth": { "type": ["number", "null"], "minimum": 0 },
+        "notes": { "type": "string" },
+        "evidenceClass": {
+          "enum": ["official", "third_party_fact", "market_consensus", "research_inference"]
+        },
+        "sourceIds": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true },
+        "claimIds": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true }
       }
     },
     "provenance": {

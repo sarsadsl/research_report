@@ -158,6 +158,12 @@ function validateReferences(pkg, errors) {
     for (const inputId of claim.inputClaimIds) if (!claims.has(inputId)) errors.push(`claims.${claim.id}: missing input claim ${inputId}`);
     if (claim.inputClaimIds.includes(claim.id)) errors.push(`claims.${claim.id}: claim cannot depend on itself`);
   }
+  for (const [collection, rows] of [["dashboard.demandOutlook", pkg.dashboard.demandOutlook ?? []], ["dashboard.competitorComparison", pkg.dashboard.competitorComparison ?? []]]) {
+    for (const row of rows) {
+      for (const sourceId of row.sourceIds ?? []) if (!sources.has(sourceId)) errors.push(`${collection}.${row.id}: missing source ${sourceId}`);
+      for (const claimId of row.claimIds ?? []) if (!claims.has(claimId)) errors.push(`${collection}.${row.id}: missing claim ${claimId}`);
+    }
+  }
   for (const claimId of pkg.thesis.claimIds) if (!claims.has(claimId)) errors.push(`thesis: missing claim ${claimId}`);
 
   const allowedPayloads = new Set(["thesis", ...COLLECTIONS, "sections", "sources", "claims"]);
