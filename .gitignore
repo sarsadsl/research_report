@@ -10,6 +10,7 @@ cloudflare-env.d.ts
 *.log
 *.tsbuildinfo
 exports/
+tmp/
 .research-publish/
 .research-drafts/
 research/*/restricted/

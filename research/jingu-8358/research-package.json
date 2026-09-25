@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "packageVersion": "1.0.0",
-  "asOfDate": "2026-09-24",
+  "packageVersion": "1.1.0",
+  "asOfDate": "2026-09-25",
   "company": {
     "id": "jingu-8358",
     "ticker": "8358",
@@ -17,17 +17,17 @@
     "id": "jingu-report-v1",
     "title": "金居 8358｜AI 伺服器高階銅箔研究",
     "slug": "jingu-8358",
-    "summary": "金居的核心投資鏈是 AI 伺服器與高速交換器規格升級，帶動 RG／HVLP3+／HVLP4 銅箔的產品組合、加工費與產能價值提升；2026 年營收與毛利率已明顯改善，但 2027 年斗六三廠、HVLP4 良率與客戶放量仍是估值能否落地的關鍵。公開市場估計 2026-2028 年全球 HVLP4 需求快速上升，供給缺口與競爭者市占變化是新增的產業層驗證軸。",
-    "thesis": "AI PCB／CCL 規格升級 → HVLP4 與 RG 需求 → 可出售產能與加工費 → 毛利率 → 斗六三廠與東南亞擴產 → EPS。",
+    "summary": "金居的核心投資鏈是 AI 伺服器與高速交換器規格升級，透過 PCB／CCL 材料升級傳導至 RG／HVLP3+／HVLP4 銅箔的產品組合、加工費與產能價值提升；金居直接曝險在高階電解銅箔，玻纖布、樹脂／PTFE、CCL 與下游 PCB／HDI／載板則是需求與供應約束背景，不等同金居已取得訂單。2026 年營收與毛利率已明顯改善，但 2027 年斗六三廠、HVLP4 良率與客戶放量仍是估值能否落地的關鍵。公開市場估計 2026-2028 年全球 HVLP4 需求快速上升，供給缺口與競爭者市占變化是新增的產業層驗證軸。",
+    "thesis": "AI PCB／CCL 規格升級與高階材料需求 → HVLP4 與 RG 銅箔需求 → 可出售產能與加工費 → 毛利率 → 斗六三廠與東南亞擴產 → EPS。",
     "status": "published",
     "visibility": "listed",
-    "version": "1.0",
-    "publishedAt": "2026-09-24"
+    "version": "1.1",
+    "publishedAt": "2026-09-25"
   },
   "thesis": {
-    "summary": "金居目前判讀為偏綠中帶黃：2026 年 1-8 月營收年增 46.82%、2026H1 EPS 4.22 元且毛利率約 28%，高階產品升級已反映在營運數據；但 HVLP4 量產良率、客戶拉貨、斗六三廠時程與競爭者擴產，仍需用後續營收與毛利率連續驗證。公開市場估計 2026-2028 全球 HVLP4 需求約為 1.23／3.92／5.20 萬噸，2027／2028 需求較已知供給高約 31%／20%，此為產業情境而非公司指引。",
+    "summary": "金居目前判讀為偏綠中帶黃：2026 年 1-8 月營收年增 46.82%、2026H1 EPS 4.22 元且毛利率約 28%，高階產品升級已反映在營運數據；但 HVLP4 量產良率、客戶拉貨、斗六三廠時程與競爭者擴產，仍需用後續營收與毛利率連續驗證。從 PCB 供應鏈看，金居直接位於 HVLP 銅箔節點，其他材料與下游環節只能用來判讀需求與供應約束，不能替代公司層級的訂單證據。公開市場估計 2026-2028 全球 HVLP4 需求約為 1.23／3.92／5.20 萬噸，2027／2028 需求較已知供給高約 31%／20%，此為產業情境而非公司指引。",
     "coreChain": [
-      "AI 伺服器／交換器規格由 HVLP1/2/3 升級至 HVLP4",
+      "AI 伺服器／交換器 PCB／CCL 規格升級，推動高階材料需求",
       "HVLP4 客戶驗證與良率決定可出售產能",
       "RG／HVLP mix 與加工費提升帶動毛利率",
       "斗六三廠與東南亞 RG 產能支撐 2027-2028 營收",
@@ -37,20 +37,22 @@
       "jingu-claim-core",
       "jingu-claim-h1",
       "jingu-claim-forecast-range",
+      "jingu-claim-pcb-boundary",
       "jingu-claim-verdict"
     ]
   },
   "dashboard": {
-    "currentView": "2026/01-08 營收 74.02 億元、年增 46.82%；2026H1 EPS 4.22 元、毛利率約 28%。研究情境將 2026-2028 EPS 放在 9.3-33 元區間，差異主要來自 HVLP4／RG mix、加工費與產能爬坡速度；產業層另需追蹤全球 HVLP4 需求、供給缺口與競爭者市占。",
+    "currentView": "2026/01-08 營收 74.02 億元、年增 46.82%；2026H1 EPS 4.22 元、毛利率約 28%。研究情境將 2026-2028 EPS 放在 9.3-33 元區間，差異主要來自 HVLP4／RG mix、加工費與產能爬坡速度；產業層另需追蹤全球 HVLP4 需求、供給缺口與競爭者市占。供應鏈上，金居直接位於 HVLP 銅箔；玻纖布、樹脂／PTFE、CCL 與 PCB／HDI／載板只作需求背景，不視為已取得訂單。",
     "verificationChain": [
       "9 月以後月營收能否維持 10 億元上下並延續年增",
       "毛利率能否由 2026H1 約 28% 站上 30% 以上",
       "HVLP4 客戶驗證、良率與實際出貨是否連續改善",
       "2026 年底 HVLP3+/HVLP4 產能 400-450 噸／月是否落地",
       "斗六三廠 2027Q1 量產與 2027 年底 800 噸／月規劃是否兌現",
+      "玻纖布／樹脂／PTFE→CCL→PCB 的規格升級，是否轉化為 HVLP4 拉貨而非只停留在產業預期",
       "2027-2028 年 HVLP4 需求缺口約 31%／20% 是否隨擴產、良率與認證改善而收斂"
     ],
-    "conclusion": "基本面已進入高成長段，但估值同時提前反映 2027-2028 的高階銅箔放量。公開市場估計全球 HVLP4 需求由 2026 年約 1.23 萬噸升至 2028 年約 5.20 萬噸，供給缺口仍可能存在；金居的相對受益取決於有效產能、良率、認證與市占提升能否同步落地。可追蹤的結論是偏多而非無條件看多：月營收與毛利率是第一層驗證，HVLP4 良率／客戶資格與三廠量產是第二層驗證。外部研究機構 PT 參考區間為 NT$645–730，僅作外部估值參考，不代表本頁的個人化投資建議。",
+    "conclusion": "基本面已進入高成長段，但估值同時提前反映 2027-2028 的高階銅箔放量。公開市場估計全球 HVLP4 需求由 2026 年約 1.23 萬噸升至 2028 年約 5.20 萬噸，供給缺口仍可能存在；金居的相對受益取決於有效產能、良率、認證與市占提升能否同步落地。從 PCB 供應鏈角度，玻纖布、樹脂／PTFE、CCL 與下游 PCB 的景氣訊號只能支持需求背景，不能替代金居的出貨與財務證據。可追蹤的結論是偏多而非無條件看多：月營收與毛利率是第一層驗證，HVLP4 良率／客戶資格與三廠量產是第二層驗證；PTFE／HVLP5 是技術路線與下行風險觀察，不直接計入金居訂單。外部研究機構 PT 參考區間為 NT$645–730，僅作外部估值參考，不代表本頁的個人化投資建議。",
     "forecastScenario": "consensus",
     "headlineForecastYears": [2026, 2027, 2028],
     "focusMetric": {
@@ -81,7 +83,7 @@
         "years": 3
       }
     ],
-    "estimateNote": "2026F-2028F 為本研究整合使用者提供報告與本土／外資研究模型的情境值，不是公司財測；需求、缺口與競爭者市占為公開市場估計，且 HVLP2+、HVLP3+、HVLP4 的市場範圍不同，不應直接混算；外資研究機構、本土研究機構與產業報告的假設不同，應以後續實績更新。",
+    "estimateNote": "2026F-2028F 為本研究整合使用者提供報告與本土／外資研究模型的情境值，不是公司財測；需求、缺口與競爭者市占為公開市場估計，且 HVLP2+、HVLP3+、HVLP4 的市場範圍不同，不應直接混算；PCB 其他材料與下游製程的供需訊號僅作產業背景，不等同金居訂單；外資研究機構、本土研究機構與產業報告的假設不同，應以後續實績更新。",
     "demandOutlook": [
       {
         "id": "jingu-demand-2026",
@@ -206,7 +208,7 @@
         "claimIds": ["jingu-claim-competitor-share"]
       }
     ],
-    "marketShareNote": "比較表只列公開資料可核對的全球 HVLP4 市占。2028 年古河電工與福田金屬的單獨市占未提供可核對拆分，不以殘差分配；另有公司公開資料採 HVLP2+ 口徑，與本表 HVLP4 不直接合併。"
+    "marketShareNote": "比較表只列公開資料可核對的全球 HVLP4 市占。2028 年古河電工與福田金屬的單獨市占未提供可核對拆分，不以殘差分配；另有公司公開資料採 HVLP2+ 口徑，與本表 HVLP4 不直接合併。PCB 供應鏈閱讀順序為上游材料／樹脂與玻纖布 → CCL → HVLP 銅箔 → PCB／HDI／載板；本報告只把金居放在 HVLP 銅箔節點，其餘節點是需求與供應約束背景。"
   },
   "actuals": [
     {
@@ -652,6 +654,7 @@
     {"id":"jingu-claim-pricing","text":"產業資料指出 HVLP4 processing fee 相對 HTE 具顯著溢價，且 2026 年銅箔與 CCL 材料價格／加工費上行；金居能否將溢價轉成毛利率仍是公司層級驗證題。","evidenceClass":"research_inference","sourceIds":["jingu-src-foreign-supply","jingu-src-domestic-industry","jingu-src-foreign-industry-a"],"inputClaimIds":[],"method":"將產業價格與材料供需資料轉化為金居的待驗證催化劑，而非直接假設全部轉嫁。","confidence":"medium"},
     {"id":"jingu-claim-sea","text":"外資研究機構 指出金居已核准成立東南亞子公司，主力可能為 RG 系列，量產可能自 2028H2 起、月產能超過 500 噸；此屬中長期選擇權。","evidenceClass":"market_consensus","sourceIds":["jingu-src-foreign-sea"],"inputClaimIds":[],"method":"沿用研究機構更新對時間、產品與產能的條件式描述，不計入 2026-2027 已實現營收。","confidence":"medium"},
     {"id":"jingu-claim-technology","text":"PTFE／HVLP5 可能提高下一代 AI PCB 的材料價值，但 VR300／Rubin Ultra 的規格與採用仍在評估，不能直接視為金居已取得訂單。","evidenceClass":"research_inference","sourceIds":["jingu-src-foreign-industry-b","jingu-src-domestic-industry"],"inputClaimIds":[],"method":"用產業報告的技術路線作為風險與選擇權標記，避免把產業推演寫成公司事實。","confidence":"low"},
-    {"id":"jingu-claim-verdict","text":"截至 2026-09-24，金居研究結論為營運偏綠、執行待驗證：月營收為綠燈，毛利率、HVLP4 認證／良率、產能、供需與競爭者市占均為黃燈。","evidenceClass":"research_inference","sourceIds":["jingu-src-official","jingu-src-financial-ratios","jingu-src-domestic-forecast","jingu-src-foreign-hvlp","jingu-src-foreign-supply","jingu-src-public-demand"],"inputClaimIds":["jingu-claim-core","jingu-claim-h1","jingu-claim-august","jingu-claim-hv","jingu-claim-capacity","jingu-claim-supply","jingu-claim-demand-gap","jingu-claim-competitor-share"],"method":"綜合已實現營收、財務比率、產品、產能、需求缺口與競爭者市占資料，並將尚未公開確認的客戶／良率資訊保留為黃燈。","confidence":"medium"}
+    {"id":"jingu-claim-pcb-boundary","text":"PCB 供應鏈可拆成上游玻纖布／樹脂與銅箔、CCL、PCB／HDI／載板及終端伺服器；金居直接曝險在 HVLP 銅箔節點，其他材料與下游供應狀況只能用來判讀需求／供應約束，不能單獨證明金居取得訂單。","evidenceClass":"research_inference","sourceIds":["jingu-src-domestic-industry","jingu-src-foreign-industry-a","jingu-src-foreign-industry-b"],"inputClaimIds":["jingu-claim-core","jingu-claim-technology"],"method":"將 PCB／CCL 產業資料按材料、覆銅板、銅箔與下游製程分層，並把公司層級證據與產業背景分開。","confidence":"medium"},
+    {"id":"jingu-claim-verdict","text":"截至 2026-09-25，金居研究結論為營運偏綠、執行待驗證：月營收為綠燈，毛利率、HVLP4 認證／良率、產能、供需、競爭者市占與 PCB 供應鏈傳導均為黃燈。","evidenceClass":"research_inference","sourceIds":["jingu-src-official","jingu-src-financial-ratios","jingu-src-domestic-forecast","jingu-src-foreign-hvlp","jingu-src-foreign-supply","jingu-src-public-demand"],"inputClaimIds":["jingu-claim-core","jingu-claim-h1","jingu-claim-august","jingu-claim-hv","jingu-claim-capacity","jingu-claim-supply","jingu-claim-demand-gap","jingu-claim-competitor-share","jingu-claim-pcb-boundary"],"method":"綜合已實現營收、財務比率、產品、產能、需求缺口、競爭者市占與供應鏈邊界資料，並將尚未公開確認的客戶／良率／下游拉貨資訊保留為黃燈。","confidence":"medium"}
   ]
 }
