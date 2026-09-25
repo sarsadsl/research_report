@@ -104,7 +104,7 @@ VALUES
 ('jingu-src-official','jingu-8358','official','金居開發','金居官方營運資訊：2025-2026 月營收','2026-09-09','https://www.co-tech.com/tw/ir/operation',NULL,'公司官方頁列示 2026/01-08 月營收與累計 7,401,876 仟元；公司產品為電解銅箔。; accessed=2026-09-24; periods=2025FY|2026/01-2026/08','high'),
 ('jingu-src-official-presentation','jingu-8358','official','金居開發','金居 2025Q4 法說簡報與市場動態','2026-03-13',NULL,'8358-20260312.pdf','公司簡報用於核對電解銅箔應用、伺服器／高速通訊需求背景與產品開發脈絡；簡報內的產業預估不直接輸入金居 EPS 情境。; accessed=2026-09-25; periods=2025Q4|2026/01|2025-2029F','high'),
 ('jingu-src-financial-ratios','jingu-8358','third_party_fact','Goodinfo／MoneyDJ 公開資料','8358 金居季度財務比率與 EPS','2026-09-09','https://goodinfo.tw/tw/StockDetail.asp?STOCK_ID=8358',NULL,'2026Q2 毛利率 27.39%、營業利益率 24.42%、稅後淨利率 19.43%、EPS 2.16；2026H1 EPS 4.22。; accessed=2026-09-24; periods=2025FY|2026Q1|2026Q2|2026H1','high'),
-('jingu-src-chatgpt','jingu-8358','research_inference','使用者提供 ChatGPT 分享頁','金居展望與財測分析（ChatGPT share）',NULL,'https://chatgpt.com/share/6ab3e863-1d70-83ee-ad56-b1543d0b7f90',NULL,'用於研究脈絡、產品升級與情境交叉核對；定量欄位優先採可核對的公司／本土／外資研究資料。; accessed=2026-09-24; periods=2026F|2027F|2028F','medium'),
+('jingu-src-self-collected','jingu-8358','research_inference','自行蒐集','金居展望與財測交叉核對',NULL,NULL,NULL,'整理公開資訊、公司公告與研究材料，用於產品升級、產能與情境交叉核對；定量欄位優先採可核對的公司與公開資料。; accessed=2026-09-25; periods=2026F|2027F|2028F','medium'),
 ('jingu-src-gemini','jingu-8358','research_inference','使用者提供 Gemini 分享頁','金居研究資料（Gemini share，待內容確認）',NULL,'https://share.gemini.google/2VmyLp4lXAcA',NULL,'分享頁在目前存取流程出現第三方安全警告，未將未核對內容列入定量模型；待使用者確認內容後再更新。; accessed=2026-09-24; periods=2026F|2027F|2028F','low'),
 ('jingu-src-domestic-forecast','jingu-8358','market_consensus','本土研究機構','金居：AI 新平台與 HVLP4 產能研究','2026-05-20',NULL,'本土研究報告-A.pdf','使用者提供研究機構 PDF；2026F／2027F EPS 11.99／21.50，原始檔未隨公開 repo 發布，非公司指引。; accessed=2026-09-24; periods=2026Q1|2026F|2027F','medium'),
 ('jingu-src-foreign-hvlp','jingu-8358','market_consensus','外資研究機構','高階銅箔與 HVLP4 產能研究','2026-09-14',NULL,'外資研究報告-A.pdf','使用者提供研究機構 PDF；Co-Tech EPS 9.34／18.59／31.63，HVLP4 產能模型為 2026/27/28 年底約 200／700／800 噸／月；含利益衝突揭露。; accessed=2026-09-24; periods=2025FY|2026F|2027F|2028F','medium'),
@@ -122,7 +122,7 @@ ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,source_type=exclude
 INSERT INTO research_reports
 (id,company_id,title,slug,summary,thesis,status,version,html_path,pdf_path,created_at,updated_at,published_at)
 VALUES
-('jingu-report-v1','jingu-8358','金居 8358｜AI 伺服器高階銅箔研究','jingu-8358','金居的核心投資鏈是 AI 伺服器與高速交換器規格升級，透過 PCB／CCL 材料升級傳導至 RG／HVLP3+／HVLP4 銅箔的產品組合、加工費與產能價值提升；金居直接曝險在高階電解銅箔，玻纖布、樹脂／PTFE、CCL 與下游 PCB／HDI／載板則是需求與供應約束背景，不等同金居已取得訂單。新增資料進一步支持高層數／HDI、低損耗材料與高速製程的規格升級方向，但仍必須回到金居的認證、出貨、毛利率與現金流驗證。2026 年營收與毛利率已明顯改善，但 2027 年斗六三廠、HVLP4 良率與客戶放量仍是估值能否落地的關鍵。公開市場估計 2026-2028 年全球 HVLP4 需求快速上升，供給缺口與競爭者市占變化是新增的產業層驗證軸。','AI PCB／CCL 規格升級與高階材料需求 → HVLP4 與 RG 銅箔需求 → 可出售產能與加工費 → 毛利率 → 斗六三廠與東南亞擴產 → EPS。','published','1.2','/research/reports/jingu-8358.html',NULL,'2026-09-25','2026-09-25','2026-09-25')
+('jingu-report-v1','jingu-8358','金居 8358｜AI 伺服器高階銅箔研究','jingu-8358','金居的核心投資鏈是 AI 伺服器與高速交換器規格升級，透過 PCB／CCL 材料升級傳導至 RG／HVLP3+／HVLP4 銅箔的產品組合、加工費與產能價值提升；金居直接曝險在高階電解銅箔，玻纖布、樹脂／PTFE、CCL 與下游 PCB／HDI／載板則是需求與供應約束背景，不等同金居已取得訂單。新增資料進一步支持高層數／HDI、低損耗材料與高速製程的規格升級方向，但仍必須回到金居的認證、出貨、毛利率與現金流驗證。2026 年營收與毛利率已明顯改善，但 2027 年斗六三廠、HVLP4 良率與客戶放量仍是估值能否落地的關鍵。公開市場估計 2026-2028 年全球 HVLP4 需求快速上升，供給缺口與競爭者市占變化是新增的產業層驗證軸。','AI PCB／CCL 規格升級與高階材料需求 → HVLP4 與 RG 銅箔需求 → 可出售產能與加工費 → 毛利率 → 斗六三廠與東南亞擴產 → EPS。','published','1.2.1','/research/reports/jingu-8358.html',NULL,'2026-09-25','2026-09-25','2026-09-25')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,title=excluded.title,slug=excluded.slug,summary=excluded.summary,thesis=excluded.thesis,status=excluded.status,version=excluded.version,html_path=excluded.html_path,pdf_path=excluded.pdf_path,created_at=excluded.created_at,updated_at=excluded.updated_at,published_at=excluded.published_at;
 
 INSERT INTO research_report_sections
@@ -162,7 +162,7 @@ DELETE FROM research_signal_rules WHERE company_id='jingu-8358' AND id NOT IN ('
 
 DELETE FROM research_signal_snapshots WHERE company_id='jingu-8358' AND id NOT IN ('jingu-sig-revenue','jingu-sig-gm','jingu-sig-hvlp','jingu-sig-capacity','jingu-sig-pricing','jingu-sig-supply');
 
-DELETE FROM research_sources WHERE company_id='jingu-8358' AND id NOT IN ('jingu-src-official','jingu-src-official-presentation','jingu-src-financial-ratios','jingu-src-chatgpt','jingu-src-gemini','jingu-src-domestic-forecast','jingu-src-foreign-hvlp','jingu-src-foreign-sea','jingu-src-foreign-update','jingu-src-foreign-supply','jingu-src-domestic-industry','jingu-src-foreign-industry-a','jingu-src-foreign-industry-b','jingu-src-public-demand','jingu-src-public-gap','jingu-src-public-highgrade');
+DELETE FROM research_sources WHERE company_id='jingu-8358' AND id NOT IN ('jingu-src-official','jingu-src-official-presentation','jingu-src-financial-ratios','jingu-src-self-collected','jingu-src-gemini','jingu-src-domestic-forecast','jingu-src-foreign-hvlp','jingu-src-foreign-sea','jingu-src-foreign-update','jingu-src-foreign-supply','jingu-src-domestic-industry','jingu-src-foreign-industry-a','jingu-src-foreign-industry-b','jingu-src-public-demand','jingu-src-public-gap','jingu-src-public-highgrade');
 
 DELETE FROM research_reports WHERE company_id='jingu-8358' AND id NOT IN ('jingu-report-v1');
 

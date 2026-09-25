@@ -27,11 +27,10 @@
       "url": "https://goodinfo.tw/tw/StockDetail.asp?STOCK_ID=8358"
     },
     {
-      "id": "jingu-intake-chatgpt",
-      "title": "金居展望與財測分析",
-      "provider": "使用者提供 ChatGPT 分享頁",
-      "evidenceClass": "research_inference",
-      "url": "https://chatgpt.com/share/6ab3e863-1d70-83ee-ad56-b1543d0b7f90"
+      "id": "jingu-intake-self-collected",
+      "title": "金居展望與財測交叉核對",
+      "provider": "自行蒐集",
+      "evidenceClass": "research_inference"
     },
     {
       "id": "jingu-intake-gemini",
