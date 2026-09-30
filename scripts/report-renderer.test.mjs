@@ -155,6 +155,19 @@ test("STL full report shares the dense v2 research layout", async () => {
   assert.match(html,/未公開的本土／外資研究機構、法人或客戶資訊不納入公開報告/);
 });
 
+test("Jingu risk page keeps current thesis distinct from the core conclusion", async () => {
+  const [pkg,profiles]=await Promise.all([
+    readFile("research/jingu-8358/research-package.json","utf8").then(JSON.parse),
+    readFile("research/jingu-8358/report-profiles.json","utf8").then(JSON.parse),
+  ]);
+  const html=renderGeneratedReport(buildReportViewModel(pkg,"full-research",profiles.profiles["full-research"]));
+  const current=html.match(/<div class="current-thesis"><em>CURRENT THESIS<\/em><p>(.*?)<\/p><\/div>/)?.[1];
+  const conclusion=html.match(/<p class="decision-conclusion">(.*?)<\/p>/)?.[1];
+  assert.equal(current,pkg.dashboard.currentThesis);
+  assert.equal(conclusion,pkg.dashboard.conclusion);
+  assert.notEqual(current,conclusion);
+});
+
 test("baseline profiles fail closed without canonical source metadata", async()=>{
   const {profiles}=await load();
   const invalid=structuredClone(profiles);

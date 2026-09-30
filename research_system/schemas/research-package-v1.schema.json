@@ -129,6 +129,7 @@
       "required": ["currentView", "verificationChain", "conclusion", "forecastScenario", "headlineForecastYears", "focusMetric", "monthlyRevenue", "cagrCards", "estimateNote"],
       "properties": {
         "currentView": { "type": "string" },
+        "currentThesis": { "type": "string" },
         "verificationChain": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
         "conclusion": { "type": "string" },
         "forecastScenario": { "type": "string" },

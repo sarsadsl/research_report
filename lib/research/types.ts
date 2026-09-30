@@ -12,6 +12,7 @@ export type CapacityEvent = { label:string; equipment:string; technology?:string
 
 export type DashboardConfig = {
   currentView:string;
+  currentThesis?:string;
   verificationChain:string[];
   conclusion:string;
   forecastScenario:string;
