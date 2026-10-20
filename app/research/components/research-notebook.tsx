@@ -10,12 +10,12 @@ export function ResearchMasthead() {
     <header className="siteHeader">
       <div className="notebookShell mastheadInner">
         <Link href="/research" className="notebookBrand">
-          <span className="brandRule" aria-hidden="true" />
+          <svg className="brandDocument" viewBox="0 0 24 28" fill="none" aria-hidden="true" focusable="false"><path d="M4 2h11l5 5v19H4zM15 2v6h5M8 13h8M8 17h8M8 21h5" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" /></svg>
           <span>Research Desk</span>
         </Link>
         <nav className="mastheadNav" aria-label="主要導覽">
           <Link href="/research" className="mastheadLink">Research Archive</Link>
-          <span className="mastheadAnnotation">field notes · updated continuously →</span>
+          <span className="mastheadAnnotation">field notes · updated continuously</span>
         </nav>
       </div>
     </header>
@@ -279,5 +279,6 @@ export function getIndustryLabel(industry?: string | null): string {
   const value = industry ?? "Research";
   if (/電池|BBU|電源|battery|power/i.test(value)) return "BBU / AI Infrastructure";
   if (/光|半導體|compound|optical|laser/i.test(value)) return "Optical / Semiconductor";
+  if (/銅箔|PCB|CCL|HVLP|copper foil/i.test(value)) return "PCB / CCL · 高階銅箔";
   return value;
 }

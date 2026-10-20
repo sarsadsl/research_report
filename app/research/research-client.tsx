@@ -25,7 +25,7 @@ export function ReportIndexItem({ item, index }: { item: ResearchListItem; index
         <p className="reportSummary">{item.report.summary}</p>
         <div className="reportIndexMetrics">
           <div><span>Latest EPS</span><strong>{item.latestActual?.eps?.toFixed(2) ?? "—"}</strong></div>
-          <div><span>{item.headlineForecast?.fiscalYear ?? "—"}F EPS</span><strong>{item.headlineForecast?.eps?.toFixed(2) ?? "—"}</strong></div>
+          <div><span>預估 EPS</span><strong>{item.headlineForecast?.eps?.toFixed(2) ?? "—"}</strong><small className="reportForecastYear">{item.headlineForecast ? `${item.headlineForecast.fiscalYear}F` : "—"}</small></div>
           <div><span>Signal</span><ResearchStatus status={signal} label={formatSignalLabel(signal)} /></div>
           <div><span>Updated</span><strong className="reportDate">{formatDate(item.report.publishedAt)}</strong></div>
         </div>
@@ -38,6 +38,7 @@ export function ReportIndexItem({ item, index }: { item: ResearchListItem; index
 function categoryFor(item: ResearchListItem) {
   const value = `${item.company.industry ?? ""} ${item.report.title}`;
   if (/BBU|電池|電源|battery|power/i.test(value)) return "BBU";
+  if (/銅箔|PCB|CCL|HVLP|copper foil/i.test(value)) return "PCB / CCL";
   if (/光|光電|optical|laser/i.test(value)) return "Optical";
   if (/半導體|compound|semiconductor/i.test(value)) return "Semiconductor";
   return "Research";
@@ -48,10 +49,12 @@ export function ResearchIndex({ items }: { items: ResearchListItem[] }) {
   const [category, setCategory] = useState("All");
   const categories = useMemo(() => ["All", ...Array.from(new Set(items.map(categoryFor))).sort()], [items]);
   const visible = useMemo(() => {
-    const normalized = query.trim().toLowerCase();
+    const normalized = query.trim().normalize("NFKC").toLowerCase();
     return items.filter((item) => {
       const matchesCategory = category === "All" || categoryFor(item) === category;
-      const searchable = `${item.company.name} ${item.company.ticker} ${item.company.industry ?? ""} ${item.report.summary ?? ""}`.toLowerCase();
+      const searchable = [item.company.name, item.company.ticker, item.company.industry,
+        getIndustryLabel(item.company.industry), categoryFor(item), item.report.title, item.report.summary]
+        .filter(Boolean).join(" ").normalize("NFKC").toLowerCase();
       return matchesCategory && (!normalized || searchable.includes(normalized));
     });
   }, [category, items, query]);
@@ -60,11 +63,11 @@ export function ResearchIndex({ items }: { items: ResearchListItem[] }) {
     <>
       <div className="researchTools">
         <label className="researchSearch"><span className="searchIcon" aria-hidden="true">⌕</span><span className="srOnly">搜尋研究報告</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search research…" /></label>
-        <div className="indexTabs" role="tablist" aria-label="研究分類">
-          {categories.map((item) => <button type="button" role="tab" aria-selected={category === item} className={category === item ? "active" : ""} key={item} onClick={() => setCategory(item)}>{item}</button>)}
+        <div className="indexTabs" role="group" aria-label="研究分類">
+          {categories.map((item) => <button type="button" aria-pressed={category === item} className={category === item ? "active" : ""} key={item} onClick={() => setCategory(item)}>{item}</button>)}
         </div>
       </div>
-      <div className="indexResultMeta"><span>{visible.length.toString().padStart(2, "0")} dossiers</span><span>{visible.length === items.length ? "complete archive" : "filtered view"}</span></div>
+      <div className="indexResultMeta" role="status" aria-live="polite"><span>{visible.length.toString().padStart(2, "0")} dossiers</span><span>{visible.length === items.length ? "complete archive" : "filtered view"}</span></div>
       <div className="researchIndexGrid">
         {visible.length ? visible.map((item) => <ReportIndexItem item={item} index={items.indexOf(item)} key={item.company.id} />) : <div className="emptyResearch">No research file matches this search.</div>}
       </div>
