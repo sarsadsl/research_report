@@ -3,46 +3,48 @@ PRAGMA foreign_keys = ON;
 INSERT INTO research_companies
 (id,ticker,market,name,slug,sector,industry,currency,description,status,created_at,updated_at)
 VALUES
-('stl-4931','4931','TPEX','新盛力科技','stl-4931','電腦及週邊設備','鋰電池模組／電池備援系統','TWD','鋰離子電池模組設計與製造商，應用涵蓋資料中心與伺服器 BBU、電動工具及輕型電動交通工具。','active','2026-08-31','2026-08-31')
+('stl-4931','4931','TPEX','新盛力科技','stl-4931','電腦及週邊設備','鋰電池模組／電池備援系統','TWD','鋰離子電池模組設計與製造商，應用涵蓋資料中心與伺服器 BBU、電動工具及輕型電動交通工具。','active','2026-10-21','2026-10-21')
 ON CONFLICT(id) DO UPDATE SET ticker=excluded.ticker,market=excluded.market,name=excluded.name,slug=excluded.slug,sector=excluded.sector,industry=excluded.industry,currency=excluded.currency,description=excluded.description,status=excluded.status,created_at=excluded.created_at,updated_at=excluded.updated_at;
 
 INSERT INTO research_financial_actuals
 (id,company_id,period,fiscal_year,quarter,revenue,gross_profit,gross_margin,operating_income,operating_margin,net_income,net_margin,eps,source_note,created_at)
 VALUES
-('stl-2025fy','stl-4931','2025FY',2025,NULL,2451.377,534.624,21.81,248.684,10.14,203.562,8.3,3.13,'official; sources=stl-src-annual','2026-08-31'),
-('stl-2026q1','stl-4931','2026Q1',2026,1,791.378,174.763,22.08,98.188,12.41,97.094,12.27,1.48,'official; sources=stl-src-q1','2026-08-31'),
-('stl-2026q2','stl-4931','2026Q2',2026,2,1113.26,259.71,23.33,167.774,15.07,144.542,12.98,2.2,'official; sources=stl-src-q2','2026-08-31')
+('stl-2025fy','stl-4931','2025FY',2025,NULL,2451.377,534.624,21.81,248.684,10.14,203.562,8.3,3.13,'official; sources=stl-src-annual','2026-10-21'),
+('stl-2026q1','stl-4931','2026Q1',2026,1,791.378,174.763,22.08,98.188,12.41,97.094,12.27,1.48,'official; sources=stl-src-q1','2026-10-21'),
+('stl-2026q2','stl-4931','2026Q2',2026,2,1113.26,259.71,23.33,167.774,15.07,144.542,12.98,2.2,'official; sources=stl-src-q2','2026-10-21')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,period=excluded.period,fiscal_year=excluded.fiscal_year,quarter=excluded.quarter,revenue=excluded.revenue,gross_profit=excluded.gross_profit,gross_margin=excluded.gross_margin,operating_income=excluded.operating_income,operating_margin=excluded.operating_margin,net_income=excluded.net_income,net_margin=excluded.net_margin,eps=excluded.eps,source_note=excluded.source_note,created_at=excluded.created_at;
 
 INSERT INTO research_monthly_revenue
 (id,company_id,year,month,revenue,mom,yoy,created_at)
 VALUES
-('stl-2601','stl-4931',2026,1,289.976,18.66,42.29,'2026-08-31'),
-('stl-2602','stl-4931',2026,2,218.293,-24.72,-10.8,'2026-08-31'),
-('stl-2603','stl-4931',2026,3,283.109,29.69,36.12,'2026-08-31'),
-('stl-2604','stl-4931',2026,4,302.908,6.99,97.38,'2026-08-31'),
-('stl-2605','stl-4931',2026,5,415.943,37.32,178.64,'2026-08-31'),
-('stl-2606','stl-4931',2026,6,394.409,-5.18,145.09,'2026-08-31'),
-('stl-2607','stl-4931',2026,7,449.435,13.95,159.52,'2026-08-31')
+('stl-2601','stl-4931',2026,1,289.976,18.66,42.29,'2026-10-21'),
+('stl-2602','stl-4931',2026,2,218.293,-24.72,-10.8,'2026-10-21'),
+('stl-2603','stl-4931',2026,3,283.109,29.69,36.12,'2026-10-21'),
+('stl-2604','stl-4931',2026,4,302.908,6.99,97.38,'2026-10-21'),
+('stl-2605','stl-4931',2026,5,415.943,37.32,178.64,'2026-10-21'),
+('stl-2606','stl-4931',2026,6,394.409,-5.18,145.09,'2026-10-21'),
+('stl-2607','stl-4931',2026,7,449.435,13.95,159.52,'2026-10-21'),
+('stl-2608','stl-4931',2026,8,495.1,10.16,125.87,'2026-10-21'),
+('stl-2609','stl-4931',2026,9,424.843,-14.19,176.3,'2026-10-21')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,year=excluded.year,month=excluded.month,revenue=excluded.revenue,mom=excluded.mom,yoy=excluded.yoy,created_at=excluded.created_at;
 
 INSERT INTO research_segments
 (id,company_id,period,segment,revenue,share,is_estimate,created_at)
 VALUES
-('stl-app-bbu','stl-4931','2025FY','電源備援系統／BBU',NULL,NULL,0,'2026-08-31'),
-('stl-app-tools','stl-4931','2025FY','電動手工具',NULL,NULL,0,'2026-08-31'),
-('stl-app-mobility','stl-4931','2025FY','輕型電動交通工具',NULL,NULL,0,'2026-08-31')
+('stl-app-bbu','stl-4931','2025FY','電源備援系統／BBU',NULL,NULL,0,'2026-10-21'),
+('stl-app-tools','stl-4931','2025FY','電動手工具',NULL,NULL,0,'2026-10-21'),
+('stl-app-mobility','stl-4931','2025FY','輕型電動交通工具',NULL,NULL,0,'2026-10-21')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,period=excluded.period,segment=excluded.segment,revenue=excluded.revenue,share=excluded.share,is_estimate=excluded.is_estimate,created_at=excluded.created_at;
 
 INSERT INTO research_forecasts
 (id,company_id,fiscal_year,scenario,revenue,gross_margin,net_income,eps,opto_share,notes,created_at)
 VALUES
-('stl-2026-bear','stl-4931',2026,'bear',4004.1,19,300.3,4.58,NULL,'1-7M 實績加上 8-12 月平均月營收 3.3 億元；淨利率 7.5%。','2026-08-31'),
-('stl-2026-base','stl-4931',2026,'base',4354.1,22,457.2,6.97,NULL,'1-7M 實績加上 8-12 月平均月營收 4.0 億元；淨利率 10.5%。','2026-08-31'),
-('stl-2026-bull','stl-4931',2026,'bull',4704.1,24,588,8.97,NULL,'1-7M 實績加上 8-12 月平均月營收 4.7 億元；淨利率 12.5%。','2026-08-31'),
-('stl-2027-bear','stl-4931',2027,'bear',4404.5,18,308.3,4.7,NULL,'2026 bear 營收再增 10%，淨利率 7%；反映價格與週轉壓力。','2026-08-31'),
-('stl-2027-base','stl-4931',2027,'base',5442.6,22.5,571.5,8.72,NULL,'2026 base 營收再增 25%，淨利率維持 10.5%；不假設未公開新客戶。','2026-08-31'),
-('stl-2027-bull','stl-4931',2027,'bull',6585.7,25,856.1,13.06,NULL,'2026 bull 營收再增 40%，淨利率 13%；需高功率 BBU 放量與良率／週轉同步改善。','2026-08-31')
+('stl-2026-bear','stl-4931',2026,'bear',4004.1,19,300.3,4.58,NULL,'1-7M 實績加上 8-12 月平均月營收 3.3 億元；淨利率 7.5%。','2026-10-21'),
+('stl-2026-base','stl-4931',2026,'base',4354.1,22,457.2,6.97,NULL,'1-7M 實績加上 8-12 月平均月營收 4.0 億元；淨利率 10.5%。','2026-10-21'),
+('stl-2026-bull','stl-4931',2026,'bull',4704.1,24,588,8.97,NULL,'1-7M 實績加上 8-12 月平均月營收 4.7 億元；淨利率 12.5%。','2026-10-21'),
+('stl-2027-bear','stl-4931',2027,'bear',4404.5,18,308.3,4.7,NULL,'2026 bear 營收再增 10%，淨利率 7%；反映價格與週轉壓力。','2026-10-21'),
+('stl-2027-base','stl-4931',2027,'base',5442.6,22.5,571.5,8.72,NULL,'2026 base 營收再增 25%，淨利率維持 10.5%；不假設未公開新客戶。','2026-10-21'),
+('stl-2027-bull','stl-4931',2027,'bull',6585.7,25,856.1,13.06,NULL,'2026 bull 營收再增 40%，淨利率 13%；需高功率 BBU 放量與良率／週轉同步改善。','2026-10-21')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,fiscal_year=excluded.fiscal_year,scenario=excluded.scenario,revenue=excluded.revenue,gross_margin=excluded.gross_margin,net_income=excluded.net_income,eps=excluded.eps,opto_share=excluded.opto_share,notes=excluded.notes,created_at=excluded.created_at;
 
 INSERT INTO research_capacity_events
@@ -57,19 +59,19 @@ ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,event_date=excluded
 INSERT INTO research_catalysts
 (id,company_id,title,impact,status,notes,updated_at)
 VALUES
-('stl-cat-revenue','stl-4931','月營收站穩 4 億元以上','high','active','5 月與 7 月已超過 4 億元，需觀察後續連續性。','2026-08-31'),
-('stl-cat-margin','stl-4931','BBU 組合帶動毛利率改善','high','active','公司年報將 2025 毛利增加歸因於 AI 算力中心備援系統等高毛利產品銷量增加。','2026-08-31'),
-('stl-cat-product','stl-4931','12W-25kW 公開產品能力轉為出貨','high','watch','需要營收、毛利或公司公開量產資訊交叉確認。','2026-08-31'),
-('stl-cat-cash','stl-4931','獲利成長轉為營業現金流','medium','watch','H1 營業現金流為 0.47 億元，低於稅後淨利 2.42 億元。','2026-08-31')
+('stl-cat-revenue','stl-4931','月營收站穩 4 億元以上','high','active','7–9 月營收連續高於 4 億元；8 月達 4.951 億元、9 月降至 4.248 億元，需觀察第四季需求與拉貨節奏。','2026-10-21'),
+('stl-cat-margin','stl-4931','BBU 組合帶動毛利率改善','high','active','公司年報將 2025 毛利增加歸因於 AI 算力中心備援系統等高毛利產品銷量增加。','2026-10-21'),
+('stl-cat-product','stl-4931','12W-25kW 公開產品能力轉為出貨','high','watch','需要營收、毛利或公司公開量產資訊交叉確認。','2026-10-21'),
+('stl-cat-cash','stl-4931','獲利成長轉為營業現金流','medium','watch','H1 營業現金流為 0.47 億元，低於稅後淨利 2.42 億元。','2026-10-21')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,title=excluded.title,impact=excluded.impact,status=excluded.status,notes=excluded.notes,updated_at=excluded.updated_at;
 
 INSERT INTO research_risks
 (id,company_id,title,impact,probability,status,notes,updated_at)
 VALUES
-('stl-risk-customer','stl-4931','客戶集中度高','high','high','active','2025 年最大匿名客戶占 55.12%，前兩大合計占 69.61%。','2026-08-31'),
-('stl-risk-working-capital','stl-4931','應收與存貨快速增加','high','medium','active','2026H1 應收帳款與存貨較 2025 年底分別增加 62.7% 與 52.4%。','2026-08-31'),
-('stl-risk-qualification','stl-4931','把產品規格誤當客戶資格','high','medium','watch','公開資料未確認特定 CSP、20/25kW 或 400/800V HVDC 客戶量產資格。','2026-08-31'),
-('stl-risk-funding','stl-4931','擴張伴隨融資與負債增加','medium','medium','active','2026H1 發行公司債 6.54 億元，負債比由 2025 年底 41% 升至 57%。','2026-08-31')
+('stl-risk-customer','stl-4931','客戶集中度高','high','high','active','2025 年最大匿名客戶占 55.12%，前兩大合計占 69.61%。','2026-10-21'),
+('stl-risk-working-capital','stl-4931','應收與存貨快速增加','high','medium','active','2026H1 應收帳款與存貨較 2025 年底分別增加 62.7% 與 52.4%。','2026-10-21'),
+('stl-risk-qualification','stl-4931','把產品規格誤當客戶資格','high','medium','watch','公開資料未確認特定 CSP、20/25kW 或 400/800V HVDC 客戶量產資格。','2026-10-21'),
+('stl-risk-funding','stl-4931','擴張伴隨融資與負債增加','medium','medium','active','2026H1 發行公司債 6.54 億元，負債比由 2025 年底 41% 升至 57%。','2026-10-21')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,title=excluded.title,impact=excluded.impact,probability=excluded.probability,status=excluded.status,notes=excluded.notes,updated_at=excluded.updated_at;
 
 INSERT INTO research_signal_rules
@@ -86,12 +88,12 @@ ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,metric=excluded.met
 INSERT INTO research_signal_snapshots
 (id,company_id,as_of_date,metric,status,value_text,source_type,notes)
 VALUES
-('stl-sig-revenue','stl-4931','2026-08-31','月營收','green','2026/07 4.494 億元','official','1-7M 累計 23.54 億元、年增 82.01%。'),
-('stl-sig-gm','stl-4931','2026-08-31','毛利率','green','2026Q2 23.33%','official','高於 2025FY 21.81%，仍需檢查產品組合持續性。'),
-('stl-sig-cash','stl-4931','2026-08-31','現金轉換','yellow','H1 OCF 0.47 億元','official','正值但明顯低於 H1 淨利 2.42 億元。'),
-('stl-sig-working-capital','stl-4931','2026-08-31','營運資金','yellow','AR 9.10 億／存貨 8.59 億','official','兩者均較 2025 年底顯著增加。'),
-('stl-sig-qualification','stl-4931','2026-08-31','客戶資格','yellow','25kW／300V 能力；CTDP 已取得','research_inference','能力可驗證，但特定 CSP／HVDC 量產資格未公開確認。'),
-('stl-sig-concentration','stl-4931','2026-08-31','客戶集中','red','2025 最大客戶 55.12%','official','前兩大匿名客戶合計 69.61%。')
+('stl-sig-revenue','stl-4931','2026-10-21','月營收','green','2026/09 4.248 億元；8 月高點 4.951 億元','official','9 月 MoM -14.19%、YoY +176.30%；1–9 月 32.740 億元、年增 96.48%。Q3 月營收加總較 Q2 約增 23.01%，獲利與現金轉換待驗證。'),
+('stl-sig-gm','stl-4931','2026-10-21','毛利率','green','2026Q2 23.33%','official','高於 2025FY 21.81%，仍需檢查產品組合持續性。'),
+('stl-sig-cash','stl-4931','2026-10-21','現金轉換','yellow','H1 OCF 0.47 億元','official','正值但明顯低於 H1 淨利 2.42 億元。'),
+('stl-sig-working-capital','stl-4931','2026-10-21','營運資金','yellow','AR 9.10 億／存貨 8.59 億','official','兩者均較 2025 年底顯著增加。'),
+('stl-sig-qualification','stl-4931','2026-10-21','客戶資格','yellow','25kW／300V 能力；CTDP 已取得','research_inference','能力可驗證，但特定 CSP／HVDC 量產資格未公開確認。'),
+('stl-sig-concentration','stl-4931','2026-10-21','客戶集中','red','2025 最大客戶 55.12%','official','前兩大匿名客戶合計 69.61%。')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,as_of_date=excluded.as_of_date,metric=excluded.metric,status=excluded.status,value_text=excluded.value_text,source_type=excluded.source_type,notes=excluded.notes;
 
 INSERT INTO research_sources
@@ -100,7 +102,7 @@ VALUES
 ('stl-src-annual','stl-4931','official','新盛力科技','2025 年報',NULL,'https://www.stl-tech.com/upload/ckeditor/files/2025AnualReport_zh.pdf','sources/2025-AnnualReport-zh.pdf','財務、產品應用、研發、客戶集中與風險揭露。; accessed=2026-09-02; periods=2025FY','high'),
 ('stl-src-q1','stl-4931','official','新盛力科技','2026Q1 合併財務報告',NULL,'https://www.stl-tech.com/upload/ckeditor/files/FinancialStatements-2026Q1.pdf','sources/FinancialStatements-2026Q1.pdf','第一季實績。; accessed=2026-09-02; periods=2026Q1','high'),
 ('stl-src-q2','stl-4931','official','新盛力科技','2026Q2 合併財務報告',NULL,'https://www.stl-tech.com/upload/ckeditor/files/FinancialStatements-2026Q2.pdf','sources/FinancialStatements-2026Q2.pdf','第二季與上半年實績、資產負債及現金流。; accessed=2026-09-02; periods=2026Q2|2026H1','high'),
-('stl-src-investor','stl-4931','official','新盛力科技','投資人專區與每月營收',NULL,'https://www.stl-tech.com/investor.asp',NULL,'公司基本資料、月營收與公開文件索引。; accessed=2026-09-02; periods=2025/01-2026/07','high'),
+('stl-src-investor','stl-4931','official','新盛力科技','投資人專區與每月營收',NULL,'https://www.stl-tech.com/investor.asp',NULL,'公司官網月營收以仟元列示；2026/08 495,100、09 424,843 仟元。Q3 及累計營收由月份加總，非核閱獲利財報；本次官方索引未見 Q3 財報。; accessed=2026-10-21; periods=2025/01-2026/09','high'),
 ('stl-src-product','stl-4931','official','新盛力科技','儲能／電池備援系統產品規格',NULL,'https://www.stl-tech.com/product_info.asp?id=89',NULL,'公開產品範圍為 6V-300V、12W-25kW；不推論特定客戶資格。; accessed=2026-09-02; periods=current product capability','high'),
 ('stl-src-ctdp','stl-4931','official','新盛力科技','UL 1973 CTDP 資格公告','2025-12-05','https://www.stl-tech.com/news_info.asp?id=46',NULL,'實驗室測試能力、品質系統與資料可靠性資格。; accessed=2026-09-02; periods=2025','high'),
 ('stl-src-ir','stl-4931','official','新盛力科技','2025 法人說明會公開簡報','2025-11-27','https://www.stl-tech.com/upload/ckeditor/files/2025-EarningsCallMaterial.pdf','sources/2025-EarningsCallMaterial.pdf','公開簡報，不是券商研究報告。; accessed=2026-09-02; periods=2024Q1-2025Q3|outlook','high')
@@ -109,7 +111,7 @@ ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,source_type=exclude
 INSERT INTO research_reports
 (id,company_id,title,slug,summary,thesis,status,version,html_path,pdf_path,created_at,updated_at,published_at)
 VALUES
-('stl-report-v1','stl-4931','新盛力 4931｜BBU 供應鏈公開資料深度研究','stl-4931','以官方財報、年報、月營收、產品規格與公開認證為基礎，區分已實現成長、產品能力與尚未公開確認的客戶資格。','AI 資料中心 BBU 需求 → 出貨與月營收 → 毛利率 → 營運資金 → 現金轉換 → EPS；產品規格與 UL 實驗室資格不等於特定 CSP 量產認證。','published','1.0','/research/reports/stl-4931.html',NULL,'2026-08-31','2026-08-31','2026-09-02')
+('stl-report-v1','stl-4931','新盛力 4931｜BBU 供應鏈公開資料深度研究','stl-4931','8 月營收 4.951 億元創本研究期高點，9 月 4.248 億元、年增 176.30%；Q3 月營收加總 13.694 億元，較 Q2 +23.01%。需求放量仍需由毛利率、應收／存貨週轉及營業現金流驗證；產品與實驗室資格不等於特定 CSP 量產資格。','AI 資料中心 BBU 需求 → 出貨與月營收 → 毛利率 → 營運資金 → 現金轉換 → EPS；產品規格與 UL 實驗室資格不等於特定 CSP 量產認證。','published','1.1','/research/reports/stl-4931.html',NULL,'2026-10-21','2026-10-21','2026-10-21')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,title=excluded.title,slug=excluded.slug,summary=excluded.summary,thesis=excluded.thesis,status=excluded.status,version=excluded.version,html_path=excluded.html_path,pdf_path=excluded.pdf_path,created_at=excluded.created_at,updated_at=excluded.updated_at,published_at=excluded.published_at;
 
 INSERT INTO research_report_sections
@@ -125,7 +127,7 @@ VALUES
 ('stl-sec-risks','stl-report-v1','stl-sec-risks','催化劑與關鍵風險',8,'{"type":"catalysts-risks","payloadRefs":["catalysts","risks"],"showSources":true}'),
 ('stl-sec-sources','stl-report-v1','stl-sec-sources','公開資料來源與排除原則',9,'{"type":"sources","payloadRefs":["sources"],"showSources":true}'),
 ('stl-sec-conclusion','stl-report-v1','stl-sec-conclusion','結論與後續驗證清單',10,'{"type":"conclusion","payloadRefs":["thesis"],"showSources":true}'),
-('stl-report-v1-dashboard','stl-report-v1','dashboard-config','Dashboard Config',0,'{"currentView":"2026H1 營收年增 70%、毛利率 22.8%、EPS 3.69 元，7 月營收續創本研究期高點；但前兩大客戶在 2025 年合計占 69.61%，且應收帳款、存貨、廠房設備與應付帳款同步擴大。","verificationChain":["月營收是否維持 4 億元以上","毛利率是否維持 22% 以上","應收與存貨週轉是否穩定","營業現金流是否跟上獲利","是否有公開可核對的新客戶資格","EPS 是否持續轉化"],"conclusion":"新盛力已出現明確 BBU 放量與獲利改善，但現階段最重要的不是推測客戶名稱，而是驗證營收、毛利率、週轉與公開資格是否連續兌現。","forecastScenario":"base","headlineForecastYears":[2026,2027],"focusMetric":{"field":"grossMargin","label":"毛利率"},"monthlyRevenue":{"focusYear":2026,"cumulativeThroughMonth":7,"unitDivisor":100,"unitLabel":"億"},"cagrCards":[{"field":"revenue","label":"2025A → 2027F Revenue CAGR","baseYear":2025,"targetYear":2027,"baseValue":2451.377,"years":2},{"field":"eps","label":"2025A → 2027F EPS CAGR","baseYear":2025,"targetYear":2027,"baseValue":3.13,"years":2}],"estimateNote":"* 2026F／2027F 為僅依公開實績建立的研究情境，不含任何券商或法人預測；產品規格與 UL CTDP 不代表特定 CSP 量產資格。"}')
+('stl-report-v1-dashboard','stl-report-v1','dashboard-config','Dashboard Config',0,'{"currentView":"8 月營收 4.951 億元創本研究期高點；9 月 4.248 億元，MoM -14.19%、YoY +176.30%。1–9 月累計 32.740 億元、YoY +96.48%；Q3 月營收加總 13.694 億元、較 Q2 +23.01%，尚非 Q3 獲利財報。H1 EPS 3.69 元與現金流、客戶集中資料仍為既有觀察基礎。","verificationChain":["9 月回落後，10 月以後月營收能否持續在 4 億元以上","Q3 毛利率能否維持 22% 以上，確認收入擴大是否轉成利潤","Q3 應收與存貨增幅是否低於營收增幅，週轉是否改善","Q3 營業現金流是否跟上獲利，而非僅增加應收與備貨","是否有公開可核對的新客戶資格","EPS 是否持續轉化"],"conclusion":"營收端放量已有延續性：8 月創高、9 月回落，Q3 月營收加總仍較 Q2 增加約 23.01%。整體維持黃綠燈、偏綠；下一步以 Q3 毛利率、應收／存貨週轉與營業現金流驗證獲利品質，特定 CSP／HVDC 客戶量產資格仍待公開證據。","forecastScenario":"base","headlineForecastYears":[2026,2027],"focusMetric":{"field":"grossMargin","label":"毛利率"},"monthlyRevenue":{"focusYear":2026,"cumulativeThroughMonth":9,"unitDivisor":100,"unitLabel":"億"},"cagrCards":[{"field":"revenue","label":"2025A → 2027F Revenue CAGR","baseYear":2025,"targetYear":2027,"baseValue":2451.377,"years":2},{"field":"eps","label":"2025A → 2027F EPS CAGR","baseYear":2025,"targetYear":2027,"baseValue":3.13,"years":2}],"estimateNote":"* 2026F／2027F 為僅依公開實績建立的研究情境，不含任何券商或法人預測；產品規格與 UL CTDP 不代表特定 CSP 量產資格。 2026-10-21 更新已回填 8–9 月營收；財測數值暫沿用原模型，Q3 僅更新月營收加總，毛利率、EPS 與現金流待正式財報。"}')
 ON CONFLICT(id) DO UPDATE SET report_id=excluded.report_id,section_key=excluded.section_key,title=excluded.title,sort_order=excluded.sort_order,content_json=excluded.content_json;
 
 
@@ -133,7 +135,7 @@ ON CONFLICT(id) DO UPDATE SET report_id=excluded.report_id,section_key=excluded.
 
 DELETE FROM research_financial_actuals WHERE company_id='stl-4931' AND id NOT IN ('stl-2025fy','stl-2026q1','stl-2026q2');
 
-DELETE FROM research_monthly_revenue WHERE company_id='stl-4931' AND id NOT IN ('stl-2601','stl-2602','stl-2603','stl-2604','stl-2605','stl-2606','stl-2607');
+DELETE FROM research_monthly_revenue WHERE company_id='stl-4931' AND id NOT IN ('stl-2601','stl-2602','stl-2603','stl-2604','stl-2605','stl-2606','stl-2607','stl-2608','stl-2609');
 
 DELETE FROM research_segments WHERE company_id='stl-4931' AND id NOT IN ('stl-app-bbu','stl-app-tools','stl-app-mobility');
 

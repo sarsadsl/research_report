@@ -3,7 +3,7 @@
   "ticker": "4931",
   "market": "TPEX",
   "slug": "stl-4931",
-  "reportVersion": "1.0",
+  "reportVersion": "1.1",
   "output": {
     "dashboard": true,
     "fullReport": true,

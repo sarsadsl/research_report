@@ -185,6 +185,12 @@ export function ResearchChart({
 }) {
   const maxRevenue = Math.max(1, ...points.map((point) => point.revenue));
   const latest = points.at(-1);
+  const previous = points.at(-2);
+  const revenueNote = latest && previous && latest.revenue < previous.revenue
+    ? `${latest.month} 月較 ${previous.month} 月回落，下一步驗證營收能否維持高檔。`
+    : latest?.revenue === maxRevenue
+      ? `${latest.month} 月為本研究期高點，後續要看是否形成連續性。`
+      : "下一步驗證最新月營收能否維持高檔。";
   return (
     <div className="researchChartPanel">
       <div className="chartHeader">
@@ -192,7 +198,7 @@ export function ResearchChart({
           <div className="sectionEyebrow">{focusYear} MONTHLY REVENUE</div>
           <h3>月營收動能</h3>
         </div>
-        {latest ? <ResearchNote label="FIELD NOTE" tone="yellow">{latest.month} 月落在研究期高點，後續要看是否形成連續性。</ResearchNote> : null}
+        {latest ? <ResearchNote label="FIELD NOTE" tone="yellow">{revenueNote}</ResearchNote> : null}
       </div>
       <div className="chartScroll">
         <div className="researchChart" role="img" aria-label={`${focusYear} 年月營收柱狀圖`}>

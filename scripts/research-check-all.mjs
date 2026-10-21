@@ -6,11 +6,9 @@ const root = process.cwd();
 const researchRoot = resolve(root, "research");
 const entries = await readdir(researchRoot, { withFileTypes: true });
 const slugs = [];
-const regressionFixtures = new Set(["stl-4931"]);
 
 for (const entry of entries) {
   if (!entry.isDirectory() || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(entry.name)) continue;
-  if (regressionFixtures.has(entry.name)) continue;
   try {
     await Promise.all([
       access(join(researchRoot, entry.name, "manifest.json")),
