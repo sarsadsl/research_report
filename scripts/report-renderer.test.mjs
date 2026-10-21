@@ -1,7 +1,14 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
-import { buildReportViewModel, injectFullReportMetadata, renderGeneratedReport, validateReportProfiles } from "./report-renderer.mjs";
+import { buildReportViewModel, injectFullReportMetadata, monthlyAnnotation, renderGeneratedReport, validateReportProfiles } from "./report-renderer.mjs";
+
+test("monthly annotation distinguishes a pullback from consecutive research highs", () => {
+  const vm = revenues => ({ monthlyRevenue: revenues.map((revenue,index) => ({year:2026,month:7+index,revenue})) });
+  assert.match(monthlyAnnotation(vm([449.435,495.1,424.843])), /9 月較 8 月回落/);
+  assert.match(monthlyAnnotation(vm([1008.644,1056.242,1104.081])), /8–9 月連續創高/);
+  assert.doesNotMatch(monthlyAnnotation(vm([500,400,600])), /連續創高/);
+});
 
 const load = async () => {
   const [pkg, profiles] = await Promise.all([

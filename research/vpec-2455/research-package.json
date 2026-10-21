@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "packageVersion": "1.1.0",
-  "asOfDate": "2026-09-04",
+  "packageVersion": "1.3.0",
+  "asOfDate": "2026-10-21",
   "company": {
     "id": "vpec-2455",
     "ticker": "2455",
@@ -17,14 +17,14 @@
     "id": "vpec-report-v1",
     "title": "全新光電 2455｜2025Q4-2027F 深度研究",
     "slug": "vpec-2455",
-    "summary": "完整版：已實現財報與利潤 Bridge、7–8 月營收與光電子營收占比、2026F H2 反推、2027F CAGR / 分部拆解、MOCVD 產能量化與紅綠燈結論。",
+    "summary": "9 月營收 4.491 億元，年增 29.49%、較 8 月回落約 4.6%；1–9 月累計 32.668 億元、年增 34.96%。完整報告保留財務實績與 2026F／2027F 情境，下一步追蹤光電子 mix、毛利率、InP 供應與新機利用率；新增可轉債贖回期間及股數／EPS 稀釋驗證。",
     "thesis": "InP 供應 → utilization → 光電子營收 → mix → GM → OP margin → EPS。",
     "status": "published",
-    "version": "1.2",
-    "publishedAt": "2026-09-09"
+    "version": "1.3",
+    "publishedAt": "2026-10-21"
   },
   "thesis": {
-    "summary": "偏綠；7–8 月營收連續創高、光電子占比研究估計升至約 46%，但毛利率、InP 供應與新機利用率仍需連續驗證。",
+    "summary": "維持偏綠、等待獲利驗證。7–8 月營收創高後，9 月回落至 4.491 億元；收入仍在高檔，但不能把最新月視為新高。8 月光電子占比約 46.1% 仍是研究估計，9 月 mix 與 Q3 毛利率尚待確認；新增轉債贖回事件須追蹤實際轉股與 EPS 分母。",
     "coreChain": [
       "InP 供應",
       "utilization",
@@ -36,11 +36,13 @@
     ],
     "claimIds": [
       "claim-core-chain",
-      "claim-current-signal"
+      "claim-current-signal",
+      "claim-september-revenue",
+      "claim-cb-dilution"
     ]
   },
   "dashboard": {
-    "currentView": "目前判讀：偏綠。7–8 月營收連續創高、光電子占比研究估計升至約 46%；完整報告保留 2026F H2 反推、2027F CAGR / 分部拆解、MOCVD 產能量化與升降級規則。",
+    "currentView": "9 月營收 4.491 億元，YoY +29.49%、較 8 月回落約 4.6%；1–9 月累計公告 32.668 億元、YoY +34.96%。7–8 月創高是歷史事實，第四季延續性仍需驗證。8 月光電子占比約 46.1% 為研究估計，尚無 9 月新 mix。全新二／三贖回期為 10/19–11/17，需追蹤實際轉股與基本／稀釋 EPS。",
     "verificationChain": [
       "InP 供應",
       "新機 utilization",
@@ -50,16 +52,19 @@
       "營益率",
       "EPS"
     ],
-    "conclusion": "現階段方向偏正向，7–8 月營收與光電子 mix 提供上修訊號；但毛利率能否站穩 40%、InP 供應連續性與新機利用率仍需要連續數季驗證。",
+    "conclusion": "目前維持偏綠。9 月營收自 8 月高點回落，應轉向驗證第四季能否維持高檔，而非延伸連續創高敘述。Q3 毛利率、營業利益與現金流仍待正式財報；InP 供應、新機利用率及光電子 mix 是後續獲利關鍵。轉債贖回公告增加股數與稀釋 EPS 的追蹤需求，未假定債券已全部轉股，也未直接修改 EPS 情境。",
     "forecastScenario": "consensus",
-    "headlineForecastYears": [2026, 2027],
+    "headlineForecastYears": [
+      2026,
+      2027
+    ],
     "focusMetric": {
       "field": "optoShare",
       "label": "光電子占比"
     },
     "monthlyRevenue": {
       "focusYear": 2026,
-      "cumulativeThroughMonth": 8,
+      "cumulativeThroughMonth": 9,
       "unitDivisor": 100,
       "unitLabel": "億"
     },
@@ -81,7 +86,7 @@
         "years": 2
       }
     ],
-    "estimateNote": "* 研究估計值，非公司正式 segment disclosure。"
+    "estimateNote": "* 研究估計值，非公司正式 segment disclosure。 10/21 更新已補 9 月營收與轉債贖回事件；既有財測暫未重估。9 月產品 mix、Q3 獲利及轉股後加權平均股數尚待正式揭露。早期月營收為既有四捨五入口徑，精確累計另以公司公告轉載核對。"
   },
   "actuals": [
     {
@@ -256,6 +261,23 @@
       "evidenceClass": "third_party_fact",
       "sourceIds": [
         "vpec-src-revenue-2608"
+      ]
+    },
+    {
+      "id": "vpec-2609",
+      "year": 2026,
+      "month": 9,
+      "revenue": 449.063,
+      "mom": -4.64,
+      "yoy": 29.49,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "vpec-src-revenue-2609"
+      ],
+      "claimIds": [
+        "claim-september-revenue"
       ]
     }
   ],
@@ -655,6 +677,22 @@
         "vpec-src-official",
         "vpec-src-consensus"
       ]
+    },
+    {
+      "id": "vpec-risk-cb-dilution",
+      "title": "轉債贖回與每股盈餘分母變化",
+      "impact": "medium",
+      "probability": "medium",
+      "status": "watch",
+      "notes": "全新二、三贖回期 10/19–11/17；追蹤實際轉股、剩餘債券與加權平均股數，不能把公告等同已全數轉股。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "vpec-src-cb2-260917",
+        "vpec-src-cb3-260917"
+      ],
+      "claimIds": [
+        "claim-cb-dilution"
+      ]
     }
   ],
   "signalRules": [
@@ -740,19 +778,22 @@
   "signalSnapshots": [
     {
       "id": "vpec-sig-revenue",
-      "asOfDate": "2026-09-04",
+      "asOfDate": "2026-10-21",
       "metric": "月營收",
       "status": "green",
-      "valueText": "2026/08 4.71 億；前8月 28.18 億",
-      "notes": "7–8 月連續創高；前8月 YoY +35.87%，仍需 9-12 月延續",
+      "valueText": "2026/09 4.491 億；前 9 月公告 32.668 億",
+      "notes": "9 月 YoY +29.49%、MoM 約 -4.6%；8 月仍為研究期高點。第四季營收延續性、Q3 利潤及現金流待驗證。",
       "evidenceClass": "third_party_fact",
       "sourceIds": [
-        "vpec-src-revenue-2608"
+        "vpec-src-revenue-2609"
+      ],
+      "claimIds": [
+        "claim-september-revenue"
       ]
     },
     {
       "id": "vpec-sig-opto",
-      "asOfDate": "2026-09-04",
+      "asOfDate": "2026-10-21",
       "metric": "光電子占比",
       "status": "green",
       "valueText": "2026/08 研究估計 46.1%",
@@ -764,7 +805,7 @@
     },
     {
       "id": "vpec-sig-gm",
-      "asOfDate": "2026-08-26",
+      "asOfDate": "2026-10-21",
       "metric": "毛利率",
       "status": "yellow",
       "valueText": "26Q2 38.61%",
@@ -776,7 +817,7 @@
     },
     {
       "id": "vpec-sig-inp",
-      "asOfDate": "2026-08-26",
+      "asOfDate": "2026-10-21",
       "metric": "InP 供應",
       "status": "yellow",
       "valueText": "供應改善中",
@@ -789,7 +830,7 @@
     },
     {
       "id": "vpec-sig-util",
-      "asOfDate": "2026-08-26",
+      "asOfDate": "2026-10-21",
       "metric": "MOCVD utilization",
       "status": "yellow",
       "valueText": "新機 ramp 待驗證",
@@ -802,7 +843,7 @@
     },
     {
       "id": "vpec-sig-product",
-      "asOfDate": "2026-08-26",
+      "asOfDate": "2026-10-21",
       "metric": "新產品",
       "status": "green",
       "valueText": "200G PD / CW Laser 放量訊號",
@@ -1008,6 +1049,51 @@
       ],
       "confidence": "medium",
       "notes": "只作樂觀情境比較，不覆蓋官方已公布實績。"
+    },
+    {
+      "id": "vpec-src-revenue-2609",
+      "evidenceClass": "third_party_fact",
+      "provider": "財訊快報／公司營收公告轉載",
+      "title": "全新 2026/09 營收公告",
+      "url": "https://ww2.money-link.com.tw/realtimenews/NewsContent.aspx?PU=0009&SN=2427493002",
+      "publishedDate": "2026-10-05",
+      "accessedDate": "2026-10-21",
+      "coveredPeriods": [
+        "2026/09",
+        "2026/01-2026/09"
+      ],
+      "confidence": "high",
+      "notes": "9 月 449,063 仟元，前九月 3,266,756 仟元、YoY +34.96%。月增率以 449,063／470,904−1 重算約 -4.64%，報導刊列 -4.63% 有尾差；不據尾差改變判讀。"
+    },
+    {
+      "id": "vpec-src-cb2-260917",
+      "evidenceClass": "third_party_fact",
+      "provider": "公開資訊觀測站公告／PChome 轉載",
+      "title": "全新二行使贖回權公告",
+      "url": "https://pchome.megatime.com.tw/news/cat2/20260917/9700002455202609171.html",
+      "publishedDate": "2026-09-17",
+      "accessedDate": "2026-10-21",
+      "coveredPeriods": [
+        "2026/10/19-2026/11/17",
+        "2026/11/18"
+      ],
+      "confidence": "high",
+      "notes": "公告全新二 24552 贖回期 10/19–11/17，預定 11/18 終止櫃檯買賣；不是實際全部轉股紀錄。"
+    },
+    {
+      "id": "vpec-src-cb3-260917",
+      "evidenceClass": "third_party_fact",
+      "provider": "公開資訊觀測站公告／MoneyDJ 轉載",
+      "title": "全新三行使贖回權公告",
+      "url": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=ce00bf7d-485a-457f-8763-1be4b0c02e8b",
+      "publishedDate": "2026-09-17",
+      "accessedDate": "2026-10-21",
+      "coveredPeriods": [
+        "2026/10/19-2026/11/17",
+        "2026/11/18"
+      ],
+      "confidence": "high",
+      "notes": "公告全新三 24553 贖回期 10/19–11/17，預定 11/18 終止櫃檯買賣；需另核對轉換餘額、加權平均股數與基本／稀釋 EPS。"
     }
   ],
   "claims": [
@@ -1061,14 +1147,17 @@
     },
     {
       "id": "claim-current-signal",
-      "text": "目前判讀為偏綠：7–8 月營收連續創高、光電子占比研究估計升至約 46%，但毛利率、InP 供應連續性與新機 utilization 仍需驗證。",
+      "text": "維持偏綠、等待獲利驗證。7–8 月營收創高後，9 月回落至 4.491 億元；收入仍在高檔，但不能把最新月視為新高。8 月光電子占比約 46.1% 仍是研究估計，9 月 mix 與 Q3 毛利率尚待確認；新增轉債贖回事件須追蹤實際轉股與 EPS 分母。",
       "evidenceClass": "research_inference",
       "sourceIds": [
         "vpec-src-official",
         "vpec-src-goodinfo",
         "vpec-src-consensus",
         "vpec-src-revenue-2608",
-        "vpec-src-mix-2608"
+        "vpec-src-mix-2608",
+        "vpec-src-revenue-2609",
+        "vpec-src-cb2-260917",
+        "vpec-src-cb3-260917"
       ],
       "inputClaimIds": [
         "claim-core-chain",
@@ -1078,6 +1167,29 @@
       ],
       "method": "綜合月營收、光電子占比、毛利率、InP 供應、新機 utilization 與新產品訊號。",
       "confidence": "medium"
+    },
+    {
+      "id": "claim-september-revenue",
+      "text": "2026/09 營收 4.491 億元，YoY +29.49%、較 8 月回落約 4.6%；1–9 月公告累計 32.668 億元，YoY +34.96%。",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "vpec-src-revenue-2609"
+      ],
+      "inputClaimIds": [],
+      "method": "採公告轉載仟元數換算億元。月增率以原始金額重算；既有早期月份有四捨五入尾差，精確累計以公告為準。",
+      "confidence": "high"
+    },
+    {
+      "id": "claim-cb-dilution",
+      "text": "全新二、三公告 10/19–11/17 行使贖回權，預定 11/18 終止櫃檯買賣；EPS 影響須以實際轉股與加權平均股數核對，不能假定全部轉股。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "vpec-src-cb2-260917",
+        "vpec-src-cb3-260917"
+      ],
+      "inputClaimIds": [],
+      "method": "區分贖回公告與實際股數變動，待正式轉換結果及財報稀釋 EPS 揭露再重估；本次未直接改寫模型數值。",
+      "confidence": "high"
     }
   ]
 }

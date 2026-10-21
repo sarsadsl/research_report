@@ -11,7 +11,7 @@
     "description": "聚焦 III-V 化合物半導體磊晶，研究主軸為 AI 光通訊帶動光電子占比提升。"
   },
   "dashboard": {
-    "currentView": "目前判讀：偏綠。7–8 月營收連續創高、光電子占比研究估計升至約 46%；完整報告保留 2026F H2 反推、2027F CAGR / 分部拆解、MOCVD 產能量化與升降級規則。",
+    "currentView": "9 月營收 4.491 億元，YoY +29.49%、較 8 月回落約 4.6%；1–9 月累計公告 32.668 億元、YoY +34.96%。7–8 月創高是歷史事實，第四季延續性仍需驗證。8 月光電子占比約 46.1% 為研究估計，尚無 9 月新 mix。全新二／三贖回期為 10/19–11/17，需追蹤實際轉股與基本／稀釋 EPS。",
     "verificationChain": [
       "InP 供應",
       "新機 utilization",
@@ -21,7 +21,7 @@
       "營益率",
       "EPS"
     ],
-    "conclusion": "現階段方向偏正向，7–8 月營收與光電子 mix 提供上修訊號；但毛利率能否站穩 40%、InP 供應連續性與新機利用率仍需要連續數季驗證。",
+    "conclusion": "目前維持偏綠。9 月營收自 8 月高點回落，應轉向驗證第四季能否維持高檔，而非延伸連續創高敘述。Q3 毛利率、營業利益與現金流仍待正式財報；InP 供應、新機利用率及光電子 mix 是後續獲利關鍵。轉債贖回公告增加股數與稀釋 EPS 的追蹤需求，未假定債券已全部轉股，也未直接修改 EPS 情境。",
     "forecastScenario": "consensus",
     "headlineForecastYears": [
       2026,
@@ -33,7 +33,7 @@
     },
     "monthlyRevenue": {
       "focusYear": 2026,
-      "cumulativeThroughMonth": 8,
+      "cumulativeThroughMonth": 9,
       "unitDivisor": 100,
       "unitLabel": "億"
     },
@@ -55,7 +55,7 @@
         "years": 2
       }
     ],
-    "estimateNote": "* 研究估計值，非公司正式 segment disclosure。"
+    "estimateNote": "* 研究估計值，非公司正式 segment disclosure。 10/21 更新已補 9 月營收與轉債贖回事件；既有財測暫未重估。9 月產品 mix、Q3 獲利及轉股後加權平均股數尚待正式揭露。早期月營收為既有四捨五入口徑，精確累計另以公司公告轉載核對。"
   },
   "actuals": [
     {
@@ -160,6 +160,13 @@
       "revenue": 470.904,
       "mom": 11.56,
       "yoy": 71.16
+    },
+    {
+      "year": 2026,
+      "month": 9,
+      "revenue": 449.063,
+      "mom": -4.64,
+      "yoy": 29.49
     }
   ],
   "segments": [
@@ -284,42 +291,42 @@
   ],
   "signals": [
     {
-      "asOfDate": "2026-09-04",
+      "asOfDate": "2026-10-21",
       "metric": "月營收",
       "status": "green",
-      "valueText": "2026/08 4.71 億；前8月 28.18 億",
-      "notes": "7–8 月連續創高；前8月 YoY +35.87%，仍需 9-12 月延續"
+      "valueText": "2026/09 4.491 億；前 9 月公告 32.668 億",
+      "notes": "9 月 YoY +29.49%、MoM 約 -4.6%；8 月仍為研究期高點。第四季營收延續性、Q3 利潤及現金流待驗證。"
     },
     {
-      "asOfDate": "2026-09-04",
+      "asOfDate": "2026-10-21",
       "metric": "光電子占比",
       "status": "green",
       "valueText": "2026/08 研究估計 46.1%",
       "notes": "公開資料整理，非官方 segment disclosure；需觀察 9-12 月持續性"
     },
     {
-      "asOfDate": "2026-08-26",
+      "asOfDate": "2026-10-21",
       "metric": "毛利率",
       "status": "yellow",
       "valueText": "26Q2 38.61%",
       "notes": "仍需 H2 站穩 40% 以上"
     },
     {
-      "asOfDate": "2026-08-26",
+      "asOfDate": "2026-10-21",
       "metric": "InP 供應",
       "status": "yellow",
       "valueText": "供應改善中",
       "notes": "仍需觀察供應連續性"
     },
     {
-      "asOfDate": "2026-08-26",
+      "asOfDate": "2026-10-21",
       "metric": "MOCVD utilization",
       "status": "yellow",
       "valueText": "新機 ramp 待驗證",
       "notes": "設備到位不等於有效產能"
     },
     {
-      "asOfDate": "2026-08-26",
+      "asOfDate": "2026-10-21",
       "metric": "新產品",
       "status": "green",
       "valueText": "200G PD / CW Laser 放量訊號",
@@ -422,6 +429,13 @@
       "probability": "medium",
       "status": "watch",
       "notes": "若手機/RF 轉弱，光電子需更快成長才能抵消。"
+    },
+    {
+      "title": "轉債贖回與每股盈餘分母變化",
+      "impact": "medium",
+      "probability": "medium",
+      "status": "watch",
+      "notes": "全新二、三贖回期 10/19–11/17；追蹤實際轉股、剩餘債券與加權平均股數，不能把公告等同已全數轉股。"
     }
   ],
   "reports": [
@@ -429,13 +443,13 @@
       "id": "vpec-report-v1",
       "title": "全新光電 2455｜2025Q4-2027F 深度研究",
       "slug": "vpec-2455",
-      "summary": "完整版：已實現財報與利潤 Bridge、7–8 月營收與光電子營收占比、2026F H2 反推、2027F CAGR / 分部拆解、MOCVD 產能量化與紅綠燈結論。",
+      "summary": "9 月營收 4.491 億元，年增 29.49%、較 8 月回落約 4.6%；1–9 月累計 32.668 億元、年增 34.96%。完整報告保留財務實績與 2026F／2027F 情境，下一步追蹤光電子 mix、毛利率、InP 供應與新機利用率；新增可轉債贖回期間及股數／EPS 稀釋驗證。",
       "thesis": "InP 供應 → utilization → 光電子營收 → mix → GM → OP margin → EPS。",
       "status": "published",
-      "version": "1.2",
+      "version": "1.3",
       "htmlPath": "/research/reports/vpec-2455.html",
       "pdfPath": null,
-      "publishedAt": "2026-09-09"
+      "publishedAt": "2026-10-21"
     }
   ]
 }

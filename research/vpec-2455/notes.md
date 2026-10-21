@@ -1,5 +1,13 @@
 # VPEC 2455 package migration notes
 
+## 2026-10-21 public update (report 1.3)
+
+- Added September revenue: TWD 449.063 million; official-announcement republication gives January–September TWD 3,266.756 million. Earlier rounded monthly inputs are preserved; exact cumulative disclosures take precedence over rounded historical sums.
+- Recomputed MoM from raw August/September amounts: approximately -4.64%, versus the republication's -4.63% rounding difference; commentary uses approximately -4.6%.
+- Added the public call notices for VPEC II/III (October 19–November 17; scheduled OTC termination November 18). A call notice does not establish that every bond converted.
+- Q3 profitability, September product mix and conversion-adjusted weighted shares remain unverified. Actual financials, scenario numbers and signal thresholds remain unchanged pending new evidence.
+- The original-format baseline remains a historical comparison; the public full-research template is the current report.
+
 This directory is the P1 reference package. It does not drive production routes yet.
 
 ## Current status

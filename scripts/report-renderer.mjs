@@ -219,10 +219,12 @@ function epsRangeLine(vm,year){
   return `<div class="eps-range" aria-label="${year} EPS range">${rows.map(row=>`<div data-scenario="${esc(row.scenario)}"><span>${esc(scenarioLabel(row.scenario))}</span><strong>${num(row.eps)}</strong><small>${SourceLabel(row.evidenceClass)}</small></div>`).join("")}</div>`;
 }
 
-function monthlyAnnotation(vm){
+export function monthlyAnnotation(vm){
   const rows=[...vm.monthlyRevenue].sort((a,b)=>a.year-b.year||a.month-b.month);
   const latest=rows.at(-1),previous=rows.at(-2),max=Math.max(...rows.map(row=>row.revenue));
-  if(latest&&previous&&latest.revenue===max&&latest.revenue>previous.revenue)return `${previous.month}–${latest.month} 月連續創高；下一步驗證能否維持高檔。`;
+  if(latest&&previous&&latest.revenue<previous.revenue)return `${latest.month} 月較 ${previous.month} 月回落；下一步驗證能否維持高檔。`;
+  if(latest&&previous&&latest.revenue===max&&previous.revenue>Math.max(0,...rows.slice(0,-2).map(row=>row.revenue)))return `${previous.month}–${latest.month} 月連續創高；下一步驗證能否維持高檔。`;
+  if(latest?.revenue===max)return `${latest.month} 月為研究期高點；下一步驗證能否維持高檔。`;
   return "下一步：最新月營收能否維持高檔？";
 }
 
@@ -418,7 +420,7 @@ function standardPages(vm){
     },
     {
       section:standardSection("standard-monthly","月營收動能",["monthlyRevenue"]),
-content:`${monthlyMetrics(vm)}${module("MOMENTUM",`${latestMonthLabel} 月營收與近期趨勢`,`<div class="module-grid"><div>${compactBars(vm)}${ResearchAnnotation(monthlyAnnotation(vm))}</div><div>${monthlyTable(vm)}</div></div>`,"wide")}${module("READ-THROUGH","近期動能判讀",bullets([latestMonth.revenue!=null?`最新月營收 ${num(latestMonth.revenue/(vm.dashboard.monthlyRevenue.unitDivisor||1),1)} ${vm.dashboard.monthlyRevenue.unitLabel}。`:null,Number.isFinite(latestMonth.mom)?`月增率 ${pct(latestMonth.mom)}；單月跳升仍需觀察後續是否延續。`:null,Number.isFinite(latestMonth.yoy)?`年增率 ${pct(latestMonth.yoy)}，可作為需求方向的公開事實訊號。`:null,vm.dashboard.currentView]),"note")}`,
+content:`${monthlyMetrics(vm)}${module("MOMENTUM",`${latestMonthLabel} 月營收與近期趨勢`,`<div class="module-grid"><div>${compactBars(vm)}${ResearchAnnotation(monthlyAnnotation(vm))}</div><div>${monthlyTable(vm)}</div></div>`,"wide")}${module("READ-THROUGH","近期動能判讀",bullets([latestMonth.revenue!=null?`最新月營收 ${num(latestMonth.revenue/(vm.dashboard.monthlyRevenue.unitDivisor||1),1)} ${vm.dashboard.monthlyRevenue.unitLabel}。`:null,Number.isFinite(latestMonth.mom)?`月增率 ${pct(latestMonth.mom)}；${latestMonth.mom<0?"最新月回落，需觀察後續能否維持高檔":"營收成長仍需觀察後續是否延續"}。`:null,Number.isFinite(latestMonth.yoy)?`年增率 ${pct(latestMonth.yoy)}，可作為需求方向的公開事實訊號。`:null,vm.dashboard.currentView]),"note")}`,
     },
     {
       section:standardSection("standard-mix","產品組合與分部結構",["segments","actuals","demandOutlook","competitorComparison"]),
