@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1.0.0",
+  "ticker": "6902",
+  "market": "TW",
+  "slug": "gogolook-6902",
+  "reportVersion": "1.0",
+  "output": { "dashboard": true, "fullReport": true, "standalone": true },
+  "quality": { "checkOverflow": true, "checkOverlap": true, "checkSources": true, "desktopTest": true, "mobileTest": true, "offlineStandaloneTest": true }
+}

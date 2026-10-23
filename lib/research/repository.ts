@@ -2,7 +2,7 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { and, desc, eq } from "drizzle-orm";
 import { drizzle, type DrizzleD1Database } from "drizzle-orm/d1";
 import * as schema from "@/db/research-schema";
-import { jinguSeed, stlSeed, vpecSeed } from "./seed";
+import { gogolookSeed, jinguSeed, stlSeed, vpecSeed } from "./seed";
 import { latestActual } from "./calculations";
 import type { DashboardConfig, ResearchDetail, ResearchListItem, ResearchRepository, SignalStatus } from "./types";
 
@@ -15,7 +15,7 @@ function parseDashboardConfig(value: string | null | undefined): DashboardConfig
 }
 
 function createSeedRepository(): ResearchRepository {
-  const seeds = [vpecSeed, stlSeed, jinguSeed];
+  const seeds = [vpecSeed, stlSeed, jinguSeed, gogolookSeed];
   return {
     async listPublishedCompanies() {
       return seeds.flatMap((seed) => {

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "1.0.0",
+  "profiles": {
+    "full-research": {
+      "kind": "generated",
+      "output": "public/research/reports/gogolook-6902.html",
+      "layout": "research-standard-v2",
+      "expectedPages": 14,
+      "sections": ["package-sections"]
+    }
+  }
+}

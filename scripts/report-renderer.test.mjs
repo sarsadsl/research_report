@@ -209,3 +209,55 @@ test("a synthetic second company supports different KPI, years and sections",asy
   assert.match(html,/合成製造測試公司/);assert.match(html,/毛利率/);
   assert.doesNotMatch(html,/<th>毛利率<\/th>[\s\S]*<th>毛利率<\/th>/);
 });
+
+test("Gogolook uses the shared 14 chapter template without optical or factory assumptions",async()=>{
+  const pkg=JSON.parse(await readFile("research/gogolook-6902/research-package.json","utf8"));
+  const profiles=JSON.parse(await readFile("research/gogolook-6902/report-profiles.json","utf8"));
+  const html=renderGeneratedReport(buildReportViewModel(pkg,"full-research",profiles.profiles["full-research"]));
+  const markup=html.split('<script id="research-report-payload"')[0];
+  assert.equal((html.match(/<section class="page slide/g)||[]).length,14);
+  assert.match(markup,/TRUST SERVICE PATH/);
+  assert.match(markup,/CAPABILITY TO MONETIZATION/);
+  assert.doesNotMatch(markup,/OPTICAL SIGNAL PATH|MASS PROD\.|MOCVD/);
+  assert.match(markup,/合作涵蓋人數 ≠ 付費人數/);
+  assert.match(markup,/基準假設：H1 營收 612\.824/);
+  assert.match(markup,/3,600 萬股/);
+  assert.match(markup,/CURRENT INVESTMENT SIGNAL/);
+  assert.match(markup,/黃燈/);
+  assert.match(markup,/INFERENCE/);
+  assert.match(markup,/ACTUAL/);
+  assert.doesNotMatch(html,/Strong Buy|群益|宏遠|tc\.chen|codex-remote-attachments/);
+});
+
+test("Gogolook official EPS and revenue reconciliation retain their original basis",async()=>{
+  const pkg=JSON.parse(await readFile("research/gogolook-6902/research-package.json","utf8"));
+  assert.deepEqual(pkg.actuals.map(r=>r.eps),[1.58,1.64,1.69]);
+  assert.equal(pkg.monthlyRevenue.length,9);
+  assert.equal(Math.round(pkg.monthlyRevenue.reduce((sum,r)=>sum+r.revenue,0)*1000),948426);
+  assert.equal(Math.round(pkg.segments.reduce((sum,r)=>sum+r.revenue,0)*1000),309716);
+  assert.equal(pkg.segments.find(r=>r.id==='gogo-mix-interest').revenue,28.819);
+  assert.equal(pkg.actuals.some(r=>r.period==='2026Q3'),false);
+  assert.match(pkg.dashboard.estimateNote,/差 1 仟元/);
+  assert.ok(pkg.forecasts.every(r=>r.evidenceClass==='research_inference'));
+  assert.ok(pkg.sources.every(r=>/^https:\/\//.test(r.url)));
+});
+
+test("Gogolook scenarios recalculate from disclosed public-model assumptions",async()=>{
+  const pkg=JSON.parse(await readFile("research/gogolook-6902/research-package.json","utf8"));
+  const round=(n,d)=>Number(n.toFixed(d));
+  for(const [scenario,q4avg,gm,opex,tax,growth,gm27,opgrowth] of [
+    ['bear',108,88,465,.10,.10,87.5,.12],['base',118,89,455,.08,.20,89,.08],['bull',130,90,450,.05,.30,90,.08],
+  ]){
+    const y26=pkg.forecasts.find(r=>r.fiscalYear===2026&&r.scenario===scenario);
+    const y27=pkg.forecasts.find(r=>r.fiscalYear===2027&&r.scenario===scenario);
+    const h2=335.603+q4avg*3,revenue=612.824+h2,ni=117.627+(h2*gm/100-opex)*(1-tax);
+    assert.equal(y26.revenue,round(revenue,3));
+    assert.equal(y26.netIncome,round(ni,3));
+    assert.equal(y26.eps,round(ni/36,2));
+    assert.equal(y26.grossMargin,round((547.497+h2*gm/100)/revenue*100,3));
+    const rev27=revenue*(1+growth),ni27=(rev27*gm27/100-(428.9+opex)*(1+opgrowth))*.8;
+    assert.equal(y27.revenue,round(rev27,3));
+    assert.equal(y27.netIncome,round(ni27,3));
+    assert.equal(y27.eps,round(ni27/36,2));
+  }
+});

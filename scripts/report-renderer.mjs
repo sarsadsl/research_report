@@ -15,6 +15,7 @@ import {
   TechnicalSketch,
   ThesisChain,
   fullResearchCss,
+  isDigitalService,
 } from "./report-components.mjs";
 
 const score={green:2,yellow:1,red:0};
@@ -86,7 +87,7 @@ const renderers={
   "line-chart"(vm){return renderers["bar-chart"](vm)},
   bridge(vm){return `<div class="thesis"><h2>${esc(vm.dashboard.verificationChain.join(" → "))}</h2><p>${esc(vm.dashboard.estimateNote)}</p></div>`},
   "scenario-table"(vm){const field=vm.dashboard.focusMetric.field,baseFields=new Set(["revenue","grossMargin","netIncome","eps"]),includeFocus=!baseFields.has(field);const heads=["年度","情境","資料層級","營收","毛利率","淨利","EPS",...(includeFocus?[vm.dashboard.focusMetric.label]:[])],cells=[r=>String(r.fiscalYear),r=>esc(scenarioLabel(r.scenario)),r=>SourceLabel(r.evidenceClass),r=>num(r.revenue,1),r=>pct(r.grossMargin),r=>num(r.netIncome,1),r=>num(r.eps),...(includeFocus?[r=>metricValue(field,r[field])]:[])];return ScenarioTable(table(heads,makeRows(sortScenarios(vm.forecasts),cells),"scenario-research-table"))},
-  capacity(vm){return table(["項目","設備／技術","增量","預計上線","狀態"],makeRows(vm.capacity,[r=>esc(r.label),r=>esc([r.equipment,r.technology].filter(Boolean).join(" · ")),r=>r.deltaUnits==null?"—":String(r.deltaUnits),r=>esc(r.expectedOnlineDate??"—"),r=>esc(r.status)]))},
+  capacity(vm){return table(isDigitalService(vm.company.industry)?["能力／通路","平台／技術","量化增量","公開日期","狀態"]:["項目","設備／技術","增量","預計上線","狀態"],makeRows(vm.capacity,[r=>esc(r.label),r=>esc([r.equipment,r.technology].filter(Boolean).join(" · ")),r=>r.deltaUnits==null?"—":String(r.deltaUnits),r=>esc((isDigitalService(vm.company.industry)?r.eventDate:r.expectedOnlineDate)??"—"),r=>esc(r.status)]))},
   signals(vm){return ResearchScoreSheet(`<div class="signals">${vm.ranking.map(r=>`<article class="${r.status}"><b>${esc(r.metric)}</b><strong>${esc(r.label)}</strong><span>${esc(r.valueText)}</span><small>${SourceLabel(r.evidenceClass)} ${esc(r.notes)}</small></article>`).join("")}</div>`)},
   "catalysts-risks"(vm){const col=(title,items,tone)=>`<div class="split ${tone}"><h3>${title}</h3>${items.map(r=>`<article><b>${esc(r.title)}</b><p>${esc(r.notes??r.impact)}</p><small>影響 ${esc(r.impact)} · ${esc(r.status)}${r.probability?` · 機率 ${esc(r.probability)}`:""}</small></article>`).join("")}</div>`;return RiskCatalystMatrix(`<div class="twocol">${col("Catalysts｜催化劑",vm.catalysts,"good")}<div class="current-thesis"><em>CURRENT THESIS</em><p>${esc(vm.dashboard.currentThesis??vm.dashboard.currentView)}</p></div>${col("Risks｜風險",vm.risks,"bad")}</div>`)},
   sources(vm){return `<div class="sources">${vm.sources.map((s,i)=>`<article><b>${String(i+1).padStart(2,"0")}</b><div><strong>${esc(s.provider)}｜${esc(s.title)}</strong><p>${esc(evidence[s.evidenceClass]??s.evidenceClass)} · ${esc(s.publishedDate??"日期未標示")} · 信心 ${esc(s.confidence)}</p></div></article>`).join("")}</div>`},
@@ -199,6 +200,7 @@ function forecastRead(vm,year){
     headline?`${scenarioLabel(headline.scenario)}情境 ${year}F 營收 ${num(headline.revenue,1)} 百萬、EPS ${num(headline.eps)} 元。`:null,
     `悲觀到樂觀的 ${year}F EPS 區間為 ${range(rows.map(row=>row.eps),value=>num(value))} 元，代表結果對需求與產品組合有明顯敏感度。`,
     headline&&Number.isFinite(headline[focus.field])?`${focus.label} ${scenarioLabel(headline.scenario)}情境為 ${metricValue(focus.field,headline[focus.field])}，需和實績揭露一起追蹤。`:null,
+    ...sortScenarios(rows).filter(row=>row.notes).map(row=>`${scenarioLabel(row.scenario)}假設：${row.notes}`),
   ]);
 }
 
@@ -243,10 +245,10 @@ function capacityMetrics(vm){
   const delta=quantified.reduce((sum,row)=>sum+row.deltaUnits,0);
   const active=vm.capacity.filter(row=>/actual|ramping|qualified/i.test(row.status??"")).length;
   return metrics([
-    metric("公開能力節點",num(vm.capacity.length,0),"設備／產品／研發"),
+    metric("公開能力節點",num(vm.capacity.length,0),isDigitalService(vm.company.industry)?"資料／產品／通路":"設備／產品／研發"),
     metric("已量化增量",quantified.length?`+${num(delta,0)}`:"—","僅計有單位數資料"),
     metric("已啟動或具備",num(active,0),"actual／ramp／qualified"),
-    metric("判讀原則","到位 ≠ 放量","仍需利用率與出貨驗證"),
+    metric("判讀原則",isDigitalService(vm.company.industry)?"合作 ≠ 收入":"到位 ≠ 放量",isDigitalService(vm.company.industry)?"仍需付費採用與回收驗證":"仍需利用率與出貨驗證"),
   ]);
 }
 
@@ -444,7 +446,7 @@ content:`${module("PROFITABILITY","毛利、營益與淨利率對照",profitabil
     },
     {
       section:standardSection("standard-capacity","產能、能力與成長兌現",["capacity"]),
-      content:`${capacityMetrics(vm)}${TechnicalSketch(vm.company.industry,"capacity")}${module("CAPACITY MAP","公開能力與擴張節點",capacityTable(vm),"wide")}${ResearchAnnotation("Capability ≠ qualification；設備到位也不等於營收已實現。")}${module("EVIDENCE","從投入到營收的判讀",bullets(capacityNotes),"note")}<div class="verification-chain">${vm.dashboard.verificationChain.map((item,index)=>`<div><b>${index+1}</b><span>${esc(item)}</span></div>`).join("")}</div>`,
+      content:`${capacityMetrics(vm)}${TechnicalSketch(vm.company.industry,"capacity")}${module("CAPACITY MAP","公開能力與擴張節點",capacityTable(vm),"wide")}${ResearchAnnotation(isDigitalService(vm.company.industry)?"合作涵蓋人數 ≠ 付費人數；產品能力仍需收入與回收驗證。":"Capability ≠ qualification；設備到位也不等於營收已實現。")}${module("EVIDENCE","從投入到營收的判讀",bullets(capacityNotes),"note")}<div class="verification-chain">${vm.dashboard.verificationChain.map((item,index)=>`<div><b>${index+1}</b><span>${esc(item)}</span></div>`).join("")}</div>`,
     },
     {
       section:standardSection("standard-signals","驗證訊號與目前狀態",["signalSnapshots"]),

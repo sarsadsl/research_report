@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "gogolook-6902",
+  "companyName": "Gogolook 走著瞧",
+  "ticker": "6902",
+  "market": "TW",
+  "asOfDate": "2026-10-23",
+  "requestedOutputs": [
+    "dashboard",
+    "full-report",
+    "standalone"
+  ],
+  "researchQuestions": ["訂閱與企業合約能否持續變現？", "費用效率是否穿透至營業利益？", "JUJI 信用損失、分期回收與現金轉換是否可控？", "正常稅率與股數假設下，EPS 成長是否仍成立？"],
+  "sources": [
+    {"id":"gogo-intake-reports","title":"官方財報索引","provider":"Gogolook","evidenceClass":"official","url":"https://www.gogolook.com/investors/financial/financial-reports"},
+    {"id":"gogo-intake-presentation","title":"官方投資人簡報","provider":"Gogolook","evidenceClass":"official","url":"https://www.gogolook.com/investors/financial/conference"},
+    {"id":"gogo-intake-monthly","title":"官方每月營收","provider":"Gogolook","evidenceClass":"official","url":"https://www.gogolook.com/investors/financial/monthly-revenue"}
+  ],
+  "notes": "公開內容只採可核對來源與自建情境；使用者提供的券商PDF、摘錄與專有預測不提交公開repo。來源精確URL與方法見research-package.json。"
+}

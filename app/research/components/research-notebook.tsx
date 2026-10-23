@@ -286,5 +286,6 @@ export function getIndustryLabel(industry?: string | null): string {
   if (/電池|BBU|電源|battery|power/i.test(value)) return "BBU / AI Infrastructure";
   if (/光|半導體|compound|optical|laser/i.test(value)) return "Optical / Semiconductor";
   if (/銅箔|PCB|CCL|HVLP|copper foil/i.test(value)) return "PCB / CCL · 高階銅箔";
+  if (/信任科技|防詐|trusttech|anti.scam/i.test(value)) return "TrustTech / Anti-Scam";
   return value;
 }

@@ -41,6 +41,7 @@ function categoryFor(item: ResearchListItem) {
   if (/銅箔|PCB|CCL|HVLP|copper foil/i.test(value)) return "PCB / CCL";
   if (/光|光電|optical|laser/i.test(value)) return "Optical";
   if (/半導體|compound|semiconductor/i.test(value)) return "Semiconductor";
+  if (/信任科技|防詐|trusttech|anti.scam/i.test(value)) return "TrustTech";
   return "Research";
 }
 
