@@ -166,6 +166,10 @@ function validateReferences(pkg, errors) {
     }
   }
   for (const claimId of pkg.thesis.claimIds) if (!claims.has(claimId)) errors.push(`thesis: missing claim ${claimId}`);
+  if (pkg.dashboard.capexSensitivity) {
+    const stress = pkg.dashboard.capexSensitivity;
+    for (const id of stress.sourceIds) if (!sources.has(id)) errors.push("capexSensitivity: missing source " + id);
+  }
   if (pkg.earningsQuality) {
     const eq = pkg.earningsQuality;
     const checkSourceClaims = (row, label) => {
