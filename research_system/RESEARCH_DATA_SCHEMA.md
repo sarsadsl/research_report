@@ -15,6 +15,17 @@ research/<slug>/notes.md
 
 D1, fallback fixtures, dashboards, reports, and exports are derived from it.
 
+## EQ-01 盈餘品質資料契約（先定義語意，尚未工程落地）
+
+參見 [EQ-01](RESEARCH_EARNINGS_QUALITY.md)。每份新建或重新發行的完整報告，研究資料應能追溯以下內容，並由人工 QC 保存檢查表：
+
+- `period`、`sourceIds`、`claimIds`、`evidenceClass`、`currency`、`scale` 與核對的附註／附表頁碼；
+- `operatingIncome`、`nonOperatingNet`、`pretaxIncome`、`tax`、`attributableNetIncome`、`reportedEps`、`weightedAverageShares`；
+- 逐項 `adjustments`：被投資企業／交易類別、FVPL 或 FVOCI、已實現或未實現、稅及非控制權益、影響 EPS／權益金額、方法與來源；
+- `normalizedEps` 或 `notVerifiableReason`、`triggers`、`reviewStatus`、`reviewedAt`、`limitations`、`valuationUse`。
+
+**重要相容性限制**：以上是下階段 `earningsQuality` 專用結構的**語意規格草案**，**不是當前 JSON schema、TypeScript、D1 或 renderer 已支援的欄位**。未經 schema / validator / importer / renderer / tests 一起更新前，不得直接加入既有已發布 package、變更 schemaVersion 或宣稱 D1 已保存。不得將缺值填 0。需要機器強制檢查時，再以版本化 schema／migration 實作並回歸驗證，舊 package 須維持可讀。
+
 ## Package envelope
 
 A package must contain:
