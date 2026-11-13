@@ -32,5 +32,8 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y fonts-noto-cjk
       - name: Browser report layout QC (existing reference report)
         run: npm run report:qc -- vpec-2455
+      - name: Browser report layout QC (UMC 2303 new full report)
+        if: ${{ hashFiles('research/umc-2303/research-package.json') != '' }}
+        run: npm run report:qc -- umc-2303
       # Deliberately do not call research:publish --remote, wrangler, or deploy.
       # This workflow never receives Cloudflare credentials and never touches production D1.
