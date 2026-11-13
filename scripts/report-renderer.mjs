@@ -17,6 +17,7 @@ import {
   fullResearchCss,
   isDigitalService,
 } from "./report-components.mjs";
+import { evaluateEarningsQuality } from "./earnings-quality.mjs";
 
 const score={green:2,yellow:1,red:0};
 const labels={green:"綠燈",yellow:"黃燈",red:"紅燈"};
@@ -57,7 +58,7 @@ export function buildReportViewModel(pkg,profileName,profile){
   const headlineForecasts=pkg.dashboard.headlineForecastYears.map(year=>pkg.forecasts.find(r=>r.fiscalYear===year&&r.scenario===pkg.dashboard.forecastScenario)).filter(Boolean);
   const ranking=[...pkg.signalSnapshots].sort((a,b)=>score[b.status]-score[a.status]||a.metric.localeCompare(b.metric,"zh-TW")).map((r,i)=>({...r,rank:i+1,score:score[r.status],label:labels[r.status]}));
   const marketData=pkg.dashboard.demandOutlook?.length||pkg.dashboard.competitorComparison?.length?{demandOutlook:pkg.dashboard.demandOutlook??[],competitorComparison:pkg.dashboard.competitorComparison??[]}:{};
-  return {schemaVersion:"1.0.0",profileName,profile,company:pkg.company,report:pkg.report,asOfDate:pkg.asOfDate,thesis:pkg.thesis,dashboard:pkg.dashboard,...marketData,latestActual,headlineForecasts,ranking,sections:pkg.sections,sources:pkg.sources,sourceMap:Object.fromEntries(pkg.sources.map(s=>[s.id,s])),claims:pkg.claims,actuals:pkg.actuals,monthlyRevenue:pkg.monthlyRevenue,segments:pkg.segments,forecasts:pkg.forecasts,capacity:pkg.capacity,catalysts:pkg.catalysts,risks:pkg.risks,signalRules:pkg.signalRules,signalSnapshots:pkg.signalSnapshots};
+  return {schemaVersion:"1.0.0",profileName,profile,company:pkg.company,report:pkg.report,asOfDate:pkg.asOfDate,thesis:pkg.thesis,dashboard:pkg.dashboard,...marketData,latestActual,headlineForecasts,ranking,earningsQuality:pkg.earningsQuality??null,sections:pkg.sections,sources:pkg.sources,sourceMap:Object.fromEntries(pkg.sources.map(s=>[s.id,s])),claims:pkg.claims,actuals:pkg.actuals,monthlyRevenue:pkg.monthlyRevenue,segments:pkg.segments,forecasts:pkg.forecasts,capacity:pkg.capacity,catalysts:pkg.catalysts,risks:pkg.risks,signalRules:pkg.signalRules,signalSnapshots:pkg.signalSnapshots};
 }
 
 export function injectFullReportMetadata(html,vm){
@@ -391,6 +392,52 @@ function sourcePage(vm){
   </div>`;
 }
 
+
+function eq01Latest(eq) {
+  return [...(eq?.periods ?? [])].sort((a,b) => a.period.localeCompare(b.period)).at(-1) ?? null;
+}
+function eq01Ratio(row) {
+  return typeof row?.nonOperatingNet === "number" && typeof row?.pretaxIncome === "number" && Math.abs(row.pretaxIncome) > 1e-8
+    ? row.nonOperatingNet / row.pretaxIncome * 100 : null;
+}
+function eq01Summary(eq) {
+  if (!eq) return "";
+  const row = eq01Latest(eq);
+  const evaluation = evaluateEarningsQuality(eq);
+  return '<div class="metrics">'
+    + metric("法定 EPS", num(row?.reportedEps), row?.period ?? "—")
+    + metric("正常化 EPS", num(row?.normalizedEps), row?.normalizedEps == null ? "待驗證" : "逐項歸母調整")
+    + metric("業外損益占稅前", pct(eq01Ratio(row)), "比率為有號值")
+    + metric("EQ-01", esc(eq.reviewStatus), evaluation.requiresL2 ? "L2 已觸發" : "L1 篩檢")
+    + '</div><p class="fineprint">'
+    + esc(eq.coverageNote || eq.valuation.notes || "資料採財報實績與來源可追溯的研究調節；不可將未實現投資收益當作經常性本業。")
+    + '</p>';
+}
+function eq01DeepDive(vm) {
+  const eq = vm.earningsQuality, evaluation = evaluateEarningsQuality(eq);
+  const rows = [...eq.periods].sort((a,b)=>a.period.localeCompare(b.period));
+  const detail = rows.flatMap(row => row.adjustments.map(adj => ({
+    period: row.period, category: adj.category, realization: adj.realization,
+    pretax: adj.pretaxAmount, epsImpact: adj.epsImpact, method: adj.method
+  })));
+  const periodTable = table(["期間","業外淨額","稅前淨利","業外占比","法定 EPS","正常化 EPS"],makeRows(rows,[
+    r=>esc(r.period),r=>num(r.nonOperatingNet,1),r=>num(r.pretaxIncome,1),r=>pct(eq01Ratio(r)),r=>num(r.reportedEps),r=>num(r.normalizedEps)
+  ]));
+  const adjustTable = detail.length ? table(["期間","調整項目","已實現／評價","稅前影響","EPS 影響","方法"],makeRows(detail,[
+    r=>esc(r.period),r=>esc(r.category),r=>esc(r.realization),r=>num(r.pretax,1),r=>num(r.epsImpact),r=>esc(r.method)
+  ])) : '<p class="narrative">已確認無須調整的項目，或沒有可可靠量化的特殊項目。</p>';
+  return eq01Summary(eq)
+    + module("L1 SCREEN","法定與正常化盈餘逐期檢查",periodTable,"wide")
+    + module("L2 TRACE","業外損益逐筆穿透",adjustTable,"wide")
+    + module("TRIGGERS","觸發原因與會計判讀",bullets([
+      ...evaluation.reasons.map(reason=>"觸發："+reason),
+      "L2 "+eq.l2.status+"："+eq.l2.summary,
+      "估值 "+eq.valuation.epsBasis+"："+eq.valuation.notes,
+    ]),"note")
+    + '<p class="fineprint">EQ-01 '+esc(eq.reviewStatus)+'｜審閱 '+esc(eq.reviewer)+'｜'+esc(eq.reviewedAt)
+    +'｜'+esc(eq.notes)+'</p>';
+}
+
 function standardPages(vm){
   const actuals=[...vm.actuals].sort((a,b)=>a.period.localeCompare(b.period));
   const latest=actuals.at(-1)??{};
@@ -430,7 +477,7 @@ content:`${monthlyMetrics(vm)}${module("MOMENTUM",`${latestMonthLabel} 月營收
     },
     {
       section:standardSection("standard-profitability","獲利結構與營運槓桿",["actuals"]),
-content:`${module("PROFITABILITY","毛利、營益與淨利率對照",profitabilityTable(vm),"wide")}${module("MARGIN PROFILE","各利潤率的實績輪廓",marginVisual(vm),"wide")}${ResearchAnnotation("GM 改善後，OP Margin 是否同步穿透？")}${module("MARGIN READ-THROUGH","獲利結構判讀",profitabilityRead(vm),"note")}${module("FOCUS","需要連續驗證的指標",bullets([`毛利率與 ${vm.dashboard.focusMetric.label} 是否同步改善。`,`營收放量後，營益率是否能維持而非被折舊、費用或低毛利產品抵銷。`]),"note")}`,
+content:`${module("PROFITABILITY","毛利、營益與淨利率對照",profitabilityTable(vm),"wide")}${module("MARGIN PROFILE","各利潤率的實績輪廓",marginVisual(vm),"wide")}${ResearchAnnotation("GM 改善後，OP Margin 是否同步穿透？")}${module("MARGIN READ-THROUGH","獲利結構判讀",profitabilityRead(vm),"note")}${vm.earningsQuality ? module("EQ-01","盈餘品質與業外損益摘要",eq01Summary(vm.earningsQuality),"wide") : module("FOCUS","需要連續驗證的指標",bullets([`毛利率與 ${vm.dashboard.focusMetric.label} 是否同步改善。`,`營收放量後，營益率是否能維持而非被折舊、費用或低毛利產品抵銷。`]),"note")}`,
     },
     {
       section:standardSection("standard-forecast-a",`${forecastYearA}F 獲利與情境區間`,["forecasts"]),
@@ -469,10 +516,18 @@ content:`${module("PROFITABILITY","毛利、營益與淨利率對照",profitabil
       content:sourcePage(vm),
     },
   ];
+  if (vm.earningsQuality && evaluateEarningsQuality(vm.earningsQuality).requiresL2) {
+    pages.splice(5, 0, {
+      section:standardSection("standard-eq01","EQ-01｜盈餘品質與業外損益穿透",["earningsQuality"]),
+      content:eq01DeepDive(vm),
+    });
+  }
   return pages;
 }
 
-function sourceIds(vm,s){return [...new Set(s.payloadRefs.flatMap(ref=>Array.isArray(vm[ref])?vm[ref].flatMap(r=>r.sourceIds??[]):[]))]}
+function sourceIds(vm,s){return [...new Set(s.payloadRefs.flatMap(ref=>ref==="earningsQuality"&&vm.earningsQuality
+  ? [...vm.earningsQuality.periods.flatMap(p=>[...p.sourceIds,...p.adjustments.flatMap(a=>a.sourceIds)]),...vm.earningsQuality.l2.sourceIds]
+  : Array.isArray(vm[ref])?vm[ref].flatMap(r=>r.sourceIds??[]):[]))]}
 function railSources(vm,s){return sourceIds(vm,s).slice(0,5).map(id=>vm.sourceMap[id]).filter(Boolean)}
 function page(vm,s,n,total,content){return ResearchPaper({vm,section:s,number:n,total,content,sources:railSources(vm,s)})}
 
