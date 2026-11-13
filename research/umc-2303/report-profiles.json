@@ -5,7 +5,7 @@
       "kind": "generated",
       "output": "public/research/reports/umc-2303.html",
       "layout": "research-standard-v2",
-      "expectedPages": 15,
+      "expectedPages": 16,
       "sections": [
         "package-sections"
       ]
