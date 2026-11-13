@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "packageVersion": "1.3.0",
-  "asOfDate": "2026-10-21",
+  "packageVersion": "1.4.0",
+  "asOfDate": "2026-11-13",
   "company": {
     "id": "jingu-8358",
     "ticker": "8358",
@@ -17,12 +17,12 @@
     "id": "jingu-report-v1",
     "title": "金居 8358｜AI 伺服器高階銅箔研究",
     "slug": "jingu-8358",
-    "summary": "9 月營收 11.041 億元，年增 64.63%；前三季累計 85.060 億元，年增 48.91%。AI PCB／CCL 材料升級支持 HVLP 銅箔需求，下一步驗證毛利率、HVLP4 良率與斗六三廠。10/20 董事長受訪提出馬來西亞兩期擴廠規畫，投資約 80–100 億元、年產能 3 萬噸，首期目標 2028Q3；這是公司展望，不是已投產營收，需另追蹤融資、資本支出與折舊。",
+    "summary": "2026Q3毛利率26.72%、EPS2.41元；10月營收11.080億元、年增57.95%。第三季毛利率較第二季27.39%回落，須確認HVLP良率、加工費及擴廠折舊。",
     "thesis": "AI PCB／CCL 規格升級與高階材料需求 → HVLP4 與 RG 銅箔需求 → 可出售產能與加工費 → 毛利率 → 斗六三廠與東南亞擴產 → EPS。",
     "status": "published",
     "visibility": "listed",
-    "version": "1.3",
-    "publishedAt": "2026-10-21"
+    "version": "1.4",
+    "publishedAt": "2026-11-13"
   },
   "thesis": {
     "summary": "營運偏綠、執行待驗證：2026 年 1–9 月營收 85.060 億元、年增 48.91%；Q3 月營收加總 31.690 億元、較 Q2 增加約 12.98%，但最新可核對毛利率與 EPS 仍為 Q2。馬來西亞高階銅箔新廠規畫更具體，需以融資、建廠、認證及出貨驗證，不能把兩期名目產能直接計入短期獲利。",
@@ -45,7 +45,7 @@
     ]
   },
   "dashboard": {
-    "currentView": "9 月營收 11.041 億元、YoY +64.63%、MoM +4.53%；1–9 月 85.060 億元、YoY +48.91%。Q3 月營收加總 31.690 億元，較 Q2 +12.98%，尚非 Q3 獲利財報。10/20 董事長受訪提出馬來西亞投資 80–100 億元、兩期合計年產能 3 萬噸；首期目標 2028Q3、第二期 2029H2，均為規畫。Q2 毛利率 27.39%、H1 EPS 4.22 元仍為既有實績基礎。",
+    "currentView": "2026Q3毛利率26.72%、EPS2.41元；10月營收11.080億元、年增57.95%。第三季毛利率較第二季27.39%回落，須確認HVLP良率、加工費及擴廠折舊。 2026Q3 FVOCI評價利益1.152億元、前三季累計13.449億元列OCI，不應直接加進當期EPS；後續檢驗股東權益與市值敏感度。",
     "currentThesis": "營收成長持續，整體仍待毛利率、HVLP4 良率與三廠出貨驗證；馬來西亞計畫增加長期供給選項，也提高資金、折舊與執行風險。",
     "verificationChain": [
       "10 月以後月營收能否維持 10 億元以上並延續年增",
@@ -56,7 +56,7 @@
       "HVLP4 供給缺口是否隨競爭者擴產、良率與認證改善而收斂",
       "馬來西亞資金、支出及 2028Q3／2029H2 分期量產是否落地"
     ],
-    "conclusion": "目前維持營運偏綠、執行待驗證。9 月營收續升，Q3 月營收加總較 Q2 增加約 12.98%，但毛利率與現金流仍待 Q3 財報。馬來西亞新廠把海外選項具體化，同時帶來 80–100 億元投資及後續融資、折舊風險。年產能 3 萬噸是兩期規畫，不能與既有海外 RG 月產逾 500 噸的舊研究口徑相加，也不直接上修 2026–2028 EPS。PCB／CCL 需求背景仍須轉成金居的認證、出貨與利潤證據。",
+    "conclusion": "2026Q3毛利率26.72%、EPS2.41元；10月營收11.080億元、年增57.95%。第三季毛利率較第二季27.39%回落，須確認HVLP良率、加工費及擴廠折舊。 投資燈號先維持原有框架，待現金流及應收／存貨／技術驗證後再變更。",
     "forecastScenario": "consensus",
     "headlineForecastYears": [
       2026,
@@ -69,7 +69,7 @@
     },
     "monthlyRevenue": {
       "focusYear": 2026,
-      "cumulativeThroughMonth": 9,
+      "cumulativeThroughMonth": 10,
       "unitDivisor": 100,
       "unitLabel": "億元"
     },
@@ -91,7 +91,7 @@
         "years": 3
       }
     ],
-    "estimateNote": "2026F-2028F 為本研究整合使用者提供報告與本土／外資研究模型的情境值，不是公司財測；需求、缺口與競爭者市占為公開市場估計，且 HVLP2+、HVLP3+、HVLP4 的市場範圍不同，不應直接混算；PCB 其他材料與下游製程的供需訊號僅作產業背景，不等同金居訂單；外資研究機構、本土研究機構與產業報告的假設不同，應以後續實績更新；本次新增的高層數／HDI、低損耗與 PTFE／製程訊號仍須以金居後續產品 mix、出貨、毛利率與現金流驗證。 2026-10-21 更新僅回填月營收及公開擴廠事件；既有財測數值未重估，馬來西亞投資與兩期產能未直接加入 EPS，需待融資、產品配置及量產效率確認。",
+    "estimateNote": "2026F-2028F 為本研究整合使用者提供報告與本土／外資研究模型的情境值，不是公司財測；需求、缺口與競爭者市占為公開市場估計，且 HVLP2+、HVLP3+、HVLP4 的市場範圍不同，不應直接混算；PCB 其他材料與下游製程的供需訊號僅作產業背景，不等同金居訂單；外資研究機構、本土研究機構與產業報告的假設不同，應以後續實績更新；本次新增的高層數／HDI、低損耗與 PTFE／製程訊號仍須以金居後續產品 mix、出貨、毛利率與現金流驗證。 2026-10-21 更新僅回填月營收及公開擴廠事件；既有財測數值未重估，馬來西亞投資與兩期產能未直接加入 EPS，需待融資、產品配置及量產效率確認。 【2026/11/13新增】2026Q3 FVOCI評價利益1.152億元、前三季累計13.449億元列OCI，不應直接加進當期EPS；後續檢驗股東權益與市值敏感度。 未重估原有情境EPS，新增實績和外部預測只作比較；仍需後續更新正式財報附註及獲利品質。",
     "demandOutlook": [
       {
         "id": "jingu-demand-2026",
@@ -262,17 +262,20 @@
       "fiscalYear": 2025,
       "quarter": null,
       "revenue": 7879.981,
-      "grossProfit": 1714.0,
+      "grossProfit": 1714,
       "grossMargin": 21.81,
-      "operatingIncome": 1447.0,
+      "operatingIncome": 1447,
       "operatingMargin": 18.36,
-      "netIncome": 1062.0,
+      "netIncome": 1062,
       "netMargin": 13.48,
       "eps": 4.21,
       "currency": "TWD",
       "scale": "million",
       "evidenceClass": "official",
-      "sourceIds": ["jingu-src-official", "jingu-src-financial-ratios"]
+      "sourceIds": [
+        "jingu-src-official",
+        "jingu-src-financial-ratios"
+      ]
     },
     {
       "id": "jingu-2026q1",
@@ -280,18 +283,23 @@
       "fiscalYear": 2026,
       "quarter": 1,
       "revenue": 2532.026,
-      "grossProfit": 727.0,
+      "grossProfit": 727,
       "grossMargin": 28.71,
-      "operatingIncome": 649.0,
+      "operatingIncome": 649,
       "operatingMargin": 25.63,
-      "netIncome": 520.0,
+      "netIncome": 520,
       "netMargin": 20.52,
       "eps": 2.06,
       "currency": "TWD",
       "scale": "million",
       "evidenceClass": "third_party_fact",
-      "sourceIds": ["jingu-src-financial-ratios", "jingu-src-domestic-forecast"],
-      "claimIds": ["jingu-claim-h1"]
+      "sourceIds": [
+        "jingu-src-financial-ratios",
+        "jingu-src-domestic-forecast"
+      ],
+      "claimIds": [
+        "jingu-claim-h1"
+      ]
     },
     {
       "id": "jingu-2026q2",
@@ -301,80 +309,436 @@
       "revenue": 2804.964,
       "grossProfit": 768.4,
       "grossMargin": 27.39,
-      "operatingIncome": 685.0,
+      "operatingIncome": 685,
       "operatingMargin": 24.42,
-      "netIncome": 545.0,
+      "netIncome": 545,
       "netMargin": 19.43,
       "eps": 2.16,
       "currency": "TWD",
       "scale": "million",
       "evidenceClass": "third_party_fact",
-      "sourceIds": ["jingu-src-financial-ratios"],
-      "claimIds": ["jingu-claim-h1"]
+      "sourceIds": [
+        "jingu-src-financial-ratios"
+      ],
+      "claimIds": [
+        "jingu-claim-h1"
+      ]
+    },
+    {
+      "id": "jingu-2026q3-audit",
+      "period": "2026Q3",
+      "fiscalYear": 2026,
+      "quarter": 3,
+      "revenue": 3169.194,
+      "grossProfit": 846.916,
+      "grossMargin": 26.72,
+      "operatingIncome": 756.932,
+      "operatingMargin": 23.88,
+      "netIncome": 607.905,
+      "netMargin": 19.18,
+      "eps": 2.41,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "jingu-src-q3-20261113"
+      ]
     }
   ],
   "monthlyRevenue": [
-    {"id":"jingu-2601","year":2026,"month":1,"revenue":820.421,"mom":9.28,"yoy":45.91,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["jingu-src-official"]},
-    {"id":"jingu-2602","year":2026,"month":2,"revenue":850.914,"mom":3.71,"yoy":51.13,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["jingu-src-official"]},
-    {"id":"jingu-2603","year":2026,"month":3,"revenue":860.691,"mom":1.14,"yoy":42.81,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["jingu-src-official"]},
-    {"id":"jingu-2604","year":2026,"month":4,"revenue":900.77,"mom":4.65,"yoy":35.8,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["jingu-src-official"]},
-    {"id":"jingu-2605","year":2026,"month":5,"revenue":941.901,"mom":4.56,"yoy":41.37,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["jingu-src-official"]},
-    {"id":"jingu-2606","year":2026,"month":6,"revenue":962.293,"mom":2.16,"yoy":43.36,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["jingu-src-official"]},
-    {"id":"jingu-2607","year":2026,"month":7,"revenue":1008.644,"mom":4.81,"yoy":54.86,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["jingu-src-official"]},
-    {"id":"jingu-2608","year":2026,"month":8,"revenue":1056.242,"mom":4.71,"yoy":59.7,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["jingu-src-official"],"claimIds":["jingu-claim-august"]},
-    {"id":"jingu-2609","year":2026,"month":9,"revenue":1104.081,"mom":4.53,"yoy":64.63,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["jingu-src-official"],"claimIds":["jingu-claim-september"]}
+    {
+      "id": "jingu-2601",
+      "year": 2026,
+      "month": 1,
+      "revenue": 820.421,
+      "mom": 9.28,
+      "yoy": 45.91,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "jingu-src-official"
+      ]
+    },
+    {
+      "id": "jingu-2602",
+      "year": 2026,
+      "month": 2,
+      "revenue": 850.914,
+      "mom": 3.71,
+      "yoy": 51.13,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "jingu-src-official"
+      ]
+    },
+    {
+      "id": "jingu-2603",
+      "year": 2026,
+      "month": 3,
+      "revenue": 860.691,
+      "mom": 1.14,
+      "yoy": 42.81,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "jingu-src-official"
+      ]
+    },
+    {
+      "id": "jingu-2604",
+      "year": 2026,
+      "month": 4,
+      "revenue": 900.77,
+      "mom": 4.65,
+      "yoy": 35.8,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "jingu-src-official"
+      ]
+    },
+    {
+      "id": "jingu-2605",
+      "year": 2026,
+      "month": 5,
+      "revenue": 941.901,
+      "mom": 4.56,
+      "yoy": 41.37,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "jingu-src-official"
+      ]
+    },
+    {
+      "id": "jingu-2606",
+      "year": 2026,
+      "month": 6,
+      "revenue": 962.293,
+      "mom": 2.16,
+      "yoy": 43.36,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "jingu-src-official"
+      ]
+    },
+    {
+      "id": "jingu-2607",
+      "year": 2026,
+      "month": 7,
+      "revenue": 1008.644,
+      "mom": 4.81,
+      "yoy": 54.86,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "jingu-src-official"
+      ]
+    },
+    {
+      "id": "jingu-2608",
+      "year": 2026,
+      "month": 8,
+      "revenue": 1056.242,
+      "mom": 4.71,
+      "yoy": 59.7,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "jingu-src-official"
+      ],
+      "claimIds": [
+        "jingu-claim-august"
+      ]
+    },
+    {
+      "id": "jingu-2609",
+      "year": 2026,
+      "month": 9,
+      "revenue": 1104.081,
+      "mom": 4.53,
+      "yoy": 64.63,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "jingu-src-official"
+      ],
+      "claimIds": [
+        "jingu-claim-september"
+      ]
+    },
+    {
+      "id": "jingu-2610",
+      "year": 2026,
+      "month": 10,
+      "revenue": 1108.038,
+      "mom": 0.36,
+      "yoy": 57.95,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "jingu-src-m10-20261113"
+      ]
+    }
   ],
   "segments": [
     {
-      "id":"jingu-2026-hvlp",
-      "period":"2026E",
-      "segment":"HVLP3+／HVLP4 高階銅箔",
-      "revenue":null,
-      "share":null,
-      "isEstimate":true,
-      "currency":"TWD",
-      "scale":"million",
-      "evidenceClass":"research_inference",
-      "sourceIds":["jingu-src-foreign-hvlp","jingu-src-domestic-forecast","jingu-src-self-collected"],
-      "claimIds":["jingu-claim-hv"]
+      "id": "jingu-2026-hvlp",
+      "period": "2026E",
+      "segment": "HVLP3+／HVLP4 高階銅箔",
+      "revenue": null,
+      "share": null,
+      "isEstimate": true,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-foreign-hvlp",
+        "jingu-src-domestic-forecast",
+        "jingu-src-self-collected"
+      ],
+      "claimIds": [
+        "jingu-claim-hv"
+      ]
     },
     {
-      "id":"jingu-2026-rg",
-      "period":"2026E",
-      "segment":"RG／進階 RTF 銅箔",
-      "revenue":null,
-      "share":null,
-      "isEstimate":true,
-      "currency":"TWD",
-      "scale":"million",
-      "evidenceClass":"research_inference",
-      "sourceIds":["jingu-src-foreign-sea","jingu-src-foreign-hvlp"],
-      "claimIds":["jingu-claim-sea"]
+      "id": "jingu-2026-rg",
+      "period": "2026E",
+      "segment": "RG／進階 RTF 銅箔",
+      "revenue": null,
+      "share": null,
+      "isEstimate": true,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-foreign-sea",
+        "jingu-src-foreign-hvlp"
+      ],
+      "claimIds": [
+        "jingu-claim-sea"
+      ]
     },
     {
-      "id":"jingu-2026-standard",
-      "period":"2026E",
-      "segment":"HTE／標準 RTF 與其他銅箔",
-      "revenue":null,
-      "share":null,
-      "isEstimate":true,
-      "currency":"TWD",
-      "scale":"million",
-      "evidenceClass":"research_inference",
-      "sourceIds":["jingu-src-foreign-hvlp","jingu-src-foreign-supply"],
-      "claimIds":["jingu-claim-hv"]
+      "id": "jingu-2026-standard",
+      "period": "2026E",
+      "segment": "HTE／標準 RTF 與其他銅箔",
+      "revenue": null,
+      "share": null,
+      "isEstimate": true,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-foreign-hvlp",
+        "jingu-src-foreign-supply"
+      ],
+      "claimIds": [
+        "jingu-claim-hv"
+      ]
     }
   ],
   "forecasts": [
-    {"id":"jingu-2026-bear","fiscalYear":2026,"scenario":"bear","revenue":11115,"grossMargin":29.6,"netIncome":2366,"eps":9.34,"optoShare":null,"currency":"TWD","scale":"million","evidenceClass":"market_consensus","sourceIds":["jingu-src-foreign-update","jingu-src-foreign-hvlp"],"claimIds":["jingu-claim-foreign-forecast"],"notes":"外資研究機構 模型：HVLP4 產能與價格上行按較保守節奏，為外部機構低端參考。"},
-    {"id":"jingu-2026-consensus","fiscalYear":2026,"scenario":"consensus","revenue":12378,"grossMargin":33.2,"netIncome":3029,"eps":11.99,"optoShare":null,"currency":"TWD","scale":"million","evidenceClass":"market_consensus","sourceIds":["jingu-src-domestic-forecast"],"claimIds":["jingu-claim-domestic-forecast"],"notes":"本土研究機構 2026F 情境；非公司指引。"},
-    {"id":"jingu-2026-bull","fiscalYear":2026,"scenario":"bull","revenue":13000,"grossMargin":35,"netIncome":3380,"eps":13,"optoShare":null,"currency":"TWD","scale":"million","evidenceClass":"research_inference","sourceIds":["jingu-src-self-collected","jingu-src-domestic-forecast","jingu-src-domestic-industry"],"claimIds":["jingu-claim-forecast-range"],"notes":"假設 HVLP4 供需緊張延續、加工費順利轉嫁且 2H26 mix 升級快於基準。"},
-    {"id":"jingu-2027-bear","fiscalYear":2027,"scenario":"bear","revenue":15849,"grossMargin":36.5,"netIncome":4650,"eps":18.4,"optoShare":null,"currency":"TWD","scale":"million","evidenceClass":"market_consensus","sourceIds":["jingu-src-foreign-hvlp"],"claimIds":["jingu-claim-foreign-forecast"],"notes":"以 外資研究機構 2027F 營收／獲利作保守外部參考，反映三廠與 mix 仍在爬坡。"},
-    {"id":"jingu-2027-consensus","fiscalYear":2027,"scenario":"consensus","revenue":19064,"grossMargin":37.8,"netIncome":5431,"eps":21.5,"optoShare":null,"currency":"TWD","scale":"million","evidenceClass":"market_consensus","sourceIds":["jingu-src-domestic-forecast"],"claimIds":["jingu-claim-domestic-forecast"],"notes":"本土研究機構 2027F 情境；假設斗六三廠量產與 AI／PCIe5 雙引擎。"},
-    {"id":"jingu-2027-bull","fiscalYear":2027,"scenario":"bull","revenue":21000,"grossMargin":40.5,"netIncome":6300,"eps":25,"optoShare":null,"currency":"TWD","scale":"million","evidenceClass":"research_inference","sourceIds":["jingu-src-self-collected","jingu-src-domestic-forecast","jingu-src-foreign-hvlp"],"claimIds":["jingu-claim-forecast-range"],"notes":"假設 2027 年底高階產能接近 800 噸／月，且 HVLP4／RG mix 與價格優於基準。"},
-    {"id":"jingu-2028-bear","fiscalYear":2028,"scenario":"bear","revenue":22000,"grossMargin":44,"netIncome":7300,"eps":28,"optoShare":null,"currency":"TWD","scale":"million","evidenceClass":"research_inference","sourceIds":["jingu-src-foreign-hvlp","jingu-src-foreign-supply"],"claimIds":["jingu-claim-forecast-range"],"notes":"高階需求仍在但競爭者擴產與供需平衡使價格／利用率低於樂觀假設。 10/21 保留既有情境數值；新馬來西亞計畫尚未按投資額或名目產能重估，需重新核對產品、分期及折舊。"},
-    {"id":"jingu-2028-consensus","fiscalYear":2028,"scenario":"consensus","revenue":22496,"grossMargin":47.2,"netIncome":8009,"eps":31.63,"optoShare":null,"currency":"TWD","scale":"million","evidenceClass":"market_consensus","sourceIds":["jingu-src-foreign-hvlp"],"claimIds":["jingu-claim-foreign-forecast"],"notes":"外資研究機構 2028F 情境；供作高階產品 mix 與毛利率外部基準。 10/21 保留既有情境數值；新馬來西亞計畫尚未按投資額或名目產能重估，需重新核對產品、分期及折舊。"},
-    {"id":"jingu-2028-bull","fiscalYear":2028,"scenario":"bull","revenue":24000,"grossMargin":49.5,"netIncome":9600,"eps":33,"optoShare":null,"currency":"TWD","scale":"million","evidenceClass":"research_inference","sourceIds":["jingu-src-self-collected","jingu-src-foreign-sea","jingu-src-foreign-industry-b"],"claimIds":["jingu-claim-forecast-range"],"notes":"高階材料升級、東南亞 RG 量產與 HVLP5／PTFE 額外選擇權部分實現；技術路線仍未確定。 10/21 保留既有情境數值；新馬來西亞計畫尚未按投資額或名目產能重估，需重新核對產品、分期及折舊。"}
+    {
+      "id": "jingu-2026-bear",
+      "fiscalYear": 2026,
+      "scenario": "bear",
+      "revenue": 11115,
+      "grossMargin": 29.6,
+      "netIncome": 2366,
+      "eps": 9.34,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "market_consensus",
+      "sourceIds": [
+        "jingu-src-foreign-update",
+        "jingu-src-foreign-hvlp"
+      ],
+      "claimIds": [
+        "jingu-claim-foreign-forecast"
+      ],
+      "notes": "外資研究機構 模型：HVLP4 產能與價格上行按較保守節奏，為外部機構低端參考。"
+    },
+    {
+      "id": "jingu-2026-consensus",
+      "fiscalYear": 2026,
+      "scenario": "consensus",
+      "revenue": 12378,
+      "grossMargin": 33.2,
+      "netIncome": 3029,
+      "eps": 11.99,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "market_consensus",
+      "sourceIds": [
+        "jingu-src-domestic-forecast"
+      ],
+      "claimIds": [
+        "jingu-claim-domestic-forecast"
+      ],
+      "notes": "本土研究機構 2026F 情境；非公司指引。"
+    },
+    {
+      "id": "jingu-2026-bull",
+      "fiscalYear": 2026,
+      "scenario": "bull",
+      "revenue": 13000,
+      "grossMargin": 35,
+      "netIncome": 3380,
+      "eps": 13,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-self-collected",
+        "jingu-src-domestic-forecast",
+        "jingu-src-domestic-industry"
+      ],
+      "claimIds": [
+        "jingu-claim-forecast-range"
+      ],
+      "notes": "假設 HVLP4 供需緊張延續、加工費順利轉嫁且 2H26 mix 升級快於基準。"
+    },
+    {
+      "id": "jingu-2027-bear",
+      "fiscalYear": 2027,
+      "scenario": "bear",
+      "revenue": 15849,
+      "grossMargin": 36.5,
+      "netIncome": 4650,
+      "eps": 18.4,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "market_consensus",
+      "sourceIds": [
+        "jingu-src-foreign-hvlp"
+      ],
+      "claimIds": [
+        "jingu-claim-foreign-forecast"
+      ],
+      "notes": "以 外資研究機構 2027F 營收／獲利作保守外部參考，反映三廠與 mix 仍在爬坡。"
+    },
+    {
+      "id": "jingu-2027-consensus",
+      "fiscalYear": 2027,
+      "scenario": "consensus",
+      "revenue": 19064,
+      "grossMargin": 37.8,
+      "netIncome": 5431,
+      "eps": 21.5,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "market_consensus",
+      "sourceIds": [
+        "jingu-src-domestic-forecast"
+      ],
+      "claimIds": [
+        "jingu-claim-domestic-forecast"
+      ],
+      "notes": "本土研究機構 2027F 情境；假設斗六三廠量產與 AI／PCIe5 雙引擎。 2026/11/13：Q3實績已核對；外部模型差異仍待審查，不以本輪更新單方面改動2027 EPS。"
+    },
+    {
+      "id": "jingu-2027-bull",
+      "fiscalYear": 2027,
+      "scenario": "bull",
+      "revenue": 21000,
+      "grossMargin": 40.5,
+      "netIncome": 6300,
+      "eps": 25,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-self-collected",
+        "jingu-src-domestic-forecast",
+        "jingu-src-foreign-hvlp"
+      ],
+      "claimIds": [
+        "jingu-claim-forecast-range"
+      ],
+      "notes": "假設 2027 年底高階產能接近 800 噸／月，且 HVLP4／RG mix 與價格優於基準。"
+    },
+    {
+      "id": "jingu-2028-bear",
+      "fiscalYear": 2028,
+      "scenario": "bear",
+      "revenue": 22000,
+      "grossMargin": 44,
+      "netIncome": 7300,
+      "eps": 28,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-foreign-hvlp",
+        "jingu-src-foreign-supply"
+      ],
+      "claimIds": [
+        "jingu-claim-forecast-range"
+      ],
+      "notes": "高階需求仍在但競爭者擴產與供需平衡使價格／利用率低於樂觀假設。 10/21 保留既有情境數值；新馬來西亞計畫尚未按投資額或名目產能重估，需重新核對產品、分期及折舊。"
+    },
+    {
+      "id": "jingu-2028-consensus",
+      "fiscalYear": 2028,
+      "scenario": "consensus",
+      "revenue": 22496,
+      "grossMargin": 47.2,
+      "netIncome": 8009,
+      "eps": 31.63,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "market_consensus",
+      "sourceIds": [
+        "jingu-src-foreign-hvlp"
+      ],
+      "claimIds": [
+        "jingu-claim-foreign-forecast"
+      ],
+      "notes": "外資研究機構 2028F 情境；供作高階產品 mix 與毛利率外部基準。 10/21 保留既有情境數值；新馬來西亞計畫尚未按投資額或名目產能重估，需重新核對產品、分期及折舊。"
+    },
+    {
+      "id": "jingu-2028-bull",
+      "fiscalYear": 2028,
+      "scenario": "bull",
+      "revenue": 24000,
+      "grossMargin": 49.5,
+      "netIncome": 9600,
+      "eps": 33,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-self-collected",
+        "jingu-src-foreign-sea",
+        "jingu-src-foreign-industry-b"
+      ],
+      "claimIds": [
+        "jingu-claim-forecast-range"
+      ],
+      "notes": "高階材料升級、東南亞 RG 量產與 HVLP5／PTFE 額外選擇權部分實現；技術路線仍未確定。 10/21 保留既有情境數值；新馬來西亞計畫尚未按投資額或名目產能重估，需重新核對產品、分期及折舊。"
+    }
   ],
   "capacity": [
     {
@@ -587,64 +951,81 @@
   ],
   "signalRules": [
     {
-      "id":"jingu-rule-revenue",
-      "metric":"月營收",
-      "greenCondition":">= 10 億元且年增維持正值",
-      "yellowCondition":"8.5-10 億元或年增明顯放緩",
-      "redCondition":"< 8.5 億元且連續回落",
-      "weight":1.4,
-      "evidenceClass":"research_inference",
-      "sourceIds":["jingu-src-official"]
+      "id": "jingu-rule-revenue",
+      "metric": "月營收",
+      "greenCondition": ">= 10 億元且年增維持正值",
+      "yellowCondition": "8.5-10 億元或年增明顯放緩",
+      "redCondition": "< 8.5 億元且連續回落",
+      "weight": 1.4,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-official"
+      ]
     },
     {
-      "id":"jingu-rule-gm",
-      "metric":"毛利率",
-      "greenCondition":">= 30% 並持續上升",
-      "yellowCondition":"27-30% 或高階 mix 尚未穩定",
-      "redCondition":"< 27% 且連續下降",
-      "weight":1.5,
-      "evidenceClass":"research_inference",
-      "sourceIds":["jingu-src-financial-ratios","jingu-src-domestic-forecast"]
+      "id": "jingu-rule-gm",
+      "metric": "毛利率",
+      "greenCondition": ">= 30% 並持續上升",
+      "yellowCondition": "27-30% 或高階 mix 尚未穩定",
+      "redCondition": "< 27% 且連續下降",
+      "weight": 1.5,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-financial-ratios",
+        "jingu-src-domestic-forecast"
+      ]
     },
     {
-      "id":"jingu-rule-hvlp",
-      "metric":"HVLP4 認證與良率",
-      "greenCondition":"量產出貨、良率與毛利率同步改善",
-      "yellowCondition":"客戶驗證或爬坡中，尚缺連續數據",
-      "redCondition":"量產延遲、良率不足或訂單轉弱",
-      "weight":1.6,
-      "evidenceClass":"research_inference",
-      "sourceIds":["jingu-src-domestic-forecast","jingu-src-foreign-hvlp"]
+      "id": "jingu-rule-hvlp",
+      "metric": "HVLP4 認證與良率",
+      "greenCondition": "量產出貨、良率與毛利率同步改善",
+      "yellowCondition": "客戶驗證或爬坡中，尚缺連續數據",
+      "redCondition": "量產延遲、良率不足或訂單轉弱",
+      "weight": 1.6,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-domestic-forecast",
+        "jingu-src-foreign-hvlp"
+      ]
     },
     {
-      "id":"jingu-rule-capacity",
-      "metric":"高階產能",
-      "greenCondition":"2027 年底 HVLP4 約 700 噸／月且三廠按期量產",
-      "yellowCondition":"設備到位但量產／利用率待驗證",
-      "redCondition":"三廠延遲或有效產能低於模型",
-      "weight":1.3,
-      "evidenceClass":"research_inference",
-      "sourceIds":["jingu-src-domestic-forecast","jingu-src-foreign-hvlp"]
+      "id": "jingu-rule-capacity",
+      "metric": "高階產能",
+      "greenCondition": "2027 年底 HVLP4 約 700 噸／月且三廠按期量產",
+      "yellowCondition": "設備到位但量產／利用率待驗證",
+      "redCondition": "三廠延遲或有效產能低於模型",
+      "weight": 1.3,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-domestic-forecast",
+        "jingu-src-foreign-hvlp"
+      ]
     },
     {
-      "id":"jingu-rule-pricing",
-      "metric":"加工費與成本轉嫁",
-      "greenCondition":"高階加工費上行且可轉嫁",
-      "yellowCondition":"成本上升、轉嫁速度不明",
-      "redCondition":"價格下跌或成本無法轉嫁",
-      "weight":1.2,
-      "evidenceClass":"research_inference",
-      "sourceIds":["jingu-src-domestic-industry","jingu-src-foreign-supply"]
+      "id": "jingu-rule-pricing",
+      "metric": "加工費與成本轉嫁",
+      "greenCondition": "高階加工費上行且可轉嫁",
+      "yellowCondition": "成本上升、轉嫁速度不明",
+      "redCondition": "價格下跌或成本無法轉嫁",
+      "weight": 1.2,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-domestic-industry",
+        "jingu-src-foreign-supply"
+      ]
     },
     {
-      "id":"jingu-rule-supply",
-      "metric":"HVLP4 供需",
-      "greenCondition":"需求增速持續高於可出售供給",
-      "yellowCondition":"2027 年新增供給使市場接近平衡",
-      "redCondition":"競爭擴產造成明顯過剩",
-      "weight":1.1,
-      "evidenceClass":"research_inference",
-      "sourceIds":["jingu-src-foreign-hvlp","jingu-src-foreign-supply"]
+      "id": "jingu-rule-supply",
+      "metric": "HVLP4 供需",
+      "greenCondition": "需求增速持續高於可出售供給",
+      "yellowCondition": "2027 年新增供給使市場接近平衡",
+      "redCondition": "競爭擴產造成明顯過剩",
+      "weight": 1.1,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-foreign-hvlp",
+        "jingu-src-foreign-supply"
+      ]
     }
   ],
   "signalSnapshots": [
@@ -741,59 +1122,774 @@
       "claimIds": [
         "jingu-claim-supply"
       ]
+    },
+    {
+      "id": "jingu-sig-q3-nov13",
+      "asOfDate": "2026-11-13",
+      "metric": "第三季獲利實績",
+      "status": "green",
+      "valueText": "EPS 2.41元，毛利率26.72%",
+      "notes": "2026Q3毛利率26.72%、EPS2.41元；10月營收11.080億元、年增57.95%。第三季毛利率較第二季27.39%回落，須確認HVLP良率、加工費及擴廠折舊。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "jingu-src-q3-20261113"
+      ]
+    },
+    {
+      "id": "jingu-sig-oct-nov13",
+      "asOfDate": "2026-11-13",
+      "metric": "十月月營收",
+      "status": "green",
+      "valueText": "2026/10 1108.038百萬元，YoY +57.95%",
+      "notes": "10月公告已核對；月營收並非獲利或正式客戶量產資格。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "jingu-src-m10-20261113"
+      ]
     }
   ],
   "sections": [
-    {"id":"jingu-sec-summary","type":"summary","title":"投資摘要與證據邊界","sortOrder":1,"payloadRefs":["thesis","signalSnapshots"],"showSources":true},
-    {"id":"jingu-sec-actuals","type":"financial-table","title":"已實現財務：營收與毛利率同步改善","sortOrder":2,"payloadRefs":["actuals"],"showSources":true},
-    {"id":"jingu-sec-revenue","type":"bar-chart","title":"2026 月營收：高階銅箔放量代理指標","sortOrder":3,"payloadRefs":["monthlyRevenue"],"showSources":true},
-    {"id":"jingu-sec-mix","type":"financial-table","title":"產品結構：由一般銅箔走向 RG／HVLP","sortOrder":4,"payloadRefs":["segments"],"showSources":true},
-    {"id":"jingu-sec-scenario","type":"scenario-table","title":"2026F-2028F 情境與外部模型對照","sortOrder":5,"payloadRefs":["forecasts"],"showSources":true},
-    {"id":"jingu-sec-capacity","type":"capacity","title":"高階產能、斗六三廠與東南亞選項","sortOrder":6,"payloadRefs":["capacity"],"showSources":true},
-    {"id":"jingu-sec-signals","type":"signals","title":"紅綠燈：營運偏綠、執行待驗證","sortOrder":7,"payloadRefs":["signalRules","signalSnapshots"],"showSources":true},
-    {"id":"jingu-sec-risks","type":"catalysts-risks","title":"催化劑與關鍵風險","sortOrder":8,"payloadRefs":["catalysts","risks"],"showSources":true},
-    {"id":"jingu-sec-sources","type":"sources","title":"資料來源與研究限制","sortOrder":9,"payloadRefs":["sources"],"showSources":true},
-    {"id":"jingu-sec-conclusion","type":"conclusion","title":"研究結論","sortOrder":10,"payloadRefs":["thesis"],"showSources":true}
+    {
+      "id": "jingu-sec-summary",
+      "type": "summary",
+      "title": "投資摘要與證據邊界",
+      "sortOrder": 1,
+      "payloadRefs": [
+        "thesis",
+        "signalSnapshots"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "jingu-sec-actuals",
+      "type": "financial-table",
+      "title": "已實現財務：營收與毛利率同步改善",
+      "sortOrder": 2,
+      "payloadRefs": [
+        "actuals"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "jingu-sec-revenue",
+      "type": "bar-chart",
+      "title": "2026 月營收：高階銅箔放量代理指標",
+      "sortOrder": 3,
+      "payloadRefs": [
+        "monthlyRevenue"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "jingu-sec-mix",
+      "type": "financial-table",
+      "title": "產品結構：由一般銅箔走向 RG／HVLP",
+      "sortOrder": 4,
+      "payloadRefs": [
+        "segments"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "jingu-sec-scenario",
+      "type": "scenario-table",
+      "title": "2026F-2028F 情境與外部模型對照",
+      "sortOrder": 5,
+      "payloadRefs": [
+        "forecasts"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "jingu-sec-capacity",
+      "type": "capacity",
+      "title": "高階產能、斗六三廠與東南亞選項",
+      "sortOrder": 6,
+      "payloadRefs": [
+        "capacity"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "jingu-sec-signals",
+      "type": "signals",
+      "title": "紅綠燈：營運偏綠、執行待驗證",
+      "sortOrder": 7,
+      "payloadRefs": [
+        "signalRules",
+        "signalSnapshots"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "jingu-sec-risks",
+      "type": "catalysts-risks",
+      "title": "催化劑與關鍵風險",
+      "sortOrder": 8,
+      "payloadRefs": [
+        "catalysts",
+        "risks"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "jingu-sec-sources",
+      "type": "sources",
+      "title": "資料來源與研究限制",
+      "sortOrder": 9,
+      "payloadRefs": [
+        "sources"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "jingu-sec-conclusion",
+      "type": "conclusion",
+      "title": "研究結論",
+      "sortOrder": 10,
+      "payloadRefs": [
+        "thesis"
+      ],
+      "showSources": true
+    }
   ],
   "sources": [
-    {"id":"jingu-src-official","evidenceClass":"official","provider":"金居開發","title":"金居官方營運資訊：2025-2026 月營收","url":"https://www.co-tech.com/tw/ir/operation","publishedDate":"2026-10-08","accessedDate":"2026-10-21","coveredPeriods":["2025FY","2026/01-2026/09"],"confidence":"high","notes":"公司營運頁：9 月 1,104,081 仟元，1–9 月累計 8,505,957 仟元；年增率以去年同期計算，Q3 僅為月營收加總。"},
-    {"id":"jingu-src-official-presentation","evidenceClass":"official","provider":"金居開發","title":"金居 2025Q4 法說簡報與市場動態","attachment":"8358-20260312.pdf","publishedDate":"2026-03-13","accessedDate":"2026-09-25","coveredPeriods":["2025Q4","2026/01","2025-2029F"],"confidence":"high","notes":"公司簡報用於核對電解銅箔應用、伺服器／高速通訊需求背景與產品開發脈絡；簡報內的產業預估不直接輸入金居 EPS 情境。"},
-    {"id":"jingu-src-financial-ratios","evidenceClass":"third_party_fact","provider":"Goodinfo／MoneyDJ 公開資料","title":"8358 金居季度財務比率與 EPS","url":"https://goodinfo.tw/tw/StockDetail.asp?STOCK_ID=8358","publishedDate":"2026-09-09","accessedDate":"2026-09-24","coveredPeriods":["2025FY","2026Q1","2026Q2","2026H1"],"confidence":"high","notes":"2026Q2 毛利率 27.39%、營業利益率 24.42%、稅後淨利率 19.43%、EPS 2.16；2026H1 EPS 4.22。"},
-    {"id":"jingu-src-self-collected","evidenceClass":"research_inference","provider":"自行蒐集","title":"金居展望與財測交叉核對","accessedDate":"2026-09-25","coveredPeriods":["2026F","2027F","2028F"],"confidence":"medium","notes":"整理公開資訊、公司公告與研究材料，用於產品升級、產能與情境交叉核對；定量欄位優先採可核對的公司與公開資料。"},
-    {"id":"jingu-src-gemini","evidenceClass":"research_inference","provider":"使用者提供 Gemini 分享頁","title":"金居研究資料（Gemini share，待內容確認）","url":"https://share.gemini.google/2VmyLp4lXAcA","accessedDate":"2026-09-24","coveredPeriods":["2026F","2027F","2028F"],"confidence":"low","notes":"分享頁在目前存取流程出現第三方安全警告，未將未核對內容列入定量模型；待使用者確認內容後再更新。"},
-    {"id":"jingu-src-domestic-forecast","evidenceClass":"market_consensus","provider":"本土研究機構","title":"金居：AI 新平台與 HVLP4 產能研究","attachment":"本土研究報告-A.pdf","publishedDate":"2026-05-20","accessedDate":"2026-09-24","coveredPeriods":["2026Q1","2026F","2027F"],"confidence":"medium","notes":"使用者提供研究機構 PDF；2026F／2027F EPS 11.99／21.50，原始檔未隨公開 repo 發布，非公司指引。"},
-    {"id":"jingu-src-foreign-hvlp","evidenceClass":"market_consensus","provider":"外資研究機構","title":"高階銅箔與 HVLP4 產能研究","attachment":"外資研究報告-A.pdf","publishedDate":"2026-09-14","accessedDate":"2026-09-24","coveredPeriods":["2025FY","2026F","2027F","2028F"],"confidence":"medium","notes":"使用者提供研究機構 PDF；Co-Tech EPS 9.34／18.59／31.63，HVLP4 產能模型為 2026/27/28 年底約 200／700／800 噸／月；含利益衝突揭露。"},
-    {"id":"jingu-src-foreign-sea","evidenceClass":"market_consensus","provider":"外資研究機構","title":"東南亞擴產與 RG 產品長期產能研究","attachment":"外資研究報告-B.pdf","publishedDate":"2026-09-14","accessedDate":"2026-09-24","coveredPeriods":["2026F","2027F","2028H2"],"confidence":"medium","notes":"使用者提供研究機構 PDF；東南亞 RG 量產可能於 2028H2 開始，月產能超過 500 噸；原始檔未隨公開 repo 發布。"},
-    {"id":"jingu-src-foreign-update","evidenceClass":"third_party_fact","provider":"外資研究機構／公司初步公告資料","title":"2026 年 8 月初步獲利更新","attachment":"外資研究更新-A.pdf","publishedDate":"2026-09-16","accessedDate":"2026-09-24","coveredPeriods":["2026/08","2026Q3"],"confidence":"high","notes":"使用者提供研究機構更新；2026/08 營收 1,056 百萬元、稅前 254 百萬元、稅後 203 百萬元、EPS 0.80；原始檔未隨公開 repo 發布。"},
-    {"id":"jingu-src-foreign-supply","evidenceClass":"market_consensus","provider":"外資研究機構","title":"高速銅箔供需與瓶頸研究","attachment":"外資產業報告-B.pdf","publishedDate":"2026-05-18","accessedDate":"2026-09-24","coveredPeriods":["2025","2026F","2027F","2028F","2030F"],"confidence":"medium","notes":"使用者提供產業報告；估計 HVLP 需求由 2025 約 1.3kt/月增至 2030 超過 6kt/月，並指出 2027 年供需與設備／良率執行風險。"},
-    {"id":"jingu-src-domestic-industry","evidenceClass":"market_consensus","provider":"本土研究機構","title":"CCL 升級、供需與加工費研究","attachment":"本土產業報告-A.pdf","publishedDate":"2026-09-04","accessedDate":"2026-09-24","coveredPeriods":["2026H2","2027F","2028F"],"confidence":"medium","notes":"使用者提供產業報告；整理銅箔加工費、玻纖布與 AI 平台材料升級，非金居公司指引。"},
-    {"id":"jingu-src-foreign-industry-a","evidenceClass":"market_consensus","provider":"外資研究機構","title":"台灣 PCB／覆銅板產業研究","attachment":"外資產業報告-A.pdf","publishedDate":"2026-09-01","accessedDate":"2026-09-24","coveredPeriods":["2026F","2027F","2028F"],"confidence":"low","notes":"使用者提供產業背景報告；用於供應鏈與 CCL 產能風險脈絡，不直接輸入金居 EPS。"},
-    {"id":"jingu-src-foreign-industry-b","evidenceClass":"market_consensus","provider":"外資研究機構","title":"PCB 材料價值與 PTFE 採用研究","attachment":"外資產業報告-C.pdf","publishedDate":"2026-09-09","accessedDate":"2026-09-24","coveredPeriods":["2026F","2027F","2028F"],"confidence":"low","notes":"使用者提供產業報告；VR200／VR300 PCB content 與 PTFE 採用仍具不確定性，不視為金居已取得訂單。"},
-    {"id":"jingu-src-public-demand","evidenceClass":"market_consensus","provider":"公開市場資料","title":"2026-2028 高階 HVLP4 需求與競爭者市占估計","url":"https://www.top1markets.com/tw/news/co-tech-development-8358-hvlp4-nvidia-supply-chain-730-target-2026-fm26","accessedDate":"2026-09-24","coveredPeriods":["2026F","2027F","2028F"],"confidence":"low","notes":"公開文章整理的市場估計：全球 HVLP4 需求約 12,300／39,200／52,000 噸／年；2027／2028 需求較已知供給高約 31%／20%；並列示 2026 與 2028 的部分競爭者市占。非公司指引，且需留意市場範圍與有效產能口徑。"},
-    {"id":"jingu-src-public-gap","evidenceClass":"market_consensus","provider":"公開產業資料","title":"HVLP4 供需缺口與有效產能限制","url":"https://anuenews.cnyes.com/news/id/6613057","accessedDate":"2026-09-24","coveredPeriods":["2026Q2","2026F","2027F","2028F"],"confidence":"low","notes":"公開文章整理產業資料，提供 2026Q2 約 666 噸／月的缺口觀察點，並提醒 2026-2028 缺口受良率、認證與名目／有效產能差異影響。"},
-    {"id":"jingu-src-public-highgrade","evidenceClass":"third_party_fact","provider":"產業公開資料","title":"高階 HVLP 銅箔長期需求與產品定位","url":"https://www.mitsui-kinzoku.com/LinkClick.aspx?fileticket=FBZhYz20XWE%3D&mid=1027&tabid=249","accessedDate":"2026-09-24","coveredPeriods":["2025FY","2026F","2027F","2028F","2030F"],"confidence":"medium","notes":"公司公開產業資料提供口徑交叉核對：2030 年 HVLP3+ 需求約 2,400 噸／月、HVLP4+ 約 1,400 噸／月；另有 HVLP2+ 市占資料，因市場範圍較廣，不與本研究 HVLP4 市占表直接合併。"},
-    {"id":"jingu-src-malaysia-261020","evidenceClass":"third_party_fact","provider":"中央社／董事長公開受訪","title":"馬來西亞新廠兩期投資規畫","url":"https://www.cna.com.tw/news/afe/202610200365.aspx","publishedDate":"2026-10-20","accessedDate":"2026-10-21","coveredPeriods":["2028Q3","2029H2"],"confidence":"medium","notes":"受訪規畫：投資約 80–100 億元，兩期年產能 3 萬噸，首期 2028Q3、第二期 2029H2；屬公司展望而非已投產。"},
-    {"id":"jingu-src-mix-261020","evidenceClass":"third_party_fact","provider":"財訊／董事長公開受訪","title":"高階 HVLP 營收占比展望","url":"https://www.wealth.com.tw/articles/0eac830a-6bd2-49c4-9c95-59e28c6c5a34","publishedDate":"2026-10-20","accessedDate":"2026-10-21","coveredPeriods":["2026","2027Q4"],"confidence":"medium","notes":"受訪：目前高階 HVLP 占比約 15–20%，2027Q4 目標 35–40%；是單季展望，非全年實績，未直接改寫財測。"}
+    {
+      "id": "jingu-src-official",
+      "evidenceClass": "official",
+      "provider": "金居開發",
+      "title": "金居官方營運資訊：2025-2026 月營收",
+      "url": "https://www.co-tech.com/tw/ir/operation",
+      "publishedDate": "2026-10-08",
+      "accessedDate": "2026-10-21",
+      "coveredPeriods": [
+        "2025FY",
+        "2026/01-2026/09"
+      ],
+      "confidence": "high",
+      "notes": "公司營運頁：9 月 1,104,081 仟元，1–9 月累計 8,505,957 仟元；年增率以去年同期計算，Q3 僅為月營收加總。"
+    },
+    {
+      "id": "jingu-src-official-presentation",
+      "evidenceClass": "official",
+      "provider": "金居開發",
+      "title": "金居 2025Q4 法說簡報與市場動態",
+      "attachment": "8358-20260312.pdf",
+      "publishedDate": "2026-03-13",
+      "accessedDate": "2026-09-25",
+      "coveredPeriods": [
+        "2025Q4",
+        "2026/01",
+        "2025-2029F"
+      ],
+      "confidence": "high",
+      "notes": "公司簡報用於核對電解銅箔應用、伺服器／高速通訊需求背景與產品開發脈絡；簡報內的產業預估不直接輸入金居 EPS 情境。"
+    },
+    {
+      "id": "jingu-src-financial-ratios",
+      "evidenceClass": "third_party_fact",
+      "provider": "Goodinfo／MoneyDJ 公開資料",
+      "title": "8358 金居季度財務比率與 EPS",
+      "url": "https://goodinfo.tw/tw/StockDetail.asp?STOCK_ID=8358",
+      "publishedDate": "2026-09-09",
+      "accessedDate": "2026-09-24",
+      "coveredPeriods": [
+        "2025FY",
+        "2026Q1",
+        "2026Q2",
+        "2026H1"
+      ],
+      "confidence": "high",
+      "notes": "2026Q2 毛利率 27.39%、營業利益率 24.42%、稅後淨利率 19.43%、EPS 2.16；2026H1 EPS 4.22。"
+    },
+    {
+      "id": "jingu-src-self-collected",
+      "evidenceClass": "research_inference",
+      "provider": "自行蒐集",
+      "title": "金居展望與財測交叉核對",
+      "accessedDate": "2026-09-25",
+      "coveredPeriods": [
+        "2026F",
+        "2027F",
+        "2028F"
+      ],
+      "confidence": "medium",
+      "notes": "整理公開資訊、公司公告與研究材料，用於產品升級、產能與情境交叉核對；定量欄位優先採可核對的公司與公開資料。"
+    },
+    {
+      "id": "jingu-src-gemini",
+      "evidenceClass": "research_inference",
+      "provider": "使用者提供 Gemini 分享頁",
+      "title": "金居研究資料（Gemini share，待內容確認）",
+      "url": "https://share.gemini.google/2VmyLp4lXAcA",
+      "accessedDate": "2026-09-24",
+      "coveredPeriods": [
+        "2026F",
+        "2027F",
+        "2028F"
+      ],
+      "confidence": "low",
+      "notes": "分享頁在目前存取流程出現第三方安全警告，未將未核對內容列入定量模型；待使用者確認內容後再更新。"
+    },
+    {
+      "id": "jingu-src-domestic-forecast",
+      "evidenceClass": "market_consensus",
+      "provider": "本土研究機構",
+      "title": "金居：AI 新平台與 HVLP4 產能研究",
+      "attachment": "本土研究報告-A.pdf",
+      "publishedDate": "2026-05-20",
+      "accessedDate": "2026-09-24",
+      "coveredPeriods": [
+        "2026Q1",
+        "2026F",
+        "2027F"
+      ],
+      "confidence": "medium",
+      "notes": "使用者提供研究機構 PDF；2026F／2027F EPS 11.99／21.50，原始檔未隨公開 repo 發布，非公司指引。"
+    },
+    {
+      "id": "jingu-src-foreign-hvlp",
+      "evidenceClass": "market_consensus",
+      "provider": "外資研究機構",
+      "title": "高階銅箔與 HVLP4 產能研究",
+      "attachment": "外資研究報告-A.pdf",
+      "publishedDate": "2026-09-14",
+      "accessedDate": "2026-09-24",
+      "coveredPeriods": [
+        "2025FY",
+        "2026F",
+        "2027F",
+        "2028F"
+      ],
+      "confidence": "medium",
+      "notes": "使用者提供研究機構 PDF；Co-Tech EPS 9.34／18.59／31.63，HVLP4 產能模型為 2026/27/28 年底約 200／700／800 噸／月；含利益衝突揭露。"
+    },
+    {
+      "id": "jingu-src-foreign-sea",
+      "evidenceClass": "market_consensus",
+      "provider": "外資研究機構",
+      "title": "東南亞擴產與 RG 產品長期產能研究",
+      "attachment": "外資研究報告-B.pdf",
+      "publishedDate": "2026-09-14",
+      "accessedDate": "2026-09-24",
+      "coveredPeriods": [
+        "2026F",
+        "2027F",
+        "2028H2"
+      ],
+      "confidence": "medium",
+      "notes": "使用者提供研究機構 PDF；東南亞 RG 量產可能於 2028H2 開始，月產能超過 500 噸；原始檔未隨公開 repo 發布。"
+    },
+    {
+      "id": "jingu-src-foreign-update",
+      "evidenceClass": "third_party_fact",
+      "provider": "外資研究機構／公司初步公告資料",
+      "title": "2026 年 8 月初步獲利更新",
+      "attachment": "外資研究更新-A.pdf",
+      "publishedDate": "2026-09-16",
+      "accessedDate": "2026-09-24",
+      "coveredPeriods": [
+        "2026/08",
+        "2026Q3"
+      ],
+      "confidence": "high",
+      "notes": "使用者提供研究機構更新；2026/08 營收 1,056 百萬元、稅前 254 百萬元、稅後 203 百萬元、EPS 0.80；原始檔未隨公開 repo 發布。"
+    },
+    {
+      "id": "jingu-src-foreign-supply",
+      "evidenceClass": "market_consensus",
+      "provider": "外資研究機構",
+      "title": "高速銅箔供需與瓶頸研究",
+      "attachment": "外資產業報告-B.pdf",
+      "publishedDate": "2026-05-18",
+      "accessedDate": "2026-09-24",
+      "coveredPeriods": [
+        "2025",
+        "2026F",
+        "2027F",
+        "2028F",
+        "2030F"
+      ],
+      "confidence": "medium",
+      "notes": "使用者提供產業報告；估計 HVLP 需求由 2025 約 1.3kt/月增至 2030 超過 6kt/月，並指出 2027 年供需與設備／良率執行風險。"
+    },
+    {
+      "id": "jingu-src-domestic-industry",
+      "evidenceClass": "market_consensus",
+      "provider": "本土研究機構",
+      "title": "CCL 升級、供需與加工費研究",
+      "attachment": "本土產業報告-A.pdf",
+      "publishedDate": "2026-09-04",
+      "accessedDate": "2026-09-24",
+      "coveredPeriods": [
+        "2026H2",
+        "2027F",
+        "2028F"
+      ],
+      "confidence": "medium",
+      "notes": "使用者提供產業報告；整理銅箔加工費、玻纖布與 AI 平台材料升級，非金居公司指引。"
+    },
+    {
+      "id": "jingu-src-foreign-industry-a",
+      "evidenceClass": "market_consensus",
+      "provider": "外資研究機構",
+      "title": "台灣 PCB／覆銅板產業研究",
+      "attachment": "外資產業報告-A.pdf",
+      "publishedDate": "2026-09-01",
+      "accessedDate": "2026-09-24",
+      "coveredPeriods": [
+        "2026F",
+        "2027F",
+        "2028F"
+      ],
+      "confidence": "low",
+      "notes": "使用者提供產業背景報告；用於供應鏈與 CCL 產能風險脈絡，不直接輸入金居 EPS。"
+    },
+    {
+      "id": "jingu-src-foreign-industry-b",
+      "evidenceClass": "market_consensus",
+      "provider": "外資研究機構",
+      "title": "PCB 材料價值與 PTFE 採用研究",
+      "attachment": "外資產業報告-C.pdf",
+      "publishedDate": "2026-09-09",
+      "accessedDate": "2026-09-24",
+      "coveredPeriods": [
+        "2026F",
+        "2027F",
+        "2028F"
+      ],
+      "confidence": "low",
+      "notes": "使用者提供產業報告；VR200／VR300 PCB content 與 PTFE 採用仍具不確定性，不視為金居已取得訂單。"
+    },
+    {
+      "id": "jingu-src-public-demand",
+      "evidenceClass": "market_consensus",
+      "provider": "公開市場資料",
+      "title": "2026-2028 高階 HVLP4 需求與競爭者市占估計",
+      "url": "https://www.top1markets.com/tw/news/co-tech-development-8358-hvlp4-nvidia-supply-chain-730-target-2026-fm26",
+      "accessedDate": "2026-09-24",
+      "coveredPeriods": [
+        "2026F",
+        "2027F",
+        "2028F"
+      ],
+      "confidence": "low",
+      "notes": "公開文章整理的市場估計：全球 HVLP4 需求約 12,300／39,200／52,000 噸／年；2027／2028 需求較已知供給高約 31%／20%；並列示 2026 與 2028 的部分競爭者市占。非公司指引，且需留意市場範圍與有效產能口徑。"
+    },
+    {
+      "id": "jingu-src-public-gap",
+      "evidenceClass": "market_consensus",
+      "provider": "公開產業資料",
+      "title": "HVLP4 供需缺口與有效產能限制",
+      "url": "https://anuenews.cnyes.com/news/id/6613057",
+      "accessedDate": "2026-09-24",
+      "coveredPeriods": [
+        "2026Q2",
+        "2026F",
+        "2027F",
+        "2028F"
+      ],
+      "confidence": "low",
+      "notes": "公開文章整理產業資料，提供 2026Q2 約 666 噸／月的缺口觀察點，並提醒 2026-2028 缺口受良率、認證與名目／有效產能差異影響。"
+    },
+    {
+      "id": "jingu-src-public-highgrade",
+      "evidenceClass": "third_party_fact",
+      "provider": "產業公開資料",
+      "title": "高階 HVLP 銅箔長期需求與產品定位",
+      "url": "https://www.mitsui-kinzoku.com/LinkClick.aspx?fileticket=FBZhYz20XWE%3D&mid=1027&tabid=249",
+      "accessedDate": "2026-09-24",
+      "coveredPeriods": [
+        "2025FY",
+        "2026F",
+        "2027F",
+        "2028F",
+        "2030F"
+      ],
+      "confidence": "medium",
+      "notes": "公司公開產業資料提供口徑交叉核對：2030 年 HVLP3+ 需求約 2,400 噸／月、HVLP4+ 約 1,400 噸／月；另有 HVLP2+ 市占資料，因市場範圍較廣，不與本研究 HVLP4 市占表直接合併。"
+    },
+    {
+      "id": "jingu-src-malaysia-261020",
+      "evidenceClass": "third_party_fact",
+      "provider": "中央社／董事長公開受訪",
+      "title": "馬來西亞新廠兩期投資規畫",
+      "url": "https://www.cna.com.tw/news/afe/202610200365.aspx",
+      "publishedDate": "2026-10-20",
+      "accessedDate": "2026-10-21",
+      "coveredPeriods": [
+        "2028Q3",
+        "2029H2"
+      ],
+      "confidence": "medium",
+      "notes": "受訪規畫：投資約 80–100 億元，兩期年產能 3 萬噸，首期 2028Q3、第二期 2029H2；屬公司展望而非已投產。"
+    },
+    {
+      "id": "jingu-src-mix-261020",
+      "evidenceClass": "third_party_fact",
+      "provider": "財訊／董事長公開受訪",
+      "title": "高階 HVLP 營收占比展望",
+      "url": "https://www.wealth.com.tw/articles/0eac830a-6bd2-49c4-9c95-59e28c6c5a34",
+      "publishedDate": "2026-10-20",
+      "accessedDate": "2026-10-21",
+      "coveredPeriods": [
+        "2026",
+        "2027Q4"
+      ],
+      "confidence": "medium",
+      "notes": "受訪：目前高階 HVLP 占比約 15–20%，2027Q4 目標 35–40%；是單季展望，非全年實績，未直接改寫財測。"
+    },
+    {
+      "id": "jingu-src-q3-20261113",
+      "evidenceClass": "official",
+      "provider": "公開資訊觀測站公告（MoneyDJ轉載）",
+      "title": "8358 2026Q3 綜合損益表",
+      "url": "https://www.moneydj.com/KMDJ/news/newsviewer.aspx?a=dae90c68-d0ed-41f0-84a4-3c3e122b6ff4",
+      "publishedDate": "2026-11-10",
+      "accessedDate": "2026-11-13",
+      "coveredPeriods": [
+        "2026Q3",
+        "2026YTD"
+      ],
+      "confidence": "high",
+      "notes": "上市櫃公司公告損益表重刊；數字以新台幣千元公布，研究資料轉為百萬元；未以此取代完整附註查核。"
+    },
+    {
+      "id": "jingu-src-m10-20261113",
+      "evidenceClass": "official",
+      "provider": "公司月營收公告（中央社／Yahoo轉載）",
+      "title": "8358 2026年10月合併營收",
+      "url": "https://tw.stock.yahoo.com/news/%E5%85%AC%E5%91%8A-%E9%87%91%E5%B1%85-2026%E5%B9%B410%E6%9C%88%E5%90%88%E4%BD%B5%E7%87%9F%E6%94%B611-08%E5%84%84%E5%85%83-%E5%B9%B4%E5%A2%9E57-071319118.html",
+      "publishedDate": "2026-11-09",
+      "accessedDate": "2026-11-13",
+      "coveredPeriods": [
+        "2026/10"
+      ],
+      "confidence": "high",
+      "notes": "月營收原始單位仟元；研究資料轉為百萬元。"
+    }
   ],
   "claims": [
-    {"id":"jingu-claim-core","text":"金居的核心驗證鏈是 AI PCB／CCL 規格升級 → HVLP4／RG 需求 → 可出售產能與加工費 → 毛利率 → EPS。","evidenceClass":"research_inference","sourceIds":["jingu-src-self-collected","jingu-src-foreign-hvlp","jingu-src-domestic-forecast"],"inputClaimIds":[],"method":"將公開資訊、公司公告與研究資料中的需求、產品、產能與財務假設依領先至落後順序串接。","confidence":"medium"},
-    {"id":"jingu-claim-h1","text":"金居 2026H1 營收約 53.37 億元、EPS 4.22 元，毛利率約 28.02%；2026Q2 單季毛利率 27.39%，高於 2025Q2 的 18.86%。","evidenceClass":"third_party_fact","sourceIds":["jingu-src-financial-ratios","jingu-src-official"],"inputClaimIds":[],"method":"以公開季度財務比率與官方月營收資料交叉核對；季度欄位使用百萬元，EPS 使用元。","confidence":"high"},
-    {"id":"jingu-claim-august","text":"2026/08 月營收 1,056.242 百萬元，年增 59.70%；2026/01-08 累計 7,401.876 百萬元，年增 46.82%。","evidenceClass":"official","sourceIds":["jingu-src-official","jingu-src-foreign-update"],"inputClaimIds":[],"method":"採金居官方營運頁的千元數並換算為百萬元，與 外資研究機構 2026/08 更新交叉核對。","confidence":"high"},
-    {"id":"jingu-claim-hv","text":"公開研究資料將 2026Q2 視為 HVLP4 開始進入 AI GPU 新平台供應鏈、並由 2026 年起進入量產爬坡的時間點；此仍需公司公告與後續毛利率驗證。","evidenceClass":"research_inference","sourceIds":["jingu-src-domestic-forecast","jingu-src-self-collected","jingu-src-foreign-hvlp"],"inputClaimIds":[],"method":"保留研究資料的產品路線判讀，但明確標示為非公司正式客戶揭露。","confidence":"medium"},
-    {"id":"jingu-claim-capacity","text":"產能口徑存在差異：本土研究機構估計 2026 年底 HVLP3+／HVLP4 合計約 400-450 噸／月、2027 年底約 800 噸／月；外資研究機構 估計 HVLP4 單項約 200／700／800 噸／月（2026／2027／2028 年底）。","evidenceClass":"market_consensus","sourceIds":["jingu-src-domestic-forecast","jingu-src-foreign-hvlp"],"inputClaimIds":[],"method":"將兩份研究機構報告的產品範圍與時間點分開記錄，不把合計產能與 HVLP4 單項直接相加。","confidence":"medium"},
-    {"id":"jingu-claim-foreign-forecast","text":"外資研究機構 2026-2028 EPS 預估為 9.34／18.59／31.63 元，並以高階 mix、產能爬坡與供需偏緊支持毛利率由 2025 年 21.8% 往 2028 年 47.2% 擴張。","evidenceClass":"market_consensus","sourceIds":["jingu-src-foreign-hvlp"],"inputClaimIds":[],"method":"沿用本土／外資研究模型數字作外部基準，不將其包裝成公司指引。","confidence":"medium"},
-    {"id":"jingu-claim-domestic-forecast","text":"本土研究機構 2026F／2027F 預估營收為 123.78／190.64 億元，EPS 為 11.99／21.50 元；模型假設 HVLP4、斗六三廠與 PCIe5 需求共同推動。","evidenceClass":"market_consensus","sourceIds":["jingu-src-domestic-forecast"],"inputClaimIds":[],"method":"將研究機構 PDF 的表格數值換算為研究包的百萬元與元單位。","confidence":"medium"},
-    {"id":"jingu-claim-forecast-range","text":"綜合自行蒐集研究與本土／外資研究模型，本研究將 2026／2027／2028 EPS 的觀察範圍約置於 9.3-13／18.4-25／28-33 元；範圍來自情境差異，不是精確目標。","evidenceClass":"research_inference","sourceIds":["jingu-src-self-collected","jingu-src-foreign-hvlp","jingu-src-domestic-forecast"],"inputClaimIds":["jingu-claim-foreign-forecast","jingu-claim-domestic-forecast"],"method":"以外部模型低端、基準與上行情境建立有明確證據邊界的 forecast rows。","confidence":"medium"},
-    {"id":"jingu-claim-supply","text":"外資研究機構 估計 AI HVLP 需求由 2025 約 1.3kt/月增至 2030 超過 6kt/月；納入中國供應商後，2027 年 HVLP4 等效供給可能接近需求，但設備取得、轉換效率與良率仍可能造成缺口。","evidenceClass":"market_consensus","sourceIds":["jingu-src-foreign-supply","jingu-src-foreign-hvlp"],"inputClaimIds":[],"method":"保留產業報告對需求 CAGR、等效供給與執行風險的條件式表述。","confidence":"medium"},
-    {"id":"jingu-claim-demand-gap","text":"公開市場估計全球 HVLP4 需求由 2026 年約 1.23 萬噸、2027 年約 3.92 萬噸升至 2028 年約 5.20 萬噸；2026Q2 缺口觀察點約 666 噸／月，2027／2028 需求較已知供給分別高約 31%／20%。這是產業情境，不是公司指引，且缺口取決於設備、良率、認證與擴產落地。","evidenceClass":"market_consensus","sourceIds":["jingu-src-public-demand","jingu-src-public-gap","jingu-src-public-highgrade"],"inputClaimIds":["jingu-claim-supply"],"method":"將公開市場需求與缺口估計轉為年度、月均需求與條件式缺口欄位；不把名目產能直接等同有效供給，並以產業公開資料交叉核對長期需求口徑。","confidence":"low"},
-    {"id":"jingu-claim-competitor-share","text":"公開市場估計 2026 年全球 HVLP4 市占約為三井金屬 41%、古河電工 16%、福田金屬 14%、金居 13%；2028 年已可核對的估計為三井金屬約 33%、金居約 21%，其餘競爭者未有可核對拆分。不同資料對 HVLP2+、HVLP3+、HVLP4 的市場範圍不同，不能直接混算。","evidenceClass":"market_consensus","sourceIds":["jingu-src-public-demand","jingu-src-public-highgrade"],"inputClaimIds":["jingu-claim-capacity","jingu-claim-supply"],"method":"只列公開資料可核對的 competitor rows；對未提供的 2028 年拆分保留空白，不以殘差分配個別廠商市占，並將 HVLP2+ 長期資料排除在 HVLP4 表格之外。","confidence":"low"},
-    {"id":"jingu-claim-pricing","text":"產業資料指出 HVLP4 processing fee 相對 HTE 具顯著溢價，且 2026 年銅箔與 CCL 材料價格／加工費上行；金居能否將溢價轉成毛利率仍是公司層級驗證題。","evidenceClass":"research_inference","sourceIds":["jingu-src-foreign-supply","jingu-src-domestic-industry","jingu-src-foreign-industry-a"],"inputClaimIds":[],"method":"將產業價格與材料供需資料轉化為金居的待驗證催化劑，而非直接假設全部轉嫁。","confidence":"medium"},
-    {"id":"jingu-claim-sea","text":"10/20 董事長公開受訪規畫馬來西亞新廠投資約 80–100 億元、兩期合計年產能 3 萬噸，首期目標 2028Q3、第二期 2029H2；尚未投產。","evidenceClass":"third_party_fact","sourceIds":["jingu-src-malaysia-261020"],"inputClaimIds":[],"method":"以具名公開採訪取代舊研究的現行海外展望；保留歷史來源但不把不同產品、年度與分期產能相加。","confidence":"medium"},
-    {"id":"jingu-claim-technology","text":"PTFE／HVLP5 可能提高下一代 AI PCB 的材料價值，但 VR300／Rubin Ultra 的規格與採用仍在評估，不能直接視為金居已取得訂單。","evidenceClass":"research_inference","sourceIds":["jingu-src-foreign-industry-b","jingu-src-domestic-industry"],"inputClaimIds":[],"method":"用產業報告的技術路線作為風險與選擇權標記，避免把產業推演寫成公司事實。","confidence":"low"},
-    {"id":"jingu-claim-pcb-boundary","text":"PCB 供應鏈可拆成上游玻纖布／樹脂與銅箔、CCL、PCB／HDI／載板及終端伺服器；金居直接曝險在 HVLP 銅箔節點，其他材料與下游供應狀況只能用來判讀需求／供應約束，不能單獨證明金居取得訂單。","evidenceClass":"research_inference","sourceIds":["jingu-src-domestic-industry","jingu-src-foreign-industry-a","jingu-src-foreign-industry-b"],"inputClaimIds":["jingu-claim-core","jingu-claim-technology"],"method":"將 PCB／CCL 產業資料按材料、覆銅板、銅箔與下游製程分層，並把公司層級證據與產業背景分開。","confidence":"medium"},
-    {"id":"jingu-claim-pcb-intensity","text":"AI 伺服器與高速交換器持續提高 PCB 層數、HDI／高頻傳輸與低損耗材料的使用強度，並提高 CCL、銅箔及板廠製程／量測的規格要求；這支持高階銅箔需求背景，但不能直接替代金居的客戶認證、出貨與毛利率證據。","evidenceClass":"research_inference","sourceIds":["jingu-src-official-presentation","jingu-src-domestic-industry","jingu-src-foreign-industry-a","jingu-src-foreign-industry-b"],"inputClaimIds":["jingu-claim-pcb-boundary","jingu-claim-technology"],"method":"以公司官方產品／應用簡報與供應鏈研究的共同方向建立產業推論；不採用券商的個別評等、目標價、客戶指向或未公開模型數字，並將需求訊號與金居公司層級證據分開。","confidence":"medium"},
-    {"id":"jingu-claim-verdict","text":"截至 2026-10-21，營運偏綠、執行待驗證：月營收為綠燈；毛利率、HVLP4 認證／良率、產能與供需維持黃燈。新增海外投資須追蹤資金及分期量產，未據此上修 EPS。","evidenceClass":"research_inference","sourceIds":["jingu-src-official","jingu-src-financial-ratios","jingu-src-domestic-forecast","jingu-src-foreign-hvlp","jingu-src-foreign-supply","jingu-src-public-demand","jingu-src-official-presentation"],"inputClaimIds":["jingu-claim-core","jingu-claim-h1","jingu-claim-august","jingu-claim-hv","jingu-claim-capacity","jingu-claim-supply","jingu-claim-demand-gap","jingu-claim-competitor-share","jingu-claim-pcb-boundary","jingu-claim-pcb-intensity"],"method":"綜合已實現營收、財務比率、產品、產能、需求缺口、競爭者市占與供應鏈邊界資料，並將尚未公開確認的客戶／良率／下游拉貨資訊保留為黃燈。","confidence":"medium"},
-    {"id":"jingu-claim-september","text":"9 月營收 11.041 億元，年增 64.63%；1–9 月 85.060 億元，年增 48.91%。Q3 月營收加總 31.690 億元，較 Q2 約增 12.98%。","evidenceClass":"research_inference","sourceIds":["jingu-src-official"],"inputClaimIds":[],"method":"官方仟元數除以 100,000 換算億元；7–9 月加總後與既有 Q2 營收比較。這不是 Q3 核閱獲利財報。","confidence":"high"},
-    {"id":"jingu-claim-mix-outlook","text":"董事長公開受訪表示高階 HVLP 營收占比目前約 15–20%，目標 2027Q4 達 35–40%；為單季公司展望，非已實現占比。","evidenceClass":"third_party_fact","sourceIds":["jingu-src-mix-261020"],"inputClaimIds":[],"method":"保留採訪的產品範圍與單季期間，未直接代入全年財務模型。","confidence":"medium"}
-  ]
+    {
+      "id": "jingu-claim-core",
+      "text": "金居的核心驗證鏈是 AI PCB／CCL 規格升級 → HVLP4／RG 需求 → 可出售產能與加工費 → 毛利率 → EPS。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-self-collected",
+        "jingu-src-foreign-hvlp",
+        "jingu-src-domestic-forecast"
+      ],
+      "inputClaimIds": [],
+      "method": "將公開資訊、公司公告與研究資料中的需求、產品、產能與財務假設依領先至落後順序串接。",
+      "confidence": "medium"
+    },
+    {
+      "id": "jingu-claim-h1",
+      "text": "金居 2026H1 營收約 53.37 億元、EPS 4.22 元，毛利率約 28.02%；2026Q2 單季毛利率 27.39%，高於 2025Q2 的 18.86%。",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "jingu-src-financial-ratios",
+        "jingu-src-official"
+      ],
+      "inputClaimIds": [],
+      "method": "以公開季度財務比率與官方月營收資料交叉核對；季度欄位使用百萬元，EPS 使用元。",
+      "confidence": "high"
+    },
+    {
+      "id": "jingu-claim-august",
+      "text": "2026/08 月營收 1,056.242 百萬元，年增 59.70%；2026/01-08 累計 7,401.876 百萬元，年增 46.82%。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "jingu-src-official",
+        "jingu-src-foreign-update"
+      ],
+      "inputClaimIds": [],
+      "method": "採金居官方營運頁的千元數並換算為百萬元，與 外資研究機構 2026/08 更新交叉核對。",
+      "confidence": "high"
+    },
+    {
+      "id": "jingu-claim-hv",
+      "text": "公開研究資料將 2026Q2 視為 HVLP4 開始進入 AI GPU 新平台供應鏈、並由 2026 年起進入量產爬坡的時間點；此仍需公司公告與後續毛利率驗證。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-domestic-forecast",
+        "jingu-src-self-collected",
+        "jingu-src-foreign-hvlp"
+      ],
+      "inputClaimIds": [],
+      "method": "保留研究資料的產品路線判讀，但明確標示為非公司正式客戶揭露。",
+      "confidence": "medium"
+    },
+    {
+      "id": "jingu-claim-capacity",
+      "text": "產能口徑存在差異：本土研究機構估計 2026 年底 HVLP3+／HVLP4 合計約 400-450 噸／月、2027 年底約 800 噸／月；外資研究機構 估計 HVLP4 單項約 200／700／800 噸／月（2026／2027／2028 年底）。",
+      "evidenceClass": "market_consensus",
+      "sourceIds": [
+        "jingu-src-domestic-forecast",
+        "jingu-src-foreign-hvlp"
+      ],
+      "inputClaimIds": [],
+      "method": "將兩份研究機構報告的產品範圍與時間點分開記錄，不把合計產能與 HVLP4 單項直接相加。",
+      "confidence": "medium"
+    },
+    {
+      "id": "jingu-claim-foreign-forecast",
+      "text": "外資研究機構 2026-2028 EPS 預估為 9.34／18.59／31.63 元，並以高階 mix、產能爬坡與供需偏緊支持毛利率由 2025 年 21.8% 往 2028 年 47.2% 擴張。",
+      "evidenceClass": "market_consensus",
+      "sourceIds": [
+        "jingu-src-foreign-hvlp"
+      ],
+      "inputClaimIds": [],
+      "method": "沿用本土／外資研究模型數字作外部基準，不將其包裝成公司指引。",
+      "confidence": "medium"
+    },
+    {
+      "id": "jingu-claim-domestic-forecast",
+      "text": "本土研究機構 2026F／2027F 預估營收為 123.78／190.64 億元，EPS 為 11.99／21.50 元；模型假設 HVLP4、斗六三廠與 PCIe5 需求共同推動。",
+      "evidenceClass": "market_consensus",
+      "sourceIds": [
+        "jingu-src-domestic-forecast"
+      ],
+      "inputClaimIds": [],
+      "method": "將研究機構 PDF 的表格數值換算為研究包的百萬元與元單位。",
+      "confidence": "medium"
+    },
+    {
+      "id": "jingu-claim-forecast-range",
+      "text": "綜合自行蒐集研究與本土／外資研究模型，本研究將 2026／2027／2028 EPS 的觀察範圍約置於 9.3-13／18.4-25／28-33 元；範圍來自情境差異，不是精確目標。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-self-collected",
+        "jingu-src-foreign-hvlp",
+        "jingu-src-domestic-forecast"
+      ],
+      "inputClaimIds": [
+        "jingu-claim-foreign-forecast",
+        "jingu-claim-domestic-forecast"
+      ],
+      "method": "以外部模型低端、基準與上行情境建立有明確證據邊界的 forecast rows。",
+      "confidence": "medium"
+    },
+    {
+      "id": "jingu-claim-supply",
+      "text": "外資研究機構 估計 AI HVLP 需求由 2025 約 1.3kt/月增至 2030 超過 6kt/月；納入中國供應商後，2027 年 HVLP4 等效供給可能接近需求，但設備取得、轉換效率與良率仍可能造成缺口。",
+      "evidenceClass": "market_consensus",
+      "sourceIds": [
+        "jingu-src-foreign-supply",
+        "jingu-src-foreign-hvlp"
+      ],
+      "inputClaimIds": [],
+      "method": "保留產業報告對需求 CAGR、等效供給與執行風險的條件式表述。",
+      "confidence": "medium"
+    },
+    {
+      "id": "jingu-claim-demand-gap",
+      "text": "公開市場估計全球 HVLP4 需求由 2026 年約 1.23 萬噸、2027 年約 3.92 萬噸升至 2028 年約 5.20 萬噸；2026Q2 缺口觀察點約 666 噸／月，2027／2028 需求較已知供給分別高約 31%／20%。這是產業情境，不是公司指引，且缺口取決於設備、良率、認證與擴產落地。",
+      "evidenceClass": "market_consensus",
+      "sourceIds": [
+        "jingu-src-public-demand",
+        "jingu-src-public-gap",
+        "jingu-src-public-highgrade"
+      ],
+      "inputClaimIds": [
+        "jingu-claim-supply"
+      ],
+      "method": "將公開市場需求與缺口估計轉為年度、月均需求與條件式缺口欄位；不把名目產能直接等同有效供給，並以產業公開資料交叉核對長期需求口徑。",
+      "confidence": "low"
+    },
+    {
+      "id": "jingu-claim-competitor-share",
+      "text": "公開市場估計 2026 年全球 HVLP4 市占約為三井金屬 41%、古河電工 16%、福田金屬 14%、金居 13%；2028 年已可核對的估計為三井金屬約 33%、金居約 21%，其餘競爭者未有可核對拆分。不同資料對 HVLP2+、HVLP3+、HVLP4 的市場範圍不同，不能直接混算。",
+      "evidenceClass": "market_consensus",
+      "sourceIds": [
+        "jingu-src-public-demand",
+        "jingu-src-public-highgrade"
+      ],
+      "inputClaimIds": [
+        "jingu-claim-capacity",
+        "jingu-claim-supply"
+      ],
+      "method": "只列公開資料可核對的 competitor rows；對未提供的 2028 年拆分保留空白，不以殘差分配個別廠商市占，並將 HVLP2+ 長期資料排除在 HVLP4 表格之外。",
+      "confidence": "low"
+    },
+    {
+      "id": "jingu-claim-pricing",
+      "text": "產業資料指出 HVLP4 processing fee 相對 HTE 具顯著溢價，且 2026 年銅箔與 CCL 材料價格／加工費上行；金居能否將溢價轉成毛利率仍是公司層級驗證題。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-foreign-supply",
+        "jingu-src-domestic-industry",
+        "jingu-src-foreign-industry-a"
+      ],
+      "inputClaimIds": [],
+      "method": "將產業價格與材料供需資料轉化為金居的待驗證催化劑，而非直接假設全部轉嫁。",
+      "confidence": "medium"
+    },
+    {
+      "id": "jingu-claim-sea",
+      "text": "10/20 董事長公開受訪規畫馬來西亞新廠投資約 80–100 億元、兩期合計年產能 3 萬噸，首期目標 2028Q3、第二期 2029H2；尚未投產。",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "jingu-src-malaysia-261020"
+      ],
+      "inputClaimIds": [],
+      "method": "以具名公開採訪取代舊研究的現行海外展望；保留歷史來源但不把不同產品、年度與分期產能相加。",
+      "confidence": "medium"
+    },
+    {
+      "id": "jingu-claim-technology",
+      "text": "PTFE／HVLP5 可能提高下一代 AI PCB 的材料價值，但 VR300／Rubin Ultra 的規格與採用仍在評估，不能直接視為金居已取得訂單。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-foreign-industry-b",
+        "jingu-src-domestic-industry"
+      ],
+      "inputClaimIds": [],
+      "method": "用產業報告的技術路線作為風險與選擇權標記，避免把產業推演寫成公司事實。",
+      "confidence": "low"
+    },
+    {
+      "id": "jingu-claim-pcb-boundary",
+      "text": "PCB 供應鏈可拆成上游玻纖布／樹脂與銅箔、CCL、PCB／HDI／載板及終端伺服器；金居直接曝險在 HVLP 銅箔節點，其他材料與下游供應狀況只能用來判讀需求／供應約束，不能單獨證明金居取得訂單。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-domestic-industry",
+        "jingu-src-foreign-industry-a",
+        "jingu-src-foreign-industry-b"
+      ],
+      "inputClaimIds": [
+        "jingu-claim-core",
+        "jingu-claim-technology"
+      ],
+      "method": "將 PCB／CCL 產業資料按材料、覆銅板、銅箔與下游製程分層，並把公司層級證據與產業背景分開。",
+      "confidence": "medium"
+    },
+    {
+      "id": "jingu-claim-pcb-intensity",
+      "text": "AI 伺服器與高速交換器持續提高 PCB 層數、HDI／高頻傳輸與低損耗材料的使用強度，並提高 CCL、銅箔及板廠製程／量測的規格要求；這支持高階銅箔需求背景，但不能直接替代金居的客戶認證、出貨與毛利率證據。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-official-presentation",
+        "jingu-src-domestic-industry",
+        "jingu-src-foreign-industry-a",
+        "jingu-src-foreign-industry-b"
+      ],
+      "inputClaimIds": [
+        "jingu-claim-pcb-boundary",
+        "jingu-claim-technology"
+      ],
+      "method": "以公司官方產品／應用簡報與供應鏈研究的共同方向建立產業推論；不採用券商的個別評等、目標價、客戶指向或未公開模型數字，並將需求訊號與金居公司層級證據分開。",
+      "confidence": "medium"
+    },
+    {
+      "id": "jingu-claim-verdict",
+      "text": "截至 2026-10-21，營運偏綠、執行待驗證：月營收為綠燈；毛利率、HVLP4 認證／良率、產能與供需維持黃燈。新增海外投資須追蹤資金及分期量產，未據此上修 EPS。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-official",
+        "jingu-src-financial-ratios",
+        "jingu-src-domestic-forecast",
+        "jingu-src-foreign-hvlp",
+        "jingu-src-foreign-supply",
+        "jingu-src-public-demand",
+        "jingu-src-official-presentation"
+      ],
+      "inputClaimIds": [
+        "jingu-claim-core",
+        "jingu-claim-h1",
+        "jingu-claim-august",
+        "jingu-claim-hv",
+        "jingu-claim-capacity",
+        "jingu-claim-supply",
+        "jingu-claim-demand-gap",
+        "jingu-claim-competitor-share",
+        "jingu-claim-pcb-boundary",
+        "jingu-claim-pcb-intensity"
+      ],
+      "method": "綜合已實現營收、財務比率、產品、產能、需求缺口、競爭者市占與供應鏈邊界資料，並將尚未公開確認的客戶／良率／下游拉貨資訊保留為黃燈。",
+      "confidence": "medium"
+    },
+    {
+      "id": "jingu-claim-september",
+      "text": "9 月營收 11.041 億元，年增 64.63%；1–9 月 85.060 億元，年增 48.91%。Q3 月營收加總 31.690 億元，較 Q2 約增 12.98%。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-official"
+      ],
+      "inputClaimIds": [],
+      "method": "官方仟元數除以 100,000 換算億元；7–9 月加總後與既有 Q2 營收比較。這不是 Q3 核閱獲利財報。",
+      "confidence": "high"
+    },
+    {
+      "id": "jingu-claim-mix-outlook",
+      "text": "董事長公開受訪表示高階 HVLP 營收占比目前約 15–20%，目標 2027Q4 達 35–40%；為單季公司展望，非已實現占比。",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "jingu-src-mix-261020"
+      ],
+      "inputClaimIds": [],
+      "method": "保留採訪的產品範圍與單季期間，未直接代入全年財務模型。",
+      "confidence": "medium"
+    },
+    {
+      "id": "jingu-claim-audit-20261113",
+      "text": "2026Q3毛利率26.72%、EPS2.41元；10月營收11.080億元、年增57.95%。第三季毛利率較第二季27.39%回落，須確認HVLP良率、加工費及擴廠折舊。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "jingu-src-q3-20261113",
+        "jingu-src-m10-20261113"
+      ],
+      "inputClaimIds": [],
+      "method": "以2026Q3公開資訊觀測站損益表與2026/10月營收公告直接回填；營運解讀與估值分離。",
+      "confidence": "high"
+    }
+  ],
+  "earningsQuality": {
+    "standard": "EQ-01-v1",
+    "reviewStatus": "WARN",
+    "reviewer": "研究資料來源初核（非會計師審計）",
+    "reviewedAt": "2026-11-13",
+    "coverageNote": "本輪只完成2026Q3損益表及業外占比初步檢驗；2023–2025年度與最近四季詳細附註、現金流、稅後歸母調整尚缺。此WARN不得解讀成完整EPS認證。",
+    "periods": [
+      {
+        "id": "jingu-eq-2026q3",
+        "period": "2026Q3",
+        "periodType": "quarter",
+        "currency": "TWD",
+        "scale": "million",
+        "revenue": 3169.194,
+        "operatingIncome": 756.932,
+        "nonOperatingNet": 2.896,
+        "pretaxIncome": 759.828,
+        "incomeTax": null,
+        "netIncomeAttributable": 607.905,
+        "reportedEps": 2.41,
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "jingu-src-q3-20261113"
+        ],
+        "claimIds": [],
+        "normalizationNote": "單季基本EPS已按公告回填；尚未取得完整近三年與最近四季各項業外及稅後歸母調節，未認證正常化EPS。"
+      }
+    ],
+    "qualitativeFlags": [],
+    "l2": {
+      "status": "NOT_RUN",
+      "summary": "已按公告計算Q3業外占比，未見單季15%量化門檻；歷史波動、OCI、公司投資與關聯交易尚未完成穿透，若新增異常則進行L2。",
+      "sourceIds": [
+        "jingu-src-q3-20261113"
+      ],
+      "claimIds": []
+    },
+    "valuation": {
+      "epsBasis": "reported",
+      "prospectiveModelOnly": true,
+      "doubleCountChecked": true,
+      "notes": "本期不改動原情境EPS；先以公司官方實績與券商估計分列，沒有把業外收益重複計入模型。"
+    },
+    "notes": "2026/11/13資料更新初核；未以單一季業外比例取代完整盈餘品質檢驗。"
+  }
 }
