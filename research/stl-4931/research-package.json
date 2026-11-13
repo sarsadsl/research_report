@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "packageVersion": "1.1.0",
-  "asOfDate": "2026-10-21",
+  "packageVersion": "1.2.0",
+  "asOfDate": "2026-11-13",
   "company": {
     "id": "stl-4931",
     "ticker": "4931",
@@ -17,12 +17,12 @@
     "id": "stl-report-v1",
     "title": "新盛力 4931｜BBU 供應鏈公開資料深度研究",
     "slug": "stl-4931",
-    "summary": "8 月營收 4.951 億元創本研究期高點，9 月 4.248 億元、年增 176.30%；Q3 月營收加總 13.694 億元，較 Q2 +23.01%。需求放量仍需由毛利率、應收／存貨週轉及營業現金流驗證；產品與實驗室資格不等於特定 CSP 量產資格。",
+    "summary": "2026Q3毛利率22.96%、EPS2.54元；10月營收5.402億元、年增106.71%，單月創較9月新高；營運槓桿正面，但應收、存貨與現金流仍待季報附註核查。",
     "thesis": "AI 資料中心 BBU 需求 → 出貨與月營收 → 毛利率 → 營運資金 → 現金轉換 → EPS；產品規格與 UL 實驗室資格不等於特定 CSP 量產認證。",
     "status": "published",
     "visibility": "listed",
-    "version": "1.1",
-    "publishedAt": "2026-10-21"
+    "version": "1.2",
+    "publishedAt": "2026-11-13"
   },
   "thesis": {
     "summary": "月營收仍為綠燈，8 月創研究期高點、9 月回落但仍在 4 億元以上；Q3 月營收加總較 Q2 +23.01%。Q3 毛利率、現金流與客戶集中尚待財報，整體維持黃綠燈、偏綠，不以月營收直接上修 EPS 或推定特定 CSP 資格。",
@@ -41,7 +41,7 @@
     ]
   },
   "dashboard": {
-    "currentView": "8 月營收 4.951 億元創本研究期高點；9 月 4.248 億元，MoM -14.19%、YoY +176.30%。1–9 月累計 32.740 億元、YoY +96.48%；Q3 月營收加總 13.694 億元、較 Q2 +23.01%，尚非 Q3 獲利財報。H1 EPS 3.69 元與現金流、客戶集中資料仍為既有觀察基礎。",
+    "currentView": "2026Q3毛利率22.96%、EPS2.54元；10月營收5.402億元、年增106.71%，單月創較9月新高；營運槓桿正面，但應收、存貨與現金流仍待季報附註核查。 Drive 2026/11/05新盛力V3研究之2027基準EPS11元對照本站8.72元，屬不同研究假設；第二CSP正式認列未證實，不直接上修EPS。",
     "verificationChain": [
       "9 月回落後，10 月以後月營收能否持續在 4 億元以上",
       "Q3 毛利率能否維持 22% 以上，確認收入擴大是否轉成利潤",
@@ -50,7 +50,7 @@
       "是否有公開可核對的新客戶資格",
       "EPS 是否持續轉化"
     ],
-    "conclusion": "營收端放量已有延續性：8 月創高、9 月回落，Q3 月營收加總仍較 Q2 增加約 23.01%。整體維持黃綠燈、偏綠；下一步以 Q3 毛利率、應收／存貨週轉與營業現金流驗證獲利品質，特定 CSP／HVDC 客戶量產資格仍待公開證據。",
+    "conclusion": "2026Q3毛利率22.96%、EPS2.54元；10月營收5.402億元、年增106.71%，單月創較9月新高；營運槓桿正面，但應收、存貨與現金流仍待季報附註核查。 投資燈號先維持原有框架，待現金流及應收／存貨／技術驗證後再變更。",
     "forecastScenario": "base",
     "headlineForecastYears": [
       2026,
@@ -62,7 +62,7 @@
     },
     "monthlyRevenue": {
       "focusYear": 2026,
-      "cumulativeThroughMonth": 9,
+      "cumulativeThroughMonth": 10,
       "unitDivisor": 100,
       "unitLabel": "億"
     },
@@ -84,7 +84,7 @@
         "years": 2
       }
     ],
-    "estimateNote": "* 2026F／2027F 為僅依公開實績建立的研究情境，不含任何券商或法人預測；產品規格與 UL CTDP 不代表特定 CSP 量產資格。 2026-10-21 更新已回填 8–9 月營收；財測數值暫沿用原模型，Q3 僅更新月營收加總，毛利率、EPS 與現金流待正式財報。"
+    "estimateNote": "* 2026F／2027F 為僅依公開實績建立的研究情境，不含任何券商或法人預測；產品規格與 UL CTDP 不代表特定 CSP 量產資格。 2026-10-21 更新已回填 8–9 月營收；財測數值暫沿用原模型，Q3 僅更新月營收加總，毛利率、EPS 與現金流待正式財報。 【2026/11/13新增】Drive 2026/11/05新盛力V3研究之2027基準EPS11元對照本站8.72元，屬不同研究假設；第二CSP正式認列未證實，不直接上修EPS。 未重估原有情境EPS，新增實績和外部預測只作比較；仍需後續更新正式財報附註及獲利品質。"
   },
   "actuals": [
     {
@@ -103,7 +103,9 @@
       "currency": "TWD",
       "scale": "million",
       "evidenceClass": "official",
-      "sourceIds": ["stl-src-annual"]
+      "sourceIds": [
+        "stl-src-annual"
+      ]
     },
     {
       "id": "stl-2026q1",
@@ -121,7 +123,9 @@
       "currency": "TWD",
       "scale": "million",
       "evidenceClass": "official",
-      "sourceIds": ["stl-src-q1"]
+      "sourceIds": [
+        "stl-src-q1"
+      ]
     },
     {
       "id": "stl-2026q2",
@@ -139,95 +143,1057 @@
       "currency": "TWD",
       "scale": "million",
       "evidenceClass": "official",
-      "sourceIds": ["stl-src-q2"]
+      "sourceIds": [
+        "stl-src-q2"
+      ]
+    },
+    {
+      "id": "stl-2026q3-audit",
+      "period": "2026Q3",
+      "fiscalYear": 2026,
+      "quarter": 3,
+      "revenue": 1369.378,
+      "grossProfit": 314.446,
+      "grossMargin": 22.96,
+      "operatingIncome": 207.458,
+      "operatingMargin": 15.15,
+      "netIncome": 166.937,
+      "netMargin": 12.19,
+      "eps": 2.54,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-q3-20261113"
+      ]
     }
   ],
   "monthlyRevenue": [
-    {"id":"stl-2601","year":2026,"month":1,"revenue":289.976,"mom":18.66,"yoy":42.29,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["stl-src-investor"]},
-    {"id":"stl-2602","year":2026,"month":2,"revenue":218.293,"mom":-24.72,"yoy":-10.8,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["stl-src-investor"]},
-    {"id":"stl-2603","year":2026,"month":3,"revenue":283.109,"mom":29.69,"yoy":36.12,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["stl-src-investor"]},
-    {"id":"stl-2604","year":2026,"month":4,"revenue":302.908,"mom":6.99,"yoy":97.38,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["stl-src-investor"]},
-    {"id":"stl-2605","year":2026,"month":5,"revenue":415.943,"mom":37.32,"yoy":178.64,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["stl-src-investor"]},
-    {"id":"stl-2606","year":2026,"month":6,"revenue":394.409,"mom":-5.18,"yoy":145.09,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["stl-src-investor"]},
-    {"id":"stl-2607","year":2026,"month":7,"revenue":449.435,"mom":13.95,"yoy":159.52,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["stl-src-investor"]},
-    {"id":"stl-2608","year":2026,"month":8,"revenue":495.1,"mom":10.16,"yoy":125.87,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["stl-src-investor"]},
-    {"id":"stl-2609","year":2026,"month":9,"revenue":424.843,"mom":-14.19,"yoy":176.3,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["stl-src-investor"]}
+    {
+      "id": "stl-2601",
+      "year": 2026,
+      "month": 1,
+      "revenue": 289.976,
+      "mom": 18.66,
+      "yoy": 42.29,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-investor"
+      ]
+    },
+    {
+      "id": "stl-2602",
+      "year": 2026,
+      "month": 2,
+      "revenue": 218.293,
+      "mom": -24.72,
+      "yoy": -10.8,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-investor"
+      ]
+    },
+    {
+      "id": "stl-2603",
+      "year": 2026,
+      "month": 3,
+      "revenue": 283.109,
+      "mom": 29.69,
+      "yoy": 36.12,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-investor"
+      ]
+    },
+    {
+      "id": "stl-2604",
+      "year": 2026,
+      "month": 4,
+      "revenue": 302.908,
+      "mom": 6.99,
+      "yoy": 97.38,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-investor"
+      ]
+    },
+    {
+      "id": "stl-2605",
+      "year": 2026,
+      "month": 5,
+      "revenue": 415.943,
+      "mom": 37.32,
+      "yoy": 178.64,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-investor"
+      ]
+    },
+    {
+      "id": "stl-2606",
+      "year": 2026,
+      "month": 6,
+      "revenue": 394.409,
+      "mom": -5.18,
+      "yoy": 145.09,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-investor"
+      ]
+    },
+    {
+      "id": "stl-2607",
+      "year": 2026,
+      "month": 7,
+      "revenue": 449.435,
+      "mom": 13.95,
+      "yoy": 159.52,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-investor"
+      ]
+    },
+    {
+      "id": "stl-2608",
+      "year": 2026,
+      "month": 8,
+      "revenue": 495.1,
+      "mom": 10.16,
+      "yoy": 125.87,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-investor"
+      ]
+    },
+    {
+      "id": "stl-2609",
+      "year": 2026,
+      "month": 9,
+      "revenue": 424.843,
+      "mom": -14.19,
+      "yoy": 176.3,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-investor"
+      ]
+    },
+    {
+      "id": "stl-2610",
+      "year": 2026,
+      "month": 10,
+      "revenue": 540.235,
+      "mom": 27.16,
+      "yoy": 106.71,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-m10-20261113"
+      ]
+    }
   ],
   "segments": [
-    {"id":"stl-app-bbu","period":"2025FY","segment":"電源備援系統／BBU","revenue":null,"share":null,"isEstimate":false,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["stl-src-annual","stl-src-ir"],"claimIds":["stl-claim-bbu-business"]},
-    {"id":"stl-app-tools","period":"2025FY","segment":"電動手工具","revenue":null,"share":null,"isEstimate":false,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["stl-src-annual","stl-src-ir"],"claimIds":[]},
-    {"id":"stl-app-mobility","period":"2025FY","segment":"輕型電動交通工具","revenue":null,"share":null,"isEstimate":false,"currency":"TWD","scale":"million","evidenceClass":"official","sourceIds":["stl-src-annual","stl-src-ir"],"claimIds":[]}
+    {
+      "id": "stl-app-bbu",
+      "period": "2025FY",
+      "segment": "電源備援系統／BBU",
+      "revenue": null,
+      "share": null,
+      "isEstimate": false,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-annual",
+        "stl-src-ir"
+      ],
+      "claimIds": [
+        "stl-claim-bbu-business"
+      ]
+    },
+    {
+      "id": "stl-app-tools",
+      "period": "2025FY",
+      "segment": "電動手工具",
+      "revenue": null,
+      "share": null,
+      "isEstimate": false,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-annual",
+        "stl-src-ir"
+      ],
+      "claimIds": []
+    },
+    {
+      "id": "stl-app-mobility",
+      "period": "2025FY",
+      "segment": "輕型電動交通工具",
+      "revenue": null,
+      "share": null,
+      "isEstimate": false,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-annual",
+        "stl-src-ir"
+      ],
+      "claimIds": []
+    }
   ],
   "forecasts": [
-    {"id":"stl-2026-bear","fiscalYear":2026,"scenario":"bear","revenue":4004.1,"grossMargin":19,"netIncome":300.3,"eps":4.58,"optoShare":null,"currency":"TWD","scale":"million","evidenceClass":"research_inference","sourceIds":["stl-src-investor","stl-src-q2"],"notes":"1-7M 實績加上 8-12 月平均月營收 3.3 億元；淨利率 7.5%。"},
-    {"id":"stl-2026-base","fiscalYear":2026,"scenario":"base","revenue":4354.1,"grossMargin":22,"netIncome":457.2,"eps":6.97,"optoShare":null,"currency":"TWD","scale":"million","evidenceClass":"research_inference","sourceIds":["stl-src-investor","stl-src-q2"],"notes":"1-7M 實績加上 8-12 月平均月營收 4.0 億元；淨利率 10.5%。"},
-    {"id":"stl-2026-bull","fiscalYear":2026,"scenario":"bull","revenue":4704.1,"grossMargin":24,"netIncome":588.0,"eps":8.97,"optoShare":null,"currency":"TWD","scale":"million","evidenceClass":"research_inference","sourceIds":["stl-src-investor","stl-src-q2"],"notes":"1-7M 實績加上 8-12 月平均月營收 4.7 億元；淨利率 12.5%。"},
-    {"id":"stl-2027-bear","fiscalYear":2027,"scenario":"bear","revenue":4404.5,"grossMargin":18,"netIncome":308.3,"eps":4.70,"optoShare":null,"currency":"TWD","scale":"million","evidenceClass":"research_inference","sourceIds":["stl-src-annual","stl-src-q2"],"notes":"2026 bear 營收再增 10%，淨利率 7%；反映價格與週轉壓力。"},
-    {"id":"stl-2027-base","fiscalYear":2027,"scenario":"base","revenue":5442.6,"grossMargin":22.5,"netIncome":571.5,"eps":8.72,"optoShare":null,"currency":"TWD","scale":"million","evidenceClass":"research_inference","sourceIds":["stl-src-annual","stl-src-q2"],"notes":"2026 base 營收再增 25%，淨利率維持 10.5%；不假設未公開新客戶。"},
-    {"id":"stl-2027-bull","fiscalYear":2027,"scenario":"bull","revenue":6585.7,"grossMargin":25,"netIncome":856.1,"eps":13.06,"optoShare":null,"currency":"TWD","scale":"million","evidenceClass":"research_inference","sourceIds":["stl-src-annual","stl-src-product"],"notes":"2026 bull 營收再增 40%，淨利率 13%；需高功率 BBU 放量與良率／週轉同步改善。"}
+    {
+      "id": "stl-2026-bear",
+      "fiscalYear": 2026,
+      "scenario": "bear",
+      "revenue": 4004.1,
+      "grossMargin": 19,
+      "netIncome": 300.3,
+      "eps": 4.58,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-investor",
+        "stl-src-q2"
+      ],
+      "notes": "1-7M 實績加上 8-12 月平均月營收 3.3 億元；淨利率 7.5%。"
+    },
+    {
+      "id": "stl-2026-base",
+      "fiscalYear": 2026,
+      "scenario": "base",
+      "revenue": 4354.1,
+      "grossMargin": 22,
+      "netIncome": 457.2,
+      "eps": 6.97,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-investor",
+        "stl-src-q2"
+      ],
+      "notes": "1-7M 實績加上 8-12 月平均月營收 4.0 億元；淨利率 10.5%。"
+    },
+    {
+      "id": "stl-2026-bull",
+      "fiscalYear": 2026,
+      "scenario": "bull",
+      "revenue": 4704.1,
+      "grossMargin": 24,
+      "netIncome": 588,
+      "eps": 8.97,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-investor",
+        "stl-src-q2"
+      ],
+      "notes": "1-7M 實績加上 8-12 月平均月營收 4.7 億元；淨利率 12.5%。"
+    },
+    {
+      "id": "stl-2027-bear",
+      "fiscalYear": 2027,
+      "scenario": "bear",
+      "revenue": 4404.5,
+      "grossMargin": 18,
+      "netIncome": 308.3,
+      "eps": 4.7,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-annual",
+        "stl-src-q2"
+      ],
+      "notes": "2026 bear 營收再增 10%，淨利率 7%；反映價格與週轉壓力。"
+    },
+    {
+      "id": "stl-2027-base",
+      "fiscalYear": 2027,
+      "scenario": "base",
+      "revenue": 5442.6,
+      "grossMargin": 22.5,
+      "netIncome": 571.5,
+      "eps": 8.72,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-annual",
+        "stl-src-q2"
+      ],
+      "notes": "2026 base 營收再增 25%，淨利率維持 10.5%；不假設未公開新客戶。 2026/11/13：Q3實績已核對；外部模型差異仍待審查，不以本輪更新單方面改動2027 EPS。"
+    },
+    {
+      "id": "stl-2027-bull",
+      "fiscalYear": 2027,
+      "scenario": "bull",
+      "revenue": 6585.7,
+      "grossMargin": 25,
+      "netIncome": 856.1,
+      "eps": 13.06,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-annual",
+        "stl-src-product"
+      ],
+      "notes": "2026 bull 營收再增 40%，淨利率 13%；需高功率 BBU 放量與良率／週轉同步改善。"
+    }
   ],
   "capacity": [
-    {"id":"stl-cap-product","eventDate":"2026-08","label":"公開 BBU 產品電氣範圍","equipment":"BESS／UPS／BBU","technology":"6V-300V、12W-25kW","deltaUnits":null,"status":"published capability","notes":"是產品能力範圍，不是特定客戶量產資格。","evidenceClass":"official","sourceIds":["stl-src-product"]},
-    {"id":"stl-cap-ctdp","eventDate":"2025-12","label":"取得 UL 1973 CTDP","equipment":"內部實驗室","technology":"UL 1973 測試資料計畫","deltaUnits":null,"status":"qualified laboratory","notes":"證明測試能力、品質系統與資料可靠性；不等同 CSP 認證。","evidenceClass":"official","sourceIds":["stl-src-ctdp"]},
-    {"id":"stl-cap-ppe","eventDate":"2026-06","label":"不動產、廠房及設備增加","equipment":"生產與測試資產","technology":"帳面金額 2.209 億元","deltaUnits":null,"status":"ramping evidence","notes":"較 2025 年底增加 70.6%，支持擴張跡象，但未揭露對應產線數。","evidenceClass":"research_inference","sourceIds":["stl-src-q2"]},
-    {"id":"stl-cap-rd","eventDate":"2025-FY","label":"研發投入與 BBU 開發","equipment":"研發資源","technology":"研發費用 0.935 億元／營收 3.81%","deltaUnits":null,"status":"actual","notes":"年報列示 AI 算力中心、伺服器機架與主板電源備援模組。","evidenceClass":"official","sourceIds":["stl-src-annual"]}
+    {
+      "id": "stl-cap-product",
+      "eventDate": "2026-08",
+      "label": "公開 BBU 產品電氣範圍",
+      "equipment": "BESS／UPS／BBU",
+      "technology": "6V-300V、12W-25kW",
+      "deltaUnits": null,
+      "status": "published capability",
+      "notes": "是產品能力範圍，不是特定客戶量產資格。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-product"
+      ]
+    },
+    {
+      "id": "stl-cap-ctdp",
+      "eventDate": "2025-12",
+      "label": "取得 UL 1973 CTDP",
+      "equipment": "內部實驗室",
+      "technology": "UL 1973 測試資料計畫",
+      "deltaUnits": null,
+      "status": "qualified laboratory",
+      "notes": "證明測試能力、品質系統與資料可靠性；不等同 CSP 認證。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-ctdp"
+      ]
+    },
+    {
+      "id": "stl-cap-ppe",
+      "eventDate": "2026-06",
+      "label": "不動產、廠房及設備增加",
+      "equipment": "生產與測試資產",
+      "technology": "帳面金額 2.209 億元",
+      "deltaUnits": null,
+      "status": "ramping evidence",
+      "notes": "較 2025 年底增加 70.6%，支持擴張跡象，但未揭露對應產線數。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-q2"
+      ]
+    },
+    {
+      "id": "stl-cap-rd",
+      "eventDate": "2025-FY",
+      "label": "研發投入與 BBU 開發",
+      "equipment": "研發資源",
+      "technology": "研發費用 0.935 億元／營收 3.81%",
+      "deltaUnits": null,
+      "status": "actual",
+      "notes": "年報列示 AI 算力中心、伺服器機架與主板電源備援模組。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-annual"
+      ]
+    }
   ],
   "catalysts": [
-    {"id":"stl-cat-revenue","title":"月營收站穩 4 億元以上","impact":"high","status":"active","notes":"7–9 月營收連續高於 4 億元；8 月達 4.951 億元、9 月降至 4.248 億元，需觀察第四季需求與拉貨節奏。","evidenceClass":"official","sourceIds":["stl-src-investor"]},
-    {"id":"stl-cat-margin","title":"BBU 組合帶動毛利率改善","impact":"high","status":"active","notes":"公司年報將 2025 毛利增加歸因於 AI 算力中心備援系統等高毛利產品銷量增加。","evidenceClass":"official","sourceIds":["stl-src-annual"]},
-    {"id":"stl-cat-product","title":"12W-25kW 公開產品能力轉為出貨","impact":"high","status":"watch","notes":"需要營收、毛利或公司公開量產資訊交叉確認。","evidenceClass":"research_inference","sourceIds":["stl-src-product","stl-src-investor"]},
-    {"id":"stl-cat-cash","title":"獲利成長轉為營業現金流","impact":"medium","status":"watch","notes":"H1 營業現金流為 0.47 億元，低於稅後淨利 2.42 億元。","evidenceClass":"research_inference","sourceIds":["stl-src-q2"]}
+    {
+      "id": "stl-cat-revenue",
+      "title": "月營收站穩 4 億元以上",
+      "impact": "high",
+      "status": "active",
+      "notes": "7–9 月營收連續高於 4 億元；8 月達 4.951 億元、9 月降至 4.248 億元，需觀察第四季需求與拉貨節奏。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-investor"
+      ]
+    },
+    {
+      "id": "stl-cat-margin",
+      "title": "BBU 組合帶動毛利率改善",
+      "impact": "high",
+      "status": "active",
+      "notes": "公司年報將 2025 毛利增加歸因於 AI 算力中心備援系統等高毛利產品銷量增加。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-annual"
+      ]
+    },
+    {
+      "id": "stl-cat-product",
+      "title": "12W-25kW 公開產品能力轉為出貨",
+      "impact": "high",
+      "status": "watch",
+      "notes": "需要營收、毛利或公司公開量產資訊交叉確認。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-product",
+        "stl-src-investor"
+      ]
+    },
+    {
+      "id": "stl-cat-cash",
+      "title": "獲利成長轉為營業現金流",
+      "impact": "medium",
+      "status": "watch",
+      "notes": "H1 營業現金流為 0.47 億元，低於稅後淨利 2.42 億元。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-q2"
+      ]
+    }
   ],
   "risks": [
-    {"id":"stl-risk-customer","title":"客戶集中度高","impact":"high","probability":"high","status":"active","notes":"2025 年最大匿名客戶占 55.12%，前兩大合計占 69.61%。","evidenceClass":"official","sourceIds":["stl-src-annual"]},
-    {"id":"stl-risk-working-capital","title":"應收與存貨快速增加","impact":"high","probability":"medium","status":"active","notes":"2026H1 應收帳款與存貨較 2025 年底分別增加 62.7% 與 52.4%。","evidenceClass":"research_inference","sourceIds":["stl-src-q2"]},
-    {"id":"stl-risk-qualification","title":"把產品規格誤當客戶資格","impact":"high","probability":"medium","status":"watch","notes":"公開資料未確認特定 CSP、20/25kW 或 400/800V HVDC 客戶量產資格。","evidenceClass":"research_inference","sourceIds":["stl-src-product","stl-src-ctdp"]},
-    {"id":"stl-risk-funding","title":"擴張伴隨融資與負債增加","impact":"medium","probability":"medium","status":"active","notes":"2026H1 發行公司債 6.54 億元，負債比由 2025 年底 41% 升至 57%。","evidenceClass":"official","sourceIds":["stl-src-q2"]}
+    {
+      "id": "stl-risk-customer",
+      "title": "客戶集中度高",
+      "impact": "high",
+      "probability": "high",
+      "status": "active",
+      "notes": "2025 年最大匿名客戶占 55.12%，前兩大合計占 69.61%。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-annual"
+      ]
+    },
+    {
+      "id": "stl-risk-working-capital",
+      "title": "應收與存貨快速增加",
+      "impact": "high",
+      "probability": "medium",
+      "status": "active",
+      "notes": "2026H1 應收帳款與存貨較 2025 年底分別增加 62.7% 與 52.4%。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-q2"
+      ]
+    },
+    {
+      "id": "stl-risk-qualification",
+      "title": "把產品規格誤當客戶資格",
+      "impact": "high",
+      "probability": "medium",
+      "status": "watch",
+      "notes": "公開資料未確認特定 CSP、20/25kW 或 400/800V HVDC 客戶量產資格。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-product",
+        "stl-src-ctdp"
+      ]
+    },
+    {
+      "id": "stl-risk-funding",
+      "title": "擴張伴隨融資與負債增加",
+      "impact": "medium",
+      "probability": "medium",
+      "status": "active",
+      "notes": "2026H1 發行公司債 6.54 億元，負債比由 2025 年底 41% 升至 57%。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-q2"
+      ]
+    }
   ],
   "signalRules": [
-    {"id":"stl-rule-revenue","metric":"月營收","greenCondition":"連續維持 >= 4.0 億元","yellowCondition":"3.3-4.0 億元","redCondition":"< 3.3 億元且連續下滑","weight":1.4,"evidenceClass":"research_inference","sourceIds":["stl-src-investor"]},
-    {"id":"stl-rule-gm","metric":"毛利率","greenCondition":">= 22%","yellowCondition":"19-22%","redCondition":"< 19%","weight":1.3,"evidenceClass":"research_inference","sourceIds":["stl-src-q2","stl-src-annual"]},
-    {"id":"stl-rule-cash","metric":"現金轉換","greenCondition":"營業現金流接近或高於淨利","yellowCondition":"正值但明顯低於淨利","redCondition":"連續為負","weight":1.2,"evidenceClass":"research_inference","sourceIds":["stl-src-q2"]},
-    {"id":"stl-rule-working-capital","metric":"營運資金","greenCondition":"應收與存貨增速不高於營收","yellowCondition":"短期高於營收、週轉尚可","redCondition":"連續惡化並侵蝕現金","weight":1.2,"evidenceClass":"research_inference","sourceIds":["stl-src-q2"]},
-    {"id":"stl-rule-qualification","metric":"客戶資格","greenCondition":"公司或客戶公開確認量產","yellowCondition":"產品／實驗室能力已具備","redCondition":"認證或量產延遲","weight":1.1,"evidenceClass":"research_inference","sourceIds":["stl-src-product","stl-src-ctdp"]},
-    {"id":"stl-rule-concentration","metric":"客戶集中","greenCondition":"最大客戶占比顯著下降","yellowCondition":"有新增客戶但集中仍高","redCondition":"最大客戶持續 > 50%","weight":1.2,"evidenceClass":"research_inference","sourceIds":["stl-src-annual"]}
+    {
+      "id": "stl-rule-revenue",
+      "metric": "月營收",
+      "greenCondition": "連續維持 >= 4.0 億元",
+      "yellowCondition": "3.3-4.0 億元",
+      "redCondition": "< 3.3 億元且連續下滑",
+      "weight": 1.4,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-investor"
+      ]
+    },
+    {
+      "id": "stl-rule-gm",
+      "metric": "毛利率",
+      "greenCondition": ">= 22%",
+      "yellowCondition": "19-22%",
+      "redCondition": "< 19%",
+      "weight": 1.3,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-q2",
+        "stl-src-annual"
+      ]
+    },
+    {
+      "id": "stl-rule-cash",
+      "metric": "現金轉換",
+      "greenCondition": "營業現金流接近或高於淨利",
+      "yellowCondition": "正值但明顯低於淨利",
+      "redCondition": "連續為負",
+      "weight": 1.2,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-q2"
+      ]
+    },
+    {
+      "id": "stl-rule-working-capital",
+      "metric": "營運資金",
+      "greenCondition": "應收與存貨增速不高於營收",
+      "yellowCondition": "短期高於營收、週轉尚可",
+      "redCondition": "連續惡化並侵蝕現金",
+      "weight": 1.2,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-q2"
+      ]
+    },
+    {
+      "id": "stl-rule-qualification",
+      "metric": "客戶資格",
+      "greenCondition": "公司或客戶公開確認量產",
+      "yellowCondition": "產品／實驗室能力已具備",
+      "redCondition": "認證或量產延遲",
+      "weight": 1.1,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-product",
+        "stl-src-ctdp"
+      ]
+    },
+    {
+      "id": "stl-rule-concentration",
+      "metric": "客戶集中",
+      "greenCondition": "最大客戶占比顯著下降",
+      "yellowCondition": "有新增客戶但集中仍高",
+      "redCondition": "最大客戶持續 > 50%",
+      "weight": 1.2,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-annual"
+      ]
+    }
   ],
   "signalSnapshots": [
-    {"id":"stl-sig-revenue","asOfDate":"2026-10-21","metric":"月營收","status":"green","valueText":"2026/09 4.248 億元；8 月高點 4.951 億元","notes":"9 月 MoM -14.19%、YoY +176.30%；1–9 月 32.740 億元、年增 96.48%。Q3 月營收加總較 Q2 約增 23.01%，獲利與現金轉換待驗證。","evidenceClass":"official","sourceIds":["stl-src-investor"]},
-    {"id":"stl-sig-gm","asOfDate":"2026-10-21","metric":"毛利率","status":"green","valueText":"2026Q2 23.33%","notes":"高於 2025FY 21.81%，仍需檢查產品組合持續性。","evidenceClass":"official","sourceIds":["stl-src-q2","stl-src-annual"]},
-    {"id":"stl-sig-cash","asOfDate":"2026-10-21","metric":"現金轉換","status":"yellow","valueText":"H1 OCF 0.47 億元","notes":"正值但明顯低於 H1 淨利 2.42 億元。","evidenceClass":"official","sourceIds":["stl-src-q2"]},
-    {"id":"stl-sig-working-capital","asOfDate":"2026-10-21","metric":"營運資金","status":"yellow","valueText":"AR 9.10 億／存貨 8.59 億","notes":"兩者均較 2025 年底顯著增加。","evidenceClass":"official","sourceIds":["stl-src-q2"]},
-    {"id":"stl-sig-qualification","asOfDate":"2026-10-21","metric":"客戶資格","status":"yellow","valueText":"25kW／300V 能力；CTDP 已取得","notes":"能力可驗證，但特定 CSP／HVDC 量產資格未公開確認。","evidenceClass":"research_inference","sourceIds":["stl-src-product","stl-src-ctdp"]},
-    {"id":"stl-sig-concentration","asOfDate":"2026-10-21","metric":"客戶集中","status":"red","valueText":"2025 最大客戶 55.12%","notes":"前兩大匿名客戶合計 69.61%。","evidenceClass":"official","sourceIds":["stl-src-annual"]}
+    {
+      "id": "stl-sig-revenue",
+      "asOfDate": "2026-10-21",
+      "metric": "月營收",
+      "status": "green",
+      "valueText": "2026/09 4.248 億元；8 月高點 4.951 億元",
+      "notes": "9 月 MoM -14.19%、YoY +176.30%；1–9 月 32.740 億元、年增 96.48%。Q3 月營收加總較 Q2 約增 23.01%，獲利與現金轉換待驗證。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-investor"
+      ]
+    },
+    {
+      "id": "stl-sig-gm",
+      "asOfDate": "2026-10-21",
+      "metric": "毛利率",
+      "status": "green",
+      "valueText": "2026Q2 23.33%",
+      "notes": "高於 2025FY 21.81%，仍需檢查產品組合持續性。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-q2",
+        "stl-src-annual"
+      ]
+    },
+    {
+      "id": "stl-sig-cash",
+      "asOfDate": "2026-10-21",
+      "metric": "現金轉換",
+      "status": "yellow",
+      "valueText": "H1 OCF 0.47 億元",
+      "notes": "正值但明顯低於 H1 淨利 2.42 億元。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-q2"
+      ]
+    },
+    {
+      "id": "stl-sig-working-capital",
+      "asOfDate": "2026-10-21",
+      "metric": "營運資金",
+      "status": "yellow",
+      "valueText": "AR 9.10 億／存貨 8.59 億",
+      "notes": "兩者均較 2025 年底顯著增加。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-q2"
+      ]
+    },
+    {
+      "id": "stl-sig-qualification",
+      "asOfDate": "2026-10-21",
+      "metric": "客戶資格",
+      "status": "yellow",
+      "valueText": "25kW／300V 能力；CTDP 已取得",
+      "notes": "能力可驗證，但特定 CSP／HVDC 量產資格未公開確認。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-product",
+        "stl-src-ctdp"
+      ]
+    },
+    {
+      "id": "stl-sig-concentration",
+      "asOfDate": "2026-10-21",
+      "metric": "客戶集中",
+      "status": "red",
+      "valueText": "2025 最大客戶 55.12%",
+      "notes": "前兩大匿名客戶合計 69.61%。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-annual"
+      ]
+    },
+    {
+      "id": "stl-sig-q3-nov13",
+      "asOfDate": "2026-11-13",
+      "metric": "第三季獲利實績",
+      "status": "green",
+      "valueText": "EPS 2.54元，毛利率22.96%",
+      "notes": "2026Q3毛利率22.96%、EPS2.54元；10月營收5.402億元、年增106.71%，單月創較9月新高；營運槓桿正面，但應收、存貨與現金流仍待季報附註核查。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-q3-20261113"
+      ]
+    },
+    {
+      "id": "stl-sig-oct-nov13",
+      "asOfDate": "2026-11-13",
+      "metric": "十月月營收",
+      "status": "green",
+      "valueText": "2026/10 540.235百萬元，YoY +106.71%",
+      "notes": "10月公告已核對；月營收並非獲利或正式客戶量產資格。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-m10-20261113"
+      ]
+    }
   ],
   "sections": [
-    {"id":"stl-sec-summary","type":"summary","title":"投資摘要與證據邊界","sortOrder":1,"payloadRefs":["thesis","signalSnapshots"],"showSources":true},
-    {"id":"stl-sec-actuals","type":"financial-table","title":"已實現財務：獲利加速","sortOrder":2,"payloadRefs":["actuals"],"showSources":true},
-    {"id":"stl-sec-revenue","type":"bar-chart","title":"2026 月營收：BBU 放量代理指標","sortOrder":3,"payloadRefs":["monthlyRevenue"],"showSources":true},
-    {"id":"stl-sec-business","type":"financial-table","title":"業務組合：官方只揭露應用類別","sortOrder":4,"payloadRefs":["segments"],"showSources":true},
-    {"id":"stl-sec-scenario","type":"scenario-table","title":"2026F／2027F 公開資料情境","sortOrder":5,"payloadRefs":["forecasts"],"showSources":true},
-    {"id":"stl-sec-capability","type":"capacity","title":"公開能力、研發與擴張跡象","sortOrder":6,"payloadRefs":["capacity"],"showSources":true},
-    {"id":"stl-sec-signals","type":"signals","title":"紅綠燈：營運強、風險也升高","sortOrder":7,"payloadRefs":["signalRules","signalSnapshots"],"showSources":true},
-    {"id":"stl-sec-risks","type":"catalysts-risks","title":"催化劑與關鍵風險","sortOrder":8,"payloadRefs":["catalysts","risks"],"showSources":true},
-    {"id":"stl-sec-sources","type":"sources","title":"公開資料來源與排除原則","sortOrder":9,"payloadRefs":["sources"],"showSources":true},
-    {"id":"stl-sec-conclusion","type":"conclusion","title":"結論與後續驗證清單","sortOrder":10,"payloadRefs":["thesis"],"showSources":true}
+    {
+      "id": "stl-sec-summary",
+      "type": "summary",
+      "title": "投資摘要與證據邊界",
+      "sortOrder": 1,
+      "payloadRefs": [
+        "thesis",
+        "signalSnapshots"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "stl-sec-actuals",
+      "type": "financial-table",
+      "title": "已實現財務：獲利加速",
+      "sortOrder": 2,
+      "payloadRefs": [
+        "actuals"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "stl-sec-revenue",
+      "type": "bar-chart",
+      "title": "2026 月營收：BBU 放量代理指標",
+      "sortOrder": 3,
+      "payloadRefs": [
+        "monthlyRevenue"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "stl-sec-business",
+      "type": "financial-table",
+      "title": "業務組合：官方只揭露應用類別",
+      "sortOrder": 4,
+      "payloadRefs": [
+        "segments"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "stl-sec-scenario",
+      "type": "scenario-table",
+      "title": "2026F／2027F 公開資料情境",
+      "sortOrder": 5,
+      "payloadRefs": [
+        "forecasts"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "stl-sec-capability",
+      "type": "capacity",
+      "title": "公開能力、研發與擴張跡象",
+      "sortOrder": 6,
+      "payloadRefs": [
+        "capacity"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "stl-sec-signals",
+      "type": "signals",
+      "title": "紅綠燈：營運強、風險也升高",
+      "sortOrder": 7,
+      "payloadRefs": [
+        "signalRules",
+        "signalSnapshots"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "stl-sec-risks",
+      "type": "catalysts-risks",
+      "title": "催化劑與關鍵風險",
+      "sortOrder": 8,
+      "payloadRefs": [
+        "catalysts",
+        "risks"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "stl-sec-sources",
+      "type": "sources",
+      "title": "公開資料來源與排除原則",
+      "sortOrder": 9,
+      "payloadRefs": [
+        "sources"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "stl-sec-conclusion",
+      "type": "conclusion",
+      "title": "結論與後續驗證清單",
+      "sortOrder": 10,
+      "payloadRefs": [
+        "thesis"
+      ],
+      "showSources": true
+    }
   ],
   "sources": [
-    {"id":"stl-src-annual","evidenceClass":"official","provider":"新盛力科技","title":"2025 年報","url":"https://www.stl-tech.com/upload/ckeditor/files/2025AnualReport_zh.pdf","attachment":"sources/2025-AnnualReport-zh.pdf","accessedDate":"2026-09-02","coveredPeriods":["2025FY"],"confidence":"high","notes":"財務、產品應用、研發、客戶集中與風險揭露。"},
-    {"id":"stl-src-q1","evidenceClass":"official","provider":"新盛力科技","title":"2026Q1 合併財務報告","url":"https://www.stl-tech.com/upload/ckeditor/files/FinancialStatements-2026Q1.pdf","attachment":"sources/FinancialStatements-2026Q1.pdf","accessedDate":"2026-09-02","coveredPeriods":["2026Q1"],"confidence":"high","notes":"第一季實績。"},
-    {"id":"stl-src-q2","evidenceClass":"official","provider":"新盛力科技","title":"2026Q2 合併財務報告","url":"https://www.stl-tech.com/upload/ckeditor/files/FinancialStatements-2026Q2.pdf","attachment":"sources/FinancialStatements-2026Q2.pdf","accessedDate":"2026-09-02","coveredPeriods":["2026Q2","2026H1"],"confidence":"high","notes":"第二季與上半年實績、資產負債及現金流。"},
-    {"id":"stl-src-investor","evidenceClass":"official","provider":"新盛力科技","title":"投資人專區與每月營收","url":"https://www.stl-tech.com/investor.asp","accessedDate":"2026-10-21","coveredPeriods":["2025/01-2026/09"],"confidence":"high","notes":"公司官網月營收以仟元列示；2026/08 495,100、09 424,843 仟元。Q3 及累計營收由月份加總，非核閱獲利財報；本次官方索引未見 Q3 財報。"},
-    {"id":"stl-src-product","evidenceClass":"official","provider":"新盛力科技","title":"儲能／電池備援系統產品規格","url":"https://www.stl-tech.com/product_info.asp?id=89","accessedDate":"2026-09-02","coveredPeriods":["current product capability"],"confidence":"high","notes":"公開產品範圍為 6V-300V、12W-25kW；不推論特定客戶資格。"},
-    {"id":"stl-src-ctdp","evidenceClass":"official","provider":"新盛力科技","title":"UL 1973 CTDP 資格公告","url":"https://www.stl-tech.com/news_info.asp?id=46","publishedDate":"2025-12-05","accessedDate":"2026-09-02","coveredPeriods":["2025"],"confidence":"high","notes":"實驗室測試能力、品質系統與資料可靠性資格。"},
-    {"id":"stl-src-ir","evidenceClass":"official","provider":"新盛力科技","title":"2025 法人說明會公開簡報","url":"https://www.stl-tech.com/upload/ckeditor/files/2025-EarningsCallMaterial.pdf","attachment":"sources/2025-EarningsCallMaterial.pdf","publishedDate":"2025-11-27","accessedDate":"2026-09-02","coveredPeriods":["2024Q1-2025Q3","outlook"],"confidence":"high","notes":"公開簡報，不是券商研究報告。"}
+    {
+      "id": "stl-src-annual",
+      "evidenceClass": "official",
+      "provider": "新盛力科技",
+      "title": "2025 年報",
+      "url": "https://www.stl-tech.com/upload/ckeditor/files/2025AnualReport_zh.pdf",
+      "attachment": "sources/2025-AnnualReport-zh.pdf",
+      "accessedDate": "2026-09-02",
+      "coveredPeriods": [
+        "2025FY"
+      ],
+      "confidence": "high",
+      "notes": "財務、產品應用、研發、客戶集中與風險揭露。"
+    },
+    {
+      "id": "stl-src-q1",
+      "evidenceClass": "official",
+      "provider": "新盛力科技",
+      "title": "2026Q1 合併財務報告",
+      "url": "https://www.stl-tech.com/upload/ckeditor/files/FinancialStatements-2026Q1.pdf",
+      "attachment": "sources/FinancialStatements-2026Q1.pdf",
+      "accessedDate": "2026-09-02",
+      "coveredPeriods": [
+        "2026Q1"
+      ],
+      "confidence": "high",
+      "notes": "第一季實績。"
+    },
+    {
+      "id": "stl-src-q2",
+      "evidenceClass": "official",
+      "provider": "新盛力科技",
+      "title": "2026Q2 合併財務報告",
+      "url": "https://www.stl-tech.com/upload/ckeditor/files/FinancialStatements-2026Q2.pdf",
+      "attachment": "sources/FinancialStatements-2026Q2.pdf",
+      "accessedDate": "2026-09-02",
+      "coveredPeriods": [
+        "2026Q2",
+        "2026H1"
+      ],
+      "confidence": "high",
+      "notes": "第二季與上半年實績、資產負債及現金流。"
+    },
+    {
+      "id": "stl-src-investor",
+      "evidenceClass": "official",
+      "provider": "新盛力科技",
+      "title": "投資人專區與每月營收",
+      "url": "https://www.stl-tech.com/investor.asp",
+      "accessedDate": "2026-10-21",
+      "coveredPeriods": [
+        "2025/01-2026/09"
+      ],
+      "confidence": "high",
+      "notes": "公司官網月營收以仟元列示；2026/08 495,100、09 424,843 仟元。Q3 及累計營收由月份加總，非核閱獲利財報；本次官方索引未見 Q3 財報。"
+    },
+    {
+      "id": "stl-src-product",
+      "evidenceClass": "official",
+      "provider": "新盛力科技",
+      "title": "儲能／電池備援系統產品規格",
+      "url": "https://www.stl-tech.com/product_info.asp?id=89",
+      "accessedDate": "2026-09-02",
+      "coveredPeriods": [
+        "current product capability"
+      ],
+      "confidence": "high",
+      "notes": "公開產品範圍為 6V-300V、12W-25kW；不推論特定客戶資格。"
+    },
+    {
+      "id": "stl-src-ctdp",
+      "evidenceClass": "official",
+      "provider": "新盛力科技",
+      "title": "UL 1973 CTDP 資格公告",
+      "url": "https://www.stl-tech.com/news_info.asp?id=46",
+      "publishedDate": "2025-12-05",
+      "accessedDate": "2026-09-02",
+      "coveredPeriods": [
+        "2025"
+      ],
+      "confidence": "high",
+      "notes": "實驗室測試能力、品質系統與資料可靠性資格。"
+    },
+    {
+      "id": "stl-src-ir",
+      "evidenceClass": "official",
+      "provider": "新盛力科技",
+      "title": "2025 法人說明會公開簡報",
+      "url": "https://www.stl-tech.com/upload/ckeditor/files/2025-EarningsCallMaterial.pdf",
+      "attachment": "sources/2025-EarningsCallMaterial.pdf",
+      "publishedDate": "2025-11-27",
+      "accessedDate": "2026-09-02",
+      "coveredPeriods": [
+        "2024Q1-2025Q3",
+        "outlook"
+      ],
+      "confidence": "high",
+      "notes": "公開簡報，不是券商研究報告。"
+    },
+    {
+      "id": "stl-src-q3-20261113",
+      "evidenceClass": "official",
+      "provider": "公開資訊觀測站公告（MoneyDJ轉載）",
+      "title": "4931 2026Q3 綜合損益表",
+      "url": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=8587ee4c-554f-43bb-8abc-51f4b4339b16",
+      "publishedDate": "2026-11-11",
+      "accessedDate": "2026-11-13",
+      "coveredPeriods": [
+        "2026Q3",
+        "2026YTD"
+      ],
+      "confidence": "high",
+      "notes": "上市櫃公司公告損益表重刊；數字以新台幣千元公布，研究資料轉為百萬元；未以此取代完整附註查核。"
+    },
+    {
+      "id": "stl-src-m10-20261113",
+      "evidenceClass": "official",
+      "provider": "公司月營收公告（中央社／Yahoo轉載）",
+      "title": "4931 2026年10月合併營收",
+      "url": "https://tw.stock.yahoo.com/news/%E5%85%AC%E5%91%8A-%E6%96%B0%E7%9B%9B%E5%8A%9B-2026%E5%B9%B410%E6%9C%88%E5%90%88%E4%BD%B5%E7%87%9F%E6%94%B65-4%E5%84%84%E5%85%83-%E5%B9%B4%E5%A2%9E106-062340200.html",
+      "publishedDate": "2026-11-05",
+      "accessedDate": "2026-11-13",
+      "coveredPeriods": [
+        "2026/10"
+      ],
+      "confidence": "high",
+      "notes": "月營收原始單位仟元；研究資料轉為百萬元。"
+    }
   ],
   "claims": [
-    {"id":"stl-claim-growth","text":"8 月營收 4.951 億元創本研究期高點，9 月回落至 4.248 億元；Q3 月營收加總 13.694 億元，較 Q2 約增 23.01%，需求延續但獲利品質待財報驗證。","evidenceClass":"research_inference","sourceIds":["stl-src-q2","stl-src-investor"],"inputClaimIds":[],"method":"採官方 7–9 月營收 449,435＋495,100＋424,843 仟元，加總為 1,369,378 仟元；除以 Q2 1,113,260 仟元再減一，季增 23.01%。1–9 月累計 3,274,016 仟元，年增以去年同期計算。","confidence":"high"},
-    {"id":"stl-claim-bbu-business","text":"資料中心與伺服器電源備援系統是公司公開揭露的核心應用之一。","evidenceClass":"official","sourceIds":["stl-src-annual","stl-src-ir"],"inputClaimIds":[],"method":"使用年報業務與研發項目、公開法說未來展望。","confidence":"high"},
-    {"id":"stl-claim-product-scope","text":"公司公開 BBU 產品範圍最高至 300V 與 25kW。","evidenceClass":"official","sourceIds":["stl-src-product"],"inputClaimIds":[],"method":"採公司產品頁規格，不外推未揭露架構。","confidence":"high"},
-    {"id":"stl-claim-ctdp-scope","text":"UL 1973 CTDP 證明實驗室測試能力與資料可靠性，不等於特定 CSP 量產認證。","evidenceClass":"research_inference","sourceIds":["stl-src-ctdp"],"inputClaimIds":["stl-claim-product-scope"],"method":"依公司公告限定 CTDP 的證據範圍，未把實驗室資格外推為客戶資格。","confidence":"high"},
-    {"id":"stl-claim-capability-boundary","text":"公開資料可證實產品與測試能力，但不足以證實特定 CSP、20/25kW 或 400/800V HVDC 客戶量產資格。","evidenceClass":"research_inference","sourceIds":["stl-src-product","stl-src-ctdp","stl-src-annual"],"inputClaimIds":["stl-claim-product-scope","stl-claim-ctdp-scope"],"method":"將產品規格、實驗室資格與客戶量產資格分層；缺少公司或客戶公開確認時不列為事實。","confidence":"high"},
-    {"id":"stl-claim-risk","text":"客戶集中與營運資金增加是目前最可量化的主要風險。","evidenceClass":"research_inference","sourceIds":["stl-src-annual","stl-src-q2"],"inputClaimIds":[],"method":"以 2025 客戶集中揭露及 2026H1 資產負債、現金流變化判斷。","confidence":"high"},
-    {"id":"stl-claim-verdict","text":"截至 2026-10-21 維持黃綠燈、偏綠：月營收放量明確，Q3 獲利與現金流尚待核閱財報；客戶集中、營運資金與資格邊界仍需驗證。","evidenceClass":"research_inference","sourceIds":["stl-src-annual","stl-src-q2","stl-src-investor","stl-src-product","stl-src-ctdp"],"inputClaimIds":["stl-claim-growth","stl-claim-capability-boundary","stl-claim-risk"],"method":"綜合營收、獲利、營運資金、客戶集中與公開資格訊號。","confidence":"medium"}
-  ]
+    {
+      "id": "stl-claim-growth",
+      "text": "8 月營收 4.951 億元創本研究期高點，9 月回落至 4.248 億元；Q3 月營收加總 13.694 億元，較 Q2 約增 23.01%，需求延續但獲利品質待財報驗證。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-q2",
+        "stl-src-investor"
+      ],
+      "inputClaimIds": [],
+      "method": "採官方 7–9 月營收 449,435＋495,100＋424,843 仟元，加總為 1,369,378 仟元；除以 Q2 1,113,260 仟元再減一，季增 23.01%。1–9 月累計 3,274,016 仟元，年增以去年同期計算。",
+      "confidence": "high"
+    },
+    {
+      "id": "stl-claim-bbu-business",
+      "text": "資料中心與伺服器電源備援系統是公司公開揭露的核心應用之一。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-annual",
+        "stl-src-ir"
+      ],
+      "inputClaimIds": [],
+      "method": "使用年報業務與研發項目、公開法說未來展望。",
+      "confidence": "high"
+    },
+    {
+      "id": "stl-claim-product-scope",
+      "text": "公司公開 BBU 產品範圍最高至 300V 與 25kW。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "stl-src-product"
+      ],
+      "inputClaimIds": [],
+      "method": "採公司產品頁規格，不外推未揭露架構。",
+      "confidence": "high"
+    },
+    {
+      "id": "stl-claim-ctdp-scope",
+      "text": "UL 1973 CTDP 證明實驗室測試能力與資料可靠性，不等於特定 CSP 量產認證。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-ctdp"
+      ],
+      "inputClaimIds": [
+        "stl-claim-product-scope"
+      ],
+      "method": "依公司公告限定 CTDP 的證據範圍，未把實驗室資格外推為客戶資格。",
+      "confidence": "high"
+    },
+    {
+      "id": "stl-claim-capability-boundary",
+      "text": "公開資料可證實產品與測試能力，但不足以證實特定 CSP、20/25kW 或 400/800V HVDC 客戶量產資格。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-product",
+        "stl-src-ctdp",
+        "stl-src-annual"
+      ],
+      "inputClaimIds": [
+        "stl-claim-product-scope",
+        "stl-claim-ctdp-scope"
+      ],
+      "method": "將產品規格、實驗室資格與客戶量產資格分層；缺少公司或客戶公開確認時不列為事實。",
+      "confidence": "high"
+    },
+    {
+      "id": "stl-claim-risk",
+      "text": "客戶集中與營運資金增加是目前最可量化的主要風險。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-annual",
+        "stl-src-q2"
+      ],
+      "inputClaimIds": [],
+      "method": "以 2025 客戶集中揭露及 2026H1 資產負債、現金流變化判斷。",
+      "confidence": "high"
+    },
+    {
+      "id": "stl-claim-verdict",
+      "text": "截至 2026-10-21 維持黃綠燈、偏綠：月營收放量明確，Q3 獲利與現金流尚待核閱財報；客戶集中、營運資金與資格邊界仍需驗證。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-annual",
+        "stl-src-q2",
+        "stl-src-investor",
+        "stl-src-product",
+        "stl-src-ctdp"
+      ],
+      "inputClaimIds": [
+        "stl-claim-growth",
+        "stl-claim-capability-boundary",
+        "stl-claim-risk"
+      ],
+      "method": "綜合營收、獲利、營運資金、客戶集中與公開資格訊號。",
+      "confidence": "medium"
+    },
+    {
+      "id": "stl-claim-audit-20261113",
+      "text": "2026Q3毛利率22.96%、EPS2.54元；10月營收5.402億元、年增106.71%，單月創較9月新高；營運槓桿正面，但應收、存貨與現金流仍待季報附註核查。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "stl-src-q3-20261113",
+        "stl-src-m10-20261113"
+      ],
+      "inputClaimIds": [],
+      "method": "以2026Q3公開資訊觀測站損益表與2026/10月營收公告直接回填；營運解讀與估值分離。",
+      "confidence": "high"
+    }
+  ],
+  "earningsQuality": {
+    "standard": "EQ-01-v1",
+    "reviewStatus": "WARN",
+    "reviewer": "研究資料來源初核（非會計師審計）",
+    "reviewedAt": "2026-11-13",
+    "coverageNote": "本輪只完成2026Q3損益表及業外占比初步檢驗；2023–2025年度與最近四季詳細附註、現金流、稅後歸母調整尚缺。此WARN不得解讀成完整EPS認證。",
+    "periods": [
+      {
+        "id": "stl-eq-2026q3",
+        "period": "2026Q3",
+        "periodType": "quarter",
+        "currency": "TWD",
+        "scale": "million",
+        "revenue": 1369.378,
+        "operatingIncome": 207.458,
+        "nonOperatingNet": 0.296,
+        "pretaxIncome": 207.754,
+        "incomeTax": null,
+        "netIncomeAttributable": 166.937,
+        "reportedEps": 2.54,
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "stl-src-q3-20261113"
+        ],
+        "claimIds": [],
+        "normalizationNote": "單季基本EPS已按公告回填；尚未取得完整近三年與最近四季各項業外及稅後歸母調節，未認證正常化EPS。"
+      }
+    ],
+    "qualitativeFlags": [],
+    "l2": {
+      "status": "NOT_RUN",
+      "summary": "已按公告計算Q3業外占比，未見單季15%量化門檻；歷史波動、OCI、公司投資與關聯交易尚未完成穿透，若新增異常則進行L2。",
+      "sourceIds": [
+        "stl-src-q3-20261113"
+      ],
+      "claimIds": []
+    },
+    "valuation": {
+      "epsBasis": "reported",
+      "prospectiveModelOnly": true,
+      "doubleCountChecked": true,
+      "notes": "本期不改動原情境EPS；先以公司官方實績與券商估計分列，沒有把業外收益重複計入模型。"
+    },
+    "notes": "2026/11/13資料更新初核；未以單一季業外比例取代完整盈餘品質檢驗。"
+  }
 }
