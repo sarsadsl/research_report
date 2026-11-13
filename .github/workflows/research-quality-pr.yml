@@ -35,5 +35,8 @@ jobs:
       - name: Browser report layout QC (UMC 2303 new full report)
         if: ${{ hashFiles('research/umc-2303/research-package.json') != '' }}
         run: npm run report:qc -- umc-2303
+      - name: Browser report layout QC (Nanya 1303 new full report)
+        if: ${{ hashFiles('research/nanya-1303/research-package.json') != '' }}
+        run: npm run report:qc -- nanya-1303
       # Deliberately do not call research:publish --remote, wrangler, or deploy.
       # This workflow never receives Cloudflare credentials and never touches production D1.

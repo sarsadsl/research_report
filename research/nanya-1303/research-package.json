@@ -1,0 +1,1510 @@
+{
+  "schemaVersion": "1.0.0",
+  "packageVersion": "1.0.0",
+  "asOfDate": "2026-11-13",
+  "company": {
+    "id": "nanya-1303",
+    "ticker": "1303",
+    "market": "TW",
+    "name": "南亞塑膠",
+    "slug": "nanya-1303",
+    "sector": "Materials",
+    "industry": "電子材料／塑化",
+    "currency": "TWD",
+    "description": "電子材料、化工、聚酯及塑膠加工；另控制南電、持股南亞科技，必須區分合併與權益法。"
+  },
+  "report": {
+    "id": "na-report-20261113",
+    "title": "南亞塑膠1303｜AI電子材料、轉投資與盈餘品質完整研究",
+    "slug": "nanya-1303",
+    "summary": "2026/10營收349.4億元、電子材料占61.5%；2026年前三季EPS10.07，業外淨收益約占稅前64.5%。報告重點是拆開CCL/玻纖布、南亞科權益法、南電併表與股權處分，避免總EPS評價失真。",
+    "thesis": "高階材料需求 → CCL／玻纖布價量升級 → 本業毛利 → 南亞科／南電獲利認列 → 業外項目穿透 → 正常化EPS／估值；缺稅後細項不得假設都是持續獲利。",
+    "status": "published",
+    "visibility": "listed",
+    "version": "1.0",
+    "publishedAt": "2026-11-13"
+  },
+  "thesis": {
+    "summary": "黃燈：電子材料升級與轉投資獲利改善，惟業外損益占比偏高；持續追蹤本業毛利率、正常化EPS與資本回收。",
+    "coreChain": [
+      "高階CCL／玻纖布",
+      "毛利與營業利益",
+      "南亞科／南電認列",
+      "正常化EPS與估值"
+    ],
+    "claimIds": [
+      "na-claim-sales",
+      "na-claim-profit",
+      "na-claim-components",
+      "na-claim-brokers"
+    ]
+  },
+  "dashboard": {
+    "currentView": "2026年前三季EPS10.07，營業利益333.90億元與稅前940.63億元的差額為業外淨收益606.73億元，佔稅前64.5%；10月營收349.4億元，電子材料61.5%。",
+    "currentThesis": "材料升級、南亞科與南電三引擎同時改善，但須檢查持續性和會計口徑。新玻纖布五廠投資115.3億元，仍未投產。",
+    "verificationChain": [
+      "電子材料占比能否持續60%以上",
+      "M6–M8訂單轉可售量",
+      "毛利與營業利益率",
+      "南電併表/南亞科權益法",
+      "業外與處分損益穿透",
+      "擴產報酬與折舊",
+      "現金流/估值"
+    ],
+    "conclusion": "基本面改善方向可驗證，但2026法定EPS大量包含營業外貢獻，應審慎評價。統一10/14 2027F EPS22.21（單家、非共識），304元股價對應總EPS約13.7倍；以9–10月舊320/325元目標價衡量，名義空間僅5.3%／6.9%。無足夠正常化EPS證據，不自行給出偽精準目標價。",
+    "forecastScenario": "base",
+    "headlineForecastYears": [
+      2026,
+      2027
+    ],
+    "focusMetric": {
+      "field": "grossMargin",
+      "label": "毛利率"
+    },
+    "monthlyRevenue": {
+      "focusYear": 2026,
+      "cumulativeThroughMonth": 10,
+      "unitDivisor": 100,
+      "unitLabel": "億元"
+    },
+    "cagrCards": [
+      {
+        "field": "revenue",
+        "label": "2025A至2027F營收CAGR（情境）",
+        "baseYear": 2025,
+        "targetYear": 2027,
+        "baseValue": 259912,
+        "years": 2
+      },
+      {
+        "field": "eps",
+        "label": "2025A至2027F總EPS CAGR（低基期）",
+        "baseYear": 2025,
+        "targetYear": 2027,
+        "baseValue": 0.57,
+        "years": 2
+      }
+    ],
+    "estimateNote": "基準EPS14.76/22.21來自統一10/14單家預估，並非市場共識；情境營收與毛利率由研究示意，不能與券商原模型混淆。康和2027F22.49、玉山8月14.09時點不同。業外淨收益606.73億元不等於南亞科收益，也不可直接按稅前總額扣EPS。"
+  },
+  "actuals": [
+    {
+      "id": "na-a-2025FY",
+      "period": "2025FY",
+      "fiscalYear": 2025,
+      "quarter": null,
+      "revenue": 259912,
+      "grossProfit": null,
+      "grossMargin": null,
+      "operatingIncome": null,
+      "operatingMargin": null,
+      "netIncome": null,
+      "netMargin": null,
+      "eps": 0.57,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-concord"
+      ],
+      "claimIds": []
+    },
+    {
+      "id": "na-a-2025Q4",
+      "period": "2025Q4",
+      "fiscalYear": 2025,
+      "quarter": 4,
+      "revenue": 64470,
+      "grossProfit": null,
+      "grossMargin": null,
+      "operatingIncome": null,
+      "operatingMargin": null,
+      "netIncome": null,
+      "netMargin": null,
+      "eps": 0.62,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-months"
+      ],
+      "claimIds": []
+    },
+    {
+      "id": "na-a-2026Q1",
+      "period": "2026Q1",
+      "fiscalYear": 2026,
+      "quarter": 1,
+      "revenue": 68596,
+      "grossProfit": null,
+      "grossMargin": 11.94,
+      "operatingIncome": null,
+      "operatingMargin": 5.45,
+      "netIncome": null,
+      "netMargin": null,
+      "eps": 1.8,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-concord"
+      ],
+      "claimIds": []
+    },
+    {
+      "id": "na-a-2026Q2",
+      "period": "2026Q2",
+      "fiscalYear": 2026,
+      "quarter": 2,
+      "revenue": 83647,
+      "grossProfit": null,
+      "grossMargin": 18.92,
+      "operatingIncome": null,
+      "operatingMargin": 13.6,
+      "netIncome": null,
+      "netMargin": null,
+      "eps": 3.37,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-concord"
+      ],
+      "claimIds": []
+    },
+    {
+      "id": "na-a-2026Q3",
+      "period": "2026Q3",
+      "fiscalYear": 2026,
+      "quarter": 3,
+      "revenue": 95597.286,
+      "grossProfit": null,
+      "grossMargin": null,
+      "operatingIncome": null,
+      "operatingMargin": null,
+      "netIncome": null,
+      "netMargin": null,
+      "eps": 4.9,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-fin",
+        "na-uni10"
+      ],
+      "claimIds": []
+    },
+    {
+      "id": "na-a-2026YTD",
+      "period": "2026YTD",
+      "fiscalYear": 2026,
+      "quarter": null,
+      "revenue": 247840.286,
+      "grossProfit": 47406.927,
+      "grossMargin": 19.13,
+      "operatingIncome": 33390.297,
+      "operatingMargin": 13.47,
+      "netIncome": 79840.503,
+      "netMargin": 32.21,
+      "eps": 10.07,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "na-fin"
+      ],
+      "claimIds": [
+        "na-claim-profit"
+      ]
+    }
+  ],
+  "monthlyRevenue": [
+    {
+      "id": "na-m-1",
+      "year": 2026,
+      "month": 1,
+      "revenue": 22873,
+      "mom": 3.5,
+      "yoy": 11.8,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-months"
+      ]
+    },
+    {
+      "id": "na-m-2",
+      "year": 2026,
+      "month": 2,
+      "revenue": 18556,
+      "mom": -18.9,
+      "yoy": -16,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-months"
+      ]
+    },
+    {
+      "id": "na-m-3",
+      "year": 2026,
+      "month": 3,
+      "revenue": 27167,
+      "mom": 46.4,
+      "yoy": 18.1,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-months"
+      ]
+    },
+    {
+      "id": "na-m-4",
+      "year": 2026,
+      "month": 4,
+      "revenue": 27681,
+      "mom": 1.9,
+      "yoy": 19.4,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-months"
+      ]
+    },
+    {
+      "id": "na-m-5",
+      "year": 2026,
+      "month": 5,
+      "revenue": 28831,
+      "mom": 4.2,
+      "yoy": 31.4,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-months"
+      ]
+    },
+    {
+      "id": "na-m-6",
+      "year": 2026,
+      "month": 6,
+      "revenue": 27135,
+      "mom": -5.9,
+      "yoy": 31.8,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-months"
+      ]
+    },
+    {
+      "id": "na-m-7",
+      "year": 2026,
+      "month": 7,
+      "revenue": 30573,
+      "mom": 12.7,
+      "yoy": 44.5,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-months"
+      ]
+    },
+    {
+      "id": "na-m-8",
+      "year": 2026,
+      "month": 8,
+      "revenue": 30601,
+      "mom": 0.1,
+      "yoy": 46.8,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-months"
+      ]
+    },
+    {
+      "id": "na-m-9",
+      "year": 2026,
+      "month": 9,
+      "revenue": 34423,
+      "mom": 12.5,
+      "yoy": 55.3,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-months"
+      ]
+    },
+    {
+      "id": "na-m-10",
+      "year": 2026,
+      "month": 10,
+      "revenue": 34942,
+      "mom": 1.5,
+      "yoy": 64.6,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-months"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "id": "na-seg-0",
+      "period": "2026H1",
+      "segment": "電子材料",
+      "revenue": null,
+      "share": 52.7,
+      "isEstimate": false,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-uni09"
+      ],
+      "claimIds": []
+    },
+    {
+      "id": "na-seg-1",
+      "period": "2026H1",
+      "segment": "化工",
+      "revenue": null,
+      "share": 16.9,
+      "isEstimate": false,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-uni09"
+      ],
+      "claimIds": []
+    },
+    {
+      "id": "na-seg-2",
+      "period": "2026H1",
+      "segment": "聚酯",
+      "revenue": null,
+      "share": 15.8,
+      "isEstimate": false,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-uni09"
+      ],
+      "claimIds": []
+    },
+    {
+      "id": "na-seg-3",
+      "period": "2026H1",
+      "segment": "塑膠加工",
+      "revenue": null,
+      "share": 12.7,
+      "isEstimate": false,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-uni09"
+      ],
+      "claimIds": []
+    },
+    {
+      "id": "na-seg-4",
+      "period": "2026H1",
+      "segment": "其他",
+      "revenue": null,
+      "share": 1.9,
+      "isEstimate": false,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-uni09"
+      ],
+      "claimIds": []
+    },
+    {
+      "id": "na-seg-10",
+      "period": "2026/10",
+      "segment": "電子材料",
+      "revenue": null,
+      "share": 61.5,
+      "isEstimate": false,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "na-sales"
+      ],
+      "claimIds": [
+        "na-claim-sales"
+      ]
+    }
+  ],
+  "forecasts": [
+    {
+      "id": "na-f-2026-bear",
+      "fiscalYear": 2026,
+      "scenario": "bear",
+      "revenue": 340000,
+      "grossMargin": 19.5,
+      "netIncome": null,
+      "eps": 12.8,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-uni09",
+        "na-concord"
+      ],
+      "claimIds": [
+        "na-claim-brokers"
+      ],
+      "notes": "壓力情境：DRAM/CCL漲幅放緩、擴產先產生費用。"
+    },
+    {
+      "id": "na-f-2026-base",
+      "fiscalYear": 2026,
+      "scenario": "base",
+      "revenue": 352000,
+      "grossMargin": 20.8,
+      "netIncome": null,
+      "eps": 14.76,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-uni10",
+        "na-concord"
+      ],
+      "claimIds": [
+        "na-claim-brokers"
+      ],
+      "notes": "EPS取自統一10/14單家券商；營收/毛利是本研究自設情境，非統一原始財務模型，也非市場共識。"
+    },
+    {
+      "id": "na-f-2026-bull",
+      "fiscalYear": 2026,
+      "scenario": "bull",
+      "revenue": 365000,
+      "grossMargin": 22.5,
+      "netIncome": null,
+      "eps": 16.2,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-uni09",
+        "na-concord"
+      ],
+      "claimIds": [
+        "na-claim-brokers"
+      ],
+      "notes": "樂觀情境：材料產品組合改善且轉投資收益維持高檔，非公司指引。"
+    },
+    {
+      "id": "na-f-2027-bear",
+      "fiscalYear": 2027,
+      "scenario": "bear",
+      "revenue": 385000,
+      "grossMargin": 21,
+      "netIncome": null,
+      "eps": 16,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-uni09",
+        "na-concord"
+      ],
+      "claimIds": [
+        "na-claim-brokers"
+      ],
+      "notes": "壓力情境：DRAM/CCL漲幅放緩、擴產先產生費用。"
+    },
+    {
+      "id": "na-f-2027-base",
+      "fiscalYear": 2027,
+      "scenario": "base",
+      "revenue": 420000,
+      "grossMargin": 25,
+      "netIncome": null,
+      "eps": 22.21,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-uni10",
+        "na-concord"
+      ],
+      "claimIds": [
+        "na-claim-brokers"
+      ],
+      "notes": "EPS取自統一10/14單家券商；營收/毛利是本研究自設情境，非統一原始財務模型，也非市場共識。"
+    },
+    {
+      "id": "na-f-2027-bull",
+      "fiscalYear": 2027,
+      "scenario": "bull",
+      "revenue": 450000,
+      "grossMargin": 28.5,
+      "netIncome": null,
+      "eps": 26.5,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-uni09",
+        "na-concord"
+      ],
+      "claimIds": [
+        "na-claim-brokers"
+      ],
+      "notes": "樂觀情境：材料產品組合改善且轉投資收益維持高檔，非公司指引。"
+    }
+  ],
+  "capacity": [
+    {
+      "id": "na-cap-0",
+      "eventDate": "2026-11-11",
+      "label": "彰濱玻纖布五廠：預計投資115.3億元",
+      "equipment": "薄布/超薄布設備",
+      "technology": "高階AI PCB玻纖布",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "status": "approved",
+      "notes": "11/11董事會核准，媒體披露規劃年產1億公尺；投產、良率、折舊和現金支出未公告。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "na-capex",
+        "na-cna"
+      ],
+      "claimIds": [
+        "na-claim-expand"
+      ]
+    },
+    {
+      "id": "na-cap-1",
+      "eventDate": "2026-11-11",
+      "label": "台灣必成：追加8億元",
+      "equipment": "特殊玻纖紗",
+      "technology": "T紗與高階玻纖布上下游整合",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "status": "approved",
+      "notes": "增資不等於立即投產或產生收益，需核對擴產日程及產品驗證。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-cna"
+      ],
+      "claimIds": []
+    },
+    {
+      "id": "na-cap-2",
+      "eventDate": "2026-09-29",
+      "label": "M6–M8 CCL高階訂單導入",
+      "equipment": "既有CCL產線",
+      "technology": "高速銅箔基板",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "status": "planned",
+      "notes": "券商描述客戶協商與去瓶頸產能；尚未核對產能時間單位和實際可售量。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-uni09",
+        "na-uni10"
+      ],
+      "claimIds": []
+    }
+  ],
+  "catalysts": [
+    {
+      "id": "na-cat-0",
+      "title": "電子材料占比維持六成以上",
+      "impact": "高",
+      "status": "active",
+      "notes": "11–12月月營收占比與毛利率是否同步上升",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-sales"
+      ]
+    },
+    {
+      "id": "na-cat-1",
+      "title": "高階CCL客戶驗證與量產",
+      "impact": "高",
+      "status": "watch",
+      "notes": "M6–M8需以可售量與ASP驗證，而非訂單敘事",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-uni10"
+      ]
+    },
+    {
+      "id": "na-cat-2",
+      "title": "玻纖布與特殊紗投資落實",
+      "impact": "中",
+      "status": "watch",
+      "notes": "追蹤投產時程、良率、折舊及投入資本回報",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-capex"
+      ]
+    },
+    {
+      "id": "na-cat-3",
+      "title": "南亞科及南電子公司獲利",
+      "impact": "高",
+      "status": "watch",
+      "notes": "分別核對權益法及併表認列",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-esun"
+      ]
+    }
+  ],
+  "risks": [
+    {
+      "id": "na-risk-0",
+      "title": "營業外收益佔稅前64.5%",
+      "impact": "high",
+      "probability": "high",
+      "status": "watch",
+      "notes": "非營業收益包含多種科目，不能直接當作南亞科單一收益，也不能未核稅後就扣法定EPS。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-fin"
+      ]
+    },
+    {
+      "id": "na-risk-1",
+      "title": "轉投資DRAM景氣反轉",
+      "impact": "high",
+      "probability": "medium",
+      "status": "watch",
+      "notes": "記憶體報價與營利波動影響權益法收益。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-esun"
+      ]
+    },
+    {
+      "id": "na-risk-2",
+      "title": "CCL新規格認證與良率",
+      "impact": "high",
+      "probability": "medium",
+      "status": "watch",
+      "notes": "名目產能、可售量和實際接單不同。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-uni09"
+      ]
+    },
+    {
+      "id": "na-risk-3",
+      "title": "擴產現金流與折舊",
+      "impact": "medium",
+      "probability": "medium",
+      "status": "watch",
+      "notes": "115.3億元預算尚非已支出，需分年度CapEx/ROI。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-capex"
+      ]
+    },
+    {
+      "id": "na-risk-4",
+      "title": "舊目標價與高檔價格波動",
+      "impact": "high",
+      "probability": "high",
+      "status": "watch",
+      "notes": "304元已接近當時券商320–325元目標，不宜把舊價當即時合理價。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-price"
+      ]
+    }
+  ],
+  "signalRules": [
+    {
+      "id": "na-rule-0",
+      "metric": "月營收",
+      "greenCondition": "≥340億元且年增持續",
+      "yellowCondition": "320–340億元",
+      "redCondition": "<320億元且續跌",
+      "weight": 1.2,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-fin",
+        "na-sales"
+      ]
+    },
+    {
+      "id": "na-rule-1",
+      "metric": "電子材料比重",
+      "greenCondition": "連續≥60%且毛利升",
+      "yellowCondition": "55–60%",
+      "redCondition": "<55%且連跌",
+      "weight": 1.3,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-fin",
+        "na-sales"
+      ]
+    },
+    {
+      "id": "na-rule-2",
+      "metric": "盈餘品質",
+      "greenCondition": "稅後正常化EPS可核對",
+      "yellowCondition": "業外明細仍需釐清",
+      "redCondition": "業外高占比且難追溯",
+      "weight": 1.5,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-fin",
+        "na-sales"
+      ]
+    },
+    {
+      "id": "na-rule-3",
+      "metric": "M6–M8實際量產",
+      "greenCondition": "取得出貨與價量證據",
+      "yellowCondition": "券商預估協商中",
+      "redCondition": "認證遞延或需求下修",
+      "weight": 1.1,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-fin",
+        "na-sales"
+      ]
+    },
+    {
+      "id": "na-rule-4",
+      "metric": "新廠投資/報酬",
+      "greenCondition": "投產與有效產能可追溯",
+      "yellowCondition": "核准投資未量產",
+      "redCondition": "延期或投資報酬不足",
+      "weight": 0.9,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-fin",
+        "na-sales"
+      ]
+    },
+    {
+      "id": "na-rule-5",
+      "metric": "估值安全邊際",
+      "greenCondition": "分部估值有≥20%空間",
+      "yellowCondition": "價差0–20%",
+      "redCondition": "舊目標價已到或下修",
+      "weight": 1.1,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-fin",
+        "na-sales"
+      ]
+    }
+  ],
+  "signalSnapshots": [
+    {
+      "id": "na-signal-0",
+      "asOfDate": "2026-11-13",
+      "metric": "月營收",
+      "status": "green",
+      "valueText": "2026/10 349.42億元 / YoY+64.6%",
+      "notes": "研究追蹤燈號，非交易指示；待新財報/月報重驗。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-months"
+      ]
+    },
+    {
+      "id": "na-signal-1",
+      "asOfDate": "2026-11-13",
+      "metric": "電子材料比重",
+      "status": "green",
+      "valueText": "2026/10 61.5%",
+      "notes": "研究追蹤燈號，非交易指示；待新財報/月報重驗。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-sales"
+      ]
+    },
+    {
+      "id": "na-signal-2",
+      "asOfDate": "2026-11-13",
+      "metric": "盈餘品質",
+      "status": "red",
+      "valueText": "2026YTD業外淨收益約佔稅前64.5%",
+      "notes": "研究追蹤燈號，非交易指示；待新財報/月報重驗。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-fin"
+      ]
+    },
+    {
+      "id": "na-signal-3",
+      "asOfDate": "2026-11-13",
+      "metric": "M6–M8實際量產",
+      "status": "yellow",
+      "valueText": "高階訂單仍需驗證",
+      "notes": "研究追蹤燈號，非交易指示；待新財報/月報重驗。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-uni10"
+      ]
+    },
+    {
+      "id": "na-signal-4",
+      "asOfDate": "2026-11-13",
+      "metric": "新廠投資/報酬",
+      "status": "yellow",
+      "valueText": "11/11核准115.3億元玻纖布五廠",
+      "notes": "研究追蹤燈號，非交易指示；待新財報/月報重驗。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-capex"
+      ]
+    },
+    {
+      "id": "na-signal-5",
+      "asOfDate": "2026-11-13",
+      "metric": "估值安全邊際",
+      "status": "yellow",
+      "valueText": "11/13收304元；較舊320/325元僅5.3%/6.9%",
+      "notes": "研究追蹤燈號，非交易指示；待新財報/月報重驗。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-price"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "na-section-1",
+      "type": "summary",
+      "title": "投資摘要：三重獲利引擎",
+      "sortOrder": 1,
+      "payloadRefs": [
+        "thesis",
+        "signalSnapshots"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "na-section-2",
+      "type": "kpi-grid",
+      "title": "2026Q3與2026/10正式數據",
+      "sortOrder": 2,
+      "payloadRefs": [
+        "actuals",
+        "monthlyRevenue"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "na-section-3",
+      "type": "financial-table",
+      "title": "本業、稅前及營業外盈餘品質",
+      "sortOrder": 3,
+      "payloadRefs": [
+        "actuals",
+        "earningsQuality"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "na-section-4",
+      "type": "bar-chart",
+      "title": "2026月營收趨勢與電子材料占比",
+      "sortOrder": 4,
+      "payloadRefs": [
+        "monthlyRevenue",
+        "segments"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "na-section-5",
+      "type": "bridge",
+      "title": "南亞科權益法、南電並表的差異",
+      "sortOrder": 5,
+      "payloadRefs": [
+        "segments",
+        "claims"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "na-section-6",
+      "type": "capacity",
+      "title": "電子材料產品規格與擴建",
+      "sortOrder": 6,
+      "payloadRefs": [
+        "segments",
+        "capacity"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "na-section-7",
+      "type": "scenario-table",
+      "title": "2026–27 EPS三情境與券商估值",
+      "sortOrder": 7,
+      "payloadRefs": [
+        "forecasts",
+        "claims"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "na-section-8",
+      "type": "signals",
+      "title": "驗證指標及下一季更新條件",
+      "sortOrder": 8,
+      "payloadRefs": [
+        "signalRules",
+        "signalSnapshots"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "na-section-9",
+      "type": "catalysts-risks",
+      "title": "催化劑與反證",
+      "sortOrder": 9,
+      "payloadRefs": [
+        "catalysts",
+        "risks"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "na-section-10",
+      "type": "sources",
+      "title": "來源及估計口徑",
+      "sortOrder": 10,
+      "payloadRefs": [
+        "sources",
+        "claims"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "na-section-11",
+      "type": "conclusion",
+      "title": "結論：正常化EPS與分部估值",
+      "sortOrder": 11,
+      "payloadRefs": [
+        "thesis",
+        "earningsQuality",
+        "forecasts"
+      ],
+      "showSources": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "na-fin",
+      "evidenceClass": "official",
+      "provider": "公開資訊觀測站公告",
+      "title": "2026Q3合併財報決議公告",
+      "accessedDate": "2026-11-13",
+      "publishedDate": "2026-11-11",
+      "coveredPeriods": [
+        "2026Q3",
+        "2026YTD"
+      ],
+      "confidence": "high",
+      "notes": "1–9月營收247840.286、營業利益33390.297、稅前94063.169、歸母79840.503，單位百萬元；EPS10.07元",
+      "url": "https://tw.finance.yahoo.com/quote/1303/announcement"
+    },
+    {
+      "id": "na-sales",
+      "evidenceClass": "official",
+      "provider": "南亞公告",
+      "title": "2026年10月合併營收",
+      "accessedDate": "2026-11-13",
+      "publishedDate": "2026-11-06",
+      "coveredPeriods": [
+        "2026/10"
+      ],
+      "confidence": "high",
+      "notes": "營收349.4億元、電子材料比重61.5%",
+      "url": "https://tw.stock.yahoo.com/quote/1303/announcement"
+    },
+    {
+      "id": "na-months",
+      "evidenceClass": "official",
+      "provider": "公開資訊彙整",
+      "title": "2026月營收彙整",
+      "accessedDate": "2026-11-13",
+      "publishedDate": "2026-11-13",
+      "coveredPeriods": [
+        "2026/01-2026/10"
+      ],
+      "confidence": "high",
+      "notes": "月營收以來源四捨五入，另核對正式公告",
+      "url": "https://report.sasugod.com/tw/1303"
+    },
+    {
+      "id": "na-capex",
+      "evidenceClass": "official",
+      "provider": "公開資訊觀測站公告",
+      "title": "玻纖布五廠投資115.3億元",
+      "accessedDate": "2026-11-13",
+      "publishedDate": "2026-11-11",
+      "coveredPeriods": [
+        "2026/11"
+      ],
+      "confidence": "high",
+      "notes": "董事會核准投資，非已支出或已投產",
+      "url": "https://www.moneydj.com/KMDJ/news/newsviewer.aspx?a=51a2ec7d-85d9-4586-b308-179af4781003"
+    },
+    {
+      "id": "na-cna",
+      "evidenceClass": "official",
+      "provider": "中央社",
+      "title": "玻纖布五廠規劃年產1億公尺、台灣必成增資8億元",
+      "accessedDate": "2026-11-13",
+      "publishedDate": "2026-11-12",
+      "coveredPeriods": [
+        "2026/11"
+      ],
+      "confidence": "high",
+      "notes": "規劃而非實際量產與出貨",
+      "url": "https://www.cna.com.tw/news/afe/202611120043.aspx"
+    },
+    {
+      "id": "na-ir",
+      "evidenceClass": "official",
+      "provider": "南亞塑膠公司",
+      "title": "南亞2026年第3季法說會資訊索引",
+      "accessedDate": "2026-11-13",
+      "publishedDate": "2026-11-09",
+      "coveredPeriods": [
+        "2026Q3"
+      ],
+      "confidence": "high",
+      "notes": "官方法說會資料索引；詳細分項數值須持續核對",
+      "url": "https://www.npc.com.tw/j2npc/zhtw/investor/Earnings%20Conference"
+    },
+    {
+      "id": "na-price",
+      "evidenceClass": "official",
+      "provider": "台股行情",
+      "title": "南亞1303於2026/11/13收盤304元",
+      "accessedDate": "2026-11-13",
+      "publishedDate": "2026-11-13",
+      "coveredPeriods": [
+        "2026/11/13"
+      ],
+      "confidence": "high",
+      "notes": "基準收盤價，不代表後續可成交價格",
+      "url": "https://tw.stock.yahoo.com/quote/1303.TW"
+    },
+    {
+      "id": "na-uni09",
+      "evidenceClass": "third_party_fact",
+      "provider": "統一投顧／狼友小站",
+      "title": "南亞2026/09/29投資速報",
+      "accessedDate": "2026-11-13",
+      "publishedDate": "2026-09-29",
+      "coveredPeriods": [
+        "2026F",
+        "2027F"
+      ],
+      "confidence": "medium",
+      "notes": "當時目標價320元；EPS13.82/21.64；產品認證與高階CCL預估不是公司承諾",
+      "attachment": "統一-1303 南亞-20260929.pdf"
+    },
+    {
+      "id": "na-uni10",
+      "evidenceClass": "third_party_fact",
+      "provider": "統一投顧／狼友小站",
+      "title": "南亞2026/10/14新聞評析",
+      "accessedDate": "2026-11-13",
+      "publishedDate": "2026-10-14",
+      "coveredPeriods": [
+        "2026F",
+        "2027F"
+      ],
+      "confidence": "medium",
+      "notes": "EPS更新至14.76/22.21，當時稱舊320元目標價已到價且待更新",
+      "attachment": "統一-新聞評析-1303 南亞-20261014.pdf"
+    },
+    {
+      "id": "na-concord",
+      "evidenceClass": "third_party_fact",
+      "provider": "康和投顧／狼友小站",
+      "title": "南亞2026/10/05投資速報",
+      "accessedDate": "2026-11-13",
+      "publishedDate": "2026-10-05",
+      "coveredPeriods": [
+        "2026F",
+        "2027F",
+        "2026Q2"
+      ],
+      "confidence": "medium",
+      "notes": "2026/27 EPS13.96/22.49，目標價325；2Q26營收836.47億元、EPS3.37",
+      "attachment": "康和投顧-【投資速報】南亞(1303)20261005.pdf"
+    },
+    {
+      "id": "na-esun",
+      "evidenceClass": "third_party_fact",
+      "provider": "玉山投顧／狼友小站",
+      "title": "南亞2026/08/19研究報告",
+      "accessedDate": "2026-11-13",
+      "publishedDate": "2026-08-19",
+      "coveredPeriods": [
+        "2026F",
+        "2027F",
+        "2026Q2"
+      ],
+      "confidence": "medium",
+      "notes": "2026/27 EPS14.89/14.09，目標價240；南電並表與南亞科權益法應分離",
+      "attachment": "20260819_玉山投顧_研究報告_1303南亞_增加持股.pdf"
+    }
+  ],
+  "claims": [
+    {
+      "id": "na-claim-profit",
+      "text": "2026年前三季EPS10.07，但營業外淨收益約606.73億元，佔稅前獲利64.5%；不能直接將法定EPS視為可持續本業EPS。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-fin"
+      ],
+      "inputClaimIds": [],
+      "method": "94063.169−33390.297=60672.872百萬元；再除以稅前94063.169",
+      "confidence": "medium"
+    },
+    {
+      "id": "na-claim-sales",
+      "text": "10月營收349.4億元、電子材料占61.5%，顯示電子材料比重已超過六成。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "na-sales",
+        "na-months"
+      ],
+      "inputClaimIds": [],
+      "method": "以公司公告為主",
+      "confidence": "medium"
+    },
+    {
+      "id": "na-claim-expand",
+      "text": "董事會11月核准玻纖布五廠115.3億元投資案，年產1億公尺為規劃產能，尚非可出售產能。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-capex",
+        "na-cna"
+      ],
+      "inputClaimIds": [],
+      "method": "區分決議、媒體披露規劃與量產",
+      "confidence": "medium"
+    },
+    {
+      "id": "na-claim-components",
+      "text": "南電屬控制子公司合併範圍，南亞科的投資損益主要走權益法；不同口徑不應把兩者獲利重複相加。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-esun",
+        "na-uni09"
+      ],
+      "inputClaimIds": [],
+      "method": "區別合併、權益法與股權處分",
+      "confidence": "medium"
+    },
+    {
+      "id": "na-claim-brokers",
+      "text": "2027F EPS：統一10/14估22.21、康和10/05估22.49、玉山8/19估14.09；時點不同，非同一時點統計共識。",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "na-uni10",
+        "na-concord",
+        "na-esun"
+      ],
+      "inputClaimIds": [],
+      "method": "逐篇摘錄、保留報告日期",
+      "confidence": "medium"
+    },
+    {
+      "id": "na-claim-ccl",
+      "text": "高階M6–M8 CCL需求與訂單協商是待驗證的成長催化劑，應以毛利及可售量驗證。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-uni09",
+        "na-uni10"
+      ],
+      "inputClaimIds": [],
+      "method": "區分券商預估與實際認證量產",
+      "confidence": "medium"
+    },
+    {
+      "id": "na-claim-valuation",
+      "text": "11/13收盤304元較較舊的320/325元券商目標價僅有約5.3%/6.9%名義價差，且舊目標價不等於最新有效報酬預估。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "na-price",
+        "na-uni09",
+        "na-uni10",
+        "na-concord"
+      ],
+      "inputClaimIds": [],
+      "method": "(320/304−1)、(325/304−1)",
+      "confidence": "medium"
+    }
+  ],
+  "earningsQuality": {
+    "standard": "EQ-01-v1",
+    "reviewStatus": "WARN",
+    "reviewer": "研究報告資料核對（非會計師查核）",
+    "reviewedAt": "2026-11-13",
+    "coverageNote": "列近三年與最近四季；未取得完整年度業外明細之數值留null，不能當作零。",
+    "periods": [
+      {
+        "id": "na-eq-2023FY",
+        "period": "2023FY",
+        "periodType": "annual",
+        "currency": "TWD",
+        "scale": "million",
+        "revenue": null,
+        "operatingIncome": null,
+        "nonOperatingNet": null,
+        "pretaxIncome": null,
+        "incomeTax": null,
+        "netIncomeAttributable": null,
+        "reportedEps": null,
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "na-uni09"
+        ],
+        "claimIds": [],
+        "normalizationNote": "尚缺稅後歸屬及特殊項目逐筆勾稽，正常化EPS暫留空，不把缺值寫成零。"
+      },
+      {
+        "id": "na-eq-2024FY",
+        "period": "2024FY",
+        "periodType": "annual",
+        "currency": "TWD",
+        "scale": "million",
+        "revenue": null,
+        "operatingIncome": null,
+        "nonOperatingNet": null,
+        "pretaxIncome": null,
+        "incomeTax": null,
+        "netIncomeAttributable": null,
+        "reportedEps": 0.42,
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "na-esun"
+        ],
+        "claimIds": [],
+        "normalizationNote": "尚缺稅後歸屬及特殊項目逐筆勾稽，正常化EPS暫留空，不把缺值寫成零。"
+      },
+      {
+        "id": "na-eq-2025FY",
+        "period": "2025FY",
+        "periodType": "annual",
+        "currency": "TWD",
+        "scale": "million",
+        "revenue": 259912,
+        "operatingIncome": null,
+        "nonOperatingNet": null,
+        "pretaxIncome": null,
+        "incomeTax": null,
+        "netIncomeAttributable": null,
+        "reportedEps": 0.57,
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "na-concord"
+        ],
+        "claimIds": [],
+        "normalizationNote": "尚缺稅後歸屬及特殊項目逐筆勾稽，正常化EPS暫留空，不把缺值寫成零。"
+      },
+      {
+        "id": "na-eq-2025Q4",
+        "period": "2025Q4",
+        "periodType": "quarter",
+        "currency": "TWD",
+        "scale": "million",
+        "revenue": 64470,
+        "operatingIncome": null,
+        "nonOperatingNet": null,
+        "pretaxIncome": null,
+        "incomeTax": null,
+        "netIncomeAttributable": null,
+        "reportedEps": 0.62,
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "na-months"
+        ],
+        "claimIds": [],
+        "normalizationNote": "尚缺稅後歸屬及特殊項目逐筆勾稽，正常化EPS暫留空，不把缺值寫成零。"
+      },
+      {
+        "id": "na-eq-2026Q1",
+        "period": "2026Q1",
+        "periodType": "quarter",
+        "currency": "TWD",
+        "scale": "million",
+        "revenue": 68596,
+        "operatingIncome": null,
+        "nonOperatingNet": null,
+        "pretaxIncome": null,
+        "incomeTax": null,
+        "netIncomeAttributable": null,
+        "reportedEps": 1.8,
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "na-concord"
+        ],
+        "claimIds": [],
+        "normalizationNote": "尚缺稅後歸屬及特殊項目逐筆勾稽，正常化EPS暫留空，不把缺值寫成零。"
+      },
+      {
+        "id": "na-eq-2026Q2",
+        "period": "2026Q2",
+        "periodType": "quarter",
+        "currency": "TWD",
+        "scale": "million",
+        "revenue": 83647,
+        "operatingIncome": null,
+        "nonOperatingNet": null,
+        "pretaxIncome": null,
+        "incomeTax": null,
+        "netIncomeAttributable": null,
+        "reportedEps": 3.37,
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "na-concord"
+        ],
+        "claimIds": [],
+        "normalizationNote": "尚缺稅後歸屬及特殊項目逐筆勾稽，正常化EPS暫留空，不把缺值寫成零。"
+      },
+      {
+        "id": "na-eq-2026Q3",
+        "period": "2026Q3",
+        "periodType": "quarter",
+        "currency": "TWD",
+        "scale": "million",
+        "revenue": 95597.286,
+        "operatingIncome": null,
+        "nonOperatingNet": null,
+        "pretaxIncome": null,
+        "incomeTax": null,
+        "netIncomeAttributable": null,
+        "reportedEps": 4.9,
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "na-fin",
+          "na-uni10"
+        ],
+        "claimIds": [],
+        "normalizationNote": "尚缺稅後歸屬及特殊項目逐筆勾稽，正常化EPS暫留空，不把缺值寫成零。"
+      },
+      {
+        "id": "na-eq-2026YTD",
+        "period": "2026YTD",
+        "periodType": "ytd",
+        "currency": "TWD",
+        "scale": "million",
+        "revenue": 247840.286,
+        "operatingIncome": 33390.297,
+        "nonOperatingNet": 60672.872,
+        "pretaxIncome": 94063.169,
+        "incomeTax": null,
+        "netIncomeAttributable": 79840.503,
+        "reportedEps": 10.07,
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [
+          {
+            "id": "na-eq-adjust1",
+            "category": "equity_method",
+            "realization": "mixed",
+            "pretaxAmount": null,
+            "epsImpact": null,
+            "equityImpact": null,
+            "method": "先辨識南亞科權益法、南電合併以及投資處分差異；缺正式逐筆稅後附註，暫不直接扣除。",
+            "sourceIds": [
+              "na-fin",
+              "na-esun"
+            ],
+            "notes": "60672.872百萬元為整體業外淨差額，不是單一南亞科收益；待L2明細。"
+          }
+        ],
+        "sourceIds": [
+          "na-fin"
+        ],
+        "claimIds": [],
+        "normalizationNote": "尚缺稅後歸屬及特殊項目逐筆勾稽，正常化EPS暫留空，不把缺值寫成零。"
+      }
+    ],
+    "qualitativeFlags": [
+      "control_scope",
+      "related_party",
+      "forecast_discrepancy"
+    ],
+    "l2": {
+      "status": "PASS",
+      "summary": "完成L2初步來源穿透與總額對帳：前三季營業利益33390.297百萬元加業外淨差60672.872百萬元，等於稅前94063.169百萬元。南亞科權益法、南電合併損益與處分利益須分開，缺乏稅後單項分配資料，故歷史正常化EPS保留null並明示WARN。L2 PASS僅代表辨識與勾稽步驟完成，並非特殊損益逐項審計。",
+      "sourceIds": [
+        "na-fin",
+        "na-esun",
+        "na-uni09"
+      ],
+      "claimIds": [
+        "na-claim-profit",
+        "na-claim-components"
+      ]
+    },
+    "valuation": {
+      "epsBasis": "reported",
+      "prospectiveModelOnly": true,
+      "doubleCountChecked": true,
+      "notes": "沒有把606.73億元全部當作一次性稅後收益扣掉，也未將南電合併利益重加到權益法。券商EPS含轉投資貢獻，2027F不適宜直接與純電子材料公司的PE比較；分部估值需要更完整稅後拆分。"
+    },
+    "notes": "2026/11/13資料截止。券商目標價與預估係當期觀點，不代表目前投資建議。"
+  }
+}
