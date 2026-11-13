@@ -278,12 +278,12 @@ test("Gogolook uses the shared 14 chapter template without optical or factory as
 
 test("Gogolook official EPS and revenue reconciliation retain their original basis",async()=>{
   const pkg=JSON.parse(await readFile("research/gogolook-6902/research-package.json","utf8"));
-  assert.deepEqual(pkg.actuals.map(r=>r.eps),[1.58,1.64,1.69]);
-  assert.equal(pkg.monthlyRevenue.length,9);
-  assert.equal(Math.round(pkg.monthlyRevenue.reduce((sum,r)=>sum+r.revenue,0)*1000),948426);
+  assert.deepEqual(pkg.actuals.map(r=>r.eps),[1.58,1.64,1.69,1.69]);
+  assert.equal(pkg.monthlyRevenue.length,10);
+  assert.equal(Math.round(pkg.monthlyRevenue.reduce((sum,r)=>sum+r.revenue,0)*1000),1063281);
   assert.equal(Math.round(pkg.segments.reduce((sum,r)=>sum+r.revenue,0)*1000),309716);
   assert.equal(pkg.segments.find(r=>r.id==='gogo-mix-interest').revenue,28.819);
-  assert.equal(pkg.actuals.some(r=>r.period==='2026Q3'),false);
+  assert.equal(pkg.actuals.some(r=>r.period==='2026Q3'),true);
   assert.match(pkg.dashboard.estimateNote,/差 1 仟元/);
   assert.ok(pkg.forecasts.every(r=>r.evidenceClass==='research_inference'));
   assert.ok(pkg.sources.every(r=>/^https:\/\//.test(r.url)));
