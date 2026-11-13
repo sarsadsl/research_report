@@ -11,7 +11,7 @@ P1.8 QC specification，於 P1.9 更新自動發布 gate。操作與交付範本
 - `FAIL`：觸發 L2 但未完成、重大調節不可勾稽、模型對業外收益重複剔除，或把未實現／OCI／外部文章推算值錯當法定 EPS。
 - `NOT_RUN`：未執行必要篩檢、主要來源無法核對；不得當作 0 或 PASS。必要狀態 `FAIL / NOT_RUN` → `BLOCKED`。
 
-**實作狀況**：此項目前是**人工 blocking gate**，未加入 CLI validator／D1 資料表／正式發布的自動紀錄。新報告須保存人工 EQ-01 檢查表；既有 published 報告不追溯標示 PASS。不要因現有 `research:check` 或 `research:publish` 成功就宣稱 EQ-01 已自動驗證。
+**工程分支實作**：`research:validate` 已整合 EQ-01 JSON Schema、關聯來源引用、業外占比／重大波動與質性觸發、EPS 對帳、L2 阻擋與估值重複扣減檢查；D1 以 `research_earnings_quality` 按 report ID 保存完整 JSON 供 API 回讀；renderer 生成 L1 摘要或 L2 專頁。2026-11-13 起新發布完整報告強制帶 EQ-01；歷史版本不追溯。**未自動驗證**財報來源真實性、具體稅額或持股控制推論，也不代表審閱者真的完成核對。正式 Cloudflare 尚未部署；本 PR 的測試與人工 gate 全部通過前不能合併。
 
 ## 結果與阻擋規則
 
