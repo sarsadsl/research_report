@@ -21,6 +21,10 @@ export type DashboardConfig = {
   monthlyRevenue:{ focusYear:number; cumulativeThroughMonth:number; unitDivisor:number; unitLabel:string };
   cagrCards:Array<{ field:"revenue"|"grossMargin"|"netIncome"|"eps"|"optoShare"; label:string; baseYear:number; targetYear:number; baseValue:number; years:number }>;
   estimateNote:string;
+  capexSensitivity?:{
+    budgetNtdMillion:number; approvedBudgetUsdMillion:number; existing2026CashCapexUsdMillion:number;
+    depreciationYears:number; taxRate:number; weightedSharesMillion:number; sourceIds:string[]; notes:string;
+  };
 };
 
 export type EarningsQualityAudit = {
