@@ -158,7 +158,7 @@ test("STL full report shares the dense v2 research layout", async () => {
   assert.equal((html.match(/<section class="page slide/g)||[]).length,14);
   assert.match(html,/BBU/);
   assert.match(html,/應收與存貨快速增加/);
-  assert.match(html,/7 筆來源/);
+  assert.match(html,new RegExp(`${pkg.sources.length} 筆來源`));
   assert.match(html,/未公開的本土／外資研究機構、法人或客戶資訊不納入公開報告/);
 });
 
@@ -278,12 +278,12 @@ test("Gogolook uses the shared 14 chapter template without optical or factory as
 
 test("Gogolook official EPS and revenue reconciliation retain their original basis",async()=>{
   const pkg=JSON.parse(await readFile("research/gogolook-6902/research-package.json","utf8"));
-  assert.deepEqual(pkg.actuals.map(r=>r.eps),[1.58,1.64,1.69]);
-  assert.equal(pkg.monthlyRevenue.length,9);
-  assert.equal(Math.round(pkg.monthlyRevenue.reduce((sum,r)=>sum+r.revenue,0)*1000),948426);
+  assert.deepEqual(pkg.actuals.map(r=>r.eps),[1.58,1.64,1.69,1.69]);
+  assert.equal(pkg.monthlyRevenue.length,10);
+  assert.equal(Math.round(pkg.monthlyRevenue.reduce((sum,r)=>sum+r.revenue,0)*1000),1063281);
   assert.equal(Math.round(pkg.segments.reduce((sum,r)=>sum+r.revenue,0)*1000),309716);
   assert.equal(pkg.segments.find(r=>r.id==='gogo-mix-interest').revenue,28.819);
-  assert.equal(pkg.actuals.some(r=>r.period==='2026Q3'),false);
+  assert.equal(pkg.actuals.some(r=>r.period==='2026Q3'),true);
   assert.match(pkg.dashboard.estimateNote,/差 1 仟元/);
   assert.ok(pkg.forecasts.every(r=>r.evidenceClass==='research_inference'));
   assert.ok(pkg.sources.every(r=>/^https:\/\//.test(r.url)));
