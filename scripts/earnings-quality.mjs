@@ -51,7 +51,7 @@ export function evaluateEarningsQuality(eq) {
 
 export function validateEarningsQuality(pkg, manifest, errors) {
   const eq = pkg.earningsQuality;
-  const mustReview = manifest.output.fullReport && pkg.report.status === "published" && pkg.asOfDate >= EQ01_EFFECTIVE_DATE;
+  const mustReview = manifest.output.fullReport && pkg.report.status === "published" && (pkg.asOfDate >= EQ01_EFFECTIVE_DATE || (pkg.report.publishedAt ?? "") >= EQ01_EFFECTIVE_DATE);
   if (!eq) {
     if (mustReview) errors.push("EQ-01: published full report requires earningsQuality for asOfDate >= " + EQ01_EFFECTIVE_DATE);
     return;
