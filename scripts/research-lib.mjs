@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { validateEarningsQuality } from "./earnings-quality.mjs";
 
 export const COLLECTIONS = [
   "actuals",
@@ -165,6 +166,26 @@ function validateReferences(pkg, errors) {
     }
   }
   for (const claimId of pkg.thesis.claimIds) if (!claims.has(claimId)) errors.push(`thesis: missing claim ${claimId}`);
+  if (pkg.earningsQuality) {
+    const eq = pkg.earningsQuality;
+    const checkSourceClaims = (row, label) => {
+      for (const id of row.sourceIds ?? []) if (!sources.has(id)) errors.push(label + ": missing source " + id);
+      for (const id of row.claimIds ?? []) if (!claims.has(id)) errors.push(label + ": missing claim " + id);
+    };
+    const usedIds = new Set();
+    for (const row of eq.periods) {
+      if (usedIds.has(row.id)) errors.push("earningsQuality: duplicate period id " + row.id);
+      usedIds.add(row.id);
+      checkSourceClaims(row, "earningsQuality." + row.id);
+      const adjustmentIds = new Set();
+      for (const adjustment of row.adjustments) {
+        if (adjustmentIds.has(adjustment.id)) errors.push("earningsQuality." + row.id + ": duplicate adjustment id " + adjustment.id);
+        adjustmentIds.add(adjustment.id);
+        checkSourceClaims(adjustment, "earningsQuality." + row.id + "." + adjustment.id);
+      }
+    }
+    checkSourceClaims(eq.l2, "earningsQuality.l2");
+  }
 
   const allowedPayloads = new Set(["thesis", ...COLLECTIONS, "sections", "sources", "claims"]);
   for (const section of pkg.sections) {
@@ -203,6 +224,7 @@ function validateDomain(manifest, pkg, errors) {
   duplicateKeys(pkg.signalRules, (row) => row.metric, "signalRules", errors);
   duplicateKeys(pkg.signalSnapshots, (row) => `${row.asOfDate}|${row.metric}`, "signalSnapshots", errors);
   duplicateKeys(pkg.sections, (row) => row.sortOrder, "sections.sortOrder", errors);
+  validateEarningsQuality(pkg, manifest, errors);
 
   for (const segment of pkg.segments) {
     if (segment.isEstimate && !["research_inference", "market_consensus"].includes(segment.evidenceClass)) {
@@ -259,7 +281,7 @@ export function validateResearch({ manifest, researchPackage, manifestSchema, pa
     errors,
     packageHash: sha256(researchPackage),
     manifestHash: sha256(manifest),
-    counts: Object.fromEntries([...COLLECTIONS, "sections", "sources", "claims"].map((key) => [key, researchPackage[key]?.length ?? 0])),
+    counts: { ...Object.fromEntries([...COLLECTIONS, "sections", "sources", "claims"].map((key) => [key, researchPackage[key]?.length ?? 0])), earningsQuality: researchPackage.earningsQuality ? 1 : 0 },
   };
 }
 
