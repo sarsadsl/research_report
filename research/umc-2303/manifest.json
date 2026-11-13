@@ -3,7 +3,7 @@
   "ticker": "2303",
   "market": "TW",
   "slug": "umc-2303",
-  "reportVersion": "1.0",
+  "reportVersion": "1.1",
   "output": {
     "dashboard": true,
     "fullReport": true,
