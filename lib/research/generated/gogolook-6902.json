@@ -11,7 +11,7 @@
     "description": "以 Whoscall 消費者防詐、企業防詐與金融科技建立多元收入；袋鼠金融為金融媒合平台，JUJI 為承擔分期應收與信用風險的金融科技服務，不能全部視為純訂閱軟體。"
   },
   "dashboard": {
-    "currentView": "截至 2026-10-23，最新核閱財報為 Q2：營收 3.097 億、基本 EPS 1.69 元；H1 EPS 3.33 元。9 月營收 1.139 億，YoY +17.87%；Q3 月營收加總 3.356 億、較 Q2 +8.36%，僅代表營收動能，不代表 Q3 獲利。H1 OCF 0.390 億／淨利 1.176 億，JUJI 分期應收 5.077 億，為下一輪驗證重點。",
+    "currentView": "2026Q3毛利率89.31%、營益率19.04%、EPS1.69元；10月營收1.149億元、年增18.29%。第三季信用減損1148.5萬元、前三季3013.9萬元，不能只依EPS成長調升投資燈號。 群益2026/11/11預估2027 EPS10.08元對照本站9.70元；估值差異不大。確認JUJI應收回收、現金轉換、稅率與稀釋後再調整投資結論。",
     "currentThesis": "付費與合約成長能否持續轉為營業利益，且不被信用成本、資金需求與稅率正常化抵銷？",
     "verificationChain": [
       "Q3 營益率能否維持 20% 以上，營收成長是否穿透為獲利",
@@ -21,7 +21,7 @@
       "Q4 月營收能否支持基準情境平均 1.18 億元",
       "稅率回升與股權獎酬稀釋後，EPS 成長是否仍成立"
     ],
-    "conclusion": "維持黃燈、等待獲利品質驗證。防詐變現與營運槓桿已有財報支持，但不是無信用風險的純 SaaS；下一次優先核對 Q3 營益率、信用損失與營業現金流。",
+    "conclusion": "2026Q3毛利率89.31%、營益率19.04%、EPS1.69元；10月營收1.149億元、年增18.29%。第三季信用減損1148.5萬元、前三季3013.9萬元，不能只依EPS成長調升投資燈號。 投資燈號先維持原有框架，待現金流及應收／存貨／技術驗證後再變更。",
     "forecastScenario": "base",
     "headlineForecastYears": [
       2026,
@@ -33,7 +33,7 @@
     },
     "monthlyRevenue": {
       "focusYear": 2026,
-      "cumulativeThroughMonth": 9,
+      "cumulativeThroughMonth": 10,
       "unitDivisor": 100,
       "unitLabel": "億"
     },
@@ -55,7 +55,55 @@
         "years": 2
       }
     ],
-    "estimateNote": "2026F／2027F 為本站依公開資料自行建立的研究情境，非公司財測、非市場共識，不公開券商附件、目標價或專有模型。預估統一採 3,600 萬股，與官方實績的加權平均股數分開。Q3 僅有月營收，不能填作季度獲利；月營收逐月加總與公告累計差 1 仟元，保留原值不湊數。"
+    "estimateNote": "2026F／2027F 為本站依公開資料自行建立的研究情境，非公司財測、非市場共識，不公開券商附件、目標價或專有模型。預估統一採 3,600 萬股，與官方實績的加權平均股數分開。Q3 僅有月營收，不能填作季度獲利；月營收逐月加總與公告累計差 1 仟元，保留原值不湊數。 【2026/11/13新增】群益2026/11/11預估2027 EPS10.08元對照本站9.70元；估值差異不大。確認JUJI應收回收、現金轉換、稅率與稀釋後再調整投資結論。 未重估原有情境EPS，新增實績和外部預測只作比較；仍需後續更新正式財報附註及獲利品質。"
+  },
+  "earningsQuality": {
+    "standard": "EQ-01-v1",
+    "reviewStatus": "WARN",
+    "reviewer": "研究資料來源初核（非會計師審計）",
+    "reviewedAt": "2026-11-13",
+    "coverageNote": "本輪只完成2026Q3損益表及業外占比初步檢驗；2023–2025年度與最近四季詳細附註、現金流、稅後歸母調整尚缺。此WARN不得解讀成完整EPS認證。",
+    "periods": [
+      {
+        "id": "gogo-eq-2026q3",
+        "period": "2026Q3",
+        "periodType": "quarter",
+        "currency": "TWD",
+        "scale": "million",
+        "revenue": 335.603,
+        "operatingIncome": 63.915,
+        "nonOperatingNet": 1.19,
+        "pretaxIncome": 65.105,
+        "incomeTax": null,
+        "netIncomeAttributable": 59.882,
+        "reportedEps": 1.69,
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "gogo-src-q3-20261113"
+        ],
+        "claimIds": [],
+        "normalizationNote": "單季基本EPS已按公告回填；尚未取得完整近三年與最近四季各項業外及稅後歸母調節，未認證正常化EPS。"
+      }
+    ],
+    "qualitativeFlags": [],
+    "l2": {
+      "status": "NOT_RUN",
+      "summary": "已按公告計算Q3業外占比，未見單季15%量化門檻；歷史波動、OCI、公司投資與關聯交易尚未完成穿透，若新增異常則進行L2。",
+      "sourceIds": [
+        "gogo-src-q3-20261113"
+      ],
+      "claimIds": []
+    },
+    "valuation": {
+      "epsBasis": "reported",
+      "prospectiveModelOnly": true,
+      "doubleCountChecked": true,
+      "notes": "本期不改動原情境EPS；先以公司官方實績與券商估計分列，沒有把業外收益重複計入模型。"
+    },
+    "notes": "2026/11/13資料更新初核；未以單一季業外比例取代完整盈餘品質檢驗。"
   },
   "actuals": [
     {
@@ -100,6 +148,21 @@
       "operatingMargin": 20.58,
       "netIncome": 59.606,
       "netMargin": 19.25,
+      "eps": 1.69,
+      "companyId": "gogolook-6902"
+    },
+    {
+      "id": "gogo-2026q3-audit",
+      "period": "2026Q3",
+      "fiscalYear": 2026,
+      "quarter": 3,
+      "revenue": 335.603,
+      "grossProfit": 299.736,
+      "grossMargin": 89.31,
+      "operatingIncome": 63.915,
+      "operatingMargin": 19.04,
+      "netIncome": 59.882,
+      "netMargin": 17.84,
       "eps": 1.69,
       "companyId": "gogolook-6902"
     }
@@ -167,6 +230,13 @@
       "revenue": 113.873,
       "mom": 1.69,
       "yoy": 17.87
+    },
+    {
+      "year": 2026,
+      "month": 10,
+      "revenue": 114.855,
+      "mom": 0.86,
+      "yoy": 18.29
     }
   ],
   "segments": [
@@ -262,7 +332,7 @@
       "netIncome": 349.104,
       "eps": 9.7,
       "optoShare": null,
-      "notes": "2026 基準營收再增 20%；GM 89%，全年費用為（H1 428.9＋H2 455）×1.08 百萬，業外 0、稅率 20%、36 百萬股。需訂閱、企業合約與金融科技同步成長，且信用損失納入費用後仍有營運槓桿。"
+      "notes": "2026 基準營收再增 20%；GM 89%，全年費用為（H1 428.9＋H2 455）×1.08 百萬，業外 0、稅率 20%、36 百萬股。需訂閱、企業合約與金融科技同步成長，且信用損失納入費用後仍有營運槓桿。 2026/11/13：Q3實績已核對；外部模型差異仍待審查，不以本輪更新單方面改動2027 EPS。"
     },
     {
       "fiscalYear": 2027,
@@ -317,6 +387,20 @@
       "status": "yellow",
       "valueText": "H1 有效稅率約 3.03%",
       "notes": "官方 Q2 基本 EPS 1.69、稀釋 EPS 1.68；本站 2027 情境採 20% 稅率及 36 百萬股，並非公司指引。"
+    },
+    {
+      "asOfDate": "2026-11-13",
+      "metric": "第三季獲利實績",
+      "status": "yellow",
+      "valueText": "EPS 1.69元，毛利率89.31%",
+      "notes": "2026Q3毛利率89.31%、營益率19.04%、EPS1.69元；10月營收1.149億元、年增18.29%。第三季信用減損1148.5萬元、前三季3013.9萬元，不能只依EPS成長調升投資燈號。"
+    },
+    {
+      "asOfDate": "2026-11-13",
+      "metric": "十月月營收",
+      "status": "green",
+      "valueText": "2026/10 114.855百萬元，YoY +18.29%",
+      "notes": "10月公告已核對；月營收並非獲利或正式客戶量產資格。"
     }
   ],
   "capacity": [
@@ -422,13 +506,13 @@
       "id": "gogolook-report-v1",
       "title": "Gogolook 6902｜防詐變現、營運槓桿與信用風險研究",
       "slug": "gogolook-6902",
-      "summary": "Q2 基本 EPS 1.69 元、H1 3.33 元；9 月營收 1.139 億元，Q3 月營收加總 3.356 億元。高毛利與費用效率支持獲利，但 JUJI 分期應收增加、現金轉換與稅率正常化仍需驗證，整體黃燈。",
+      "summary": "2026Q3毛利率89.31%、營益率19.04%、EPS1.69元；10月營收1.149億元、年增18.29%。第三季信用減損1148.5萬元、前三季3013.9萬元，不能只依EPS成長調升投資燈號。",
       "thesis": "防詐資料與產品能力 → 付費／企業合約 → 營收 → 費用效率 → 信用損失與回收 → EPS。",
       "status": "published",
-      "version": "1.0",
+      "version": "1.1",
       "htmlPath": "/research/reports/gogolook-6902.html",
       "pdfPath": null,
-      "publishedAt": "2026-10-23"
+      "publishedAt": "2026-11-13"
     }
   ]
 }
