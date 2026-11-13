@@ -15,16 +15,29 @@ research/<slug>/notes.md
 
 D1, fallback fixtures, dashboards, reports, and exports are derived from it.
 
-## EQ-01 盈餘品質資料契約（先定義語意，尚未工程落地）
+## EQ-01 盈餘品質資料契約（工程分支已實作）
 
-參見 [EQ-01](RESEARCH_EARNINGS_QUALITY.md)。每份新建或重新發行的完整報告，研究資料應能追溯以下內容，並由人工 QC 保存檢查表：
+參見 [EQ-01](RESEARCH_EARNINGS_QUALITY.md)。`research-package-v1.schema.json` 現在允許根層 **optional** `earningsQuality`；既有 2026-11-13 前歷史 package 維持原樣。對已發布的 `fullReport`，若 `asOfDate` 或 `report.publishedAt` 不早於 2026-11-13，則由 Validator 強制要求 EQ-01，不得省略或以 `NOT_RUN` 通過。
 
-- `period`、`sourceIds`、`claimIds`、`evidenceClass`、`currency`、`scale` 與核對的附註／附表頁碼；
-- `operatingIncome`、`nonOperatingNet`、`pretaxIncome`、`tax`、`attributableNetIncome`、`reportedEps`、`weightedAverageShares`；
-- 逐項 `adjustments`：被投資企業／交易類別、FVPL 或 FVOCI、已實現或未實現、稅及非控制權益、影響 EPS／權益金額、方法與來源；
-- `normalizedEps` 或 `notVerifiableReason`、`triggers`、`reviewStatus`、`reviewedAt`、`limitations`、`valuationUse`。
+必備欄位與型別（數值未知用 `null` 並說明，不能填 0）：
 
-**重要相容性限制**：以上是下階段 `earningsQuality` 專用結構的**語意規格草案**，**不是當前 JSON schema、TypeScript、D1 或 renderer 已支援的欄位**。未經 schema / validator / importer / renderer / tests 一起更新前，不得直接加入既有已發布 package、變更 schemaVersion 或宣稱 D1 已保存。不得將缺值填 0。需要機器強制檢查時，再以版本化 schema／migration 實作並回歸驗證，舊 package 須維持可讀。
+| 位置 | 欄位 | 語意 |
+| --- | --- | --- |
+| `earningsQuality` | `standard=EQ-01-v1`、`reviewStatus`、`reviewer`、`reviewedAt`、`coverageNote`、`notes` | 審閱人／日期、完整性缺口 |
+| `periods[]` | `id`、`period`、`periodType`（quarter／annual／ytd）、`currency`、`scale` | 逐期分類與貨幣；至少近三年與最近四季，缺漏需註記 |
+| `periods[]` | `revenue`、`operatingIncome`、`nonOperatingNet`、`pretaxIncome`、`incomeTax`、`netIncomeAttributable` | 法定損益勾稽所需輸入 |
+| `periods[]` | `reportedEps`、`normalizedEps`、`weightedAverageShares`、`shareholdersEquity`、`normalizationNote` | 法定／正常化 EPS、股數與淨值；缺值註記 |
+| `periods[].adjustments[]` | `id`、`category`、`realization`、`pretaxAmount`、`epsImpact`、`equityImpact`、`method`、`notes` | 每筆特殊損益：`epsImpact` 是**對法定 EPS 的有號影響**，因此正常化 EPS = 法定 EPS − Σ EPS impact |
+| 證據 | `periods[].sourceIds`、`periods[].claimIds`、`adjustments[].sourceIds`／`claimIds` | 必須引用 package `sources`／`claims` 的有效 ID |
+| L2 | `qualitativeFlags`、`l2.status`／`summary`／`sourceIds`／`claimIds` | 自動觸發 + 人工完成底層投資穿透 |
+| 估值 | `valuation.epsBasis`、`valuation.doubleCountChecked`、`valuation.notes` | 確認 P/E 的 EPS 口徑及避免重複扣除 |
+
+- 帳面金額的 `scale` 指報告金額之倍率；`weightedAverageShares` 必須在 `normalizationNote` 中註明分母股數單位，避免調節單位不一致。
+- `epsImpact` 與稅、非控制權益須使用**歸母稅後**效果計算；無法可靠計算則填 `null` 並說明，不可猜測。
+- 引擎將對 `operatingIncome + nonOperatingNet ≈ pretaxIncome`、正常化 EPS 等式、重大比率與 L2 阻擋條件進行檢查。真實性與底層持股／稅務的完整核對仍是人工 QC。
+- 保存：D1 migration `0003_research_earnings_quality.sql` 按 `report_id` 儲存完整 `payload_json`；`research_runs` 只記錄 rowCounts/hash，**不代表已人工覆核每個值**。
+- 顯示：`full-research` 對 L1 無重大異常僅增加摘要；L2 被觸發時增一頁專題。其 `report-profiles.json` 可省略 `expectedPages` 或設為正確頁數；不要把原有固定 14 頁硬套於所有新公司。
+- 生效前既有 published package、舊 schemaVersion `1.0.0` 與 generated files 不直接覆寫。工程分支尚待測試、人工驗收與合併後才會在正式 D1／網站生效。
 
 ## Package envelope
 
