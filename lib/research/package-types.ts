@@ -78,6 +78,7 @@ export interface ResearchPackage {
   risks: Array<Record<string, unknown> & Provenance>;
   signalRules: Array<Record<string, unknown> & Provenance>;
   signalSnapshots: Array<Record<string, unknown> & Provenance>;
+  earningsQuality?: Record<string, unknown>;
   sections: ResearchSection[];
   sources: ResearchSource[];
   claims: ResearchClaim[];
