@@ -515,7 +515,7 @@ content:`${module("PROFITABILITY","毛利、營益與淨利率對照",profitabil
     },
     {
       section:standardSection("standard-forecast-b",`${forecastYearB}F 成長與獲利兌現`,["forecasts"]),
-      content:`${forecastMetricsForYear(vm,forecastYearB)}${metrics(cagrMetrics(vm))}${module("FORECAST",`${forecastYearB}F 悲觀／基準／樂觀`,forecastTableForYear(vm,forecastYearB),"wide")}${module("EPS RANGE",`${forecastYearB}F 情境區間`,epsRangeLine(vm,forecastYearB),"wide")}${module("BRIDGE",`${forecastYearB}F 營收與獲利條件`,forecastBridge(vm,forecastYearB),"wide")}${module("READ-THROUGH",`${forecastYearA}F → ${forecastYearB}F 的關鍵假設`,forecastRead(vm,forecastYearB),"note")}${vm.dashboard.capexSensitivity ? ResearchAnnotation(`${forecastYearB}F 基準營收為 ${num(selectedForecasts.find(row=>row.fiscalYear===forecastYearB)?.revenue,1)} 百萬元，屬自建預測；新產能預計2028年底起裝機，不等於全年已完工投產。`) : ""},
+      content:`${forecastMetricsForYear(vm,forecastYearB)}${metrics(cagrMetrics(vm))}${module("FORECAST",`${forecastYearB}F 悲觀／基準／樂觀`,forecastTableForYear(vm,forecastYearB),"wide")}${module("EPS RANGE",`${forecastYearB}F 情境區間`,epsRangeLine(vm,forecastYearB),"wide")}${module("BRIDGE",`${forecastYearB}F 營收與獲利條件`,forecastBridge(vm,forecastYearB),"wide")}${module("READ-THROUGH",`${forecastYearA}F → ${forecastYearB}F 的關鍵假設`,forecastRead(vm,forecastYearB),"note")}${vm.dashboard.capexSensitivity ? ResearchAnnotation(`${forecastYearB}F 基準營收為 ${num(selectedForecasts.find(row=>row.fiscalYear===forecastYearB)?.revenue,1)} 百萬元，屬自建預測；新產能預計2028年底起裝機，不等於全年已完工投產。`) : ""}`,
     },
     {
       section:standardSection("standard-sensitivity","情境、敏感度與判讀邏輯",["forecasts"]),
