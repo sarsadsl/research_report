@@ -23,8 +23,17 @@ export type DashboardConfig = {
   estimateNote:string;
 };
 
+export type EarningsQualityAudit = {
+  standard: string; reviewStatus: "PASS"|"WARN"|"FAIL"|"NOT_RUN"; reviewer: string;
+  reviewedAt: string; coverageNote: string;
+  periods: Array<Record<string, unknown>>; qualitativeFlags: string[];
+  l2: { status: "PASS"|"FAIL"|"NOT_RUN"; summary: string; sourceIds: string[] };
+  valuation: { epsBasis: string; doubleCountChecked: boolean; notes: string };
+  notes: string;
+};
+
 export type ResearchDetail = {
-  company:Company; dashboard:DashboardConfig; actuals:FinancialActual[]; monthlyRevenue:MonthlyRevenue[];
+  company:Company; dashboard:DashboardConfig; earningsQuality?:EarningsQualityAudit|null; actuals:FinancialActual[]; monthlyRevenue:MonthlyRevenue[];
   segments:SegmentRow[]; forecasts:Forecast[]; signals:SignalSnapshot[]; capacity:CapacityEvent[];
   catalysts:{title:string;impact:string;status:string;notes?:string|null}[];
   risks:{title:string;impact:string;probability:string;status:string;notes?:string|null}[]; reports:Report[];

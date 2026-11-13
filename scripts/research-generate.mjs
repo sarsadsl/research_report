@@ -16,6 +16,7 @@ function fallbackDetail(pkg) {
   return {
     company: pkg.company,
     dashboard: pkg.dashboard,
+    ...(pkg.earningsQuality ? { earningsQuality: pkg.earningsQuality } : {}),
     actuals: pkg.actuals.map((row) => ({ ...strip(row), companyId: pkg.company.id })),
     monthlyRevenue: pkg.monthlyRevenue.map((row) => {
       const { year, month, revenue, mom = null, yoy = null } = row;
@@ -123,6 +124,13 @@ function d1Seed(pkg) {
     ...pkg.report, company_id: c.id, html_path: `/research/reports/${c.slug}.html`, pdf_path: null,
     created_at: asOf, updated_at: asOf, published_at: pkg.report.publishedAt,
   }];
+  const earningsQuality = pkg.earningsQuality ? [{
+    id: pkg.report.id + "-eq01", report_id: pkg.report.id, company_id: c.id,
+    as_of_date: pkg.asOfDate, review_status: pkg.earningsQuality.reviewStatus,
+    l2_status: pkg.earningsQuality.l2.status, payload_json: JSON.stringify(pkg.earningsQuality),
+    payload_hash: sha256(pkg.earningsQuality),
+    updated_at: asOf,
+  }] : [];
   const sections = pkg.sections.map((row) => ({
     id: row.id, report_id: pkg.report.id, section_key: row.id, title: row.title,
     sort_order: row.sortOrder, content_json: JSON.stringify({ type: row.type, payloadRefs: row.payloadRefs, showSources: row.showSources }),
@@ -147,6 +155,7 @@ function d1Seed(pkg) {
     insert("research_sources", ["id","company_id","source_type","source_group","source_title","published_date","url","file_name","notes","confidence"], sources),
     insert("research_reports", ["id","company_id","title","slug","summary","thesis","status","version","html_path","pdf_path","created_at","updated_at","published_at"], reports),
     insert("research_report_sections", ["id","report_id","section_key","title","sort_order","content_json"], sections),
+    insert("research_earnings_quality", ["id","report_id","company_id","as_of_date","review_status","l2_status","payload_json","payload_hash","updated_at"], earningsQuality),
     "\n-- Remove stale rows only after all canonical rows have been upserted.\n",
     cleanup("research_financial_actuals", c.id, actuals.map((row) => row.id)),
     cleanup("research_monthly_revenue", c.id, monthly.map((row) => row.id)),

@@ -35,6 +35,7 @@ test("run metadata is deterministic for package identity and records canonical c
   assert.equal(run.rowCounts.research_monthly_revenue, 2);
   assert.equal(run.rowCounts.research_reports, 1);
   assert.equal(run.rowCounts.research_report_sections, 2);
+  assert.equal(run.rowCounts.research_earnings_quality, 0);
   assert.deepEqual(run.rowCounts, expectedRowCounts(pkg));
 });
 
@@ -46,6 +47,7 @@ test("run SQL escapes values and verification checks every imported collection",
   });
   assert.match(runRecordSql(run), /company''oops/);
   assert.match(verificationSql(run), /research_financial_actuals/);
+  assert.match(verificationSql(run), /research_earnings_quality/);
   const row = { run_count: 1, source_hash: run.sourceHash, seed_hash: run.seedHash, report_hash: run.reportHash, ...run.rowCounts };
   assert.deepEqual(verifyImportRow(row, run), { ok: true, errors: [] });
   row.research_forecasts = 99;
@@ -53,6 +55,19 @@ test("run SQL escapes values and verification checks every imported collection",
   row.research_forecasts = run.rowCounts.research_forecasts;
   row.report_hash = "wrong-artifact";
   assert.match(verifyImportRow(row, run).errors.join("\n"), /report_hash: hash mismatch/);
+});
+
+test("EQ-01 import expects one report-scoped row if an audit exists", () => {
+  const audited={...pkg,earningsQuality:{reviewStatus:"PASS",l2:{status:"PASS"}}};
+  assert.equal(expectedRowCounts(audited).research_earnings_quality,1);
+  const run=buildRunMetadata(audited,{packageHash:"a".repeat(64),seedHash:"b".repeat(64),importedAt:"2026-11-13T00:00:00Z"});
+  assert.match(verificationSql(run),/research_earnings_quality WHERE report_id=/);
+  assert.equal(run.earningsQualityHash.length,64);
+  const good={run_count:1,source_hash:run.sourceHash,seed_hash:run.seedHash,report_hash:run.reportHash,
+    eq01_payload_hash:run.earningsQualityHash,...run.rowCounts};
+  assert.equal(verifyImportRow(good,run).ok,true);
+  good.eq01_payload_hash="stale-audit";
+  assert.match(verifyImportRow(good,run).errors.join("\n"),/payload hash mismatch/);
 });
 
 test("Wrangler JSON extraction supports direct execute output", () => {

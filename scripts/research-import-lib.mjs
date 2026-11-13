@@ -13,6 +13,7 @@ export const IMPORT_COLLECTIONS = {
   research_sources: "sources",
   research_reports: "report",
   research_report_sections: "sections",
+  research_earnings_quality: "earningsQuality",
 };
 
 export function parseImportArgs(argv) {
@@ -34,6 +35,7 @@ export function expectedRowCounts(pkg) {
   return Object.fromEntries(Object.entries(IMPORT_COLLECTIONS).map(([table, key]) => {
     if (key === "report") return [table, 1];
     if (key === "sections") return [table, pkg.sections.length + 1];
+    if (key === "earningsQuality") return [table, pkg.earningsQuality ? 1 : 0];
     return [table, pkg[key].length];
   }));
 }
@@ -50,6 +52,7 @@ export function buildRunMetadata(pkg, { packageHash, seedHash, reportHash = null
     sourceHash,
     seedHash,
     reportHash,
+    earningsQualityHash: pkg.earningsQuality ? sha256(pkg.earningsQuality) : null,
     rowCounts: expectedRowCounts(pkg),
     importedAt,
   };
@@ -79,8 +82,11 @@ export function verificationSql(run) {
       const column = key.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
       return `(SELECT ${column} FROM research_runs WHERE id=${sqlValue(run.id)}) AS ${column}`;
     }),
+    run.earningsQualityHash
+      ? `(SELECT payload_hash FROM research_earnings_quality WHERE report_id=${reportId}) AS eq01_payload_hash`
+      : "NULL AS eq01_payload_hash",
     ...Object.keys(run.rowCounts).map((table) => {
-      const where = table === "research_report_sections" ? `report_id=${reportId}` : `company_id=${company}`;
+      const where = ["research_report_sections", "research_earnings_quality"].includes(table) ? `report_id=${reportId}` : `company_id=${company}`;
       return `(SELECT COUNT(*) FROM ${table} WHERE ${where}) AS ${table}`;
     }),
   ];
@@ -103,6 +109,7 @@ export function verifyImportRow(row, run) {
   for (const [key, column] of [["sourceHash", "source_hash"], ["seedHash", "seed_hash"], ["reportHash", "report_hash"]]) {
     if (row?.[column] !== run[key]) errors.push(`research_runs.${column}: hash mismatch`);
   }
+  if ((row?.eq01_payload_hash ?? null) !== (run.earningsQualityHash ?? null)) errors.push("research_earnings_quality: payload hash mismatch");
   for (const [table, expected] of Object.entries(run.rowCounts)) {
     if (Number(row?.[table]) !== expected) errors.push(`${table}: expected ${expected}, got ${row?.[table] ?? "missing"}`);
   }

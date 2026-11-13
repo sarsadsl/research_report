@@ -2,6 +2,17 @@
 
 P1.8 QC specification，於 P1.9 更新自動發布 gate。操作與交付範本見 [Workflow](RESEARCH_WORKFLOW.md)，人工視覺驗收見 [Style Guide](RESEARCH_STYLE_GUIDE.md)，發布紀錄見 [Publishing](RESEARCH_PUBLISHING.md)。
 
+## EQ-01｜盈餘品質與業外損益穿透（新建／新版完整報告必做）
+
+正式規範：[EQ-01 Earnings Quality Audit](RESEARCH_EARNINGS_QUALITY.md)。所有 `full-research` 新報告及重新發行版本須做 L1 標準篩檢；任一重大性門檻或交叉持股等質性警訊觸發即做 L2 穿透，並將法定與正常化 EPS、歸母稅後調整、OCI／淨值影響、估值是否重複扣除及來源逐項核對。
+
+- `PASS`：L1 有證據且無異常，或已完成被觸發的 L2 穿透。
+- `WARN`：不影響主要研究結論的非重大限制已揭露及說明處理方式；不得以 WARN 掩蓋關鍵資料缺漏。
+- `FAIL`：觸發 L2 但未完成、重大調節不可勾稽、模型對業外收益重複剔除，或把未實現／OCI／外部文章推算值錯當法定 EPS。
+- `NOT_RUN`：未執行必要篩檢、主要來源無法核對；不得當作 0 或 PASS。必要狀態 `FAIL / NOT_RUN` → `BLOCKED`。
+
+**工程分支實作**：`research:validate` 已整合 EQ-01 JSON Schema、關聯來源引用、業外占比／重大波動與質性觸發、EPS 對帳、L2 阻擋與估值重複扣減檢查；D1 以 `research_earnings_quality` 按 report ID 保存完整 JSON 供 API 回讀；renderer 生成 L1 摘要或 L2 專頁。2026-11-13 起新發布完整報告強制帶 EQ-01；歷史版本不追溯。**未自動驗證**財報來源真實性、具體稅額或持股控制推論，也不代表審閱者真的完成核對。正式 Cloudflare 尚未部署；本 PR 的測試與人工 gate 全部通過前不能合併。
+
 ## 結果與阻擋規則
 
 - `PASS`：指定檢查已執行且通過，保存環境、版本及證據。

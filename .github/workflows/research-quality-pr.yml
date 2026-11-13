@@ -1,0 +1,36 @@
+name: Research Quality PR Checks
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout change
+        uses: actions/checkout@v4
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Validate documentation
+        run: npm run docs:check
+      - name: Validate Research Package and tests
+        run: npm run research:check
+      - name: Type check
+        run: npx tsc --noEmit
+      - name: Install CJK fonts for report layout
+        run: sudo apt-get update && sudo apt-get install -y fonts-noto-cjk
+      - name: Browser report layout QC (existing reference report)
+        run: npm run report:qc -- vpec-2455
+      # Deliberately do not call research:publish --remote, wrangler, or deploy.
+      # This workflow never receives Cloudflare credentials and never touches production D1.

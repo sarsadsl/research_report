@@ -175,6 +175,47 @@ test("Jingu risk page keeps current thesis distinct from the core conclusion", a
   assert.notEqual(current,conclusion);
 });
 
+test("EQ-01 full report displays normalized EPS and uses a distinct L2 page",async()=>{
+  const {pkg,profiles}=await load();
+  const sourceId=pkg.sources[0].id;
+  pkg.earningsQuality={
+    standard:"EQ-01-v1",reviewStatus:"PASS",reviewer:"Test",reviewedAt:"2026-11-13",
+    coverageNote:"Synthetic test sample",qualitativeFlags:["cross_holding"],
+    periods:[{
+      id:"q1",period:"2026Q3",periodType:"quarter",currency:"TWD",scale:"million",
+      revenue:200,operatingIncome:80,nonOperatingNet:20,pretaxIncome:100,incomeTax:18,netIncomeAttributable:82,
+      reportedEps:1,normalizedEps:0.8,weightedAverageShares:82,shareholdersEquity:500,
+      adjustments:[{id:"mark",category:"FVPL",realization:"unrealized",pretaxAmount:20,epsImpact:0.2,
+        equityImpact:30,method:"After-tax look-through",sourceIds:[sourceId],notes:"Test only"}],
+      sourceIds:[sourceId],normalizationNote:"Test only"
+    }],
+    l2:{status:"PASS",summary:"Cross-holding look-through completed",sourceIds:[sourceId]},
+    valuation:{epsBasis:"normalized",doubleCountChecked:true,notes:"No duplicate deduction"},
+    notes:"Synthetic renderer regression"
+  };
+  const profile={...profiles.profiles["full-research"],expectedPages:15};
+  const html=renderGeneratedReport(buildReportViewModel(pkg,"full-research",profile));
+  assert.equal((html.match(/<section class="page slide/g)||[]).length,15);
+  assert.match(html,/EQ-01｜盈餘品質與業外損益穿透/);
+  assert.match(html,/法定 EPS/);
+  assert.match(html,/正常化 EPS/);
+  assert.match(html,/After-tax look-through/);
+  assert.match(html,/Cross-holding look-through completed/);
+  assert.match(html,/EVIDENCE RAIL/);
+});
+test("EQ-01 L1 below threshold keeps existing 14-page profile",async()=>{
+  const {pkg,profiles}=await load();
+  pkg.earningsQuality={
+    reviewStatus:"PASS",reviewer:"QA",reviewedAt:"2026-11-13",coverageNote:"Synthetic L1",notes:"",
+    qualitativeFlags:[],periods:[{period:"2026Q3",periodType:"quarter",reportedEps:1,normalizedEps:1,
+      pretaxIncome:100,nonOperatingNet:5,adjustments:[]}],
+    l2:{status:"NOT_RUN",summary:"",sourceIds:[]},valuation:{epsBasis:"normalized",doubleCountChecked:true,notes:"L1"}
+  };
+  const html=renderGeneratedReport(buildReportViewModel(pkg,"full-research",profiles.profiles["full-research"]));
+  assert.equal((html.match(/<section class="page slide/g)||[]).length,14);
+  assert.match(html,/盈餘品質與業外損益摘要/);
+});
+
 test("baseline profiles fail closed without canonical source metadata", async()=>{
   const {profiles}=await load();
   const invalid=structuredClone(profiles);
