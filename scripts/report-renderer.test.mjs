@@ -198,7 +198,7 @@ test("EQ-01 full report displays normalized EPS and uses a distinct L2 page",asy
   assert.equal((html.match(/<section class="page slide/g)||[]).length,16);
   assert.match(html,/業外收入警報 🚨｜獲利品質檢查/);
   assert.match(html,/業外收入警報 🚨｜投資收益從哪裡來？/);
-  assert.match(html,/法定 EPS/);
+  assert.match(html,/財報每股盈餘/);
   assert.match(html,/扣除特殊收益後的 EPS/);
   assert.match(html,/After-tax look-through/);
   assert.match(html,/Cross-holding look-through completed/);
