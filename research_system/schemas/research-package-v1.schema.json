@@ -278,6 +278,58 @@
         },
         "marketShareNote": {
           "type": "string"
+        },
+        "capexSensitivity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "budgetNtdMillion",
+            "approvedBudgetUsdMillion",
+            "existing2026CashCapexUsdMillion",
+            "depreciationYears",
+            "taxRate",
+            "weightedSharesMillion",
+            "sourceIds",
+            "notes"
+          ],
+          "properties": {
+            "budgetNtdMillion": {
+              "type": "number",
+              "minimum": 0
+            },
+            "approvedBudgetUsdMillion": {
+              "type": "number",
+              "minimum": 0
+            },
+            "existing2026CashCapexUsdMillion": {
+              "type": "number",
+              "minimum": 0
+            },
+            "depreciationYears": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "taxRate": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "weightedSharesMillion": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "sourceIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
         }
       }
     },
