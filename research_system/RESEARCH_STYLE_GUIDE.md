@@ -37,7 +37,7 @@ P1.8 編輯與視覺驗收規範，用於 Dashboard、Full Report 與 standalone
 
 異常案例須在財務段顯示歸母損益橋接（法定 EPS → 個別稅後調節 → 正常化 EPS），在估值與風險段顯示 P/E、P/B、OCI 或自由現金流敏感度。交叉持股／關聯企業需標示持股關係、直接或間接持股及會計處理；不得把 FVOCI 變動當作當期 EPS，也不得重複扣除已正常化的收益。每個調整均需追溯 source／claim 及方法。沒有觸發 L2 的公司只需一張摘要表，不增加無必要的章節。
 
-詳見 [EQ-01 規範](RESEARCH_EARNINGS_QUALITY.md)。現有 reader 未提供自動 EQ-01 控件，請勿宣稱 UI／自動 QC 已完成。
+詳見 [EQ-01 規範](RESEARCH_EARNINGS_QUALITY.md)。工程分支的通用 renderer 已支援 L1 緊湊摘要、L2 時額外專頁，仍須使用既有 Browser layout QC 驗收長表格／長文字不裁切；非本次修改前已部署的 UI。
 
 ## Dashboard
 
