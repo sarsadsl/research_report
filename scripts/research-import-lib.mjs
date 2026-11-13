@@ -13,6 +13,7 @@ export const IMPORT_COLLECTIONS = {
   research_sources: "sources",
   research_reports: "report",
   research_report_sections: "sections",
+  research_earnings_quality: "earningsQuality",
 };
 
 export function parseImportArgs(argv) {
@@ -34,6 +35,7 @@ export function expectedRowCounts(pkg) {
   return Object.fromEntries(Object.entries(IMPORT_COLLECTIONS).map(([table, key]) => {
     if (key === "report") return [table, 1];
     if (key === "sections") return [table, pkg.sections.length + 1];
+    if (key === "earningsQuality") return [table, pkg.earningsQuality ? 1 : 0];
     return [table, pkg[key].length];
   }));
 }
@@ -80,7 +82,7 @@ export function verificationSql(run) {
       return `(SELECT ${column} FROM research_runs WHERE id=${sqlValue(run.id)}) AS ${column}`;
     }),
     ...Object.keys(run.rowCounts).map((table) => {
-      const where = table === "research_report_sections" ? `report_id=${reportId}` : `company_id=${company}`;
+      const where = ["research_report_sections", "research_earnings_quality"].includes(table) ? `report_id=${reportId}` : `company_id=${company}`;
       return `(SELECT COUNT(*) FROM ${table} WHERE ${where}) AS ${table}`;
     }),
   ];
