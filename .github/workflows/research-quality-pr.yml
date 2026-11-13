@@ -38,5 +38,11 @@ jobs:
       - name: Browser report layout QC (Nanya 1303 new full report)
         if: ${{ hashFiles('research/nanya-1303/research-package.json') != '' }}
         run: npm run report:qc -- nanya-1303
+      - name: Browser report layout QC (Delta 2308 draft Full Report)
+        if: ${{ hashFiles('research/delta-2308/research-package.json') != '' }}
+        run: npm run report:qc -- delta-2308
+      - name: Browser report layout QC (Lite-On 2301 draft Full Report)
+        if: ${{ hashFiles('research/liteon-2301/research-package.json') != '' }}
+        run: npm run report:qc -- liteon-2301
       # Deliberately do not call research:publish --remote, wrangler, or deploy.
       # This workflow never receives Cloudflare credentials and never touches production D1.

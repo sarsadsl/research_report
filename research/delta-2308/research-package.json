@@ -1,0 +1,1421 @@
+{
+  "schemaVersion": "1.0.0",
+  "packageVersion": "0.2.0-draft",
+  "asOfDate": "2026-11-13",
+  "company": {
+    "id": "delta-2308",
+    "ticker": "2308",
+    "market": "TW",
+    "name": "台達電",
+    "slug": "delta-2308",
+    "sector": "電子零組件／電力管理",
+    "industry": "電源供應／資料中心電力基礎建設／液冷",
+    "currency": "TWD",
+    "description": "高瓦數 PSU → ±400V／800V HVDC Power Rack → 液冷協同設計 → 系統級驗證與交貨 → 毛利／營益率 → OCF／FCF。2026Q3 營收創高但毛利率降至 34.08%，反證短期仍有供應瓶頸。"
+  },
+  "report": {
+    "id": "delta-report-20261113-draft",
+    "title": "台達電（2308）｜AI電力基建與盈餘品質標準Full Report（待審）",
+    "slug": "delta-2308",
+    "summary": "2026Q3營收1,970.59億元、EPS9.04、毛利率34.08%；2026/10月營收746.66億元。元大9月對Q3 EPS10.78估計高於實績，2027年80.78元模型待Q4交貨與毛利率驗證。",
+    "thesis": "高瓦數 PSU → ±400V／800V HVDC Power Rack → 液冷協同設計 → 系統級驗證與交貨 → 毛利／營益率 → OCF／FCF。2026Q3 營收創高但毛利率降至 34.08%，反證短期仍有供應瓶頸。",
+    "status": "draft",
+    "visibility": "unlisted",
+    "version": "0.2.0"
+  },
+  "thesis": {
+    "summary": "黃燈：AI電源與液冷具中期長期競爭優勢，惟 2026Q3 EPS 較元大9月估計低約16.1%、毛利率低2.22個百分點；2027元大80.78元、GS75.23元與國泰62.28元估計不能視為單一共識。L1業外與OCF、應收存貨未全部核對，正式版暫不發布。",
+    "coreChain": [
+      "高瓦數 PSU",
+      "±400V／800V HVDC Power Rack",
+      "液冷協同設計",
+      "系統級驗證與交貨",
+      "毛利／營益率",
+      "OCF／FCF。2026Q3 營收創高但毛利率降至 34.08%，反證短期仍有供應瓶頸。"
+    ],
+    "claimIds": [
+      "delta-claim-thesis",
+      "delta-claim-broker",
+      "delta-claim-quality"
+    ]
+  },
+  "dashboard": {
+    "currentView": "2026Q3營收1,970.59億元、EPS9.04、毛利率34.08%；2026/10月營收746.66億元。元大9月對Q3 EPS10.78估計高於實績，2027年80.78元模型待Q4交貨與毛利率驗證。",
+    "currentThesis": "高瓦數 PSU → ±400V／800V HVDC Power Rack → 液冷協同設計 → 系統級驗證與交貨 → 毛利／營益率 → OCF／FCF。2026Q3 營收創高但毛利率降至 34.08%，反證短期仍有供應瓶頸。",
+    "verificationChain": [
+      "第三季毛利修復",
+      "高瓦數PSU出貨",
+      "2027 HVDC商轉",
+      "現金流與盈餘品質"
+    ],
+    "conclusion": "黃燈：AI電源與液冷具中期長期競爭優勢，惟 2026Q3 EPS 較元大9月估計低約16.1%、毛利率低2.22個百分點；2027元大80.78元、GS75.23元與國泰62.28元估計不能視為單一共識。L1業外與OCF、應收存貨未全部核對，正式版暫不發布。",
+    "forecastScenario": "consensus",
+    "headlineForecastYears": [
+      2027,
+      2028
+    ],
+    "focusMetric": {
+      "field": "grossMargin",
+      "label": "毛利率"
+    },
+    "monthlyRevenue": {
+      "focusYear": 2026,
+      "cumulativeThroughMonth": 10,
+      "unitDivisor": 100,
+      "unitLabel": "億元"
+    },
+    "cagrCards": [
+      {
+        "field": "revenue",
+        "label": "2025A至2027F營收成長（研究情境）",
+        "baseYear": 2025,
+        "targetYear": 2027,
+        "baseValue": 554885.168,
+        "years": 2
+      },
+      {
+        "field": "eps",
+        "label": "2025A至2027F EPS成長（研究情境）",
+        "baseYear": 2025,
+        "targetYear": 2027,
+        "baseValue": 23.14,
+        "years": 2
+      }
+    ],
+    "estimateNote": "2027E 具名券商：元大09/30 EPS80.78元、營收12,893.11億元、目標價2430；GS07/30 EPS75.23；國泰10/16 EPS62.28；富邦06/12 EPS66.45。GS的2028E EPS172.30、元大09/30 2028E EPS121.6，均非市場共識。以下 bear/consensus/bull 為研究情境而非券商統計共識。2026Q3 元大09/30 預估 EPS10.78 vs 公布9.04；股價、目標價採各報告當時日期，不得當成即時價格。"
+  },
+  "actuals": [
+    {
+      "id": "delta-a-2025FY",
+      "period": "2025FY",
+      "fiscalYear": 2025,
+      "quarter": null,
+      "revenue": 554885.168,
+      "grossProfit": 190156.558,
+      "grossMargin": 34.27,
+      "operatingIncome": 83932.074,
+      "operatingMargin": 15.13,
+      "netIncome": 60108.399,
+      "netMargin": 10.83,
+      "eps": 23.14,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-financial"
+      ],
+      "claimIds": [
+        "delta-claim-actual"
+      ]
+    },
+    {
+      "id": "delta-a-2025Q4",
+      "period": "2025Q4",
+      "fiscalYear": 2025,
+      "quarter": 4,
+      "revenue": 161613,
+      "grossProfit": 55903,
+      "grossMargin": 34.59,
+      "operatingIncome": 26418,
+      "operatingMargin": 16.35,
+      "netIncome": 17324,
+      "netMargin": 10.72,
+      "eps": 6.67,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-financial"
+      ],
+      "claimIds": [
+        "delta-claim-actual"
+      ]
+    },
+    {
+      "id": "delta-a-2026Q1",
+      "period": "2026Q1",
+      "fiscalYear": 2026,
+      "quarter": 1,
+      "revenue": 159352.652,
+      "grossProfit": 58960.871,
+      "grossMargin": 37,
+      "operatingIncome": 28417.303,
+      "operatingMargin": 17.83,
+      "netIncome": 20555.591,
+      "netMargin": 12.9,
+      "eps": 7.91,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-financial"
+      ],
+      "claimIds": [
+        "delta-claim-actual"
+      ]
+    },
+    {
+      "id": "delta-a-2026Q2",
+      "period": "2026Q2",
+      "fiscalYear": 2026,
+      "quarter": 2,
+      "revenue": 183256.08,
+      "grossProfit": 65307.95,
+      "grossMargin": 35.63,
+      "operatingIncome": 30570.042,
+      "operatingMargin": 16.68,
+      "netIncome": 25135.64,
+      "netMargin": 13.72,
+      "eps": 9.68,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-financial"
+      ],
+      "claimIds": [
+        "delta-claim-actual"
+      ]
+    },
+    {
+      "id": "delta-a-2026Q3",
+      "period": "2026Q3",
+      "fiscalYear": 2026,
+      "quarter": 3,
+      "revenue": 197058.804,
+      "grossProfit": 67154.634,
+      "grossMargin": 34.08,
+      "operatingIncome": 32620.13,
+      "operatingMargin": 16.55,
+      "netIncome": 23494.595,
+      "netMargin": 11.92,
+      "eps": 9.04,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-financial"
+      ],
+      "claimIds": [
+        "delta-claim-actual"
+      ]
+    },
+    {
+      "id": "delta-a-2026YTD",
+      "period": "2026YTD",
+      "fiscalYear": 2026,
+      "quarter": null,
+      "revenue": 539667.536,
+      "grossProfit": 191423.455,
+      "grossMargin": 35.47,
+      "operatingIncome": 91607.475,
+      "operatingMargin": 16.97,
+      "netIncome": 69185.826,
+      "netMargin": 12.82,
+      "eps": 26.64,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-financial"
+      ],
+      "claimIds": [
+        "delta-claim-actual"
+      ]
+    }
+  ],
+  "monthlyRevenue": [
+    {
+      "id": "delta-m-01",
+      "year": 2026,
+      "month": 1,
+      "revenue": 49675,
+      "mom": -7.5,
+      "yoy": 32.9,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-monthly"
+      ],
+      "claimIds": [
+        "delta-claim-actual"
+      ]
+    },
+    {
+      "id": "delta-m-02",
+      "year": 2026,
+      "month": 2,
+      "revenue": 49897,
+      "mom": 0.5,
+      "yoy": 31,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-monthly"
+      ],
+      "claimIds": [
+        "delta-claim-actual"
+      ]
+    },
+    {
+      "id": "delta-m-03",
+      "year": 2026,
+      "month": 3,
+      "revenue": 59780,
+      "mom": 19.8,
+      "yoy": 37.6,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-monthly"
+      ],
+      "claimIds": [
+        "delta-claim-actual"
+      ]
+    },
+    {
+      "id": "delta-m-04",
+      "year": 2026,
+      "month": 4,
+      "revenue": 58692,
+      "mom": -1.8,
+      "yoy": 43.9,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-monthly"
+      ],
+      "claimIds": [
+        "delta-claim-actual"
+      ]
+    },
+    {
+      "id": "delta-m-05",
+      "year": 2026,
+      "month": 5,
+      "revenue": 58962,
+      "mom": 0.5,
+      "yoy": 43.6,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-monthly"
+      ],
+      "claimIds": [
+        "delta-claim-actual"
+      ]
+    },
+    {
+      "id": "delta-m-06",
+      "year": 2026,
+      "month": 6,
+      "revenue": 65603,
+      "mom": 11.3,
+      "yoy": 55.4,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-monthly"
+      ],
+      "claimIds": [
+        "delta-claim-actual"
+      ]
+    },
+    {
+      "id": "delta-m-07",
+      "year": 2026,
+      "month": 7,
+      "revenue": 67073,
+      "mom": 2.2,
+      "yoy": 47.8,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-monthly"
+      ],
+      "claimIds": [
+        "delta-claim-actual"
+      ]
+    },
+    {
+      "id": "delta-m-08",
+      "year": 2026,
+      "month": 8,
+      "revenue": 64586,
+      "mom": -3.7,
+      "yoy": 35,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-monthly"
+      ],
+      "claimIds": [
+        "delta-claim-actual"
+      ]
+    },
+    {
+      "id": "delta-m-09",
+      "year": 2026,
+      "month": 9,
+      "revenue": 65400,
+      "mom": 1.3,
+      "yoy": 14.6,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-monthly"
+      ],
+      "claimIds": [
+        "delta-claim-actual"
+      ]
+    },
+    {
+      "id": "delta-m-10",
+      "year": 2026,
+      "month": 10,
+      "revenue": 74666,
+      "mom": 14.2,
+      "yoy": 30.1,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-monthly"
+      ],
+      "claimIds": [
+        "delta-claim-actual"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "id": "delta-seg-0",
+      "period": "2026Q2",
+      "segment": "電源及零組件",
+      "revenue": null,
+      "share": 53,
+      "isEstimate": false,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-yuanta-sep"
+      ],
+      "claimIds": [
+        "delta-claim-thesis"
+      ]
+    },
+    {
+      "id": "delta-seg-1",
+      "period": "2026Q2",
+      "segment": "交通",
+      "revenue": null,
+      "share": 5,
+      "isEstimate": false,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-yuanta-sep"
+      ],
+      "claimIds": [
+        "delta-claim-thesis"
+      ]
+    },
+    {
+      "id": "delta-seg-2",
+      "period": "2026Q2",
+      "segment": "自動化",
+      "revenue": null,
+      "share": 8,
+      "isEstimate": false,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-yuanta-sep"
+      ],
+      "claimIds": [
+        "delta-claim-thesis"
+      ]
+    },
+    {
+      "id": "delta-seg-3",
+      "period": "2026Q2",
+      "segment": "基礎設施",
+      "revenue": null,
+      "share": 34,
+      "isEstimate": false,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-yuanta-sep"
+      ],
+      "claimIds": [
+        "delta-claim-thesis"
+      ]
+    }
+  ],
+  "forecasts": [
+    {
+      "id": "delta-f-2027-bear",
+      "fiscalYear": 2027,
+      "scenario": "bear",
+      "revenue": 1057740,
+      "grossMargin": 35,
+      "netIncome": 160816,
+      "eps": 61.9,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model"
+      ],
+      "claimIds": [
+        "delta-claim-broker"
+      ],
+      "notes": "研究情境（非統計市場共識）；netIncome按EPS×假設約2598百萬股估算；忽略稅率及稀釋股數變動，僅供相對情境。"
+    },
+    {
+      "id": "delta-f-2027-consensus",
+      "fiscalYear": 2027,
+      "scenario": "consensus",
+      "revenue": 1190000,
+      "grossMargin": 38,
+      "netIncome": 181860,
+      "eps": 70,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model"
+      ],
+      "claimIds": [
+        "delta-claim-broker"
+      ],
+      "notes": "研究情境（非統計市場共識）；netIncome按EPS×假設約2598百萬股估算；忽略稅率及稀釋股數變動，僅供相對情境。"
+    },
+    {
+      "id": "delta-f-2027-bull",
+      "fiscalYear": 2027,
+      "scenario": "bull",
+      "revenue": 1289311,
+      "grossMargin": 40.1,
+      "netIncome": 209866,
+      "eps": 80.78,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model"
+      ],
+      "claimIds": [
+        "delta-claim-broker"
+      ],
+      "notes": "研究情境（非統計市場共識）；netIncome按EPS×假設約2598百萬股估算；忽略稅率及稀釋股數變動，僅供相對情境。"
+    },
+    {
+      "id": "delta-f-2028-bear",
+      "fiscalYear": 2028,
+      "scenario": "bear",
+      "revenue": 1240000,
+      "grossMargin": 35,
+      "netIncome": 205242,
+      "eps": 79,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model"
+      ],
+      "claimIds": [
+        "delta-claim-broker"
+      ],
+      "notes": "研究情境（非統計市場共識）；netIncome按EPS×假設約2598百萬股估算；忽略稅率及稀釋股數變動，僅供相對情境。"
+    },
+    {
+      "id": "delta-f-2028-consensus",
+      "fiscalYear": 2028,
+      "scenario": "consensus",
+      "revenue": 1550000,
+      "grossMargin": 38,
+      "netIncome": 270192,
+      "eps": 104,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model"
+      ],
+      "claimIds": [
+        "delta-claim-broker"
+      ],
+      "notes": "研究情境（非統計市場共識）；netIncome按EPS×假設約2598百萬股估算；忽略稅率及稀釋股數變動，僅供相對情境。"
+    },
+    {
+      "id": "delta-f-2028-bull",
+      "fiscalYear": 2028,
+      "scenario": "bull",
+      "revenue": 1800000,
+      "grossMargin": 40,
+      "netIncome": 316956,
+      "eps": 122,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model"
+      ],
+      "claimIds": [
+        "delta-claim-broker"
+      ],
+      "notes": "研究情境（非統計市場共識）；netIncome按EPS×假設約2598百萬股估算；忽略稅率及稀釋股數變動，僅供相對情境。"
+    }
+  ],
+  "capacity": [
+    {
+      "id": "delta-cap-0",
+      "eventDate": "2026-11-13",
+      "label": "高瓦數 PSU / Power Shelf",
+      "equipment": "AI伺服器電源 / 12–18kW級",
+      "technology": "high-power PSU",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "status": "production",
+      "notes": "2026Q4材料與良率、可認列出貨需核對",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-yuanta-sep"
+      ]
+    },
+    {
+      "id": "delta-cap-1",
+      "eventDate": "2026-11-13",
+      "label": "±400V HVDC",
+      "equipment": "Power Rack / 高壓直流配電",
+      "technology": "±400 V DC",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "status": "qualification",
+      "notes": "元大預期2026Q4少量、2027商轉；非公司保證",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-yuanta-sep"
+      ]
+    },
+    {
+      "id": "delta-cap-2",
+      "eventDate": "2026-11-13",
+      "label": "800V Power Rack",
+      "equipment": "DC/DC 與電力系統整合",
+      "technology": "800 V DC",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "status": "qualification",
+      "notes": "按CSP分別跟進樣機、認證、採購單、認列",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-integrated"
+      ]
+    },
+    {
+      "id": "delta-cap-3",
+      "eventDate": "2026-11-13",
+      "label": "液冷 CDUs",
+      "equipment": "資料中心散熱與側櫃方案",
+      "technology": "liquid cooling",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "status": "production",
+      "notes": "元大預期2026Q2液冷單季出貨約250億元，後續追蹤ASP",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-yuanta-jul"
+      ]
+    },
+    {
+      "id": "delta-cap-4",
+      "eventDate": "2026-11-13",
+      "label": "SST / SOFC",
+      "equipment": "固態變壓器與能源架構",
+      "technology": "SST",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "status": "research",
+      "notes": "長期技術選擇權，不計入已認列營收",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-integrated"
+      ]
+    }
+  ],
+  "catalysts": [
+    {
+      "id": "delta-cat-0",
+      "title": "4Q26高瓦數PSU交貨修復",
+      "impact": "high",
+      "status": "watch",
+      "notes": "缺料／認證問題緩解、毛利回升",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-yuanta-sep",
+        "delta-src-model"
+      ]
+    },
+    {
+      "id": "delta-cat-1",
+      "title": "2027HVDC客戶量產與市占提升",
+      "impact": "high",
+      "status": "watch",
+      "notes": "從樣機認證轉換到正式量產、實際收入",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-integrated",
+        "delta-src-model"
+      ]
+    },
+    {
+      "id": "delta-cat-2",
+      "title": "液冷與電源系統整包",
+      "impact": "high",
+      "status": "watch",
+      "notes": "跨電力與散熱內容價值及毛利",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-yuanta-jul",
+        "delta-src-model"
+      ]
+    },
+    {
+      "id": "delta-cat-3",
+      "title": "2027新產能良率與固定成本攤提",
+      "impact": "medium",
+      "status": "watch",
+      "notes": "若稼動率提升則營運槓桿改善",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model"
+      ]
+    }
+  ],
+  "risks": [
+    {
+      "id": "delta-risk-0",
+      "title": "2026Q3券商財測明顯落空",
+      "impact": "high",
+      "probability": "high",
+      "status": "watch",
+      "notes": "09/30 元大 EPS10.78 實際9.04，估算差16.1%",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-yuanta-sep",
+        "delta-src-model"
+      ]
+    },
+    {
+      "id": "delta-risk-1",
+      "title": "PMIC／MOSFET短缺與新產品認證",
+      "impact": "high",
+      "probability": "high",
+      "status": "watch",
+      "notes": "可能延後Power Rack放量與毛利修復",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-yuanta-sep",
+        "delta-src-model"
+      ]
+    },
+    {
+      "id": "delta-risk-2",
+      "title": "存貨跌價與成本轉嫁",
+      "impact": "high",
+      "probability": "medium",
+      "status": "watch",
+      "notes": "價格上漲不等於毛利率已恢復",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-yuanta-jul",
+        "delta-src-model"
+      ]
+    },
+    {
+      "id": "delta-risk-3",
+      "title": "資本支出與應收存貨占用現金",
+      "impact": "high",
+      "probability": "medium",
+      "status": "watch",
+      "notes": "後續以OCF與自由現金流驗證",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model"
+      ]
+    },
+    {
+      "id": "delta-risk-4",
+      "title": "2027年高EPS與高本益比雙重假設",
+      "impact": "high",
+      "probability": "high",
+      "status": "watch",
+      "notes": "元大80.78較2026Q3年化值大幅提高",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model"
+      ]
+    }
+  ],
+  "signalRules": [
+    {
+      "id": "delta-rule-0",
+      "metric": "第三季毛利修復",
+      "greenCondition": "2026Q4毛利率≥38%",
+      "yellowCondition": "34–38%",
+      "redCondition": "連續季度低於34%",
+      "weight": 1,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model"
+      ]
+    },
+    {
+      "id": "delta-rule-1",
+      "metric": "高瓦數PSU出貨",
+      "greenCondition": "明確正式量產並揭露收入",
+      "yellowCondition": "交貨正常但客戶建置遞延",
+      "redCondition": "兩季延遲交貨",
+      "weight": 1,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model"
+      ]
+    },
+    {
+      "id": "delta-rule-2",
+      "metric": "2027 HVDC商轉",
+      "greenCondition": "正式批量採購",
+      "yellowCondition": "樣機／客戶驗證",
+      "redCondition": "測試轉量產中止",
+      "weight": 1,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model"
+      ]
+    },
+    {
+      "id": "delta-rule-3",
+      "metric": "現金流與盈餘品質",
+      "greenCondition": "OCF與淨利同步轉佳",
+      "yellowCondition": "OCF/非經常收益未完成核對",
+      "redCondition": "OCF長期落後淨利且存貨上升",
+      "weight": 1,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model"
+      ]
+    }
+  ],
+  "signalSnapshots": [
+    {
+      "id": "delta-signal-0",
+      "asOfDate": "2026-11-13",
+      "metric": "第三季毛利修復",
+      "status": "yellow",
+      "valueText": "2026Q3毛利34.08%，2026Q4未公布",
+      "notes": "研究監測用非買賣建議；必要時等待下季公告驗證",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model",
+        "delta-src-financial"
+      ],
+      "claimIds": [
+        "delta-claim-thesis"
+      ]
+    },
+    {
+      "id": "delta-signal-1",
+      "asOfDate": "2026-11-13",
+      "metric": "高瓦數PSU出貨",
+      "status": "yellow",
+      "valueText": "2026Q3新平台驗證與長短料干擾",
+      "notes": "研究監測用非買賣建議；必要時等待下季公告驗證",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model",
+        "delta-src-financial"
+      ],
+      "claimIds": [
+        "delta-claim-thesis"
+      ]
+    },
+    {
+      "id": "delta-signal-2",
+      "asOfDate": "2026-11-13",
+      "metric": "2027 HVDC商轉",
+      "status": "yellow",
+      "valueText": "元大預期2H27放量，仍屬券商估計",
+      "notes": "研究監測用非買賣建議；必要時等待下季公告驗證",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model",
+        "delta-src-financial"
+      ],
+      "claimIds": [
+        "delta-claim-thesis"
+      ]
+    },
+    {
+      "id": "delta-signal-3",
+      "asOfDate": "2026-11-13",
+      "metric": "現金流與盈餘品質",
+      "status": "yellow",
+      "valueText": "EQ-01 L1尚未完成，NOT_RUN",
+      "notes": "研究監測用非買賣建議；必要時等待下季公告驗證",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model",
+        "delta-src-financial"
+      ],
+      "claimIds": [
+        "delta-claim-thesis"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "delta-sec-1",
+      "type": "summary",
+      "title": "投資主張：已實現進度與反證",
+      "sortOrder": 1,
+      "payloadRefs": [
+        "thesis",
+        "signalSnapshots"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "delta-sec-2",
+      "type": "kpi-grid",
+      "title": "財務摘要與2027–2028估計",
+      "sortOrder": 2,
+      "payloadRefs": [
+        "actuals",
+        "forecasts"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "delta-sec-3",
+      "type": "financial-table",
+      "title": "財報與盈餘品質 EQ-01",
+      "sortOrder": 3,
+      "payloadRefs": [
+        "actuals",
+        "earningsQuality"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "delta-sec-4",
+      "type": "bar-chart",
+      "title": "2026年歷月營收與需求驗證",
+      "sortOrder": 4,
+      "payloadRefs": [
+        "monthlyRevenue"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "delta-sec-5",
+      "type": "line-chart",
+      "title": "營收與獲利率變化",
+      "sortOrder": 5,
+      "payloadRefs": [
+        "actuals"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "delta-sec-6",
+      "type": "scenario-table",
+      "title": "2027–2028研究情境與券商差異",
+      "sortOrder": 6,
+      "payloadRefs": [
+        "forecasts"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "delta-sec-7",
+      "type": "capacity",
+      "title": "AI電力架構與商業化節點",
+      "sortOrder": 7,
+      "payloadRefs": [
+        "capacity"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "delta-sec-8",
+      "type": "signals",
+      "title": "投資燈號與升降級條件",
+      "sortOrder": 8,
+      "payloadRefs": [
+        "signalSnapshots"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "delta-sec-9",
+      "type": "catalysts-risks",
+      "title": "催化劑／下行風險",
+      "sortOrder": 9,
+      "payloadRefs": [
+        "catalysts",
+        "risks"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "delta-sec-10",
+      "type": "sources",
+      "title": "來源台帳與券商估計限制",
+      "sortOrder": 10,
+      "payloadRefs": [
+        "sources"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "delta-sec-11",
+      "type": "conclusion",
+      "title": "總結：正式發布前的關鍵待驗證點",
+      "sortOrder": 11,
+      "payloadRefs": [
+        "thesis"
+      ],
+      "showSources": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "delta-src-financial",
+      "evidenceClass": "third_party_fact",
+      "provider": "富聯網／公開資訊觀測站轉錄",
+      "title": "台達電 IFRS 累計綜合損益表",
+      "url": "https://ww2.money-link.com.tw/TWStock/StockBasic.aspx?SymId=2308&TWMId=Basic_IIAM2",
+      "publishedDate": "2026-10-28",
+      "accessedDate": "2026-11-13",
+      "coveredPeriods": [
+        "2025FY",
+        "2026Q1",
+        "2026Q2",
+        "2026Q3",
+        "2026YTD"
+      ],
+      "confidence": "medium",
+      "notes": "網頁可查，原始法定科目仍需以MOPS財報複核"
+    },
+    {
+      "id": "delta-src-quarter",
+      "evidenceClass": "third_party_fact",
+      "provider": "中央社",
+      "title": "2026Q3 每股盈餘9.04、營收與毛利率",
+      "url": "https://www.cna.com.tw/news/afe/202610280291.aspx",
+      "publishedDate": "2026-10-28",
+      "accessedDate": "2026-11-13",
+      "coveredPeriods": [
+        "2026Q3",
+        "2026YTD"
+      ],
+      "confidence": "medium",
+      "notes": "網頁可查，原始法定科目仍需以MOPS財報複核"
+    },
+    {
+      "id": "delta-src-monthly",
+      "evidenceClass": "third_party_fact",
+      "provider": "SASUGOD／公開資訊觀測站轉錄",
+      "title": "2026年1–10月歷月營收",
+      "url": "https://report.sasugod.com/tw/2308",
+      "publishedDate": "2026-11-13",
+      "accessedDate": "2026-11-13",
+      "coveredPeriods": [
+        "2026M01",
+        "2026M10"
+      ],
+      "confidence": "medium",
+      "notes": "網頁可查，原始法定科目仍需以MOPS財報複核"
+    },
+    {
+      "id": "delta-src-yuanta-mar",
+      "evidenceClass": "market_consensus",
+      "provider": "元大投顧",
+      "title": "台達電 2026/03/02 HVDC估2H26小量，2027F EPS61.90",
+      "publishedDate": "2026-03-02",
+      "accessedDate": "2026-11-13",
+      "coveredPeriods": [
+        "2026F",
+        "2027F"
+      ],
+      "confidence": "medium",
+      "notes": "私人研究資料，僅登錄摘要及文件日期；未公開券商PDF或分享私人Drive識別資料"
+    },
+    {
+      "id": "delta-src-yuanta-jul",
+      "evidenceClass": "market_consensus",
+      "provider": "元大投顧",
+      "title": "台達電 2026/07/31 2027F EPS79.56",
+      "publishedDate": "2026-07-31",
+      "accessedDate": "2026-11-13",
+      "coveredPeriods": [
+        "2026F",
+        "2027F"
+      ],
+      "confidence": "medium",
+      "notes": "私人研究資料，僅登錄摘要及文件日期；未公開券商PDF或分享私人Drive識別資料"
+    },
+    {
+      "id": "delta-src-yuanta-sep",
+      "evidenceClass": "market_consensus",
+      "provider": "元大投顧",
+      "title": "台達電 2026/09/30 2027F EPS80.78；2028F EPS121.6",
+      "publishedDate": "2026-09-30",
+      "accessedDate": "2026-11-13",
+      "coveredPeriods": [
+        "2026F",
+        "2027F",
+        "2028F"
+      ],
+      "confidence": "medium",
+      "notes": "私人研究資料，僅登錄摘要及文件日期；未公開券商PDF或分享私人Drive識別資料"
+    },
+    {
+      "id": "delta-src-integrated",
+      "evidenceClass": "third_party_fact",
+      "provider": "狼友小站整理資料",
+      "title": "台達電 V3 全量來源圖文研究 2026/11/05",
+      "publishedDate": "2026-11-05",
+      "accessedDate": "2026-11-13",
+      "coveredPeriods": [
+        "2026F",
+        "2027F",
+        "2028F"
+      ],
+      "confidence": "medium",
+      "notes": "私人研究資料，僅登錄摘要及文件日期；未公開券商PDF或分享私人Drive識別資料"
+    },
+    {
+      "id": "delta-src-model",
+      "evidenceClass": "research_inference",
+      "provider": "研究報告追蹤",
+      "title": "電源內容價值、量產門檻、bear/base/bull情境（編製者假設）",
+      "publishedDate": "2026-11-13",
+      "accessedDate": "2026-11-13",
+      "coveredPeriods": [
+        "2026Q3",
+        "2027F",
+        "2028F"
+      ],
+      "confidence": "medium",
+      "notes": "私人研究資料，僅登錄摘要及文件日期；未公開券商PDF或分享私人Drive識別資料"
+    }
+  ],
+  "claims": [
+    {
+      "id": "delta-claim-thesis",
+      "text": "高瓦數 PSU → ±400V／800V HVDC Power Rack → 液冷協同設計 → 系統級驗證與交貨 → 毛利／營益率 → OCF／FCF。2026Q3 營收創高但毛利率降至 34.08%，反證短期仍有供應瓶頸。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model",
+        "delta-src-financial"
+      ],
+      "inputClaimIds": [],
+      "method": "產品路線與已實現財報、具名券商估計交叉對照；未確認需求不計營收",
+      "confidence": "medium"
+    },
+    {
+      "id": "delta-claim-actual",
+      "text": "2026Q3營收1,970.59億元、EPS9.04、毛利率34.08%；2026/10月營收746.66億元。元大9月對Q3 EPS10.78估計高於實績，2027年80.78元模型待Q4交貨與毛利率驗證。",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "delta-src-financial",
+        "delta-src-quarter",
+        "delta-src-monthly"
+      ],
+      "inputClaimIds": [],
+      "method": "依公司財報及已轉錄交易所統計，期間、幣別逐項區分",
+      "confidence": "high"
+    },
+    {
+      "id": "delta-claim-broker",
+      "text": "2027E 具名券商：元大09/30 EPS80.78元、營收12,893.11億元、目標價2430；GS07/30 EPS75.23；國泰10/16 EPS62.28；富邦06/12 EPS66.45。GS的2028E EPS172.30、元大09/30 2028E EPS121.6，均非市場共識。以下 bear/consensus/bull 為研究情境而非券商統計共識。2026Q3 元大09/30 預估 EPS10.78 vs 公布9.04；股價、目標價採各報告當時日期，不得當成即時價格。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-model",
+        "delta-src-yuanta-mar",
+        "delta-src-yuanta-jul",
+        "delta-src-yuanta-sep",
+        "delta-src-integrated"
+      ],
+      "inputClaimIds": [],
+      "method": "原始券商日期版本對照；個別估計及新舊模型不視為市場共識；研判差異不假冒公司指引",
+      "confidence": "medium"
+    },
+    {
+      "id": "delta-claim-quality",
+      "text": "2026Q2金融資產評價、信用減損及2025Q4資產減損待附註級逐項核對。已掌握損益表總數但三年全部調整及OCF未完成，不計算正常化EPS；不宣稱EQ-01 PASS。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "delta-src-financial",
+        "delta-src-model"
+      ],
+      "inputClaimIds": [
+        "delta-claim-actual"
+      ],
+      "method": "損益表基本橋接；不完整科目保持null；L2未完成不計正常化EPS",
+      "confidence": "medium"
+    }
+  ],
+  "earningsQuality": {
+    "standard": "EQ-01-v1",
+    "reviewStatus": "NOT_RUN",
+    "reviewer": "待研究審閱人正式簽核",
+    "reviewedAt": "2026-11-13",
+    "coverageNote": "已有公開損益科目基本橋接；歷史2023/2024明細、業外按附註分類、OCF/FCF及每股調整未完整；不得以資料不足冒稱PASS。",
+    "periods": [
+      {
+        "id": "delta-eq-2023FY",
+        "period": "2023FY",
+        "periodType": "annual",
+        "revenue": null,
+        "operatingIncome": null,
+        "nonOperatingNet": null,
+        "pretaxIncome": null,
+        "incomeTax": null,
+        "netIncomeAttributable": null,
+        "reportedEps": 12.86,
+        "currency": "TWD",
+        "scale": "million",
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "delta-src-financial"
+        ],
+        "claimIds": [
+          "delta-claim-quality"
+        ],
+        "normalizationNote": "業外細項、稅後調整及非控制權益尚未達EQ-01正式查核，正常化EPS保持null。報表金額以百萬元；加權平均股數未經原始註釋確認，不以股本猜測。"
+      },
+      {
+        "id": "delta-eq-2024FY",
+        "period": "2024FY",
+        "periodType": "annual",
+        "revenue": 421148,
+        "operatingIncome": 47652,
+        "nonOperatingNet": null,
+        "pretaxIncome": null,
+        "incomeTax": null,
+        "netIncomeAttributable": 35229,
+        "reportedEps": 13.56,
+        "currency": "TWD",
+        "scale": "million",
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "delta-src-financial"
+        ],
+        "claimIds": [
+          "delta-claim-quality"
+        ],
+        "normalizationNote": "業外細項、稅後調整及非控制權益尚未達EQ-01正式查核，正常化EPS保持null。報表金額以百萬元；加權平均股數未經原始註釋確認，不以股本猜測。"
+      },
+      {
+        "id": "delta-eq-2025FY",
+        "period": "2025FY",
+        "periodType": "annual",
+        "revenue": 554885.168,
+        "operatingIncome": 83932.074,
+        "nonOperatingNet": 3933.922,
+        "pretaxIncome": 87865.996,
+        "incomeTax": 19929.688,
+        "netIncomeAttributable": 60108.399,
+        "reportedEps": 23.14,
+        "currency": "TWD",
+        "scale": "million",
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "delta-src-financial"
+        ],
+        "claimIds": [
+          "delta-claim-quality"
+        ],
+        "normalizationNote": "業外細項、稅後調整及非控制權益尚未達EQ-01正式查核，正常化EPS保持null。報表金額以百萬元；加權平均股數未經原始註釋確認，不以股本猜測。"
+      },
+      {
+        "id": "delta-eq-2025Q4",
+        "period": "2025Q4",
+        "periodType": "quarter",
+        "revenue": 161613,
+        "operatingIncome": 26418,
+        "nonOperatingNet": -770,
+        "pretaxIncome": 25649,
+        "incomeTax": 6011,
+        "netIncomeAttributable": 17324,
+        "reportedEps": 6.67,
+        "currency": "TWD",
+        "scale": "million",
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "delta-src-financial"
+        ],
+        "claimIds": [
+          "delta-claim-quality"
+        ],
+        "normalizationNote": "業外細項、稅後調整及非控制權益尚未達EQ-01正式查核，正常化EPS保持null。報表金額以百萬元；加權平均股數未經原始註釋確認，不以股本猜測。"
+      },
+      {
+        "id": "delta-eq-2026Q1",
+        "period": "2026Q1",
+        "periodType": "quarter",
+        "revenue": 159352.652,
+        "operatingIncome": 28417.303,
+        "nonOperatingNet": 2675.52,
+        "pretaxIncome": 31092.823,
+        "incomeTax": 7258.274,
+        "netIncomeAttributable": 20555.591,
+        "reportedEps": 7.91,
+        "currency": "TWD",
+        "scale": "million",
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "delta-src-financial"
+        ],
+        "claimIds": [
+          "delta-claim-quality"
+        ],
+        "normalizationNote": "業外細項、稅後調整及非控制權益尚未達EQ-01正式查核，正常化EPS保持null。報表金額以百萬元；加權平均股數未經原始註釋確認，不以股本猜測。"
+      },
+      {
+        "id": "delta-eq-2026Q2",
+        "period": "2026Q2",
+        "periodType": "quarter",
+        "revenue": 183256.08,
+        "operatingIncome": 30570.042,
+        "nonOperatingNet": 4429.572,
+        "pretaxIncome": 34999.614,
+        "incomeTax": 7830.563,
+        "netIncomeAttributable": 25135.64,
+        "reportedEps": 9.68,
+        "currency": "TWD",
+        "scale": "million",
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "delta-src-financial"
+        ],
+        "claimIds": [
+          "delta-claim-quality"
+        ],
+        "normalizationNote": "業外細項、稅後調整及非控制權益尚未達EQ-01正式查核，正常化EPS保持null。報表金額以百萬元；加權平均股數未經原始註釋確認，不以股本猜測。"
+      },
+      {
+        "id": "delta-eq-2026Q3",
+        "period": "2026Q3",
+        "periodType": "quarter",
+        "revenue": 197058.804,
+        "operatingIncome": 32620.13,
+        "nonOperatingNet": 1046.363,
+        "pretaxIncome": 33666.493,
+        "incomeTax": 7608.253,
+        "netIncomeAttributable": 23494.595,
+        "reportedEps": 9.04,
+        "currency": "TWD",
+        "scale": "million",
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "delta-src-financial"
+        ],
+        "claimIds": [
+          "delta-claim-quality"
+        ],
+        "normalizationNote": "業外細項、稅後調整及非控制權益尚未達EQ-01正式查核，正常化EPS保持null。報表金額以百萬元；加權平均股數未經原始註釋確認，不以股本猜測。"
+      },
+      {
+        "id": "delta-eq-2026YTD",
+        "period": "2026YTD",
+        "periodType": "ytd",
+        "revenue": 539667.536,
+        "operatingIncome": 91607.475,
+        "nonOperatingNet": 8151.455,
+        "pretaxIncome": 99758.93,
+        "incomeTax": 22697.09,
+        "netIncomeAttributable": 69185.826,
+        "reportedEps": 26.64,
+        "currency": "TWD",
+        "scale": "million",
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": 318197.309,
+        "adjustments": [],
+        "sourceIds": [
+          "delta-src-financial"
+        ],
+        "claimIds": [
+          "delta-claim-quality"
+        ],
+        "normalizationNote": "業外細項、稅後調整及非控制權益尚未達EQ-01正式查核，正常化EPS保持null。報表金額以百萬元；加權平均股數未經原始註釋確認，不以股本猜測。"
+      }
+    ],
+    "qualitativeFlags": [],
+    "l2": {
+      "status": "NOT_RUN",
+      "summary": "尚未完成近三年特殊損益／現金流審核，未確認L2必要性不得宣告無異常。",
+      "sourceIds": [
+        "delta-src-financial",
+        "delta-src-model"
+      ],
+      "claimIds": [
+        "delta-claim-quality"
+      ]
+    },
+    "valuation": {
+      "epsBasis": "reported",
+      "doubleCountChecked": false,
+      "prospectiveModelOnly": true,
+      "notes": "預測EPS僅作研究情境，不把尚未穿透的歷史reported EPS視為normalised EPS。沒有完成重複扣除檢查及OCF驗證。"
+    },
+    "notes": "2026Q2金融資產評價、信用減損及2025Q4資產減損待附註級逐項核對。已掌握損益表總數但三年全部調整及OCF未完成，不計算正常化EPS；不宣稱EQ-01 PASS。"
+  }
+}
