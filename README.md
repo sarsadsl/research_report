@@ -9,6 +9,7 @@
 - [Research Workflow](research_system/RESEARCH_WORKFLOW.md)：來源、版本、PowerShell 操作順序、hash、失敗處理與 handoff 範本。
 - [Research Style Guide](research_system/RESEARCH_STYLE_GUIDE.md)：數字與證據標示、圖表、版面、跨裝置、互動與離線交付。
 - [Research QC](research_system/RESEARCH_QC.md)：自動／人工檢查範圍、門檻、PASS／FAIL／WARN／NOT_RUN 及 CI 缺口。
+- [EQ-01 盈餘品質檢驗](research_system/RESEARCH_EARNINGS_QUALITY.md)：所有完整報告的業外損益標準篩檢、異常穿透、正常化 EPS 與估值勾稽（人工 QC 草案，尚未自動化／寫入 D1）。
 - [Roadmap](research_system/P1_ROADMAP.md)：已交付階段與後續發布 gate、歷史保存、完整報告通用化。
 - [P1.9 Publishing](research_system/RESEARCH_PUBLISHING.md)：發布命令、阻擋條件、artifact/hash、docs-only CI 與重跑方式。
 
