@@ -72,7 +72,7 @@ export async function publishResearch(options, rootDir = process.cwd()) {
   let pkg, validation, config, profileDocument;
   const profileOutputs = () => Object.values(profileDocument.profiles).map(profile => profile.output);
   const sourceFiles = () => git(["ls-files", "--cached", "--others", "--exclude-standard", "-z"])
-    .split("\0").filter(Boolean).filter(file => !profileOutputs().includes(file) && file !== "next-env.d.ts");
+    .split("\0").filter(Boolean).filter(file => !profileOutputs().includes(file) && file !== "next-env.d.ts" && !/^public\/research\/reports\/[a-z0-9-]+\.html$/.test(normalized(file)));
   const sourceHash = () => hashFiles(rootDir, [...sourceFiles(), "wrangler.jsonc"]);
   const builtHash = async () => hashFiles(rootDir, await treeFiles(rootDir, ".open-next"));
   const save = async data => {
