@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "profiles": {
+    "full-research": {
+      "kind": "generated",
+      "output": "public/research/reports/umc-2303.html",
+      "layout": "research-standard-v2",
+      "expectedPages": 16,
+      "sections": [
+        "package-sections"
+      ]
+    }
+  }
+}

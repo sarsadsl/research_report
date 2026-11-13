@@ -1745,6 +1745,9 @@
             },
             "notes": {
               "type": "string"
+            },
+            "prospectiveModelOnly": {
+              "type": "boolean"
             }
           }
         },

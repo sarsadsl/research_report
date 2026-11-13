@@ -413,7 +413,7 @@ function eq01Summary(eq) {
     + esc(eq.coverageNote || eq.valuation.notes || "資料採財報實績與來源可追溯的研究調節；不可將未實現投資收益當作經常性本業。")
     + '</p>';
 }
-function eq01DeepDive(vm) {
+function eq01DeepDive(vm, mode = "overview") {
   const eq = vm.earningsQuality, evaluation = evaluateEarningsQuality(eq);
   const rows = [...eq.periods].sort((a,b)=>a.period.localeCompare(b.period));
   const detail = rows.flatMap(row => row.adjustments.map(adj => ({
@@ -426,9 +426,10 @@ function eq01DeepDive(vm) {
   const adjustTable = detail.length ? table(["期間","調整項目","已實現／評價","稅前影響","EPS 影響","方法"],makeRows(detail,[
     r=>esc(r.period),r=>esc(r.category),r=>esc(r.realization),r=>num(r.pretax,1),r=>num(r.epsImpact),r=>esc(r.method)
   ])) : '<p class="narrative">已確認無須調整的項目，或沒有可可靠量化的特殊項目。</p>';
-  return eq01Summary(eq)
+  if (mode === "overview") return eq01Summary(eq)
     + module("L1 SCREEN","法定與正常化盈餘逐期檢查",periodTable,"wide")
-    + module("L2 TRACE","業外損益逐筆穿透",adjustTable,"wide")
+    + `<p class="fineprint">EQ-01 ${esc(eq.reviewStatus)}｜期間與業外資料分開呈現；稅後正常化EPS若未可靠勾稽則為待驗證，不能以零替代。</p>`;
+  return module("L2 TRACE","業外損益逐筆穿透",adjustTable,"wide")
     + module("TRIGGERS","觸發原因與會計判讀",bullets([
       ...evaluation.reasons.map(reason=>"觸發："+reason),
       "L2 "+eq.l2.status+"："+eq.l2.summary,
@@ -517,10 +518,16 @@ content:`${module("PROFITABILITY","毛利、營益與淨利率對照",profitabil
     },
   ];
   if (vm.earningsQuality && evaluateEarningsQuality(vm.earningsQuality).requiresL2) {
-    pages.splice(5, 0, {
-      section:standardSection("standard-eq01","EQ-01｜盈餘品質與業外損益穿透",["earningsQuality"]),
-      content:eq01DeepDive(vm),
-    });
+    pages.splice(5, 0,
+      {
+        section:standardSection("standard-eq01-overview","EQ-01｜盈餘品質與正常化EPS",["earningsQuality"]),
+        content:eq01DeepDive(vm, "overview"),
+      },
+      {
+        section:standardSection("standard-eq01-trace","EQ-01｜關聯企業持股與業外穿透",["earningsQuality"]),
+        content:eq01DeepDive(vm, "trace"),
+      },
+    );
   }
   return pages;
 }

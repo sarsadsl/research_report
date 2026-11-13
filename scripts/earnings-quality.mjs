@@ -107,7 +107,7 @@ export function validateEarningsQuality(pkg, manifest, errors) {
   if (pkg.report.status === "published" && !eq.valuation.doubleCountChecked) {
     errors.push(prefix + ": valuation must explicitly check for double deductions");
   }
-  if (eq.valuation.epsBasis === "normalized" && eq.periods.every((row) => !isNumber(row.normalizedEps))) {
+  if (eq.valuation.epsBasis === "normalized" && !eq.valuation.prospectiveModelOnly && eq.periods.every((row) => !isNumber(row.normalizedEps))) {
     errors.push(prefix + ": normalized EPS valuation basis requires a verified normalizedEps period");
   }
 }

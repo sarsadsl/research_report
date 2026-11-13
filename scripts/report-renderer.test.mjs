@@ -193,10 +193,11 @@ test("EQ-01 full report displays normalized EPS and uses a distinct L2 page",asy
     valuation:{epsBasis:"normalized",doubleCountChecked:true,notes:"No duplicate deduction"},
     notes:"Synthetic renderer regression"
   };
-  const profile={...profiles.profiles["full-research"],expectedPages:15};
+  const profile={...profiles.profiles["full-research"],expectedPages:16};
   const html=renderGeneratedReport(buildReportViewModel(pkg,"full-research",profile));
-  assert.equal((html.match(/<section class="page slide/g)||[]).length,15);
-  assert.match(html,/EQ-01｜盈餘品質與業外損益穿透/);
+  assert.equal((html.match(/<section class="page slide/g)||[]).length,16);
+  assert.match(html,/EQ-01｜盈餘品質與正常化EPS/);
+  assert.match(html,/EQ-01｜關聯企業持股與業外穿透/);
   assert.match(html,/法定 EPS/);
   assert.match(html,/正常化 EPS/);
   assert.match(html,/After-tax look-through/);
