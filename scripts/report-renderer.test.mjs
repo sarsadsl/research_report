@@ -196,13 +196,18 @@ test("EQ-01 full report displays normalized EPS and uses a distinct L2 page",asy
   const profile={...profiles.profiles["full-research"],expectedPages:16};
   const html=renderGeneratedReport(buildReportViewModel(pkg,"full-research",profile));
   assert.equal((html.match(/<section class="page slide/g)||[]).length,16);
-  assert.match(html,/EQ-01｜盈餘品質與正常化EPS/);
-  assert.match(html,/EQ-01｜關聯企業持股與業外穿透/);
+  assert.match(html,/業外收入警報 🚨｜獲利品質檢查/);
+  assert.match(html,/業外收入警報 🚨｜投資收益從哪裡來？/);
   assert.match(html,/法定 EPS/);
-  assert.match(html,/正常化 EPS/);
+  assert.match(html,/扣除特殊收益後的 EPS/);
   assert.match(html,/After-tax look-through/);
   assert.match(html,/Cross-holding look-through completed/);
   assert.match(html,/EVIDENCE RAIL/);
+  const readerHtml=html.replace(/<script\\b[^>]*>[\\s\\S]*?<\\/script>/gi,"");
+  assert.doesNotMatch(readerHtml,/EQ-01|NON_OPERATING_SHARE|UNREALIZED_SHARE|QUALITATIVE|L[12] TRACE|L[12] SCREEN/);
+  assert.match(readerHtml,/關聯企業持有本公司股票/);
+  assert.match(readerHtml,/業外損益占稅前獲利比重偏高/);
+  assert.match(readerHtml,/部分細項仍待核對|主要項目已完成核對/);
 });
 test("EQ-01 L1 below threshold keeps existing 14-page profile",async()=>{
   const {pkg,profiles}=await load();
@@ -214,7 +219,7 @@ test("EQ-01 L1 below threshold keeps existing 14-page profile",async()=>{
   };
   const html=renderGeneratedReport(buildReportViewModel(pkg,"full-research",profiles.profiles["full-research"]));
   assert.equal((html.match(/<section class="page slide/g)||[]).length,14);
-  assert.match(html,/盈餘品質與業外損益摘要/);
+  assert.match(html,/業外損益檢查/);
 });
 
 test("baseline profiles fail closed without canonical source metadata", async()=>{
