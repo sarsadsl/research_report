@@ -101,7 +101,8 @@ VALUES
 ('umc-signal-2','umc-2303','2026-11-13','22nm製程占比','yellow','Q3 18.3%；22/28nm合計35%','official','研究追蹤訊號，不等於股價買賣指示；請依官方更新再次驗證。'),
 ('umc-signal-3','umc-2303','2026-11-13','業外收益品質','yellow','Q1-Q3權益法利益281.01億元；正常化EPS待查','official','業外投資收益雖已確認主要來源，但對股東真正獲利的稅後影響仍待核對；不可直接視為本業成長。'),
 ('umc-signal-4','umc-2303','2026-11-13','2027ASP驗證','yellow','展望≠實績，毛利率待查','research_inference','研究追蹤訊號，不等於股價買賣指示；請依官方更新再次驗證。'),
-('umc-signal-5','umc-2303','2026-11-13','矽光子與新業務','yellow','PIC、TFLN開發與商用需追蹤','research_inference','研究追蹤訊號，不等於股價買賣指示；請依官方更新再次驗證。')
+('umc-signal-5','umc-2303','2026-11-13','矽光子與新業務','yellow','PIC、TFLN開發與商用需追蹤','research_inference','研究追蹤訊號，不等於股價買賣指示；請依官方更新再次驗證。'),
+('umc-sig-broker-spread-20261113','umc-2303','2026-11-13','2027券商與本站估值差異','yellow','本站2027常態EPS5.8／第一金EPS7.64','research_inference','第一金2026/11/02估2027 EPS7.64元、目標價150元；本站獨立前瞻常態化EPS5.8元、18倍P/E得104.4元。應分開比較ASP、折舊、新業務量產、稅後業外與估值倍數；此券商情境非官方指引。')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,as_of_date=excluded.as_of_date,metric=excluded.metric,status=excluded.status,value_text=excluded.value_text,source_type=excluded.source_type,notes=excluded.notes;
 
 INSERT INTO research_sources
@@ -115,13 +116,14 @@ VALUES
 ('umc-src-overview','umc-2303','official','聯華電子','2025年投資人關係總覽','2026-11-13','https://www.umc.com/zh-TW/IR/ir_overview',NULL,'以原始財報與公告為準；研究推論與官方數值分開。; accessed=2026-11-13; periods=2025FY','high'),
 ('umc-src-20f','umc-2303','official','SEC／聯華電子','2025 Form 20-F IASB IFRS 與庫藏股會計政策','2026-04-30','https://www.sec.gov/Archives/edgar/data/1033767/000119312526193757/d91630d20f.htm',NULL,'以原始財報與公告為準；研究推論與官方數值分開。; accessed=2026-11-13; periods=2025FY','high'),
 ('umc-src-price','umc-2303','third_party_fact','Yahoo 股市','聯電2026/11/13收盤價101.5元','2026-11-13','https://tw.finance.yahoo.com/quote/2303.TW',NULL,'以原始財報與公告為準；研究推論與官方數值分開。; accessed=2026-11-13; periods=2026-11-13','medium'),
-('umc-src-model','umc-2303','research_inference','研究報告系統','自建2027–2028估值、財報品質與特殊持股敏感度','2026-11-13',NULL,NULL,'以原始財報與公告為準；研究推論與官方數值分開。; accessed=2026-11-13; periods=2026YTD|2027F|2028F','medium')
+('umc-src-model','umc-2303','research_inference','研究報告系統','自建2027–2028估值、財報品質與特殊持股敏感度','2026-11-13',NULL,NULL,'以原始財報與公告為準；研究推論與官方數值分開。; accessed=2026-11-13; periods=2026YTD|2027F|2028F','medium'),
+('umc-src-first-20261102','umc-2303','market_consensus','第一金投顧','聯電2026/11/02近況更新（私有券商報告摘要；不公開附件）','2026-11-02',NULL,NULL,'2027 EPS7.64元與目標價150元為具名券商預估；本地私人資料來源不對外提供原文/連結。; accessed=2026-11-13; periods=2026Q3|2027F','medium')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,source_type=excluded.source_type,source_group=excluded.source_group,source_title=excluded.source_title,published_date=excluded.published_date,url=excluded.url,file_name=excluded.file_name,notes=excluded.notes,confidence=excluded.confidence;
 
 INSERT INTO research_reports
 (id,company_id,title,slug,summary,thesis,status,version,html_path,pdf_path,created_at,updated_at,published_at)
 VALUES
-('umc-2303-report-v1','umc-2303','聯電 2303｜2026Q3 業外盈餘品質與 2027–2028 全面研究','umc-2303','2026Q3營收742.39億元、毛利率34%、稼動率92%，本業復甦；2026YTD權益法收益281.01億元，占稅前34.4%，部分涉及迅捷持有聯電股票。正常化2026歷史EPS尚未能精確勾稽。2027研究基準EPS5.8元，18倍P/E估值104.4元。','成熟製程稼動率回升→22nm組合→毛利率→業外收益穿透→可持續EPS→估值','published','1.0','/research/reports/umc-2303.html',NULL,'2026-11-13','2026-11-13','2026-11-13')
+('umc-2303-report-v1','umc-2303','聯電 2303｜2026Q3 業外盈餘品質與 2027–2028 全面研究','umc-2303','2026Q3已回填、10月營收已回填；新增第一金與本站2027常態化情境的差異說明，歷史正常化EPS仍待財報穿透查核。','成熟製程稼動率回升→22nm組合→毛利率→業外收益穿透→可持續EPS→估值','published','1.1','/research/reports/umc-2303.html',NULL,'2026-11-13','2026-11-13','2026-11-13')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,title=excluded.title,slug=excluded.slug,summary=excluded.summary,thesis=excluded.thesis,status=excluded.status,version=excluded.version,html_path=excluded.html_path,pdf_path=excluded.pdf_path,created_at=excluded.created_at,updated_at=excluded.updated_at,published_at=excluded.published_at;
 
 INSERT INTO research_report_sections
@@ -137,7 +139,7 @@ VALUES
 ('umc-sec-8','umc-2303-report-v1','umc-sec-8','催化劑與風險',8,'{"type":"catalysts-risks","payloadRefs":["catalysts","risks"],"showSources":true}'),
 ('umc-sec-9','umc-2303-report-v1','umc-sec-9','來源與限制',9,'{"type":"sources","payloadRefs":["sources"],"showSources":true}'),
 ('umc-sec-10','umc-2303-report-v1','umc-sec-10','研究結論',10,'{"type":"conclusion","payloadRefs":["thesis"],"showSources":true}'),
-('umc-2303-report-v1-dashboard','umc-2303-report-v1','dashboard-config','Dashboard Config',0,'{"currentView":"2026Q3營收742.4億元，毛利率34.0%，營益率25.1%，稼動率92%；但2026前三季權益法收益281.01億元占稅前34.4%，來自關聯企業之投資評價須穿透。2026Q2的高EPS與Q3本業走強不可混為一談。收盤基準價101.5元，2027研究基準價104.4元安全邊際有限。","currentThesis":"本業改善但盈餘品質仍有重大問號；迅捷、焱元、矽統間接持股，應同時檢驗損益與淨值，不直接把全部權益法收益設為零。","verificationChain":["22nm滲透","稼動率","毛利率","營業利益","業外損益穿透","正常化EPS","價格／估值"],"conclusion":"研究維持中性偏審慎：核心業務回升，2027ASP與矽光子是催化劑，但歷史EPS6元並非可持續盈利。歷史正常化EPS稅後歸母調整未完成，相關欄位仍為待驗證；2027研究情境EPS5.8元乘18倍為104.4元，應以2027合約ASP／折舊／良率驗證。","forecastScenario":"consensus","headlineForecastYears":[2027,2028],"focusMetric":{"field":"grossMargin","label":"毛利率"},"monthlyRevenue":{"focusYear":2026,"cumulativeThroughMonth":10,"unitDivisor":100,"unitLabel":"億元"},"cagrCards":[{"field":"revenue","label":"2025A至2027F營收CAGR","baseYear":2025,"targetYear":2027,"baseValue":237553,"years":2},{"field":"eps","label":"2025A至2027F EPS CAGR","baseYear":2025,"targetYear":2027,"baseValue":3.34,"years":2}],"estimateNote":"所有預估標示研究推論。財務實績與預測單位TWD百萬元；月營收換算億元；2027/28為獨立前瞻常態獲利假設，並非2026法定EPS直接扣減1.35元。聯電交叉持股之精確稅後EPS調節仍待查核。"}')
+('umc-2303-report-v1-dashboard','umc-2303-report-v1','dashboard-config','Dashboard Config',0,'{"currentView":"2026Q3已回填、10月營收已回填；新增第一金與本站2027常態化情境的差異說明，歷史正常化EPS仍待財報穿透查核。 第一金2026/11/02估2027 EPS7.64元、目標價150元；本站獨立前瞻常態化EPS5.8元、18倍P/E得104.4元。應分開比較ASP、折舊、新業務量產、稅後業外與估值倍數；此券商情境非官方指引。","currentThesis":"本業改善但盈餘品質仍有重大問號；迅捷、焱元、矽統間接持股，應同時檢驗損益與淨值，不直接把全部權益法收益設為零。","verificationChain":["22nm滲透","稼動率","毛利率","營業利益","業外損益穿透","正常化EPS","價格／估值"],"conclusion":"研究維持中性偏審慎：核心業務回升，2027ASP與矽光子是催化劑，但歷史EPS6元並非可持續盈利。歷史正常化EPS稅後歸母調整未完成，相關欄位仍為待驗證；2027研究情境EPS5.8元乘18倍為104.4元，應以2027合約ASP／折舊／良率驗證。 2026/11/13補充與第一金券商預估差異，仍維持原研究估值及業外獲利待驗證標籤。","forecastScenario":"consensus","headlineForecastYears":[2027,2028],"focusMetric":{"field":"grossMargin","label":"毛利率"},"monthlyRevenue":{"focusYear":2026,"cumulativeThroughMonth":10,"unitDivisor":100,"unitLabel":"億元"},"cagrCards":[{"field":"revenue","label":"2025A至2027F營收CAGR","baseYear":2025,"targetYear":2027,"baseValue":237553,"years":2},{"field":"eps","label":"2025A至2027F EPS CAGR","baseYear":2025,"targetYear":2027,"baseValue":3.34,"years":2}],"estimateNote":"所有預估標示研究推論。財務實績與預測單位TWD百萬元；月營收換算億元；2027/28為獨立前瞻常態獲利假設，並非2026法定EPS直接扣減1.35元。聯電交叉持股之精確稅後EPS調節仍待查核。 【2026/11/13新增】第一金2026/11/02估2027 EPS7.64元、目標價150元；本站獨立前瞻常態化EPS5.8元、18倍P/E得104.4元。應分開比較ASP、折舊、新業務量產、稅後業外與估值倍數；此券商情境非官方指引。 未重估原有情境EPS，新增實績和外部預測只作比較；仍需後續更新正式財報附註及獲利品質。"}')
 ON CONFLICT(id) DO UPDATE SET report_id=excluded.report_id,section_key=excluded.section_key,title=excluded.title,sort_order=excluded.sort_order,content_json=excluded.content_json;
 
 INSERT INTO research_earnings_quality
@@ -165,9 +167,9 @@ DELETE FROM research_risks WHERE company_id='umc-2303' AND id NOT IN ('umc-risk-
 
 DELETE FROM research_signal_rules WHERE company_id='umc-2303' AND id NOT IN ('umc-rule-0','umc-rule-1','umc-rule-2','umc-rule-3','umc-rule-4','umc-rule-5');
 
-DELETE FROM research_signal_snapshots WHERE company_id='umc-2303' AND id NOT IN ('umc-signal-0','umc-signal-1','umc-signal-2','umc-signal-3','umc-signal-4','umc-signal-5');
+DELETE FROM research_signal_snapshots WHERE company_id='umc-2303' AND id NOT IN ('umc-signal-0','umc-signal-1','umc-signal-2','umc-signal-3','umc-signal-4','umc-signal-5','umc-sig-broker-spread-20261113');
 
-DELETE FROM research_sources WHERE company_id='umc-2303' AND id NOT IN ('umc-src-q3fs','umc-src-q3','umc-src-q2','umc-src-q1','umc-src-months','umc-src-overview','umc-src-20f','umc-src-price','umc-src-model');
+DELETE FROM research_sources WHERE company_id='umc-2303' AND id NOT IN ('umc-src-q3fs','umc-src-q3','umc-src-q2','umc-src-q1','umc-src-months','umc-src-overview','umc-src-20f','umc-src-price','umc-src-model','umc-src-first-20261102');
 
 DELETE FROM research_reports WHERE company_id='umc-2303' AND id NOT IN ('umc-2303-report-v1');
 
