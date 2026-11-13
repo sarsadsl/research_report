@@ -710,7 +710,6 @@
       "notes": "若稼動率提升則營運槓桿改善",
       "evidenceClass": "research_inference",
       "sourceIds": [
-        "delta-src-model",
         "delta-src-model"
       ]
     }
@@ -764,7 +763,6 @@
       "notes": "後續以OCF與自由現金流驗證",
       "evidenceClass": "research_inference",
       "sourceIds": [
-        "delta-src-model",
         "delta-src-model"
       ]
     },
@@ -777,7 +775,6 @@
       "notes": "元大80.78較2026Q3年化值大幅提高",
       "evidenceClass": "research_inference",
       "sourceIds": [
-        "delta-src-model",
         "delta-src-model"
       ]
     }
