@@ -43,7 +43,7 @@ test("EQ-01: legacy reports remain readable without the audit",async()=>{
   assert.equal(validateResearch(x).ok,true);
 });
 test("EQ-01: published full report after effective date must include review",async()=>{
-  const x=await load();x.researchPackage.asOfDate="2026-11-13";
+  const x=await load();delete x.researchPackage.earningsQuality;x.researchPackage.asOfDate="2026-11-13";
   const r=validateResearch(x);
   assert.equal(r.ok,false);
   assert.match(r.errors.join("\n"),/requires earningsQuality/);
