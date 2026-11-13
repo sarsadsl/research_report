@@ -59,7 +59,15 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: npm run research:publish -- ${{ steps.scope.outputs.slug }} --remote
+        run: |
+          case "${{ steps.scope.outputs.slug }}" in
+            delta-2308|liteon-2301)
+              npm run research:publish -- "${{ steps.scope.outputs.slug }}" --remote --public-preview
+              ;;
+            *)
+              npm run research:publish -- "${{ steps.scope.outputs.slug }}" --remote
+              ;;
+          esac
 
       - name: Preserve release evidence (including failures)
         if: always() && steps.scope.outputs.publish == 'true'

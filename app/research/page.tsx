@@ -41,6 +41,26 @@ export default async function ResearchPage() {
         <ResearchIndex items={items} />
       </section>
 
+      <section className="notebookShell archiveSection" aria-labelledby="preview-heading">
+        <div className="archiveHeader">
+          <div>
+            <div className="heroKicker">Public Preview / Research Draft</div>
+            <h2 id="preview-heading">Full Report 預覽｜內容尚未審核</h2>
+            <p className="reportSummary">依使用者要求先公開標準格式報告；EQ-01 盈餘品質為 NOT_RUN，券商假設與財務數字待後續逐項校對，不屬正式投資結論。</p>
+          </div>
+        </div>
+        <div className="researchIndexGrid">
+          <a className="reportIndexItem" href="/research/reports/delta-2308.html">
+            <div className="reportIndexBody">
+              <div className="reportIndexTopline"><span className="reportTicker">TW · 2308 / PREVIEW</span></div>
+              <div className="reportTitleRow"><h3>台達電｜Full Report</h3></div>
+              <p className="reportDescriptor">電源／HVDC／液冷；2027–2028年情境</p>
+              <p className="reportSummary">研究預覽，盈餘品質及券商推估尚未完成審核。</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
       <section className="notebookShell archiveFootnote" aria-label="研究系統說明">
         <h3>長期研究，不是一次性快照。</h3>
         <ResearchNote label="DESK NOTE" tone="blue">每一份 dossier 都保留研究摘要、驗證訊號與下一輪需要追蹤的證據。先讀結論，再回到資料。</ResearchNote>

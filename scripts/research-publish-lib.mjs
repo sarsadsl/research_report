@@ -4,9 +4,10 @@ import { assertSafeSlug } from "./research-lib.mjs";
 export function parsePublishArgs(args) {
   const [slug, ...flags] = args;
   assertSafeSlug(slug ?? "");
-  if (flags.some(flag => !["--dry-run", "--remote"].includes(flag))) throw new Error("Unknown publish option");
+  if (flags.some(flag => !["--dry-run", "--remote", "--public-preview"].includes(flag))) throw new Error("Unknown publish option");
   if (flags.includes("--dry-run") && flags.includes("--remote")) throw new Error("Choose --dry-run or --remote");
-  return { slug, remote: flags.includes("--remote") };
+  if (flags.includes("--public-preview") && !flags.includes("--remote")) throw new Error("Public preview requires --remote");
+  return { slug, remote: flags.includes("--remote"), publicPreview: flags.includes("--public-preview") };
 }
 
 export function assertReleaseQc(qc, candidate) {

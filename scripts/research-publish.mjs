@@ -56,15 +56,15 @@ export function expectedReportPages(reportText, profile = {}) {
 }
 
 export async function publishResearch(options, rootDir = process.cwd()) {
-  const { slug, remote } = options;
+  const { slug, remote, publicPreview = false } = options;
   const releaseId = `${new Date().toISOString().replaceAll(/[:.]/g, "-")}-${randomUUID()}`;
   const artifactDir = join(rootDir, ".research-publish", releaseId);
   await mkdir(artifactDir, { recursive: true });
   const record = {
     schemaVersion: "1.0.0", releaseId, slug, target: remote ? "remote" : "dry-run",
-    status: "RUNNING", startedAt: new Date().toISOString(),
+    status: "RUNNING", releaseMode: publicPreview ? "PUBLIC_PREVIEW_UNREVIEWED" : "PUBLISHED", startedAt: new Date().toISOString(),
     stages: Object.fromEntries(["validate", "build", "candidate", "qc", "seal", "import", "deploy"].map(name => [name, {status:"NOT_RUN"}])),
-    manualReview: "NOT_RECORDED: content, accessibility and offline review remain operator responsibilities",
+    manualReview: publicPreview ? "INCOMPLETE: public preview explicitly requested by owner; EQ-01 and manual financial content verification remain NOT_RUN" : "NOT_RECORDED: content, accessibility and offline review remain operator responsibilities",
     ciRun: process.env.GITHUB_RUN_ID ?? null,
   };
   const node = (args, env, quiet) => runCommand(rootDir, process.execPath, args, env, quiet);
@@ -100,7 +100,16 @@ export async function publishResearch(options, rootDir = process.cwd()) {
         throw new Error("Environment override conflicts with the release target");
       }
       if (profileDocument.profiles["full-research"]?.output !== `public/research/reports/${slug}.html`) throw new Error("Report profile/import path mismatch");
-      if (pkg.report.status !== "published") throw new Error("Current publisher requires an already reviewed published package; lifecycle transitions are not implemented");
+      if (publicPreview) {
+        if (!["delta-2308", "liteon-2301"].includes(slug) ||
+            pkg.report.status !== "draft" || pkg.report.visibility !== "unlisted" ||
+            !pkg.earningsQuality || pkg.earningsQuality.reviewStatus !== "NOT_RUN" ||
+            pkg.earningsQuality.l2.status !== "NOT_RUN") {
+          throw new Error("Public preview is limited to authorized, explicitly unreviewed Delta/Lite-On draft packages");
+        }
+      } else if (pkg.report.status !== "published") {
+        throw new Error("Current publisher requires an already reviewed published package; lifecycle transitions are not implemented");
+      }
       record.database = { name: binding.database_name, id: binding.database_id };
       record.accountId = process.env.CLOUDFLARE_ACCOUNT_ID ?? config.account_id ?? null;
       record.worker = config.name;

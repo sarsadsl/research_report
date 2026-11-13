@@ -49,6 +49,8 @@ test("publish defaults to validation only and accepts any safe research slug", (
   assert.equal(parsePublishArgs(["vpec-2455", "--dry-run"]).remote, false);
   assert.equal(parsePublishArgs(["vpec-2455", "--remote"]).remote, true);
   assert.equal(parsePublishArgs(["other-company"]).slug,"other-company");
+  assert.equal(parsePublishArgs(["delta-2308","--remote","--public-preview"]).publicPreview,true);
+  assert.throws(()=>parsePublishArgs(["delta-2308","--public-preview"]), /requires --remote/);
   for (const args of [[], ["../x"], ["vpec-2455", "--remote", "--dry-run"], ["vpec-2455", "--skip-qc"]]) {
     assert.throws(() => parsePublishArgs(args));
   }
