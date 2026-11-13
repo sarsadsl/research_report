@@ -4,7 +4,7 @@ import { drizzle, type DrizzleD1Database } from "drizzle-orm/d1";
 import * as schema from "@/db/research-schema";
 import { gogolookSeed, jinguSeed, stlSeed, vpecSeed } from "./seed";
 import { latestActual } from "./calculations";
-import type { DashboardConfig, ResearchDetail, ResearchListItem, ResearchRepository, SignalStatus } from "./types";
+import type { DashboardConfig, EarningsQualityAudit, ResearchDetail, ResearchListItem, ResearchRepository, SignalStatus } from "./types";
 
 function parseDashboardConfig(value: string | null | undefined): DashboardConfig | null {
   if (!value) return null;
@@ -64,14 +64,16 @@ function createD1Repository(db: DrizzleD1Database<typeof schema>): ResearchRepos
         db.select().from(schema.researchReports).where(and(eq(schema.researchReports.companyId,company.id),eq(schema.researchReports.status,"published"))).orderBy(desc(schema.researchReports.publishedAt)),
       ]);
       if(!reports[0]) return null;
-      const [dates,dashboardRows]=await Promise.all([
+      const [dates,dashboardRows,earningsRows]=await Promise.all([
         db.select({asOfDate:schema.researchSignalSnapshots.asOfDate}).from(schema.researchSignalSnapshots).where(eq(schema.researchSignalSnapshots.companyId,company.id)).orderBy(desc(schema.researchSignalSnapshots.asOfDate)).limit(1),
         db.select().from(schema.researchReportSections).where(and(eq(schema.researchReportSections.reportId,reports[0].id),eq(schema.researchReportSections.sectionKey,"dashboard-config"))).limit(1),
+        db.select().from(schema.researchEarningsQuality).where(eq(schema.researchEarningsQuality.reportId,reports[0].id)).limit(1),
       ]);
       const dashboard=parseDashboardConfig(dashboardRows[0]?.contentJson);
       if(!dashboard) throw new Error(`Missing dashboard-config for published report ${reports[0].id}`);
       const signalRows=dates[0]?await db.select().from(schema.researchSignalSnapshots).where(and(eq(schema.researchSignalSnapshots.companyId,company.id),eq(schema.researchSignalSnapshots.asOfDate,dates[0].asOfDate))):[];
-      const detail:ResearchDetail={company,dashboard,actuals,monthlyRevenue,segments,forecasts,signals:signalRows.map(s=>({...s,status:s.status as SignalStatus})),capacity,catalysts,risks,reports};
+      const earningsQuality=earningsRows[0] ? JSON.parse(earningsRows[0].payloadJson) as EarningsQualityAudit : null;
+      const detail:ResearchDetail={company,dashboard,earningsQuality,actuals,monthlyRevenue,segments,forecasts,signals:signalRows.map(s=>({...s,status:s.status as SignalStatus})),capacity,catalysts,risks,reports};
       return detail;
     },
   };
