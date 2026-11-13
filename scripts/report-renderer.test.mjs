@@ -134,15 +134,19 @@ test("VPEC template comparison uses the same generated public format as STL", as
   assert.equal((html.match(/Evidence 0[123]/g)||[]).length,3);
   assert.match(html,/公開與排除原則/);
   assert.match(html,/class="page-inner no-rail-page"/);
-  assert.match(html,/let active=0,zoom='1\.5'/);
-  assert.match(html,/type="range" min="50" max="150" step="1" value="150"/);
-  assert.match(html,/>150%<\/output>/);
-  assert.match(html,/const fitScale=\(\)=>Math\.min\(/);
+  assert.match(html,/let active=0,zoom='fit'/);
+  assert.match(html,/type="range" min="50" max="150" step="1" value="100"/);
+  assert.match(html,/>FIT<\/output>/);
+  assert.match(html,/const fitScale=\(\)=>Math\.max\(0\.1,Math\.min\(/);
   assert.match(html,/Math\.max\(50,Math\.min\(150,n\*100\)\)/);
   assert.match(html,/range\.value=String\(percent\)/);
   assert.match(html,/range\.setAttribute\('value',String\(percent\)\)/);
   assert.match(html,/range\.setAttribute\('aria-valuenow',String\(percent\)\)/);
   assert.match(html,/range\.setAttribute\('aria-valuetext',label\)/);
+  assert.match(html,/data-z="fit" class="fit-button active" aria-pressed="true"/);
+  assert.match(html,/if\(e\.key==='Home'\)/);
+  assert.match(html,/@media\(max-width:767px\)/);
+  assert.match(html,/addEventListener\('resize',scale\)/);
   assert.match(html,/"profileName":"template-comparison"/);
 });
 
@@ -220,6 +224,32 @@ test("EQ-01 L1 below threshold keeps existing 14-page profile",async()=>{
   const html=renderGeneratedReport(buildReportViewModel(pkg,"full-research",profiles.profiles["full-research"]));
   assert.equal((html.match(/<section class="page slide/g)||[]).length,14);
   assert.match(html,/業外損益檢查/);
+});
+
+test("UMC v1.1 report aligns 2028 base revenue and CAPEX downside disclosure",async()=>{
+  const [pkg,profiles]=await Promise.all([
+    readFile("research/umc-2303/research-package.json","utf8").then(JSON.parse),
+    readFile("research/umc-2303/report-profiles.json","utf8").then(JSON.parse)
+  ]);
+  const html=renderGeneratedReport(buildReportViewModel(pkg,"full-research",profiles.profiles["full-research"]));
+  const base=pkg.forecasts.find(row=>row.fiscalYear===2028 && row.scenario==="consensus");
+  assert.equal(pkg.report.version,"1.1");
+  assert.equal(base.revenue,375000);
+  assert.equal(base.eps,6.7);
+  assert.match(html,/375,000\.0/);
+  const range=html.match(/<section class="sensitivity-table">[\s\S]*?<\/section>/)?.[0]??"";
+  assert.equal((range.match(/毛利率區間/g)||[]).length,1);
+  assert.match(html,/追加資本預算｜折舊與每股盈餘壓力測試/);
+  assert.match(html,/全年折舊（億元）/);
+  assert.match(html,/2028年底/);
+  assert.match(html,/台南 eDTC/);
+  assert.match(html,/12,460\.655/);
+  assert.match(html,/第一金/);
+  assert.match(html,/宏遠/);
+  assert.ok(pkg.capacity.some(row=>row.deltaUnits===18000));
+  assert.ok(pkg.capacity.some(row=>row.deltaUnits===22000));
+  assert.ok(pkg.capacity.some(row=>row.deltaUnits===20000));
+  assert.equal((html.match(/<section class="page slide/g)||[]).length,16);
 });
 
 test("baseline profiles fail closed without canonical source metadata", async()=>{
