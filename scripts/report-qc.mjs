@@ -71,6 +71,32 @@ export async function runHeadlessQc({ chromePath, htmlPath, viewport, expectedPa
     await page.goto(pathToFileURL(htmlPath).href,{waitUntil:"load",timeout:30000});
     await page.waitForFunction(()=>Boolean(window.__researchLayout?.collectQc),{timeout:10000});
     await page.evaluate(async()=>{await document.fonts.ready;await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));});
+    if (viewport.width >= 768) {
+      const initial=await page.evaluate(()=>{
+        const stage=document.getElementById("stage"),wrap=document.getElementById("wrap");
+        const fit=document.querySelector('[data-z="fit"]');
+        return {fit:fit?.classList.contains("active")&&fit.getAttribute("aria-pressed")==="true",
+          label:document.getElementById("zoom-value")?.textContent,
+          stageOverflowX:stage.scrollWidth-stage.clientWidth,stageOverflowY:stage.scrollHeight-stage.clientHeight,
+          canvasWidth:wrap.getBoundingClientRect().width};
+      });
+      if(!initial.fit||initial.label!=="FIT"||initial.stageOverflowX>2||initial.stageOverflowY>2){
+        throw new Error("Desktop FIT initial viewport failed: "+JSON.stringify(initial));
+      }
+      await page.keyboard.press("ArrowRight");
+      if(await page.evaluate(()=>window.__researchLayout.activePage())!==2)throw new Error("ArrowRight navigation failed");
+      await page.keyboard.press("Home");
+      if(await page.evaluate(()=>window.__researchLayout.activePage())!==1)throw new Error("Home navigation failed");
+      await page.setViewport({width:viewport.width-80,height:viewport.height-80,deviceScaleFactor:1});
+      await page.evaluate(async()=>{await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))});
+      const resized=await page.evaluate(()=>({fit:document.querySelector('[data-z="fit"]')?.classList.contains("active"),
+        width:document.getElementById("wrap").getBoundingClientRect().width}));
+      if(!resized.fit||resized.width>=initial.canvasWidth){
+        throw new Error("FIT resize did not recalculate and preserve mode: "+JSON.stringify({initial,resized}));
+      }
+      await page.setViewport({width:viewport.width,height:viewport.height,deviceScaleFactor:1});
+      await page.evaluate(async()=>{await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))});
+    }
     const qc=await page.evaluate(()=>window.__researchLayout.collectQc());
     qc.runtimeErrors=runtimeErrors;
     try {
