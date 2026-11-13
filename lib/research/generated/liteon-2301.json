@@ -1,0 +1,696 @@
+{
+  "company": {
+    "id": "liteon-2301",
+    "ticker": "2301",
+    "market": "TW",
+    "name": "光寶科",
+    "slug": "liteon-2301",
+    "sector": "電源供應器／電子零組件",
+    "industry": "高瓦數 PSU／BBU／Power Rack／液冷",
+    "currency": "TWD",
+    "description": "CSP AI機櫃需求 → 8.5kW PSU＋BBU → 110kW Power Shelf → 800VDC Power Rack → 產品組合與出貨擴張 → 毛利／營益率 → 擴產資本效率。2027F機櫃認列節奏是券商差距根源。"
+  },
+  "dashboard": {
+    "currentView": "2026Q3營收574.03億元、EPS3.27、毛利率25.9%、營益率15.1%；2026/10營收200.71億元。2027F EPS元大17.93元、凱基14.75元、華南14.63元，分歧反映新CSP與Power Rack交貨時點。",
+    "currentThesis": "CSP AI機櫃需求 → 8.5kW PSU＋BBU → 110kW Power Shelf → 800VDC Power Rack → 產品組合與出貨擴張 → 毛利／營益率 → 擴產資本效率。2027F機櫃認列節奏是券商差距根源。",
+    "verificationChain": [
+      "AI營收占比",
+      "800VDC Power Rack",
+      "雲端業務占比",
+      "EQ-01與現金流"
+    ],
+    "conclusion": "黃燈：AI電源產品升級已反映在獲利，但尚需驗證新CSP、800VDC認證、2027擴產現金流。2026/11元大較08舊版下修2027營收12.6%，提醒缺料與缺電影響並非一次性。2026Q1單季業外占稅前約17.5%，觸發EQ-01 L2；正式版不得在穿透審閱前上架。",
+    "forecastScenario": "consensus",
+    "headlineForecastYears": [
+      2027,
+      2028
+    ],
+    "focusMetric": {
+      "field": "grossMargin",
+      "label": "毛利率"
+    },
+    "monthlyRevenue": {
+      "focusYear": 2026,
+      "cumulativeThroughMonth": 10,
+      "unitDivisor": 100,
+      "unitLabel": "億元"
+    },
+    "cagrCards": [
+      {
+        "field": "revenue",
+        "label": "2025A至2027F營收成長（研究情境）",
+        "baseYear": 2025,
+        "targetYear": 2027,
+        "baseValue": 166084.859,
+        "years": 2
+      },
+      {
+        "field": "eps",
+        "label": "2025A至2027F EPS成長（研究情境）",
+        "baseYear": 2025,
+        "targetYear": 2027,
+        "baseValue": 6.64,
+        "years": 2
+      }
+    ],
+    "estimateNote": "2027F EPS元大11/02 17.93，2027營收3170億元、毛利26.9%、目標350；凱基10/30 EPS14.75、營收2887.4億元、毛利27.2%、目標295；華南11/02 EPS14.63、營收2446.8億元、毛利27.8%、目標278。元大8/03舊版 EPS18.94 → 11/02下修17.93；營收3627.3→3170億元。2028凱基估EPS21.55。所有為單家券商、非同日共識；bear/consensus/bull僅為本研究情境。800VDC樣機非已量產。"
+  },
+  "earningsQuality": {
+    "standard": "EQ-01-v1",
+    "reviewStatus": "NOT_RUN",
+    "reviewer": "待研究審閱人正式簽核",
+    "reviewedAt": "2026-11-13",
+    "coverageNote": "已有公開損益科目基本橋接；歷史2023/2024明細、業外按附註分類、OCF/FCF及每股調整未完整；不得以資料不足冒稱PASS。",
+    "periods": [
+      {
+        "id": "liteon-eq-2023FY",
+        "period": "2023FY",
+        "periodType": "annual",
+        "revenue": 148330,
+        "operatingIncome": null,
+        "nonOperatingNet": null,
+        "pretaxIncome": null,
+        "incomeTax": null,
+        "netIncomeAttributable": null,
+        "reportedEps": 6.36,
+        "currency": "TWD",
+        "scale": "million",
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "liteon-src-financial"
+        ],
+        "claimIds": [
+          "liteon-claim-quality"
+        ],
+        "normalizationNote": "業外細項、稅後調整及非控制權益尚未達EQ-01正式查核，正常化EPS保持null。報表金額以百萬元；加權平均股數未經原始註釋確認，不以股本猜測。"
+      },
+      {
+        "id": "liteon-eq-2024FY",
+        "period": "2024FY",
+        "periodType": "annual",
+        "revenue": 137134,
+        "operatingIncome": 12934,
+        "nonOperatingNet": null,
+        "pretaxIncome": null,
+        "incomeTax": null,
+        "netIncomeAttributable": 11942,
+        "reportedEps": 5.21,
+        "currency": "TWD",
+        "scale": "million",
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "liteon-src-financial"
+        ],
+        "claimIds": [
+          "liteon-claim-quality"
+        ],
+        "normalizationNote": "業外細項、稅後調整及非控制權益尚未達EQ-01正式查核，正常化EPS保持null。報表金額以百萬元；加權平均股數未經原始註釋確認，不以股本猜測。"
+      },
+      {
+        "id": "liteon-eq-2025FY",
+        "period": "2025FY",
+        "periodType": "annual",
+        "revenue": 166084.859,
+        "operatingIncome": 16737.802,
+        "nonOperatingNet": 2975.365,
+        "pretaxIncome": 19713.167,
+        "incomeTax": 4601.373,
+        "netIncomeAttributable": 15115.934,
+        "reportedEps": 6.64,
+        "currency": "TWD",
+        "scale": "million",
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "liteon-src-financial"
+        ],
+        "claimIds": [
+          "liteon-claim-quality"
+        ],
+        "normalizationNote": "業外細項、稅後調整及非控制權益尚未達EQ-01正式查核，正常化EPS保持null。報表金額以百萬元；加權平均股數未經原始註釋確認，不以股本猜測。"
+      },
+      {
+        "id": "liteon-eq-2025Q4",
+        "period": "2025Q4",
+        "periodType": "quarter",
+        "revenue": 44356,
+        "operatingIncome": 4653,
+        "nonOperatingNet": 560,
+        "pretaxIncome": 5213,
+        "incomeTax": null,
+        "netIncomeAttributable": 3860,
+        "reportedEps": 1.7,
+        "currency": "TWD",
+        "scale": "million",
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "liteon-src-financial"
+        ],
+        "claimIds": [
+          "liteon-claim-quality"
+        ],
+        "normalizationNote": "業外細項、稅後調整及非控制權益尚未達EQ-01正式查核，正常化EPS保持null。報表金額以百萬元；加權平均股數未經原始註釋確認，不以股本猜測。"
+      },
+      {
+        "id": "liteon-eq-2026Q1",
+        "period": "2026Q1",
+        "periodType": "quarter",
+        "revenue": 43407.292,
+        "operatingIncome": 4099.305,
+        "nonOperatingNet": 870.596,
+        "pretaxIncome": 4969.901,
+        "incomeTax": 1195.242,
+        "netIncomeAttributable": 3775.414,
+        "reportedEps": 1.66,
+        "currency": "TWD",
+        "scale": "million",
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "liteon-src-financial"
+        ],
+        "claimIds": [
+          "liteon-claim-quality"
+        ],
+        "normalizationNote": "業外細項、稅後調整及非控制權益尚未達EQ-01正式查核，正常化EPS保持null。報表金額以百萬元；加權平均股數未經原始註釋確認，不以股本猜測。"
+      },
+      {
+        "id": "liteon-eq-2026Q2",
+        "period": "2026Q2",
+        "periodType": "quarter",
+        "revenue": 52703.454,
+        "operatingIncome": 8202.55,
+        "nonOperatingNet": 1165.729,
+        "pretaxIncome": 9368.279,
+        "incomeTax": 2248.392,
+        "netIncomeAttributable": 7115.83,
+        "reportedEps": 3.14,
+        "currency": "TWD",
+        "scale": "million",
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "liteon-src-financial"
+        ],
+        "claimIds": [
+          "liteon-claim-quality"
+        ],
+        "normalizationNote": "業外細項、稅後調整及非控制權益尚未達EQ-01正式查核，正常化EPS保持null。報表金額以百萬元；加權平均股數未經原始註釋確認，不以股本猜測。"
+      },
+      {
+        "id": "liteon-eq-2026Q3",
+        "period": "2026Q3",
+        "periodType": "quarter",
+        "revenue": 57403.018,
+        "operatingIncome": 8655.453,
+        "nonOperatingNet": 1142.472,
+        "pretaxIncome": 9797.925,
+        "incomeTax": 2349.035,
+        "netIncomeAttributable": 7429.346,
+        "reportedEps": 3.27,
+        "currency": "TWD",
+        "scale": "million",
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "liteon-src-financial"
+        ],
+        "claimIds": [
+          "liteon-claim-quality"
+        ],
+        "normalizationNote": "業外細項、稅後調整及非控制權益尚未達EQ-01正式查核，正常化EPS保持null。報表金額以百萬元；加權平均股數未經原始註釋確認，不以股本猜測。"
+      },
+      {
+        "id": "liteon-eq-2026YTD",
+        "period": "2026YTD",
+        "periodType": "ytd",
+        "revenue": 153513.764,
+        "operatingIncome": 20957.308,
+        "nonOperatingNet": 3178.797,
+        "pretaxIncome": 24136.105,
+        "incomeTax": 5792.669,
+        "netIncomeAttributable": 18320.59,
+        "reportedEps": 8.08,
+        "currency": "TWD",
+        "scale": "million",
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": 97453.074,
+        "adjustments": [],
+        "sourceIds": [
+          "liteon-src-financial"
+        ],
+        "claimIds": [
+          "liteon-claim-quality"
+        ],
+        "normalizationNote": "業外細項、稅後調整及非控制權益尚未達EQ-01正式查核，正常化EPS保持null。報表金額以百萬元；加權平均股數未經原始註釋確認，不以股本猜測。"
+      }
+    ],
+    "qualitativeFlags": [
+      "forecast_discrepancy"
+    ],
+    "l2": {
+      "status": "NOT_RUN",
+      "summary": "2025FY及2026Q1非營業占比已達EQ-01 L2門檻，業外穿透與常態化EPS未完成。",
+      "sourceIds": [
+        "liteon-src-financial",
+        "liteon-src-model"
+      ],
+      "claimIds": [
+        "liteon-claim-quality"
+      ]
+    },
+    "valuation": {
+      "epsBasis": "reported",
+      "doubleCountChecked": false,
+      "prospectiveModelOnly": true,
+      "notes": "預測EPS僅作研究情境，不把尚未穿透的歷史reported EPS視為normalised EPS。沒有完成重複扣除檢查及OCF驗證。"
+    },
+    "notes": "2026Q1營業外損益870.596／稅前4969.901≈17.5%；2025全年業外2975.365／稅前19713.167≈15.1%。達EQ-01 L2觸發門檻，需拆金融資產FVPL、利息、匯兌及權益法，核對母公司稅後歸屬及現金／非現金。OCF、資本支出及年度2023/24業外尚未完整驗證，暫標NOT_RUN，禁止正式發布。"
+  },
+  "actuals": [
+    {
+      "id": "liteon-a-2025FY",
+      "period": "2025FY",
+      "fiscalYear": 2025,
+      "quarter": null,
+      "revenue": 166084.859,
+      "grossProfit": 38039.258,
+      "grossMargin": 22.9,
+      "operatingIncome": 16737.802,
+      "operatingMargin": 10.08,
+      "netIncome": 15115.934,
+      "netMargin": 9.1,
+      "eps": 6.64,
+      "companyId": "liteon-2301"
+    },
+    {
+      "id": "liteon-a-2025Q4",
+      "period": "2025Q4",
+      "fiscalYear": 2025,
+      "quarter": 4,
+      "revenue": 44356,
+      "grossProfit": 9633,
+      "grossMargin": 21.72,
+      "operatingIncome": 4653,
+      "operatingMargin": 10.49,
+      "netIncome": 3860,
+      "netMargin": 8.7,
+      "eps": 1.7,
+      "companyId": "liteon-2301"
+    },
+    {
+      "id": "liteon-a-2026Q1",
+      "period": "2026Q1",
+      "fiscalYear": 2026,
+      "quarter": 1,
+      "revenue": 43407.292,
+      "grossProfit": 9402.933,
+      "grossMargin": 21.66,
+      "operatingIncome": 4099.305,
+      "operatingMargin": 9.44,
+      "netIncome": 3775.414,
+      "netMargin": 8.7,
+      "eps": 1.66,
+      "companyId": "liteon-2301"
+    },
+    {
+      "id": "liteon-a-2026Q2",
+      "period": "2026Q2",
+      "fiscalYear": 2026,
+      "quarter": 2,
+      "revenue": 52703.454,
+      "grossProfit": 14348.457,
+      "grossMargin": 27.22,
+      "operatingIncome": 8202.55,
+      "operatingMargin": 15.56,
+      "netIncome": 7115.83,
+      "netMargin": 13.5,
+      "eps": 3.14,
+      "companyId": "liteon-2301"
+    },
+    {
+      "id": "liteon-a-2026Q3",
+      "period": "2026Q3",
+      "fiscalYear": 2026,
+      "quarter": 3,
+      "revenue": 57403.018,
+      "grossProfit": 14866.698,
+      "grossMargin": 25.9,
+      "operatingIncome": 8655.453,
+      "operatingMargin": 15.08,
+      "netIncome": 7429.346,
+      "netMargin": 12.94,
+      "eps": 3.27,
+      "companyId": "liteon-2301"
+    },
+    {
+      "id": "liteon-a-2026YTD",
+      "period": "2026YTD",
+      "fiscalYear": 2026,
+      "quarter": null,
+      "revenue": 153513.764,
+      "grossProfit": 38618.088,
+      "grossMargin": 25.16,
+      "operatingIncome": 20957.308,
+      "operatingMargin": 13.65,
+      "netIncome": 18320.59,
+      "netMargin": 11.93,
+      "eps": 8.08,
+      "companyId": "liteon-2301"
+    }
+  ],
+  "monthlyRevenue": [
+    {
+      "year": 2026,
+      "month": 1,
+      "revenue": 14112,
+      "mom": -5.3,
+      "yoy": 16.2
+    },
+    {
+      "year": 2026,
+      "month": 2,
+      "revenue": 12812,
+      "mom": -9.2,
+      "yoy": 17.4
+    },
+    {
+      "year": 2026,
+      "month": 3,
+      "revenue": 16484,
+      "mom": 28.7,
+      "yoy": 23.4
+    },
+    {
+      "year": 2026,
+      "month": 4,
+      "revenue": 16695,
+      "mom": 1.3,
+      "yoy": 24.5
+    },
+    {
+      "year": 2026,
+      "month": 5,
+      "revenue": 17354,
+      "mom": 4,
+      "yoy": 29.6
+    },
+    {
+      "year": 2026,
+      "month": 6,
+      "revenue": 18656,
+      "mom": 7.5,
+      "yoy": 37
+    },
+    {
+      "year": 2026,
+      "month": 7,
+      "revenue": 19006,
+      "mom": 1.9,
+      "yoy": 37.6
+    },
+    {
+      "year": 2026,
+      "month": 8,
+      "revenue": 19592,
+      "mom": 3.1,
+      "yoy": 25.2
+    },
+    {
+      "year": 2026,
+      "month": 9,
+      "revenue": 18848,
+      "mom": -3.8,
+      "yoy": 22.1
+    },
+    {
+      "year": 2026,
+      "month": 10,
+      "revenue": 20071,
+      "mom": 6.5,
+      "yoy": 32
+    }
+  ],
+  "segments": [
+    {
+      "period": "2026Q3",
+      "segment": "資訊與消費性電子",
+      "revenue": null,
+      "share": 27,
+      "isEstimate": false
+    },
+    {
+      "period": "2026Q3",
+      "segment": "雲端及物聯網",
+      "revenue": null,
+      "share": 59,
+      "isEstimate": false
+    },
+    {
+      "period": "2026Q3",
+      "segment": "光電／車用",
+      "revenue": null,
+      "share": 14,
+      "isEstimate": false
+    }
+  ],
+  "forecasts": [
+    {
+      "fiscalYear": 2027,
+      "scenario": "bear",
+      "revenue": 244680,
+      "grossMargin": 27.8,
+      "netIncome": 33298,
+      "eps": 14.63,
+      "optoShare": null,
+      "notes": "研究情境（非統計市場共識）；netIncome按EPS×假設約2276百萬股估算；忽略稅率及稀釋股數變動，僅供相對情境。"
+    },
+    {
+      "fiscalYear": 2027,
+      "scenario": "consensus",
+      "revenue": 288740,
+      "grossMargin": 27.2,
+      "netIncome": 33571,
+      "eps": 14.75,
+      "optoShare": null,
+      "notes": "研究情境（非統計市場共識）；netIncome按EPS×假設約2276百萬股估算；忽略稅率及稀釋股數變動，僅供相對情境。"
+    },
+    {
+      "fiscalYear": 2027,
+      "scenario": "bull",
+      "revenue": 317000,
+      "grossMargin": 26.9,
+      "netIncome": 40809,
+      "eps": 17.93,
+      "optoShare": null,
+      "notes": "研究情境（非統計市場共識）；netIncome按EPS×假設約2276百萬股估算；忽略稅率及稀釋股數變動，僅供相對情境。"
+    },
+    {
+      "fiscalYear": 2028,
+      "scenario": "bear",
+      "revenue": 340000,
+      "grossMargin": 26,
+      "netIncome": 38692,
+      "eps": 17,
+      "optoShare": null,
+      "notes": "研究情境（非統計市場共識）；netIncome按EPS×假設約2276百萬股估算；忽略稅率及稀釋股數變動，僅供相對情境。"
+    },
+    {
+      "fiscalYear": 2028,
+      "scenario": "consensus",
+      "revenue": 386546,
+      "grossMargin": 29,
+      "netIncome": 49048,
+      "eps": 21.55,
+      "optoShare": null,
+      "notes": "研究情境（非統計市場共識）；netIncome按EPS×假設約2276百萬股估算；忽略稅率及稀釋股數變動，僅供相對情境。"
+    },
+    {
+      "fiscalYear": 2028,
+      "scenario": "bull",
+      "revenue": 420000,
+      "grossMargin": 29.5,
+      "netIncome": 53486,
+      "eps": 23.5,
+      "optoShare": null,
+      "notes": "研究情境（非統計市場共識）；netIncome按EPS×假設約2276百萬股估算；忽略稅率及稀釋股數變動，僅供相對情境。"
+    }
+  ],
+  "signals": [
+    {
+      "asOfDate": "2026-11-13",
+      "metric": "AI營收占比",
+      "status": "yellow",
+      "valueText": "華南轉述公司預期2027 AI占比40–50%",
+      "notes": "研究監測用非買賣建議；必要時等待下季公告驗證"
+    },
+    {
+      "asOfDate": "2026-11-13",
+      "metric": "800VDC Power Rack",
+      "status": "yellow",
+      "valueText": "2026Q4樣機出貨，量產待驗證",
+      "notes": "研究監測用非買賣建議；必要時等待下季公告驗證"
+    },
+    {
+      "asOfDate": "2026-11-13",
+      "metric": "雲端業務占比",
+      "status": "yellow",
+      "valueText": "2026Q3事業群占比59%",
+      "notes": "研究監測用非買賣建議；必要時等待下季公告驗證"
+    },
+    {
+      "asOfDate": "2026-11-13",
+      "metric": "EQ-01與現金流",
+      "status": "yellow",
+      "valueText": "FY2025及2026Q1觸發L2，未完成",
+      "notes": "研究監測用非買賣建議；必要時等待下季公告驗證"
+    }
+  ],
+  "capacity": [
+    {
+      "label": "8.5kW PSU＋BBU",
+      "equipment": "Gen3 ASIC 機櫃",
+      "technology": "8.5 kW PSU+BBU",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "expectedOnlineDate": null,
+      "status": "production",
+      "notes": "法說及華南報告提及量產；客戶份額未知"
+    },
+    {
+      "label": "VR 110kW／Helios 42吋Power Shelf",
+      "equipment": "高功率GPU平台",
+      "technology": "110 kW Power Shelf",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "expectedOnlineDate": null,
+      "status": "production",
+      "notes": "量產轉實際收入需後續公司揭露"
+    },
+    {
+      "label": "800VDC Power Rack",
+      "equipment": "HVDC電源櫃",
+      "technology": "800 V DC",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "expectedOnlineDate": null,
+      "status": "qualification",
+      "notes": "2026Q4樣機；元大預估2027商轉；凱基較保守"
+    },
+    {
+      "label": "美國德州廠",
+      "equipment": "McKinney電源產線",
+      "technology": "Power Rack / PSU",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "expectedOnlineDate": null,
+      "status": "planned",
+      "notes": "華南記載2027Q2試運營；非已量產"
+    },
+    {
+      "label": "高雄／越南擴產",
+      "equipment": "高雄二期及越南海防",
+      "technology": "PSU/BBU",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "expectedOnlineDate": null,
+      "status": "ramp",
+      "notes": "2026 CapEx上調197億元，2027預期增加"
+    }
+  ],
+  "catalysts": [
+    {
+      "title": "高瓦數PSU與BBU滲透提高",
+      "impact": "high",
+      "status": "watch",
+      "notes": "產品升級可提升AI電源收入內容價值"
+    },
+    {
+      "title": "2027 800VDC Power Rack認證",
+      "impact": "high",
+      "status": "watch",
+      "notes": "從樣機轉量產出貨、追蹤客戶正式採購"
+    },
+    {
+      "title": "新CSP客戶拓展",
+      "impact": "high",
+      "status": "watch",
+      "notes": "凱基認為部分明顯貢獻可能至2028"
+    },
+    {
+      "title": "擴產稼動與液冷產品",
+      "impact": "medium",
+      "status": "watch",
+      "notes": "若良率、稼動跟進營業利益槓桿"
+    }
+  ],
+  "risks": [
+    {
+      "title": "CSP缺電與機櫃供應鏈長短料",
+      "impact": "high",
+      "probability": "high",
+      "status": "watch",
+      "notes": "元大2027營收較08舊版下修12.6%"
+    },
+    {
+      "title": "2026–2027資本支出與折舊",
+      "impact": "high",
+      "probability": "high",
+      "status": "watch",
+      "notes": "2026預算197億元，管理層稱2027更高"
+    },
+    {
+      "title": "2026Q1業外占比超過15%",
+      "impact": "high",
+      "probability": "medium",
+      "status": "watch",
+      "notes": "870.6百萬元／4969.9百萬元≈17.5%，EQ-01 L2需穿透"
+    },
+    {
+      "title": "2027券商獲利差距大",
+      "impact": "high",
+      "probability": "high",
+      "status": "watch",
+      "notes": "元大17.93相較華南14.63元高22.6%"
+    },
+    {
+      "title": "新客戶試產與正式量產落差",
+      "impact": "high",
+      "probability": "high",
+      "status": "watch",
+      "notes": "樣機出貨不可視為已確認年度收入"
+    }
+  ],
+  "reports": [
+    {
+      "id": "liteon-report-20261113-draft",
+      "title": "光寶科（2301）｜AI電力基建與盈餘品質標準Full Report（待審）",
+      "slug": "liteon-2301",
+      "summary": "2026Q3營收574.03億元、EPS3.27、毛利率25.9%、營益率15.1%；2026/10營收200.71億元。2027F EPS元大17.93元、凱基14.75元、華南14.63元，分歧反映新CSP與Power Rack交貨時點。",
+      "thesis": "CSP AI機櫃需求 → 8.5kW PSU＋BBU → 110kW Power Shelf → 800VDC Power Rack → 產品組合與出貨擴張 → 毛利／營益率 → 擴產資本效率。2027F機櫃認列節奏是券商差距根源。",
+      "status": "draft",
+      "version": "0.2.0",
+      "htmlPath": "/research/reports/liteon-2301.html",
+      "pdfPath": null,
+      "publishedAt": null
+    }
+  ]
+}
