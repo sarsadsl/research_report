@@ -3,53 +3,55 @@ PRAGMA foreign_keys = ON;
 INSERT INTO research_companies
 (id,ticker,market,name,slug,sector,industry,currency,description,status,created_at,updated_at)
 VALUES
-('vpec-2455','2455','TW','全新光電','vpec-2455','半導體','化合物半導體 / 光通訊','TWD','聚焦 III-V 化合物半導體磊晶，研究主軸為 AI 光通訊帶動光電子占比提升。','active','2026-10-21','2026-10-21')
+('vpec-2455','2455','TW','全新光電','vpec-2455','半導體','化合物半導體 / 光通訊','TWD','聚焦 III-V 化合物半導體磊晶，研究主軸為 AI 光通訊帶動光電子占比提升。','active','2026-11-13','2026-11-13')
 ON CONFLICT(id) DO UPDATE SET ticker=excluded.ticker,market=excluded.market,name=excluded.name,slug=excluded.slug,sector=excluded.sector,industry=excluded.industry,currency=excluded.currency,description=excluded.description,status=excluded.status,created_at=excluded.created_at,updated_at=excluded.updated_at;
 
 INSERT INTO research_financial_actuals
 (id,company_id,period,fiscal_year,quarter,revenue,gross_profit,gross_margin,operating_income,operating_margin,net_income,net_margin,eps,source_note,created_at)
 VALUES
-('vpec-25q4','vpec-2455','2025Q4',2025,4,959.6,357.6,37.27,209,21.78,194,20.22,1.05,'official; sources=vpec-src-official','2026-10-21'),
-('vpec-26q1','vpec-2455','2026Q1',2026,1,959.3,365.4,38.09,226.7,23.63,195.1,20.34,1.06,'official; sources=vpec-src-official','2026-10-21'),
-('vpec-26q2','vpec-2455','2026Q2',2026,2,965.4,372.7,38.61,223.8,23.18,213.6,22.13,1.15,'official; sources=vpec-src-official','2026-10-21')
+('vpec-25q4','vpec-2455','2025Q4',2025,4,959.6,357.6,37.27,209,21.78,194,20.22,1.05,'official; sources=vpec-src-official','2026-11-13'),
+('vpec-26q1','vpec-2455','2026Q1',2026,1,959.3,365.4,38.09,226.7,23.63,195.1,20.34,1.06,'official; sources=vpec-src-official','2026-11-13'),
+('vpec-26q2','vpec-2455','2026Q2',2026,2,965.4,372.7,38.61,223.8,23.18,213.6,22.13,1.15,'official; sources=vpec-src-official','2026-11-13'),
+('vpec-2026q3-audit','vpec-2455','2026Q3',2026,3,1342.074,602.712,44.91,419.491,31.26,338.177,25.2,1.8,'official; sources=vpec-src-q3-20261113','2026-11-13')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,period=excluded.period,fiscal_year=excluded.fiscal_year,quarter=excluded.quarter,revenue=excluded.revenue,gross_profit=excluded.gross_profit,gross_margin=excluded.gross_margin,operating_income=excluded.operating_income,operating_margin=excluded.operating_margin,net_income=excluded.net_income,net_margin=excluded.net_margin,eps=excluded.eps,source_note=excluded.source_note,created_at=excluded.created_at;
 
 INSERT INTO research_monthly_revenue
 (id,company_id,year,month,revenue,mom,yoy,created_at)
 VALUES
-('vpec-2601','vpec-2455',2026,1,340.3,6.6,30.2,'2026-10-21'),
-('vpec-2602','vpec-2455',2026,2,307.7,-9.57,15.9,'2026-10-21'),
-('vpec-2603','vpec-2455',2026,3,311.2,1.13,16.6,'2026-10-21'),
-('vpec-2604','vpec-2455',2026,4,318.6,2.36,37.7,'2026-10-21'),
-('vpec-2605','vpec-2455',2026,5,320.8,0.68,46.5,'2026-10-21'),
-('vpec-2606','vpec-2455',2026,6,326,1.62,23.6,'2026-10-21'),
-('vpec-2607','vpec-2455',2026,7,422.1,29.5,45.1,'2026-10-21'),
-('vpec-2608','vpec-2455',2026,8,470.904,11.56,71.16,'2026-10-21'),
-('vpec-2609','vpec-2455',2026,9,449.063,-4.64,29.49,'2026-10-21')
+('vpec-2601','vpec-2455',2026,1,340.3,6.6,30.2,'2026-11-13'),
+('vpec-2602','vpec-2455',2026,2,307.7,-9.57,15.9,'2026-11-13'),
+('vpec-2603','vpec-2455',2026,3,311.2,1.13,16.6,'2026-11-13'),
+('vpec-2604','vpec-2455',2026,4,318.6,2.36,37.7,'2026-11-13'),
+('vpec-2605','vpec-2455',2026,5,320.8,0.68,46.5,'2026-11-13'),
+('vpec-2606','vpec-2455',2026,6,326,1.62,23.6,'2026-11-13'),
+('vpec-2607','vpec-2455',2026,7,422.1,29.5,45.1,'2026-11-13'),
+('vpec-2608','vpec-2455',2026,8,470.904,11.56,71.16,'2026-11-13'),
+('vpec-2609','vpec-2455',2026,9,449.063,-4.64,29.49,'2026-11-13'),
+('vpec-2610','vpec-2455',2026,10,471.181,4.93,32.66,'2026-11-13')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,year=excluded.year,month=excluded.month,revenue=excluded.revenue,mom=excluded.mom,yoy=excluded.yoy,created_at=excluded.created_at;
 
 INSERT INTO research_segments
 (id,company_id,period,segment,revenue,share,is_estimate,created_at)
 VALUES
-('vpec-25q4-micro','vpec-2455','2025Q4','微電子',678.4,70.7,0,'2026-10-21'),
-('vpec-25q4-opto','vpec-2455','2025Q4','光電子',281.2,29.3,0,'2026-10-21'),
-('vpec-26q1-micro','vpec-2455','2026Q1','微電子',718,74.9,0,'2026-10-21'),
-('vpec-26q1-opto','vpec-2455','2026Q1','光電子',241.3,25.1,0,'2026-10-21'),
-('vpec-26q2-micro','vpec-2455','2026Q2','微電子',703.7,72.9,0,'2026-10-21'),
-('vpec-26q2-opto','vpec-2455','2026Q2','光電子',261.7,27.1,0,'2026-10-21'),
-('vpec-2607-opto','vpec-2455','2026/07','光電子',169.3,40.1,1,'2026-10-21'),
-('vpec-2608-opto','vpec-2455','2026/08','光電子',217.1,46.1,1,'2026-10-21')
+('vpec-25q4-micro','vpec-2455','2025Q4','微電子',678.4,70.7,0,'2026-11-13'),
+('vpec-25q4-opto','vpec-2455','2025Q4','光電子',281.2,29.3,0,'2026-11-13'),
+('vpec-26q1-micro','vpec-2455','2026Q1','微電子',718,74.9,0,'2026-11-13'),
+('vpec-26q1-opto','vpec-2455','2026Q1','光電子',241.3,25.1,0,'2026-11-13'),
+('vpec-26q2-micro','vpec-2455','2026Q2','微電子',703.7,72.9,0,'2026-11-13'),
+('vpec-26q2-opto','vpec-2455','2026Q2','光電子',261.7,27.1,0,'2026-11-13'),
+('vpec-2607-opto','vpec-2455','2026/07','光電子',169.3,40.1,1,'2026-11-13'),
+('vpec-2608-opto','vpec-2455','2026/08','光電子',217.1,46.1,1,'2026-11-13')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,period=excluded.period,segment=excluded.segment,revenue=excluded.revenue,share=excluded.share,is_estimate=excluded.is_estimate,created_at=excluded.created_at;
 
 INSERT INTO research_forecasts
 (id,company_id,fiscal_year,scenario,revenue,gross_margin,net_income,eps,opto_share,notes,created_at)
 VALUES
-('vpec-26-bear','vpec-2455',2026,'bear',4197,39.03,889,4.76,35,'市場區間低端 / 保守情境','2026-10-21'),
-('vpec-26-consensus','vpec-2455',2026,'consensus',4470,40.6,1026,5.55,35.8,'五份最新去識別化研究模型中位數','2026-10-21'),
-('vpec-26-bull','vpec-2455',2026,'bull',4581,40.3,1071,5.73,NULL,'投顧自研樂觀情境','2026-10-21'),
-('vpec-27-bear','vpec-2455',2027,'bear',4946,40.59,NULL,6.19,43.3,'市場區間低端 / 保守情境','2026-10-21'),
-('vpec-27-consensus','vpec-2455',2027,'consensus',5870,44.8,NULL,8.55,51,'五份最新去識別化研究模型中位數','2026-10-21'),
-('vpec-27-bull','vpec-2455',2027,'bull',6943,45.62,NULL,11.02,50.1,'光電子占比為 >50% 的展示值','2026-10-21')
+('vpec-26-bear','vpec-2455',2026,'bear',4197,39.03,889,4.76,35,'市場區間低端 / 保守情境','2026-11-13'),
+('vpec-26-consensus','vpec-2455',2026,'consensus',4470,40.6,1026,5.55,35.8,'五份最新去識別化研究模型中位數','2026-11-13'),
+('vpec-26-bull','vpec-2455',2026,'bull',4581,40.3,1071,5.73,NULL,'投顧自研樂觀情境','2026-11-13'),
+('vpec-27-bear','vpec-2455',2027,'bear',4946,40.59,NULL,6.19,43.3,'市場區間低端 / 保守情境','2026-11-13'),
+('vpec-27-consensus','vpec-2455',2027,'consensus',5870,44.8,NULL,8.55,51,'五份最新去識別化研究模型中位數 2026/11/13：Q3實績已核對；外部模型差異仍待審查，不以本輪更新單方面改動2027 EPS。','2026-11-13'),
+('vpec-27-bull','vpec-2455',2027,'bull',6943,45.62,NULL,11.02,50.1,'光電子占比為 >50% 的展示值','2026-11-13')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,fiscal_year=excluded.fiscal_year,scenario=excluded.scenario,revenue=excluded.revenue,gross_margin=excluded.gross_margin,net_income=excluded.net_income,eps=excluded.eps,opto_share=excluded.opto_share,notes=excluded.notes,created_at=excluded.created_at;
 
 INSERT INTO research_capacity_events
@@ -64,20 +66,20 @@ ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,event_date=excluded
 INSERT INTO research_catalysts
 (id,company_id,title,impact,status,notes,updated_at)
 VALUES
-('vpec-cat-inp','vpec-2455','InP 基板供應改善','high','watch','供應改善可同時釋放既有設備與新機 utilization。','2026-10-21'),
-('vpec-cat-200g','vpec-2455','200G PD 放量','high','active','Data Center receive-side 新一代產品放量。','2026-10-21'),
-('vpec-cat-cw','vpec-2455','CW Laser / 發射端產品','high','watch','若由小量轉為可見營收，可進一步提高 ASP 與 mix。','2026-10-21'),
-('vpec-cat-mocvd','vpec-2455','新增 InP MOCVD 到位','medium','watch','重點不是到機本身，而是 qualification 與 utilization。','2026-10-21')
+('vpec-cat-inp','vpec-2455','InP 基板供應改善','high','watch','供應改善可同時釋放既有設備與新機 utilization。','2026-11-13'),
+('vpec-cat-200g','vpec-2455','200G PD 放量','high','active','Data Center receive-side 新一代產品放量。','2026-11-13'),
+('vpec-cat-cw','vpec-2455','CW Laser / 發射端產品','high','watch','若由小量轉為可見營收，可進一步提高 ASP 與 mix。','2026-11-13'),
+('vpec-cat-mocvd','vpec-2455','新增 InP MOCVD 到位','medium','watch','重點不是到機本身，而是 qualification 與 utilization。','2026-11-13')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,title=excluded.title,impact=excluded.impact,status=excluded.status,notes=excluded.notes,updated_at=excluded.updated_at;
 
 INSERT INTO research_risks
 (id,company_id,title,impact,probability,status,notes,updated_at)
 VALUES
-('vpec-risk-inp','vpec-2455','InP 原料 / 出口許可再度受阻','high','medium','watch','若供應再度不規則，光電子出貨可能再次受壓。','2026-10-21'),
-('vpec-risk-mix','vpec-2455','光電子占比未如期提升','high','medium','watch','2027 模型對 mix 高度敏感。','2026-10-21'),
-('vpec-risk-ramp','vpec-2455','新機與新產品 ramp 延遲','medium','medium','watch','折舊可能先於營收，壓抑短期 GM / OP margin。','2026-10-21'),
-('vpec-risk-micro','vpec-2455','微電子需求偏弱','medium','medium','watch','若手機/RF 轉弱，光電子需更快成長才能抵消。','2026-10-21'),
-('vpec-risk-cb-dilution','vpec-2455','轉債贖回與每股盈餘分母變化','medium','medium','watch','全新二、三贖回期 10/19–11/17；追蹤實際轉股、剩餘債券與加權平均股數，不能把公告等同已全數轉股。','2026-10-21')
+('vpec-risk-inp','vpec-2455','InP 原料 / 出口許可再度受阻','high','medium','watch','若供應再度不規則，光電子出貨可能再次受壓。','2026-11-13'),
+('vpec-risk-mix','vpec-2455','光電子占比未如期提升','high','medium','watch','2027 模型對 mix 高度敏感。','2026-11-13'),
+('vpec-risk-ramp','vpec-2455','新機與新產品 ramp 延遲','medium','medium','watch','折舊可能先於營收，壓抑短期 GM / OP margin。','2026-11-13'),
+('vpec-risk-micro','vpec-2455','微電子需求偏弱','medium','medium','watch','若手機/RF 轉弱，光電子需更快成長才能抵消。','2026-11-13'),
+('vpec-risk-cb-dilution','vpec-2455','轉債贖回與每股盈餘分母變化','medium','medium','watch','全新二、三贖回期 10/19–11/17；追蹤實際轉股、剩餘債券與加權平均股數，不能把公告等同已全數轉股。','2026-11-13')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,title=excluded.title,impact=excluded.impact,probability=excluded.probability,status=excluded.status,notes=excluded.notes,updated_at=excluded.updated_at;
 
 INSERT INTO research_signal_rules
@@ -94,12 +96,14 @@ ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,metric=excluded.met
 INSERT INTO research_signal_snapshots
 (id,company_id,as_of_date,metric,status,value_text,source_type,notes)
 VALUES
-('vpec-sig-revenue','vpec-2455','2026-10-21','月營收','green','2026/09 4.491 億；前 9 月公告 32.668 億','third_party_fact','9 月 YoY +29.49%、MoM 約 -4.6%；8 月仍為研究期高點。第四季營收延續性、Q3 利潤及現金流待驗證。'),
+('vpec-sig-revenue','vpec-2455','2026-10-21','月營收','green','2026/09 4.491 億；前 9 月公告 32.668 億','third_party_fact','9 月 YoY +29.49%、MoM 約 -4.6%；8 月仍為研究期高點。第四季營收延續性、Q3 利潤及現金流待驗證。 【歷史快照：11/13已發布Q3損益，請以最新快照為準。】'),
 ('vpec-sig-opto','vpec-2455','2026-10-21','光電子占比','green','2026/08 研究估計 46.1%','research_inference','公開資料整理，非官方 segment disclosure；需觀察 9-12 月持續性'),
 ('vpec-sig-gm','vpec-2455','2026-10-21','毛利率','yellow','26Q2 38.61%','official','仍需 H2 站穩 40% 以上'),
 ('vpec-sig-inp','vpec-2455','2026-10-21','InP 供應','yellow','供應改善中','research_inference','仍需觀察供應連續性'),
 ('vpec-sig-util','vpec-2455','2026-10-21','MOCVD utilization','yellow','新機 ramp 待驗證','research_inference','設備到位不等於有效產能'),
-('vpec-sig-product','vpec-2455','2026-10-21','新產品','green','200G PD / CW Laser 放量訊號','research_inference','需確認營收貢獻持續擴大')
+('vpec-sig-product','vpec-2455','2026-10-21','新產品','green','200G PD / CW Laser 放量訊號','research_inference','需確認營收貢獻持續擴大'),
+('vpec-sig-q3-nov13','vpec-2455','2026-11-13','第三季獲利實績','green','EPS 1.80元，毛利率44.91%','official','2026Q3毛利率44.91%、EPS1.80元；10月營收4.712億元、年增32.66%。光電子組合實現率改善，但須核對官方mix、新機稼動率與轉債稀釋。'),
+('vpec-sig-oct-nov13','vpec-2455','2026-11-13','十月月營收','green','2026/10 471.181百萬元，YoY +32.66%','official','10月公告已核對；月營收並非獲利或正式客戶量產資格。')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,as_of_date=excluded.as_of_date,metric=excluded.metric,status=excluded.status,value_text=excluded.value_text,source_type=excluded.source_type,notes=excluded.notes;
 
 INSERT INTO research_sources
@@ -113,13 +117,15 @@ VALUES
 ('vpec-src-prop','vpec-2455','research_inference','投顧自研樂觀情境','投顧自研樂觀模型','2026-08-18',NULL,'全新.pdf','只作樂觀情境比較，不覆蓋官方已公布實績。; accessed=2026-08-26; periods=2026F|2027F','medium'),
 ('vpec-src-revenue-2609','vpec-2455','third_party_fact','財訊快報／公司營收公告轉載','全新 2026/09 營收公告','2026-10-05','https://ww2.money-link.com.tw/realtimenews/NewsContent.aspx?PU=0009&SN=2427493002',NULL,'9 月 449,063 仟元，前九月 3,266,756 仟元、YoY +34.96%。月增率以 449,063／470,904−1 重算約 -4.64%，報導刊列 -4.63% 有尾差；不據尾差改變判讀。; accessed=2026-10-21; periods=2026/09|2026/01-2026/09','high'),
 ('vpec-src-cb2-260917','vpec-2455','third_party_fact','公開資訊觀測站公告／PChome 轉載','全新二行使贖回權公告','2026-09-17','https://pchome.megatime.com.tw/news/cat2/20260917/9700002455202609171.html',NULL,'公告全新二 24552 贖回期 10/19–11/17，預定 11/18 終止櫃檯買賣；不是實際全部轉股紀錄。; accessed=2026-10-21; periods=2026/10/19-2026/11/17|2026/11/18','high'),
-('vpec-src-cb3-260917','vpec-2455','third_party_fact','公開資訊觀測站公告／MoneyDJ 轉載','全新三行使贖回權公告','2026-09-17','https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=ce00bf7d-485a-457f-8763-1be4b0c02e8b',NULL,'公告全新三 24553 贖回期 10/19–11/17，預定 11/18 終止櫃檯買賣；需另核對轉換餘額、加權平均股數與基本／稀釋 EPS。; accessed=2026-10-21; periods=2026/10/19-2026/11/17|2026/11/18','high')
+('vpec-src-cb3-260917','vpec-2455','third_party_fact','公開資訊觀測站公告／MoneyDJ 轉載','全新三行使贖回權公告','2026-09-17','https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=ce00bf7d-485a-457f-8763-1be4b0c02e8b',NULL,'公告全新三 24553 贖回期 10/19–11/17，預定 11/18 終止櫃檯買賣；需另核對轉換餘額、加權平均股數與基本／稀釋 EPS。; accessed=2026-10-21; periods=2026/10/19-2026/11/17|2026/11/18','high'),
+('vpec-src-q3-20261113','vpec-2455','official','公開資訊觀測站公告（MoneyDJ轉載）','2455 2026Q3 綜合損益表','2026-10-30','https://www.moneydj.com/KMDJ/news/newsviewer.aspx?a=9c9dd5f0-2fa2-4db4-8f61-a3ae30450a9f',NULL,'上市櫃公司公告損益表重刊；數字以新台幣千元公布，研究資料轉為百萬元；未以此取代完整附註查核。; accessed=2026-11-13; periods=2026Q3|2026YTD','high'),
+('vpec-src-m10-20261113','vpec-2455','official','公司月營收公告（中央社／Yahoo轉載）','2455 2026年10月合併營收','2026-11-04','https://tw.stock.yahoo.com/news/%E5%85%AC%E5%91%8A-%E5%85%A8%E6%96%B0-2026%E5%B9%B410%E6%9C%88%E5%90%88%E4%BD%B5%E7%87%9F%E6%94%B64-71%E5%84%84%E5%85%83-%E5%B9%B4%E5%A2%9E32-065304763.html',NULL,'月營收原始單位仟元；研究資料轉為百萬元。; accessed=2026-11-13; periods=2026/10','high')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,source_type=excluded.source_type,source_group=excluded.source_group,source_title=excluded.source_title,published_date=excluded.published_date,url=excluded.url,file_name=excluded.file_name,notes=excluded.notes,confidence=excluded.confidence;
 
 INSERT INTO research_reports
 (id,company_id,title,slug,summary,thesis,status,version,html_path,pdf_path,created_at,updated_at,published_at)
 VALUES
-('vpec-report-v1','vpec-2455','全新光電 2455｜2025Q4-2027F 深度研究','vpec-2455','9 月營收 4.491 億元，年增 29.49%、較 8 月回落約 4.6%；1–9 月累計 32.668 億元、年增 34.96%。完整報告保留財務實績與 2026F／2027F 情境，下一步追蹤光電子 mix、毛利率、InP 供應與新機利用率；新增可轉債贖回期間及股數／EPS 稀釋驗證。','InP 供應 → utilization → 光電子營收 → mix → GM → OP margin → EPS。','published','1.3','/research/reports/vpec-2455.html',NULL,'2026-10-21','2026-10-21','2026-10-21')
+('vpec-report-v1','vpec-2455','全新光電 2455｜2025Q4-2027F 深度研究','vpec-2455','2026Q3毛利率44.91%、EPS1.80元；10月營收4.712億元、年增32.66%。光電子組合實現率改善，但須核對官方mix、新機稼動率與轉債稀釋。','InP 供應 → utilization → 光電子營收 → mix → GM → OP margin → EPS。','published','1.4','/research/reports/vpec-2455.html',NULL,'2026-11-13','2026-11-13','2026-11-13')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,title=excluded.title,slug=excluded.slug,summary=excluded.summary,thesis=excluded.thesis,status=excluded.status,version=excluded.version,html_path=excluded.html_path,pdf_path=excluded.pdf_path,created_at=excluded.created_at,updated_at=excluded.updated_at,published_at=excluded.published_at;
 
 INSERT INTO research_report_sections
@@ -135,15 +141,21 @@ VALUES
 ('vpec-sec-risks','vpec-report-v1','vpec-sec-risks','催化劑與風險',8,'{"type":"catalysts-risks","payloadRefs":["catalysts","risks"],"showSources":true}'),
 ('vpec-sec-sources','vpec-report-v1','vpec-sec-sources','資料來源',9,'{"type":"sources","payloadRefs":["sources"],"showSources":true}'),
 ('vpec-sec-conclusion','vpec-report-v1','vpec-sec-conclusion','研究結論',10,'{"type":"conclusion","payloadRefs":["thesis"],"showSources":true}'),
-('vpec-report-v1-dashboard','vpec-report-v1','dashboard-config','Dashboard Config',0,'{"currentView":"9 月營收 4.491 億元，YoY +29.49%、較 8 月回落約 4.6%；1–9 月累計公告 32.668 億元、YoY +34.96%。7–8 月創高是歷史事實，第四季延續性仍需驗證。8 月光電子占比約 46.1% 為研究估計，尚無 9 月新 mix。全新二／三贖回期為 10/19–11/17，需追蹤實際轉股與基本／稀釋 EPS。","verificationChain":["InP 供應","新機 utilization","光電子營收","光電子占比","毛利率","營益率","EPS"],"conclusion":"目前維持偏綠。9 月營收自 8 月高點回落，應轉向驗證第四季能否維持高檔，而非延伸連續創高敘述。Q3 毛利率、營業利益與現金流仍待正式財報；InP 供應、新機利用率及光電子 mix 是後續獲利關鍵。轉債贖回公告增加股數與稀釋 EPS 的追蹤需求，未假定債券已全部轉股，也未直接修改 EPS 情境。","forecastScenario":"consensus","headlineForecastYears":[2026,2027],"focusMetric":{"field":"optoShare","label":"光電子占比"},"monthlyRevenue":{"focusYear":2026,"cumulativeThroughMonth":9,"unitDivisor":100,"unitLabel":"億"},"cagrCards":[{"field":"revenue","label":"2025A → 2027F Revenue CAGR","baseYear":2025,"targetYear":2027,"baseValue":3380,"years":2},{"field":"eps","label":"2025A → 2027F EPS CAGR","baseYear":2025,"targetYear":2027,"baseValue":2.96,"years":2}],"estimateNote":"* 研究估計值，非公司正式 segment disclosure。 10/21 更新已補 9 月營收與轉債贖回事件；既有財測暫未重估。9 月產品 mix、Q3 獲利及轉股後加權平均股數尚待正式揭露。早期月營收為既有四捨五入口徑，精確累計另以公司公告轉載核對。"}')
+('vpec-report-v1-dashboard','vpec-report-v1','dashboard-config','Dashboard Config',0,'{"currentView":"2026Q3毛利率44.91%、EPS1.80元；10月營收4.712億元、年增32.66%。光電子組合實現率改善，但須核對官方mix、新機稼動率與轉債稀釋。 國票2026/10/07估2027 EPS13.40元、光電子比重61%；屬單一券商較樂觀情境，不能直接替代原模型共識。","verificationChain":["InP 供應","新機 utilization","光電子營收","光電子占比","毛利率","營益率","EPS"],"conclusion":"2026Q3毛利率44.91%、EPS1.80元；10月營收4.712億元、年增32.66%。光電子組合實現率改善，但須核對官方mix、新機稼動率與轉債稀釋。 投資燈號先維持原有框架，待現金流及應收／存貨／技術驗證後再變更。","forecastScenario":"consensus","headlineForecastYears":[2026,2027],"focusMetric":{"field":"optoShare","label":"光電子占比"},"monthlyRevenue":{"focusYear":2026,"cumulativeThroughMonth":10,"unitDivisor":100,"unitLabel":"億"},"cagrCards":[{"field":"revenue","label":"2025A → 2027F Revenue CAGR","baseYear":2025,"targetYear":2027,"baseValue":3380,"years":2},{"field":"eps","label":"2025A → 2027F EPS CAGR","baseYear":2025,"targetYear":2027,"baseValue":2.96,"years":2}],"estimateNote":"2026/11/13已回填第三季財報與10月營收；Q3毛利率44.91%、基本EPS1.80元。2027原情境不直接改動；國票2026/10/07估2027 EPS13.40元、光電子占比61%，屬單一券商較積極假設，需與其他券商對比。早期月營收四捨五入與轉債轉股股數仍需對帳。"}')
 ON CONFLICT(id) DO UPDATE SET report_id=excluded.report_id,section_key=excluded.section_key,title=excluded.title,sort_order=excluded.sort_order,content_json=excluded.content_json;
+
+INSERT INTO research_earnings_quality
+(id,report_id,company_id,as_of_date,review_status,l2_status,payload_json,payload_hash,updated_at)
+VALUES
+('vpec-report-v1-eq01','vpec-report-v1','vpec-2455','2026-11-13','WARN','NOT_RUN','{"standard":"EQ-01-v1","reviewStatus":"WARN","reviewer":"研究資料來源初核（非會計師審計）","reviewedAt":"2026-11-13","coverageNote":"本輪只完成2026Q3損益表及業外占比初步檢驗；2023–2025年度與最近四季詳細附註、現金流、稅後歸母調整尚缺。此WARN不得解讀成完整EPS認證。","periods":[{"id":"vpec-eq-2026q3","period":"2026Q3","periodType":"quarter","currency":"TWD","scale":"million","revenue":1342.074,"operatingIncome":419.491,"nonOperatingNet":3.511,"pretaxIncome":423.002,"incomeTax":null,"netIncomeAttributable":338.177,"reportedEps":1.8,"normalizedEps":null,"weightedAverageShares":null,"shareholdersEquity":null,"adjustments":[],"sourceIds":["vpec-src-q3-20261113"],"claimIds":[],"normalizationNote":"單季基本EPS已按公告回填；尚未取得完整近三年與最近四季各項業外及稅後歸母調節，未認證正常化EPS。"}],"qualitativeFlags":[],"l2":{"status":"NOT_RUN","summary":"已按公告計算Q3業外占比，未見單季15%量化門檻；歷史波動、OCI、公司投資與關聯交易尚未完成穿透，若新增異常則進行L2。","sourceIds":["vpec-src-q3-20261113"],"claimIds":[]},"valuation":{"epsBasis":"reported","prospectiveModelOnly":true,"doubleCountChecked":true,"notes":"本期不改動原情境EPS；先以公司官方實績與券商估計分列，沒有把業外收益重複計入模型。"},"notes":"2026/11/13資料更新初核；未以單一季業外比例取代完整盈餘品質檢驗。"}','fb8125aebe013db0bdab2e1f9c461774f43a89d8524dbf162bed0fbadccd1731','2026-11-13')
+ON CONFLICT(id) DO UPDATE SET report_id=excluded.report_id,company_id=excluded.company_id,as_of_date=excluded.as_of_date,review_status=excluded.review_status,l2_status=excluded.l2_status,payload_json=excluded.payload_json,payload_hash=excluded.payload_hash,updated_at=excluded.updated_at;
 
 
 -- Remove stale rows only after all canonical rows have been upserted.
 
-DELETE FROM research_financial_actuals WHERE company_id='vpec-2455' AND id NOT IN ('vpec-25q4','vpec-26q1','vpec-26q2');
+DELETE FROM research_financial_actuals WHERE company_id='vpec-2455' AND id NOT IN ('vpec-25q4','vpec-26q1','vpec-26q2','vpec-2026q3-audit');
 
-DELETE FROM research_monthly_revenue WHERE company_id='vpec-2455' AND id NOT IN ('vpec-2601','vpec-2602','vpec-2603','vpec-2604','vpec-2605','vpec-2606','vpec-2607','vpec-2608','vpec-2609');
+DELETE FROM research_monthly_revenue WHERE company_id='vpec-2455' AND id NOT IN ('vpec-2601','vpec-2602','vpec-2603','vpec-2604','vpec-2605','vpec-2606','vpec-2607','vpec-2608','vpec-2609','vpec-2610');
 
 DELETE FROM research_segments WHERE company_id='vpec-2455' AND id NOT IN ('vpec-25q4-micro','vpec-25q4-opto','vpec-26q1-micro','vpec-26q1-opto','vpec-26q2-micro','vpec-26q2-opto','vpec-2607-opto','vpec-2608-opto');
 
@@ -157,9 +169,9 @@ DELETE FROM research_risks WHERE company_id='vpec-2455' AND id NOT IN ('vpec-ris
 
 DELETE FROM research_signal_rules WHERE company_id='vpec-2455' AND id NOT IN ('vpec-rule-revenue','vpec-rule-opto','vpec-rule-gm','vpec-rule-inp','vpec-rule-util','vpec-rule-product');
 
-DELETE FROM research_signal_snapshots WHERE company_id='vpec-2455' AND id NOT IN ('vpec-sig-revenue','vpec-sig-opto','vpec-sig-gm','vpec-sig-inp','vpec-sig-util','vpec-sig-product');
+DELETE FROM research_signal_snapshots WHERE company_id='vpec-2455' AND id NOT IN ('vpec-sig-revenue','vpec-sig-opto','vpec-sig-gm','vpec-sig-inp','vpec-sig-util','vpec-sig-product','vpec-sig-q3-nov13','vpec-sig-oct-nov13');
 
-DELETE FROM research_sources WHERE company_id='vpec-2455' AND id NOT IN ('vpec-src-official','vpec-src-goodinfo','vpec-src-revenue-2608','vpec-src-mix-2608','vpec-src-consensus','vpec-src-prop','vpec-src-revenue-2609','vpec-src-cb2-260917','vpec-src-cb3-260917');
+DELETE FROM research_sources WHERE company_id='vpec-2455' AND id NOT IN ('vpec-src-official','vpec-src-goodinfo','vpec-src-revenue-2608','vpec-src-mix-2608','vpec-src-consensus','vpec-src-prop','vpec-src-revenue-2609','vpec-src-cb2-260917','vpec-src-cb3-260917','vpec-src-q3-20261113','vpec-src-m10-20261113');
 
 DELETE FROM research_reports WHERE company_id='vpec-2455' AND id NOT IN ('vpec-report-v1');
 
