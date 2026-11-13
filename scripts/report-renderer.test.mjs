@@ -203,7 +203,7 @@ test("EQ-01 full report displays normalized EPS and uses a distinct L2 page",asy
   assert.match(html,/After-tax look-through/);
   assert.match(html,/Cross-holding look-through completed/);
   assert.match(html,/EVIDENCE RAIL/);
-  const readerHtml=html.replace(/<script\\b[^>]*>[\\s\\S]*?<\\/script>/gi,"");
+  const readerHtml=html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,"");
   assert.doesNotMatch(readerHtml,/EQ-01|NON_OPERATING_SHARE|UNREALIZED_SHARE|QUALITATIVE|L[12] TRACE|L[12] SCREEN/);
   assert.match(readerHtml,/關聯企業持有本公司股票/);
   assert.match(readerHtml,/業外損益占稅前獲利比重偏高/);
