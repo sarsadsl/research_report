@@ -18,6 +18,7 @@ import {
   isDigitalService,
 } from "./report-components.mjs";
 import { evaluateEarningsQuality } from "./earnings-quality.mjs";
+import { readerEarningsAlerts, readerEarningsLabel, readerEarningsReviewLabel, readerInvestmentBasis, readerAdjustmentCategory, readerRealization } from "./earnings-quality-display.mjs";
 
 const score={green:2,yellow:1,red:0};
 const labels={green:"綠燈",yellow:"黃燈",red:"紅燈"};
@@ -404,13 +405,15 @@ function eq01Summary(eq) {
   if (!eq) return "";
   const row = eq01Latest(eq);
   const evaluation = evaluateEarningsQuality(eq);
+  const alert = evaluation.requiresL2;
+  const title = alert ? "業外收入警報 🚨" : "業外損益檢查";
   return '<div class="metrics">'
-    + metric("法定 EPS", num(row?.reportedEps), row?.period ?? "—")
-    + metric("正常化 EPS", num(row?.normalizedEps), row?.normalizedEps == null ? "待驗證" : "逐項歸母調整")
-    + metric("業外損益占稅前", pct(eq01Ratio(row)), "比率為有號值")
-    + metric("EQ-01", esc(eq.reviewStatus), evaluation.requiresL2 ? "L2 已觸發" : "L1 篩檢")
+    + metric("財報每股盈餘", num(row?.reportedEps), row?.period ?? "—")
+    + metric("扣除特殊收益後的 EPS", row?.normalizedEps == null ? "待驗證" : num(row.normalizedEps), "是否可持續的獲利")
+    + metric("業外損益占稅前獲利", pct(eq01Ratio(row)), "此為業外損益淨額，非全部權益法收益")
+    + metric(title, readerEarningsLabel(eq.reviewStatus, alert), alert ? "需確認業外損益是否來自一次性項目" : "未達重大異常檢查門檻")
     + '</div><p class="fineprint">'
-    + esc(eq.coverageNote || eq.valuation.notes || "資料採財報實績與來源可追溯的研究調節；不可將未實現投資收益當作經常性本業。")
+    + esc(eq.coverageNote || eq.valuation.notes || "特殊收益未必持續發生；未實現投資評價不能當作營運現金收入。")
     + '</p>';
 }
 function eq01DeepDive(vm, mode = "overview") {
@@ -420,22 +423,24 @@ function eq01DeepDive(vm, mode = "overview") {
     period: row.period, category: adj.category, realization: adj.realization,
     pretax: adj.pretaxAmount, epsImpact: adj.epsImpact, method: adj.method
   })));
-  const periodTable = table(["期間","業外淨額","稅前淨利","業外占比","法定 EPS","正常化 EPS"],makeRows(rows,[
-    r=>esc(r.period),r=>num(r.nonOperatingNet,1),r=>num(r.pretaxIncome,1),r=>pct(eq01Ratio(r)),r=>num(r.reportedEps),r=>num(r.normalizedEps)
+  const periodTable = table(["期間","業外淨額","稅前淨利","業外占比","財報 EPS","扣除特殊收益後 EPS"],makeRows(rows,[
+    r=>esc(r.period),r=>num(r.nonOperatingNet,1),r=>num(r.pretaxIncome,1),r=>pct(eq01Ratio(r)),r=>num(r.reportedEps),r=>r.normalizedEps == null ? "待驗證" : num(r.normalizedEps)
   ]));
-  const adjustTable = detail.length ? table(["期間","調整項目","已實現／評價","稅前影響","EPS 影響","方法"],makeRows(detail,[
-    r=>esc(r.period),r=>esc(r.category),r=>esc(r.realization),r=>num(r.pretax,1),r=>num(r.epsImpact),r=>esc(r.method)
-  ])) : '<p class="narrative">已確認無須調整的項目，或沒有可可靠量化的特殊項目。</p>';
+  const adjustTable = detail.length ? table(["期間","特殊損益來源","已實現／未實現","稅前影響","每股盈餘影響","估算依據"],makeRows(detail,[
+    r=>esc(r.period),r=>esc(readerAdjustmentCategory(r.category)),r=>esc(readerRealization(r.realization)),r=>num(r.pretax,1),r=>r.epsImpact == null ? "待驗證" : num(r.epsImpact),r=>esc(r.method)
+  ])) : '<p class="narrative">目前沒有可可靠量化的特殊收益調整項目；未能驗證的金額不填入零。</p>';
   if (mode === "overview") return eq01Summary(eq)
-    + module("L1 SCREEN","法定與正常化盈餘逐期檢查",periodTable,"wide")
-    + `<p class="fineprint">EQ-01 ${esc(eq.reviewStatus)}｜期間與業外資料分開呈現；稅後正常化EPS若未可靠勾稽則為待驗證，不能以零替代。</p>`;
-  return module("L2 TRACE","業外損益逐筆穿透",adjustTable,"wide")
-    + module("TRIGGERS","觸發原因與會計判讀",bullets([
-      ...evaluation.reasons.map(reason=>"觸發："+reason),
-      "L2 "+eq.l2.status+"："+eq.l2.summary,
-      "估值 "+eq.valuation.epsBasis+"："+eq.valuation.notes,
+    + module("逐期檢查","財報獲利與可持續獲利的差距",periodTable,"wide")
+    + '<p class="fineprint">業外損益可能包含股利、匯兌、投資評價與關聯企業收益。扣除特殊收益後的每股盈餘若無法確認稅後金額，應顯示「待驗證」，而不是推定為零。</p>';
+  const alertItems = readerEarningsAlerts(evaluation.reasons,eq);
+  return module("深入追查","業外收益從哪裡來？",adjustTable,"wide")
+    + module("警報原因","為什麼這份財報需要留意？",bullets([
+      ...alertItems,
+      "目前已查核的部分（"+readerEarningsReviewLabel(eq.l2.status)+"）："+eq.l2.summary,
+      "對估值的影響："+readerInvestmentBasis(eq.valuation.epsBasis,eq.valuation.prospectiveModelOnly)+"。"+eq.valuation.notes,
     ]),"note")
-    + '<p class="fineprint">EQ-01 '+esc(eq.reviewStatus)+'｜審閱 '+esc(eq.reviewer)+'｜'+esc(eq.reviewedAt)
+    + '<p class="fineprint">盈餘品質檢查：'+esc(readerEarningsLabel(eq.reviewStatus,evaluation.requiresL2))
+    +'｜資料核對人：'+esc(eq.reviewer)+'｜核對日期：'+esc(eq.reviewedAt)
     +'｜'+esc(eq.notes)+'</p>';
 }
 
@@ -478,7 +483,7 @@ content:`${monthlyMetrics(vm)}${module("MOMENTUM",`${latestMonthLabel} 月營收
     },
     {
       section:standardSection("standard-profitability","獲利結構與營運槓桿",["actuals"]),
-content:`${module("PROFITABILITY","毛利、營益與淨利率對照",profitabilityTable(vm),"wide")}${module("MARGIN PROFILE","各利潤率的實績輪廓",marginVisual(vm),"wide")}${ResearchAnnotation("GM 改善後，OP Margin 是否同步穿透？")}${module("MARGIN READ-THROUGH","獲利結構判讀",profitabilityRead(vm),"note")}${vm.earningsQuality ? module("EQ-01","盈餘品質與業外損益摘要",eq01Summary(vm.earningsQuality),"wide") : module("FOCUS","需要連續驗證的指標",bullets([`毛利率與 ${vm.dashboard.focusMetric.label} 是否同步改善。`,`營收放量後，營益率是否能維持而非被折舊、費用或低毛利產品抵銷。`]),"note")}`,
+content:`${module("PROFITABILITY","毛利、營益與淨利率對照",profitabilityTable(vm),"wide")}${module("MARGIN PROFILE","各利潤率的實績輪廓",marginVisual(vm),"wide")}${ResearchAnnotation("GM 改善後，OP Margin 是否同步穿透？")}${module("MARGIN READ-THROUGH","獲利結構判讀",profitabilityRead(vm),"note")}${vm.earningsQuality ? module("財報提醒",evaluateEarningsQuality(vm.earningsQuality).requiresL2 ? "業外收入警報 🚨" : "業外損益檢查",eq01Summary(vm.earningsQuality),"wide") : module("FOCUS","需要連續驗證的指標",bullets([`毛利率與 ${vm.dashboard.focusMetric.label} 是否同步改善。`,`營收放量後，營益率是否能維持而非被折舊、費用或低毛利產品抵銷。`]),"note")}`,
     },
     {
       section:standardSection("standard-forecast-a",`${forecastYearA}F 獲利與情境區間`,["forecasts"]),
@@ -520,11 +525,11 @@ content:`${module("PROFITABILITY","毛利、營益與淨利率對照",profitabil
   if (vm.earningsQuality && evaluateEarningsQuality(vm.earningsQuality).requiresL2) {
     pages.splice(5, 0,
       {
-        section:standardSection("standard-eq01-overview","EQ-01｜盈餘品質與正常化EPS",["earningsQuality"]),
+        section:standardSection("standard-eq01-overview","業外收入警報 🚨｜獲利品質檢查",["earningsQuality"]),
         content:eq01DeepDive(vm, "overview"),
       },
       {
-        section:standardSection("standard-eq01-trace","EQ-01｜關聯企業持股與業外穿透",["earningsQuality"]),
+        section:standardSection("standard-eq01-trace","業外收入警報 🚨｜投資收益從哪裡來？",["earningsQuality"]),
         content:eq01DeepDive(vm, "trace"),
       },
     );
