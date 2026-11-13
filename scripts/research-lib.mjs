@@ -187,7 +187,7 @@ function validateReferences(pkg, errors) {
     checkSourceClaims(eq.l2, "earningsQuality.l2");
   }
 
-  const allowedPayloads = new Set(["thesis", ...COLLECTIONS, "sections", "sources", "claims"]);
+  const allowedPayloads = new Set(["thesis", ...COLLECTIONS, "sections", "sources", "claims", "earningsQuality"]);
   for (const section of pkg.sections) {
     for (const ref of section.payloadRefs) if (!allowedPayloads.has(ref)) errors.push(`sections.${section.id}: unknown payload ref ${ref}`);
   }
