@@ -167,6 +167,7 @@ export const researchEarningsQuality = sqliteTable("research_earnings_quality", 
   reviewStatus: text("review_status").notNull(),
   l2Status: text("l2_status").notNull(),
   payloadJson: text("payload_json").notNull(),
+  payloadHash: text("payload_hash").notNull(),
   updatedAt: text("updated_at").notNull(),
 }, (t) => [
   uniqueIndex("research_earnings_quality_report_uq").on(t.reportId),
