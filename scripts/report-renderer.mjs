@@ -221,6 +221,27 @@ function scenarioRangeTable(vm){
   return SensitivityTable(table(heads,makeRows(years.map(year=>({year,rows:vm.forecasts.filter(row=>row.fiscalYear===year)})),cells),"sensitivity-working-table"));
 }
 
+
+function capexSensitivityTable(vm) {
+  const config=vm.dashboard.capexSensitivity;
+  if (!config) return "";
+  // Stress-test only: full-year run rate on each hypothetical in-service share,
+  // not a forecast of actual 2028 spending or depreciation.
+  const rows=[0.25,0.5,1].map(fraction=>{
+    const capex=config.budgetNtdMillion*fraction;
+    const annualDepreciation=capex/config.depreciationYears;
+    const epsImpact=annualDepreciation*(1-config.taxRate)/config.weightedSharesMillion;
+    return {fraction,capex,annualDepreciation,epsImpact};
+  });
+  const output=table(["假設投入比重","對應預算（億元）","全年折舊（億元）","EPS 潛在影響（元）"],makeRows(rows,[
+    row=>pct(row.fraction*100),
+    row=>num(row.capex/100,1),
+    row=>num(row.annualDepreciation/100,1),
+    row=>num(row.epsImpact,2),
+  ]),"capex-stress-table");
+  return output + '<p class="fineprint">'+esc(config.notes)+'</p>';
+}
+
 function epsRangeLine(vm,year){
   const rows=sortScenarios(vm.forecasts.filter(row=>row.fiscalYear===year));
   return `<div class="eps-range" aria-label="${year} EPS range">${rows.map(row=>`<div data-scenario="${esc(row.scenario)}"><span>${esc(scenarioLabel(row.scenario))}</span><strong>${num(row.eps)}</strong><small>${SourceLabel(row.evidenceClass)}</small></div>`).join("")}</div>`;
@@ -494,11 +515,11 @@ content:`${module("PROFITABILITY","毛利、營益與淨利率對照",profitabil
     },
     {
       section:standardSection("standard-forecast-b",`${forecastYearB}F 成長與獲利兌現`,["forecasts"]),
-      content:`${forecastMetricsForYear(vm,forecastYearB)}${metrics(cagrMetrics(vm))}${module("FORECAST",`${forecastYearB}F 悲觀／基準／樂觀`,forecastTableForYear(vm,forecastYearB),"wide")}${module("EPS RANGE",`${forecastYearB}F 情境區間`,epsRangeLine(vm,forecastYearB),"wide")}${module("BRIDGE",`${forecastYearB}F 營收與獲利條件`,forecastBridge(vm,forecastYearB),"wide")}${module("READ-THROUGH",`${forecastYearA}F → ${forecastYearB}F 的關鍵假設`,forecastRead(vm,forecastYearB),"note")}`,
+      content:`${forecastMetricsForYear(vm,forecastYearB)}${metrics(cagrMetrics(vm))}${module("FORECAST",`${forecastYearB}F 悲觀／基準／樂觀`,forecastTableForYear(vm,forecastYearB),"wide")}${module("EPS RANGE",`${forecastYearB}F 情境區間`,epsRangeLine(vm,forecastYearB),"wide")}${module("BRIDGE",`${forecastYearB}F 營收與獲利條件`,forecastBridge(vm,forecastYearB),"wide")}${module("READ-THROUGH",`${forecastYearA}F → ${forecastYearB}F 的關鍵假設`,forecastRead(vm,forecastYearB),"note")}${vm.dashboard.capexSensitivity ? ResearchAnnotation(`${forecastYearB}F 基準營收為 ${num(selectedForecasts.find(row=>row.fiscalYear===forecastYearB)?.revenue,1)} 百萬元，屬自建預測；新產能預計2028年底起裝機，不等於全年已完工投產。`) : ""},
     },
     {
       section:standardSection("standard-sensitivity","情境、敏感度與判讀邏輯",["forecasts"]),
-      content:`${module("SENSITIVITY","跨年度結果區間",scenarioRangeTable(vm),"wide")}${module("SCENARIO MATRIX","完整情境矩陣",scenarioTable(vm),"wide")}${ResearchAnnotation(`EPS 對 ${vm.dashboard.focusMetric.label} 與營收情境最敏感；基準值以淡黃線標示。`)}${module("HOW TO READ","情境怎麼用",scenarioRead(vm),"note")}<p class="fineprint">${esc(vm.dashboard.estimateNote)}</p>`,
+      content:`${module("SENSITIVITY","跨年度結果區間",scenarioRangeTable(vm),"wide")}${module("SCENARIO MATRIX","完整情境矩陣",scenarioTable(vm),"wide")}${ResearchAnnotation(`EPS 對 ${vm.dashboard.focusMetric.label} 與營收情境最敏感；基準值以淡黃線標示。`)}${vm.dashboard.capexSensitivity ? module("CAPEX STRESS","追加資本預算｜折舊與每股盈餘壓力測試",capexSensitivityTable(vm),"wide") : module("HOW TO READ","情境怎麼用",scenarioRead(vm),"note")}<p class="fineprint">${esc(vm.dashboard.estimateNote)}</p>`,
     },
     {
       section:standardSection("standard-capacity","產能、能力與成長兌現",["capacity"]),
