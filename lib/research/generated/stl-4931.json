@@ -11,7 +11,7 @@
     "description": "鋰離子電池模組設計與製造商，應用涵蓋資料中心與伺服器 BBU、電動工具及輕型電動交通工具。"
   },
   "dashboard": {
-    "currentView": "8 月營收 4.951 億元創本研究期高點；9 月 4.248 億元，MoM -14.19%、YoY +176.30%。1–9 月累計 32.740 億元、YoY +96.48%；Q3 月營收加總 13.694 億元、較 Q2 +23.01%，尚非 Q3 獲利財報。H1 EPS 3.69 元與現金流、客戶集中資料仍為既有觀察基礎。",
+    "currentView": "2026Q3毛利率22.96%、EPS2.54元；10月營收5.402億元、年增106.71%，單月創較9月新高；營運槓桿正面，但應收、存貨與現金流仍待季報附註核查。 Drive 2026/11/05新盛力V3研究之2027基準EPS11元對照本站8.72元，屬不同研究假設；第二CSP正式認列未證實，不直接上修EPS。",
     "verificationChain": [
       "9 月回落後，10 月以後月營收能否持續在 4 億元以上",
       "Q3 毛利率能否維持 22% 以上，確認收入擴大是否轉成利潤",
@@ -20,7 +20,7 @@
       "是否有公開可核對的新客戶資格",
       "EPS 是否持續轉化"
     ],
-    "conclusion": "營收端放量已有延續性：8 月創高、9 月回落，Q3 月營收加總仍較 Q2 增加約 23.01%。整體維持黃綠燈、偏綠；下一步以 Q3 毛利率、應收／存貨週轉與營業現金流驗證獲利品質，特定 CSP／HVDC 客戶量產資格仍待公開證據。",
+    "conclusion": "2026Q3毛利率22.96%、EPS2.54元；10月營收5.402億元、年增106.71%，單月創較9月新高；營運槓桿正面，但應收、存貨與現金流仍待季報附註核查。 投資燈號先維持原有框架，待現金流及應收／存貨／技術驗證後再變更。",
     "forecastScenario": "base",
     "headlineForecastYears": [
       2026,
@@ -32,7 +32,7 @@
     },
     "monthlyRevenue": {
       "focusYear": 2026,
-      "cumulativeThroughMonth": 9,
+      "cumulativeThroughMonth": 10,
       "unitDivisor": 100,
       "unitLabel": "億"
     },
@@ -54,7 +54,55 @@
         "years": 2
       }
     ],
-    "estimateNote": "* 2026F／2027F 為僅依公開實績建立的研究情境，不含任何券商或法人預測；產品規格與 UL CTDP 不代表特定 CSP 量產資格。 2026-10-21 更新已回填 8–9 月營收；財測數值暫沿用原模型，Q3 僅更新月營收加總，毛利率、EPS 與現金流待正式財報。"
+    "estimateNote": "* 2026F／2027F 為僅依公開實績建立的研究情境，不含任何券商或法人預測；產品規格與 UL CTDP 不代表特定 CSP 量產資格。 2026-10-21 更新已回填 8–9 月營收；財測數值暫沿用原模型，Q3 僅更新月營收加總，毛利率、EPS 與現金流待正式財報。 【2026/11/13新增】Drive 2026/11/05新盛力V3研究之2027基準EPS11元對照本站8.72元，屬不同研究假設；第二CSP正式認列未證實，不直接上修EPS。 未重估原有情境EPS，新增實績和外部預測只作比較；仍需後續更新正式財報附註及獲利品質。"
+  },
+  "earningsQuality": {
+    "standard": "EQ-01-v1",
+    "reviewStatus": "WARN",
+    "reviewer": "研究資料來源初核（非會計師審計）",
+    "reviewedAt": "2026-11-13",
+    "coverageNote": "本輪只完成2026Q3損益表及業外占比初步檢驗；2023–2025年度與最近四季詳細附註、現金流、稅後歸母調整尚缺。此WARN不得解讀成完整EPS認證。",
+    "periods": [
+      {
+        "id": "stl-eq-2026q3",
+        "period": "2026Q3",
+        "periodType": "quarter",
+        "currency": "TWD",
+        "scale": "million",
+        "revenue": 1369.378,
+        "operatingIncome": 207.458,
+        "nonOperatingNet": 0.296,
+        "pretaxIncome": 207.754,
+        "incomeTax": null,
+        "netIncomeAttributable": 166.937,
+        "reportedEps": 2.54,
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "stl-src-q3-20261113"
+        ],
+        "claimIds": [],
+        "normalizationNote": "單季基本EPS已按公告回填；尚未取得完整近三年與最近四季各項業外及稅後歸母調節，未認證正常化EPS。"
+      }
+    ],
+    "qualitativeFlags": [],
+    "l2": {
+      "status": "NOT_RUN",
+      "summary": "已按公告計算Q3業外占比，未見單季15%量化門檻；歷史波動、OCI、公司投資與關聯交易尚未完成穿透，若新增異常則進行L2。",
+      "sourceIds": [
+        "stl-src-q3-20261113"
+      ],
+      "claimIds": []
+    },
+    "valuation": {
+      "epsBasis": "reported",
+      "prospectiveModelOnly": true,
+      "doubleCountChecked": true,
+      "notes": "本期不改動原情境EPS；先以公司官方實績與券商估計分列，沒有把業外收益重複計入模型。"
+    },
+    "notes": "2026/11/13資料更新初核；未以單一季業外比例取代完整盈餘品質檢驗。"
   },
   "actuals": [
     {
@@ -100,6 +148,21 @@
       "netIncome": 144.542,
       "netMargin": 12.98,
       "eps": 2.2,
+      "companyId": "stl-4931"
+    },
+    {
+      "id": "stl-2026q3-audit",
+      "period": "2026Q3",
+      "fiscalYear": 2026,
+      "quarter": 3,
+      "revenue": 1369.378,
+      "grossProfit": 314.446,
+      "grossMargin": 22.96,
+      "operatingIncome": 207.458,
+      "operatingMargin": 15.15,
+      "netIncome": 166.937,
+      "netMargin": 12.19,
+      "eps": 2.54,
       "companyId": "stl-4931"
     }
   ],
@@ -166,6 +229,13 @@
       "revenue": 424.843,
       "mom": -14.19,
       "yoy": 176.3
+    },
+    {
+      "year": 2026,
+      "month": 10,
+      "revenue": 540.235,
+      "mom": 27.16,
+      "yoy": 106.71
     }
   ],
   "segments": [
@@ -240,7 +310,7 @@
       "netIncome": 571.5,
       "eps": 8.72,
       "optoShare": null,
-      "notes": "2026 base 營收再增 25%，淨利率維持 10.5%；不假設未公開新客戶。"
+      "notes": "2026 base 營收再增 25%，淨利率維持 10.5%；不假設未公開新客戶。 2026/11/13：Q3實績已核對；外部模型差異仍待審查，不以本輪更新單方面改動2027 EPS。"
     },
     {
       "fiscalYear": 2027,
@@ -295,6 +365,20 @@
       "status": "red",
       "valueText": "2025 最大客戶 55.12%",
       "notes": "前兩大匿名客戶合計 69.61%。"
+    },
+    {
+      "asOfDate": "2026-11-13",
+      "metric": "第三季獲利實績",
+      "status": "green",
+      "valueText": "EPS 2.54元，毛利率22.96%",
+      "notes": "2026Q3毛利率22.96%、EPS2.54元；10月營收5.402億元、年增106.71%，單月創較9月新高；營運槓桿正面，但應收、存貨與現金流仍待季報附註核查。"
+    },
+    {
+      "asOfDate": "2026-11-13",
+      "metric": "十月月營收",
+      "status": "green",
+      "valueText": "2026/10 540.235百萬元，YoY +106.71%",
+      "notes": "10月公告已核對；月營收並非獲利或正式客戶量產資格。"
     }
   ],
   "capacity": [
@@ -400,13 +484,13 @@
       "id": "stl-report-v1",
       "title": "新盛力 4931｜BBU 供應鏈公開資料深度研究",
       "slug": "stl-4931",
-      "summary": "8 月營收 4.951 億元創本研究期高點，9 月 4.248 億元、年增 176.30%；Q3 月營收加總 13.694 億元，較 Q2 +23.01%。需求放量仍需由毛利率、應收／存貨週轉及營業現金流驗證；產品與實驗室資格不等於特定 CSP 量產資格。",
+      "summary": "2026Q3毛利率22.96%、EPS2.54元；10月營收5.402億元、年增106.71%，單月創較9月新高；營運槓桿正面，但應收、存貨與現金流仍待季報附註核查。",
       "thesis": "AI 資料中心 BBU 需求 → 出貨與月營收 → 毛利率 → 營運資金 → 現金轉換 → EPS；產品規格與 UL 實驗室資格不等於特定 CSP 量產認證。",
       "status": "published",
-      "version": "1.1",
+      "version": "1.2",
       "htmlPath": "/research/reports/stl-4931.html",
       "pdfPath": null,
-      "publishedAt": "2026-10-21"
+      "publishedAt": "2026-11-13"
     }
   ]
 }
