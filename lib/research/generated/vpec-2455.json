@@ -11,7 +11,7 @@
     "description": "聚焦 III-V 化合物半導體磊晶，研究主軸為 AI 光通訊帶動光電子占比提升。"
   },
   "dashboard": {
-    "currentView": "9 月營收 4.491 億元，YoY +29.49%、較 8 月回落約 4.6%；1–9 月累計公告 32.668 億元、YoY +34.96%。7–8 月創高是歷史事實，第四季延續性仍需驗證。8 月光電子占比約 46.1% 為研究估計，尚無 9 月新 mix。全新二／三贖回期為 10/19–11/17，需追蹤實際轉股與基本／稀釋 EPS。",
+    "currentView": "2026Q3毛利率44.91%、EPS1.80元；10月營收4.712億元、年增32.66%。光電子組合實現率改善，但須核對官方mix、新機稼動率與轉債稀釋。 國票2026/10/07估2027 EPS13.40元、光電子比重61%；屬單一券商較樂觀情境，不能直接替代原模型共識。",
     "verificationChain": [
       "InP 供應",
       "新機 utilization",
@@ -21,7 +21,7 @@
       "營益率",
       "EPS"
     ],
-    "conclusion": "目前維持偏綠。9 月營收自 8 月高點回落，應轉向驗證第四季能否維持高檔，而非延伸連續創高敘述。Q3 毛利率、營業利益與現金流仍待正式財報；InP 供應、新機利用率及光電子 mix 是後續獲利關鍵。轉債贖回公告增加股數與稀釋 EPS 的追蹤需求，未假定債券已全部轉股，也未直接修改 EPS 情境。",
+    "conclusion": "2026Q3毛利率44.91%、EPS1.80元；10月營收4.712億元、年增32.66%。光電子組合實現率改善，但須核對官方mix、新機稼動率與轉債稀釋。 投資燈號先維持原有框架，待現金流及應收／存貨／技術驗證後再變更。",
     "forecastScenario": "consensus",
     "headlineForecastYears": [
       2026,
@@ -33,7 +33,7 @@
     },
     "monthlyRevenue": {
       "focusYear": 2026,
-      "cumulativeThroughMonth": 9,
+      "cumulativeThroughMonth": 10,
       "unitDivisor": 100,
       "unitLabel": "億"
     },
@@ -55,7 +55,55 @@
         "years": 2
       }
     ],
-    "estimateNote": "* 研究估計值，非公司正式 segment disclosure。 10/21 更新已補 9 月營收與轉債贖回事件；既有財測暫未重估。9 月產品 mix、Q3 獲利及轉股後加權平均股數尚待正式揭露。早期月營收為既有四捨五入口徑，精確累計另以公司公告轉載核對。"
+    "estimateNote": "* 研究估計值，非公司正式 segment disclosure。 10/21 更新已補 9 月營收與轉債贖回事件；既有財測暫未重估。9 月產品 mix、Q3 獲利及轉股後加權平均股數尚待正式揭露。早期月營收為既有四捨五入口徑，精確累計另以公司公告轉載核對。 【2026/11/13新增】國票2026/10/07估2027 EPS13.40元、光電子比重61%；屬單一券商較樂觀情境，不能直接替代原模型共識。 未重估原有情境EPS，新增實績和外部預測只作比較；仍需後續更新正式財報附註及獲利品質。"
+  },
+  "earningsQuality": {
+    "standard": "EQ-01-v1",
+    "reviewStatus": "WARN",
+    "reviewer": "研究資料來源初核（非會計師審計）",
+    "reviewedAt": "2026-11-13",
+    "coverageNote": "本輪只完成2026Q3損益表及業外占比初步檢驗；2023–2025年度與最近四季詳細附註、現金流、稅後歸母調整尚缺。此WARN不得解讀成完整EPS認證。",
+    "periods": [
+      {
+        "id": "vpec-eq-2026q3",
+        "period": "2026Q3",
+        "periodType": "quarter",
+        "currency": "TWD",
+        "scale": "million",
+        "revenue": 1342.074,
+        "operatingIncome": 419.491,
+        "nonOperatingNet": 3.511,
+        "pretaxIncome": 423.002,
+        "incomeTax": null,
+        "netIncomeAttributable": 338.177,
+        "reportedEps": 1.8,
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "vpec-src-q3-20261113"
+        ],
+        "claimIds": [],
+        "normalizationNote": "單季基本EPS已按公告回填；尚未取得完整近三年與最近四季各項業外及稅後歸母調節，未認證正常化EPS。"
+      }
+    ],
+    "qualitativeFlags": [],
+    "l2": {
+      "status": "NOT_RUN",
+      "summary": "已按公告計算Q3業外占比，未見單季15%量化門檻；歷史波動、OCI、公司投資與關聯交易尚未完成穿透，若新增異常則進行L2。",
+      "sourceIds": [
+        "vpec-src-q3-20261113"
+      ],
+      "claimIds": []
+    },
+    "valuation": {
+      "epsBasis": "reported",
+      "prospectiveModelOnly": true,
+      "doubleCountChecked": true,
+      "notes": "本期不改動原情境EPS；先以公司官方實績與券商估計分列，沒有把業外收益重複計入模型。"
+    },
+    "notes": "2026/11/13資料更新初核；未以單一季業外比例取代完整盈餘品質檢驗。"
   },
   "actuals": [
     {
@@ -101,6 +149,21 @@
       "netIncome": 213.6,
       "netMargin": 22.13,
       "eps": 1.15,
+      "companyId": "vpec-2455"
+    },
+    {
+      "id": "vpec-2026q3-audit",
+      "period": "2026Q3",
+      "fiscalYear": 2026,
+      "quarter": 3,
+      "revenue": 1342.074,
+      "grossProfit": 602.712,
+      "grossMargin": 44.91,
+      "operatingIncome": 419.491,
+      "operatingMargin": 31.26,
+      "netIncome": 338.177,
+      "netMargin": 25.2,
+      "eps": 1.8,
       "companyId": "vpec-2455"
     }
   ],
@@ -167,6 +230,13 @@
       "revenue": 449.063,
       "mom": -4.64,
       "yoy": 29.49
+    },
+    {
+      "year": 2026,
+      "month": 10,
+      "revenue": 471.181,
+      "mom": 4.93,
+      "yoy": 32.66
     }
   ],
   "segments": [
@@ -276,7 +346,7 @@
       "netIncome": null,
       "eps": 8.55,
       "optoShare": 51,
-      "notes": "五份最新去識別化研究模型中位數"
+      "notes": "五份最新去識別化研究模型中位數 2026/11/13：Q3實績已核對；外部模型差異仍待審查，不以本輪更新單方面改動2027 EPS。"
     },
     {
       "fiscalYear": 2027,
@@ -331,6 +401,20 @@
       "status": "green",
       "valueText": "200G PD / CW Laser 放量訊號",
       "notes": "需確認營收貢獻持續擴大"
+    },
+    {
+      "asOfDate": "2026-11-13",
+      "metric": "第三季獲利實績",
+      "status": "green",
+      "valueText": "EPS 1.80元，毛利率44.91%",
+      "notes": "2026Q3毛利率44.91%、EPS1.80元；10月營收4.712億元、年增32.66%。光電子組合實現率改善，但須核對官方mix、新機稼動率與轉債稀釋。"
+    },
+    {
+      "asOfDate": "2026-11-13",
+      "metric": "十月月營收",
+      "status": "green",
+      "valueText": "2026/10 471.181百萬元，YoY +32.66%",
+      "notes": "10月公告已核對；月營收並非獲利或正式客戶量產資格。"
     }
   ],
   "capacity": [
@@ -443,13 +527,13 @@
       "id": "vpec-report-v1",
       "title": "全新光電 2455｜2025Q4-2027F 深度研究",
       "slug": "vpec-2455",
-      "summary": "9 月營收 4.491 億元，年增 29.49%、較 8 月回落約 4.6%；1–9 月累計 32.668 億元、年增 34.96%。完整報告保留財務實績與 2026F／2027F 情境，下一步追蹤光電子 mix、毛利率、InP 供應與新機利用率；新增可轉債贖回期間及股數／EPS 稀釋驗證。",
+      "summary": "2026Q3毛利率44.91%、EPS1.80元；10月營收4.712億元、年增32.66%。光電子組合實現率改善，但須核對官方mix、新機稼動率與轉債稀釋。",
       "thesis": "InP 供應 → utilization → 光電子營收 → mix → GM → OP margin → EPS。",
       "status": "published",
-      "version": "1.3",
+      "version": "1.4",
       "htmlPath": "/research/reports/vpec-2455.html",
       "pdfPath": null,
-      "publishedAt": "2026-10-21"
+      "publishedAt": "2026-11-13"
     }
   ]
 }
