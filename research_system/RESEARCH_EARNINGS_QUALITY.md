@@ -62,7 +62,9 @@
 
 - **立即適用**：新建及再發行的完整報告必須有 L1 審查紀錄；觸發 L2 而未完成穿透、缺重大來源／算式，或模型重複剔除 → 人工 **FAIL / BLOCKED**。
 - **歷史報告**：不修改既有 published package／報告，也不追溯假稱已通過；下次新版發行時依新規審核。
-- **現有系統界線**：本版是文件與人工 QC 規範。既有 `research:validate`、`research:check`、`research:publish` **尚未自動計算或強制 EQ-01**；`research_runs` 亦未保存 EQ-01 結果。未建置 validator、D1 schema、importer、renderer 與回讀驗證前，不要把範例 `earningsQuality` 字段直接當成機器契約或在 D1 手改資料。工程化須另立變更及回歸測試，並經原有發布 gate。
+- **工程實作（本 PR 修改分支）**：`research-package-v1.schema.json` 支援 optional `earningsQuality`；`scripts/earnings-quality.mjs` 自動計算比率、波動、EPS／權益影響與定性觸發，`research:validate` 對 2026-11-13 起「資料截止日或 publishedAt」的新發布完整報告強制 EQ-01。歷史 package 不追溯要求，重新發行時必須符合。Validator 會阻擋重要對帳失敗、L2 未通過、來源失聯與重複扣除未檢查。
+- **D1 與報告**：新增 `research_earnings_quality` migration／Drizzle table，generator、importer 和 D1 repository 依 report ID 儲存／回讀；正式 `full-research` 如有 EQ-01 顯示 EPS／業外摘要，觸發 L2 時增加專頁。新異常報告 profile 可使用實際頁數（不硬寫 14）；所有舊頁面仍沿用原格式。
+- **仍須人工驗證**：原始財報來源真實性、實質控制與關係人背景、淨值調整正確性、稅與非控制權益、L2 審閱者簽核；自動 gate **不能**證明文章中的間接持股估值一定正確。D1 目前核對 row counts／hash，尚非每欄重算；`research_runs` 不存完整 EQ-01 審閱紀錄，詳細資料在新的按報告版本儲存表。代碼尚待 PR CI、人工驗收與合併，**未部署至正式 Cloudflare D1**。
 - **隱私與授權**：不將受限券商原始 PDF 或未獲授權資料提交公開 repo；只引用可公開的來源索引／摘要與合法可使用的研究推論。
 
-版本：EQ-01 v1.0.0｜2026-11-13｜狀態：供審閱的規範草案，非已部署的自動 gate。
+版本：EQ-01 v1.0.0｜2026-11-13｜狀態：工程修改分支待測試／審閱；非正式環境已部署。
