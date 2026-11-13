@@ -58,6 +58,14 @@ export default async function ResearchPage() {
               <p className="reportSummary">研究預覽，盈餘品質及券商推估尚未完成審核。</p>
             </div>
           </a>
+          <a className="reportIndexItem" href="/research/reports/liteon-2301.html">
+            <div className="reportIndexBody">
+              <div className="reportIndexTopline"><span className="reportTicker">TW · 2301 / PREVIEW</span></div>
+              <div className="reportTitleRow"><h3>光寶科｜Full Report</h3></div>
+              <p className="reportDescriptor">PSU／BBU／Power Rack；2027–2028年情境</p>
+              <p className="reportSummary">研究預覽，業外損益觸發 EQ-01 L2，尚待審閱。</p>
+            </div>
+          </a>
         </div>
       </section>
 
