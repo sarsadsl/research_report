@@ -108,4 +108,4 @@ async function main(){
   console.log(`Standalone: ${result.file} — PASS\nWebsite parity: ${result.websiteParity?"PASS":"FAIL"}\nRESULT: READY TO PUBLISH`);
 }
 
-if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href)main().catch(error=>{console.error(error.message);process.exitCode=1;});
+if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href)main().catch(error=>{console.error(error.message);if(error.qc)console.error('Failed QC diagnostics:',JSON.stringify(error.qc).slice(0,10000));process.exitCode=1;});
