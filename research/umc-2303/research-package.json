@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "packageVersion": "1.0.0",
+  "packageVersion": "1.1.0",
   "asOfDate": "2026-11-13",
   "company": {
     "id": "umc-2303",
@@ -14,14 +14,14 @@
     "description": "專注成熟及特殊製程的晶圓代工；2026Q3本業復甦，2026年權益法業外收益與間接交叉持股需盈餘品質穿透。"
   },
   "report": {
-    "id": "umc-2303-report-v1",
-    "title": "聯電 2303｜2026Q3 業外盈餘品質與 2027–2028 全面研究",
+    "id": "umc-2303-report-v1-1",
+    "title": "聯電 2303｜2026Q3 業外收益警報、2027–2028估值與擴產現金流檢驗",
     "slug": "umc-2303",
-    "summary": "2026Q3營收742.39億元、毛利率34%、稼動率92%，本業復甦；2026YTD權益法收益281.01億元，占稅前34.4%，部分涉及迅捷持有聯電股票。正常化2026歷史EPS尚未能精確勾稽。2027研究基準EPS5.8元，18倍P/E估值104.4元。",
+    "summary": "v1.1納入2026/10/28追加資本預算（約32億美元）、PIC／DTC／TFLN規劃月產能、2028–2030設備投入時程、AI 2029營收占比目標及EPS股數口徑。2026前三季權益法收益281.01億元，占稅前34.4%，歷史正常化EPS待驗證；自建2027F EPS5.80元、2028F EPS6.70元，非券商共識。",
     "thesis": "成熟製程稼動率回升→22nm組合→毛利率→業外收益穿透→可持續EPS→估值",
     "status": "published",
     "visibility": "listed",
-    "version": "1.0",
+    "version": "1.1",
     "publishedAt": "2026-11-13"
   },
   "thesis": {
@@ -42,18 +42,18 @@
     ]
   },
   "dashboard": {
-    "currentView": "2026Q3營收742.4億元，毛利率34.0%，營益率25.1%，稼動率92%；但2026前三季權益法收益281.01億元占稅前34.4%，來自關聯企業之投資評價須穿透。2026Q2的高EPS與Q3本業走強不可混為一談。收盤基準價101.5元，2027研究基準價104.4元安全邊際有限。",
-    "currentThesis": "本業改善但盈餘品質仍有重大問號；迅捷、焱元、矽統間接持股，應同時檢驗損益與淨值，不直接把全部權益法收益設為零。",
+    "currentView": "2026Q3本業復甦：營收742.4億元、毛利率34%、營益率25.1%、利用率92%；然而前三季權益法收益281.01億元占稅前34.4%，歷史正常化EPS尚待核對。2026/10/28董事會追加約32億美元資本預算、規劃新加坡PIC、台南DTC與8吋TFLN產能；設備2028年底起安裝，2027-2028 EPS仍應計入折舊與現金流的不確定性。",
+    "currentThesis": "成熟製程獲利隨22nm和稼動率改善，但2026非經常投資收益不可持續；新增資本預算需要關注2028起現金流出與折舊啟動、新平台客戶承諾及2029 AI營收目標落地。",
     "verificationChain": [
-      "22nm滲透",
-      "稼動率",
-      "毛利率",
-      "營業利益",
-      "業外損益穿透",
-      "正常化EPS",
-      "價格／估值"
+      "22/28nm稼動率",
+      "實收ASP與毛利",
+      "本業利益",
+      "業外投資穿透",
+      "2028起追加CapEx",
+      "折舊與自由現金流",
+      "2029 AI營收目標"
     ],
-    "conclusion": "研究維持中性偏審慎：核心業務回升，2027ASP與矽光子是催化劑，但歷史EPS6元並非可持續盈利。歷史正常化EPS稅後歸母調整未完成，相關欄位仍為待驗證；2027研究情境EPS5.8元乘18倍為104.4元，應以2027合約ASP／折舊／良率驗證。",
+    "conclusion": "v1.1維持中性偏審慎：2027自建EPS5.8元、18x PE合理價104.4元，並非市場共識。2028自建EPS6.7元基準暫保留、尚未納入確定的新增CapEx年度時程；提供不同投入比例下的增量折舊壓力測試，不把上限壓測直接扣除兩次。2026前三季法定EPS6元含大額權益法收益，稅後正常化EPS仍待查；追蹤2027實收ASP、22nm份額、TFLN/PIC良率與2028–2030投資進度。",
     "forecastScenario": "consensus",
     "headlineForecastYears": [
       2027,
@@ -87,7 +87,22 @@
         "years": 2
       }
     ],
-    "estimateNote": "所有預估標示研究推論。財務實績與預測單位TWD百萬元；月營收換算億元；2027/28為獨立前瞻常態獲利假設，並非2026法定EPS直接扣減1.35元。聯電交叉持股之精確稅後EPS調節仍待查核。"
+    "estimateNote": "**模型口徑**：2027/28基準EPS5.80／6.70與2028基準營收375,000百萬元均為自建推估，非券商共識。狼友小站兩家個別券商估計：第一金2027F EPS7.64(11/02)、宏遠7.05(10/29)，非完整共識樣本。2026Q3 EPS1.32元的基本加權流通股12,460.655百萬股；2026前三季EPS6.00元使用約12,476百萬股，不能以期末股本代替。追加32億美元為董事會預算核准，2026現金制資本支出指引20億美元，兩者非同一口徑；未能確認投產時程前不直接重估2028 EPS。",
+    "capexSensitivity": {
+      "budgetNtdMillion": 102781,
+      "approvedBudgetUsdMillion": 3200,
+      "existing2026CashCapexUsdMillion": 2000,
+      "depreciationYears": 8,
+      "taxRate": 0.2,
+      "weightedSharesMillion": 12460.655,
+      "sourceIds": [
+        "umc-src-capexboard",
+        "umc-src-q3call",
+        "umc-src-q3",
+        "umc-src-model"
+      ],
+      "notes": "僅為增量壓力測試：依追加核准預算×假設投入比重÷8年折舊×(1−20%稅率)÷124.60655億股估算全年EPS影響；與實際2028費用無關，也不代表預算已支出。新產能預計2028年底起安裝、2030達規劃規模；若基準EPS已含折舊，不可再次扣除。"
+    }
   },
   "actuals": [
     {
@@ -538,7 +553,7 @@
       "claimIds": [
         "umc-claim-valuation"
       ],
-      "notes": "獨立前瞻常態化情境，2026YTD歷史EPS須另查；ASP改善偏慢、折舊壓力。"
+      "notes": "獨立前瞻常態化情境，2026YTD歷史EPS須另查；ASP改善偏慢、折舊壓力。；未包含已確定可核對的2028新產能現金支出時程，新增設備折舊另參壓測。"
     },
     {
       "id": "umc-f-2028-consensus",
@@ -554,12 +569,13 @@
       "evidenceClass": "research_inference",
       "sourceIds": [
         "umc-src-model",
-        "umc-src-q3"
+        "umc-src-capexboard",
+        "umc-src-q3call"
       ],
       "claimIds": [
         "umc-claim-valuation"
       ],
-      "notes": "獨立前瞻常態化情境，2026YTD歷史EPS須另查；以合理利用率、ASP實現與費用控制估算。"
+      "notes": "2028F基準營收375,000百萬元、EPS6.70元為自建估計，並非券商共識。32億美元追加預算於2028年底開始安裝、2030達規劃規模；尚不掌握分年支付／折舊時程，因此維持原基準、另提供追加折舊壓測，切勿重複扣減。"
     },
     {
       "id": "umc-f-2028-bull",
@@ -580,72 +596,81 @@
       "claimIds": [
         "umc-claim-valuation"
       ],
-      "notes": "獨立前瞻常態化情境，2026YTD歷史EPS須另查；ASP與特殊製程毛利強於預期。"
+      "notes": "獨立前瞻常態化情境，2026YTD歷史EPS須另查；ASP與特殊製程毛利強於預期。；未包含已確定可核對的2028新產能現金支出時程，新增設備折舊另參壓測。"
     }
   ],
   "capacity": [
     {
       "id": "umc-cap-0",
       "eventDate": "2026-10-28",
-      "label": "成熟製程去瓶頸",
-      "equipment": "12吋與8吋晶圓廠",
-      "technology": "22/28nm／PMIC",
+      "label": "新加坡／台南追加擴產預算",
+      "equipment": "新加坡Fab 12i／台南Fab 12A",
+      "technology": "PIC、矽電容、TFLN",
       "deltaUnits": null,
       "baseUnits": null,
-      "status": "ramping",
-      "notes": "Q3稼動率92%，透過改善瓶頸增加有效產能。",
-      "evidenceClass": "research_inference",
+      "status": "approved",
+      "notes": "董事會新增資本預算約32億美元（新台幣1027.81億元）；2026現金制CapEx原指引20億美元，兩者非同年度實際支出。2028年底開始裝機，2030達規劃規模。",
+      "evidenceClass": "official",
       "sourceIds": [
-        "umc-src-q3",
-        "umc-src-model"
+        "umc-src-capexboard",
+        "umc-src-q3call"
+      ],
+      "claimIds": [
+        "umc-claim-capex-approved"
       ]
     },
     {
       "id": "umc-cap-1",
       "eventDate": "2026-10-28",
-      "label": "12吋PIC矽光子",
-      "equipment": "新加坡及台灣擴產規劃",
-      "technology": "Silicon Photonics",
-      "deltaUnits": null,
+      "label": "12吋矽光子 PIC",
+      "equipment": "新加坡晶圓廠",
+      "technology": "12吋PIC／1.6T平台",
+      "deltaUnits": 18000,
       "baseUnits": null,
-      "status": "qualification",
-      "notes": "具名客戶量產與毛利率需持續確認。",
-      "evidenceClass": "research_inference",
+      "status": "planned",
+      "notes": "規劃月產能1.8萬片；1.6T相關平台進入客戶驗證階段。預定2028年底起裝機、2030達規劃量，並非已出貨量。",
+      "evidenceClass": "third_party_fact",
       "sourceIds": [
-        "umc-src-q3",
-        "umc-src-model"
+        "umc-src-q3call"
+      ],
+      "claimIds": [
+        "umc-claim-capacity-plan"
       ]
     },
     {
       "id": "umc-cap-2",
       "eventDate": "2026-10-28",
-      "label": "TFLN光學調變器",
-      "equipment": "8吋既有及新增產線",
-      "technology": "TFLN / 1.6T",
-      "deltaUnits": null,
+      "label": "台南 eDTC／矽電容",
+      "equipment": "台南 Fab 12A",
+      "technology": "DTC／矽電容",
+      "deltaUnits": 22000,
       "baseUnits": null,
-      "status": "development",
-      "notes": "認證與營收兩階段須分開追蹤。",
-      "evidenceClass": "research_inference",
+      "status": "planned",
+      "notes": "規劃月產能2.2萬片；AI伺服器供電需求延伸到嵌入式電容，量產與營收認列須持續驗證。",
+      "evidenceClass": "third_party_fact",
       "sourceIds": [
-        "umc-src-q3",
-        "umc-src-model"
+        "umc-src-q3call"
+      ],
+      "claimIds": [
+        "umc-claim-capacity-plan"
       ]
     },
     {
       "id": "umc-cap-3",
       "eventDate": "2026-10-28",
-      "label": "Intel 12nm合作",
-      "equipment": "跨公司平台",
-      "technology": "12nm FinFET",
-      "deltaUnits": null,
+      "label": "8吋 TFLN 光調變器",
+      "equipment": "既有8吋晶圓廠轉線",
+      "technology": "1.6T已驗證／3.2T研發中",
+      "deltaUnits": 20000,
       "baseUnits": null,
-      "status": "development",
-      "notes": "具備合作意向，不等於已實現營收。",
-      "evidenceClass": "research_inference",
+      "status": "qualification",
+      "notes": "規劃月產能2萬片；1.6T已達系統驗證里程碑、3.2T技術仍在開發，廠房轉線短期可能影響利用率。",
+      "evidenceClass": "third_party_fact",
       "sourceIds": [
-        "umc-src-q3",
-        "umc-src-model"
+        "umc-src-q3call"
+      ],
+      "claimIds": [
+        "umc-claim-capacity-plan"
       ]
     }
   ],
@@ -676,13 +701,13 @@
     },
     {
       "id": "umc-cat-2",
-      "title": "PIC/TFLN商用化",
+      "title": "2029年AI相關營收占比25%以上目標",
       "impact": "high",
       "status": "watch",
-      "notes": "收入、良率與具名客戶超越demo階段。",
+      "notes": "管理層目標至2029年AI相關業務占公司營收逾25%，範圍含PMIC、FPGA、connectivity、PIC及先進封裝；需持續追蹤商用收入與新產能折舊。",
       "evidenceClass": "research_inference",
       "sourceIds": [
-        "umc-src-q3",
+        "umc-src-q3call",
         "umc-src-model"
       ]
     },
@@ -728,15 +753,16 @@
     },
     {
       "id": "umc-risk-2",
-      "title": "ASP漲幅被成本與折舊吃掉",
+      "title": "追加擴產預算的折舊與自由現金流壓力",
       "impact": "high",
       "probability": "medium",
       "status": "watch",
-      "notes": "反映原料、資本支出與新產線折舊。",
+      "notes": "董事會核准約32億美元新增資本預算，支出時程未完整公布。2028年底起安裝、2030才達目標；若ASP和量產增量不足抵銷折舊，2028–2030 EPS及FCF可能低於基準。",
       "evidenceClass": "research_inference",
       "sourceIds": [
-        "umc-src-model",
-        "umc-src-q3fs"
+        "umc-src-capexboard",
+        "umc-src-q3call",
+        "umc-src-model"
       ]
     },
     {
@@ -977,7 +1003,7 @@
     {
       "id": "umc-sec-6",
       "type": "capacity",
-      "title": "製程與商用化",
+      "title": "AI產能、追加資本預算與量產節點",
       "sortOrder": 6,
       "payloadRefs": [
         "capacity"
@@ -1155,6 +1181,61 @@
       ],
       "confidence": "medium",
       "notes": "以原始財報與公告為準；研究推論與官方數值分開。"
+    },
+    {
+      "id": "umc-src-capexboard",
+      "evidenceClass": "official",
+      "provider": "聯電／SEC Form 6-K",
+      "title": "2026/10/28董事會通過資本預算新台幣102,781百萬元",
+      "url": "https://www.sec.gov/Archives/edgar/data/1033767/000119312526434992/umc-ex99.htm",
+      "publishedDate": "2026-10-28",
+      "accessedDate": "2026-11-13",
+      "coveredPeriods": [
+        "2026Q4",
+        "2027-2030"
+      ],
+      "confidence": "high",
+      "notes": "正式核准的追加預算，不能等同2026已執行現金資本支出。"
+    },
+    {
+      "id": "umc-src-q3call",
+      "evidenceClass": "third_party_fact",
+      "provider": "UMC Q3 2026 公開法說逐字稿",
+      "title": "2026年第三季法說問答：PIC、DTC、TFLN產能與2028–2030時程",
+      "url": "https://www.fool.com/earnings/call-transcripts/2026/10/28/umc-umc-q3-2026-earnings-call-transcript/",
+      "publishedDate": "2026-10-28",
+      "accessedDate": "2026-11-13",
+      "coveredPeriods": [
+        "2027-2030"
+      ],
+      "confidence": "medium",
+      "notes": "來源為公開法說逐字紀錄，產能目標與財務實績區分。"
+    },
+    {
+      "id": "umc-src-firstcapital-20261102",
+      "evidenceClass": "third_party_fact",
+      "provider": "第一金證券投顧",
+      "title": "2026/11/02 聯電研究：2027F EPS 7.64元",
+      "publishedDate": "2026-11-02",
+      "accessedDate": "2026-11-13",
+      "coveredPeriods": [
+        "2027F"
+      ],
+      "confidence": "medium",
+      "notes": "狼友小站內部授權資料；僅交叉核對個別估算數字，不公開原始報告內容或檔案。"
+    },
+    {
+      "id": "umc-src-hongyuan-20261029",
+      "evidenceClass": "third_party_fact",
+      "provider": "宏遠投顧",
+      "title": "2026/10/29 聯電研究：2027F EPS 7.05元",
+      "publishedDate": "2026-10-29",
+      "accessedDate": "2026-11-13",
+      "coveredPeriods": [
+        "2027F"
+      ],
+      "confidence": "medium",
+      "notes": "狼友小站內部授權資料；個別研究估算不等於統計市場共識，不公開報告內容。"
     }
   ],
   "claims": [
@@ -1290,6 +1371,80 @@
         "umc-claim-normal"
       ],
       "method": "自建前瞻常態化情境，非市場即時共識。",
+      "confidence": "medium"
+    },
+    {
+      "id": "umc-claim-capex-approved",
+      "text": "聯電董事會於2026年10月28日核准新台幣1027.81億元追加資本預算（約32億美元），不是2026年已支出現金。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "umc-src-capexboard"
+      ],
+      "inputClaimIds": [],
+      "method": "SEC Form 6-K Board budget、法說2026現金制CapEx約20億美元對照。",
+      "confidence": "high"
+    },
+    {
+      "id": "umc-claim-capacity-plan",
+      "text": "管理層2026Q3法說規劃PIC、DTC/矽電容、TFLN月產能分別約1.8萬、2.2萬、2萬片；2028年底開始裝設備，2030達規劃規模。",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "umc-src-q3call"
+      ],
+      "inputClaimIds": [],
+      "method": "公開法說逐字問答，屬規劃產能而非已開出產能。",
+      "confidence": "high"
+    },
+    {
+      "id": "umc-claim-ai-2029",
+      "text": "聯電管理層目標AI相關業務到2029年占營收25%以上；此為未來目標，非已確認2029年度實際營收。",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "umc-src-q3call"
+      ],
+      "inputClaimIds": [],
+      "method": "法說之AI相關範圍包含PMIC、FPGA、連接、先進封裝、矽光子；須追蹤年度與季度的口徑一致性。",
+      "confidence": "medium"
+    },
+    {
+      "id": "umc-claim-3q26-shares",
+      "text": "2026年第三季基本EPS1.32元以單季加權平均流通股12,460,655,358股計算；2026前三季基本EPS6.00元以約12,476百萬股計算，不應用期末股本直接替代。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "umc-src-q3",
+        "umc-src-q3fs"
+      ],
+      "inputClaimIds": [],
+      "method": "聯電官方2026Q3英文財報基本EPS加權平均股數附註。",
+      "confidence": "high"
+    },
+    {
+      "id": "umc-claim-peer-benchmark",
+      "text": "2027F自建EPS5.80元，對照第一金7.64元(2026/11/02)及宏遠7.05元(2026/10/29)；僅兩家獨立券商研究，不得稱完整市場共識。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "umc-src-firstcapital-20261102",
+        "umc-src-hongyuan-20261029",
+        "umc-src-model"
+      ],
+      "inputClaimIds": [],
+      "method": "取個別研究EPS數字，差異需考慮估值口徑、折舊與特殊投資收益，不再製全文圖表。",
+      "confidence": "high"
+    },
+    {
+      "id": "umc-claim-capex-stress",
+      "text": "追加資本預算102,781百萬元，若假設部分產能全年投入營運，折舊年限8年、稅率20%、加權股數12,460.655百萬股，則25%/50%/100%投入對全年EPS增量壓力約0.21/0.41/0.82元，非2028年實際預估。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "umc-src-capexboard",
+        "umc-src-q3",
+        "umc-src-model"
+      ],
+      "inputClaimIds": [
+        "umc-claim-capex-approved",
+        "umc-claim-3q26-shares"
+      ],
+      "method": "EPS增量壓力=(102781*比例/8)*(1-0.20)/12460.655；未估認證量產增量毛利與現金支出年度。",
       "confidence": "medium"
     }
   ],
@@ -1529,7 +1684,7 @@
       "epsBasis": "normalized",
       "prospectiveModelOnly": true,
       "doubleCountChecked": true,
-      "notes": "2027年悲觀、基準、樂觀三種情境的每股盈餘分別為4.6、5.8及7.1元，是依未來正常營運獨立預測；沒有把2026年特殊投資評價收益重複扣除。2026年前三季扣除特殊收益後的實際每股盈餘仍待驗證。"
+      "notes": "2027年悲觀、基準、樂觀三種情境的每股盈餘分別為4.6、5.8及7.1元，是依未來正常營運獨立預測；沒有把2026年特殊投資評價收益重複扣除。2026年前三季扣除特殊收益後的實際每股盈餘仍待驗證。 2028年額外資本預算尚無完整分年現金支出、折舊和新增收入橋接，因此新增獨立折舊壓測，但不直接降低原2028基準EPS，以免重複扣除或虛構時程。"
     },
     "notes": "資料截止2026年11月13日；股價101.5元為當日研究基準價。關聯企業投資收益與自行持股評價會計處理須以公開財報附註和持股結構查核，不能把估算值直接當作稅後獲利。"
   }
