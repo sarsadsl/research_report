@@ -115,3 +115,12 @@ test("readback current public research versions",async()=>{
     }catch(e){console.log("PROD_PROBE_HTML_ERROR",slug,String(e));}
   }
 });
+
+test("read latest public GitHub publish runs",async()=>{
+ try{
+  const url="https://api.github.com/repos/sarsadsl/research_report/actions/runs?per_page=15";
+  const response=await fetch(url,{headers:{"Accept":"application/vnd.github+json","User-Agent":"research-report-public-verification"},signal:AbortSignal.timeout(12000)});
+  const payload=await response.json().catch(()=>({}));
+  console.log("PROD_GH_RUNS",JSON.stringify({http:response.status,runs:(payload.workflow_runs??[]).map(r=>({id:r.id,name:r.name,event:r.event,status:r.status,conclusion:r.conclusion,head_sha:r.head_sha,created_at:r.created_at,html_url:r.html_url})).slice(0,15),error:response.ok?null:String(payload.message).slice(0,180)}));
+ }catch(e){console.log("PROD_GH_RUNS_ERROR",String(e));}
+});
