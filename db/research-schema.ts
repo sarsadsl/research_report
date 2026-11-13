@@ -159,6 +159,20 @@ export const researchReports = sqliteTable("research_reports", {
   publishedAt: text("published_at"),
 }, (t) => [uniqueIndex("research_reports_slug_version_uq").on(t.slug, t.version)]);
 
+export const researchEarningsQuality = sqliteTable("research_earnings_quality", {
+  id: text("id").primaryKey(),
+  reportId: text("report_id").notNull().references(() => researchReports.id, { onDelete: "cascade" }),
+  companyId: text("company_id").notNull().references(() => researchCompanies.id, { onDelete: "cascade" }),
+  asOfDate: text("as_of_date").notNull(),
+  reviewStatus: text("review_status").notNull(),
+  l2Status: text("l2_status").notNull(),
+  payloadJson: text("payload_json").notNull(),
+  updatedAt: text("updated_at").notNull(),
+}, (t) => [
+  uniqueIndex("research_earnings_quality_report_uq").on(t.reportId),
+  index("research_earnings_quality_company_idx").on(t.companyId),
+]);
+
 export const researchReportSections = sqliteTable("research_report_sections", {
   id: text("id").primaryKey(),
   reportId: text("report_id").notNull().references(() => researchReports.id, { onDelete: "cascade" }),
