@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS research_earnings_quality (
   review_status TEXT NOT NULL CHECK (review_status IN ('PASS', 'WARN', 'FAIL', 'NOT_RUN')),
   l2_status TEXT NOT NULL CHECK (l2_status IN ('PASS', 'FAIL', 'NOT_RUN')),
   payload_json TEXT NOT NULL,
+  payload_hash TEXT NOT NULL,
   updated_at TEXT NOT NULL
 );
 CREATE UNIQUE INDEX IF NOT EXISTS research_earnings_quality_report_uq ON research_earnings_quality(report_id);
