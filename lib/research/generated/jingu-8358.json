@@ -11,7 +11,7 @@
     "description": "金居開發生產電解銅箔，產品應用於銅箔基板、多層印刷電路板與高密度連接板；研究焦點為 RG、HVLP3+ 與 HVLP4 的 AI 伺服器材料升級。"
   },
   "dashboard": {
-    "currentView": "9 月營收 11.041 億元、YoY +64.63%、MoM +4.53%；1–9 月 85.060 億元、YoY +48.91%。Q3 月營收加總 31.690 億元，較 Q2 +12.98%，尚非 Q3 獲利財報。10/20 董事長受訪提出馬來西亞投資 80–100 億元、兩期合計年產能 3 萬噸；首期目標 2028Q3、第二期 2029H2，均為規畫。Q2 毛利率 27.39%、H1 EPS 4.22 元仍為既有實績基礎。",
+    "currentView": "2026Q3毛利率26.72%、EPS2.41元；10月營收11.080億元、年增57.95%。第三季毛利率較第二季27.39%回落，須確認HVLP良率、加工費及擴廠折舊。 2026Q3 FVOCI評價利益1.152億元、前三季累計13.449億元列OCI，不應直接加進當期EPS；後續檢驗股東權益與市值敏感度。",
     "currentThesis": "營收成長持續，整體仍待毛利率、HVLP4 良率與三廠出貨驗證；馬來西亞計畫增加長期供給選項，也提高資金、折舊與執行風險。",
     "verificationChain": [
       "10 月以後月營收能否維持 10 億元以上並延續年增",
@@ -22,7 +22,7 @@
       "HVLP4 供給缺口是否隨競爭者擴產、良率與認證改善而收斂",
       "馬來西亞資金、支出及 2028Q3／2029H2 分期量產是否落地"
     ],
-    "conclusion": "目前維持營運偏綠、執行待驗證。9 月營收續升，Q3 月營收加總較 Q2 增加約 12.98%，但毛利率與現金流仍待 Q3 財報。馬來西亞新廠把海外選項具體化，同時帶來 80–100 億元投資及後續融資、折舊風險。年產能 3 萬噸是兩期規畫，不能與既有海外 RG 月產逾 500 噸的舊研究口徑相加，也不直接上修 2026–2028 EPS。PCB／CCL 需求背景仍須轉成金居的認證、出貨與利潤證據。",
+    "conclusion": "2026Q3毛利率26.72%、EPS2.41元；10月營收11.080億元、年增57.95%。第三季毛利率較第二季27.39%回落，須確認HVLP良率、加工費及擴廠折舊。 投資燈號先維持原有框架，待現金流及應收／存貨／技術驗證後再變更。",
     "forecastScenario": "consensus",
     "headlineForecastYears": [
       2026,
@@ -35,7 +35,7 @@
     },
     "monthlyRevenue": {
       "focusYear": 2026,
-      "cumulativeThroughMonth": 9,
+      "cumulativeThroughMonth": 10,
       "unitDivisor": 100,
       "unitLabel": "億元"
     },
@@ -57,7 +57,7 @@
         "years": 3
       }
     ],
-    "estimateNote": "2026F-2028F 為本研究整合使用者提供報告與本土／外資研究模型的情境值，不是公司財測；需求、缺口與競爭者市占為公開市場估計，且 HVLP2+、HVLP3+、HVLP4 的市場範圍不同，不應直接混算；PCB 其他材料與下游製程的供需訊號僅作產業背景，不等同金居訂單；外資研究機構、本土研究機構與產業報告的假設不同，應以後續實績更新；本次新增的高層數／HDI、低損耗與 PTFE／製程訊號仍須以金居後續產品 mix、出貨、毛利率與現金流驗證。 2026-10-21 更新僅回填月營收及公開擴廠事件；既有財測數值未重估，馬來西亞投資與兩期產能未直接加入 EPS，需待融資、產品配置及量產效率確認。",
+    "estimateNote": "2026/11/13更新Q3正式財報及10月營收；Q3毛利率26.72%、營益率23.88%、基本EPS2.41元。金居前三季FVOCI評價利益13.449億元列其他綜合損益而非當期EPS；須核對OCI權益風險。2027模型暫不追逐未驗證的HVLP擴產預測。",
     "demandOutlook": [
       {
         "id": "jingu-demand-2026",
@@ -221,6 +221,54 @@
     ],
     "marketShareNote": "比較表只列公開資料可核對的全球 HVLP4 市占。2028 年古河電工與福田金屬的單獨市占未提供可核對拆分，不以殘差分配；另有公司公開資料採 HVLP2+ 口徑，與本表 HVLP4 不直接合併。PCB 供應鏈閱讀順序為上游材料／樹脂與玻纖布 → CCL → HVLP 銅箔 → PCB／HDI／載板；本報告只把金居放在 HVLP 銅箔節點，其餘節點是需求與供應約束背景。"
   },
+  "earningsQuality": {
+    "standard": "EQ-01-v1",
+    "reviewStatus": "WARN",
+    "reviewer": "研究資料來源初核（非會計師審計）",
+    "reviewedAt": "2026-11-13",
+    "coverageNote": "本輪只完成2026Q3損益表及業外占比初步檢驗；2023–2025年度與最近四季詳細附註、現金流、稅後歸母調整尚缺。此WARN不得解讀成完整EPS認證。",
+    "periods": [
+      {
+        "id": "jingu-eq-2026q3",
+        "period": "2026Q3",
+        "periodType": "quarter",
+        "currency": "TWD",
+        "scale": "million",
+        "revenue": 3169.194,
+        "operatingIncome": 756.932,
+        "nonOperatingNet": 2.896,
+        "pretaxIncome": 759.828,
+        "incomeTax": null,
+        "netIncomeAttributable": 607.905,
+        "reportedEps": 2.41,
+        "normalizedEps": null,
+        "weightedAverageShares": null,
+        "shareholdersEquity": null,
+        "adjustments": [],
+        "sourceIds": [
+          "jingu-src-q3-20261113"
+        ],
+        "claimIds": [],
+        "normalizationNote": "單季基本EPS已按公告回填；尚未取得完整近三年與最近四季各項業外及稅後歸母調節，未認證正常化EPS。"
+      }
+    ],
+    "qualitativeFlags": [],
+    "l2": {
+      "status": "NOT_RUN",
+      "summary": "已按公告計算Q3業外占比，未見單季15%量化門檻；歷史波動、OCI、公司投資與關聯交易尚未完成穿透，若新增異常則進行L2。",
+      "sourceIds": [
+        "jingu-src-q3-20261113"
+      ],
+      "claimIds": []
+    },
+    "valuation": {
+      "epsBasis": "reported",
+      "prospectiveModelOnly": true,
+      "doubleCountChecked": true,
+      "notes": "本期不改動原情境EPS；先以公司官方實績與券商估計分列，沒有把業外收益重複計入模型。"
+    },
+    "notes": "2026/11/13資料更新初核；未以單一季業外比例取代完整盈餘品質檢驗。"
+  },
   "actuals": [
     {
       "id": "jingu-2025fy",
@@ -265,6 +313,21 @@
       "netIncome": 545,
       "netMargin": 19.43,
       "eps": 2.16,
+      "companyId": "jingu-8358"
+    },
+    {
+      "id": "jingu-2026q3-audit",
+      "period": "2026Q3",
+      "fiscalYear": 2026,
+      "quarter": 3,
+      "revenue": 3169.194,
+      "grossProfit": 846.916,
+      "grossMargin": 26.72,
+      "operatingIncome": 756.932,
+      "operatingMargin": 23.88,
+      "netIncome": 607.905,
+      "netMargin": 19.18,
+      "eps": 2.41,
       "companyId": "jingu-8358"
     }
   ],
@@ -331,6 +394,13 @@
       "revenue": 1104.081,
       "mom": 4.53,
       "yoy": 64.63
+    },
+    {
+      "year": 2026,
+      "month": 10,
+      "revenue": 1108.038,
+      "mom": 0.36,
+      "yoy": 57.95
     }
   ],
   "segments": [
@@ -405,7 +475,7 @@
       "netIncome": 5431,
       "eps": 21.5,
       "optoShare": null,
-      "notes": "本土研究機構 2027F 情境；假設斗六三廠量產與 AI／PCIe5 雙引擎。"
+      "notes": "本土研究機構 2027F 情境；假設斗六三廠量產與 AI／PCIe5 雙引擎。 2026/11/13：Q3實績已核對；外部模型差異仍待審查，不以本輪更新單方面改動2027 EPS。"
     },
     {
       "fiscalYear": 2027,
@@ -490,6 +560,20 @@
       "status": "yellow",
       "valueText": "2027 年需求強，但納入中國供應商後供需可能接近平衡",
       "notes": "上行來自缺貨與加工費；下行來自競爭者擴產、設備取得與良率執行。"
+    },
+    {
+      "asOfDate": "2026-11-13",
+      "metric": "第三季獲利實績",
+      "status": "green",
+      "valueText": "EPS 2.41元，毛利率26.72%",
+      "notes": "2026Q3毛利率26.72%、EPS2.41元；10月營收11.080億元、年增57.95%。第三季毛利率較第二季27.39%回落，須確認HVLP良率、加工費及擴廠折舊。"
+    },
+    {
+      "asOfDate": "2026-11-13",
+      "metric": "十月月營收",
+      "status": "green",
+      "valueText": "2026/10 1108.038百萬元，YoY +57.95%",
+      "notes": "10月公告已核對；月營收並非獲利或正式客戶量產資格。"
     }
   ],
   "capacity": [
@@ -595,13 +679,13 @@
       "id": "jingu-report-v1",
       "title": "金居 8358｜AI 伺服器高階銅箔研究",
       "slug": "jingu-8358",
-      "summary": "9 月營收 11.041 億元，年增 64.63%；前三季累計 85.060 億元，年增 48.91%。AI PCB／CCL 材料升級支持 HVLP 銅箔需求，下一步驗證毛利率、HVLP4 良率與斗六三廠。10/20 董事長受訪提出馬來西亞兩期擴廠規畫，投資約 80–100 億元、年產能 3 萬噸，首期目標 2028Q3；這是公司展望，不是已投產營收，需另追蹤融資、資本支出與折舊。",
+      "summary": "2026Q3毛利率26.72%、EPS2.41元；10月營收11.080億元、年增57.95%。第三季毛利率較第二季27.39%回落，須確認HVLP良率、加工費及擴廠折舊。",
       "thesis": "AI PCB／CCL 規格升級與高階材料需求 → HVLP4 與 RG 銅箔需求 → 可出售產能與加工費 → 毛利率 → 斗六三廠與東南亞擴產 → EPS。",
       "status": "published",
-      "version": "1.3",
+      "version": "1.4",
       "htmlPath": "/research/reports/jingu-8358.html",
       "pdfPath": null,
-      "publishedAt": "2026-10-21"
+      "publishedAt": "2026-11-13"
     }
   ]
 }
