@@ -2,6 +2,12 @@
 
 P1.8 操作規範，於 P1.9 更新發布入口、P1.10 加入新報告 intake 與通用 Full Report。適用於研究建立、更新、驗收與交付；正式參考個股為 `vpec-2455`，另有不發布的合成第二家公司測試。欄位見 [Data Contract](RESEARCH_DATA_SCHEMA.md)，呈現見 [Style Guide](RESEARCH_STYLE_GUIDE.md)，驗收見 [QC Specification](RESEARCH_QC.md)，自動發布細節見 [Publishing](RESEARCH_PUBLISHING.md)。
 
+## EQ-01 新增的必要研究步驟
+
+新建／重新發行 `full-research` 前，依 [EQ-01 盈餘品質與業外損益穿透規範](RESEARCH_EARNINGS_QUALITY.md) 先執行 L1（近三年與最近四季的業外損益、法定／正常化 EPS、科目／來源／期間對帳），觸發門檻時執行 L2（底層投資、現金／非現金、OCI、交叉持股、淨值與估值敏感度）。不需為正常公司另建一整章；異常則在財務、估值、風險章節保留完整勾稽。
+
+目前 EQ-01 尚為人工 gate，未納入自動 validator、D1 與發布紀錄。人工記錄缺漏則完整報告審查為 BLOCKED，即使舊命令成功也不得宣稱 EQ-01 PASS。版本與數據仍以 Research Package 為準；不得手改 D1、generated SQL 或 public HTML 來規避來源與 QC。
+
 ## 維護來源與產物
 
 | 檔案／資源 | 維護方式 |
