@@ -62,6 +62,12 @@ test("EQ-01 import expects one report-scoped row if an audit exists", () => {
   assert.equal(expectedRowCounts(audited).research_earnings_quality,1);
   const run=buildRunMetadata(audited,{packageHash:"a".repeat(64),seedHash:"b".repeat(64),importedAt:"2026-11-13T00:00:00Z"});
   assert.match(verificationSql(run),/research_earnings_quality WHERE report_id=/);
+  assert.equal(run.earningsQualityHash.length,64);
+  const good={run_count:1,source_hash:run.sourceHash,seed_hash:run.seedHash,report_hash:run.reportHash,
+    eq01_payload_hash:run.earningsQualityHash,...run.rowCounts};
+  assert.equal(verifyImportRow(good,run).ok,true);
+  good.eq01_payload_hash="stale-audit";
+  assert.match(verifyImportRow(good,run).errors.join("\n"),/payload hash mismatch/);
 });
 
 test("Wrangler JSON extraction supports direct execute output", () => {
