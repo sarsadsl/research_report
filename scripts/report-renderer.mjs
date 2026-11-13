@@ -160,7 +160,7 @@ function financialChangeMetrics(vm){
 
 function profitabilityTable(vm){
   return table(["期間","毛利","毛利率","營業利益","營益率","淨利率","EPS"],makeRows(
-    [...vm.actuals].sort((a,b)=>a.period.localeCompare(b.period)),
+    [...vm.actuals].sort((a,b)=>a.period.localeCompare(b.period)).slice(-4),
     [r=>esc(r.period),r=>num(r.grossProfit,1),r=>pct(r.grossMargin),r=>num(r.operatingIncome,1),r=>pct(r.operatingMargin),r=>pct(r.netMargin),r=>num(r.eps)]
   ));
 }
@@ -322,7 +322,9 @@ function monthlyMetrics(vm){
 }
 
 function marginVisual(vm){
-  const rows=[...vm.actuals].sort((a,b)=>a.period.localeCompare(b.period));
+  // Keep the profitability chart and table to the same four latest disclosed periods;
+  // older financial data remains available in the full actuals section and database.
+  const rows=[...vm.actuals].sort((a,b)=>a.period.localeCompare(b.period)).slice(-4);
   const max=Math.max(...rows.flatMap(row=>[row.grossMargin,row.operatingMargin,row.netMargin].filter(Number.isFinite)),50);
   const series=[
     ["gross","毛利率",row=>row.grossMargin],
