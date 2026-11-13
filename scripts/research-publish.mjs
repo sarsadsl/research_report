@@ -120,7 +120,7 @@ export async function publishResearch(options, rootDir = process.cwd()) {
       for (const output of profileOutputs()) {
         const publicHash = hashBytes(await readFile(join(rootDir, output)));
         const assetHash = hashBytes(await readFile(join(rootDir, ".open-next/assets", output.replace(/^public\//, ""))));
-        assertUnchanged(publicHash, assetHash);
+        assertUnchanged(publicHash, assetHash, `public/built asset ${output}`);
       }
       const reportBytes = await readFile(join(rootDir, `public/research/reports/${slug}.html`));
       const reportText = reportBytes.toString("utf8");
@@ -136,8 +136,8 @@ export async function publishResearch(options, rootDir = process.cwd()) {
     },
     qc: () => runReportQc({ slug, rootDir, materialize: false }),
     async verify(candidate, expectedSourceHash) {
-      assertUnchanged(expectedSourceHash, await sourceHash());
-      assertUnchanged(candidate.buildHash, await builtHash());
+      assertUnchanged(expectedSourceHash, await sourceHash(), "input hash at seal/import");
+      assertUnchanged(candidate.buildHash, await builtHash(), "built OpenNext tree");
       for (const file of [`public/research/reports/${slug}.html`, `exports/${standaloneFilename(pkg)}`, `.open-next/assets/research/reports/${slug}.html`]) {
         assertUnchanged(candidate.reportHash, hashBytes(await readFile(join(rootDir, file))));
       }

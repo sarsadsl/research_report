@@ -22,8 +22,8 @@ export function assertReleaseQc(qc, candidate) {
   }
 }
 
-export function assertUnchanged(expected, current) {
-  if (expected !== current) throw new Error("Release inputs or built artifacts changed after validation; rerun publish");
+export function assertUnchanged(expected, current, subject = "release artifact") {
+  if (expected !== current) throw new Error(`Release ${subject} changed: expected ${expected}, got ${current}. Rerun publish after diagnosing the source of drift.`);
 }
 
 // Every external effect is behind the same ordered gate in CI and local CLI.
@@ -45,7 +45,7 @@ export async function executeRelease(options, actions, record) {
     record.inputHash = sourceHash;
     await step("build", () => actions.build());
     record.candidate = await step("candidate", async () => {
-      assertUnchanged(sourceHash, await actions.sourceHash());
+      assertUnchanged(sourceHash, await actions.sourceHash(), "input hash after build");
       return actions.candidate();
     });
     record.qc = await step("qc", async () => {
