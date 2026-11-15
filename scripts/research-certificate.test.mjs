@@ -726,7 +726,7 @@ test("path boundary checks reject review/output/private-key escapes and symlinks
         validatorRunner: fx.validatorRunner,
         stdout: captureIo().stdout,
       }),
-      /symlink/i,
+      /symbolic link/i,
     );
   }
 });
