@@ -36,6 +36,10 @@ function harness(overrides = {}) {
     candidate: async () => structuredClone(candidate),
     qc: async () => qcResult(),
     verify: async () => {},
+    verifyCertificate: async () => {
+      effects.push("verify-certificate");
+      return { status: "PASS", currentValidationStatus: "NOT_VERIFIED", payloadHash: "signed-payload" };
+    },
     archive: async () => effects.push("archive"),
     import: async () => { effects.push("remote-import"); return { runId: "run-1" }; },
     deploy: async () => { effects.push("remote-deploy"); return { status: "SUCCESS", versionId: "version-1" }; },
@@ -68,15 +72,17 @@ test("dry-run completes QC and archives evidence without any external effect", a
 test("successful release imports and deploys only after QC and archiving", async () => {
   const h = harness();
   const record = await executeRelease({ remote: true }, h.actions, h.record);
-  assert.deepEqual(h.effects, ["build", "archive", "remote-import", "remote-deploy"]);
+  assert.deepEqual(h.effects, ["build", "archive", "verify-certificate", "remote-import", "remote-deploy"]);
   assert.equal(record.status, "DEPLOYED");
+  assert.equal(record.stages.certificate.status, "PASS");
+  assert.equal(record.certificateVerification.status, "PASS");
   assert.equal(record.import.runId, "run-1");
   assert.equal(record.deployment.versionId, "version-1");
-  assert.ok(h.snapshots.some(snapshot => snapshot.stages.import?.status === "RUNNING" && snapshot.stages.qc.status === "PASS"));
+  assert.ok(h.snapshots.some(snapshot => snapshot.stages.import?.status === "RUNNING" && snapshot.stages.certificate.status === "PASS"));
 });
 
 test("every pre-release failure prevents both D1 and deployment and saves failure evidence", async t => {
-  for (const action of ["validate", "build", "candidate", "qc", "archive", "verify"]) {
+  for (const action of ["validate", "build", "candidate", "qc", "archive", "verify", "verifyCertificate"]) {
     await t.test(action, async () => {
       const h = harness({ [action]: async () => { throw new Error("deliberate failure"); } });
       await assert.rejects(executeRelease({ remote: true }, h.actions, h.record), /deliberate failure/);

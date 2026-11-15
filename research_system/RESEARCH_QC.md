@@ -1,6 +1,6 @@
 # Research Quality Control
 
-P1.8 QC specification，於 P1.9 更新自動發布 gate。操作與交付範本見 [Workflow](RESEARCH_WORKFLOW.md)，人工視覺驗收見 [Style Guide](RESEARCH_STYLE_GUIDE.md)，發布紀錄見 [Publishing](RESEARCH_PUBLISHING.md)。
+P1.8 QC specification，於 P1.9 更新自動發布 gate。操作與交付範本見 [Workflow](RESEARCH_WORKFLOW.md)，視覺規範見 [Style Guide](RESEARCH_STYLE_GUIDE.md)，發布紀錄見 [Publishing](RESEARCH_PUBLISHING.md)，數值／引用檢查及 Gemini 審查憑證見[獨立研究驗證](RESEARCH_VERIFICATION.md)。
 
 ## EQ-01｜盈餘品質與業外損益穿透（新建／新版完整報告必做）
 
@@ -27,19 +27,19 @@ P1.8 QC specification，於 P1.9 更新自動發布 gate。操作與交付範本
 | Gate | 執行方式 | 現有檢查／成功證據 | 未涵蓋 |
 | --- | --- | --- | --- |
 | Package | `npm.cmd run research:validate -- vpec-2455` | Schema、身分與版本、ID／引用、日期／欄位限制、部分 domain rules；JSON result PASS、canonical hashes | 來源真實性、外連可用性、全部公式重算及經濟語意 |
-| Generated + regression | `npm.cmd run research:check` | Validator + generator --check + 現有 Node tests，exit 0 | 瀏覽器排版、D1、正文審閱；slug 固定 2455 |
+| Generated + regression | `npm.cmd run research:check` | Research checks、Python verifier unit tests、Node regression tests，exit 0 | 瀏覽器排版、D1、來源文件真實性；既有 package QC 仍有固定範圍 |
 | Import plan | `npm.cmd run research:import -- vpec-2455 --dry-run` | 本機 package／generated 檢查、hash 與預期筆數；DRY RUN | 不連 D1，不能證明權限、migration 或實際資料 |
 | D1 | `npm.cmd run research:import -- vpec-2455 --local`（正式發布使用 publish gate） | Migrations、匯入、run ID + package hash + imported status、source／seed／report hash 回讀、12 表筆數 | 非逐欄比較；低階 importer 不代表完整發布 |
 | Standalone | `npm.cmd run report:export -- vpec-2455` | Metadata、source pages、payload profile／slug、部分外部依賴模式、本機網站 HTML 逐 byte 相等；READY TO DELIVER | 無瀏覽器排版、未偵測所有網路 API／資源類型、不代表線上網站相同 |
 | Rendered layout | `npm.cmd run report:qc -- vpec-2455` | Export 後以 Chrome／Edge 開 local HTML，驗證兩個 viewport runtime diagnostics；READY TO PUBLISH | Dashboard、Laptop、其他 profile、可讀性、互動點擊、全部 runtime errors、斷網封鎖 |
-| Automated release | `npm.cmd run research:publish -- vpec-2455 --dry-run`（正式改 --remote） | 資料／測試、build、QC、hash seal；正式才匯入／部署並保存結果 | 不強制人工 handoff，不做 lifecycle transition |
-| Release review | 人工填 handoff | 內容、來源、單位、假設、操作、離線及實際站點驗收 | 人工部分尚未自動記錄／強制 |
+| Automated release | `npm.cmd run research:publish -- vpec-2455 --dry-run`（正式改 --remote） | 資料／測試、build、QC、hash seal；remote 另驗簽章憑證後才匯入／部署 | 不做 lifecycle transition；視覺可讀性、鍵盤操作、實際站點與離線驗收仍有覆蓋缺口 |
+| Independent verification | `npm.cmd run research:verification -- validate <slug>`、`review <slug>`；憑證由 `research-certificate.mjs` 簽署／驗證 | Deterministic schema、引用、可得證據與計算檢查；Gemini 獨立審查；憑證綁定 package、report、policy 與 verifier code | 原始證據缺失時為 NOT_VERIFIED；模型意見不是來源真實性的證明。缺憑證、P0/P1、Gemini 失敗、未揭露 P2 均阻擋遠端寫入 |
 
-實作位於 `scripts/research-lib.mjs`、`research-generate.mjs`、`research-import.mjs`、`research-import-lib.mjs`、`report-exporter.mjs`、`report-qc.mjs` 與 `report_sources/vpec-layout-v7.js`。命令以 exit code 判定成功，不可只看到前段 metadata 的 imported status 就宣告完成。
+實作位於 `scripts/research-lib.mjs`、`research-generate.mjs`、`research-import.mjs`、`research-import-lib.mjs`、`report-exporter.mjs`、`report-qc.mjs`、`scripts/research-certificate.mjs` 與 `verification/`。命令以 exit code 判定成功，不可只看到前段 metadata 的 imported status 就宣告完成。
 
 ## Package 與資料驗收
 
-下列為必要 blocking 要求，工具未涵蓋部分由人工檢查：
+下列為必要 blocking 要求。獨立 verifier 已自動檢查結構化 schema、引用關聯、來源證據可得性及可重算財務數值；未涵蓋項目不能因其他 gate 通過而視為通過：
 
 - Manifest／package schema 與版本受支援，身分、reportVersion 一致；必要陣列及輸出存在，ID 與 composite keys 唯一。
 - Source、claim、input claim、section payload 引用可解析；估計有分類，推論有方法及輸入；來源確實支持對應結論。
@@ -113,12 +113,12 @@ Deployment: <not deployed or actual result and URL>
 
 ## CI gate：P1.9 現況與後續要求
 
-`.github/workflows/deploy-cloudflare.yml` 先判斷變更範圍並檢查文件。非 docs-only 變更及手動 dispatch 執行 P1.9 publish：validate → build → candidate → QC → seal → import → deploy。自動 QC FAIL／缺漏、artifact 漂移會阻擋遠端操作；失敗與成功都嘗試上傳證據 30 天。`npm run deploy` 走同一入口。人工內容 gate 尚未實作，仍須發布者完成。
+`.github/workflows/deploy-cloudflare.yml` 先判斷變更範圍、測試 Python verifier，並在載入 Cloudflare credentials 前驗證簽章憑證。非 docs-only 變更及手動 dispatch 執行 P1.9 publish：validate → build → candidate → QC → seal → certificate → import → deploy。自動 QC FAIL／缺漏、artifact 漂移、憑證失效或不存在都會阻擋遠端操作；失敗與成功都嘗試上傳證據 30 天。`npm run deploy` 走同一入口。視覺可讀性、鍵盤與實際站點／離線驗收尚未完整自動化，不可宣稱已通過。
 
-已實作：發布前自動資料／排版 gate、hash 一致性核對、故意失敗測試、docs-only 分流及 release artifact。後續工作：
+已實作：發布前自動資料／排版 gate、獨立 Python／Gemini review 憑證、hash 一致性核對、故意失敗測試、docs-only 分流及 release artifact。後續工作：
 
-1. 將人工驗收紀錄接入發布前 gate，擴充 Laptop／其他 profile 的自動覆蓋。
+1. 擴充視覺、鍵盤、離線及其他 profile 的自動覆蓋；目前不宣稱這些檢查已完成。
 2. 實作 lifecycle 轉移及未公開內容存取限制；目前 publisher 僅接受既有 published package。
 3. 長期不可變歷史存放與跨服務恢復程序；CI artifact 有保留期限，D1 與 Worker 不是單一交易。
 
-P1.9 的 DEPLOYED 只表示自動發布流程成功，不等於所有人工品質項目已 PASS。
+P1.9 的 DEPLOYED 只表示自動發布流程及簽章研究 review gate 成功，不代表原始來源已由第三方證實，也不代表尚未自動化的視覺／離線驗收已通過。

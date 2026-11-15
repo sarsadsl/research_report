@@ -5,6 +5,7 @@ import {
   expectedRowCounts,
   extractWranglerRows,
   parseImportArgs,
+  requireRemoteCertificate,
   runRecordSql,
   verificationSql,
   verifyImportRow,
@@ -25,6 +26,34 @@ test("import arguments default safely to local and reject conflicting targets", 
   assert.equal(parseImportArgs(["vpec-2455", "--remote", "--skip-migrations"]).target, "remote");
   assert.throws(() => parseImportArgs(["vpec-2455", "--local", "--remote"]), /Choose only one/);
   assert.throws(() => parseImportArgs(["vpec-2455", "--wat"]), /Unknown importer option/);
+});
+
+test("remote import requires a passing signed certificate before any D1 effect", async () => {
+  const remote = parseImportArgs(["vpec-2455", "--remote"]);
+  let calls = 0;
+  const verify = async () => {
+    calls += 1;
+    return {
+      ok: true,
+      certificate: { payload: { status: "PASS_WITH_P2" } },
+      summary: { status: "PASS_WITH_P2", payloadHash: "signed" },
+    };
+  };
+
+  assert.deepEqual(await requireRemoteCertificate(remote, verify), {
+    status: "PASS_WITH_P2",
+    payloadHash: "signed",
+  });
+  assert.equal(calls, 1);
+  await assert.rejects(
+    requireRemoteCertificate(remote, async () => ({ ok: false, certificate: { payload: { status: "BLOCKED" } } })),
+    /certificate did not pass/i,
+  );
+  await assert.rejects(requireRemoteCertificate(remote), /requires a signed/i);
+
+  assert.equal(await requireRemoteCertificate(parseImportArgs(["vpec-2455", "--local"])), null);
+  assert.equal(await requireRemoteCertificate(parseImportArgs(["vpec-2455", "--remote", "--dry-run"])), null);
+  assert.equal(calls, 1, "local and dry-run paths must not invoke certificate verification");
 });
 
 test("run metadata is deterministic for package identity and records canonical counts", () => {

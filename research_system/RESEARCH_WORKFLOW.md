@@ -1,12 +1,12 @@
 # Research Workflow
 
-P1.8 操作規範，於 P1.9 更新發布入口、P1.10 加入新報告 intake 與通用 Full Report。適用於研究建立、更新、驗收與交付；正式參考個股為 `vpec-2455`，另有不發布的合成第二家公司測試。欄位見 [Data Contract](RESEARCH_DATA_SCHEMA.md)，呈現見 [Style Guide](RESEARCH_STYLE_GUIDE.md)，驗收見 [QC Specification](RESEARCH_QC.md)，自動發布細節見 [Publishing](RESEARCH_PUBLISHING.md)。
+P1.8 操作規範，於 P1.9 更新發布入口、P1.10 加入新報告 intake 與通用 Full Report，並新增[獨立研究驗證](RESEARCH_VERIFICATION.md)。適用於研究建立、更新、驗收與交付；正式參考個股為 `vpec-2455`，另有不發布的合成第二家公司測試。欄位見 [Data Contract](RESEARCH_DATA_SCHEMA.md)，呈現見 [Style Guide](RESEARCH_STYLE_GUIDE.md)，驗收見 [QC Specification](RESEARCH_QC.md)，自動發布細節見 [Publishing](RESEARCH_PUBLISHING.md)。
 
 ## EQ-01 新增的必要研究步驟
 
 新建／重新發行 `full-research` 前，依 [EQ-01 盈餘品質與業外損益穿透規範](RESEARCH_EARNINGS_QUALITY.md) 先執行 L1（近三年與最近四季的業外損益、法定／正常化 EPS、科目／來源／期間對帳），觸發門檻時執行 L2（底層投資、現金／非現金、OCI、交叉持股、淨值與估值敏感度）。不需為正常公司另建一整章；異常則在財務、估值、風險章節保留完整勾稽。
 
-工程修改分支已加入 JSON Schema、Validator、D1 migration／importer／回讀、Full Report EQ-01 呈現與測試。對 2026-11-13 起新發布（以資料截止日或 publishedAt 判定）的完整報告，在 `research:validate` 時自動要求 EQ-01；既有舊 package 不追溯，重新發行須更新 EQ-01。若命中 L2，報告增加一頁，應調整 `full-research` profile 的 expectedPages（或省略讓其隨內容計算）。**原始財報與調整的經濟實質仍需人工審查**；未通過則 BLOCKED。分支尚未合併／部署，不得手改 D1、generated SQL 或 public HTML 規避 QC。
+工程修改分支已加入 JSON Schema、Validator、D1 migration／importer／回讀、Full Report EQ-01 呈現與測試。對 2026-11-13 起新發布（以資料截止日或 publishedAt 判定）的完整報告，在 `research:validate` 時自動要求 EQ-01；既有舊 package 不追溯，重新發行須更新 EQ-01。若命中 L2，報告增加一頁，應調整 `full-research` profile 的 expectedPages（或省略讓其隨內容計算）。獨立 verifier 會檢查可取得的原始證據；缺少必要原件會標為 `NOT_VERIFIED` 並阻擋簽證。Gemini review 和簽章操作見[獨立研究驗證](RESEARCH_VERIFICATION.md)。視覺可讀性、鍵盤與離線驗收仍有未自動化部分，不能從簽章推定這些已通過。分支尚未合併／部署，不得手改 D1、generated SQL 或 public HTML 規避 QC。
 
 ## 維護來源與產物
 
@@ -63,12 +63,13 @@ Intake PASS 只表示來源清單可讀。接著才依 schema 建立 `manifest.j
 
 ```powershell
 git status --short
+py -3 -m pip install --requirement requirements-verification.txt
 npm.cmd run research:validate -- vpec-2455
 npm.cmd run research:generate -- vpec-2455
 npm.cmd run research:check
 ```
 
-保留使用者無關變更。`research:check` 包含 validator、generated 一致性及現有單元測試，目前固定檢查 2455，**不含瀏覽器 QC 或 D1 驗證**。
+保留使用者無關變更。`research:check` 包含既有 Research checks、Python verifier tests 及 Node tests；瀏覽器 QC、D1 驗證與 Gemini review 需分別執行。獨立驗證命令與憑證流程見[獨立研究驗證](RESEARCH_VERIFICATION.md)。
 
 ### 2. 產出報告及驗收（不寫 D1）
 
@@ -99,9 +100,9 @@ npm.cmd run research:publish -- vpec-2455 --dry-run
 npm.cmd run research:publish -- vpec-2455 --remote
 ```
 
-正式命令或其別名 `npm.cmd run deploy` 會先完成建置、QC、artifact 核對，再匯入與部署，不需先另跑 remote migrations／import。低階 importer 保留作維護，不是完整發布 gate。
+正式命令或其別名 `npm.cmd run deploy` 會先完成建置、QC、artifact 核對與憑證驗證，再匯入與部署，不需先另跑 remote migrations／import。低階 `research:import --remote` 也會在 migrations／SQL 前驗證憑證。
 
-Push main 的 CI 對程式、研究資料或混合變更執行同一 gate；純 README、research_system 直屬 Markdown、docs Markdown 僅做文件檢查。手動 workflow_dispatch 仍跑完整發布。QC 後不重建報告，來源／build／report hash 漂移會阻擋；各階段證據保存於 .research-publish 及 CI artifact。人工內容、來源與離線驗收尚未自動強制，發布者仍須保存。
+Pull request 會執行 Python 驗證器測試與 Research QC，並對受變更影響的報告驗證簽章憑證。Push main 的 CI 對程式、研究資料或混合變更執行發布 gate；純 README、research_system 直屬 Markdown、docs Markdown 僅做文件檢查。手動 workflow_dispatch 仍跑完整發布。QC 後不重建報告，來源／build／report hash 漂移會阻擋；各階段證據保存於 .research-publish 及 CI artifact。原件缺失時不會宣稱已驗證；尚未自動化的視覺與離線驗收限制見[獨立研究驗證](RESEARCH_VERIFICATION.md)。
 
 部署後檢查實際站點的 `/research`、`/research/vpec-2455`、`/research/reports/vpec-2455.html`（公版主報告）、`/api/research/vpec-2455`；如需比較，再檢查 profile 指定的原始 baseline URL。交付填實際 origin，不猜測網址。Remote import 成功不代表網站部署完成。
 

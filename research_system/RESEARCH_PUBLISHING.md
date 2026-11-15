@@ -1,6 +1,6 @@
 # P1.9 — Gated Research Publishing
 
-P1.9 將自動資料／排版 gate 接入正式發布。人工來源核對、完整正文一致性、可讀性、無障礙及真正離線驗收仍依 [Workflow](RESEARCH_WORKFLOW.md) 與 [QC](RESEARCH_QC.md) 執行；本命令不代表這些人工項目已通過，也不實作 draft／review 狀態轉移。
+P1.9 將自動資料／排版 gate 接入正式發布；獨立驗證系統再以本機 Gemini 審查及簽章憑證綁定報告版本。發布 gate 不要求日常人工核准，也不代表程式能取代所有來源真實性與研究判斷。驗證結果、證據限制及 P2 揭露規則見[獨立研究驗證](RESEARCH_VERIFICATION.md)；既有 draft／review 狀態轉移仍未實作。
 
 ## 命令與範圍
 
@@ -14,23 +14,24 @@ npm.cmd run research:publish -- vpec-2455 --dry-run
 npm.cmd run research:publish -- vpec-2455 --remote
 ```
 
-未指定旗標時也是 dry-run。Remote 要求研究內容已人工審閱、package report status 是 published，且來源工作區已提交；生成的 report HTML 可有差異，不需提交。這只是沿用現有 published package 的發布，不會自動把 draft 改為 published。
+未指定旗標時也是 dry-run。Remote 要求 package report status 是 published、來源工作區已提交，且目前版本有可驗證的簽章憑證；生成的 report HTML 可有差異，不需提交。這只是沿用現有 published package 的發布，不會自動把 draft 改為 published。
 
 發布入口固定使用 `full-research` profile 的輸出；若 package 同時保留原始完整格式 baseline，它只作為可直接比對的附加 artifact，不會取代公版主報告。
 
 `npm.cmd run deploy` 及舊 `node scripts/run-cloudflare.mjs deploy` 都導向這個 gate。沒有 skip-QC／skip-build 選項。預覽命令不寫入遠端，維持原行為。
 
-低階 `research:import --remote`、Wrangler 及 Cloudflare dashboard 仍能直接維護遠端資源；P1.9 是專案發布入口的保護，不是 Cloudflare 帳號的權限邊界。維護命令不可當成已通過發布流程的替代證據。
+低階 `research:import --remote` 同樣會在 migrations／SQL 前要求憑證；專案無法限制使用者直接呼叫 Wrangler 或 Cloudflare dashboard。憑證是 repo 工作流程的發布閘門，不是 Cloudflare 帳號的權限邊界。
 
 ## 執行順序
 
 | 階段 | 動作 | 失敗影響 |
 | --- | --- | --- |
-| validate | Package/schema、generated 一致性、全部現有 tests、發布目標與來源狀態 | 不建置、不寫 D1、不部署 |
+| validate | Package/schema、generated 一致性、Node regression tests、發布目標與來源狀態；Python verifier tests 由 `research:check` 與 CI 執行 | 不建置、不寫 D1、不部署 |
 | build | OpenNext 建置，Next build 內生成網站 report | 不寫 D1、不部署 |
 | candidate | 核對來源未漂移、所有 profile 的 public／built assets 逐 byte 一致，計算 build/report hashes | 不寫 D1、不部署 |
 | qc | 對已建置的同份報告 export、Desktop／Mobile 瀏覽器檢查，不再 materialize | 不寫 D1、不部署 |
 | seal | 再核對來源、整個 .open-next tree、HTML／standalone hashes，保存交付副本 | 不寫 D1、不部署 |
+| certificate | 驗證簽章、可信公鑰及目前 package／report／policy／verifier hashes | 不寫 D1、不部署 |
 | import | 最後核對後，執行現有 importer 的 migrations、SQL、筆數與 hash 後驗證 | 不部署；D1 可能已有部分變更，不宣稱回滾 |
 | deploy | 再次核對 hashes，直接部署已建置 Worker/assets，不重跑 OpenNext 或 materialize | 保存失敗階段；不回滾已匯入 D1 |
 
@@ -52,7 +53,7 @@ P1.9 使用 puppeteer-core 控制已安裝的 Chrome／Edge，明確設定並回
 
 同 package 重跑依舊共用 D1 run ID，但每次 release 證據獨立。Importer 現在除 run/package 與 12 表筆數外，會回讀核對 source、seed、report hashes；仍非全表逐欄值驗證。
 
-Record 的 manualReview 欄位清楚標示人工驗收未由程式記錄。不要把 DEPLOYED 當作所有研究品質／人工 gate 都 PASS。
+Release record 會標示 `manualReview: NOT_REQUIRED_BY_RELEASE_GATE`，表示自動發布 gate 不等待日常人工核准；它不代表未執行的檢查已通過。不要把 `DEPLOYED` 解讀為來源已被獨立證實或所有研究限制都不存在。
 
 ## GitHub Actions
 
@@ -78,6 +79,6 @@ Windows `Generated file is stale` 處理方式不變：先 research:generate，�
 
 Tests 覆蓋：乾跑無 external effects、成功順序、任一前置 stage 失敗阻擋遠端、缺漏／失敗 QC、hash 不符、build／import 前後漂移、D1 失敗阻擋 deploy、部署失敗保存已匯入結果、artifact 檔案更動及 docs-only／混合／rename 路徑判斷。故意失敗測試使用隔離的 I/O adapters，不觸碰正式資料庫。
 
-尚未涵蓋：人工內容 gate 自動化、其他 profile／Laptop 自動 QC、狀態轉移與私密存取、跨服務交易／回滾、永久歷史 artifact、部署後全站／內容驗收。參見 [Roadmap](P1_ROADMAP.md)。
+尚未涵蓋：其他 profile／Laptop 自動 QC、狀態轉移與私密存取、跨服務交易／回滾、永久歷史 artifact、部署後全站／內容驗收。來源文件缺漏仍會標為 NOT_VERIFIED；本機 Gemini 的實際可用性與憑證設定是遠端發布前置條件。參見 [Roadmap](P1_ROADMAP.md)。
 
 實作依據：[Wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/workers/)、[GitHub workflow artifacts](https://docs.github.com/en/actions/how-tos/writing-workflows/choosing-what-your-workflow-does/storing-and-sharing-data-from-a-workflow)。

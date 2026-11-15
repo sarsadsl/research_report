@@ -3,10 +3,12 @@ import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { assertSafeSlug, assertValid, sha256, validateSlug } from "./research-lib.mjs";
+import { runVerifyCommand } from "./research-certificate.mjs";
 import {
   buildRunMetadata,
   extractWranglerRows,
   parseImportArgs,
+  requireRemoteCertificate,
   runRecordSql,
   verificationSql,
   verifyImportRow,
@@ -47,6 +49,13 @@ console.log(JSON.stringify({
 if (options.dryRun) {
   console.log("DRY RUN: validation passed; D1 was not changed.");
   process.exit(0);
+}
+
+if (options.target === "remote") {
+  const certificate = await requireRemoteCertificate(options, () =>
+    runVerifyCommand({ root: process.cwd(), slug, env: process.env }),
+  );
+  console.log(`Remote D1 gate: signed certificate verified (${certificate.status}).`);
 }
 
 function runWrangler(args, spawnOptions = {}) {
