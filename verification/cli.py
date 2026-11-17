@@ -269,6 +269,8 @@ def _build_report_sections_context(
 def _build_source_evidence_for_gemini(
     pkg: Mapping[str, Any],
     evidence_report: Mapping[str, Any],
+    *,
+    allow_private_source_review: bool = False,
 ) -> tuple[list[dict[str, Any]], list[str], list[str]]:
     """為每個 package source 建立明確的 `sourceEvidence` 項目。
 
@@ -313,8 +315,20 @@ def _build_source_evidence_for_gemini(
         is_required = src_id in required_ids or bool(src.get("required", True))
         pub_rec = public_by_id.get(src_id, {})
 
-        if restricted:
-            # 嚴禁將受限／私人券商報告原文傳送給 Gemini，對外部審查標記為 unavailable
+        private_evidence = internal_excerpts.get(src_id)
+        if (
+            restricted
+            and allow_private_source_review
+            and isinstance(private_evidence, Mapping)
+            and isinstance(private_evidence.get("excerpt"), str)
+            and private_evidence["excerpt"].strip()
+        ):
+            available = True
+            availability = "available"
+            excerpt_val = private_evidence["excerpt"]
+            reason = "authorized_private_local_evidence_excerpt"
+        elif restricted:
+            # 預設不將私人券商內容送交 Gemini；明確啟用時才使用本機證據摘錄
             available = False
             availability = "unavailable"
             excerpt_val: str | None = None
@@ -463,6 +477,7 @@ def run_review_command(
     runner: RunnerCallable | None = None,
     base_env: Mapping[str, str] | None = None,
     gemini_reviewer: Callable[..., GeminiReviewResult] | None = None,
+    allow_private_source_review: bool = False,
 ) -> tuple[int, dict[str, Any]]:
     """執行 `review` 子命令：
 
@@ -574,7 +589,7 @@ def run_review_command(
         pkg_doc, root_resolved, clean_slug
     )
     source_evidence, restricted_blocked_ids, unavailable_required_ids = _build_source_evidence_for_gemini(
-        pkg_doc, evidence_report
+        pkg_doc, evidence_report, allow_private_source_review=allow_private_source_review
     )
 
     deterministic_checks_payload = {
@@ -606,7 +621,7 @@ def run_review_command(
         )
     if restricted_blocked_ids:
         blocked_reasons.append(
-            "包含受限／私人券商來源，依法規與安全政策不得上傳至外部 Gemini 審查："
+            "包含未授權送交 Gemini 審查的受限／私人券商來源："
             + ", ".join(restricted_blocked_ids)
         )
     if unavailable_required_ids:
@@ -815,6 +830,11 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help=f"指定 Gemini 審查模型（預設：{DEFAULT_GEMINI_MODEL}）。",
     )
     review_parser.add_argument(
+        "--allow-private-source-review",
+        action="store_true",
+        help="明確授權將本機受限券商證據摘錄送交 Agy/Gemini 私人審查；絕不寫入公開憑證。",
+    )
+    review_parser.add_argument(
         "--output",
         default=None,
         help="自訂審查紀錄輸出路徑（選填，必須位於 <root>/.research-verification/ 之下）。",
@@ -869,6 +889,7 @@ def run_cli(
             runner=runner,
             base_env=base_env,
             gemini_reviewer=gemini_reviewer,
+            allow_private_source_review=args.allow_private_source_review,
         )
     else:  # pragma: no cover
         exit_code = EXIT_BLOCKED

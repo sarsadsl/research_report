@@ -773,6 +773,50 @@ class VerificationCliTestCase(unittest.TestCase):
                 record_data["batches"][0]["prompt"],
             )
 
+    def test_private_broker_excerpt_requires_opt_in_and_stays_out_of_public_output(self) -> None:
+        """明確啟用後才把本機券商摘錄送入私人審查；公開摘要不含摘錄。"""
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            _populate_synthetic_root(
+                root,
+                slug="acme-1234",
+                include_evidence_files=True,
+                include_restricted_source=True,
+            )
+            runner, calls = _make_fake_agy_runner(findings=[])
+            out = io.StringIO()
+            code = run_cli(
+                [
+                    "review", "acme-1234", "--root", str(root),
+                    "--allow-private-source-review",
+                ],
+                stdout=out,
+                runner=runner,
+            )
+            self.assertEqual(code, EXIT_PASS)
+            self.assertGreaterEqual(len(calls), 3)
+            public_summary = out.getvalue()
+            self.assertNotIn("SECRET_BROKER_PRIVATE_CONTENT_DO_NOT_UPLOAD", public_summary)
+            summary = json.loads(public_summary)
+            self.assertTrue(summary["modelInvoked"])
+            record = json.loads((root / summary["recordPath"]).read_text(encoding="utf-8"))
+            self.assertEqual(record["restrictedSourceIds"], [])
+            self.assertEqual(record["unavailableSourceIds"], [])
+            self.assertIn(
+                "SECRET_BROKER_PRIVATE_CONTENT_DO_NOT_UPLOAD",
+                record["batches"][0]["prompt"],
+            )
+            broker_summary = next(
+                source for source in record["sourceEvidenceSummary"]
+                if source["sourceId"] == "src-broker-private"
+            )
+            self.assertTrue(broker_summary["restricted"])
+            self.assertTrue(broker_summary["hasExcerpt"])
+            self.assertNotIn(
+                "SECRET_BROKER_PRIVATE_CONTENT_DO_NOT_UPLOAD",
+                json.dumps(record["sourceEvidenceSummary"], ensure_ascii=False),
+            )
+
     def test_outside_root_and_non_verification_output_paths_rejected(self) -> None:
         """測試拒絕任何位於 `<root>/.research-verification` 之外的 `--output` 路徑及非法 slug。"""
         with tempfile.TemporaryDirectory() as tmp_dir, tempfile.TemporaryDirectory() as outside_dir:

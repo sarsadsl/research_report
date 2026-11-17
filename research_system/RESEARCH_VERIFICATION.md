@@ -24,7 +24,9 @@ When all required evidence is available locally, run the independent review:
 npm.cmd run research:verification -- review <slug> --root . --evidence-dir research/<slug>/sources --model gemini-4-argon-high
 ```
 
-The detailed review record, including prompts and model output, stays in the ignored `.research-verification/` directory. The command does not write report data, a certificate, D1, or Cloudflare. Missing required evidence, restricted sources that are disallowed for external review, unavailable Agy/models, malformed model output, P0/P1, or an undisclosed P2 returns `BLOCKED`. P2 can pass only when the disclosure location resolves to supplied report text.
+If broker evidence must be checked by Gemini, explicitly add `--allow-private-source-review` to the local review command. This sends a local excerpt of each restricted source to Agy/Gemini. Confirm the source may be shared with that service before using the flag. The default keeps restricted sources out of model prompts and blocks the review. The excerpt is limited to 4,000 characters per source, so a passing review does not establish that every page of a long broker report was checked.
+
+The detailed review record, including prompts, private excerpts when enabled, and model output, stays in the ignored `.research-verification/` directory. The public certificate contains hashes and counts only. The command does not write report data, a certificate, D1, or Cloudflare. Missing required evidence, restricted sources that were not authorized for external review, unavailable Agy/models, malformed model output, P0/P1, or an undisclosed P2 returns `BLOCKED`. P2 can pass only when the disclosure location resolves to supplied report text.
 
 P1 findings include a concrete remediation recommendation, but this version does not fetch missing sources or edit the package automatically. It remains blocked until the package/evidence is corrected and validation plus review are rerun. P3 findings are recorded and do not block; automatic copy edits/re-review are not implemented. Do not describe either severity as automatically repaired.
 
