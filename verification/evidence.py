@@ -204,7 +204,10 @@ def inspect_sources_and_evidence(
                         "restricted": restricted,
                         "fileSha256": file_hash,
                         "textSha256": text_hash,
-                        "excerpt": extracted_text[:4000],
+                        # Keep the complete extracted text for private evidence review.
+                        # The Gemini batcher either includes it within its prompt budget
+                        # or blocks; silently truncating can hide cited values on later pages.
+                        "excerpt": extracted_text,
                     }
                 else:
                     status = "NOT_VERIFIED"

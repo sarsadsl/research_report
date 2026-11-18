@@ -497,7 +497,8 @@ def _populate_synthetic_root(
         )
         if include_restricted_source:
             (sources_dir / "src-broker-private.txt").write_text(
-                "SECRET_BROKER_PRIVATE_CONTENT_DO_NOT_UPLOAD: 第一金投顧內部報告全文。",
+                ("BROKER_PRIVATE_BODY " * 260)
+                + "SECRET_BROKER_PRIVATE_CONTENT_DO_NOT_UPLOAD: 第一金投顧內部報告全文。",
                 encoding="utf-8",
             )
 
