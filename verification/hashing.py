@@ -42,6 +42,7 @@ VERIFIER_CODE_FILES: tuple[str, ...] = (
     "verification/__init__.py",
     "verification/hashing.py",
     "verification/evidence.py",
+    "verification/locators.py",
     "verification/recompute.py",
     "verification/gemini_review.py",
     "verification/validator.py",

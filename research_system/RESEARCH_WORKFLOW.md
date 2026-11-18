@@ -43,7 +43,7 @@ Intake PASS 只表示來源清單可讀。接著才依 schema 建立 `manifest.j
 ## 研究準備與證據
 
 1. 確定公司、slug、資料截止日、研究範圍、report 版本與 manifest 所需輸出。
-2. 先登錄來源，再摘錄事實或撰寫結論；接受公司公告、財報、法說、交易所、具名第三方資料、具名共識與明確研究假設。
+2. 先登錄來源，再摘錄事實或撰寫結論；接受公司公告、財報、法說、交易所、具名第三方資料、具名共識與明確研究假設。取得原始檔時，同步保存到報告的 sources/ 或 restricted/ 目錄，並用 verification map-source 登錄來源 ID、相對路徑與 SHA-256；Google Drive ID 與私人檔名只留在 Git 忽略的本機索引。只有 URL 而沒有可保存原始檔的來源，仍標為未離線驗證。
 3. 保留期間、單位、幣別、scale、sourceIds、claimIds；計算列出方法與輸入 claim。
 4. 釐清衝突來源後更新 package、manifest 版本及 notes，不讓 Dashboard 和正文各取不同數值。
 5. 按以下流程驗證；manifest 所要求的輸出是交付義務。

@@ -589,6 +589,94 @@ def _make_fake_agy_runner(
 class VerificationCliTestCase(unittest.TestCase):
     """驗證 `verification` 本機 CLI 的所有安全與功能要求。"""
 
+    def test_map_source_registers_relative_path_and_keeps_drive_metadata_local(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            _populate_synthetic_root(
+                root,
+                slug="acme-1234",
+                include_evidence_files=True,
+                include_restricted_source=True,
+            )
+            private_path = root / "research" / "acme-1234" / "restricted" / "broker-copy.txt"
+            private_path.parent.mkdir(parents=True, exist_ok=True)
+            private_path.write_text("PRIVATE BROKER SOURCE TEXT 112233", encoding="utf-8")
+            drive_id = "1AbCdEfGhIjKlMnOpQrStUvWxYz"
+
+            out_bad = io.StringIO()
+            code_bad = run_cli(
+                [
+                    "map-source",
+                    "acme-1234",
+                    "--root",
+                    str(root),
+                    "--source-id",
+                    "src-broker-private",
+                    "--path",
+                    "research/acme-1234/restricted/broker-copy.txt",
+                    "--access",
+                    "public",
+                    "--drive-file-id",
+                    drive_id,
+                ],
+                stdout=out_bad,
+            )
+            self.assertEqual(code_bad, EXIT_BLOCKED)
+            self.assertEqual(
+                json.loads(out_bad.getvalue())["error"],
+                "restricted_source_requires_restricted_access",
+            )
+
+            out_ok = io.StringIO()
+            code_ok = run_cli(
+                [
+                    "map-source",
+                    "acme-1234",
+                    "--root",
+                    str(root),
+                    "--source-id",
+                    "src-broker-private",
+                    "--path",
+                    "research/acme-1234/restricted/broker-copy.txt",
+                    "--access",
+                    "restricted",
+                    "--drive-file-id",
+                    drive_id,
+                    "--drive-name",
+                    "private-report.pdf",
+                ],
+                stdout=out_ok,
+            )
+            self.assertEqual(code_ok, EXIT_PASS)
+            mapped = json.loads(out_ok.getvalue())
+            self.assertEqual(mapped["path"], "research/acme-1234/restricted/broker-copy.txt")
+            self.assertNotIn(drive_id, out_ok.getvalue())
+
+            manifest_path = root / ".research-verification" / "acme-1234" / "source-locations.json"
+            manifest_text = manifest_path.read_text(encoding="utf-8")
+            self.assertIn(drive_id, manifest_text)
+            self.assertIn("private-report.pdf", manifest_text)
+
+            out_validate = io.StringIO()
+            code_validate = run_cli(
+                ["validate", "acme-1234", "--root", str(root)],
+                stdout=out_validate,
+            )
+            self.assertEqual(code_validate, EXIT_PASS)
+            self.assertNotIn(drive_id, out_validate.getvalue())
+            self.assertNotIn("private-report.pdf", out_validate.getvalue())
+            self.assertNotIn("PRIVATE BROKER SOURCE TEXT", out_validate.getvalue())
+
+            private_path.write_text("modified source", encoding="utf-8")
+            changed = io.StringIO()
+            changed_code = run_cli(
+                ["validate", "acme-1234", "--root", str(root)],
+                stdout=changed,
+            )
+            self.assertEqual(changed_code, EXIT_BLOCKED)
+            changed_payload = json.loads(changed.getvalue())
+            self.assertIn("source.evidence.src-broker-private", changed_payload["blockedIds"])
+
     def test_validate_pass_and_not_verified_exit_behavior(self) -> None:
         """測試 `validate` 在 PASS 時回傳 exit 0，在 NOT_VERIFIED 或 BLOCKED 時回傳非零，且輸出單一 JSON。"""
         with tempfile.TemporaryDirectory() as tmp_dir:

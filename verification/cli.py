@@ -4,6 +4,7 @@
 支援子命令：
 1. `python -m verification validate <slug> [--root PATH] [--evidence-dir PATH]`
 2. `python -m verification review <slug> [--root PATH] [--evidence-dir PATH] [--model MODEL] [--output PATH]`
+3. `python -m verification map-source <slug> --source-id ID --path RELATIVE_PATH --access public|restricted|internal`
 
 安全與隔離守則：
 - 所有路徑皆先正規化並驗證未跨越指定 root 邊界。
@@ -49,6 +50,7 @@ from .hashing import (
     sha256_bytes,
     sha256_canonical,
 )
+from .locators import write_source_locator
 from .validator import SLUG_PATTERN, validate_research_package
 
 EXIT_PASS = 0
@@ -466,6 +468,107 @@ def run_validate_command(
     return exit_code, result
 
 
+def run_map_source_command(
+    slug: str,
+    *,
+    root_dir: str | Path = ".",
+    source_id: str,
+    source_path: str | Path,
+    access: str,
+    drive_file_id: str | None = None,
+    drive_name: str | None = None,
+) -> tuple[int, dict[str, Any]]:
+    """Register one repo-local evidence file in the ignored locator manifest."""
+    root_resolved, pkg_dir, path_err = _resolve_and_check_root_slug(root_dir, slug)
+    if path_err is not None:
+        return EXIT_BLOCKED, {
+            "schemaVersion": "1.0.0",
+            "command": "map-source",
+            "slug": slug,
+            "status": "BLOCKED",
+            "ok": False,
+            "error": "invalid_root_or_slug",
+        }
+
+    pkg_path = pkg_dir / "research-package.json"
+    pkg_doc = _load_json_quietly(pkg_path)
+    if not isinstance(pkg_doc, dict):
+        return EXIT_BLOCKED, {
+            "schemaVersion": "1.0.0",
+            "command": "map-source",
+            "slug": slug,
+            "status": "BLOCKED",
+            "ok": False,
+            "error": "research_package_unavailable",
+        }
+
+    source_items = pkg_doc.get("sources")
+    source = next(
+        (
+            item
+            for item in source_items
+            if isinstance(item, dict) and item.get("id") == source_id
+        ),
+        None,
+    ) if isinstance(source_items, list) else None
+    if source is None:
+        return EXIT_BLOCKED, {
+            "schemaVersion": "1.0.0",
+            "command": "map-source",
+            "slug": slug,
+            "sourceId": source_id,
+            "status": "BLOCKED",
+            "ok": False,
+            "error": "source_id_not_in_package",
+        }
+
+    detailed_category = classify_source_category(source)
+    if is_restricted_source(source, detailed_category) and access != "restricted":
+        return EXIT_BLOCKED, {
+            "schemaVersion": "1.0.0",
+            "command": "map-source",
+            "slug": slug,
+            "sourceId": source_id,
+            "status": "BLOCKED",
+            "ok": False,
+            "error": "restricted_source_requires_restricted_access",
+        }
+
+    try:
+        registered = write_source_locator(
+            root_resolved,
+            slug,
+            source_id,
+            source_path,
+            access=access,
+            drive_file_id=drive_file_id,
+            drive_name=drive_name,
+        )
+    except (OSError, ValueError) as exc:
+        return EXIT_BLOCKED, {
+            "schemaVersion": "1.0.0",
+            "command": "map-source",
+            "slug": slug,
+            "sourceId": source_id,
+            "status": "BLOCKED",
+            "ok": False,
+            "error": str(exc) if isinstance(exc, ValueError) else "source_locator_write_failed",
+        }
+
+    return EXIT_PASS, {
+        "schemaVersion": "1.0.0",
+        "command": "map-source",
+        "slug": slug,
+        "sourceId": source_id,
+        "status": "PASS",
+        "ok": True,
+        "path": registered["path"],
+        "sha256": registered["sha256"],
+        "access": registered["access"],
+        "manifestPath": registered["manifestPath"],
+    }
+
+
 def run_review_command(
     slug: str,
     *,
@@ -801,6 +904,23 @@ def build_arg_parser() -> argparse.ArgumentParser:
     )
     subparsers = parser.add_subparsers(dest="subcommand", required=True)
 
+    map_source_parser = subparsers.add_parser(
+        "map-source",
+        help="將本機證據檔相對路徑、SHA-256 與選填 Drive 檔案 ID 存入 Git 忽略的本機索引。",
+    )
+    map_source_parser.add_argument("slug", help="研究報告 slug（例如 umc-2303）。")
+    map_source_parser.add_argument("--root", default=".", help="儲存庫根目錄路徑（預設為當前目錄）。")
+    map_source_parser.add_argument("--source-id", required=True, help="research-package.json 內既有的來源 ID。")
+    map_source_parser.add_argument("--path", required=True, help="repo 相對證據檔路徑，使用正斜線。")
+    map_source_parser.add_argument(
+        "--access",
+        required=True,
+        choices=("public", "restricted", "internal"),
+        help="來源存取類別；券商或受限來源必須指定 restricted。",
+    )
+    map_source_parser.add_argument("--drive-file-id", default=None, help="選填的 Google Drive file ID，只存本機索引。")
+    map_source_parser.add_argument("--drive-name", default=None, help="選填的 Drive 原始檔名，只存本機索引。")
+
     validate_parser = subparsers.add_parser(
         "validate",
         help="執行確定性研究 Package 驗證（Schema、參照、證據分類與財務重算）。",
@@ -878,6 +998,16 @@ def run_cli(
             args.slug,
             root_dir=args.root,
             evidence_dir=args.evidence_dir,
+        )
+    elif args.subcommand == "map-source":
+        exit_code, payload = run_map_source_command(
+            args.slug,
+            root_dir=args.root,
+            source_id=args.source_id,
+            source_path=args.path,
+            access=args.access,
+            drive_file_id=args.drive_file_id,
+            drive_name=args.drive_name,
         )
     elif args.subcommand == "review":
         exit_code, payload = run_review_command(

@@ -3,9 +3,10 @@
 
 from __future__ import annotations
 
-from .cli import main, run_cli, run_review_command, run_validate_command
+from .cli import main, run_cli, run_map_source_command, run_review_command, run_validate_command
 from .evidence import (
     classify_source_category,
+    extract_html_text,
     extract_pdf_text,
     inspect_sources_and_evidence,
     is_restricted_source,
@@ -34,6 +35,7 @@ from .hashing import (
     sha256_file,
     sha256_text,
 )
+from .locators import load_source_locators, write_source_locator
 from .recompute import run_financial_recompute
 from .validator import validate_research_package
 
@@ -51,12 +53,15 @@ __all__ = [
     "compute_policy_hash",
     "compute_verifier_code_hash",
     "extract_pdf_text",
+    "extract_html_text",
     "inspect_sources_and_evidence",
     "is_restricted_source",
+    "load_source_locators",
     "main",
     "make_json_pointer",
     "resolve_json_pointer",
     "run_cli",
+    "run_map_source_command",
     "run_financial_recompute",
     "run_gemini_review",
     "run_review_command",
@@ -68,4 +73,5 @@ __all__ = [
     "validate_research_package",
     "validate_review_context",
     "verify_agy_model_available",
+    "write_source_locator",
 ]

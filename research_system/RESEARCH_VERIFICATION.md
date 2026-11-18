@@ -21,14 +21,30 @@ npm.cmd run research:verification -- validate umc-2303 --root .
 When all required evidence is available locally, run the independent review:
 
 ```powershell
-npm.cmd run research:verification -- review <slug> --root . --evidence-dir research/<slug>/sources --model gemini-4-argon-high
+npm.cmd run research:verification -- review <slug> --root . --model gemini-4-argon-high
 ```
 
 If broker evidence must be checked by Gemini, explicitly add `--allow-private-source-review` to the local review command. This sends the complete locally extracted text of each restricted source to Agy/Gemini. Confirm the source may be shared with that service before using the flag. The default keeps restricted sources out of model prompts and blocks the review. Complete source text must fit the review batch limit; oversized evidence blocks review instead of being truncated.
 
+Use `--evidence-dir` only when intentionally limiting evidence lookup to one folder. In that mode, sources outside the folder are treated as missing even if their package has a public URL; the local source locator map is the preferred way to map files spread across `sources/`, `restricted/`, and the ignored evidence directory.
+
 The detailed review record, including prompts, private excerpts when enabled, and model output, stays in the ignored `.research-verification/` directory. The public certificate contains hashes and counts only. The command does not write report data, a certificate, D1, or Cloudflare. Missing required evidence, restricted sources that were not authorized for external review, unavailable Agy/models, malformed model output, P0/P1, or an undisclosed P2 returns `BLOCKED`. P2 can pass only when the disclosure location resolves to supplied report text.
 
 P1 findings include a concrete remediation recommendation, but this version does not fetch missing sources or edit the package automatically. It remains blocked until the package/evidence is corrected and validation plus review are rerun. P3 findings are recorded and do not block; automatic copy edits/re-review are not implemented. Do not describe either severity as automatically repaired.
+
+## Local source paths
+
+When a source file is in Google Drive or another local archive, map its package source ID to a repo-relative copy. The locator map is stored only in the ignored local directory .research-verification/<slug>/source-locations.json; Drive IDs, Drive filenames, local paths, and restricted source text do not enter the public package or validation output.
+
+Save the file under research/<slug>/sources/ for public evidence or research/<slug>/restricted/ for broker/private evidence, then register it:
+
+~~~powershell
+py -3 -m verification map-source umc-2303 --source-id umc-src-firstcapital-20261102 --path research/umc-2303/restricted/umc-src-firstcapital-20261102.pdf --access restricted --drive-file-id '<Drive-file-ID>' --drive-name '<Drive-file-name>'
+~~~
+
+The command stores the raw-file SHA-256 with the locator. Validation blocks if the mapped file changes, its path escapes the report evidence folders, or the local map is malformed. The local source map is not committed and must be recreated in a fresh checkout. Full path rules and supported evidence formats are documented in [Local Evidence Locator Harness Specification](RESEARCH_EVIDENCE_LOCATORS.md).
+
+Keep restricted/internal originals out of Git. Commit public-source copies only when their license permits; otherwise store them in .research-verification/<slug>/evidence/.
 
 ## Signing key and public trust key
 
