@@ -715,6 +715,9 @@
             "null"
           ]
         },
+        "epsCalculation": {
+          "$ref": "#/$defs/epsCalculation"
+        },
         "currency": {
           "type": "string"
         },
@@ -749,6 +752,51 @@
           },
           "uniqueItems": true
         }
+      }
+    },
+    "epsCalculation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "basis",
+        "accountingBasis",
+        "numerator",
+        "denominator",
+        "roundingDecimals",
+        "roundingMode"
+      ],
+      "properties": {
+        "basis": { "enum": ["basic", "diluted"] },
+        "accountingBasis": { "type": "string", "minLength": 1 },
+        "numerator": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "value", "currency", "scale", "label", "sourceId", "location"],
+          "properties": {
+            "kind": { "enum": ["parentProfitForEPS", "dilutedProfitForEPS"] },
+            "value": { "type": "number" },
+            "currency": { "type": "string", "minLength": 3, "maxLength": 3 },
+            "scale": { "enum": ["unit", "thousand", "million", "billion"] },
+            "label": { "type": "string", "minLength": 1 },
+            "sourceId": { "type": "string", "minLength": 1 },
+            "location": { "type": "string", "minLength": 1 }
+          }
+        },
+        "denominator": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "value", "scale", "label", "sourceId", "location"],
+          "properties": {
+            "kind": { "enum": ["weightedAverageOrdinaryShares", "weightedAverageDilutedShares"] },
+            "value": { "type": "number", "minimum": 0.000000001 },
+            "scale": { "enum": ["unit", "thousand", "million", "billion"] },
+            "label": { "type": "string", "minLength": 1 },
+            "sourceId": { "type": "string", "minLength": 1 },
+            "location": { "type": "string", "minLength": 1 }
+          }
+        },
+        "roundingDecimals": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "roundingMode": { "const": "half-up" }
       }
     },
     "monthlyRevenue": {

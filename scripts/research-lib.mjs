@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { verifyEpsDataset } from "./research-eps-lib.mjs";
 import { validateEarningsQuality } from "./earnings-quality.mjs";
 
 export const COLLECTIONS = [
@@ -276,13 +277,25 @@ export function validateResearch({ manifest, researchPackage, manifestSchema, pa
   const errors = [];
   validateJsonSchema(manifest, manifestSchema, manifestSchema, "$manifest", errors);
   validateJsonSchema(researchPackage, packageSchema, packageSchema, "$package", errors);
+  const epsVerification = verifyEpsDataset({
+    records: Array.isArray(researchPackage.actuals) ? researchPackage.actuals : [],
+    sources: Array.isArray(researchPackage.sources) ? researchPackage.sources : [],
+    company: researchPackage.company,
+  });
   if (errors.length === 0) {
     validateReferences(researchPackage, errors);
     validateDomain(manifest, researchPackage, errors);
+    for (const error of epsVerification.errors) errors.push(`EPS verification: ${error}`);
+    for (const check of epsVerification.checks) {
+      if (check.status === "FAIL") {
+        for (const error of check.errors) errors.push(`actuals.${check.id}.epsCalculation: ${error}`);
+      }
+    }
   }
   return {
     ok: errors.length === 0,
     errors,
+    epsVerification,
     packageHash: sha256(researchPackage),
     manifestHash: sha256(manifest),
     counts: { ...Object.fromEntries([...COLLECTIONS, "sections", "sources", "claims"].map((key) => [key, researchPackage[key]?.length ?? 0])), earningsQuality: researchPackage.earningsQuality ? 1 : 0 },

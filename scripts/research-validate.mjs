@@ -6,7 +6,7 @@ assertSafeSlug(slug);
 const { researchPackage: pkg, result } = await validateSlug(slug);
 assertValid(result);
 console.log(JSON.stringify({
-  result: "PASS",
+  result: result.epsVerification.status === "PARTIAL" ? "PASS_WITH_NOT_VERIFIED" : "PASS",
   research: `${pkg.company.name} ${pkg.company.ticker}`,
   slug,
   packageVersion: pkg.packageVersion,
@@ -14,5 +14,6 @@ console.log(JSON.stringify({
   packageHash: result.packageHash,
   manifestHash: result.manifestHash,
   counts: result.counts,
+  epsVerification: result.epsVerification,
 }, null, 2));
 

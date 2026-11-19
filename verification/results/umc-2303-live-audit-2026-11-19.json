@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "1.0.0",
+  "auditedAt": "2026-11-19",
+  "status": "FAIL",
+  "company": {
+    "name": "聯華電子",
+    "ticker": "2303",
+    "slug": "umc-2303"
+  },
+  "publishedReport": {
+    "status": "published",
+    "version": "1.1",
+    "updatedAt": "2026-11-13",
+    "summaryUrl": "https://research-report.sarsadsl.workers.dev/research/umc-2303",
+    "fullReportUrl": "https://research-report.sarsadsl.workers.dev/research/reports/umc-2303.html"
+  },
+  "verification": {
+    "method": "Compare published API actual EPS with independently recomputed official EPS fixture",
+    "sourceFixture": "verification\\fixtures\\umc-2303-eps.json",
+    "sourceFixtureSha256": "6663cbe1ed0ab298a84cb4fdbba07ebadfc8288b0d9c0509c0b8316c43ca7e20",
+    "counts": {
+      "total": 4,
+      "pass": 3,
+      "fail": 1
+    },
+    "checks": [
+      {
+        "period": "2025Q4",
+        "publishedEps": 0.8,
+        "officialEps": 0.81,
+        "status": "FAIL",
+        "officialSourceUrl": "https://www.umc.com/zh-TW/News/press_release/Content/investor/20260128"
+      },
+      {
+        "period": "2026Q1",
+        "publishedEps": 1.29,
+        "officialEps": 1.29,
+        "status": "PASS",
+        "officialSourceUrl": "https://www.umc.com/zh-TW/News/press_release/Content/investor/20260429"
+      },
+      {
+        "period": "2026Q2",
+        "publishedEps": 3.39,
+        "officialEps": 3.39,
+        "status": "PASS",
+        "officialSourceUrl": "https://www.umc.com/zh-TW/News/press_release/Content/investor/20260729"
+      },
+      {
+        "period": "2026Q3",
+        "publishedEps": 1.32,
+        "officialEps": 1.32,
+        "status": "PASS",
+        "officialSourceUrl": "https://www.umc.com/zh-TW/News/press_release/Content/investor/20261028"
+      }
+    ],
+    "findings": [
+      "Published 2025Q4 EPS 0.80 differs from official/recomputed 0.81."
+    ]
+  },
+  "artifacts": {
+    "publishedApiSha256": "1c7c6ee4001773046969d240d6ce4bdbbca7e327531bc02b214e39dfa2c33e5c",
+    "publishedFullReportSha256": "6156241e3f18a7fb9899fc3df50c367fea29b990cb7cd82e672144f6351078ba"
+  },
+  "constraints": {
+    "localResearchPackageAvailable": false,
+    "productionD1Modified": false,
+    "cloudflareDeployed": false
+  }
+}

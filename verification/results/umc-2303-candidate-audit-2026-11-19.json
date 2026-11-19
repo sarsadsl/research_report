@@ -1,0 +1,183 @@
+{
+  "schemaVersion": "1.0.0",
+  "auditedAt": "2026-11-19T10:38:16.474Z",
+  "status": "PASS_CANDIDATE",
+  "company": {
+    "name": "聯華電子",
+    "ticker": "2303",
+    "slug": "umc-2303"
+  },
+  "candidate": {
+    "packageVersion": "1.1.1",
+    "reportVersion": "1.1.1",
+    "packageHash": "c3c530bb71ef8903ba637eec840af564ba5a737a3168dc02f51203b8fc940b9a",
+    "manifestHash": "80150df1ebd875d36c5fc6812c82c54888973c68b09008176346c638c5724776",
+    "packageSha256": "4874ce2ad074007b5e92eb68d75aac9c36d4954a5f488e2062f5526bb5017c7c",
+    "manifestSha256": "0a55c3502eb47e9fdd6211dc37cefa26db98cbbea4d6a6cc17025cfce1dbf263",
+    "reportSha256": "602dc6f7be2a6c7a1acc1693e5686a67779aefe42aeaeebd558344bbf7b04ae3"
+  },
+  "verification": {
+    "method": "Package EPS recalculation plus independently sourced official financial statement fixture; generated report spot check and responsive report QC",
+    "packageEps": {
+      "status": "PASS",
+      "counts": {
+        "total": 4,
+        "pass": 4,
+        "notVerified": 0,
+        "fail": 0
+      },
+      "checks": [
+        {
+          "period": "2025Q4",
+          "candidateEps": 0.81,
+          "recomputedEps": 0.81,
+          "officialFixtureEps": 0.81,
+          "status": "PASS",
+          "officialSourceUrl": "https://www.umc.com/zh-TW/News/press_release/Content/investor/20260128"
+        },
+        {
+          "period": "2026Q1",
+          "candidateEps": 1.29,
+          "recomputedEps": 1.29,
+          "officialFixtureEps": 1.29,
+          "status": "PASS",
+          "officialSourceUrl": "https://www.umc.com/zh-TW/News/press_release/Content/investor/20260429"
+        },
+        {
+          "period": "2026Q2",
+          "candidateEps": 3.39,
+          "recomputedEps": 3.39,
+          "officialFixtureEps": 3.39,
+          "status": "PASS",
+          "officialSourceUrl": "https://www.umc.com/zh-TW/News/press_release/Content/investor/20260729"
+        },
+        {
+          "period": "2026Q3",
+          "candidateEps": 1.32,
+          "recomputedEps": 1.32,
+          "officialFixtureEps": 1.32,
+          "status": "PASS",
+          "officialSourceUrl": "https://www.sec.gov/Archives/edgar/data/1033767/000119312526435003/umc-ex99_1.htm"
+        }
+      ]
+    },
+    "officialFixtureEps": {
+      "status": "PASS",
+      "counts": {
+        "total": 7,
+        "pass": 7,
+        "notVerified": 0,
+        "fail": 0
+      },
+      "sha256": "6663cbe1ed0ab298a84cb4fdbba07ebadfc8288b0d9c0509c0b8316c43ca7e20",
+      "checks": [
+        {
+          "id": "umc-eps-2023fy",
+          "period": "2023FY",
+          "status": "PASS",
+          "computedEps": 4.93007841,
+          "roundedEps": 4.93,
+          "reportedEps": 4.93,
+          "errors": []
+        },
+        {
+          "id": "umc-eps-2024fy",
+          "period": "2024FY",
+          "status": "PASS",
+          "computedEps": 3.7960119,
+          "roundedEps": 3.8,
+          "reportedEps": 3.8,
+          "errors": []
+        },
+        {
+          "id": "umc-eps-2025fy",
+          "period": "2025FY",
+          "status": "PASS",
+          "computedEps": 3.34128955,
+          "roundedEps": 3.34,
+          "reportedEps": 3.34,
+          "errors": []
+        },
+        {
+          "id": "umc-eps-2025q4",
+          "period": "2025Q4",
+          "status": "PASS",
+          "computedEps": 0.80523745,
+          "roundedEps": 0.81,
+          "reportedEps": 0.81,
+          "errors": []
+        },
+        {
+          "id": "umc-eps-2026q1",
+          "period": "2026Q1",
+          "status": "PASS",
+          "computedEps": 1.29461212,
+          "roundedEps": 1.29,
+          "reportedEps": 1.29,
+          "errors": []
+        },
+        {
+          "id": "umc-eps-2026q2",
+          "period": "2026Q2",
+          "status": "PASS",
+          "computedEps": 3.38757515,
+          "roundedEps": 3.39,
+          "reportedEps": 3.39,
+          "errors": []
+        },
+        {
+          "id": "umc-eps-2026q3",
+          "period": "2026Q3",
+          "status": "PASS",
+          "computedEps": 1.31883476,
+          "roundedEps": 1.32,
+          "reportedEps": 1.32,
+          "errors": []
+        }
+      ]
+    },
+    "reportQc": {
+      "status": "PASS",
+      "pages": 16,
+      "viewports": [
+        {
+          "name": "desktop",
+          "size": "1440x1000",
+          "horizontalOverflowPx": 0
+        },
+        {
+          "name": "laptop",
+          "size": "1024x768",
+          "horizontalOverflowPx": 0
+        },
+        {
+          "name": "mobile",
+          "size": "390x844",
+          "horizontalOverflowPx": 0
+        }
+      ],
+      "standalone": "PASS",
+      "websiteParity": "PASS"
+    },
+    "build": {
+      "status": "PASS",
+      "unitTests": {
+        "passed": 95,
+        "failed": 0
+      },
+      "documentationChecks": "PASS (9 files)"
+    },
+    "findings": []
+  },
+  "previousLiveAudit": {
+    "file": "verification/results/umc-2303-live-audit-2026-11-19.json",
+    "status": "FAIL",
+    "sha256": "3ccf2afb6e99b844950aeaf7fad47be30d165efac0b8532dbbdfad1d66fda7f5",
+    "preserved": true
+  },
+  "releaseState": {
+    "productionD1Modified": false,
+    "cloudflareDeployed": false,
+    "postPublishLiveVerification": "PENDING"
+  }
+}
