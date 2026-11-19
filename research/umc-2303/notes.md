@@ -1,6 +1,10 @@
-# 聯電 2303｜v1.1 研究修正與驗收
+# 聯電 2303｜v1.1.1 研究修正與驗收
 
-資料截止：2026-11-13。前版本 `v1.0` 原始 Research Package 保存於 `history/v1.0-research-package.json`，不得用 v1.1 預估假冒前一版本。
+資料截止：2026-11-13。v1.1.1 僅修正 2025Q4 官方實績 EPS 並加入逐筆計算輸入；v1.1 原始 Research Package 保存於 `history/v1.1-research-package.json`，v1.0 保存於 `history/v1.0-research-package.json`。
+
+## EPS 修正紀錄
+- 2025Q4 EPS：0.80 修正為 0.81。聯電 2025Q4 官方公告與財務報表揭露基本 EPS 0.81；以歸屬母公司淨利 10,055 百萬元除以基本加權平均普通股 12,487 百萬股，四捨五入至小數二位為 0.81。來源：`umc-src-q4`，官方公告：https://www.umc.com/zh-TW/News/press_release/Content/investor/20260128。
+- 2026Q1–Q3 EPS 均保存官方來源、計算分子、基本加權平均股數、期間與四捨五入方式，可由 `npm run research:verify-eps -- --slug umc-2303` 重算。
 
 ## 資料來源與更新
 1. 聯電 2026Q3 官方新聞稿及 SEC 6-K：3Q26 EPS 1.32，基本加權平均普通股 12,460,655,358 股；前三季 EPS 6.00，基本加權平均股數約 12,476 百萬股。**基本與稀釋口徑、季度與累計期間不可互換**。

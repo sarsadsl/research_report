@@ -26,7 +26,8 @@ P1.8 QC specification，於 P1.9 更新自動發布 gate。操作與交付範本
 
 | Gate | 執行方式 | 現有檢查／成功證據 | 未涵蓋 |
 | --- | --- | --- | --- |
-| Package | `npm.cmd run research:validate -- vpec-2455` | Schema、身分與版本、ID／引用、日期／欄位限制、部分 domain rules；JSON result PASS、canonical hashes | 來源真實性、外連可用性、全部公式重算及經濟語意 |
+| Package | `npm.cmd run research:validate -- vpec-2455` | Schema、身分與版本、ID／引用、日期／欄位限制、部分 domain rules；已提供輸入的 EPS 會重算並顯示 PASS／NOT_VERIFIED | 來源真實性仍須核對；缺少 EPS 輸入不得推算或標記通過 |
+| EPS strict gate | `npm.cmd run research:verify-eps -- --slug umc-2303` | 逐期檢查實績 EPS、官方來源 ID、分子／加權股數、單位及捨入方式；缺輸入或 mismatch 非零結束 | 仍須人工確認原始財報與頁碼內容 |
 | Generated + regression | `npm.cmd run research:check` | Validator + generator --check + 現有 Node tests，exit 0 | 瀏覽器排版、D1、正文審閱；slug 固定 2455 |
 | Import plan | `npm.cmd run research:import -- vpec-2455 --dry-run` | 本機 package／generated 檢查、hash 與預期筆數；DRY RUN | 不連 D1，不能證明權限、migration 或實際資料 |
 | D1 | `npm.cmd run research:import -- vpec-2455 --local`（正式發布使用 publish gate） | Migrations、匯入、run ID + package hash + imported status、source／seed／report hash 回讀、12 表筆數 | 非逐欄比較；低階 importer 不代表完整發布 |
@@ -43,6 +44,7 @@ P1.8 QC specification，於 P1.9 更新自動發布 gate。操作與交付範本
 
 - Manifest／package schema 與版本受支援，身分、reportVersion 一致；必要陣列及輸出存在，ID 與 composite keys 唯一。
 - Source、claim、input claim、section payload 引用可解析；估計有分類，推論有方法及輸入；來源確實支持對應結論。
+- 每筆需驗證的實績 EPS 都保留官方來源、計算分子、加權平均股數、會計口徑、單位、捨入方式與財報位置；缺資料為 `NOT_VERIFIED`，重算不符為 `FAIL`。
 - 日期、期間、單位、幣別、scale 一致；相同 metric／period／scenario 不得衝突；未揭露值不能補成官方事實。
 - 現有 validator 對多筆、非估計且 share 皆為數字的 segment period 檢查合計 `100 ± 0.5`，不是所有 segment group 都檢查。
 - 現有 validator 在 bear／consensus／bull 都有數值時，檢查 revenue 與 EPS 的 `bear <= consensus <= bull`；其他指標與方法人工審查。

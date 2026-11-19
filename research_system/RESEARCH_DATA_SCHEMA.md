@@ -109,6 +109,12 @@ A source requires:
 
 URLs and filenames are metadata. They do not prove that a claim is linked to the source.
 
+## EPS calculation evidence
+
+For each reported actual EPS that should be independently recomputable, keep the calculation inputs on its `actuals[]` row in `epsCalculation`: basic or diluted basis, accounting basis, numerator, weighted-average share denominator, scales, rounding rule, official source IDs, and exact statement page/table/period locators. Never infer a missing denominator from the already reported EPS. Missing inputs remain `NOT_VERIFIED`; a recomputation mismatch is `FAIL`.
+
+The validator normalizes both inputs to base units before dividing and applies half-up rounding. Both input source IDs must resolve to official sources and also appear in the actual row's `sourceIds`. Keep the source URL or local attachment path, publication/access dates, and covered period with the source record.
+
 ## Claim and provenance
 
 Every material number or conclusion must have a stable claim ID with:

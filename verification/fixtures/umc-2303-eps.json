@@ -1,0 +1,269 @@
+{
+  "company": {
+    "ticker": "2303",
+    "name": "聯華電子",
+    "accountingBasis": "TIFRS consolidated"
+  },
+  "sources": [
+    {
+      "id": "umc-q4-2023-financial-statements",
+      "evidenceClass": "official",
+      "provider": "United Microelectronics Corporation",
+      "title": "UMC 4Q 2023 Financial Statements",
+      "url": "https://www.umc.com/upload/media/08_Investors/Financials/Quarterly_Results/Quarterly_2020-2029_English_pdf/2023/Q4_2023/UMC23Q4_financial_statements-E.pdf",
+      "accessedDate": "2026-11-19"
+    },
+    {
+      "id": "umc-q4-2024-financial-statements",
+      "evidenceClass": "official",
+      "provider": "United Microelectronics Corporation",
+      "title": "UMC 4Q 2024 Financial Statements",
+      "url": "https://www.umc.com/upload/media/08_Investors/Financials/Quarterly_Results/Quarterly_2020-2029_English_pdf/2024/Q4_2024/UMC24Q4_financial_statements-E.pdf",
+      "accessedDate": "2026-11-19"
+    },
+    {
+      "id": "umc-q4-2025-financial-statements",
+      "evidenceClass": "official",
+      "provider": "United Microelectronics Corporation",
+      "title": "UMC 4Q 2025 Financial Statements",
+      "url": "https://www.umc.com/upload/media/08_Investors/Financials/Quarterly_Results/Quarterly_2020-2029_English_pdf/2025/Q4_2025/UMC25Q4_financial_statements-E.pdf",
+      "accessedDate": "2026-11-19"
+    },
+    {
+      "id": "umc-q1-2026-financial-statements",
+      "evidenceClass": "official",
+      "provider": "United Microelectronics Corporation",
+      "title": "UMC 1Q 2026 Financial Statements",
+      "url": "https://www.umc.com/upload/media/08_Investors/Financials/Quarterly_Results/Quarterly_2020-2029_English_pdf/2026/Q1_2026/UMC26Q1_financial_statements-E.pdf",
+      "accessedDate": "2026-11-19"
+    },
+    {
+      "id": "umc-q2-2026-financial-statements",
+      "evidenceClass": "official",
+      "provider": "United Microelectronics Corporation",
+      "title": "UMC 2Q 2026 Financial Statements",
+      "url": "https://www.umc.com/upload/media/08_Investors/Financials/Quarterly_Results/Quarterly_2020-2029_English_pdf/2026/Q2_2026/UMC26Q2_financial_statements-E.pdf",
+      "accessedDate": "2026-11-19"
+    },
+    {
+      "id": "umc-q3-2026-financial-statements",
+      "evidenceClass": "official",
+      "provider": "United Microelectronics Corporation",
+      "title": "UMC 3Q 2026 Financial Statements",
+      "url": "https://www.umc.com/upload/media/08_Investors/Financials/Quarterly_Results/Quarterly_2020-2029_English_pdf/2026/Q3_2026/UMC26Q3_financial_statements-E.pdf",
+      "accessedDate": "2026-11-19"
+    }
+  ],
+  "records": [
+    {
+      "id": "umc-eps-2023fy",
+      "period": "2023FY",
+      "eps": 4.93,
+      "currency": "TWD",
+      "sourceIds": ["umc-q4-2023-financial-statements"],
+      "epsCalculation": {
+        "basis": "basic",
+        "accountingBasis": "TIFRS consolidated",
+        "numerator": {
+          "kind": "parentProfitForEPS",
+          "value": 60990,
+          "currency": "TWD",
+          "scale": "million",
+          "label": "Net income attributable to shareholders of the parent",
+          "sourceId": "umc-q4-2023-financial-statements",
+          "location": "PDF p.3, Financial Table 3/4, twelve-month period ended 2023-12-31"
+        },
+        "denominator": {
+          "kind": "weightedAverageOrdinaryShares",
+          "value": 12371,
+          "scale": "million",
+          "label": "Weighted average number of shares outstanding",
+          "sourceId": "umc-q4-2023-financial-statements",
+          "location": "PDF p.3, Financial Table 3/4, twelve-month period ended 2023-12-31"
+        },
+        "roundingDecimals": 2,
+        "roundingMode": "half-up"
+      }
+    },
+    {
+      "id": "umc-eps-2024fy",
+      "period": "2024FY",
+      "eps": 3.8,
+      "currency": "TWD",
+      "sourceIds": ["umc-q4-2024-financial-statements"],
+      "epsCalculation": {
+        "basis": "basic",
+        "accountingBasis": "TIFRS consolidated",
+        "numerator": {
+          "kind": "parentProfitForEPS",
+          "value": 47211,
+          "currency": "TWD",
+          "scale": "million",
+          "label": "Net income attributable to shareholders of the parent",
+          "sourceId": "umc-q4-2024-financial-statements",
+          "location": "PDF p.3, Financial Table 3/4, twelve-month period ended 2024-12-31"
+        },
+        "denominator": {
+          "kind": "weightedAverageOrdinaryShares",
+          "value": 12437,
+          "scale": "million",
+          "label": "Weighted average number of shares outstanding",
+          "sourceId": "umc-q4-2024-financial-statements",
+          "location": "PDF p.3, Financial Table 3/4, twelve-month period ended 2024-12-31"
+        },
+        "roundingDecimals": 2,
+        "roundingMode": "half-up"
+      }
+    },
+    {
+      "id": "umc-eps-2025fy",
+      "period": "2025FY",
+      "eps": 3.34,
+      "currency": "TWD",
+      "sourceIds": ["umc-q4-2025-financial-statements"],
+      "epsCalculation": {
+        "basis": "basic",
+        "accountingBasis": "TIFRS consolidated",
+        "numerator": {
+          "kind": "parentProfitForEPS",
+          "value": 41716,
+          "currency": "TWD",
+          "scale": "million",
+          "label": "Net income attributable to shareholders of the parent",
+          "sourceId": "umc-q4-2025-financial-statements",
+          "location": "PDF p.3, Financial Table 3/4, twelve-month period ended 2025-12-31"
+        },
+        "denominator": {
+          "kind": "weightedAverageOrdinaryShares",
+          "value": 12485,
+          "scale": "million",
+          "label": "Weighted average number of shares outstanding",
+          "sourceId": "umc-q4-2025-financial-statements",
+          "location": "PDF p.3, Financial Table 3/4, twelve-month period ended 2025-12-31"
+        },
+        "roundingDecimals": 2,
+        "roundingMode": "half-up"
+      }
+    },
+    {
+      "id": "umc-eps-2025q4",
+      "period": "2025Q4",
+      "eps": 0.81,
+      "currency": "TWD",
+      "sourceIds": ["umc-q4-2025-financial-statements"],
+      "epsCalculation": {
+        "basis": "basic",
+        "accountingBasis": "TIFRS consolidated",
+        "numerator": {
+          "kind": "parentProfitForEPS",
+          "value": 10055,
+          "currency": "TWD",
+          "scale": "million",
+          "label": "Net income attributable to shareholders of the parent",
+          "sourceId": "umc-q4-2025-financial-statements",
+          "location": "PDF p.3, Financial Table 3/4, three-month period ended 2025-12-31"
+        },
+        "denominator": {
+          "kind": "weightedAverageOrdinaryShares",
+          "value": 12487,
+          "scale": "million",
+          "label": "Weighted average number of shares outstanding",
+          "sourceId": "umc-q4-2025-financial-statements",
+          "location": "PDF p.3, Financial Table 3/4, three-month period ended 2025-12-31"
+        },
+        "roundingDecimals": 2,
+        "roundingMode": "half-up"
+      }
+    },
+    {
+      "id": "umc-eps-2026q1",
+      "period": "2026Q1",
+      "eps": 1.29,
+      "currency": "TWD",
+      "sourceIds": ["umc-q1-2026-financial-statements"],
+      "epsCalculation": {
+        "basis": "basic",
+        "accountingBasis": "TIFRS consolidated",
+        "numerator": {
+          "kind": "parentProfitForEPS",
+          "value": 16171,
+          "currency": "TWD",
+          "scale": "million",
+          "label": "Net income attributable to shareholders of the parent",
+          "sourceId": "umc-q1-2026-financial-statements",
+          "location": "PDF p.3, Financial Table 3/4, three-month period ended 2026-03-31"
+        },
+        "denominator": {
+          "kind": "weightedAverageOrdinaryShares",
+          "value": 12491,
+          "scale": "million",
+          "label": "Weighted average number of shares outstanding",
+          "sourceId": "umc-q1-2026-financial-statements",
+          "location": "PDF p.3, Financial Table 3/4, three-month period ended 2026-03-31"
+        },
+        "roundingDecimals": 2,
+        "roundingMode": "half-up"
+      }
+    },
+    {
+      "id": "umc-eps-2026q2",
+      "period": "2026Q2",
+      "eps": 3.39,
+      "currency": "TWD",
+      "sourceIds": ["umc-q2-2026-financial-statements"],
+      "epsCalculation": {
+        "basis": "basic",
+        "accountingBasis": "TIFRS consolidated",
+        "numerator": {
+          "kind": "parentProfitForEPS",
+          "value": 42260,
+          "currency": "TWD",
+          "scale": "million",
+          "label": "Net income attributable to shareholders of the parent",
+          "sourceId": "umc-q2-2026-financial-statements",
+          "location": "PDF p.3, Financial Table 3/4, three-month period ended 2026-06-30"
+        },
+        "denominator": {
+          "kind": "weightedAverageOrdinaryShares",
+          "value": 12475,
+          "scale": "million",
+          "label": "Weighted average number of shares outstanding",
+          "sourceId": "umc-q2-2026-financial-statements",
+          "location": "PDF p.3, Financial Table 3/4, three-month period ended 2026-06-30"
+        },
+        "roundingDecimals": 2,
+        "roundingMode": "half-up"
+      }
+    },
+    {
+      "id": "umc-eps-2026q3",
+      "period": "2026Q3",
+      "eps": 1.32,
+      "currency": "TWD",
+      "sourceIds": ["umc-q3-2026-financial-statements"],
+      "epsCalculation": {
+        "basis": "basic",
+        "accountingBasis": "TIFRS consolidated",
+        "numerator": {
+          "kind": "parentProfitForEPS",
+          "value": 16434,
+          "currency": "TWD",
+          "scale": "million",
+          "label": "Net income attributable to shareholders of the parent",
+          "sourceId": "umc-q3-2026-financial-statements",
+          "location": "PDF p.3, Financial Table 3/4, three-month period ended 2026-09-30"
+        },
+        "denominator": {
+          "kind": "weightedAverageOrdinaryShares",
+          "value": 12461,
+          "scale": "million",
+          "label": "Weighted average number of shares outstanding",
+          "sourceId": "umc-q3-2026-financial-statements",
+          "location": "PDF p.3, Financial Table 3/4, three-month period ended 2026-09-30"
+        },
+        "roundingDecimals": 2,
+        "roundingMode": "half-up"
+      }
+    }
+  ]
+}

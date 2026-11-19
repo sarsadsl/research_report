@@ -55,6 +55,22 @@ Intake PASS 只表示來源清單可讀。接著才依 schema 建立 `manifest.j
 | `market_consensus` | 有出處的市場預估，不把自己的 base case 偽稱共識 |
 | `research_inference` | 計算、估計、情境或判斷，明列假設、方法及輸入，不寫成官方揭露 |
 
+對每筆官方實績 EPS，將分子、基本／稀釋股數口徑、會計基礎、單位、捨入方式、官方來源 ID 與財報頁碼／表格／期間存入 `actuals[].epsCalculation`。不可從已公布 EPS 反推股數。一般 package 驗證會逐筆重算；缺輸入是 `NOT_VERIFIED`，來源錯誤或結果不符會阻擋。
+
+對指定 package 執行嚴格 EPS gate：
+
+```powershell
+npm.cmd run research:verify-eps -- --slug <slug>
+```
+
+只有所有已公布的實績 EPS 都重算通過才會 exit 0。聯電七期官方 EPS fixture 的回歸驗證命令為：
+
+```powershell
+npm.cmd run research:verify-eps -- verification/fixtures/umc-2303-eps.json
+```
+
+Fixture 用於驗證計算邏輯；正式報告仍須在 package 內保存每筆計算輸入與來源路徑。
+
 ## PowerShell 操作順序
 
 在 repo 根目錄執行。每個命令 exit code 0 才往下；PowerShell 不會因前一個原生程式失敗自動停止後續貼上的命令。首次安裝或 lockfile 改動後執行 `npm.cmd ci`。目前 CI 使用 Node 22；本機需相容 Node 及供 layout QC 使用的 Chrome／Edge。

@@ -226,14 +226,14 @@ test("EQ-01 L1 below threshold keeps existing 14-page profile",async()=>{
   assert.match(html,/業外損益檢查/);
 });
 
-test("UMC v1.1 report aligns 2028 base revenue and CAPEX downside disclosure",async()=>{
+test("UMC v1.1.1 report aligns 2028 base revenue and CAPEX downside disclosure",async()=>{
   const [pkg,profiles]=await Promise.all([
     readFile("research/umc-2303/research-package.json","utf8").then(JSON.parse),
     readFile("research/umc-2303/report-profiles.json","utf8").then(JSON.parse)
   ]);
   const html=renderGeneratedReport(buildReportViewModel(pkg,"full-research",profiles.profiles["full-research"]));
   const base=pkg.forecasts.find(row=>row.fiscalYear===2028 && row.scenario==="consensus");
-  assert.equal(pkg.report.version,"1.1");
+  assert.equal(pkg.report.version,"1.1.1");
   assert.equal(base.revenue,375000);
   assert.equal(base.eps,6.7);
   assert.match(html,/375,000\.0/);

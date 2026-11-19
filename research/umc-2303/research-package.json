@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "packageVersion": "1.1.0",
+  "packageVersion": "1.1.1",
   "asOfDate": "2026-11-13",
   "company": {
     "id": "umc-2303",
@@ -17,11 +17,11 @@
     "id": "umc-2303-report-v1-1",
     "title": "聯電 2303｜2026Q3 業外收益警報、2027–2028估值與擴產現金流檢驗",
     "slug": "umc-2303",
-    "summary": "2026Q3本業復甦，稼動率92%；前三季權益法收益281.01億元，正常化EPS待核對。v1.1補充董事會追加32億美元資本預算與PIC／DTC／TFLN擴產規劃。2027F EPS5.80與2028F EPS6.70為自建模型，非券商共識。",
+    "summary": "2026Q3本業復甦，稼動率92%；前三季權益法收益281.01億元，正常化EPS待核對。v1.1.1修正2025Q4實績EPS為0.81，並保留v1.1的資本預算與PIC／DTC／TFLN擴產分析。2027F EPS5.80與2028F EPS6.70為自建模型，非券商共識。",
     "thesis": "成熟製程稼動率回升→22nm組合→毛利率→業外收益穿透→可持續EPS→估值",
     "status": "published",
     "visibility": "listed",
-    "version": "1.1",
+    "version": "1.1.1",
     "publishedAt": "2026-11-13"
   },
   "thesis": {
@@ -53,7 +53,7 @@
       "折舊與自由現金流",
       "2029 AI營收目標"
     ],
-    "conclusion": "v1.1維持中性偏審慎：2027自建EPS5.8元、18x PE合理價104.4元，並非市場共識。2028自建EPS6.7元基準暫保留、尚未納入確定的新增CapEx年度時程；提供不同投入比例下的增量折舊壓力測試，不把上限壓測直接扣除兩次。2026前三季法定EPS6元含大額權益法收益，稅後正常化EPS仍待查；追蹤2027實收ASP、22nm份額、TFLN/PIC良率與2028–2030投資進度。",
+    "conclusion": "v1.1.1維持中性偏審慎：2027自建EPS5.8元、18x PE合理價104.4元，並非市場共識。2028自建EPS6.7元基準暫保留、尚未納入確定的新增CapEx年度時程；提供不同投入比例下的增量折舊壓力測試，不把上限壓測直接扣除兩次。2026前三季法定EPS6元含大額權益法收益，稅後正常化EPS仍待查；追蹤2027實收ASP、22nm份額、TFLN/PIC良率與2028–2030投資進度。",
     "forecastScenario": "consensus",
     "headlineForecastYears": [
       2027,
@@ -117,12 +117,35 @@
       "operatingMargin": null,
       "netIncome": null,
       "netMargin": null,
-      "eps": 0.8,
+      "eps": 0.81,
+      "epsCalculation": {
+        "basis": "basic",
+        "accountingBasis": "TIFRS consolidated",
+        "numerator": {
+          "kind": "parentProfitForEPS",
+          "value": 10055,
+          "currency": "TWD",
+          "scale": "million",
+          "label": "Net income attributable to shareholders of the parent",
+          "sourceId": "umc-src-q4",
+          "location": "Official 4Q25 financial statements, p.3, three-month period ended 2025-12-31"
+        },
+        "denominator": {
+          "kind": "weightedAverageOrdinaryShares",
+          "value": 12487,
+          "scale": "million",
+          "label": "Basic weighted average ordinary shares outstanding",
+          "sourceId": "umc-src-q4",
+          "location": "Official 4Q25 financial statements, p.3, three-month period ended 2025-12-31"
+        },
+        "roundingDecimals": 2,
+        "roundingMode": "half-up"
+      },
       "currency": "TWD",
       "scale": "million",
       "evidenceClass": "official",
       "sourceIds": [
-        "umc-src-q1"
+        "umc-src-q4"
       ]
     },
     {
@@ -138,6 +161,29 @@
       "netIncome": 16170,
       "netMargin": 26.49,
       "eps": 1.29,
+      "epsCalculation": {
+        "basis": "basic",
+        "accountingBasis": "TIFRS consolidated",
+        "numerator": {
+          "kind": "parentProfitForEPS",
+          "value": 16171,
+          "currency": "TWD",
+          "scale": "million",
+          "label": "Net income attributable to shareholders of the parent",
+          "sourceId": "umc-src-q1",
+          "location": "Official 1Q26 financial statements, p.3, three-month period ended 2026-03-31"
+        },
+        "denominator": {
+          "kind": "weightedAverageOrdinaryShares",
+          "value": 12491,
+          "scale": "million",
+          "label": "Basic weighted average ordinary shares outstanding",
+          "sourceId": "umc-src-q1",
+          "location": "Official 1Q26 financial statements, p.3, three-month period ended 2026-03-31"
+        },
+        "roundingDecimals": 2,
+        "roundingMode": "half-up"
+      },
       "currency": "TWD",
       "scale": "million",
       "evidenceClass": "official",
@@ -158,6 +204,29 @@
       "netIncome": 42260,
       "netMargin": 61.48,
       "eps": 3.39,
+      "epsCalculation": {
+        "basis": "basic",
+        "accountingBasis": "TIFRS consolidated",
+        "numerator": {
+          "kind": "parentProfitForEPS",
+          "value": 42260,
+          "currency": "TWD",
+          "scale": "million",
+          "label": "Net income attributable to shareholders of the parent",
+          "sourceId": "umc-src-q2",
+          "location": "Official 2Q26 financial statements, p.3, three-month period ended 2026-06-30"
+        },
+        "denominator": {
+          "kind": "weightedAverageOrdinaryShares",
+          "value": 12475,
+          "scale": "million",
+          "label": "Basic weighted average ordinary shares outstanding",
+          "sourceId": "umc-src-q2",
+          "location": "Official 2Q26 financial statements, p.3, three-month period ended 2026-06-30"
+        },
+        "roundingDecimals": 2,
+        "roundingMode": "half-up"
+      },
       "currency": "TWD",
       "scale": "million",
       "evidenceClass": "official",
@@ -178,10 +247,34 @@
       "netIncome": 16434,
       "netMargin": 22.14,
       "eps": 1.32,
+      "epsCalculation": {
+        "basis": "basic",
+        "accountingBasis": "TIFRS consolidated",
+        "numerator": {
+          "kind": "parentProfitForEPS",
+          "value": 16434,
+          "currency": "TWD",
+          "scale": "million",
+          "label": "Net income attributable to shareholders of the parent",
+          "sourceId": "umc-src-q3",
+          "location": "Official 3Q26 financial statements, p.3, three-month period ended 2026-09-30"
+        },
+        "denominator": {
+          "kind": "weightedAverageOrdinaryShares",
+          "value": 12461,
+          "scale": "million",
+          "label": "Basic weighted average ordinary shares outstanding",
+          "sourceId": "umc-src-q3",
+          "location": "Official 3Q26 financial statements, p.3, three-month period ended 2026-09-30"
+        },
+        "roundingDecimals": 2,
+        "roundingMode": "half-up"
+      },
       "currency": "TWD",
       "scale": "million",
       "evidenceClass": "official",
       "sourceIds": [
+        "umc-src-q3",
         "umc-src-q3fs"
       ]
     }
@@ -1097,6 +1190,20 @@
       "notes": "以原始財報與公告為準；研究推論與官方數值分開。"
     },
     {
+      "id": "umc-src-q4",
+      "evidenceClass": "official",
+      "provider": "聯華電子",
+      "title": "2025Q4 財報暨法說公告",
+      "url": "https://www.umc.com/zh-TW/News/press_release/Content/investor/20260128",
+      "publishedDate": "2026-01-28",
+      "accessedDate": "2026-11-19",
+      "coveredPeriods": [
+        "2025Q4"
+      ],
+      "confidence": "high",
+      "notes": "官方公告揭露2025Q4基本EPS 0.81元及基本加權平均流通股數；EPS重算輸入另見計算欄位。"
+    },
+    {
       "id": "umc-src-q1",
       "evidenceClass": "official",
       "provider": "聯華電子",
@@ -1536,13 +1643,13 @@
         "pretaxIncome": null,
         "incomeTax": null,
         "netIncomeAttributable": null,
-        "reportedEps": 0.8,
+        "reportedEps": 0.81,
         "normalizedEps": null,
         "weightedAverageShares": null,
         "shareholdersEquity": null,
         "adjustments": [],
         "sourceIds": [
-          "umc-src-q1"
+          "umc-src-q4"
         ],
         "claimIds": [],
         "normalizationNote": "完整歷史歸母稅後特殊損益尚未逐項勾稽；不能把未揭露填0。"
