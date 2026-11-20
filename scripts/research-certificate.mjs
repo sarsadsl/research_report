@@ -37,7 +37,25 @@ export const VALIDATOR_HASH_KEYS = [
 ];
 
 const HEX64_RE = /^[a-f0-9]{64}$/;
-const ALLOWED_MODEL_RE = /^gemini-4-argon-(?:high|medium|low)$/;
+const GEMINI_MODEL_RE = /^gemini-4-argon-(?:high|medium|low)$/;
+const CODEX_MODEL_RE = /^codex-cli-default$/;
+const ALLOWED_AGY_FAILOVER = new Set([
+  "AGY_NOT_FOUND", "AGY_TIMEOUT", "AGY_OS_ERROR",
+  "AGY_VERSION_FAILED", "AGY_VERSION_EMPTY", "AGY_MODELS_FAILED",
+  "MODEL_NOT_AVAILABLE", "AGY_CLI_NON_ZERO",
+]);
+function validReviewerProvenance(provider, assurance, model, reason) {
+  if (provider === "agy-gemini") {
+    return GEMINI_MODEL_RE.test(model) &&
+      assurance === "independent-model-review" && reason === "";
+  }
+  if (provider === "codex-fallback") {
+    return CODEX_MODEL_RE.test(model) &&
+      assurance === "internal-fallback-review" &&
+      ALLOWED_AGY_FAILOVER.has(reason);
+  }
+  return false;
+}
 const ALLOWED_REVIEW_STATUSES = new Set(["PASS", "PASS_WITH_P2"]);
 const KEY_ID_RE = /^[A-Za-z0-9._:-]{1,128}$/;
 
@@ -58,6 +76,9 @@ const ALLOWED_PAYLOAD_KEYS = new Set([
   "deterministicStatus",
   "modelInvoked",
   "model",
+  "reviewProvider",
+  "assuranceLevel",
+  "fallbackReason",
   "agyVersion",
   "reviewedAtUtc",
   "packageVersion",
@@ -79,6 +100,7 @@ const ALLOWED_PAYLOAD_KEYS = new Set([
   "findingCounts",
 ]);
 
+const OPTIONAL_PAYLOAD_KEYS = new Set(["reviewProvider", "assuranceLevel", "fallbackReason"]);
 const FORBIDDEN_CERTIFICATE_KEYS = new Set([
   "excerpt",
   "excerpts",
@@ -556,8 +578,12 @@ function validateReviewRecord(reviewDoc, slug, current) {
     throw new Error("Review modelInvoked must be true");
   }
   const model = typeof reviewDoc.model === "string" ? reviewDoc.model.trim() : "";
-  if (!ALLOWED_MODEL_RE.test(model)) {
-    throw new Error(`Invalid review model '${model}'`);
+  const reviewProvider = reviewDoc.reviewProvider ?? "agy-gemini";
+  const assuranceLevel = reviewDoc.assuranceLevel ??
+    (reviewProvider === "agy-gemini" ? "independent-model-review" : "");
+  const fallbackReason = reviewDoc.fallbackReason ?? "";
+  if (!validReviewerProvenance(reviewProvider, assuranceLevel, model, fallbackReason)) {
+    throw new Error("Review provider/model/assurance/fallback provenance is invalid");
   }
   const agyVersion =
     typeof reviewDoc.agyVersion === "string" && reviewDoc.agyVersion.trim()
@@ -623,6 +649,9 @@ function validateReviewRecord(reviewDoc, slug, current) {
 
   return {
     model,
+    reviewProvider,
+    assuranceLevel,
+    fallbackReason,
     agyVersion,
     promptSha256: reviewDoc.promptSha256,
     responseSha256: reviewDoc.responseSha256,
@@ -694,6 +723,9 @@ export async function runSignCommand({
     deterministicStatus: "PASS",
     modelInvoked: true,
     model: validated.model,
+    reviewProvider: validated.reviewProvider,
+    assuranceLevel: validated.assuranceLevel,
+    fallbackReason: validated.fallbackReason,
     agyVersion: validated.agyVersion,
     reviewedAtUtc: validated.completedAtUtc,
     packageVersion: current.packageVersion,
@@ -820,7 +852,7 @@ export async function runVerifyCommand({
     if (!ALLOWED_PAYLOAD_KEYS.has(k)) throw new Error(`Unsupported payload field: ${k}`);
   }
   for (const reqKey of ALLOWED_PAYLOAD_KEYS) {
-    if (!Object.hasOwn(payload, reqKey)) throw new Error(`Missing required payload field: ${reqKey}`);
+    if (!OPTIONAL_PAYLOAD_KEYS.has(reqKey) && !Object.hasOwn(payload, reqKey)) throw new Error(`Missing required payload field: ${reqKey}`);
   }
 
   const canonicalPayloadBytes = Buffer.from(canonicalJson(payload), "utf8");
@@ -839,7 +871,12 @@ export async function runVerifyCommand({
     !ALLOWED_REVIEW_STATUSES.has(payload.status) ||
     payload.deterministicStatus !== "PASS" ||
     payload.modelInvoked !== true ||
-    !ALLOWED_MODEL_RE.test(String(payload.model ?? "")) ||
+    !validReviewerProvenance(
+      payload.reviewProvider ?? "agy-gemini",
+      payload.assuranceLevel ?? "independent-model-review",
+      String(payload.model ?? ""),
+      payload.fallbackReason ?? ""
+    ) ||
     !String(payload.agyVersion ?? "").trim() ||
     !String(payload.reviewedAtUtc ?? "").trim()
   ) {
