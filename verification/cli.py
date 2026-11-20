@@ -833,6 +833,9 @@ def run_review_command(
         "ok": final_status in (REVIEW_STATUS_PASS, REVIEW_STATUS_PASS_WITH_P2),
         "deterministicStatus": det_status,
         "model": agy_meta_clean["model"],
+        "reviewProvider": "codex-fallback" if gemini_result and gemini_result.metadata.get("provider") == "codex-fallback" else "agy-gemini",
+        "assuranceLevel": "internal-fallback-review" if gemini_result and gemini_result.metadata.get("provider") == "codex-fallback" else "independent-model-review",
+        "fallbackReason": str(gemini_result.metadata.get("fallbackReason") or "") if gemini_result else "",
         "agyVersion": agy_meta_clean["agyVersion"],
         "agyMetadata": agy_meta_clean,
         "modelInvoked": model_invoked,
@@ -882,6 +885,9 @@ def run_review_command(
         "ok": final_status in (REVIEW_STATUS_PASS, REVIEW_STATUS_PASS_WITH_P2),
         "deterministicStatus": det_status,
         "model": agy_meta_clean["model"],
+        "reviewProvider": "codex-fallback" if gemini_result and gemini_result.metadata.get("provider") == "codex-fallback" else "agy-gemini",
+        "assuranceLevel": "internal-fallback-review" if gemini_result and gemini_result.metadata.get("provider") == "codex-fallback" else "independent-model-review",
+        "fallbackReason": str(gemini_result.metadata.get("fallbackReason") or "") if gemini_result else "",
         "agyVersion": agy_meta_clean["agyVersion"],
         "modelInvoked": model_invoked,
         "startedAtUtc": record_payload["startedAtUtc"],
@@ -955,6 +961,14 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="明確授權將本機受限券商證據摘錄送交 Agy/Gemini 私人審查；絕不寫入公開憑證。",
     )
     review_parser.add_argument(
+        "--fallback", choices=("codex", "none"), default="codex",
+        help="Agy 無法啟動或服務故障時預設自動改用唯讀本機 Codex；Agy 發現 P0/P1 不會切換。",
+    )
+    review_parser.add_argument(
+        "--codex-model", default="codex-cli-default",
+        help="備援 Codex 模型；預設使用本機 Codex CLI 的已登入模型。",
+    )
+    review_parser.add_argument(
         "--output",
         default=None,
         help="自訂審查紀錄輸出路徑（選填，必須位於 <root>/.research-verification/ 之下）。",
@@ -1010,17 +1024,32 @@ def run_cli(
             drive_name=args.drive_name,
         )
     elif args.subcommand == "review":
-        exit_code, payload = run_review_command(
-            args.slug,
-            root_dir=args.root,
-            evidence_dir=args.evidence_dir,
-            model=args.model,
-            output_path=args.output,
-            runner=runner,
-            base_env=base_env,
-            gemini_reviewer=gemini_reviewer,
-            allow_private_source_review=args.allow_private_source_review,
-        )
+        if args.fallback == "codex" and runner is None and gemini_reviewer is None:
+            # Production CLI uses automatic failover. Injected test runners and
+            # explicitly selected 'none' keep legacy single-provider behavior.
+            from .auto_review import run_auto_review_command
+            exit_code, payload = run_auto_review_command(
+                args.slug,
+                root_dir=args.root,
+                evidence_dir=args.evidence_dir,
+                agy_model=args.model,
+                codex_model=args.codex_model,
+                output_path=args.output,
+                base_env=base_env,
+                allow_private_source_review=args.allow_private_source_review,
+            )
+        else:
+            exit_code, payload = run_review_command(
+                args.slug,
+                root_dir=args.root,
+                evidence_dir=args.evidence_dir,
+                model=args.model,
+                output_path=args.output,
+                runner=runner,
+                base_env=base_env,
+                gemini_reviewer=gemini_reviewer,
+                allow_private_source_review=args.allow_private_source_review,
+            )
     else:  # pragma: no cover
         exit_code = EXIT_BLOCKED
         payload = {
