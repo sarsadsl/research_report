@@ -14,6 +14,21 @@ export function researchSlugs(files) {
     .filter(Boolean))];
 }
 
+export function isVerificationToolingOnly(files) {
+  // Local CLI/review infrastructure updates do not modify the served website or research rows.
+  // Keep the normal release gate for changed research, app, API, renderers, and data schemas.
+  return files.length > 0 && files.every(file =>
+    /^verification\//.test(file) ||
+    /^research_system\/[^/]+\.md$/.test(file) ||
+    /^docs\/.+\.md$/.test(file) ||
+    /^scripts\/research-(?:certificate(?:-check)?|publish(?:-lib)?|import(?:-lib)?)(?:\.test)?\.mjs$/.test(file) ||
+    [
+      "README.md", ".gitignore", "package.json", "requirements-verification.txt",
+      "scripts/ci-scope.mjs", ".github/workflows/codex-backup-tests.yml",
+      ".github/workflows/deploy-cloudflare.yml", ".github/workflows/research-quality-pr.yml"
+    ].includes(file));
+}
+
 async function main() {
   let publish = true; // Unknown ranges and manual dispatches must not silently skip release checks.
   let slug = process.env.RESEARCH_SLUG || "vpec-2455";
@@ -26,7 +41,7 @@ async function main() {
       const slugs = researchSlugs(files);
       if (slugs.length > 1) throw new Error("One release may publish only one research slug: " + slugs.join(", "));
       if (slugs.length === 1) slug = slugs[0];
-      publish = !isDocumentationOnly(files);
+      publish = !isDocumentationOnly(files) && !isVerificationToolingOnly(files);
     }
   }
   if (!process.env.GITHUB_OUTPUT) throw new Error("GITHUB_OUTPUT is required");

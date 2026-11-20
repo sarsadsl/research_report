@@ -191,3 +191,7 @@ Result: READY_TO_PUBLISH | BLOCKED
 ```
 
 READY_TO_PUBLISH 是驗收結論，不等於已部署；部署結果另外填寫。後續工程見 [Roadmap](P1_ROADMAP.md)。
+
+## 自動備援審查
+
+執行 `python -m verification review <slug>` 時會先嘗試 Agy/Gemini，只有符合基礎設施故障條件才切換本機唯讀 Codex。Codex 審查須標記 `internal-fallback-review`；憑證與正式發布的條件參照 `research_system/VERIFICATION_CODEX_FALLBACK.md`。

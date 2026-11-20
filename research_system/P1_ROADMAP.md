@@ -49,13 +49,13 @@ Definition of Done：
 
 Definition of Done：前置資料／build／QC／hash 失敗不執行遠端 D1 或 deploy；通過後使用同份已建置報告；來源／build／artifact 漂移有檢查；匯入失敗阻擋部署；保存 commit、QC、hash、run ID、部署結果；docs-only 不觸發 remote；測試與完整 dry-run 通過。
 
-此階段不實作人工內容 gate、lifecycle 轉移或永久歷史儲存。CI artifact 保留 30 天，D1／Worker 並非跨服務交易。
+此階段不實作 lifecycle 轉移或永久歷史儲存。CI artifact 保留 30 天，D1／Worker 並非跨服務交易。獨立 verifier 分支新增 Python／Gemini review、版本簽章與遠端匯入／部署 gate；視覺可讀性、離線驗收及來源真實性的部分判斷仍未完全自動化。
 
 ## 後續工作（未完成）
 
 ### 發布 gate 與稽核串接
 
-P1.9 已接上自動 build／QC → D1 → deploy 及 artifact 紀錄。接著補人工內容 gate、部署後完整驗收與長期稽核保存。
+P1.9 已接上自動 build／QC → 憑證驗證 → D1 → deploy 及 artifact 紀錄。接著擴充視覺與離線自動驗收、部署後完整驗收與長期稽核保存。
 
 完成條件：FAIL／NOT_RUN 能阻擋發布，匯入／部署對應同份驗收內容，回報版本、hash、QC、run ID、URL 與部署結果，失敗案例測試證明 gate 有效。
 

@@ -62,6 +62,7 @@ npm run research:publish -- vpec-2455 --remote
 `research/<slug>/research-package.json` 是研究資料的唯一人工維護來源。修改 package 後先執行：
 
 ```bash
+py -3 -m pip install --requirement requirements-verification.txt
 npm run research:validate -- vpec-2455
 npm run research:generate -- vpec-2455
 npm run research:check
@@ -80,6 +81,8 @@ npm run research:import -- vpec-2455 --remote
 ```
 
 Remote 模式必須明確指定 `--remote`；未指定時 importer 預設只操作 local D1。
+
+Remote 匯入現在要求本機獨立驗證簽章憑證，並在執行 migrations 或 SQL 前驗證。憑證需綁定目前 package、報告、驗證政策與驗證器程式碼；沒有可用的 Gemini 審查、簽章或公開信任金鑰時會 fail closed。完整設定與操作步驟見[獨立研究驗證](research_system/RESEARCH_VERIFICATION.md)。
 
 ### D1 importer 與 Research Run（P1.7）
 
@@ -171,7 +174,7 @@ npm.cmd run report:qc -- vpec-2455
 npm.cmd run research:publish -- vpec-2455 --dry-run
 ```
 
-未指定旗標時也是 dry-run；成功為 VALIDATED_NOT_DEPLOYED。正式執行需提交來源修改，再加 `--remote`；流程為 validate → build → candidate → QC → seal → import → deploy，QC 後不再重新生成報告。沒有 skip-QC 選項。
+未指定旗標時也是 dry-run；成功為 VALIDATED_NOT_DEPLOYED。正式執行需提交來源修改，再加 `--remote`；流程為 validate → build → candidate → QC → seal → certificate → import → deploy，QC 後不再重新生成報告。Remote import 與 deploy 均要求綁定目前版本的簽章憑證，沒有 skip-QC 或 skip-certificate 選項。
 
 每次紀錄位於 `.research-publish/<timestamp-uuid>/`，包含 release.json、可取得的 qc.json 及驗收通過的 report.html。Actions 保存成功／失敗證據 30 天。匯入後會核對 source／seed／report hashes；任何前置失敗都不寫遠端、不部署。Import 後失敗不代表遠端已回滾。
 

@@ -10,8 +10,8 @@
     "research:import": "node ./scripts/research-import.mjs",
     "research:publish": "node ./scripts/research-publish.mjs",
     "docs:check": "node ./scripts/docs-check.mjs",
-    "research:check": "node ./scripts/research-check-all.mjs && npm run research:verify-eps -- --slug umc-2303 && npm test",
-    "test": "node --test scripts/research-lib.test.mjs scripts/research-eps.test.mjs scripts/earnings-quality.test.mjs scripts/earnings-quality-display.test.mjs scripts/research-import.test.mjs scripts/research-intake.test.mjs scripts/report-renderer.test.mjs scripts/report-exporter.test.mjs scripts/report-qc.test.mjs scripts/research-publish.test.mjs",
+    "research:check": "npm run research:check-all && npm run research:verify-eps -- --slug umc-2303 && npm run test:verification && npm test",
+    "test": "node --test scripts/research-lib.test.mjs scripts/earnings-quality.test.mjs scripts/earnings-quality-display.test.mjs scripts/research-import.test.mjs scripts/research-intake.test.mjs scripts/report-renderer.test.mjs scripts/report-exporter.test.mjs scripts/report-qc.test.mjs scripts/research-publish.test.mjs scripts/research-certificate.test.mjs scripts/research-certificate-check.test.mjs",
     "report:materialize": "node ./scripts/materialize-reports.mjs",
     "report:export": "node ./scripts/report-exporter.mjs",
     "report:qc": "node ./scripts/report-qc.mjs",
@@ -25,7 +25,11 @@
     "db:local:migrate": "node ./node_modules/wrangler/bin/wrangler.js d1 migrations apply research-report-db --local",
     "db:remote:migrate": "node ./node_modules/wrangler/bin/wrangler.js d1 migrations apply research-report-db --remote",
     "db:local:seed": "npm run research:import -- vpec-2455 --local",
-    "db:remote:seed": "npm run research:import -- vpec-2455 --remote"
+    "db:remote:seed": "npm run research:import -- vpec-2455 --remote",
+    "research:certificate": "node ./scripts/research-certificate.mjs",
+    "research:verification": "python -m verification",
+    "research:check-all": "node ./scripts/research-check-all.mjs",
+    "test:verification": "python -m unittest discover -s verification -t ."
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.3.0",

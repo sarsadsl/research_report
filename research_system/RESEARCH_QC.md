@@ -124,3 +124,7 @@ Deployment: <not deployed or actual result and URL>
 3. 長期不可變歷史存放與跨服務恢復程序；CI artifact 有保留期限，D1 與 Worker 不是單一交易。
 
 P1.9 的 DEPLOYED 只表示自動發布流程成功，不等於所有人工品質項目已 PASS。
+
+## 本機 Agy/Codex 備援驗證
+
+研究包的外部審查、來源風險與 Codex 備援流程詳見 `research_system/RESEARCH_VERIFICATION.md` 與 `research_system/VERIFICATION_CODEX_FALLBACK.md`。正式發布仍要求可信簽章，缺來源與 P0/P1 不得放行。

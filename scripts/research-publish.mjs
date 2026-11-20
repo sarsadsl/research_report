@@ -62,9 +62,10 @@ export async function publishResearch(options, rootDir = process.cwd()) {
   await mkdir(artifactDir, { recursive: true });
   const record = {
     schemaVersion: "1.0.0", releaseId, slug, target: remote ? "remote" : "dry-run",
-    status: "RUNNING", releaseMode: publicPreview ? "PUBLIC_PREVIEW_UNREVIEWED" : "PUBLISHED", startedAt: new Date().toISOString(),
-    stages: Object.fromEntries(["validate", "build", "candidate", "qc", "seal", "import", "deploy"].map(name => [name, {status:"NOT_RUN"}])),
-    manualReview: publicPreview ? "INCOMPLETE: public preview explicitly requested by owner; EQ-01 and manual financial content verification remain NOT_RUN" : "NOT_RECORDED: content, accessibility and offline review remain operator responsibilities",
+    status: "RUNNING", releaseMode: publicPreview ? "PUBLIC_PREVIEW_DRAFT" : "PUBLISHED", startedAt: new Date().toISOString(),
+    stages: Object.fromEntries(["validate", "build", "candidate", "qc", "seal", "certificate", "import", "deploy"].map(name => [name, {status:"NOT_RUN"}])),
+    automatedReviewPolicy: "Remote publishing requires a signed Agy Gemini 4 Argon certificate with PASS or disclosed PASS_WITH_P2.",
+    manualReview: "NOT_REQUIRED_BY_RELEASE_GATE",
     ciRun: process.env.GITHUB_RUN_ID ?? null,
   };
   const node = (args, env, quiet) => runCommand(rootDir, process.execPath, args, env, quiet);
@@ -154,6 +155,50 @@ export async function publishResearch(options, rootDir = process.cwd()) {
     async archive(data) {
       await copyFile(join(rootDir, "exports", standaloneFilename(pkg)), join(artifactDir, "report.html"));
       await writeFile(join(artifactDir, "qc.json"), JSON.stringify(data.qc, null, 2) + "\n");
+    },
+    async verifyCertificate(candidate) {
+      const safeEnv = Object.fromEntries(Object.entries(process.env).filter(([key]) =>
+        !/(TOKEN|SECRET|PASSWORD|PRIVATE_KEY|API_KEY|CLOUDFLARE|WRANGLER|GITHUB_)/i.test(key),
+      ));
+      const result = spawnSync(process.execPath, [
+        "scripts/research-certificate.mjs", "verify", "--root", rootDir, "--slug", slug,
+      ], {
+        cwd: rootDir,
+        encoding: "utf8",
+        shell: false,
+        windowsHide: true,
+        env: {
+          ...safeEnv,
+          RESEARCH_VERIFICATION_PUBLIC_KEY: process.env.RESEARCH_VERIFICATION_PUBLIC_KEY ?? "",
+        },
+        timeout: 2 * 60 * 1000,
+        maxBuffer: 4 * 1024 * 1024,
+      });
+      if (result.error || result.status !== 0) {
+        throw new Error("Signed research verification certificate failed; remote import is blocked");
+      }
+      let certificateCheck;
+      try {
+        certificateCheck = JSON.parse(String(result.stdout ?? "").trim());
+      } catch {
+        throw new Error("Certificate verifier did not emit a valid JSON summary");
+      }
+      if (
+        certificateCheck.ok !== true ||
+        !["PASS", "PASS_WITH_P2"].includes(certificateCheck.status) ||
+        certificateCheck.packageHash !== candidate.packageHash ||
+        certificateCheck.reportHash !== candidate.reportHash
+      ) {
+        throw new Error("Certificate does not match the release candidate; remote import is blocked");
+      }
+      return {
+        status: certificateCheck.status,
+        currentValidationStatus: certificateCheck.currentValidationStatus,
+        keyId: certificateCheck.keyId,
+        payloadHash: certificateCheck.payloadHash,
+        packageHash: certificateCheck.packageHash,
+        reportHash: certificateCheck.reportHash,
+      };
     },
     async import(candidate) {
       const run = buildRunMetadata(pkg, { ...candidate, importedAt: new Date().toISOString() });
