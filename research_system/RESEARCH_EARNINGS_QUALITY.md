@@ -1,6 +1,6 @@
 # EQ-01｜盈餘品質與業外損益穿透檢驗（v1.0.0）
 
-適用：2026-11-13 起新建及重新發行的所有個股 `full-research`「完整報告」（台股、美股與其他市場）。本規範增補 [Workflow](RESEARCH_WORKFLOW.md)、[Data Contract](RESEARCH_DATA_SCHEMA.md)、[QC](RESEARCH_QC.md)；不取代既有來源、版本、人工審閱與發布 gate。
+適用：2026-11-13 起新建及重新發行的所有個股 `full-research`「完整報告」（台股、美股與其他市場）。本規範增補 [Workflow](RESEARCH_WORKFLOW.md)、[Data Contract](RESEARCH_DATA_SCHEMA.md)、[QC](RESEARCH_QC.md)；不取代來源／版本規則與發布 gate，也不會自動證實原始揭露者身分、個案稅務處理或持股控制的經濟實質。
 
 ## 原則與執行層級
 

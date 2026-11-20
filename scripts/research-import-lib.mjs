@@ -31,6 +31,21 @@ export function parseImportArgs(argv) {
   };
 }
 
+export async function requireRemoteCertificate(options, verifyCertificate) {
+  if (options?.target !== "remote" || options?.dryRun === true) return null;
+  if (typeof verifyCertificate !== "function") {
+    throw new Error("Remote D1 import requires a signed research verification certificate");
+  }
+  const result = await verifyCertificate();
+  if (
+    result?.ok !== true ||
+    !["PASS", "PASS_WITH_P2"].includes(result.certificate?.payload?.status)
+  ) {
+    throw new Error("Remote D1 import blocked: signed research verification certificate did not pass");
+  }
+  return result.summary ?? { status: result.certificate.payload.status };
+}
+
 export function expectedRowCounts(pkg) {
   return Object.fromEntries(Object.entries(IMPORT_COLLECTIONS).map(([table, key]) => {
     if (key === "report") return [table, 1];

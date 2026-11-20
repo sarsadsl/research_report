@@ -61,6 +61,7 @@ export async function executeRelease(options, actions, record) {
     if (!options.remote) {
       record.status = "VALIDATED_NOT_DEPLOYED";
     } else {
+      record.certificateVerification = await step("certificate", () => actions.verifyCertificate(record.candidate));
       record.import = await step("import", async () => {
         await actions.verify(record.candidate, sourceHash);
         return actions.import(record.candidate);

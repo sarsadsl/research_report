@@ -1,4 +1,6 @@
 node_modules
+__pycache__/
+*.py[cod]
 .next
 .open-next
 .wrangler
@@ -13,6 +15,7 @@ exports/
 tmp/
 .research-publish/
 .research-drafts/
+.research-verification/
 research/*/restricted/
 public/research/reports/*-experiment.html
 .DS_Store
