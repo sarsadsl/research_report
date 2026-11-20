@@ -734,3 +734,43 @@ test("path boundary checks reject review/output/private-key escapes and symlinks
 function CertificateTraversalPath() {
   return `../${CERTIFICATE_FILENAME}`;
 }
+
+
+test("signed Codex failover keeps explicitly reduced assurance and rejects provenance spoofing", async (t) => {
+  const fx = await createTempFixture(t);
+  const codex = fx.buildReviewRecord({
+    reviewProvider: "codex-fallback",
+    assuranceLevel: "internal-fallback-review",
+    fallbackReason: "AGY_NOT_FOUND",
+    model: "codex-cli-default",
+    agyVersion: "codex-cli 1.0.0-test",
+    agyMetadata: { model: "codex-cli-default", agyVersion: "codex-cli 1.0.0-test" },
+  });
+  await writeFile(fx.reviewPath, JSON.stringify(codex, null, 2) + "\n", "utf8");
+  const { certificate } = await runSignCommand({
+    root: fx.repoRoot, slug: SLUG, review: fx.reviewPath,
+    privateKey: fx.privateKeyPath, validatorRunner: fx.validatorRunner,
+    stdout: captureIo().stdout,
+  });
+  assert.equal(certificate.payload.reviewProvider, "codex-fallback");
+  assert.equal(certificate.payload.assuranceLevel, "internal-fallback-review");
+  assert.equal(certificate.payload.fallbackReason, "AGY_NOT_FOUND");
+  assert.equal((await runVerifyCommand({
+    root: fx.repoRoot, slug: SLUG, publicKey: fx.publicKeyPath,
+    validatorRunner: fx.validatorRunner, stdout: captureIo().stdout,
+  })).ok, true);
+
+  for (const patch of [
+    {reviewProvider:"agy-gemini"},
+    {assuranceLevel:"independent-model-review"},
+    {fallbackReason:"P1_FINDING"},
+    {fallbackReason:""},
+  ]) {
+    await writeFile(fx.reviewPath, JSON.stringify({...codex, ...patch}), "utf8");
+    await assert.rejects(runSignCommand({
+      root: fx.repoRoot, slug: SLUG, review: fx.reviewPath,
+      privateKey: fx.privateKeyPath, validatorRunner: fx.validatorRunner,
+      stdout: captureIo().stdout,
+    }), /provenance|provider|model|assurance|fallback/i);
+  }
+});
