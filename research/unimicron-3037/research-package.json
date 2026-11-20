@@ -15,23 +15,21 @@
   },
   "report": {
     "id": "uni-report-v01",
-    "title": "欣興（3037）Full Research｜ABF、AI載板、財務品質與估值情境（測試候選）",
+    "title": "欣興（3037）｜高階ABF與盈餘品質（測試候選）",
     "slug": "unimicron-3037",
-    "summary": "第三季營收與本業改善；EPS與來源獨立驗證仍未完成。",
+    "summary": "高階載板帶動本業改善；EPS與原始來源仍待驗證。",
     "thesis": "AI高階載板需求有本業驗證，但不宜使用未正常化EPS直接估值。",
     "status": "draft",
     "visibility": "unlisted",
     "version": "0.1"
   },
   "thesis": {
-    "summary": "2026Q3高階載板需求使營收與營益改善；目前估值仍有業外、折舊、股數及治理風險，維持未驗證候選稿。",
+    "summary": "黃燈：高階ABF需求推升本業，但EPS估值與折舊仍待查核。",
     "coreChain": [
-      "AI/HPC客戶訂單",
-      "高階ABF大面積/高層數與ASP",
-      "稼動率、良率與毛利率",
-      "營業利益增長",
-      "扣除業外與折舊後的正常化EPS",
-      "估值與風險審核"
+      "AI/HPC需求",
+      "高階ABF漲價及良率",
+      "營益率改善",
+      "正常化EPS與風險"
     ],
     "claimIds": [
       "uni-c-q3",
@@ -42,7 +40,7 @@
     ]
   },
   "dashboard": {
-    "currentView": "2026Q3營收526.50億、毛利率28.85%、營業利益105.28億；Q3基本EPS6.36，前三季17.85；10月月營收189.86億。",
+    "currentView": "2026Q3營收526.5億、毛利率28.85%；Q3基本EPS6.36，仍待獨立驗證。",
     "currentThesis": "AI DC應用68%、載板產品62%；高階ABF驅動本業改善，但業外淨收益、折舊和法律調查有重大不確定性。",
     "verificationChain": [
       "來源：公司2026Q3法說與法定公告",
