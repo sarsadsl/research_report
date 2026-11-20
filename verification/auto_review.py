@@ -46,6 +46,7 @@ def run_auto_review_command(
     root_dir: str | Path = ".",
     evidence_dir: str | Path | None = None,
     agy_model: str = "gemini-4-argon-high",
+    output_path: str | Path | None = None,
     codex_model: str = CODEX_MODEL,
     allow_private_source_review: bool = False,
     agy_runner=None,
@@ -54,7 +55,7 @@ def run_auto_review_command(
 ) -> tuple[int, dict[str, Any]]:
     code, agy = run_review_command(
         slug, root_dir=root_dir, evidence_dir=evidence_dir,
-        model=agy_model, runner=agy_runner, base_env=base_env,
+        model=agy_model, output_path=output_path, runner=agy_runner, base_env=base_env,
         allow_private_source_review=allow_private_source_review,
     )
     agy_status = str(agy.get("status") or "BLOCKED")
