@@ -1,0 +1,1207 @@
+{
+  "schemaVersion": "1.0.0",
+  "packageVersion": "0.1.0",
+  "asOfDate": "2026-11-20",
+  "company": {
+    "id": "uni-company",
+    "ticker": "3037",
+    "market": "TW",
+    "name": "欣興",
+    "slug": "unimicron-3037",
+    "sector": "電子零組件",
+    "industry": "IC載板、ABF、HDI、PCB",
+    "currency": "TWD",
+    "description": "AI/HPC用ABF載板、HDI與PCB製造商"
+  },
+  "report": {
+    "id": "uni-report-v01",
+    "title": "欣興（3037）Full Research｜ABF、AI載板、財務品質與估值情境（測試候選）",
+    "slug": "unimicron-3037",
+    "summary": "第三季營收與本業改善；EPS與來源獨立驗證仍未完成。",
+    "thesis": "AI高階載板需求有本業驗證，但不宜使用未正常化EPS直接估值。",
+    "status": "draft",
+    "visibility": "unlisted",
+    "version": "0.1"
+  },
+  "thesis": {
+    "summary": "2026Q3高階載板需求使營收與營益改善；目前估值仍有業外、折舊、股數及治理風險，維持未驗證候選稿。",
+    "coreChain": [
+      "AI/HPC客戶訂單",
+      "高階ABF大面積/高層數與ASP",
+      "稼動率、良率與毛利率",
+      "營業利益增長",
+      "扣除業外與折舊後的正常化EPS",
+      "估值與風險審核"
+    ],
+    "claimIds": [
+      "uni-c-q3",
+      "uni-c-eps",
+      "uni-c-mix",
+      "uni-c-scenario",
+      "uni-c-risk"
+    ]
+  },
+  "dashboard": {
+    "currentView": "2026Q3營收526.50億、毛利率28.85%、營業利益105.28億；Q3基本EPS6.36，前三季17.85；10月月營收189.86億。",
+    "currentThesis": "AI DC應用68%、載板產品62%；高階ABF驅動本業改善，但業外淨收益、折舊和法律調查有重大不確定性。",
+    "verificationChain": [
+      "來源：公司2026Q3法說與法定公告",
+      "基本/稀釋EPS口徑",
+      "月營收與季度營收合計",
+      "載板與應用占比維度",
+      "業外正常化與EPS分母",
+      "擴產現金、折舊及良率",
+      "法遵與客戶認證",
+      "券商預測時間戳與模型比較"
+    ],
+    "conclusion": "研究候選稿；歷史本業數據有來源，但2027/2028 EPS模型不足以對外發布投資建議，須通過來源與Gemini獨立驗證。",
+    "forecastScenario": "consensus",
+    "headlineForecastYears": [
+      2026,
+      2027,
+      2028
+    ],
+    "focusMetric": {
+      "field": "grossMargin",
+      "label": "毛利率"
+    },
+    "monthlyRevenue": {
+      "focusYear": 2026,
+      "cumulativeThroughMonth": 10,
+      "unitDivisor": 100,
+      "unitLabel": "億元"
+    },
+    "cagrCards": [
+      {
+        "field": "revenue",
+        "label": "2025A–2027F營收情境CAGR",
+        "baseYear": 2025,
+        "targetYear": 2027,
+        "baseValue": 131241,
+        "years": 2
+      }
+    ],
+    "estimateNote": "情境系統欄位consensus是研究基準值，非統計市場共識。宏遠2026年9月2027F EPS36.17、元大2026年4月34.35，預測日期不可混用。2026–2028情境為簡化模型，EPS未校正加權股數/轉債、折舊與業外利益。"
+  },
+  "actuals": [
+    {
+      "id": "uni-actual-2025q3",
+      "period": "2025Q3",
+      "fiscalYear": 2025,
+      "quarter": 3,
+      "revenue": 33994,
+      "grossProfit": 4549,
+      "grossMargin": 13.38,
+      "operatingIncome": 1533,
+      "operatingMargin": 4.51,
+      "netIncome": 2194,
+      "netMargin": 6.45,
+      "eps": 1.44,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-ir"
+      ]
+    },
+    {
+      "id": "uni-actual-2026q1",
+      "period": "2026Q1",
+      "fiscalYear": 2026,
+      "quarter": 1,
+      "revenue": 37446,
+      "grossProfit": 6726,
+      "grossMargin": 17.96,
+      "operatingIncome": 2757,
+      "operatingMargin": 7.36,
+      "netIncome": 5043,
+      "netMargin": 13.47,
+      "eps": null,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-ir"
+      ]
+    },
+    {
+      "id": "uni-actual-2026q2",
+      "period": "2026Q2",
+      "fiscalYear": 2026,
+      "quarter": 2,
+      "revenue": 42890,
+      "grossProfit": 10638,
+      "grossMargin": 24.8,
+      "operatingIncome": 6651,
+      "operatingMargin": 15.51,
+      "netIncome": 13115,
+      "netMargin": 30.58,
+      "eps": 8.45,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-ir"
+      ]
+    },
+    {
+      "id": "uni-actual-2026q3",
+      "period": "2026Q3",
+      "fiscalYear": 2026,
+      "quarter": 3,
+      "revenue": 52650,
+      "grossProfit": 15189,
+      "grossMargin": 28.85,
+      "operatingIncome": 10528,
+      "operatingMargin": 20,
+      "netIncome": 10052,
+      "netMargin": 19.09,
+      "eps": 6.36,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-ir"
+      ]
+    }
+  ],
+  "monthlyRevenue": [
+    {
+      "id": "uni-month-1",
+      "year": 2026,
+      "month": 1,
+      "revenue": 12767,
+      "mom": null,
+      "yoy": 34.48,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "uni-monthly"
+      ]
+    },
+    {
+      "id": "uni-month-2",
+      "year": 2026,
+      "month": 2,
+      "revenue": 11600,
+      "mom": -9.14,
+      "yoy": 16.18,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "uni-monthly"
+      ]
+    },
+    {
+      "id": "uni-month-3",
+      "year": 2026,
+      "month": 3,
+      "revenue": 13079,
+      "mom": 12.75,
+      "yoy": 23.27,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "uni-monthly"
+      ]
+    },
+    {
+      "id": "uni-month-4",
+      "year": 2026,
+      "month": 4,
+      "revenue": 13933,
+      "mom": 6.53,
+      "yoy": 27.64,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "uni-monthly"
+      ]
+    },
+    {
+      "id": "uni-month-5",
+      "year": 2026,
+      "month": 5,
+      "revenue": 14060,
+      "mom": 0.91,
+      "yoy": 32.37,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "uni-monthly"
+      ]
+    },
+    {
+      "id": "uni-month-6",
+      "year": 2026,
+      "month": 6,
+      "revenue": 14897,
+      "mom": 5.95,
+      "yoy": 36.31,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "uni-monthly"
+      ]
+    },
+    {
+      "id": "uni-month-7",
+      "year": 2026,
+      "month": 7,
+      "revenue": 16254,
+      "mom": 9.11,
+      "yoy": 43.69,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "uni-monthly"
+      ]
+    },
+    {
+      "id": "uni-month-8",
+      "year": 2026,
+      "month": 8,
+      "revenue": 17746,
+      "mom": 9.18,
+      "yoy": 56.26,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "uni-monthly"
+      ]
+    },
+    {
+      "id": "uni-month-9",
+      "year": 2026,
+      "month": 9,
+      "revenue": 18650,
+      "mom": 5.09,
+      "yoy": 64.7,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "uni-monthly"
+      ]
+    },
+    {
+      "id": "uni-month-10",
+      "year": 2026,
+      "month": 10,
+      "revenue": 18986,
+      "mom": 1.8,
+      "yoy": 67.62,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "uni-monthly"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "id": "uni-segment-0",
+      "period": "2026Q3",
+      "segment": "ABF/BT載板",
+      "revenue": null,
+      "share": 62,
+      "isEstimate": false,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-ir"
+      ],
+      "claimIds": [
+        "uni-c-mix"
+      ]
+    },
+    {
+      "id": "uni-segment-1",
+      "period": "2026Q3",
+      "segment": "HDI",
+      "revenue": null,
+      "share": 27,
+      "isEstimate": false,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-ir"
+      ],
+      "claimIds": [
+        "uni-c-mix"
+      ]
+    },
+    {
+      "id": "uni-segment-2",
+      "period": "2026Q3",
+      "segment": "PCB",
+      "revenue": null,
+      "share": 9,
+      "isEstimate": false,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-ir"
+      ],
+      "claimIds": [
+        "uni-c-mix"
+      ]
+    },
+    {
+      "id": "uni-segment-3",
+      "period": "2026Q3",
+      "segment": "FPC",
+      "revenue": null,
+      "share": 1,
+      "isEstimate": false,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-ir"
+      ],
+      "claimIds": [
+        "uni-c-mix"
+      ]
+    },
+    {
+      "id": "uni-segment-4",
+      "period": "2026Q3",
+      "segment": "其他",
+      "revenue": null,
+      "share": 1,
+      "isEstimate": false,
+      "currency": "TWD",
+      "scale": "million",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-ir"
+      ],
+      "claimIds": [
+        "uni-c-mix"
+      ]
+    }
+  ],
+  "forecasts": [
+    {
+      "id": "uni-forecast-2026-bear",
+      "fiscalYear": 2026,
+      "scenario": "bear",
+      "revenue": 181000,
+      "grossMargin": 24,
+      "netIncome": 32000,
+      "eps": 20.25,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "notes": "研究假設試算；EPS以1,580百萬股粗估；scenario=consensus只是系統基準代碼，並非券商統計共識；非完整財務模型，不提供正式目標價。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-model",
+        "uni-ir"
+      ],
+      "claimIds": [
+        "uni-c-scenario"
+      ]
+    },
+    {
+      "id": "uni-forecast-2026-consensus",
+      "fiscalYear": 2026,
+      "scenario": "consensus",
+      "revenue": 191000,
+      "grossMargin": 27,
+      "netIncome": 41000,
+      "eps": 25.95,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "notes": "研究假設試算；EPS以1,580百萬股粗估；scenario=consensus只是系統基準代碼，並非券商統計共識；非完整財務模型，不提供正式目標價。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-model",
+        "uni-ir"
+      ],
+      "claimIds": [
+        "uni-c-scenario"
+      ]
+    },
+    {
+      "id": "uni-forecast-2026-bull",
+      "fiscalYear": 2026,
+      "scenario": "bull",
+      "revenue": 203000,
+      "grossMargin": 30,
+      "netIncome": 48000,
+      "eps": 30.38,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "notes": "研究假設試算；EPS以1,580百萬股粗估；scenario=consensus只是系統基準代碼，並非券商統計共識；非完整財務模型，不提供正式目標價。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-model",
+        "uni-ir"
+      ],
+      "claimIds": [
+        "uni-c-scenario"
+      ]
+    },
+    {
+      "id": "uni-forecast-2027-bear",
+      "fiscalYear": 2027,
+      "scenario": "bear",
+      "revenue": 218000,
+      "grossMargin": 25,
+      "netIncome": 34000,
+      "eps": 21.52,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "notes": "研究假設試算；EPS以1,580百萬股粗估；scenario=consensus只是系統基準代碼，並非券商統計共識；非完整財務模型，不提供正式目標價。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-model",
+        "uni-ir"
+      ],
+      "claimIds": [
+        "uni-c-scenario"
+      ]
+    },
+    {
+      "id": "uni-forecast-2027-consensus",
+      "fiscalYear": 2027,
+      "scenario": "consensus",
+      "revenue": 255000,
+      "grossMargin": 31,
+      "netIncome": 54500,
+      "eps": 34.49,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "notes": "研究假設試算；EPS以1,580百萬股粗估；scenario=consensus只是系統基準代碼，並非券商統計共識；非完整財務模型，不提供正式目標價。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-model",
+        "uni-ir"
+      ],
+      "claimIds": [
+        "uni-c-scenario"
+      ]
+    },
+    {
+      "id": "uni-forecast-2027-bull",
+      "fiscalYear": 2027,
+      "scenario": "bull",
+      "revenue": 280000,
+      "grossMargin": 35,
+      "netIncome": 68000,
+      "eps": 43.04,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "notes": "研究假設試算；EPS以1,580百萬股粗估；scenario=consensus只是系統基準代碼，並非券商統計共識；非完整財務模型，不提供正式目標價。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-model",
+        "uni-ir"
+      ],
+      "claimIds": [
+        "uni-c-scenario"
+      ]
+    },
+    {
+      "id": "uni-forecast-2028-bear",
+      "fiscalYear": 2028,
+      "scenario": "bear",
+      "revenue": 240000,
+      "grossMargin": 25,
+      "netIncome": 36500,
+      "eps": 23.1,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "notes": "研究假設試算；EPS以1,580百萬股粗估；scenario=consensus只是系統基準代碼，並非券商統計共識；非完整財務模型，不提供正式目標價。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-model",
+        "uni-ir"
+      ],
+      "claimIds": [
+        "uni-c-scenario"
+      ]
+    },
+    {
+      "id": "uni-forecast-2028-consensus",
+      "fiscalYear": 2028,
+      "scenario": "consensus",
+      "revenue": 290000,
+      "grossMargin": 32,
+      "netIncome": 60000,
+      "eps": 37.97,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "notes": "研究假設試算；EPS以1,580百萬股粗估；scenario=consensus只是系統基準代碼，並非券商統計共識；非完整財務模型，不提供正式目標價。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-model",
+        "uni-ir"
+      ],
+      "claimIds": [
+        "uni-c-scenario"
+      ]
+    },
+    {
+      "id": "uni-forecast-2028-bull",
+      "fiscalYear": 2028,
+      "scenario": "bull",
+      "revenue": 340000,
+      "grossMargin": 36,
+      "netIncome": 79000,
+      "eps": 50,
+      "optoShare": null,
+      "currency": "TWD",
+      "scale": "million",
+      "notes": "研究假設試算；EPS以1,580百萬股粗估；scenario=consensus只是系統基準代碼，並非券商統計共識；非完整財務模型，不提供正式目標價。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-model",
+        "uni-ir"
+      ],
+      "claimIds": [
+        "uni-c-scenario"
+      ]
+    }
+  ],
+  "capacity": [
+    {
+      "id": "uni-cap-0",
+      "label": "2026資本支出預算上調至537億元",
+      "equipment": "ABF及HDI設備採購",
+      "technology": "ABF/HDI",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "status": "budgeted",
+      "notes": "預算不是現金已支出；非與長交期設備授權額直接相加。",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "uni-macro",
+        "uni-yuanta"
+      ]
+    },
+    {
+      "id": "uni-cap-1",
+      "label": "光復二廠設備進場與良率爬坡",
+      "equipment": "高階載板產線",
+      "technology": "ABF/HDI",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "status": "ramping",
+      "notes": "新產能與客戶量產驗證時間點待公司正式文件確認。",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "uni-macro"
+      ]
+    },
+    {
+      "id": "uni-cap-2",
+      "label": "楊梅載板廠擴建",
+      "equipment": "ABF產線",
+      "technology": "ABF/HDI",
+      "deltaUnits": null,
+      "baseUnits": null,
+      "status": "planned",
+      "notes": "折舊起算、營收貢獻與訂單規模仍待獨立查證。",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "uni-macro",
+        "uni-yuanta"
+      ]
+    }
+  ],
+  "catalysts": [
+    {
+      "id": "uni-cat-0",
+      "title": "高階載板售價與良率提升",
+      "impact": "high",
+      "status": "watch",
+      "notes": "季度毛利率、ABF產品組合和良率是驗證點。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-ir",
+        "uni-macro"
+      ]
+    },
+    {
+      "id": "uni-cat-1",
+      "title": "AI GPU/ASIC高階載板升級",
+      "impact": "high",
+      "status": "watch",
+      "notes": "高層數與大面積載板需求提升，但客戶平台風險存在。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-ir",
+        "uni-yuanta"
+      ]
+    },
+    {
+      "id": "uni-cat-2",
+      "title": "新設備導入與產能釋出",
+      "impact": "high",
+      "status": "watch",
+      "notes": "可能放大營收與折舊，貢獻時程需驗證。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-macro"
+      ]
+    }
+  ],
+  "risks": [
+    {
+      "id": "uni-risk-0",
+      "title": "產品產地標示調查",
+      "impact": "high",
+      "probability": "unknown",
+      "status": "watch",
+      "notes": "未決指控，可能衍生客戶驗證、合規或賠償風險。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-capital"
+      ]
+    },
+    {
+      "id": "uni-risk-1",
+      "title": "財報業外收益使EPS失真",
+      "impact": "high",
+      "probability": "high",
+      "status": "watch",
+      "notes": "Q2有8,925百萬元業外淨收益，不可用法定EPS直接年化。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-ir"
+      ]
+    },
+    {
+      "id": "uni-risk-2",
+      "title": "擴產折舊及新產能良率",
+      "impact": "high",
+      "probability": "medium",
+      "status": "watch",
+      "notes": "預算與現金支出不同；未建立完整折舊與良率橋接。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-macro",
+        "uni-model"
+      ]
+    },
+    {
+      "id": "uni-risk-3",
+      "title": "AI客戶集中與平台轉換",
+      "impact": "medium",
+      "probability": "medium",
+      "status": "watch",
+      "notes": "AI產品與ABF景氣循環、客戶NPI驗證時程風險。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-ir",
+        "uni-yuanta"
+      ]
+    },
+    {
+      "id": "uni-risk-4",
+      "title": "簡化EPS模型錯誤風險",
+      "impact": "high",
+      "probability": "high",
+      "status": "watch",
+      "notes": "轉債、加權股數與稅率未驗證，研究僅作流程測試。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-model"
+      ]
+    }
+  ],
+  "signalRules": [
+    {
+      "id": "uni-rule-0",
+      "metric": "Q3毛利率",
+      "greenCondition": "≥29%",
+      "yellowCondition": "26–29%",
+      "redCondition": "<26%",
+      "weight": 25,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-ir"
+      ]
+    },
+    {
+      "id": "uni-rule-1",
+      "metric": "AI資料中心營收比重",
+      "greenCondition": "≥68%",
+      "yellowCondition": "55–67%",
+      "redCondition": "<55%",
+      "weight": 20,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-ir"
+      ]
+    },
+    {
+      "id": "uni-rule-2",
+      "metric": "載板營收占比",
+      "greenCondition": "≥62%",
+      "yellowCondition": "56–61%",
+      "redCondition": "<56%",
+      "weight": 15,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-ir"
+      ]
+    },
+    {
+      "id": "uni-rule-3",
+      "metric": "月營收",
+      "greenCondition": "≥190億元",
+      "yellowCondition": "170–190億元",
+      "redCondition": "<170億元",
+      "weight": 15,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-monthly"
+      ]
+    },
+    {
+      "id": "uni-rule-4",
+      "metric": "業外貢獻下降",
+      "greenCondition": "業外依賴續降",
+      "yellowCondition": "本業改善但業外偏大",
+      "redCondition": "營運主要靠業外",
+      "weight": 15,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-ir"
+      ]
+    },
+    {
+      "id": "uni-rule-5",
+      "metric": "法遵事件進度",
+      "greenCondition": "有官方正式解決證據",
+      "yellowCondition": "案件進度未明",
+      "redCondition": "出貨或客戶嚴重受限",
+      "weight": 10,
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-capital"
+      ]
+    }
+  ],
+  "signalSnapshots": [
+    {
+      "id": "uni-snapshot-0",
+      "asOfDate": "2026-11-20",
+      "metric": "Q3毛利率",
+      "status": "yellow",
+      "valueText": "28.85%",
+      "notes": "截至2026-11-20，後續依官方公告逐季更新。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-ir"
+      ]
+    },
+    {
+      "id": "uni-snapshot-1",
+      "asOfDate": "2026-11-20",
+      "metric": "AI資料中心營收比重",
+      "status": "green",
+      "valueText": "68%",
+      "notes": "截至2026-11-20，後續依官方公告逐季更新。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-ir"
+      ]
+    },
+    {
+      "id": "uni-snapshot-2",
+      "asOfDate": "2026-11-20",
+      "metric": "載板營收占比",
+      "status": "green",
+      "valueText": "62%",
+      "notes": "截至2026-11-20，後續依官方公告逐季更新。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-ir"
+      ]
+    },
+    {
+      "id": "uni-snapshot-3",
+      "asOfDate": "2026-11-20",
+      "metric": "月營收",
+      "status": "yellow",
+      "valueText": "10月189.86億元",
+      "notes": "截至2026-11-20，後續依官方公告逐季更新。",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "uni-monthly"
+      ]
+    },
+    {
+      "id": "uni-snapshot-4",
+      "asOfDate": "2026-11-20",
+      "metric": "業外貢獻下降",
+      "status": "yellow",
+      "valueText": "Q2業外89.25→Q3 26.35億元",
+      "notes": "截至2026-11-20，後續依官方公告逐季更新。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-ir"
+      ]
+    },
+    {
+      "id": "uni-snapshot-5",
+      "asOfDate": "2026-11-20",
+      "metric": "法遵事件進度",
+      "status": "yellow",
+      "valueText": "調查仍待最新官方資料",
+      "notes": "截至2026-11-20，後續依官方公告逐季更新。",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "uni-capital"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "uni-section-1",
+      "type": "summary",
+      "title": "投資摘要：ABF高階載板獲利槓桿",
+      "sortOrder": 1,
+      "payloadRefs": [
+        "thesis",
+        "signalSnapshots"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "uni-section-2",
+      "type": "kpi-grid",
+      "title": "2026Q3財務實績與EPS口徑",
+      "sortOrder": 2,
+      "payloadRefs": [
+        "actuals",
+        "monthlyRevenue"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "uni-section-3",
+      "type": "financial-table",
+      "title": "季度營業利益與業外盈餘品質",
+      "sortOrder": 3,
+      "payloadRefs": [
+        "actuals",
+        "claims"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "uni-section-4",
+      "type": "bar-chart",
+      "title": "2026月營收與載板產品組合",
+      "sortOrder": 4,
+      "payloadRefs": [
+        "monthlyRevenue",
+        "segments"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "uni-section-5",
+      "type": "bridge",
+      "title": "AI需求到毛利率的獲利橋接",
+      "sortOrder": 5,
+      "payloadRefs": [
+        "actuals",
+        "claims"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "uni-section-6",
+      "type": "capacity",
+      "title": "光復與楊梅產能擴充",
+      "sortOrder": 6,
+      "payloadRefs": [
+        "capacity",
+        "risks"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "uni-section-7",
+      "type": "scenario-table",
+      "title": "2026–2028自建三情境（非共識）",
+      "sortOrder": 7,
+      "payloadRefs": [
+        "forecasts",
+        "claims"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "uni-section-8",
+      "type": "signals",
+      "title": "燈號與下季驗證條件",
+      "sortOrder": 8,
+      "payloadRefs": [
+        "signalRules",
+        "signalSnapshots"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "uni-section-9",
+      "type": "catalysts-risks",
+      "title": "催化劑、合規與循環風險",
+      "sortOrder": 9,
+      "payloadRefs": [
+        "catalysts",
+        "risks"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "uni-section-10",
+      "type": "sources",
+      "title": "官方、券商來源與驗證缺口",
+      "sortOrder": 10,
+      "payloadRefs": [
+        "sources",
+        "claims"
+      ],
+      "showSources": true
+    },
+    {
+      "id": "uni-section-11",
+      "type": "conclusion",
+      "title": "結論：本業改善但EPS模型未完備",
+      "sortOrder": 11,
+      "payloadRefs": [
+        "thesis",
+        "forecasts",
+        "risks"
+      ],
+      "showSources": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "uni-ir",
+      "evidenceClass": "official",
+      "provider": "欣興電子／法說會",
+      "title": "2026年第三季法說簡報（公司製作）",
+      "url": "https://cdn.financialreports.eu/financialreports/media/filings/52270/2026/RNS/52270_rns_2026-11-11_827a3b3f-2f2d-4502-b1fa-6d3ea0dbf30d.pdf",
+      "publishedDate": "2026-10-27",
+      "accessedDate": "2026-11-20",
+      "coveredPeriods": [
+        "2026Q3"
+      ],
+      "confidence": "high",
+      "notes": "公司Q3損益及產品/應用結構。第三方鏡像保存之官方簡報，仍待公司網址核對。"
+    },
+    {
+      "id": "uni-mops",
+      "evidenceClass": "official",
+      "provider": "欣興電子／公開資訊觀測站",
+      "title": "2026年第三季財務報告公告",
+      "url": "https://tw.stock.yahoo.com/quote/3037/announcement",
+      "publishedDate": "2026-10-27",
+      "accessedDate": "2026-11-20",
+      "coveredPeriods": [
+        "2026YTD"
+      ],
+      "confidence": "high",
+      "notes": "1–9月營收132,986.108百萬元；基本EPS17.85元；歸母淨利28,209.851百萬元。"
+    },
+    {
+      "id": "uni-monthly",
+      "evidenceClass": "third_party_fact",
+      "provider": "公開月營收轉錄平台",
+      "title": "2026年1–10月合併月營收（台幣百萬元）",
+      "url": "https://agdstock.club/revenue/3037-%E6%AC%A3%E8%88%88",
+      "accessedDate": "2026-11-20",
+      "coveredPeriods": [
+        "2026M01"
+      ],
+      "confidence": "medium",
+      "notes": "1–6月由公開月營收網站，7–10月由新聞交叉核對；四捨五入至百萬元，正式驗證必須抓取原始MOPS月報。"
+    },
+    {
+      "id": "uni-macro",
+      "evidenceClass": "third_party_fact",
+      "provider": "宏遠投顧",
+      "title": "欣興3037個股研究2026-09-09",
+      "publishedDate": "2026-09-09",
+      "accessedDate": "2026-11-20",
+      "coveredPeriods": [
+        "2027F"
+      ],
+      "confidence": "medium",
+      "notes": "狼友小站受限PDF；只保留原創摘要及EPS36.17的數值比較，沒有上傳原文或私人URL。"
+    },
+    {
+      "id": "uni-yuanta",
+      "evidenceClass": "third_party_fact",
+      "provider": "元大投顧",
+      "title": "欣興3037更新報告2026-04-29",
+      "publishedDate": "2026-04-29",
+      "accessedDate": "2026-11-20",
+      "coveredPeriods": [
+        "2027F"
+      ],
+      "confidence": "medium",
+      "notes": "狼友小站受限PDF；舊版本2027EPS34.35，並非全體市場共識。"
+    },
+    {
+      "id": "uni-capital",
+      "evidenceClass": "third_party_fact",
+      "provider": "群益投顧",
+      "title": "欣興調查事件風險速報2026-08-31",
+      "publishedDate": "2026-08-31",
+      "accessedDate": "2026-11-20",
+      "coveredPeriods": [
+        "2026Q3"
+      ],
+      "confidence": "medium",
+      "notes": "私人受限券商資料：調查為嫌疑與指控，不是定罪；最終司法結果尚待查證。"
+    },
+    {
+      "id": "uni-model",
+      "evidenceClass": "research_inference",
+      "provider": "本系統情境模型",
+      "title": "2026–2028營收與EPS情境示意",
+      "accessedDate": "2026-11-20",
+      "coveredPeriods": [
+        "2027F"
+      ],
+      "confidence": "medium",
+      "notes": "沒有完整折舊、非經常業外、稅率及轉債稀釋模型；EPS=假設歸母淨利/1,580百萬股，非認證估值。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "uni-c-q3",
+      "text": "2026Q3營收526.50億元，毛利151.89億元，營益105.28億元，毛利率28.85%，反映本業改善。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-ir"
+      ],
+      "inputClaimIds": [],
+      "method": "公司損益表及百分比重算",
+      "confidence": "high"
+    },
+    {
+      "id": "uni-c-eps",
+      "text": "Q3基本EPS6.36、稀釋EPS6.32；前三季基本EPS17.85，不可混用單季/累計及基本/稀釋。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-ir",
+        "uni-mops"
+      ],
+      "inputClaimIds": [],
+      "method": "公司季別EPS與公告對照",
+      "confidence": "high"
+    },
+    {
+      "id": "uni-c-nonop",
+      "text": "Q2業外淨收益89.25億元，Q3僅26.35億元，故Q3營業利益增加不代表歸母EPS同步增加。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-ir"
+      ],
+      "inputClaimIds": [],
+      "method": "公司Q2/Q3業外損益",
+      "confidence": "high"
+    },
+    {
+      "id": "uni-c-mix",
+      "text": "Q3載板占營收62%，AI資料中心應用占68%，屬兩套維度不能相加。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-ir"
+      ],
+      "inputClaimIds": [],
+      "method": "公司載板產品比/應用比對照",
+      "confidence": "high"
+    },
+    {
+      "id": "uni-c-revenue",
+      "text": "2026年10月營收約189.86億元，前十月合計約1,519.72億元；需用MOPS原始月營收再核對。",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "uni-monthly"
+      ],
+      "inputClaimIds": [],
+      "method": "公開月營收逐月加總",
+      "confidence": "medium"
+    },
+    {
+      "id": "uni-c-brokers",
+      "text": "宏遠2026/9對2027F EPS估36.17，元大2026/4估34.35；不同時間點不等於正式市場共識。",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "uni-macro",
+        "uni-yuanta"
+      ],
+      "inputClaimIds": [],
+      "method": "不同券商PDF數據與報告日期核對",
+      "confidence": "medium"
+    },
+    {
+      "id": "uni-c-risk",
+      "text": "2026年8月原產地標示相關調查屬未決風險，不能當作已裁決的違法事實。",
+      "evidenceClass": "third_party_fact",
+      "sourceIds": [
+        "uni-capital"
+      ],
+      "inputClaimIds": [],
+      "method": "風險事件持續追蹤；法律結論未核",
+      "confidence": "medium"
+    },
+    {
+      "id": "uni-c-scenario",
+      "text": "2026–2028 EPS模型僅示意，未驗證分母、折舊、業外損益及稅率，不提供正式目標價。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-model",
+        "uni-ir"
+      ],
+      "inputClaimIds": [],
+      "method": "研究假設清單、保守標示",
+      "confidence": "high"
+    },
+    {
+      "id": "uni-c-drivers",
+      "text": "ABF大尺寸、高層數產品、AI/HPC需求、漲價及良率攀升是潛在槓桿，仍依季度財務數據驗證。",
+      "evidenceClass": "research_inference",
+      "sourceIds": [
+        "uni-ir",
+        "uni-macro",
+        "uni-yuanta"
+      ],
+      "inputClaimIds": [],
+      "method": "將公司已公告的產品占比與券商假設分開",
+      "confidence": "medium"
+    }
+  ]
+}
