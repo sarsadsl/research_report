@@ -84,19 +84,19 @@ ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,title=excluded.titl
 INSERT INTO research_signal_rules
 (id,company_id,metric,green_condition,yellow_condition,red_condition,weight,notes)
 VALUES
-('uni-rule-0','uni-company','Q3毛利率','≥29%','26–29%','<26%',25,'research_inference; sources=uni-ir'),
-('uni-rule-1','uni-company','AI資料中心營收比重','≥68%','55–67%','<55%',20,'research_inference; sources=uni-ir'),
-('uni-rule-2','uni-company','載板營收占比','≥62%','56–61%','<56%',15,'research_inference; sources=uni-ir'),
-('uni-rule-3','uni-company','月營收','≥190億元','170–190億元','<170億元',15,'research_inference; sources=uni-monthly'),
-('uni-rule-4','uni-company','業外貢獻下降','業外依賴續降','本業改善但業外偏大','營運主要靠業外',15,'research_inference; sources=uni-ir'),
-('uni-rule-5','uni-company','法遵事件進度','有官方正式解決證據','案件進度未明','出貨或客戶嚴重受限',10,'official; sources=uni-prosecutor')
+('uni-rule-0','uni-company','Q3毛利率','≥29%','26–29%','<26%',25,'research_inference; sources=uni-model,uni-mops'),
+('uni-rule-1','uni-company','AI資料中心營收比重','≥68%','55–67%','<55%',20,'research_inference; sources=uni-model,uni-ir'),
+('uni-rule-2','uni-company','載板營收占比','≥62%','56–61%','<56%',15,'research_inference; sources=uni-model,uni-ir'),
+('uni-rule-3','uni-company','月營收','≥190億元','170–190億元','<170億元',15,'research_inference; sources=uni-model,uni-monthly'),
+('uni-rule-4','uni-company','業外貢獻下降','業外依賴續降','本業改善但業外偏大','營運主要靠業外',15,'research_inference; sources=uni-model,uni-ir'),
+('uni-rule-5','uni-company','法遵事件進度','有官方正式解決證據','案件進度未明','出貨或客戶嚴重受限',10,'research_inference; sources=uni-model,uni-prosecutor')
 ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,metric=excluded.metric,green_condition=excluded.green_condition,yellow_condition=excluded.yellow_condition,red_condition=excluded.red_condition,weight=excluded.weight,notes=excluded.notes;
 
 INSERT INTO research_signal_snapshots
 (id,company_id,as_of_date,metric,status,value_text,source_type,notes)
 VALUES
-('uni-snapshot-0','uni-company','2026-11-26','Q3毛利率','yellow','28.85%','official','資料截止日 2026-11-26；依同口徑公告追蹤。'),
-('uni-snapshot-1','uni-company','2026-11-26','AI資料中心營收比重','green','68%','official','資料截止日 2026-11-26；依同口徑公告追蹤。'),
+('uni-snapshot-0','uni-company','2026-11-26','Q3毛利率','yellow','28.85%','official','合併財報第 7 頁。15189.468／52649.835 重算至小數二位。'),
+('uni-snapshot-1','uni-company','2026-11-26','AI資料中心營收比重','green','68%','official','公司法說簡報第 8 頁。應用別 68%，產品平台載板另見第 7 頁。'),
 ('uni-snapshot-2','uni-company','2026-11-26','載板營收占比','green','62%','official','資料截止日 2026-11-26；依同口徑公告追蹤。'),
 ('uni-snapshot-3','uni-company','2026-11-26','月營收','yellow','10月189.86億元','third_party_fact','資料截止日 2026-11-26；依同口徑公告追蹤。'),
 ('uni-snapshot-4','uni-company','2026-11-26','業外貢獻下降','yellow','Q2 89.25 億、Q3 26.36 億','official','資料截止日 2026-11-26；依同口徑公告追蹤。'),
@@ -106,7 +106,7 @@ ON CONFLICT(id) DO UPDATE SET company_id=excluded.company_id,as_of_date=excluded
 INSERT INTO research_sources
 (id,company_id,source_type,source_group,source_title,published_date,url,file_name,notes,confidence)
 VALUES
-('uni-ir','uni-company','official','欣興電子／法說會','2026年第三季法說簡報（公司製作）','2026-10-27','https://www.unimicron.com/files/money/Earnings/ch/2026-Q3-consolidated-ch.pdf',NULL,'公司法說簡報，損益及產品、應用別結構。; accessed=2026-11-26; periods=2026Q3','high'),
+('uni-ir','uni-company','official','欣興電子／法說會','2026年第三季法說簡報（公司製作）','2026-10-27','https://www.unimicron.com/files/money/Earnings/ch/2026-Q3-consolidated-ch.pdf',NULL,'公司法說簡報，第 7 頁是依產品平台，第 8 頁是依產品應用。; accessed=2026-11-26; periods=2026Q3','high'),
 ('uni-mops','uni-company','official','欣興電子／臺灣證券交易所電子書','2026Q3 合併財務報告',NULL,'https://doc.twse.com.tw/server-java/t57sb01?step=1&colorchg=1&co_id=3037&year=115&seamon=3&mtype=A',NULL,'第 5–8、11–12、25、58–59、63–64、68–69、88、91、96 頁公開核對資料。; accessed=2026-11-26; periods=2026Q3|2026YTD|2025Q3','high'),
 ('uni-monthly','uni-company','official','欣興電子','2026 年 1–10 月合併營收',NULL,'https://www.unimicron.com/money01.html',NULL,'公司財務資訊頁 115 年月營收表，原始單位為新臺幣千元。; accessed=2026-11-26; periods=2026M01|2026M02|2026M03|2026M04|2026M05|2026M06|2026M07|2026M08|2026M09|2026M10','high'),
 ('uni-model','uni-company','research_inference','本系統情境模型','2026–2028營收與EPS情境示意',NULL,NULL,NULL,'自建情境，以官方 2026 前三季損益和 Q3 期末股本為起點。2026 = 9M 已實現加 Q4（Q4 營收×〔毛利率－費用率〕＋業外）×（1－稅率）－非控制權益；2027–28 用全年同一公式。EPS 等於歸母淨利除以模型加權股數。各列披露假設；基準情境用舊欄位 consensus 儲存，資料類型為自行推估。; accessed=2026-11-20; periods=2026F|2027F|2028F','medium'),

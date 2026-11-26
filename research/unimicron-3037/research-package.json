@@ -877,7 +877,8 @@
       "weight": 25,
       "evidenceClass": "research_inference",
       "sourceIds": [
-        "uni-ir"
+        "uni-model",
+        "uni-mops"
       ]
     },
     {
@@ -889,6 +890,7 @@
       "weight": 20,
       "evidenceClass": "research_inference",
       "sourceIds": [
+        "uni-model",
         "uni-ir"
       ]
     },
@@ -901,6 +903,7 @@
       "weight": 15,
       "evidenceClass": "research_inference",
       "sourceIds": [
+        "uni-model",
         "uni-ir"
       ]
     },
@@ -913,6 +916,7 @@
       "weight": 15,
       "evidenceClass": "research_inference",
       "sourceIds": [
+        "uni-model",
         "uni-monthly"
       ]
     },
@@ -925,6 +929,7 @@
       "weight": 15,
       "evidenceClass": "research_inference",
       "sourceIds": [
+        "uni-model",
         "uni-ir"
       ]
     },
@@ -935,8 +940,9 @@
       "yellowCondition": "案件進度未明",
       "redCondition": "出貨或客戶嚴重受限",
       "weight": 10,
-      "evidenceClass": "official",
+      "evidenceClass": "research_inference",
       "sourceIds": [
+        "uni-model",
         "uni-prosecutor"
       ]
     }
@@ -948,10 +954,10 @@
       "metric": "Q3毛利率",
       "status": "yellow",
       "valueText": "28.85%",
-      "notes": "資料截止日 2026-11-26；依同口徑公告追蹤。",
+      "notes": "合併財報第 7 頁。15189.468／52649.835 重算至小數二位。",
       "evidenceClass": "official",
       "sourceIds": [
-        "uni-ir"
+        "uni-mops"
       ]
     },
     {
@@ -960,7 +966,7 @@
       "metric": "AI資料中心營收比重",
       "status": "green",
       "valueText": "68%",
-      "notes": "資料截止日 2026-11-26；依同口徑公告追蹤。",
+      "notes": "公司法說簡報第 8 頁。應用別 68%，產品平台載板另見第 7 頁。",
       "evidenceClass": "official",
       "sourceIds": [
         "uni-ir"
@@ -1153,7 +1159,7 @@
         "2026Q3"
       ],
       "confidence": "high",
-      "notes": "公司法說簡報，損益及產品、應用別結構。"
+      "notes": "公司法說簡報，第 7 頁是依產品平台，第 8 頁是依產品應用。"
     },
     {
       "id": "uni-mops",
@@ -1345,7 +1351,7 @@
         "uni-ir"
       ],
       "inputClaimIds": [],
-      "method": "公司載板產品比/應用比對照",
+      "method": "法說簡報第 7 頁產品平台與第 8 頁產品應用，核對相同季度。",
       "confidence": "high"
     },
     {
