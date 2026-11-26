@@ -1,6 +1,6 @@
 # Agy → Local Codex automatic fallback (design + operating guide)
 
-Status: **Code published to main in PR #22; local authenticated Windows live test remains required.** GitHub CI uses simulated CLI calls, not the user's local account.
+Authenticated Windows tests on 2026-11-26 covered Agy 1.5.17 with Gemini 4 Argon High, Codex 0.152.1 fallback when Agy was unavailable, and fallback after a timeout of a running Agy process. GitHub CI runs offline regression tests.
 
 ## User policy
 
@@ -17,7 +17,6 @@ Status: **Code published to main in PR #22; local authenticated Windows live tes
 Run these from the trusted local checkout, with Python dependencies installed. Agy and Codex must be installed and authenticated **on the same Windows computer where this command is run**.
 
 ```powershell
-cd 'C:\Users\Wei&Ting\Documents\Codex\research_report'
 python -m pip install -r requirements-verification.txt
 
 # Primary Agy/Gemini; automatically fallback to Codex on eligible CLI outage
@@ -33,19 +32,13 @@ python -m verification review unimicron-3037 --fallback none
 python -m verification.auto_review unimicron-3037
 ```
 
-**NOTE:** The signer currently deliberately supports only `codex-cli-default` as the signed Codex model identity; if you use `--codex-model gpt-6`, model review is still possible but signing will be refused until an explicit pinned-model allowlist is approved and recorded. For a complete automated signed flow, use the local configured model default and note that the exact model version is not independently attested.
+Codex records the model identity reported by the CLI. The signer accepts a recorded GPT model for the fallback provider and retains support for legacy certificates. The runtime starts without user configuration, plugins, hooks, MCP connections, shell tools or web search.
 
 The existing deterministic `python -m verification validate <slug>` command is still mandatory and is executed before either model is called.
 
 ### Restricted brokerage documents
 
-Default: do not transmit restricted broker reports to external AI services. When source mapping includes restricted PDFs, both providers will block unless the operator **explicitly authorizes** the private review:
-
-```powershell
-python -m verification review unimicron-3037 --fallback codex --allow-private-source-review
-```
-
-This sends restricted excerpts to whichever authenticated model actually runs (Agy/Gemini first, Codex if Agy fails), not to public GitHub. Confirm data permissions before opting in. Records remain under Git-ignored `.research-verification/<slug>/<packageHash>/`.
+The Full Report entry point keeps restricted reports and review excerpts on the authoring machine. Use original public sources to support each published claim and record private comparisons separately. Local records stay under `.research-verification/`.
 
 ### Records and provenance
 
@@ -72,4 +65,4 @@ This sends restricted excerpts to whichever authenticated model actually runs (A
 - Force Agy unavailable and confirm a **real** Codex call produces strictly structured findings for a synthetic small research package with complete evidence.
 - Confirm P1 and missing-evidence scenarios block; confirm signing rejects tampered provider and fallbackReason.
 - Confirm `npm run research:check` and existing Report QC on at least one sample package.
-- Keep pull requests in Draft and do not publish D1 until live failover and signed certificate verification are confirmed.
+- Keep the report draft while material findings, required evidence or certificate verification remain unresolved.
