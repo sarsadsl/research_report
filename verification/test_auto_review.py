@@ -15,14 +15,20 @@ from .test_cli import _populate_synthetic_root, _make_fake_agy_runner
 class TestAutomaticFallback(unittest.TestCase):
     def test_exact_infrastructure_error_only(self):
         base = dict(status="BLOCKED", deterministicStatus="PASS",
-                    modelInvoked=False, findingSummary={"totalFindings": 0})
+                    modelInvoked=False, findingSummary={"totalFindings": 0},
+                    fallbackSafe=True, reviewFailureCode="AGY_NOT_FOUND",
+                    recordPath=".research-verification/test/gemini-review.json")
         self.assertEqual(infrastructure_failure({
             **base, "blockedReasons":["[AGY_NOT_FOUND] absent"]}), "AGY_NOT_FOUND")
         for reason in ("[P1] EPS mismatch", "[INVALID_FINDING_SEVERITY] wrong",
                        "[REQUIRED_SOURCE_MISSING] lost", "[AGY_WRAPPER_ERROR] invalid"):
             self.assertIsNone(infrastructure_failure({**base, "blockedReasons":[reason]}))
         self.assertIsNone(infrastructure_failure({
-            **base, "modelInvoked":True, "blockedReasons":["[AGY_TIMEOUT] late"]}))
+            **base, "modelInvoked":True, "fallbackSafe":False,
+            "reviewFailureCode":"AGY_TIMEOUT", "blockedReasons":["[AGY_TIMEOUT] late"]}))
+        self.assertEqual(infrastructure_failure({
+            **base, "modelInvoked":True, "reviewFailureCode":"AGY_TIMEOUT",
+            "blockedReasons":["[AGY_TIMEOUT] late"]}), "AGY_TIMEOUT")
         self.assertIsNone(infrastructure_failure({
             **base, "findingSummary":{"totalFindings":1},
             "blockedReasons":["[AGY_TIMEOUT] late"]}))
@@ -87,6 +93,65 @@ class TestAutomaticFallback(unittest.TestCase):
             self.assertEqual(record["reviewProvider"], "codex-fallback")
             self.assertEqual(record["assuranceLevel"], "internal-fallback-review")
             self.assertEqual(record["fallbackReason"], "AGY_NOT_FOUND")
+
+    def test_agy_first_success_does_not_call_codex(self):
+        with tempfile.TemporaryDirectory() as dirname:
+            root = Path(dirname)
+            _populate_synthetic_root(root, slug="acme-1234", include_evidence_files=True)
+            primary, calls = _make_fake_agy_runner()
+            backup_calls = []
+            code, result = run_auto_review_command(
+                "acme-1234", root_dir=root, agy_runner=primary,
+                codex_runner=self._codex_runner(backup_calls),
+            )
+            self.assertEqual(code, 0, result.get("blockedReasons"))
+            self.assertGreaterEqual(len(calls), 3)
+            self.assertFalse(result["fallbackUsed"])
+            self.assertEqual(backup_calls, [])
+
+    def test_started_agy_transport_failure_restarts_review_in_codex(self):
+        for mode in ("nonzero", "timeout"):
+            with self.subTest(mode=mode), tempfile.TemporaryDirectory() as dirname:
+                root = Path(dirname)
+                _populate_synthetic_root(root, slug="acme-1234", include_evidence_files=True)
+                if mode == "nonzero":
+                    primary, _ = _make_fake_agy_runner(
+                        review_returncode=1, raw_review_stdout_override="")
+                else:
+                    primary, _ = _make_fake_agy_runner(raise_timeout_on_review=True)
+                backup_calls = []
+                code, result = run_auto_review_command(
+                    "acme-1234", root_dir=root, agy_runner=primary,
+                    codex_runner=self._codex_runner(backup_calls),
+                )
+                self.assertEqual(code, 0, result.get("blockedReasons"))
+                self.assertTrue(result["fallbackUsed"])
+                self.assertEqual(result["fallbackReason"],
+                    "AGY_CLI_NON_ZERO" if mode == "nonzero" else "AGY_TIMEOUT")
+                primary_record = json.loads((root / result["agyRecordPath"]).read_text(encoding="utf-8"))
+                self.assertEqual(primary_record["status"], "BLOCKED")
+                self.assertTrue(primary_record["fallbackSafe"])
+                self.assertTrue(backup_calls)
+
+    def test_failed_agy_with_partial_output_never_discards_primary_response(self):
+        for mode in ("nonzero", "timeout"):
+            with self.subTest(mode=mode), tempfile.TemporaryDirectory() as dirname:
+                root = Path(dirname)
+                _populate_synthetic_root(root, slug="acme-1234", include_evidence_files=True)
+                primary, _ = _make_fake_agy_runner(
+                    review_returncode=1, raw_review_stdout_override='{"findings":[')
+                def runner(args, **kwargs):
+                    if mode == "timeout" and "--version" not in args and "models" not in args:
+                        raise subprocess.TimeoutExpired(args, 1, output=b'{"findings":[')
+                    return primary(args, **kwargs)
+                backup_calls = []
+                code, result = run_auto_review_command(
+                    "acme-1234", root_dir=root, agy_runner=runner,
+                    codex_runner=self._codex_runner(backup_calls),
+                )
+                self.assertNotEqual(code, 0)
+                self.assertFalse(result["fallbackUsed"])
+                self.assertEqual(backup_calls, [])
 
     def test_agy_p1_cannot_be_overridden_by_codex(self):
         with tempfile.TemporaryDirectory() as dirname:

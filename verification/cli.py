@@ -766,6 +766,31 @@ def run_review_command(
 
     completed_at_utc = _utc_now_iso()
 
+    # Machine-readable transport failure facts; never authorize fallback based
+    # solely on a human-readable exception or on modelInvoked=False.
+    review_failure_code = gemini_result.metadata.get("errorCode") if gemini_result else None
+    fallback_safe = False
+    if gemini_result is not None and gemini_result.status == REVIEW_STATUS_BLOCKED:
+        details = gemini_result.summary.get("errorDetails") or {}
+        if not isinstance(details, Mapping):
+            details = {}
+        fallback_safe = (
+            gemini_result.metadata.get("provider") != "codex-fallback"
+            and review_failure_code in {
+                "AGY_NOT_FOUND", "AGY_TIMEOUT", "AGY_OS_ERROR",
+                "AGY_VERSION_FAILED", "AGY_VERSION_EMPTY", "AGY_MODELS_FAILED",
+                "MODEL_NOT_AVAILABLE", "AGY_CLI_NON_ZERO",
+            }
+            and not gemini_result.findings
+            and not details.get("partialStdoutPresent")
+            and (review_failure_code != "AGY_CLI_NON_ZERO" or not str(details.get("stdout") or "").strip())
+            and all(
+                (batch.parsed_response is not None and not batch.errors and not batch.findings)
+                or (batch.wrapper_status == "CLI_NON_ZERO" and not batch.raw_stdout.strip())
+                for batch in gemini_result.batches
+            )
+        )
+
     if gemini_result is not None:
         final_status = (
             gemini_result.status
@@ -839,6 +864,8 @@ def run_review_command(
         "agyVersion": agy_meta_clean["agyVersion"],
         "agyMetadata": agy_meta_clean,
         "modelInvoked": model_invoked,
+        "reviewFailureCode": review_failure_code,
+        "fallbackSafe": fallback_safe,
         "startedAtUtc": gemini_result.started_at_utc if gemini_result else started_at_utc,
         "completedAtUtc": gemini_result.completed_at_utc if gemini_result else completed_at_utc,
         **hashes,
@@ -890,6 +917,8 @@ def run_review_command(
         "fallbackReason": str(gemini_result.metadata.get("fallbackReason") or "") if gemini_result else "",
         "agyVersion": agy_meta_clean["agyVersion"],
         "modelInvoked": model_invoked,
+        "reviewFailureCode": review_failure_code,
+        "fallbackSafe": fallback_safe,
         "startedAtUtc": record_payload["startedAtUtc"],
         "completedAtUtc": record_payload["completedAtUtc"],
         "hashes": hashes,

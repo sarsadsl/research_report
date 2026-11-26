@@ -34,7 +34,9 @@ POLICY_SPEC: dict[str, Any] = {
         "p2RequiresLocatableReportDisclosure": True,
         "p3MaxReReviews": 1,
         "missingRequiredSourceBlocks": True,
-        "geminiFailureBlocks": True,
+        "geminiFailureBlocksWithoutEligibleFallback": True,
+        "agyPrimaryCodexTransportFallbackOnly": True,
+        "fallbackRequiresNoFindingsOrPartialResponse": True,
     },
 }
 
@@ -45,6 +47,8 @@ VERIFIER_CODE_FILES: tuple[str, ...] = (
     "verification/locators.py",
     "verification/recompute.py",
     "verification/gemini_review.py",
+    "verification/auto_review.py",
+    "verification/codex_review.py",
     "verification/validator.py",
     "verification/cli.py",
     "verification/__main__.py",

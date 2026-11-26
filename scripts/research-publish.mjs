@@ -64,7 +64,7 @@ export async function publishResearch(options, rootDir = process.cwd()) {
     schemaVersion: "1.0.0", releaseId, slug, target: remote ? "remote" : "dry-run",
     status: "RUNNING", releaseMode: publicPreview ? "PUBLIC_PREVIEW_DRAFT" : "PUBLISHED", startedAt: new Date().toISOString(),
     stages: Object.fromEntries(["validate", "build", "candidate", "qc", "seal", "certificate", "import", "deploy"].map(name => [name, {status:"NOT_RUN"}])),
-    automatedReviewPolicy: "Remote publishing requires a signed Agy Gemini 4 Argon certificate with PASS or disclosed PASS_WITH_P2.",
+    automatedReviewPolicy: "Remote publishing requires a signed Agy Gemini primary or explicitly labeled Codex fallback certificate with PASS or disclosed PASS_WITH_P2.",
     manualReview: "NOT_REQUIRED_BY_RELEASE_GATE",
     ciRun: process.env.GITHUB_RUN_ID ?? null,
   };
