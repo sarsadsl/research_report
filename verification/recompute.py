@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+from decimal import Decimal, ROUND_HALF_UP
 import math
 from typing import Any
 
@@ -867,6 +868,26 @@ def recompute_eps_checks(
         else:
             net_inc_for_calc = None
 
+        # The canonical schema stores the two inputs and their source IDs separately.
+        # Older packages and fixtures can still supply the legacy or EQ-01 fields.
+        contract = act.get("epsCalculation")
+        decimals = None
+        if isinstance(contract, dict):
+            numerator = contract.get("numerator") or {}
+            denominator = contract.get("denominator") or {}
+            sids = list(dict.fromkeys([*sids, *(
+                node["sourceId"] for node in (numerator, denominator) if node.get("sourceId")
+            )]))
+            shares_val = denominator.get("value")
+            shares_scale = denominator.get("scale")
+            calc_scale = numerator.get("scale")
+            net_inc_for_calc = numerator.get("value")
+            decimals = contract.get("roundingDecimals")
+            if (numerator.get("currency") != act_curr or not _is_finite_number(net_inc_for_calc)
+                    or calc_scale not in SCALE_FACTORS or shares_scale not in SCALE_FACTORS
+                    or not isinstance(decimals, int) or isinstance(decimals, bool) or not 0 <= decimals <= 4):
+                net_inc_for_calc = None
+
         if (
             not _is_finite_number(shares_val)
             or float(shares_val) <= 0.0
@@ -907,24 +928,28 @@ def recompute_eps_checks(
             )
             continue
 
-        expected_eps = _compute_eps_from_explicit_inputs(
-            net_inc_for_calc,
-            float(shares_val),
-            income_scale=calc_scale,
-            shares_scale=shares_scale,
-        )
+        if decimals is not None:
+            precise = (Decimal(str(net_inc_for_calc)) * Decimal(SCALE_FACTORS[calc_scale])
+                       / (Decimal(str(shares_val)) * Decimal(SCALE_FACTORS[shares_scale])))
+            expected_eps = float(precise.quantize(Decimal(1).scaleb(-decimals), rounding=ROUND_HALF_UP))
+            tolerance = 0.0
+        else:
+            expected_eps = _compute_eps_from_explicit_inputs(
+                net_inc_for_calc, float(shares_val), income_scale=calc_scale, shares_scale=shares_scale,
+            )
+            tolerance = eps_tol
         diff = abs(float(act_eps) - expected_eps)
-        if diff > eps_tol + 1e-9:
+        if diff > tolerance + 1e-9:
             status = "BLOCKED"
             msg = (
                 f"期間 {period_str or act_id} 之 EPS 由歸母淨利與加權平均股數重算為 {expected_eps:.2f}，"
-                f"與記載值 {float(act_eps):.2f} 相差 {diff:.2f} 元，超過容差 {eps_tol} 元。"
+                f"與記載值 {float(act_eps):.2f} 相差 {diff:.2f} 元，超過容差 {tolerance} 元。"
             )
         else:
             status, msg = _finalize_pass_or_not_verified(
                 sids,
                 evidence_availability,
-                f"期間 {period_str or act_id} 之 EPS 重算為 {expected_eps:.2f}，與記載值 {float(act_eps):.2f} 相符（誤差 {diff:.4f} <= {eps_tol}）。",
+                f"期間 {period_str or act_id} 之 EPS 重算為 {expected_eps:.2f}，與記載值 {float(act_eps):.2f} 相符（誤差 {diff:.4f} <= {tolerance}）。",
             )
 
         checks.append(
@@ -936,7 +961,7 @@ def recompute_eps_checks(
                 expected=expected_eps,
                 actual=float(act_eps),
                 diff=diff,
-                tolerance=eps_tol,
+                tolerance=tolerance,
                 status=status,
                 message=msg,
                 source_ids=sids,
