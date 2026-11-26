@@ -23,7 +23,7 @@ export function isVerificationToolingOnly(files) {
     /^docs\/.+\.md$/.test(file) ||
     /^scripts\/research-(?:certificate(?:-check)?|publish(?:-lib)?|release|import(?:-lib)?)(?:\.test)?\.mjs$/.test(file) ||
     [
-      "README.md", "AGENTS.md", ".gitignore", "package.json", "requirements-verification.txt",
+      "README.md", "AGENTS.md", ".gitignore", ".gitattributes", "package.json", "requirements-verification.txt",
       "research_system/schemas/research-package-v1.schema.json",
       "scripts/ci-scope.mjs", ".github/workflows/codex-backup-tests.yml",
       ".github/workflows/deploy-cloudflare.yml", ".github/workflows/research-quality-pr.yml"

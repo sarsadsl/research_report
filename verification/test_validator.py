@@ -411,7 +411,7 @@ class ValidatorAndRecomputeTestCase(unittest.TestCase):
         """
         profiles_path = self.repo_root / "research" / UMC_SLUG / "report-profiles.json"
         self.assertTrue(profiles_path.is_file(), msg="fixture 應已複製 report-profiles.json")
-        expected_profile_hash = sha256_bytes(profiles_path.read_bytes())
+        expected_profile_hash = sha256_bytes(profiles_path.read_bytes().replace(b"\r\n", b"\n"))
 
         result = validate_research_package(
             UMC_SLUG,
