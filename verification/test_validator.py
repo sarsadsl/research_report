@@ -127,7 +127,11 @@ class ValidatorAndRecomputeTestCase(unittest.TestCase):
         self.assertNotEqual(res_missing_ev["status"], "PASS")
         self.assertFalse(res_missing_ev["ok"])
 
-        # 情境 B：即便為所有來源提供合成文字檔，因 UMC 季度 EPS 缺少 weightedAverageShares 分母，整體仍必須為 NOT_VERIFIED
+        # 即便提供所有來源，移除申報分母後仍不可通過。
+        missing_eps = copy.deepcopy(self.pkg_data)
+        for actual in missing_eps["actuals"]:
+            actual.pop("epsCalculation", None)
+        self._save_pkg(missing_eps)
         all_source_ids = [
             str(src["id"])
             for src in self.pkg_data.get("sources", [])
@@ -257,8 +261,10 @@ class ValidatorAndRecomputeTestCase(unittest.TestCase):
         """
         測試 5：財務重算缺 denominator（weightedAverageShares）的 EPS 必須是 NOT_VERIFIED，絕不反推股數。
         """
-        # 驗證 UMC package 中缺加權平均股數分母的季度與年度 EPS 皆為 NOT_VERIFIED
-        eps_checks = recompute_eps_checks(self.pkg_data)
+        legacy = copy.deepcopy(self.pkg_data)
+        for actual in legacy["actuals"]:
+            actual.pop("epsCalculation", None)
+        eps_checks = recompute_eps_checks(legacy)
         eps_by_id = {chk["id"]: chk for chk in eps_checks}
 
         for act_id in ("umc-a-2025Q4", "umc-a-2026Q1", "umc-a-2026Q2", "umc-a-2026Q3"):
@@ -333,6 +339,22 @@ class ValidatorAndRecomputeTestCase(unittest.TestCase):
         self.assertIsNone(synth_eps_checks["actual.eps.umc-a-test-zero-shares"]["expected"])
         self.assertEqual(synth_eps_checks["eq.eps.umc-eq-test-null-shares"]["status"], "NOT_VERIFIED")
         self.assertIsNone(synth_eps_checks["eq.eps.umc-eq-test-null-shares"]["expected"])
+
+    def test_canonical_eps_uses_filing_inputs_and_exact_reported_rounding(self) -> None:
+        actual = copy.deepcopy(self.pkg_data["actuals"][0])
+        package = {"actuals": [actual]}
+        contract = actual["epsCalculation"]
+        num, den = contract["numerator"], contract["denominator"]
+        num.update(value=1005, scale="thousand")
+        den.update(value=1, scale="million")
+        actual["eps"] = 1.01
+        source_ids = set(actual["sourceIds"]) | {num["sourceId"], den["sourceId"]}
+        self.assertEqual(recompute_eps_checks(package, source_ids)[0]["status"], "PASS")
+        actual["eps"] = 1.00
+        self.assertEqual(recompute_eps_checks(package, source_ids)[0]["status"], "BLOCKED")
+        actual["eps"] = 1.01
+        source_ids.remove(den["sourceId"])
+        self.assertEqual(recompute_eps_checks(package, source_ids)[0]["status"], "NOT_VERIFIED")
 
     def test_financial_recompute_accepts_correct_eps_and_blocks_wrong_eps(self) -> None:
         """有原始輸入時，正確 EPS 通過，錯誤 EPS 超過容差即阻擋。"""
