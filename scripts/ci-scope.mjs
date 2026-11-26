@@ -16,7 +16,7 @@ export function researchSlugs(files) {
 
 export function isVerificationToolingOnly(files) {
   // Local CLI/review infrastructure updates do not modify the served website or research rows.
-  // Keep the normal release gate for changed research, app, API, renderers, and data schemas.
+  // Keep the normal release gate for changed research, app, API, renderers, and database schemas.
   return files.length > 0 && files.every(file =>
     /^verification\//.test(file) ||
     /^research_system\/[^/]+\.md$/.test(file) ||
@@ -24,6 +24,7 @@ export function isVerificationToolingOnly(files) {
     /^scripts\/research-(?:certificate(?:-check)?|publish(?:-lib)?|release|import(?:-lib)?)(?:\.test)?\.mjs$/.test(file) ||
     [
       "README.md", "AGENTS.md", ".gitignore", "package.json", "requirements-verification.txt",
+      "research_system/schemas/research-package-v1.schema.json",
       "scripts/ci-scope.mjs", ".github/workflows/codex-backup-tests.yml",
       ".github/workflows/deploy-cloudflare.yml", ".github/workflows/research-quality-pr.yml"
     ].includes(file));

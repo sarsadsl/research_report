@@ -356,6 +356,24 @@ class ValidatorAndRecomputeTestCase(unittest.TestCase):
         source_ids.remove(den["sourceId"])
         self.assertEqual(recompute_eps_checks(package, source_ids)[0]["status"], "NOT_VERIFIED")
 
+    def test_valuation_schema_supports_auditable_forecast_sensitivity(self) -> None:
+        package = copy.deepcopy(self.pkg_data)
+        row = package["forecasts"][0]
+        case = {
+            "id": "forward-reference", "epsBasis": "forecast", "period": f"{row['fiscalYear']}F",
+            "scenario": row["scenario"], "eps": row["eps"], "multiple": 15,
+            "impliedPrice": row["eps"] * 15, "sourceIds": row["sourceIds"],
+        }
+        package["earningsQuality"]["valuation"]["scenarios"] = [case]
+        _write_synthetic_evidence_files(self.evidence_dir, [source["id"] for source in package["sources"]])
+        for eps, expected in [(row["eps"], "PASS"), (row["eps"] + 1, "BLOCKED")]:
+            case.update(eps=eps, impliedPrice=eps * 15)
+            self._save_pkg(package)
+            result = validate_research_package(UMC_SLUG, root_dir=self.repo_root, evidence_dir=self.evidence_dir)
+            checks = {check["id"]: check for check in result["checks"]}
+            self.assertEqual(checks["schema.package.valid"]["status"], "PASS")
+            self.assertEqual(checks["valuation.pe.earnings_quality.forward-reference"]["status"], expected)
+
     def test_financial_recompute_accepts_correct_eps_and_blocks_wrong_eps(self) -> None:
         """有原始輸入時，正確 EPS 通過，錯誤 EPS 超過容差即阻擋。"""
         package = {

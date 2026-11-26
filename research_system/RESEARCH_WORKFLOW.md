@@ -17,6 +17,8 @@ P0 立即停止後續修正。P1 可使用可靠來源校正後重驗，Agy 發�
 
 使用環境變數 `RESEARCH_VERIFICATION_PRIVATE_KEY_PATH` 指向 repo 外的私鑰，並以 `RESEARCH_VERIFICATION_PUBLIC_KEY` 設定與 GitHub 一致的信任公鑰。發布憑證由 GitHub 既有環境取得。統一入口只把可交給模型的公開證據傳給審查程序，券商原始資料、私人連結與受限摘錄保持在本機。各來源標明官方實績、具名券商預測或自建情境。發布遇到逾時或失敗時，以稽核紀錄的 PR、合併提交及 CI 工作流程查證實際進度。
 
+本益比估值放在 `earningsQuality.valuation.scenarios`。每列明列期間、EPS、倍數、推導價格及來源。歷史列連結 EQ-01 法定或正常化 EPS。預估列用 `epsBasis: "forecast"`、`period: "2027F"` 及對應情境連結預估資料。Python 核對 EPS 口徑及乘積。缺少可靠的 EPS 或倍數依據時，保留待驗證狀態。
+
 P1.8 操作規範，於 P1.9 更新發布入口、P1.10 加入新報告 intake 與通用 Full Report。適用於研究建立、更新、驗收與交付；正式參考個股為 `vpec-2455`，另有不發布的合成第二家公司測試。欄位見 [Data Contract](RESEARCH_DATA_SCHEMA.md)，呈現見 [Style Guide](RESEARCH_STYLE_GUIDE.md)，驗收見 [QC Specification](RESEARCH_QC.md)，自動發布細節見 [Publishing](RESEARCH_PUBLISHING.md)。
 
 ## EQ-01 新增的必要研究步驟
