@@ -1,12 +1,13 @@
 # Agy → Local Codex automatic fallback (design + operating guide)
 
-Status: **Draft implementation. No authenticated local Codex live run has been performed in GitHub Actions. Do not merge into production solely based on mock tests.**
+Status: **Code published to main in PR #22; local authenticated Windows live test remains required.** GitHub CI uses simulated CLI calls, not the user's local account.
 
 ## User policy
 
 - Primary reviewer: Agy CLI / Gemini.
 - Backup reviewer: **new isolated non-interactive Codex CLI session**, used only on Agy infrastructure failure.
-- Never invoke Codex for P0/P1, missing evidence, deterministic NOT_VERIFIED/BLOCKED, invalid model JSON, unverified P2 disclosures, or partially completed Agy review findings.
+- Never invoke Codex for P0/P1, missing evidence, deterministic NOT_VERIFIED/BLOCKED, invalid model JSON, unverified P2 disclosures, any recorded Agy findings, or a failed batch with incomplete model output.
+- If Agy starts but fails with an allowlisted transport error, Codex restarts the full review only when the primary record is saved, no findings exist, and no failed batch contains partial model output. A completed clean batch does not prevent restart. Never choose a favorable model result over a prior adverse finding.
 - A model judgment never overrides Python deterministic calculation, citation availability, or report-version SHA-256.
 - If both providers are unusable, the report is **BLOCKED**; do not bypass signing.
 - Codes that allow automatic fallback: AGY_NOT_FOUND, AGY_TIMEOUT, AGY_OS_ERROR, AGY_VERSION_FAILED, AGY_VERSION_EMPTY, AGY_MODELS_FAILED, MODEL_NOT_AVAILABLE, AGY_CLI_NON_ZERO.
@@ -59,7 +60,7 @@ This sends restricted excerpts to whichever authenticated model actually runs (A
 
 1. Agy returns PASS or PASS_WITH_P2: no Codex call.
 2. Agy finds P0/P1 or uncovered P2: BLOCKED, no Codex call.
-3. Agy fails before completing model review due to allowlisted infrastructure problems: automatic Codex retry in a new `codex exec --sandbox read-only --ephemeral` session.
+3. Agy fails before or during model review due to allowlisted infrastructure problems, with no findings or partial failed response: automatic full Codex retry in a new `codex exec --sandbox read-only --ephemeral` session.
 4. Codex responses have schema and coverage checks, source IDs and P2 disclosure validations using the same Python routines as the primary Gemini review.
 5. Codex error, malformed JSON, missing sources or critical findings: BLOCKED.
 6. If the report later changes, its SHA-bound review and certificate cannot be reused.

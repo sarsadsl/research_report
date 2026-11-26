@@ -432,6 +432,9 @@ def _run_isolated_subprocess(
                     "timeoutSeconds": timeout_seconds,
                     "stdout": (exc.stdout or "") if isinstance(exc.stdout, str) else "",
                     "stderr": (exc.stderr or "") if isinstance(exc.stderr, str) else "",
+                    # TimeoutExpired.stdout can be bytes even with text=True.
+                    # Never discard an incomplete primary model response.
+                    "partialStdoutPresent": bool((exc.stdout or b"").strip()),
                 },
             ) from exc
         except OSError as exc:

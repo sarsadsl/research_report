@@ -29,15 +29,20 @@ _CODE_RE = re.compile(r"^\[([A-Z][A-Z0-9_]*)\]")
 def infrastructure_failure(result: Mapping[str, Any]) -> str | None:
     if result.get("status") != "BLOCKED" or result.get("deterministicStatus") != "PASS":
         return None
-    # Never discard actual findings or an existing model's judgment.
+    # A model process starting is not the same as a completed review.
+    # Require explicit transport-only classification from the trusted CLI,
+    # persisted primary record, and zero findings before restarting in Codex.
     counts = result.get("findingSummary") or {}
-    if result.get("modelInvoked") is True or int(counts.get("totalFindings") or 0) != 0:
+    if result.get("fallbackSafe") is not True or counts.get("totalFindings") != 0:
+        return None
+    if not result.get("recordPath"):
         return None
     reasons = result.get("blockedReasons")
     if not isinstance(reasons, list) or len(reasons) != 1 or not isinstance(reasons[0], str):
         return None
     match = _CODE_RE.match(reasons[0])
-    return match.group(1) if match and match.group(1) in TRANSIENT_AGY_ERRORS else None
+    code = match.group(1) if match else None
+    return code if code in TRANSIENT_AGY_ERRORS and result.get("reviewFailureCode") == code else None
 
 
 def run_auto_review_command(
