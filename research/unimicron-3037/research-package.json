@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "packageVersion": "0.2.0",
+  "packageVersion": "1.0.0",
   "asOfDate": "2026-11-26",
   "company": {
     "id": "uni-company",
@@ -19,9 +19,9 @@
     "slug": "unimicron-3037",
     "summary": "第三季營收與營益提升。以申報財報重算 EPS 並測試折舊、業外與股數對三年獲利的影響。",
     "thesis": "AI高階載板需求有本業驗證，但不宜使用未正常化EPS直接估值。",
-    "status": "draft",
-    "visibility": "unlisted",
-    "version": "0.2"
+    "status": "published",
+    "version": "1.0",
+    "publishedAt": "2026-11-26"
   },
   "thesis": {
     "summary": "黃燈：高階載板推升營益，折舊與業外波動仍大。",
@@ -43,16 +43,14 @@
     "currentView": "2026Q3 營收 526.50 億元、毛利率 28.85%、基本 EPS 6.36 元，10 月營收 189.86 億元。",
     "currentThesis": "AI DC應用68%、載板產品62%；高階ABF驅動本業改善，但業外淨收益、折舊和法律調查有重大不確定性。",
     "verificationChain": [
-      "來源：公司2026Q3法說與法定公告",
-      "基本/稀釋EPS口徑",
-      "月營收與季度營收合計",
-      "載板與應用占比維度",
-      "業外正常化與EPS分母",
-      "擴產現金、折舊及良率",
-      "法遵與客戶認證",
-      "券商預測時間戳與模型比較"
+      "高階載板需求",
+      "產品組合與良率",
+      "毛利率及營益率",
+      "折舊與稼動率",
+      "業外與股數",
+      "客戶與法遵"
     ],
-    "conclusion": "交易所申報數字已與 EPS 附註勾稽，估計仍受產能爬坡、業外及股數假設影響。",
+    "conclusion": "高階載板帶動營益改善。擴產折舊、持股評價與轉債稀釋仍是主要變數。",
     "forecastScenario": "consensus",
     "headlineForecastYears": [
       2026,
@@ -79,7 +77,7 @@
         "years": 2
       }
     ],
-    "estimateNote": "三組預測為本研究下檔、基準、上檔情境。資料欄位 consensus 用於舊版儀表板的基準情境。折舊已計入製造成本，業外、稅率及股數均為模型假設。"
+    "estimateNote": "悲觀、基準與樂觀均為自建情境。舊欄位 consensus 對應基準估計。折舊內含於毛利，2026 年 EPS 含前三季已公布業外。"
   },
   "actuals": [
     {
@@ -535,15 +533,16 @@
       "revenue": 181000,
       "grossMargin": 24.35,
       "netIncome": 32244.697,
-      "eps": 20.15,
+      "eps": 20.1,
       "optoShare": null,
       "currency": "TWD",
       "scale": "million",
-      "notes": "研究假設（百萬元、百萬股）。折舊 20,500 已計入毛利；Q4 毛利率 24%、費用率 12.5%、業外 100、稅 22%、非控制權益 350；併入 9M 歸母 28,209.851。 股數 1,600。",
+      "notes": "研究假設（百萬元、百萬股）。折舊 20,500 已計入毛利；Q4 毛利率 24%、費用率 12.5%、業外 100、稅 22%、非控制權益 350；併入 9M 歸母 28,209.851。 股數 1,604。",
       "evidenceClass": "research_inference",
       "sourceIds": [
         "uni-model",
-        "uni-ir"
+        "uni-ir",
+        "uni-mops"
       ],
       "claimIds": [
         "uni-c-scenario"
@@ -556,15 +555,16 @@
       "revenue": 191000,
       "grossMargin": 25.09,
       "netIncome": 35911.274,
-      "eps": 22.59,
+      "eps": 22.5,
       "optoShare": null,
       "currency": "TWD",
       "scale": "million",
-      "notes": "研究假設（百萬元、百萬股）。折舊 21,200 已計入毛利；Q4 毛利率 26.5%、費用率 10.1%、業外 550、稅 20%、非控制權益 350；併入 9M 歸母 28,209.851。 股數 1,590。",
+      "notes": "研究假設（百萬元、百萬股）。折舊 21,200 已計入毛利；Q4 毛利率 26.5%、費用率 10.1%、業外 550、稅 20%、非控制權益 350；併入 9M 歸母 28,209.851。 股數 1,596。",
       "evidenceClass": "research_inference",
       "sourceIds": [
         "uni-model",
-        "uni-ir"
+        "uni-ir",
+        "uni-mops"
       ],
       "claimIds": [
         "uni-c-scenario"
@@ -577,15 +577,16 @@
       "revenue": 203000,
       "grossMargin": 25.93,
       "netIncome": 39760.911,
-      "eps": 25.09,
+      "eps": 24.93,
       "optoShare": null,
       "currency": "TWD",
       "scale": "million",
-      "notes": "研究假設（百萬元、百萬股）。折舊 21,500 已計入毛利；Q4 毛利率 28.7%、費用率 9.5%、業外 1,250、稅 19%、非控制權益 350；併入 9M 歸母 28,209.851。 股數 1,585。",
+      "notes": "研究假設（百萬元、百萬股）。折舊 21,500 已計入毛利；Q4 毛利率 28.7%、費用率 9.5%、業外 1,250、稅 19%、非控制權益 350；併入 9M 歸母 28,209.851。 股數 1,595。",
       "evidenceClass": "research_inference",
       "sourceIds": [
         "uni-model",
-        "uni-ir"
+        "uni-ir",
+        "uni-mops"
       ],
       "claimIds": [
         "uni-c-scenario"
@@ -598,15 +599,16 @@
       "revenue": 218000,
       "grossMargin": 25,
       "netIncome": 25246.2,
-      "eps": 15.49,
+      "eps": 15.03,
       "optoShare": null,
       "currency": "TWD",
       "scale": "million",
-      "notes": "研究假設（百萬元、百萬股）。折舊 26,000 已計入毛利；費用率 9.5%、業外 500、稅 22%、非控制權益 1,500。 股數 1,630。",
+      "notes": "研究假設（百萬元、百萬股）。折舊 26,000 已計入毛利；費用率 9.5%、業外 500、稅 22%、非控制權益 1,500。 股數 1,680。",
       "evidenceClass": "research_inference",
       "sourceIds": [
         "uni-model",
-        "uni-ir"
+        "uni-ir",
+        "uni-mops"
       ],
       "claimIds": [
         "uni-c-scenario"
@@ -619,15 +621,16 @@
       "revenue": 255000,
       "grossMargin": 30,
       "netIncome": 43060,
-      "eps": 26.75,
+      "eps": 26.02,
       "optoShare": null,
       "currency": "TWD",
       "scale": "million",
-      "notes": "研究假設（百萬元、百萬股）。折舊 25,500 已計入毛利；費用率 8.5%、業外 1,000、稅 20%、非控制權益 1,600。 股數 1,610。",
+      "notes": "研究假設（百萬元、百萬股）。折舊 25,500 已計入毛利；費用率 8.5%、業外 1,000、稅 20%、非控制權益 1,600。 股數 1,655。",
       "evidenceClass": "research_inference",
       "sourceIds": [
         "uni-model",
-        "uni-ir"
+        "uni-ir",
+        "uni-mops"
       ],
       "claimIds": [
         "uni-c-scenario"
@@ -640,15 +643,16 @@
       "revenue": 280000,
       "grossMargin": 33,
       "netIncome": 56196,
-      "eps": 35.12,
+      "eps": 34.12,
       "optoShare": null,
       "currency": "TWD",
       "scale": "million",
-      "notes": "研究假設（百萬元、百萬股）。折舊 25,000 已計入毛利；費用率 8%、業外 1,600、稅 19%、非控制權益 1,800。 股數 1,600。",
+      "notes": "研究假設（百萬元、百萬股）。折舊 25,000 已計入毛利；費用率 8%、業外 1,600、稅 19%、非控制權益 1,800。 股數 1,647。",
       "evidenceClass": "research_inference",
       "sourceIds": [
         "uni-model",
-        "uni-ir"
+        "uni-ir",
+        "uni-mops"
       ],
       "claimIds": [
         "uni-c-scenario"
@@ -661,15 +665,16 @@
       "revenue": 240000,
       "grossMargin": 25.5,
       "netIncome": 28729.2,
-      "eps": 17.31,
+      "eps": 16.8,
       "optoShare": null,
       "currency": "TWD",
       "scale": "million",
-      "notes": "研究假設（百萬元、百萬股）。折舊 33,500 已計入毛利；費用率 9.4%、業外 500、稅 22%、非控制權益 1,800。 股數 1,660。",
+      "notes": "研究假設（百萬元、百萬股）。折舊 33,500 已計入毛利；費用率 9.4%、業外 500、稅 22%、非控制權益 1,800。 股數 1,710。",
       "evidenceClass": "research_inference",
       "sourceIds": [
         "uni-model",
-        "uni-ir"
+        "uni-ir",
+        "uni-mops"
       ],
       "claimIds": [
         "uni-c-scenario"
@@ -682,15 +687,16 @@
       "revenue": 290000,
       "grossMargin": 32,
       "netIncome": 54196,
-      "eps": 33.25,
+      "eps": 32.36,
       "optoShare": null,
       "currency": "TWD",
       "scale": "million",
-      "notes": "研究假設（百萬元、百萬股）。折舊 32,000 已計入毛利；費用率 8.2%、業外 1,100、稅 20%、非控制權益 1,900。 股數 1,630。",
+      "notes": "研究假設（百萬元、百萬股）。折舊 32,000 已計入毛利；費用率 8.2%、業外 1,100、稅 20%、非控制權益 1,900。 股數 1,675。",
       "evidenceClass": "research_inference",
       "sourceIds": [
         "uni-model",
-        "uni-ir"
+        "uni-ir",
+        "uni-mops"
       ],
       "claimIds": [
         "uni-c-scenario"
@@ -703,15 +709,16 @@
       "revenue": 340000,
       "grossMargin": 35.5,
       "netIncome": 75268.4,
-      "eps": 46.75,
+      "eps": 45.48,
       "optoShare": null,
       "currency": "TWD",
       "scale": "million",
-      "notes": "研究假設（百萬元、百萬股）。折舊 31,000 已計入毛利；費用率 7.9%、業外 1,800、稅 19%、非控制權益 2,200。 股數 1,610。",
+      "notes": "研究假設（百萬元、百萬股）。折舊 31,000 已計入毛利；費用率 7.9%、業外 1,800、稅 19%、非控制權益 2,200。 股數 1,655。",
       "evidenceClass": "research_inference",
       "sourceIds": [
         "uni-model",
-        "uni-ir"
+        "uni-ir",
+        "uni-mops"
       ],
       "claimIds": [
         "uni-c-scenario"
@@ -812,14 +819,14 @@
     },
     {
       "id": "uni-risk-1",
-      "title": "財報業外收益使EPS失真",
+      "title": "業外波動與法定 EPS 年化風險",
       "impact": "high",
       "probability": "high",
       "status": "watch",
-      "notes": "Q2有8,925百萬元業外淨收益，不可用法定EPS直接年化。",
+      "notes": "Q2 業外淨收益 89.25 億元，與經常營業利益分列。",
       "evidenceClass": "research_inference",
       "sourceIds": [
-        "uni-ir"
+        "uni-fs26q2"
       ]
     },
     {
@@ -848,14 +855,15 @@
     },
     {
       "id": "uni-risk-4",
-      "title": "簡化EPS模型錯誤風險",
+      "title": "增資與轉債稀釋",
       "impact": "high",
       "probability": "high",
       "status": "watch",
-      "notes": "轉債、加權股數與稅率未驗證，研究僅作流程測試。",
+      "notes": "以 Q3 期末股本校準。轉債轉換時間及後續股數依各情境估計。",
       "evidenceClass": "research_inference",
       "sourceIds": [
-        "uni-model"
+        "uni-model",
+        "uni-mops"
       ]
     }
   ],
@@ -940,7 +948,7 @@
       "metric": "Q3毛利率",
       "status": "yellow",
       "valueText": "28.85%",
-      "notes": "截至2026-11-20，後續依官方公告逐季更新。",
+      "notes": "資料截止日 2026-11-26；依同口徑公告追蹤。",
       "evidenceClass": "official",
       "sourceIds": [
         "uni-ir"
@@ -952,7 +960,7 @@
       "metric": "AI資料中心營收比重",
       "status": "green",
       "valueText": "68%",
-      "notes": "截至2026-11-20，後續依官方公告逐季更新。",
+      "notes": "資料截止日 2026-11-26；依同口徑公告追蹤。",
       "evidenceClass": "official",
       "sourceIds": [
         "uni-ir"
@@ -964,7 +972,7 @@
       "metric": "載板營收占比",
       "status": "green",
       "valueText": "62%",
-      "notes": "截至2026-11-20，後續依官方公告逐季更新。",
+      "notes": "資料截止日 2026-11-26；依同口徑公告追蹤。",
       "evidenceClass": "official",
       "sourceIds": [
         "uni-ir"
@@ -976,7 +984,7 @@
       "metric": "月營收",
       "status": "yellow",
       "valueText": "10月189.86億元",
-      "notes": "截至2026-11-20，後續依官方公告逐季更新。",
+      "notes": "資料截止日 2026-11-26；依同口徑公告追蹤。",
       "evidenceClass": "third_party_fact",
       "sourceIds": [
         "uni-monthly"
@@ -987,11 +995,12 @@
       "asOfDate": "2026-11-26",
       "metric": "業外貢獻下降",
       "status": "yellow",
-      "valueText": "Q2業外89.25→Q3 26.35億元",
-      "notes": "截至2026-11-20，後續依官方公告逐季更新。",
+      "valueText": "Q2 89.25 億、Q3 26.36 億",
+      "notes": "資料截止日 2026-11-26；依同口徑公告追蹤。",
       "evidenceClass": "official",
       "sourceIds": [
-        "uni-ir"
+        "uni-fs26q2",
+        "uni-mops"
       ]
     },
     {
@@ -1159,7 +1168,7 @@
         "2025Q3"
       ],
       "confidence": "high",
-      "notes": "第 7–8 頁為損益與 EPS，第 11 頁為現金流量，第 68–69 頁為季度與累計 EPS 附註。"
+      "notes": "第 5–8、11–12、25、58–59、63–64、68–69、88、91、96 頁公開核對資料。"
     },
     {
       "id": "uni-monthly",
@@ -1195,7 +1204,7 @@
         "2028F"
       ],
       "confidence": "medium",
-      "notes": "三情境假設，包括營收、毛利率、折舊、費用、業外、稅率、非控制權益及股數。"
+      "notes": "自建情境，以官方 2026 前三季損益和 Q3 期末股本為起點。2026 = 9M 已實現加 Q4（Q4 營收×〔毛利率－費用率〕＋業外）×（1－稅率）－非控制權益；2027–28 用全年同一公式。EPS 等於歸母淨利除以模型加權股數。各列披露假設；基準情境用舊欄位 consensus 儲存，資料類型為自行推估。"
     },
     {
       "id": "uni-fs25fy",
@@ -1208,7 +1217,7 @@
         "2025FY"
       ],
       "confidence": "high",
-      "notes": "第 11–12 頁為損益與 EPS，第 84 頁為 EPS 附註。"
+      "notes": "公開核對資料涵蓋第 10–12、84、110 頁。"
     },
     {
       "id": "uni-fs26q1",
@@ -1234,7 +1243,7 @@
         "2026Q2"
       ],
       "confidence": "high",
-      "notes": "第 7–8 頁為損益與 EPS，第 71 頁為 EPS 附註。"
+      "notes": "公開核對資料涵蓋第 6–8、25、67、71、99 頁。"
     },
     {
       "id": "uni-prosecutor",
@@ -1249,6 +1258,46 @@
       ],
       "confidence": "high",
       "notes": "新聞稿以「欣○公司」稱呼，公布搜索及約談進度。"
+    },
+    {
+      "id": "uni-fs24fy",
+      "evidenceClass": "official",
+      "provider": "欣興電子／臺灣證券交易所電子書",
+      "title": "2024 年度合併財務報告（含 2023 年比較）",
+      "url": "https://doc.twse.com.tw/server-java/t57sb01?step=1&colorchg=1&co_id=3037&year=113&seamon=4&mtype=A",
+      "accessedDate": "2026-11-26",
+      "coveredPeriods": [
+        "2023FY",
+        "2024FY"
+      ],
+      "confidence": "high",
+      "notes": "研讀第 11–13、79 頁（權益、損益與基本每股盈餘）。"
+    },
+    {
+      "id": "uni-q4-ir",
+      "evidenceClass": "official",
+      "provider": "欣興電子",
+      "title": "2025Q4 營運結果",
+      "url": "https://www.unimicron.com/files/money/Earnings/ch/2025-Q4-consolidated-ch.pdf",
+      "accessedDate": "2026-11-26",
+      "coveredPeriods": [
+        "2025Q4"
+      ],
+      "confidence": "high",
+      "notes": "法說簡報第 4 頁，單季基本 EPS 與歸母獲利。"
+    },
+    {
+      "id": "uni-twse",
+      "evidenceClass": "official",
+      "provider": "臺灣證券交易所",
+      "title": "115 年 11 月欣興日成交資訊",
+      "url": "https://www.twse.com.tw/exchangeReport/STOCK_DAY?date=20261101&stockNo=3037&response=html",
+      "accessedDate": "2026-11-26",
+      "coveredPeriods": [
+        "2026-11-25"
+      ],
+      "confidence": "high",
+      "notes": "11 月 25 日正式收盤價 585 元，作比較基準。"
     }
   ],
   "claims": [
@@ -1335,7 +1384,7 @@
     },
     {
       "id": "uni-c-drivers",
-      "text": "ABF大尺寸、高層數產品、AI/HPC需求、漲價及良率攀升是潛在槓桿，仍依季度財務數據驗證。",
+      "text": "研究觀察高階載板面積、層數、平台需求及良率對營益率的影響，逐季以產品組合與實績核對。",
       "evidenceClass": "research_inference",
       "sourceIds": [
         "uni-ir"
@@ -1343,36 +1392,102 @@
       "inputClaimIds": [],
       "method": "以公司已公告的產品占比為起點，推演需求、產品組合及良率。",
       "confidence": "medium"
+    },
+    {
+      "id": "uni-c-eq-l2",
+      "text": "Q3 財報第 88 頁第三層級為期初 89.52040 億，加取得 2.09916 億，減資退回 0.96535 億，損益加 132.10717 億、OCI 加 0.20917 億及匯率加 0.00466 億，期末 222.97521 億。第 11 頁從營業現金流扣回合併 FVPL 淨利益 132.77276 億；第 12 頁 另列 FVPL 處分價款 0.19690 億及減資退回 0.96535 億。價款與盈餘之間缺逐筆對照。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-mops"
+      ],
+      "inputClaimIds": [],
+      "method": "財報附註十二與合併現金流量表逐列勾稽",
+      "confidence": "high"
+    },
+    {
+      "id": "uni-c-eq-oci",
+      "text": "2026 前三季 FVOCI 股權工具 OCI 評價 +1.12620 億，Q3 當季 −0.00711 億，與 FVPL 分列。Q3 末諧永 93.81856 億、焱元 121.81091 億，均為非流動 FVPL。期末持股變動含交易，不逐筆歸因。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-mops"
+      ],
+      "inputClaimIds": [],
+      "method": "財報第 8 頁科目 8316、附表三第 96 頁",
+      "confidence": "high"
+    },
+    {
+      "id": "uni-c-shares",
+      "text": "第三季末財報股本調節列 1,643,916,716 股，期間新增現金增資 96 百萬股及轉債轉換 18.790019 百萬股；第三季 EPS 分母 1,580.052 百萬股為附註之期間口徑。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-mops"
+      ],
+      "inputClaimIds": [],
+      "method": "財報第 58 及 68 頁股數調節表和基本 EPS",
+      "confidence": "high"
+    },
+    {
+      "id": "uni-c-price",
+      "text": "證交所 2026-11-25 3037 正式收盤價 585 元，用作前瞻本益比比較日。",
+      "evidenceClass": "official",
+      "sourceIds": [
+        "uni-twse"
+      ],
+      "inputClaimIds": [],
+      "method": "證交所 115 年 11 月成交統計",
+      "confidence": "high"
     }
   ],
   "earningsQuality": {
     "standard": "EQ-01-v1",
     "reviewStatus": "WARN",
-    "reviewer": "研究編製與申報文件初核",
+    "reviewer": "研究編製，依公開財報科目、附註及附表交叉核對",
     "reviewedAt": "2026-11-26",
-    "coverageNote": "列示 2025 年度、2025Q3、2026Q1–Q3 及前三季申報資料。2023–2024 年度與 2025Q4 的完整調節待補。",
+    "coverageNote": "2023–2025 全年及最近四季均已查核。2025Q4 損益以年度減前三季，EPS 核對公司法說。歷史正常化點值因逐項稅後歸屬未公開而保留空值。",
     "periods": [
       {
-        "id": "uni-eq-2025q3",
-        "period": "2025Q3",
-        "periodType": "quarter",
+        "id": "uni-eq-2023fy",
+        "period": "2023FY",
+        "periodType": "annual",
         "currency": "TWD",
         "scale": "million",
-        "revenue": 33994.419,
-        "operatingIncome": 1532.544,
-        "nonOperatingNet": 1414.176,
-        "pretaxIncome": 2946.72,
-        "incomeTax": 495.769,
-        "netIncomeAttributable": 2194.489,
-        "reportedEps": 1.44,
+        "revenue": 104036.151,
+        "operatingIncome": 8919.919,
+        "nonOperatingNet": 6655.013,
+        "pretaxIncome": 15574.932,
+        "incomeTax": 3349.83,
+        "netIncomeAttributable": 11980.052,
+        "reportedEps": 7.88,
+        "weightedAverageShares": 1519.515,
         "normalizedEps": null,
-        "weightedAverageShares": 1522.46,
-        "shareholdersEquity": null,
+        "shareholdersEquity": 90660.883,
         "adjustments": [],
         "sourceIds": [
-          "uni-mops"
+          "uni-fs24fy"
         ],
-        "normalizationNote": "各項特殊損益的實現性、所得稅及非控制權益須個別核對。"
+        "normalizationNote": "全年法定口徑。缺逐項稅後歸屬時保留正常化點值。"
+      },
+      {
+        "id": "uni-eq-2024fy",
+        "period": "2024FY",
+        "periodType": "annual",
+        "currency": "TWD",
+        "scale": "million",
+        "revenue": 115373.282,
+        "operatingIncome": 5116.677,
+        "nonOperatingNet": 2204.033,
+        "pretaxIncome": 7320.71,
+        "incomeTax": 1764.696,
+        "netIncomeAttributable": 5082.063,
+        "reportedEps": 3.34,
+        "weightedAverageShares": 1521.256,
+        "normalizedEps": null,
+        "shareholdersEquity": 93264.763,
+        "adjustments": [],
+        "sourceIds": [
+          "uni-fs24fy"
+        ],
+        "normalizationNote": "全年法定口徑。缺逐項稅後歸屬時保留正常化點值。"
       },
       {
         "id": "uni-eq-2025fy",
@@ -1389,12 +1504,58 @@
         "reportedEps": 4.38,
         "normalizedEps": null,
         "weightedAverageShares": 1523.278,
-        "shareholdersEquity": null,
+        "shareholdersEquity": 100569.302,
         "adjustments": [],
         "sourceIds": [
           "uni-fs25fy"
         ],
         "normalizationNote": "各項特殊損益的實現性、所得稅及非控制權益須個別核對。"
+      },
+      {
+        "id": "uni-eq-2025q3",
+        "period": "2025Q3",
+        "periodType": "quarter",
+        "currency": "TWD",
+        "scale": "million",
+        "revenue": 33994.419,
+        "operatingIncome": 1532.544,
+        "nonOperatingNet": 1414.176,
+        "pretaxIncome": 2946.72,
+        "incomeTax": 495.769,
+        "netIncomeAttributable": 2194.489,
+        "reportedEps": 1.44,
+        "normalizedEps": null,
+        "weightedAverageShares": 1522.46,
+        "shareholdersEquity": 92099.518,
+        "adjustments": [],
+        "sourceIds": [
+          "uni-mops"
+        ],
+        "normalizationNote": "各項特殊損益的實現性、所得稅及非控制權益須個別核對。"
+      },
+      {
+        "id": "uni-eq-2025q4",
+        "period": "2025Q4",
+        "periodType": "quarter",
+        "currency": "TWD",
+        "scale": "million",
+        "revenue": 34690.886,
+        "operatingIncome": 2365.656,
+        "nonOperatingNet": 1784.802,
+        "pretaxIncome": 4150.458,
+        "incomeTax": 234.605,
+        "netIncomeAttributable": 3534.504,
+        "reportedEps": 2.32,
+        "weightedAverageShares": 1525.705326,
+        "normalizedEps": null,
+        "shareholdersEquity": 100569.302,
+        "adjustments": [],
+        "sourceIds": [
+          "uni-fs25fy",
+          "uni-mops",
+          "uni-q4-ir"
+        ],
+        "normalizationNote": "年度與前三季基本股數按 365／273／92 天加權差推估單季股數；單季基本 EPS 2.32 元由法說獨立確認。"
       },
       {
         "id": "uni-eq-2026q1",
@@ -1411,8 +1572,22 @@
         "reportedEps": 3.28,
         "normalizedEps": null,
         "weightedAverageShares": 1536.954,
-        "shareholdersEquity": null,
-        "adjustments": [],
+        "shareholdersEquity": 113384.008,
+        "adjustments": [
+          {
+            "id": "uni-fvpl-2026q1",
+            "category": "FVPL",
+            "realization": "mixed",
+            "pretaxAmount": 2507.241,
+            "epsImpact": null,
+            "equityImpact": null,
+            "method": "財報附註六（二）所列合併稅前淨額，與附註六（三十）對帳。",
+            "sourceIds": [
+              "uni-fs26q2"
+            ],
+            "notes": "逐筆已實現、所得稅及稅後歸母分配未公開。保留法定 EPS，另列估計敏感度。"
+          }
+        ],
         "sourceIds": [
           "uni-fs26q1"
         ],
@@ -1433,12 +1608,26 @@
         "reportedEps": 8.45,
         "normalizedEps": null,
         "weightedAverageShares": 1552.215,
-        "shareholdersEquity": null,
-        "adjustments": [],
+        "shareholdersEquity": 123886.281,
+        "adjustments": [
+          {
+            "id": "uni-fvpl-2026q2",
+            "category": "FVPL",
+            "realization": "mixed",
+            "pretaxAmount": 9210.323,
+            "epsImpact": null,
+            "equityImpact": null,
+            "method": "財報附註六（二）所列合併稅前淨額，與附註六（三十）對帳。",
+            "sourceIds": [
+              "uni-fs26q2"
+            ],
+            "notes": "逐筆已實現、所得稅及稅後歸母分配未公開。保留法定 EPS，另列估計敏感度。"
+          }
+        ],
         "sourceIds": [
           "uni-fs26q2"
         ],
-        "normalizationNote": "各項特殊損益的實現性、所得稅及非控制權益須個別核對。"
+        "normalizationNote": "僅作壓力測試。若全數屬歸母，假設增量稅率 0%–20%，全數排除 FVPL 後 EPS 約 2.52–3.70 元。尚有其他一次性科目；歷史正常化點值留空。"
       },
       {
         "id": "uni-eq-2026q3",
@@ -1455,12 +1644,39 @@
         "reportedEps": 6.36,
         "normalizedEps": null,
         "weightedAverageShares": 1580.052,
-        "shareholdersEquity": null,
-        "adjustments": [],
+        "shareholdersEquity": 177832.637,
+        "adjustments": [
+          {
+            "id": "uni-fvpl-2026q3",
+            "category": "FVPL",
+            "realization": "mixed",
+            "pretaxAmount": 1559.712,
+            "epsImpact": null,
+            "equityImpact": null,
+            "method": "財報附註六（二）所列合併稅前淨額，與附註六（三十）對帳。",
+            "sourceIds": [
+              "uni-mops"
+            ],
+            "notes": "逐筆已實現、所得稅及稅後歸母分配未公開。保留法定 EPS，另列估計敏感度。"
+          },
+          {
+            "id": "uni-fvoci-q3",
+            "category": "FVOCI",
+            "realization": "unrealized",
+            "pretaxAmount": null,
+            "epsImpact": 0,
+            "equityImpact": -0.711,
+            "method": "第三季財報第 8 頁科目 8316。",
+            "sourceIds": [
+              "uni-mops"
+            ],
+            "notes": "列入 OCI，當期 EPS 影響為 0。金額為當期綜合損益變動。"
+          }
+        ],
         "sourceIds": [
           "uni-mops"
         ],
-        "normalizationNote": "各項特殊損益的實現性、所得稅及非控制權益須個別核對。"
+        "normalizationNote": "僅作壓力測試。若全數屬歸母，假設增量稅率 0%–20%，全數排除 FVPL 後 EPS 約 5.37–5.57 元。尚有其他一次性科目；歷史正常化點值留空。"
       },
       {
         "id": "uni-eq-2026ytd",
@@ -1477,31 +1693,105 @@
         "reportedEps": 17.85,
         "normalizedEps": null,
         "weightedAverageShares": 1580.052,
-        "shareholdersEquity": null,
-        "adjustments": [],
+        "shareholdersEquity": 177832.637,
+        "adjustments": [
+          {
+            "id": "uni-fvpl-2026ytd",
+            "category": "FVPL",
+            "realization": "mixed",
+            "pretaxAmount": 13277.276,
+            "epsImpact": null,
+            "equityImpact": null,
+            "method": "財報附註六（二）所列合併稅前淨額，與附註六（三十）對帳。",
+            "sourceIds": [
+              "uni-mops"
+            ],
+            "notes": "逐筆已實現、所得稅及稅後歸母分配未公開。保留法定 EPS，另列估計敏感度。"
+          },
+          {
+            "id": "uni-fvoci-ytd",
+            "category": "FVOCI",
+            "realization": "unrealized",
+            "pretaxAmount": null,
+            "epsImpact": 0,
+            "equityImpact": 112.62,
+            "method": "第三季財報第 8 頁科目 8316。",
+            "sourceIds": [
+              "uni-mops"
+            ],
+            "notes": "前三季 OCI 未實現評價，當期 EPS 影響為 0。"
+          }
+        ],
         "sourceIds": [
           "uni-mops"
         ],
-        "normalizationNote": "FVPL 連結至金融資產及負債的揭露，稅後歸母及現金性質仍待逐項對帳。"
+        "normalizationNote": "僅作壓力測試。若全數屬歸母，假設增量稅率 0%–20%，全數排除 FVPL 後 EPS 約 9.45–11.13 元。尚有其他一次性科目；歷史正常化點值留空。"
       }
     ],
-    "qualitativeFlags": [],
+    "qualitativeFlags": [
+      "cross_holding"
+    ],
     "l2": {
-      "status": "NOT_RUN",
-      "summary": "2026Q2 業外占稅前 57.3%，Q3 占 20.0%。Q2 的 FVPL 淨利益 92.10 億元，前三季累計 132.77 億元。尚須按標的穿透已實現及未實現損益，並核對稅後歸母及 OCI。",
+      "status": "PASS",
+      "summary": "Q2 FVPL 92.10 億，未上市櫃股 91.23 億；9M FVPL 132.77 億，其中未上市櫃股 131.56 億。Q3 末諧永及焱元帳面合計 215.63 億，占歸母權益 12.1%。第三層級變動、現金流調節及 OCI 已對帳。未披露逐標的已實現與稅後歸母分配，歷史正常化點值留空並提供稅率敏感度。",
       "sourceIds": [
+        "uni-mops",
         "uni-fs26q2",
-        "uni-mops"
+        "uni-fs25fy"
       ],
       "claimIds": [
-        "uni-c-nonop"
+        "uni-c-nonop",
+        "uni-c-eq-l2",
+        "uni-c-eq-oci"
       ]
     },
     "valuation": {
-      "epsBasis": "not_applicable",
-      "doubleCountChecked": false,
-      "notes": "先完成 EQ-01 L2，再決定可用的正常化 EPS 及估值倍數。"
+      "epsBasis": "normalized",
+      "prospectiveModelOnly": true,
+      "doubleCountChecked": true,
+      "notes": "以 2027F 自建基準 EPS 26.02 元為前瞻獲利基礎，無歷史 FVPL 重複扣除。11/25 收盤 585 元相當於 22.5 倍。估值敏感度用 18／22／26 倍（四捨五入參考中點、上下各 4 倍），對應 468.36／572.44／676.52 元。",
+      "scenarios": [
+        {
+          "id": "uni-pe-18x",
+          "epsBasis": "forecast",
+          "period": "2027F",
+          "scenario": "consensus",
+          "eps": 26.02,
+          "multiple": 18,
+          "impliedPrice": 468.36,
+          "sourceIds": [
+            "uni-model",
+            "uni-twse"
+          ]
+        },
+        {
+          "id": "uni-pe-22x",
+          "epsBasis": "forecast",
+          "period": "2027F",
+          "scenario": "consensus",
+          "eps": 26.02,
+          "multiple": 22,
+          "impliedPrice": 572.44,
+          "sourceIds": [
+            "uni-model",
+            "uni-twse"
+          ]
+        },
+        {
+          "id": "uni-pe-26x",
+          "epsBasis": "forecast",
+          "period": "2027F",
+          "scenario": "consensus",
+          "eps": 26.02,
+          "multiple": 26,
+          "impliedPrice": 676.52,
+          "sourceIds": [
+            "uni-model",
+            "uni-twse"
+          ]
+        }
+      ]
     },
-    "notes": "2026Q3 法說與財報使用合併損益及歸母淨利不同口徑。EPS 採申報附註，情境模型獨立揭露。"
+    "notes": "Q3 財報第 25、64、88 頁揭露 FVPL 與第三層級。第 11–12 頁區分稅前調節及投資現金，處分價款與利益各有口徑。第 96 頁列示期末持股，變動含交易及評價。"
   }
 }

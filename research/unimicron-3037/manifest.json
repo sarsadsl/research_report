@@ -3,7 +3,7 @@
   "ticker": "3037",
   "market": "TW",
   "slug": "unimicron-3037",
-  "reportVersion": "0.2",
+  "reportVersion": "1.0",
   "output": {
     "dashboard": true,
     "fullReport": true,
