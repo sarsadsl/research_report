@@ -8,6 +8,7 @@
     "research:intake": "node ./scripts/research-intake.mjs",
     "research:generate": "node ./scripts/research-generate.mjs",
     "research:import": "node ./scripts/research-import.mjs",
+    "research:release": "node ./scripts/research-release.mjs",
     "research:publish": "node ./scripts/research-publish.mjs",
     "docs:check": "node ./scripts/docs-check.mjs",
     "research:check": "npm run research:check-all && npm run research:verify-eps -- --slug umc-2303 && npm run test:verification && npm test",

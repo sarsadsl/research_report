@@ -66,7 +66,7 @@ class TestAutomaticFallback(unittest.TestCase):
                 result["reviewedScope"]["sourceIds"] = []
             answer = Path(args[args.index("--output-last-message") + 1])
             answer.write_text("{invalid" if malformed else json.dumps(result), encoding="utf-8")
-            return subprocess.CompletedProcess(args, 0, "", "")
+            return subprocess.CompletedProcess(args, 0, "", "model: gpt-5.6-sol\n")
         return runner
 
     def test_missing_agy_uses_codex_and_writes_separate_records(self):

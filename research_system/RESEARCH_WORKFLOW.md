@@ -1,5 +1,22 @@
 # Research Workflow
 
+## 新建及更新 Full Report
+
+完成研究包、來源索引、官方 EPS 計算輸入及 EQ-01 後，以同步 `origin/main` 的獨立分支執行。
+
+```powershell
+npm.cmd run research:release -- <slug>
+npm.cmd run research:release -- <slug> --publish
+```
+
+第一個命令執行 Python 財務、證據及模型審查，再生成 HTML 並檢查桌機、筆電及手機版面。第二個命令需有正式發布授權，會核對正式狀態與日期、使用 Ed25519 簽署、加入指定報告檔案、建立 PR、等候該提交的 CI，再合併並等候正式工作流程。正式工作流程驗證相同報告位元組並執行 D1 匯入與回讀、部署 Worker。入口最後核對公開網址回傳的 SHA-256 及研究列表連結。
+
+各次執行摘要、審查與 QC 紀錄存於 Git 忽略的 `.research-verification/<slug>/releases/`。Python 通過後才會優先啟動 Agy／Gemini。Agy 只有在認定的基礎設施錯誤、沒有發現項目且沒有未完成的回應內容時，才可交給全新、唯讀、非互動的 Codex。Codex 紀錄保留實際模型身分。兩者均不可用時保留 BLOCKED。
+
+P0 立即停止後續修正。P1 可使用可靠來源校正後重驗，Agy 發現的 P1 須由 Agy 複驗。P2 需在報告中有可定位的揭露，P3 保留在稽核紀錄。若研究流程已有可信的替換資料，可將第 1、2 輪計畫存於忽略的 `.research-verification/<slug>/repairs/1.json` 及 `2.json`。每份填入 `expectedSha256`（修正前研究包檔案 SHA-256）、`reason` 及完整 `package`。入口只在相關驗證失敗時套用，並保留原包與各輪結果；兩輪都無法排除重大問題時停止。缺少證據時須在本機建立來源定位及資料快照。模型文字不能直接成為修正計畫。
+
+使用環境變數 `RESEARCH_VERIFICATION_PRIVATE_KEY_PATH` 指向 repo 外的私鑰，並以 `RESEARCH_VERIFICATION_PUBLIC_KEY` 設定與 GitHub 一致的信任公鑰。發布憑證由 GitHub 既有環境取得。統一入口只把可交給模型的公開證據傳給審查程序，券商原始資料、私人連結與受限摘錄保持在本機。各來源標明官方實績、具名券商預測或自建情境。發布遇到逾時或失敗時，以稽核紀錄的 PR、合併提交及 CI 工作流程查證實際進度。
+
 P1.8 操作規範，於 P1.9 更新發布入口、P1.10 加入新報告 intake 與通用 Full Report。適用於研究建立、更新、驗收與交付；正式參考個股為 `vpec-2455`，另有不發布的合成第二家公司測試。欄位見 [Data Contract](RESEARCH_DATA_SCHEMA.md)，呈現見 [Style Guide](RESEARCH_STYLE_GUIDE.md)，驗收見 [QC Specification](RESEARCH_QC.md)，自動發布細節見 [Publishing](RESEARCH_PUBLISHING.md)。
 
 ## EQ-01 新增的必要研究步驟
