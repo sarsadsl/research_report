@@ -337,7 +337,7 @@ class GeminiReviewTestCase(unittest.TestCase):
         review_cmd = recorded_calls[2]["args"]
         expected_prefix = build_agy_review_command(
             "fake-agy-binary",
-            review_cmd[4],
+            review_cmd[review_cmd.index("-p") + 1],
             model=DEFAULT_GEMINI_MODEL,
         )
         self.assertEqual(review_cmd, expected_prefix)

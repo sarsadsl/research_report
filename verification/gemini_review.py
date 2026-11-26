@@ -1566,6 +1566,7 @@ def build_agy_review_command(
     return [
         executable,
         "--mode=plan",
+        "--sandbox",
         "--disable-slash-commands",
         "-p",
         prompt,

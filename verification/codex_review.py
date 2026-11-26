@@ -9,6 +9,7 @@ from __future__ import annotations
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import tempfile
@@ -74,7 +75,17 @@ def _get_executable(codex_bin: str, env: Mapping[str, str], runner: Runner | Non
         raise _codex_error("CODEX_BINARY_INVALID", "Only a simple local Codex executable name is allowed")
     if runner is not None:
         return codex_bin
-    exe = shutil.which(codex_bin, path=env.get("PATH"))
+    path = env.get("PATH")
+    if os.name == "nt":
+        exe = shutil.which(f"{codex_bin}.exe", path=path)
+        appdata = env.get("APPDATA")
+        if appdata:
+            vendor = Path(appdata) / "npm/node_modules/@openai/codex/node_modules"
+            native = sorted(vendor.glob("@openai/codex-win32-*/vendor/*/bin/codex.exe"))
+            if native:
+                return str(native[0])
+    else:
+        exe = shutil.which(codex_bin, path=path)
     if not exe:
         raise _codex_error("CODEX_NOT_FOUND", "Codex CLI is not installed or not on PATH")
     return exe
@@ -146,13 +157,13 @@ def run_codex_review(
 ) -> GeminiReviewResult:
     """Review complete context in a fresh Codex process, without repo write access.
 
-    Model identity deliberately uses 'codex-cli-default' when not pinned locally.
     Return a BLOCKED result for every failure; never silently convert to PASS.
     """
     started = utc_now_iso()
     traces: list[ReviewBatchTrace] = []
     all_findings = []
     model_id = model or CODEX_MODEL
+    actual_model = None
     try:
         if timeout_seconds <= 0 or timeout_seconds > 1800:
             raise _codex_error("CODEX_TIMEOUT_INVALID", "Timeout must be 1..1800 seconds")
@@ -181,19 +192,28 @@ def run_codex_review(
                         + spec.prompt
                     )
                     command = [
-                        executable, "exec", "--ephemeral", "--sandbox", "read-only",
+                        executable, "--ask-for-approval", "never", "exec",
+                        "--ignore-user-config", "--ignore-rules", "--ephemeral", "--sandbox", "read-only",
+                        "--disable", "plugins", "--disable", "remote_plugin", "--disable", "hooks",
+                        "--disable", "shell_tool", "-c", "mcp_servers={}", "-c", 'web_search="disabled"',
                         "--skip-git-repo-check", "--output-schema", str(schema_path),
                         "--output-last-message", str(answer_path), "-"
                     ]
                     # Model is not forced by default; Codex uses the local authenticated user's configured model.
                     if model_id != CODEX_MODEL:
-                        command[2:2] = ["--model", model_id]
+                        command[4:4] = ["--model", model_id]
                     batch_started = utc_now_iso()
                     proc = _exec(command, cwd=batch_dir, env=env,
                                  timeout_seconds=timeout_seconds, input_text=prompt, runner=runner)
                     batch_ended = utc_now_iso()
                     if proc.returncode != 0:
                         raise _codex_error("CODEX_CLI_FAILED", "Codex CLI exited unsuccessfully")
+                    header = re.search(r"^model: (gpt-[a-z0-9.-]+)\s*$", proc.stderr, re.MULTILINE)
+                    if not header or (model_id != CODEX_MODEL and header[1] != model_id):
+                        raise _codex_error("CODEX_MODEL_UNCONFIRMED", "Codex CLI model identity is missing or mismatched")
+                    if actual_model is not None and actual_model != header[1]:
+                        raise _codex_error("CODEX_MODEL_CHANGED", "Codex CLI model changed between batches")
+                    actual_model = header[1]
                     if not answer_path.is_file():
                         raise _codex_error("CODEX_RESPONSE_MISSING", "Codex did not write a result file")
                     result_text = answer_path.read_text(encoding="utf-8")
@@ -202,7 +222,7 @@ def run_codex_review(
                     normalized = [
                         validate_and_normalize_finding(
                             item, batch_id=spec.batch_id, review_context=review_context,
-                            model=model_id, agy_version=cli_version,
+                            model=actual_model, agy_version=cli_version,
                             reviewed_at_utc=batch_ended,
                             prompt_sha256=sha256_text(prompt), response_sha256=response_hash,
                         )
@@ -212,18 +232,18 @@ def run_codex_review(
                     traces.append(ReviewBatchTrace(
                         batch_id=spec.batch_id, batch_index=spec.batch_index,
                         total_batches=spec.total_batches, scope=spec.scope,
-                        model=model_id, agy_version=cli_version,
+                        model=actual_model, agy_version=cli_version,
                         started_at_utc=batch_started, completed_at_utc=batch_ended,
                         prompt=prompt, prompt_char_length=len(prompt),
                         prompt_sha256=sha256_text(prompt), raw_stdout=result_text,
-                        raw_stderr="", response_sha256=response_hash,
+                        raw_stderr=f"model: {actual_model}", response_sha256=response_hash,
                         wrapper_status="CODEX_SUCCESS", parsed_response=parsed,
                         findings=normalized, errors=[],
                     ))
         status, findings, p3, blocked = evaluate_findings_decision(all_findings)
         counts = {sev: sum(f.severity == sev for f in findings) for sev in ("P0", "P1", "P2", "P3")}
         return GeminiReviewResult(
-            status=status, model=model_id, agy_version=cli_version,
+            status=status, model=actual_model, agy_version=cli_version,
             started_at_utc=started, completed_at_utc=utc_now_iso(),
             prompt_sha256=sha256_text("\n".join(t.prompt_sha256 for t in traces)),
             response_sha256=sha256_text("\n".join(t.response_sha256 for t in traces)),
@@ -231,7 +251,7 @@ def run_codex_review(
             blocked_reasons=blocked,
             summary={"totalBatches":len(traces), "totalFindings":len(findings),
                      "severityCounts":counts, "p3Count":len(p3)},
-            metadata={"provider":CODEX_PROVIDER, "model":model_id,
+            metadata={"provider":CODEX_PROVIDER, "model":actual_model,
                       "agyVersion":cli_version, "executable":"codex",
                       "fallbackReason":fallback_reason, "verifiedAtUtc":utc_now_iso()},
         )
@@ -240,7 +260,7 @@ def run_codex_review(
         return GeminiReviewResult(
             status=REVIEW_STATUS_BLOCKED, model=model_id,
             agy_version="", started_at_utc=started, completed_at_utc=utc_now_iso(),
-            prompt_sha256="", response_sha256="", findings=[],
+            prompt_sha256="", response_sha256="", findings=all_findings, batches=traces,
             blocked_reasons=[f"[{code}] Codex fallback unavailable or invalid"],
             summary={"totalBatches":len(traces), "errorCode":code,
                      "severityCounts":{sev:0 for sev in ("P0","P1","P2","P3")}},

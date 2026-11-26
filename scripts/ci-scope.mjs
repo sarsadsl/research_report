@@ -5,7 +5,7 @@ import { pathToFileURL } from "node:url";
 
 export function isDocumentationOnly(files) {
   return files.length > 0 && files.every(file =>
-    file === "README.md" || /^research_system\/[^/]+\.md$/.test(file) || /^docs\/.+\.md$/.test(file));
+    ["README.md", "AGENTS.md"].includes(file) || /^research_system\/[^/]+\.md$/.test(file) || /^docs\/.+\.md$/.test(file));
 }
 
 export function researchSlugs(files) {
@@ -21,9 +21,9 @@ export function isVerificationToolingOnly(files) {
     /^verification\//.test(file) ||
     /^research_system\/[^/]+\.md$/.test(file) ||
     /^docs\/.+\.md$/.test(file) ||
-    /^scripts\/research-(?:certificate(?:-check)?|publish(?:-lib)?|import(?:-lib)?)(?:\.test)?\.mjs$/.test(file) ||
+    /^scripts\/research-(?:certificate(?:-check)?|publish(?:-lib)?|release|import(?:-lib)?)(?:\.test)?\.mjs$/.test(file) ||
     [
-      "README.md", ".gitignore", "package.json", "requirements-verification.txt",
+      "README.md", "AGENTS.md", ".gitignore", "package.json", "requirements-verification.txt",
       "scripts/ci-scope.mjs", ".github/workflows/codex-backup-tests.yml",
       ".github/workflows/deploy-cloudflare.yml", ".github/workflows/research-quality-pr.yml"
     ].includes(file));

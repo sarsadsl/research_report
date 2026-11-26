@@ -38,7 +38,7 @@ export const VALIDATOR_HASH_KEYS = [
 
 const HEX64_RE = /^[a-f0-9]{64}$/;
 const GEMINI_MODEL_RE = /^gemini-4-argon-(?:high|medium|low)$/;
-const CODEX_MODEL_RE = /^codex-cli-default$/;
+const CODEX_MODEL_RE = /^(?:codex-cli-default|gpt-[a-z0-9.-]+)$/;
 const ALLOWED_AGY_FAILOVER = new Set([
   "AGY_NOT_FOUND", "AGY_TIMEOUT", "AGY_OS_ERROR",
   "AGY_VERSION_FAILED", "AGY_VERSION_EMPTY", "AGY_MODELS_FAILED",

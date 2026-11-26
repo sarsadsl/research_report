@@ -75,7 +75,9 @@ def run_auto_review_command(
     if not isinstance(pkg_hash, str) or not re.fullmatch(r"[a-f0-9]{64}", pkg_hash):
         return EXIT_BLOCKED, {**agy, "fallbackUsed":False,
                               "fallbackReason":"Agy outcome lacks valid package hash"}
-    relative_output = f".research-verification/{slug}/{pkg_hash}/codex-review.json"
+    relative_output = str(Path(output_path).with_name("codex-review.json")) if output_path else (
+        f".research-verification/{slug}/{pkg_hash}/codex-review.json"
+    )
 
     def _invoke_codex(ctx, **_kwargs):
         return run_codex_review(
@@ -104,16 +106,17 @@ def main(argv: Sequence[str] | None = None, *, stdout: TextIO | None = None) -> 
     parser.add_argument("slug")
     parser.add_argument("--root", default=".")
     parser.add_argument("--evidence-dir", default=None)
+    parser.add_argument("--output", help="Local ignored path for the Agy review record")
     parser.add_argument("--agy-model", default="gemini-4-argon-high")
     parser.add_argument("--codex-model", default=CODEX_MODEL,
-                        help="codex-cli-default uses authenticated local configured model")
+                        help="codex-cli-default uses the authenticated CLI default and records the runtime model")
     parser.add_argument("--allow-private-source-review", action="store_true",
                         help="Explicitly consent to sharing restricted local broker excerpts with an external reviewer")
     args = parser.parse_args(argv)
     try:
         code, result = run_auto_review_command(
             args.slug, root_dir=args.root, evidence_dir=args.evidence_dir,
-            agy_model=args.agy_model, codex_model=args.codex_model,
+            agy_model=args.agy_model, codex_model=args.codex_model, output_path=args.output,
             allow_private_source_review=args.allow_private_source_review,
         )
     except Exception:
