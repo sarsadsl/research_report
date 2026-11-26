@@ -689,8 +689,15 @@ class GeminiReviewTestCase(unittest.TestCase):
             )
 
         max_limit = 3600
+        checks = [{"id": f"check-{i}", "message": "查核" * 100} for i in range(32)]
+        ctx["deterministicChecks"]["checks"] = checks
         batches = split_review_context_into_batches(ctx, max_prompt_chars=max_limit)
         self.assertGreater(len(batches), 1, msg="預期應拆分為多個批次")
+        self.assertEqual([
+            check
+            for spec in batches
+            for check in spec.context_payload["deterministicChecks"].get("checks", [])
+        ], checks)
 
         covered_sections: set[str] = set()
         covered_collections: set[str] = set()
