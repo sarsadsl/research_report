@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0.0",
+  "algorithm": "Ed25519",
+  "keyId": "ed25519-09b536465ce2908f",
+  "payloadHash": "d5f43cb8b8c88fd135fc1d8cdcb67a73f9c695d4ef439e76438dcc6dc668e3f5",
+  "payload": {
+    "schemaVersion": "1.0.0",
+    "policyVersion": "1.0.0",
+    "slug": "unimicron-3037",
+    "status": "PASS",
+    "deterministicStatus": "PASS",
+    "modelInvoked": true,
+    "model": "gemini-4-argon-high",
+    "reviewProvider": "agy-gemini",
+    "assuranceLevel": "independent-model-review",
+    "fallbackReason": "",
+    "agyVersion": "1.5.18",
+    "reviewedAtUtc": "2026-11-26T06:18:01Z",
+    "packageVersion": "1.0.0",
+    "reportVersion": "1.0",
+    "asOfDate": "2026-11-26",
+    "packageHash": "28f63d4af88b37b4fb9b60f1ab043f79c9b426977f8d88f51cc50cf7640a1a06",
+    "manifestHash": "424baaaf2426769626dc613344e5015a7bf7b1a546947e0d0f29d5491f93d76b",
+    "profileHash": "2b477cfa86b61dfc02a6099cd20c9ac61443fe9ae756fea31af851e8d73a0a09",
+    "sourceHash": "a131ccb46deff79f309a499669510fcf0649f43fbaceac733cfaae65cb150895",
+    "reportHash": "b699d6f118f550917f5c673c4c992d562bbeadbd5bda309a588d24d49bf1021a",
+    "policyHash": "65464db76c282a7acf6fe32d1f82065e0c4d1144aed78cec6929f49d82df3966",
+    "verifierCodeHash": "dac738dcca826f6941c3e44889c726837b5891d411fb6513132d6f1f73b10927",
+    "evidenceHash": "6c6d7a2e49c308c8431076d6983514cbc5d80c819e942e95c5635cbd32db3f40",
+    "recomputeHash": "bd46b448c2bf77cc2f098e122cfd022faef68d5ef709dab9a36f6b858869c784",
+    "checksHash": "a6d6e2fd45ab5e48424fdc302ad0e2d36f5719600a59111ba6a138faa7a2573b",
+    "reviewRecordHash": "682d50d45f0c336280ab0b813fd0e67c3eb4d8efbc093205ef28c17f5e6354dd",
+    "promptSha256": "ac296e549ce6fd8425f2c89f6c3c38fc89108d1452fa7c6a0df842a67be75afd",
+    "responseSha256": "dc9b0e617a14c5bd6c412f79849d0970dea57a4eff3dd2f22dd03e909cffff57",
+    "findingCounts": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0,
+      "P3": 0
+    }
+  },
+  "signature": "6rTwjglUo7M+lA/srsJqFD3k1uy1iGag+2DPC4W4HUMUkZpBJMjN76KCyOrQ9sJol2GbjWn+dhZKcl5swi01AQ=="
+}
