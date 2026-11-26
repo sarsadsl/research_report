@@ -924,6 +924,10 @@ def run_review_command(
         "hashes": hashes,
         "findingSummary": finding_summary,
         "blockedReasons": all_blocked_reasons,
+        "deterministicIssues": [
+            {"id": check["id"], "status": check["status"]}
+            for check in det_result.get("checks", []) if check.get("status") != "PASS"
+        ],
         "recordPath": rel_out_path,
     }
 

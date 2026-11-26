@@ -1500,17 +1500,22 @@ def _recompute_single_pe_node(
     eps_basis = str(val_node.get("epsBasis") or "").strip()
     ref_period = str(val_node.get("period") or val_node.get("fiscalYear") or "").strip()
     basis_mismatch_msg = ""
+    reference_missing = False
     if eps_basis in ("reported", "normalized") and ref_period:
         eq = pkg.get("earningsQuality") if isinstance(pkg.get("earningsQuality"), dict) else {}
-        for eq_p in eq.get("periods") or []:
-            if isinstance(eq_p, dict) and str(eq_p.get("period") or "").strip() == ref_period:
-                ref_key = "reportedEps" if eps_basis == "reported" else "normalizedEps"
-                ref_eps = eq_p.get(ref_key)
-                if _is_finite_number(ref_eps) and abs(float(eps_val) - float(ref_eps)) > eps_tol + 1e-9:
-                    basis_mismatch_msg = (
-                        f"（且結構化 {eps_key}={float(eps_val):.2f} 與 {ref_period} 之 {ref_key}={float(ref_eps):.2f} 不符）"
-                    )
-                break
+        ref_key = "reportedEps" if eps_basis == "reported" else "normalizedEps"
+        ref_eps = next((row.get(ref_key) for row in eq.get("periods", []) if row.get("period") == ref_period), None)
+    elif eps_basis == "forecast":
+        ref_eps = next((
+            row.get("eps") for row in pkg.get("forecasts", [])
+            if f"{row.get('fiscalYear')}F" == ref_period and row.get("scenario") == val_node.get("scenario")
+        ), None)
+    else:
+        ref_eps = None
+    if eps_basis == "forecast" or (eps_basis in ("reported", "normalized") and ref_period):
+        reference_missing = not _is_finite_number(ref_eps)
+        if not reference_missing and abs(float(eps_val) - float(ref_eps)) > eps_tol + 1e-9:
+            basis_mismatch_msg = f"（且結構化 {eps_key}={eps_val:.2f} 與 {ref_period} 之 EPS={ref_eps:.2f} 不符）"
 
     if diff > val_tol + 1e-9 or basis_mismatch_msg:
         status = "BLOCKED"
@@ -1519,6 +1524,9 @@ def _recompute_single_pe_node(
             f"{expected_fair_value:.2f}，與記載 {price_key}={float(price_val):.2f} 相差 {diff:.2f}"
             f"{basis_mismatch_msg}，超過容差 {val_tol}。"
         )
+    elif reference_missing:
+        status = "NOT_VERIFIED"
+        msg = f"PE valuation 找不到 {ref_period} 對應的 {eps_basis} EPS，無法查核估值基礎。"
     else:
         status, msg = _finalize_pass_or_not_verified(
             sids,

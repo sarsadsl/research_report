@@ -569,7 +569,7 @@ def validate_research_package(
         profile_hash = ""
     else:
         profile_checks = _validate_report_profiles(profiles_doc, slug, profiles_rel)
-        profile_hash = sha256_bytes(profiles_raw_bytes) if profiles_raw_bytes is not None else ""
+        profile_hash = sha256_bytes(profiles_raw_bytes.replace(b"\r\n", b"\n")) if profiles_raw_bytes is not None else ""
 
     schema_checks = _validate_with_schema(manifest, manifest_schema, manifest_rel, "manifest") + _validate_with_schema(
         pkg, pkg_schema, pkg_rel, "package"

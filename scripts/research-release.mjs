@@ -1,6 +1,6 @@
 import { createHash, randomUUID } from "node:crypto";
 import { spawnSync } from "node:child_process";
-import { lstat, mkdir, readFile, rename, writeFile } from "node:fs/promises";
+import { lstat, mkdir, readFile, readdir, rename, writeFile } from "node:fs/promises";
 import { setTimeout as pause } from "node:timers/promises";
 import { parseArgs } from "node:util";
 import { assertSafeSlug } from "./research-lib.mjs";
@@ -28,6 +28,25 @@ const node = (script, args, options) => command(process.execPath, [`scripts/${sc
 const git = (...args) => command("git", args);
 const gh = (...args) => command("gh", [...args, "-R", repo]);
 const readJson = async file => JSON.parse(await readFile(file, "utf8"));
+
+async function hasUnclearedPrimaryFinding(releases) {
+  const reviews = [];
+  for (const entry of await readdir(releases, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const prior = await readJson(`${releases}/${entry.name}/release.json`).catch(error => {
+      if (error.code === "ENOENT") return null;
+      throw error;
+    });
+    for (const review of prior?.reviews ?? []) {
+      const severity = review.findingSummary?.severityCounts ?? {};
+      if (review.reviewProvider === "agy-gemini" && (review.ok || severity.P0 > 0 || severity.P1 > 0)) {
+        reviews.push(review);
+      }
+    }
+  }
+  reviews.sort((a, b) => a.completedAtUtc.localeCompare(b.completedAtUtc));
+  return reviews.at(-1)?.ok === false;
+}
 
 async function applyRepair(dir, auditDir, round, slug) {
   const plan = await readJson(`.research-verification/${slug}/repairs/${round}.json`).catch(error => {
@@ -102,7 +121,10 @@ async function publishThroughGitHub({ slug, files, record, save }) {
     const outside = changed.split("\0").filter(file => file && !files.includes(file));
     if (outside.length) throw new Error(`Unrelated paths in release branch or index: ${outside.join(", ")}`);
   };
-  assertOnlyReleaseFiles(git("diff", "--name-only", "-z", "origin/main...HEAD"));
+  // A previously committed public source index can accompany the report.
+  const branchFiles = git("diff", "--name-only", "-z", "origin/main...HEAD")
+    .split("\0").filter(file => file !== `research/${slug}/notes.md`).join("\0");
+  assertOnlyReleaseFiles(branchFiles);
   assertOnlyReleaseFiles(git("diff", "--cached", "--name-only", "-z"));
   git("add", "--", ...files);
   if (git("diff", "--cached", "--name-only", "-z")) git("commit", "--only", "-m", `research: publish ${slug}`, "--", ...files);
@@ -131,13 +153,14 @@ async function main() {
   if (positionals.length !== 1) throw new Error("Usage: npm run research:release -- <slug> [--evidence-dir DIR] [--publish]");
   assertSafeSlug(slug);
   const dir = `research/${slug}`;
-  const auditDir = `.research-verification/${slug}/releases/${randomUUID()}`;
+  const releases = `.research-verification/${slug}/releases`;
+  const auditDir = `${releases}/${randomUUID()}`;
   await mkdir(auditDir, { recursive: true });
   const record = { slug, status: "BLOCKED", reviews: [], repairs: [] };
   const save = () => writeFile(`${auditDir}/release.json`, JSON.stringify(record, null, 2) + "\n");
   const validationArgs = values["evidence-dir"] ? ["--evidence-dir", values["evidence-dir"]] : [];
   try {
-    let requirePrimaryClearance = false;
+    let requirePrimaryClearance = await hasUnclearedPrimaryFinding(releases);
     for (let round = 0; round <= 2; round++) {
       const attemptDir = `${auditDir}/attempt-${round}`;
       await mkdir(attemptDir);
@@ -160,10 +183,12 @@ async function main() {
     assertReleaseQc(qc, { reportHash: sha256(await readFile(report)), expectedPages: qc.expectedPages });
     record.qc = qc;
     if (record.review.ok !== true || !["PASS", "PASS_WITH_P2"].includes(record.review.status)) {
-      throw new Error(`Review blocked: ${record.review.blockedReasons?.join("; ") || "missing passing review"}`);
+      const checks = record.review.deterministicIssues?.map(check => check.id).join(", ");
+      const reason = record.review.blockedReasons?.join("; ") || "missing passing review";
+      throw new Error(`Review blocked: ${reason}${checks ? ` [${checks}]` : ""}`);
     }
     if (requirePrimaryClearance && record.review.reviewProvider !== "agy-gemini") {
-      throw new Error("Agy must verify the correction of its earlier P1 finding");
+      throw new Error("Agy must verify the correction of its earlier P0 or P1 finding");
     }
     if (!values.publish) {
       record.status = "VERIFIED";

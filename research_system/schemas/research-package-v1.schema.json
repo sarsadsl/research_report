@@ -1848,6 +1848,25 @@
             },
             "prospectiveModelOnly": {
               "type": "boolean"
+            },
+            "scenarios": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "epsBasis", "period", "eps", "multiple", "impliedPrice", "sourceIds"],
+                "properties": {
+                  "id": { "type": "string", "minLength": 1 },
+                  "epsBasis": { "enum": ["reported", "normalized", "forecast"] },
+                  "period": { "type": "string", "minLength": 4 },
+                  "scenario": { "enum": ["bear", "consensus", "bull"] },
+                  "eps": { "type": "number", "exclusiveMinimum": 0 },
+                  "multiple": { "type": "number", "exclusiveMinimum": 0 },
+                  "impliedPrice": { "type": "number", "exclusiveMinimum": 0 },
+                  "sourceIds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } }
+                }
+              }
             }
           }
         },
